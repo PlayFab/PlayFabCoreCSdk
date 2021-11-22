@@ -1,0 +1,9 @@
+[submodule "external/libHttpClient"]
+	path = external/libHttpClient
+	url = https://github.com/microsoft/libHttpClient
+[submodule "external/DirectXTK12"]
+	path = external/DirectXTK12
+	url = https://github.com/microsoft/DirectXTK12
+[submodule "external/rapidjson"]
+	path = external/rapidjson
+	url = https://github.com/Tencent/rapidjson.git

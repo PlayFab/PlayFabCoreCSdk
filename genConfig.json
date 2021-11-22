@@ -1,0 +1,6 @@
+{
+    "default": {
+        "templateFolder": "PlayFabCoreCSdk_Template",
+        "versionKey": "newtarget"
+    }
+}

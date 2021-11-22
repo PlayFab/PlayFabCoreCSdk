@@ -1,0 +1,110 @@
+#pragma once
+
+#include "TestCase.h"
+#include <playfab/PFGlobal.h>
+#include <playfab/PFEntity.h>
+#include <playfab/cpp/PFScheduledTaskDataModelWrappers.h>
+#include "AutoGenScheduledTaskResultHolders.h"
+
+namespace PlayFabUnit
+{
+
+class AutoGenScheduledTaskTests : public PlayFabApiTestCase
+{
+private: 
+    static void Log(std::stringstream& ss);
+    static HRESULT LogHR(HRESULT hr);
+
+    void TestScheduledTaskAdminAbortTaskInstance(TestContext& testContext);
+
+    void TestScheduledTaskAdminCreateActionsOnPlayersInSegmentTask(TestContext& testContext);
+
+    void TestScheduledTaskAdminCreateCloudScriptTask(TestContext& testContext);
+
+    void TestScheduledTaskAdminCreateInsightsScheduledScalingTask(TestContext& testContext);
+
+    void TestScheduledTaskAdminDeleteTask(TestContext& testContext);
+
+    void TestScheduledTaskAdminGetActionsOnPlayersInSegmentTaskInstance(TestContext& testContext);
+
+    void TestScheduledTaskAdminGetCloudScriptTaskInstance(TestContext& testContext);
+
+    void TestScheduledTaskAdminGetTaskInstances(TestContext& testContext);
+
+    void TestScheduledTaskAdminGetTasks(TestContext& testContext);
+
+    void TestScheduledTaskAdminRunTask(TestContext& testContext);
+
+    void TestScheduledTaskAdminUpdateTask(TestContext& testContext);
+
+
+protected:
+    void AddTests();
+
+    static void LogAbortTaskInstanceRequest(PFScheduledTaskAbortTaskInstanceRequest const* request, const char* testName);
+    static void FillAbortTaskInstanceRequest(PlayFab::Wrappers::PFScheduledTaskAbortTaskInstanceRequestWrapper<>& request);
+
+    static void LogCreateActionsOnPlayerSegmentTaskRequest(PFScheduledTaskCreateActionsOnPlayerSegmentTaskRequest const* request, const char* testName);
+    static void FillCreateActionsOnPlayerSegmentTaskRequest(PlayFab::Wrappers::PFScheduledTaskCreateActionsOnPlayerSegmentTaskRequestWrapper<>& request);
+    static HRESULT LogPFScheduledTaskCreateTaskResult(PFScheduledTaskCreateTaskResult const* result);
+    static HRESULT ValidatePFScheduledTaskCreateTaskResult(PFScheduledTaskCreateTaskResult* result);
+
+    static void LogCreateCloudScriptTaskRequest(PFScheduledTaskCreateCloudScriptTaskRequest const* request, const char* testName);
+    static void FillCreateCloudScriptTaskRequest(PlayFab::Wrappers::PFScheduledTaskCreateCloudScriptTaskRequestWrapper<>& request);
+
+    static void LogCreateInsightsScheduledScalingTaskRequest(PFScheduledTaskCreateInsightsScheduledScalingTaskRequest const* request, const char* testName);
+    static void FillCreateInsightsScheduledScalingTaskRequest(PlayFab::Wrappers::PFScheduledTaskCreateInsightsScheduledScalingTaskRequestWrapper<>& request);
+
+    static void LogDeleteTaskRequest(PFScheduledTaskDeleteTaskRequest const* request, const char* testName);
+    static void FillDeleteTaskRequest(PlayFab::Wrappers::PFScheduledTaskDeleteTaskRequestWrapper<>& request);
+
+    static void LogGetTaskInstanceRequest(PFScheduledTaskGetTaskInstanceRequest const* request, const char* testName);
+    static void FillGetTaskInstanceRequest(PlayFab::Wrappers::PFScheduledTaskGetTaskInstanceRequestWrapper<>& request);
+    static HRESULT LogPFScheduledTaskGetActionsOnPlayersInSegmentTaskInstanceResult(PFScheduledTaskGetActionsOnPlayersInSegmentTaskInstanceResult const* result);
+    static HRESULT ValidatePFScheduledTaskGetActionsOnPlayersInSegmentTaskInstanceResult(PFScheduledTaskGetActionsOnPlayersInSegmentTaskInstanceResult* result);
+
+    static HRESULT LogPFScheduledTaskGetCloudScriptTaskInstanceResult(PFScheduledTaskGetCloudScriptTaskInstanceResult const* result);
+    static HRESULT ValidatePFScheduledTaskGetCloudScriptTaskInstanceResult(PFScheduledTaskGetCloudScriptTaskInstanceResult* result);
+
+    static void LogGetTaskInstancesRequest(PFScheduledTaskGetTaskInstancesRequest const* request, const char* testName);
+    static void FillGetTaskInstancesRequest(PlayFab::Wrappers::PFScheduledTaskGetTaskInstancesRequestWrapper<>& request);
+    static HRESULT LogPFScheduledTaskGetTaskInstancesResult(PFScheduledTaskGetTaskInstancesResult const* result);
+    static HRESULT ValidatePFScheduledTaskGetTaskInstancesResult(PFScheduledTaskGetTaskInstancesResult* result);
+
+    static void LogGetTasksRequest(PFScheduledTaskGetTasksRequest const* request, const char* testName);
+    static void FillGetTasksRequest(PlayFab::Wrappers::PFScheduledTaskGetTasksRequestWrapper<>& request);
+    static HRESULT LogPFScheduledTaskGetTasksResult(PFScheduledTaskGetTasksResult const* result);
+    static HRESULT ValidatePFScheduledTaskGetTasksResult(PFScheduledTaskGetTasksResult* result);
+
+    static void LogRunTaskRequest(PFScheduledTaskRunTaskRequest const* request, const char* testName);
+    static void FillRunTaskRequest(PlayFab::Wrappers::PFScheduledTaskRunTaskRequestWrapper<>& request);
+    static HRESULT LogPFScheduledTaskRunTaskResult(PFScheduledTaskRunTaskResult const* result);
+    static HRESULT ValidatePFScheduledTaskRunTaskResult(PFScheduledTaskRunTaskResult* result);
+
+    static void LogUpdateTaskRequest(PFScheduledTaskUpdateTaskRequest const* request, const char* testName);
+    static void FillUpdateTaskRequest(PlayFab::Wrappers::PFScheduledTaskUpdateTaskRequestWrapper<>& request);
+
+    struct ScheduledTaskTestData
+    {
+        ~ScheduledTaskTestData() = default;
+
+    };
+
+    static ScheduledTaskTestData testData;
+
+public:
+    PFStateHandle stateHandle{ nullptr };
+    PFTitlePlayerHandle titlePlayerHandle{ nullptr };
+    PFEntityHandle entityHandle{ nullptr };
+    PFTitlePlayerHandle titlePlayerHandle2{ nullptr };
+    PFEntityHandle entityHandle2{ nullptr };
+    PFEntityHandle titleEntityHandle{ nullptr };
+
+    void ClassSetUp() override;
+    void ClassTearDown() override;
+    void SetUp(TestContext& testContext) override;
+
+    void Tick(TestContext&) override {}
+};
+
+}
