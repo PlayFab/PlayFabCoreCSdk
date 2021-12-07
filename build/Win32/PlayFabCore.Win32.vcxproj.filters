@@ -64,142 +64,142 @@
     <ClInclude Include="$(PlayFabSourceDir)\include\playfab\cpp\StdOptional.h">
       <Filter>C Public Includes\playfab\cpp</Filter>
     </ClInclude>
-    <ClInclude Include="$(PlayFabSourceDir)\source\Common\ApiAsyncProviders.h" >
+    <ClInclude Include="$(PlayFabSourceDir)\source\Common\ApiAsyncProviders.h">
       <Filter>Source\Common</Filter>
     </ClInclude>
-    <ClInclude Include="$(PlayFabSourceDir)\source\Common\AsyncOp.h" >
+    <ClInclude Include="$(PlayFabSourceDir)\source\Common\AsyncOp.h">
       <Filter>Source\Common</Filter>
     </ClInclude>
-    <ClCompile Include="$(PlayFabSourceDir)\source\Common\AsyncProvider.cpp" >
+    <ClCompile Include="$(PlayFabSourceDir)\source\Common\AsyncProvider.cpp">
       <Filter>Source\Common</Filter>
     </ClCompile>
-    <ClInclude Include="$(PlayFabSourceDir)\source\Common\AsyncProvider.h" >
+    <ClInclude Include="$(PlayFabSourceDir)\source\Common\AsyncProvider.h">
       <Filter>Source\Common</Filter>
     </ClInclude>
-    <ClInclude Include="$(PlayFabSourceDir)\source\Common\BaseModel.h" >
+    <ClInclude Include="$(PlayFabSourceDir)\source\Common\BaseModel.h">
       <Filter>Source\Common</Filter>
     </ClInclude>
-    <ClInclude Include="$(PlayFabSourceDir)\source\Common\CallbackManager.h" >
+    <ClInclude Include="$(PlayFabSourceDir)\source\Common\CallbackManager.h">
       <Filter>Source\Common</Filter>
     </ClInclude>
-    <ClCompile Include="$(PlayFabSourceDir)\source\Common\Entity.cpp" >
+    <ClCompile Include="$(PlayFabSourceDir)\source\Common\Entity.cpp">
       <Filter>Source\Common</Filter>
     </ClCompile>
-    <ClInclude Include="$(PlayFabSourceDir)\source\Common\Entity.h" >
+    <ClInclude Include="$(PlayFabSourceDir)\source\Common\Entity.h">
       <Filter>Source\Common</Filter>
     </ClInclude>
-    <ClInclude Include="$(PlayFabSourceDir)\source\Common\EnumTraits.h" >
+    <ClInclude Include="$(PlayFabSourceDir)\source\Common\EnumTraits.h">
       <Filter>Source\Common</Filter>
     </ClInclude>
-    <ClCompile Include="$(PlayFabSourceDir)\source\Common\Error.cpp" >
+    <ClCompile Include="$(PlayFabSourceDir)\source\Common\Error.cpp">
       <Filter>Source\Common</Filter>
     </ClCompile>
-    <ClInclude Include="$(PlayFabSourceDir)\source\Common\Error.h" >
+    <ClInclude Include="$(PlayFabSourceDir)\source\Common\Error.h">
       <Filter>Source\Common</Filter>
     </ClInclude>
-    <ClCompile Include="$(PlayFabSourceDir)\source\Common\GlobalState.cpp" >
+    <ClCompile Include="$(PlayFabSourceDir)\source\Common\GlobalState.cpp">
       <Filter>Source\Common</Filter>
     </ClCompile>
-    <ClInclude Include="$(PlayFabSourceDir)\source\Common\GlobalState.h" >
+    <ClInclude Include="$(PlayFabSourceDir)\source\Common\GlobalState.h">
       <Filter>Source\Common</Filter>
     </ClInclude>
-    <ClCompile Include="$(PlayFabSourceDir)\source\Common\HttpClient.cpp" >
+    <ClCompile Include="$(PlayFabSourceDir)\source\Common\HttpClient.cpp">
       <Filter>Source\Common</Filter>
     </ClCompile>
-    <ClInclude Include="$(PlayFabSourceDir)\source\Common\HttpClient.h" >
+    <ClInclude Include="$(PlayFabSourceDir)\source\Common\HttpClient.h">
       <Filter>Source\Common</Filter>
     </ClInclude>
-    <ClCompile Include="$(PlayFabSourceDir)\source\Common\InternalMemory.cpp" >
+    <ClCompile Include="$(PlayFabSourceDir)\source\Common\InternalMemory.cpp">
       <Filter>Source\Common</Filter>
     </ClCompile>
-    <ClInclude Include="$(PlayFabSourceDir)\source\Common\InternalMemory.h" >
+    <ClInclude Include="$(PlayFabSourceDir)\source\Common\InternalMemory.h">
       <Filter>Source\Common</Filter>
     </ClInclude>
-    <ClCompile Include="$(PlayFabSourceDir)\source\Common\JsonUtils.cpp" >
+    <ClCompile Include="$(PlayFabSourceDir)\source\Common\JsonUtils.cpp">
       <Filter>Source\Common</Filter>
     </ClCompile>
-    <ClInclude Include="$(PlayFabSourceDir)\source\Common\JsonUtils.h" >
+    <ClInclude Include="$(PlayFabSourceDir)\source\Common\JsonUtils.h">
       <Filter>Source\Common</Filter>
     </ClInclude>
-    <ClCompile Include="$(PlayFabSourceDir)\source\Common\ModelBuffer.cpp" >
+    <ClCompile Include="$(PlayFabSourceDir)\source\Common\ModelBuffer.cpp">
       <Filter>Source\Common</Filter>
     </ClCompile>
-    <ClInclude Include="$(PlayFabSourceDir)\source\Common\ModelBuffer.h" >
+    <ClInclude Include="$(PlayFabSourceDir)\source\Common\ModelBuffer.h">
       <Filter>Source\Common</Filter>
     </ClInclude>
-    <ClCompile Include="$(PlayFabSourceDir)\source\Common\PlatformUser.cpp" >
+    <ClCompile Include="$(PlayFabSourceDir)\source\Common\PlatformUser.cpp">
       <Filter>Source\Common</Filter>
     </ClCompile>
-    <ClInclude Include="$(PlayFabSourceDir)\source\Common\PlatformUser.h" >
+    <ClInclude Include="$(PlayFabSourceDir)\source\Common\PlatformUser.h">
       <Filter>Source\Common</Filter>
     </ClInclude>
-    <ClInclude Include="$(PlayFabSourceDir)\source\Common\PlatformUtils.h" >
+    <ClInclude Include="$(PlayFabSourceDir)\source\Common\PlatformUtils.h">
       <Filter>Source\Common</Filter>
     </ClInclude>
-    <ClInclude Include="$(PlayFabSourceDir)\source\Common\Result.h" >
+    <ClInclude Include="$(PlayFabSourceDir)\source\Common\Result.h">
       <Filter>Source\Common</Filter>
     </ClInclude>
-    <ClInclude Include="$(PlayFabSourceDir)\source\Common\ResultMacros.h" >
+    <ClInclude Include="$(PlayFabSourceDir)\source\Common\ResultMacros.h">
       <Filter>Source\Common</Filter>
     </ClInclude>
-    <ClInclude Include="$(PlayFabSourceDir)\source\Common\SdkVersion.h" >
+    <ClInclude Include="$(PlayFabSourceDir)\source\Common\SdkVersion.h">
       <Filter>Source\Common</Filter>
     </ClInclude>
-    <ClCompile Include="$(PlayFabSourceDir)\source\Common\Socket.cpp" >
+    <ClCompile Include="$(PlayFabSourceDir)\source\Common\Socket.cpp">
       <Filter>Source\Common</Filter>
     </ClCompile>
-    <ClInclude Include="$(PlayFabSourceDir)\source\Common\Socket.h" >
+    <ClInclude Include="$(PlayFabSourceDir)\source\Common\Socket.h">
       <Filter>Source\Common</Filter>
     </ClInclude>
-    <ClCompile Include="$(PlayFabSourceDir)\source\Common\TaskQueue.cpp" >
+    <ClCompile Include="$(PlayFabSourceDir)\source\Common\TaskQueue.cpp">
       <Filter>Source\Common</Filter>
     </ClCompile>
-    <ClInclude Include="$(PlayFabSourceDir)\source\Common\TaskQueue.h" >
+    <ClInclude Include="$(PlayFabSourceDir)\source\Common\TaskQueue.h">
       <Filter>Source\Common</Filter>
     </ClInclude>
-    <ClCompile Include="$(PlayFabSourceDir)\source\Common\TitlePlayer.cpp" >
+    <ClCompile Include="$(PlayFabSourceDir)\source\Common\TitlePlayer.cpp">
       <Filter>Source\Common</Filter>
     </ClCompile>
-    <ClInclude Include="$(PlayFabSourceDir)\source\Common\TitlePlayer.h" >
+    <ClInclude Include="$(PlayFabSourceDir)\source\Common\TitlePlayer.h">
       <Filter>Source\Common</Filter>
     </ClInclude>
-    <ClCompile Include="$(PlayFabSourceDir)\source\Common\Trace.cpp" >
+    <ClCompile Include="$(PlayFabSourceDir)\source\Common\Trace.cpp">
       <Filter>Source\Common</Filter>
     </ClCompile>
-    <ClInclude Include="$(PlayFabSourceDir)\source\Common\Trace.h" >
+    <ClInclude Include="$(PlayFabSourceDir)\source\Common\Trace.h">
       <Filter>Source\Common</Filter>
     </ClInclude>
-    <ClInclude Include="$(PlayFabSourceDir)\source\Common\Types.h" >
+    <ClInclude Include="$(PlayFabSourceDir)\source\Common\Types.h">
       <Filter>Source\Common</Filter>
     </ClInclude>
-    <ClCompile Include="$(PlayFabSourceDir)\source\Api\PFEntity.cpp" >
+    <ClCompile Include="$(PlayFabSourceDir)\source\Api\PFEntity.cpp">
       <Filter>Source\Api</Filter>
     </ClCompile>
-    <ClCompile Include="$(PlayFabSourceDir)\source\Api\PFGlobal.cpp" >
+    <ClCompile Include="$(PlayFabSourceDir)\source\Api\PFGlobal.cpp">
       <Filter>Source\Api</Filter>
     </ClCompile>
-    <ClCompile Include="$(PlayFabSourceDir)\source\Api\PFTitlePlayer.cpp" >
+    <ClCompile Include="$(PlayFabSourceDir)\source\Api\PFTitlePlayer.cpp">
       <Filter>Source\Api</Filter>
     </ClCompile>
-    <ClCompile Include="$(PlayFabSourceDir)\source\QoS\PFQoS.cpp" >
+    <ClCompile Include="$(PlayFabSourceDir)\source\QoS\PFQoS.cpp">
       <Filter>Source\QoS</Filter>
     </ClCompile>
-    <ClCompile Include="$(PlayFabSourceDir)\source\QoS\QoS.cpp" >
+    <ClCompile Include="$(PlayFabSourceDir)\source\QoS\QoS.cpp">
       <Filter>Source\QoS</Filter>
     </ClCompile>
-    <ClInclude Include="$(PlayFabSourceDir)\source\QoS\QoS.h" >
+    <ClInclude Include="$(PlayFabSourceDir)\source\QoS\QoS.h">
       <Filter>Source\QoS</Filter>
     </ClInclude>
-    <ClCompile Include="$(PlayFabSourceDir)\source\QoS\QoSDataModels.cpp" >
+    <ClCompile Include="$(PlayFabSourceDir)\source\QoS\QoSDataModels.cpp">
       <Filter>Source\QoS</Filter>
     </ClCompile>
-    <ClInclude Include="$(PlayFabSourceDir)\source\QoS\QoSDataModels.h" >
+    <ClInclude Include="$(PlayFabSourceDir)\source\QoS\QoSDataModels.h">
       <Filter>Source\QoS</Filter>
     </ClInclude>
-    <ClCompile Include="$(PlayFabSourceDir)\source\QoS\QoSSocket.cpp" >
+    <ClCompile Include="$(PlayFabSourceDir)\source\QoS\QoSSocket.cpp">
       <Filter>Source\QoS</Filter>
     </ClCompile>
-    <ClInclude Include="$(PlayFabSourceDir)\source\QoS\QoSSocket.h" >
+    <ClInclude Include="$(PlayFabSourceDir)\source\QoS\QoSSocket.h">
       <Filter>Source\QoS</Filter>
     </ClInclude>
     <ClInclude Include="$(PlayFabSourceDir)\include\playfab\PFSharedDataModels.h">
@@ -838,11 +838,14 @@
     <ClCompile Include="$(PlayFabSourceDir)\source\Profiles\PFProfiles.cpp">
       <Filter>Source\Profiles</Filter>
     </ClCompile>
-    <ClInclude Include="$(PlayFabSourceDir)\source\stdafx.h" >
+    <ClInclude Include="$(PlayFabSourceDir)\source\stdafx.h">
       <Filter>Source</Filter>
     </ClInclude>
     <ClCompile Include="$(PlayFabSourceDir)\source\stdafx.cpp">
       <Filter>Source</Filter>
     </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Natvis Include="$(PlayFabExternalDir)\rapidjson.natvis" />
   </ItemGroup>
 </Project>
