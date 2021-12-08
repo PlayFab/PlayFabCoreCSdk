@@ -151,6 +151,7 @@ protected:
     template<typename T>
     HRESULT GetResultHelper(void* buffer, size_t bufferSize, const T& result)
     {
+        UNREFERENCED_PARAMETER(bufferSize);
         assert(bufferSize == sizeof(PFEntity*));
         auto entityHandlePtr = static_cast<PFEntity**>(buffer);
         *entityHandlePtr = MakeUnique<PFEntity>(result).release();
@@ -160,6 +161,7 @@ protected:
     template<>
     HRESULT GetResultHelper(void* buffer, size_t bufferSize, const SharedPtr<TitlePlayer>& result)
     {
+        UNREFERENCED_PARAMETER(bufferSize);
         assert(bufferSize == sizeof(PFTitlePlayer*));
         auto titlePlayerHandlePtr = static_cast<PFTitlePlayer**>(buffer);
         *titlePlayerHandlePtr = MakeUnique<PFTitlePlayer>(result).release();
