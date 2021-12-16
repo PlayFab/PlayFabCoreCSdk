@@ -1049,6 +1049,9 @@ HRESULT PFPlayerDataManagementAdminUpdateUserReadOnlyDataGetResult(
 /// <param name="async">XAsyncBlock for the async operation.</param>
 /// <returns>Result code for this API operation.</returns>
 /// <remarks>
+/// See also ClientGetFriendLeaderboardAroundPlayerAsync, ClientGetLeaderboardAsync, ClientGetLeaderboardAroundPlayerAsync,
+/// ClientGetUserStatisticsAsync.
+///
 /// If successful, call <see cref="PFPlayerDataManagementClientGetFriendLeaderboardGetResult"/> to get
 /// the result.
 /// </remarks>
@@ -1098,6 +1101,9 @@ HRESULT PFPlayerDataManagementClientGetFriendLeaderboardGetResult(
 /// <param name="async">XAsyncBlock for the async operation.</param>
 /// <returns>Result code for this API operation.</returns>
 /// <remarks>
+/// See also ClientGetFriendLeaderboardAsync, ClientGetLeaderboardAsync, ClientGetLeaderboardAroundPlayerAsync,
+/// ClientGetUserStatisticsAsync.
+///
 /// If successful, call <see cref="PFPlayerDataManagementClientGetFriendLeaderboardAroundPlayerGetResult"/>
 /// to get the result.
 /// </remarks>
@@ -1300,6 +1306,9 @@ HRESULT PFPlayerDataManagementClientGetPlayerStatisticsGetResult(
 /// <param name="async">XAsyncBlock for the async operation.</param>
 /// <returns>Result code for this API operation.</returns>
 /// <remarks>
+/// See also AdminCreatePlayerStatisticDefinitionAsync, ClientGetPlayerStatisticsAsync, AdminUpdatePlayerStatisticDefinitionAsync,
+/// ClientUpdatePlayerStatisticsAsync.
+///
 /// If successful, call <see cref="PFPlayerDataManagementClientGetPlayerStatisticVersionsGetResult"/>
 /// to get the result.
 /// </remarks>
@@ -1568,7 +1577,8 @@ HRESULT PFPlayerDataManagementClientGetUserReadOnlyDataGetResult(
 /// Note that if the statistic is intended to have a reset period, the UpdatePlayerStatisticDefinition
 /// API call can be used to define that reset period. Once a statistic has been versioned (reset), the
 /// now-previous version can still be written to for up a short, pre-defined period (currently 10 seconds),
-/// using the Version parameter in this call.
+/// using the Version parameter in this call. See also AdminCreatePlayerStatisticDefinitionAsync, ClientGetPlayerStatisticsAsync,
+/// AdminUpdatePlayerStatisticDefinitionAsync.
 ///
 /// Call <see cref="XAsyncGetStatus"/> to get the status of the operation.
 /// </remarks>
@@ -1648,6 +1658,7 @@ HRESULT PFPlayerDataManagementClientUpdateUserPublisherDataGetResult(
     _Out_ PFPlayerDataManagementUpdateUserDataResult* result
 ) noexcept;
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 /// <summary>
 /// Retrieves a list of ranked friends of the given player for the given statistic, starting from the
 /// indicated point in the leaderboard
@@ -1698,7 +1709,9 @@ HRESULT PFPlayerDataManagementServerGetFriendLeaderboardGetResult(
     _Outptr_ PFPlayerDataManagementGetLeaderboardResult** result,
     _Out_opt_ size_t* bufferUsed
 ) noexcept;
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 /// <summary>
 /// Retrieves a list of ranked users for the given statistic, starting from the indicated point in the
 /// leaderboard
@@ -1749,7 +1762,9 @@ HRESULT PFPlayerDataManagementServerGetLeaderboardGetResult(
     _Outptr_ PFPlayerDataManagementGetLeaderboardResult** result,
     _Out_opt_ size_t* bufferUsed
 ) noexcept;
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 /// <summary>
 /// Retrieves a list of ranked users for the given statistic, centered on the currently signed-in user
 /// </summary>
@@ -1799,7 +1814,9 @@ HRESULT PFPlayerDataManagementServerGetLeaderboardAroundUserGetResult(
     _Outptr_ PFPlayerDataManagementGetLeaderboardAroundUserResult** result,
     _Out_opt_ size_t* bufferUsed
 ) noexcept;
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 /// <summary>
 /// Returns whatever info is requested in the response for the user. Note that PII (like email address,
 /// facebook id) may be returned. All parameters default to false.
@@ -1848,7 +1865,9 @@ HRESULT PFPlayerDataManagementServerGetPlayerCombinedInfoGetResult(
     _Outptr_ PFGetPlayerCombinedInfoResult** result,
     _Out_opt_ size_t* bufferUsed
 ) noexcept;
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 /// <summary>
 /// Retrieves the current version and values for the indicated statistics, for the local player.
 /// </summary>
@@ -1899,7 +1918,9 @@ HRESULT PFPlayerDataManagementServerGetPlayerStatisticsGetResult(
     _Outptr_ PFPlayerDataManagementServerGetPlayerStatisticsResult** result,
     _Out_opt_ size_t* bufferUsed
 ) noexcept;
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 /// <summary>
 /// Retrieves the information on the available versions of the specified statistic.
 /// </summary>
@@ -1950,7 +1971,9 @@ HRESULT PFPlayerDataManagementServerGetPlayerStatisticVersionsGetResult(
     _Outptr_ PFPlayerDataManagementGetPlayerStatisticVersionsResult** result,
     _Out_opt_ size_t* bufferUsed
 ) noexcept;
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 /// <summary>
 /// Retrieves the title-specific custom data for the user which is readable and writable by the client
 /// </summary>
@@ -2002,7 +2025,9 @@ HRESULT PFPlayerDataManagementServerGetUserDataGetResult(
     _Outptr_ PFPlayerDataManagementServerGetUserDataResult** result,
     _Out_opt_ size_t* bufferUsed
 ) noexcept;
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 /// <summary>
 /// Retrieves the title-specific custom data for the user which cannot be accessed by the client
 /// </summary>
@@ -2055,7 +2080,9 @@ HRESULT PFPlayerDataManagementServerGetUserInternalDataGetResult(
     _Outptr_ PFPlayerDataManagementServerGetUserDataResult** result,
     _Out_opt_ size_t* bufferUsed
 ) noexcept;
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 /// <summary>
 /// Retrieves the publisher-specific custom data for the user which is readable and writable by the client
 /// </summary>
@@ -2108,7 +2135,9 @@ HRESULT PFPlayerDataManagementServerGetUserPublisherDataGetResult(
     _Outptr_ PFPlayerDataManagementServerGetUserDataResult** result,
     _Out_opt_ size_t* bufferUsed
 ) noexcept;
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 /// <summary>
 /// Retrieves the publisher-specific custom data for the user which cannot be accessed by the client
 /// </summary>
@@ -2161,7 +2190,9 @@ HRESULT PFPlayerDataManagementServerGetUserPublisherInternalDataGetResult(
     _Outptr_ PFPlayerDataManagementServerGetUserDataResult** result,
     _Out_opt_ size_t* bufferUsed
 ) noexcept;
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 /// <summary>
 /// Retrieves the publisher-specific custom data for the user which can only be read by the client
 /// </summary>
@@ -2214,7 +2245,9 @@ HRESULT PFPlayerDataManagementServerGetUserPublisherReadOnlyDataGetResult(
     _Outptr_ PFPlayerDataManagementServerGetUserDataResult** result,
     _Out_opt_ size_t* bufferUsed
 ) noexcept;
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 /// <summary>
 /// Retrieves the title-specific custom data for the user which can only be read by the client
 /// </summary>
@@ -2267,7 +2300,9 @@ HRESULT PFPlayerDataManagementServerGetUserReadOnlyDataGetResult(
     _Outptr_ PFPlayerDataManagementServerGetUserDataResult** result,
     _Out_opt_ size_t* bufferUsed
 ) noexcept;
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 /// <summary>
 /// Updates the values of the specified title-specific statistics for the user
 /// </summary>
@@ -2287,7 +2322,9 @@ HRESULT PFPlayerDataManagementServerUpdatePlayerStatisticsAsync(
     _In_ const PFPlayerDataManagementServerUpdatePlayerStatisticsRequest* request,
     _Inout_ XAsyncBlock* async
 ) noexcept;
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 /// <summary>
 /// Updates the title-specific custom data for the user which is readable and writable by the client
 /// </summary>
@@ -2321,7 +2358,9 @@ HRESULT PFPlayerDataManagementServerUpdateUserDataGetResult(
     _Inout_ XAsyncBlock* async,
     _Out_ PFPlayerDataManagementUpdateUserDataResult* result
 ) noexcept;
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 /// <summary>
 /// Updates the title-specific custom data for the user which cannot be accessed by the client
 /// </summary>
@@ -2355,7 +2394,9 @@ HRESULT PFPlayerDataManagementServerUpdateUserInternalDataGetResult(
     _Inout_ XAsyncBlock* async,
     _Out_ PFPlayerDataManagementUpdateUserDataResult* result
 ) noexcept;
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 /// <summary>
 /// Updates the publisher-specific custom data for the user which is readable and writable by the client
 /// </summary>
@@ -2389,7 +2430,9 @@ HRESULT PFPlayerDataManagementServerUpdateUserPublisherDataGetResult(
     _Inout_ XAsyncBlock* async,
     _Out_ PFPlayerDataManagementUpdateUserDataResult* result
 ) noexcept;
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 /// <summary>
 /// Updates the publisher-specific custom data for the user which cannot be accessed by the client
 /// </summary>
@@ -2423,7 +2466,9 @@ HRESULT PFPlayerDataManagementServerUpdateUserPublisherInternalDataGetResult(
     _Inout_ XAsyncBlock* async,
     _Out_ PFPlayerDataManagementUpdateUserDataResult* result
 ) noexcept;
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 /// <summary>
 /// Updates the publisher-specific custom data for the user which can only be read by the client
 /// </summary>
@@ -2457,7 +2502,9 @@ HRESULT PFPlayerDataManagementServerUpdateUserPublisherReadOnlyDataGetResult(
     _Inout_ XAsyncBlock* async,
     _Out_ PFPlayerDataManagementUpdateUserDataResult* result
 ) noexcept;
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 /// <summary>
 /// Updates the title-specific custom data for the user which can only be read by the client
 /// </summary>
@@ -2491,6 +2538,7 @@ HRESULT PFPlayerDataManagementServerUpdateUserReadOnlyDataGetResult(
     _Inout_ XAsyncBlock* async,
     _Out_ PFPlayerDataManagementUpdateUserDataResult* result
 ) noexcept;
+#endif
 
 
 }

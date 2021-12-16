@@ -18,7 +18,7 @@ void AutoGenFriendsTests::LogClientAddFriendRequest(PFFriendsClientAddFriendRequ
 
     std::stringstream ss;
     ss << "----------"; Log(ss);
-    ss << "Test #" << g_FriendsTestIndex++ << ": " << testName << ".  Last Known Status: Failing"; Log(ss);
+    ss << "Test #" << g_FriendsTestIndex++ << ": " << testName << ".  Last Known Status: PassingWithData"; Log(ss);
     ss << "Request:"; Log(ss);
 
 
@@ -41,7 +41,7 @@ HRESULT AutoGenFriendsTests::LogPFFriendsAddFriendResult(PFFriendsAddFriendResul
     std::stringstream ss;
     ss << "Response:"; Log(ss);
 
-    // Found PlayFabFriendsAddFriendResult
+    // Found PlayFabFriendsAddFriendResult    
     ss << "  created " << result->created; Log(ss); // Class: bool 
     return S_OK;
 }
@@ -87,7 +87,7 @@ HRESULT AutoGenFriendsTests::LogPFFriendsGetFriendsListResult(PFFriendsGetFriend
     std::stringstream ss;
     ss << "Response:"; Log(ss);
 
-    // Found PlayFabFriendsGetFriendsListResult    
+    // Found PlayFabFriendsGetFriendsListResult        
     ss << "  friendsCount " << result->friendsCount; Log(ss);
 
     // PFFriendsFriendInfo
@@ -107,7 +107,7 @@ void AutoGenFriendsTests::LogClientRemoveFriendRequest(PFFriendsClientRemoveFrie
 
     std::stringstream ss;
     ss << "----------"; Log(ss);
-    ss << "Test #" << g_FriendsTestIndex++ << ": " << testName << ".  Last Known Status: Failing"; Log(ss);
+    ss << "Test #" << g_FriendsTestIndex++ << ": " << testName << ".  Last Known Status: PassingWithData"; Log(ss);
     ss << "Request:"; Log(ss);
 
 

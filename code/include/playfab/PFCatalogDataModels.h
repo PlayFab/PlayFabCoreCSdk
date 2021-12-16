@@ -1240,6 +1240,66 @@ typedef struct PFCatalogGetItemReviewSummaryResponse
 } PFCatalogGetItemReviewSummaryResponse;
 
 /// <summary>
+/// PFCatalogGetItemsRequest data model.
+/// </summary>
+typedef struct PFCatalogGetItemsRequest
+{
+    /// <summary>
+    /// (Optional) List of item alternate IDs.
+    /// </summary>
+    _Maybenull_ _Field_size_(alternateIdsCount) PFCatalogCatalogAlternateId const* const* alternateIds;
+
+    /// <summary>
+    /// Count of alternateIds
+    /// </summary>
+    uint32_t alternateIdsCount;
+
+    /// <summary>
+    /// (Optional) The optional custom tags associated with the request (e.g. build number, external
+    /// trace identifiers, etc.).
+    /// </summary>
+    _Maybenull_ _Field_size_(customTagsCount) struct PFStringDictionaryEntry const* customTags;
+
+    /// <summary>
+    /// Count of customTags
+    /// </summary>
+    uint32_t customTagsCount;
+
+    /// <summary>
+    /// (Optional) The entity to perform this action on.
+    /// </summary>
+    _Maybenull_ PFEntityKey const* entity;
+
+    /// <summary>
+    /// (Optional) List of Item Ids.
+    /// </summary>
+    _Maybenull_ _Field_size_(idsCount) const char* const* ids;
+
+    /// <summary>
+    /// Count of ids
+    /// </summary>
+    uint32_t idsCount;
+
+} PFCatalogGetItemsRequest;
+
+/// <summary>
+/// PFCatalogGetItemsResponse data model.
+/// </summary>
+typedef struct PFCatalogGetItemsResponse
+{
+    /// <summary>
+    /// (Optional) Metadata of set of items.
+    /// </summary>
+    _Maybenull_ _Field_size_(itemsCount) PFCatalogCatalogItem const* const* items;
+
+    /// <summary>
+    /// Count of items
+    /// </summary>
+    uint32_t itemsCount;
+
+} PFCatalogGetItemsResponse;
+
+/// <summary>
 /// PFCatalogPublishDraftItemRequest data model. The call kicks off a workflow to publish the item to
 /// the public catalog. The Publish Status API should be used to monitor the publish job.
 /// </summary>

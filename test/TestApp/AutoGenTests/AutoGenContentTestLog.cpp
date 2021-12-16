@@ -57,15 +57,15 @@ HRESULT AutoGenContentTests::LogPFContentGetContentListResult(PFContentGetConten
     std::stringstream ss;
     ss << "Response:"; Log(ss);
 
-    // Found PlayFabContentGetContentListResult    
+    // Found PlayFabContentGetContentListResult        
     ss << "  contentsCount " << result->contentsCount; Log(ss);
 
     // PFContentContentInfo
     for( uint32_t i=0; i<result->contentsCount; i++ )
     {
             ss << "  result->contents[" << i << "]:" << result->contents[i]; Log(ss); // PFContentContentInfo
-    } 
-    ss << "  itemCount " << result->itemCount; Log(ss); // Class: int32_t 
+    }     
+    ss << "  itemCount " << result->itemCount; Log(ss); // Class: int32_t     
     ss << "  totalSize " << result->totalSize; Log(ss); // Class: uint32_t 
     return S_OK;
 }
@@ -100,7 +100,7 @@ HRESULT AutoGenContentTests::LogPFContentGetContentUploadUrlResult(PFContentGetC
     std::stringstream ss;
     ss << "Response:"; Log(ss);
 
-    // Found PlayFabContentGetContentUploadUrlResult
+    // Found PlayFabContentGetContentUploadUrlResult    
     if( result->URL ) { ss << "  URL " << result->URL; Log(ss); } else { ss << "  URL = nullptr"; Log(ss); } // Class: const char* 
     return S_OK;
 }
@@ -136,7 +136,7 @@ HRESULT AutoGenContentTests::LogPFContentGetContentDownloadUrlResult(PFContentGe
     std::stringstream ss;
     ss << "Response:"; Log(ss);
 
-    // Found PlayFabContentGetContentDownloadUrlResult
+    // Found PlayFabContentGetContentDownloadUrlResult    
     if( result->URL ) { ss << "  URL " << result->URL; Log(ss); } else { ss << "  URL = nullptr"; Log(ss); } // Class: const char* 
     return S_OK;
 }

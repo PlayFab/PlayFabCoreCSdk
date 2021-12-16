@@ -32,23 +32,31 @@ HRESULT AutoGenFriendsTests::LogHR(HRESULT hr)
 void AutoGenFriendsTests::AddTests()
 {
     // Generated tests 
-    //AddTest("TestFriendsClientAddFriend", &AutoGenFriendsTests::TestFriendsClientAddFriend); // TODO: debug failing test
-    //AddTest("TestFriendsClientAddFriendCleanupClientRemoveFriend", &AutoGenFriendsTests::TestFriendsClientAddFriendCleanupClientRemoveFriend);
+    AddTest("TestFriendsClientAddFriend", &AutoGenFriendsTests::TestFriendsClientAddFriend);
+    AddTest("TestFriendsClientAddFriendCleanupClientRemoveFriend", &AutoGenFriendsTests::TestFriendsClientAddFriendCleanupClientRemoveFriend);
 
     AddTest("TestFriendsClientGetFriendsList", &AutoGenFriendsTests::TestFriendsClientGetFriendsList);
 
-    //AddTest("TestFriendsClientRemoveFriendPrerequisiteClientAddFriend", &AutoGenFriendsTests::TestFriendsClientRemoveFriendPrerequisiteClientAddFriend);
-    //AddTest("TestFriendsClientRemoveFriend", &AutoGenFriendsTests::TestFriendsClientRemoveFriend); // TODO: debug failing test
+    AddTest("TestFriendsClientRemoveFriendPrerequisiteClientAddFriend", &AutoGenFriendsTests::TestFriendsClientRemoveFriendPrerequisiteClientAddFriend);
+    AddTest("TestFriendsClientRemoveFriend", &AutoGenFriendsTests::TestFriendsClientRemoveFriend);
 
     AddTest("TestFriendsClientSetFriendTags", &AutoGenFriendsTests::TestFriendsClientSetFriendTags);
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     //AddTest("TestFriendsServerAddFriend", &AutoGenFriendsTests::TestFriendsServerAddFriend); // TODO: debug failing test
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     //AddTest("TestFriendsServerGetFriendsList", &AutoGenFriendsTests::TestFriendsServerGetFriendsList); // TODO: debug failing test
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     //AddTest("TestFriendsServerRemoveFriend", &AutoGenFriendsTests::TestFriendsServerRemoveFriend); // TODO: debug failing test
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     //AddTest("TestFriendsServerSetFriendTags", &AutoGenFriendsTests::TestFriendsServerSetFriendTags); // TODO: debug failing test
+#endif
 }
 
 void AutoGenFriendsTests::ClassSetUp()
@@ -160,7 +168,7 @@ void AutoGenFriendsTests::SetUp(TestContext& testContext)
 
 void AutoGenFriendsTests::TestFriendsClientAddFriend(TestContext& testContext)
 {
-    struct ClientAddFriendResultHolder : public AddFriendResultHolder
+    struct ClientAddFriendResultHolderStruct : public AddFriendResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -174,7 +182,7 @@ void AutoGenFriendsTests::TestFriendsClientAddFriend(TestContext& testContext)
             return ValidatePFFriendsAddFriendResult(&result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<ClientAddFriendResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<ClientAddFriendResultHolderStruct>>(testContext);
 
     PFFriendsClientAddFriendRequestWrapper<> request;
     FillClientAddFriendRequest(request);
@@ -209,7 +217,7 @@ void AutoGenFriendsTests::TestFriendsClientAddFriendCleanupClientRemoveFriend(Te
 
 void AutoGenFriendsTests::TestFriendsClientGetFriendsList(TestContext& testContext)
 {
-    struct ClientGetFriendsListResultHolder : public GetFriendsListResultHolder
+    struct ClientGetFriendsListResultHolderStruct : public GetFriendsListResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -228,7 +236,7 @@ void AutoGenFriendsTests::TestFriendsClientGetFriendsList(TestContext& testConte
             return ValidatePFFriendsGetFriendsListResult(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<ClientGetFriendsListResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<ClientGetFriendsListResultHolderStruct>>(testContext);
 
     PFFriendsClientGetFriendsListRequestWrapper<> request;
     FillClientGetFriendsListRequest(request);
@@ -248,7 +256,7 @@ void AutoGenFriendsTests::TestFriendsClientGetFriendsList(TestContext& testConte
 
 void AutoGenFriendsTests::TestFriendsClientRemoveFriendPrerequisiteClientAddFriend(TestContext& testContext)
 {
-    struct ClientAddFriendResultHolder : public AddFriendResultHolder
+    struct ClientAddFriendResultHolderStruct : public AddFriendResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -257,7 +265,7 @@ void AutoGenFriendsTests::TestFriendsClientRemoveFriendPrerequisiteClientAddFrie
             return StoreClientRemoveFriendPrerequisitePFFriendsAddFriendResult(shared_from_this());
         }
     };
-    auto async = std::make_unique<XAsyncHelper<ClientAddFriendResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<ClientAddFriendResultHolderStruct>>(testContext);
 
     PFFriendsClientAddFriendRequestWrapper<> request;
     FillClientRemoveFriendPrerequisiteClientAddFriendRequest(request);
@@ -310,6 +318,7 @@ void AutoGenFriendsTests::TestFriendsClientSetFriendTags(TestContext& testContex
 
 #pragma region ServerAddFriend
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenFriendsTests::TestFriendsServerAddFriend(TestContext& testContext)
 {
     auto async = std::make_unique<XAsyncHelper<XAsyncResult>>(testContext);
@@ -325,14 +334,16 @@ void AutoGenFriendsTests::TestFriendsServerAddFriend(TestContext& testContext)
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region ServerGetFriendsList
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenFriendsTests::TestFriendsServerGetFriendsList(TestContext& testContext)
 {
-    struct ServerGetFriendsListResultHolder : public GetFriendsListResultHolder
+    struct ServerGetFriendsListResultHolderStruct : public GetFriendsListResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -351,7 +362,7 @@ void AutoGenFriendsTests::TestFriendsServerGetFriendsList(TestContext& testConte
             return ValidatePFFriendsGetFriendsListResult(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<ServerGetFriendsListResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<ServerGetFriendsListResultHolderStruct>>(testContext);
 
     PFFriendsServerGetFriendsListRequestWrapper<> request;
     FillServerGetFriendsListRequest(request);
@@ -364,11 +375,13 @@ void AutoGenFriendsTests::TestFriendsServerGetFriendsList(TestContext& testConte
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region ServerRemoveFriend
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenFriendsTests::TestFriendsServerRemoveFriend(TestContext& testContext)
 {
     auto async = std::make_unique<XAsyncHelper<XAsyncResult>>(testContext);
@@ -384,11 +397,13 @@ void AutoGenFriendsTests::TestFriendsServerRemoveFriend(TestContext& testContext
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region ServerSetFriendTags
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenFriendsTests::TestFriendsServerSetFriendTags(TestContext& testContext)
 {
     auto async = std::make_unique<XAsyncHelper<XAsyncResult>>(testContext);
@@ -404,6 +419,7 @@ void AutoGenFriendsTests::TestFriendsServerSetFriendTags(TestContext& testContex
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 

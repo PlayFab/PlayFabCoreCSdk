@@ -940,6 +940,28 @@ public:
     static HRESULT Copy(const PFGetRandomResultTablesResult& input, PFGetRandomResultTablesResult& output, ModelBuffer& buffer);
 };
 
+class AzureResourceSystemData : public Wrappers::PFAzureResourceSystemDataWrapper<Allocator>, public InputModel, public OutputModel<PFAzureResourceSystemData>
+{
+public:
+    using ModelWrapperType = typename Wrappers::PFAzureResourceSystemDataWrapper<Allocator>;
+    using ModelWrapperType::ModelType;
+
+    // Constructors
+    using ModelWrapperType::ModelWrapperType;
+
+    // InputModel
+    JsonValue ToJson() const override;
+    static JsonValue ToJson(const PFAzureResourceSystemData& input);
+
+    // OutputModel
+    void FromJson(const JsonValue& input) override;
+    size_t RequiredBufferSize() const override;
+    Result<PFAzureResourceSystemData const*> Copy(ModelBuffer& buffer) const override;
+
+    static size_t RequiredBufferSize(const PFAzureResourceSystemData& model);
+    static HRESULT Copy(const PFAzureResourceSystemData& input, PFAzureResourceSystemData& output, ModelBuffer& buffer);
+};
+
 class Variable : public Wrappers::PFVariableWrapper<Allocator>, public InputModel, public OutputModel<PFVariable>
 {
 public:

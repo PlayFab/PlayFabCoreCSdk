@@ -45,7 +45,7 @@ void AutoGenSharedGroupsTests::LogCreateSharedGroupRequest(PFSharedGroupsCreateS
 
     std::stringstream ss;
     ss << "----------"; Log(ss);
-    ss << "Test #" << g_SharedGroupsTestIndex++ << ": " << testName << ".  Last Known Status: PassingWithData"; Log(ss);
+    ss << "Test #" << g_SharedGroupsTestIndex++ << ": " << testName << ".  Last Known Status: Failing"; Log(ss);
     ss << "Request:"; Log(ss);
 
 
@@ -65,7 +65,7 @@ HRESULT AutoGenSharedGroupsTests::LogPFSharedGroupsCreateSharedGroupResult(PFSha
     std::stringstream ss;
     ss << "Response:"; Log(ss);
 
-    // Found PlayFabSharedGroupsCreateSharedGroupResult
+    // Found PlayFabSharedGroupsCreateSharedGroupResult    
     if( result->sharedGroupId ) { ss << "  sharedGroupId " << result->sharedGroupId; Log(ss); } else { ss << "  sharedGroupId = nullptr"; Log(ss); } // Class: const char* 
     return S_OK;
 }
@@ -107,7 +107,7 @@ HRESULT AutoGenSharedGroupsTests::LogPFSharedGroupsGetSharedGroupDataResult(PFSh
     std::stringstream ss;
     ss << "Response:"; Log(ss);
 
-    // Found PlayFabSharedGroupsGetSharedGroupDataResult    
+    // Found PlayFabSharedGroupsGetSharedGroupDataResult        
     ss << "  dataCount " << result->dataCount; Log(ss);
 
     // PFSharedGroupsSharedGroupDataRecordDictionaryEntry
@@ -115,7 +115,7 @@ HRESULT AutoGenSharedGroupsTests::LogPFSharedGroupsGetSharedGroupDataResult(PFSh
     {
             ss << "  result->data[" << i << "]:" << result->data[i].key << "=" << result->data[i].value; Log(ss);
             
-    }     
+    }         
     ss << "  membersCount " << result->membersCount; Log(ss);
 
     // const char*
@@ -206,7 +206,7 @@ void AutoGenSharedGroupsTests::LogDeleteSharedGroupRequest(PFSharedGroupsDeleteS
 
     std::stringstream ss;
     ss << "----------"; Log(ss);
-    ss << "Test #" << g_SharedGroupsTestIndex++ << ": " << testName << ".  Last Known Status: PassingWithData"; Log(ss);
+    ss << "Test #" << g_SharedGroupsTestIndex++ << ": " << testName << ".  Last Known Status: Failing"; Log(ss);
     ss << "Request:"; Log(ss);
 
 

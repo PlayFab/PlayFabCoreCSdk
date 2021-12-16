@@ -15,7 +15,7 @@
 // PlayFab service wrappers
 #include <playfab/PFScheduledTask.h>
 #include <playfab/PFTitleDataManagement.h>
-#include <playfab/PFPlayStream.h>
+#include <playfab/PFEvents.h>
 #include <playfab/PFGameServer.h>
 #include <playfab/PFPlayerItemManagement.h>
 #include <playfab/PFAccountManagement.h>
@@ -23,6 +23,7 @@
 #include <playfab/PFPlayerDataManagement.h>
 #include <playfab/PFSegments.h>
 #include <playfab/PFContent.h>
+#include <playfab/PFPlayStream.h>
 #include <playfab/PFCloudScript.h>
 #include <playfab/PFMatchmaking.h>
 #include <playfab/PFCharacter.h>

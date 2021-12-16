@@ -6,18 +6,6 @@ namespace PlayFabUnit
 {
 
 
-struct WriteEventResponseHolder : public XAsyncResult, public std::enable_shared_from_this<WriteEventResponseHolder>
-{
-    WriteEventResponseHolder() = default;
-    WriteEventResponseHolder(const WriteEventResponseHolder&) = delete;
-    WriteEventResponseHolder(WriteEventResponseHolder&&) = default;
-    WriteEventResponseHolder& operator=(const WriteEventResponseHolder&) = delete;
-    WriteEventResponseHolder& operator=(WriteEventResponseHolder&&) = default;
-    ~WriteEventResponseHolder() = default;
-
-    PFAnalyticsWriteEventResponse* result{ nullptr };
-};
-
 struct InsightsGetDetailsResponseHolder : public XAsyncResult, public std::enable_shared_from_this<InsightsGetDetailsResponseHolder>
 {
     InsightsGetDetailsResponseHolder() = default;

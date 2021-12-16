@@ -15,47 +15,89 @@ private:
     static void Log(std::stringstream& ss);
     static HRESULT LogHR(HRESULT hr);
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestPlayerDataManagementAdminCreatePlayerStatisticDefinition(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestPlayerDataManagementAdminGetDataReport(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestPlayerDataManagementAdminGetPlayerStatisticDefinitions(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestPlayerDataManagementAdminGetPlayerStatisticVersions(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestPlayerDataManagementAdminGetUserData(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestPlayerDataManagementAdminGetUserInternalData(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestPlayerDataManagementAdminGetUserPublisherData(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestPlayerDataManagementAdminGetUserPublisherInternalData(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestPlayerDataManagementAdminGetUserPublisherReadOnlyData(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestPlayerDataManagementAdminGetUserReadOnlyData(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestPlayerDataManagementAdminIncrementPlayerStatisticVersion(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestPlayerDataManagementAdminRefundPurchase(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestPlayerDataManagementAdminResetUserStatistics(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestPlayerDataManagementAdminResolvePurchaseDispute(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestPlayerDataManagementAdminUpdatePlayerStatisticDefinition(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestPlayerDataManagementAdminUpdateUserData(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestPlayerDataManagementAdminUpdateUserInternalData(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestPlayerDataManagementAdminUpdateUserPublisherData(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestPlayerDataManagementAdminUpdateUserPublisherInternalData(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestPlayerDataManagementAdminUpdateUserPublisherReadOnlyData(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestPlayerDataManagementAdminUpdateUserReadOnlyData(TestContext& testContext);
+#endif
 
     void TestPlayerDataManagementClientGetFriendLeaderboard(TestContext& testContext);
 
@@ -83,43 +125,81 @@ private:
 
     void TestPlayerDataManagementClientUpdateUserPublisherData(TestContext& testContext);
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestPlayerDataManagementServerGetFriendLeaderboard(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestPlayerDataManagementServerGetLeaderboard(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestPlayerDataManagementServerGetLeaderboardAroundUser(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestPlayerDataManagementServerGetPlayerCombinedInfo(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestPlayerDataManagementServerGetPlayerStatistics(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestPlayerDataManagementServerGetPlayerStatisticVersions(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestPlayerDataManagementServerGetUserData(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestPlayerDataManagementServerGetUserInternalData(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestPlayerDataManagementServerGetUserPublisherData(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestPlayerDataManagementServerGetUserPublisherInternalData(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestPlayerDataManagementServerGetUserPublisherReadOnlyData(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestPlayerDataManagementServerGetUserReadOnlyData(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestPlayerDataManagementServerUpdatePlayerStatistics(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestPlayerDataManagementServerUpdateUserData(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestPlayerDataManagementServerUpdateUserInternalData(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestPlayerDataManagementServerUpdateUserPublisherData(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestPlayerDataManagementServerUpdateUserPublisherInternalData(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestPlayerDataManagementServerUpdateUserPublisherReadOnlyData(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestPlayerDataManagementServerUpdateUserReadOnlyData(TestContext& testContext);
+#endif
 
 
 protected:

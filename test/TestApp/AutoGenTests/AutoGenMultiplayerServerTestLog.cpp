@@ -53,9 +53,9 @@ HRESULT AutoGenMultiplayerServerTests::LogPFMultiplayerServerBuildAliasDetailsRe
     std::stringstream ss;
     ss << "Response:"; Log(ss);
 
-    // Found PlayFabMultiplayerServerBuildAliasDetailsResponse
-    if( result->aliasId ) { ss << "  aliasId " << result->aliasId; Log(ss); } else { ss << "  aliasId = nullptr"; Log(ss); } // Class: const char* 
-    if( result->aliasName ) { ss << "  aliasName " << result->aliasName; Log(ss); } else { ss << "  aliasName = nullptr"; Log(ss); } // Class: const char*     
+    // Found PlayFabMultiplayerServerBuildAliasDetailsResponse    
+    if( result->aliasId ) { ss << "  aliasId " << result->aliasId; Log(ss); } else { ss << "  aliasId = nullptr"; Log(ss); } // Class: const char*     
+    if( result->aliasName ) { ss << "  aliasName " << result->aliasName; Log(ss); } else { ss << "  aliasName = nullptr"; Log(ss); } // Class: const char*         
     ss << "  buildSelectionCriteriaCount " << result->buildSelectionCriteriaCount; Log(ss);
 
     // PFMultiplayerServerBuildSelectionCriterion
@@ -117,6 +117,7 @@ void AutoGenMultiplayerServerTests::LogCreateBuildWithCustomContainerRequest(PFM
             ss << "  request->metadata[" << i << "]:" << request->metadata[i].key << "=" << request->metadata[i].value; Log(ss);
             
     } 
+    ss << "  monitoringApplicationConfiguration " << request->monitoringApplicationConfiguration; Log(ss); // Class: PFMultiplayerServerMonitoringApplicationConfigurationParams 
     ss << "  multiplayerServerCountPerVm " << request->multiplayerServerCountPerVm; Log(ss); // Class: int32_t     
     ss << "  portsCount " << request->portsCount; Log(ss);
 
@@ -147,29 +148,29 @@ HRESULT AutoGenMultiplayerServerTests::LogPFMultiplayerServerCreateBuildWithCust
     std::stringstream ss;
     ss << "Response:"; Log(ss);
 
-    // Found PlayFabMultiplayerServerCreateBuildWithCustomContainerResponse
-    ss << "  areAssetsReadonly " << result->areAssetsReadonly; Log(ss); // Class: bool 
-    if( result->buildId ) { ss << "  buildId " << result->buildId; Log(ss); } else { ss << "  buildId = nullptr"; Log(ss); } // Class: const char* 
-    if( result->buildName ) { ss << "  buildName " << result->buildName; Log(ss); } else { ss << "  buildName = nullptr"; Log(ss); } // Class: const char* 
-    ss << "  containerFlavor " << result->containerFlavor; Log(ss); // Class: PFMultiplayerServerContainerFlavor 
-    if( result->containerRunCommand ) { ss << "  containerRunCommand " << result->containerRunCommand; Log(ss); } else { ss << "  containerRunCommand = nullptr"; Log(ss); } // Class: const char* 
-    ss << "  creationTime " << result->creationTime; Log(ss); // Class: time_t 
-    ss << "  customGameContainerImage " << result->customGameContainerImage; Log(ss); // Class: PFMultiplayerServerContainerImageReference     
+    // Found PlayFabMultiplayerServerCreateBuildWithCustomContainerResponse    
+    ss << "  areAssetsReadonly " << result->areAssetsReadonly; Log(ss); // Class: bool     
+    if( result->buildId ) { ss << "  buildId " << result->buildId; Log(ss); } else { ss << "  buildId = nullptr"; Log(ss); } // Class: const char*     
+    if( result->buildName ) { ss << "  buildName " << result->buildName; Log(ss); } else { ss << "  buildName = nullptr"; Log(ss); } // Class: const char*     
+    ss << "  containerFlavor " << result->containerFlavor; Log(ss); // Class: PFMultiplayerServerContainerFlavor     
+    if( result->containerRunCommand ) { ss << "  containerRunCommand " << result->containerRunCommand; Log(ss); } else { ss << "  containerRunCommand = nullptr"; Log(ss); } // Class: const char*     
+    ss << "  creationTime " << result->creationTime; Log(ss); // Class: time_t     
+    ss << "  customGameContainerImage " << result->customGameContainerImage; Log(ss); // Class: PFMultiplayerServerContainerImageReference         
     ss << "  gameAssetReferencesCount " << result->gameAssetReferencesCount; Log(ss);
 
     // PFMultiplayerServerAssetReference
     for( uint32_t i=0; i<result->gameAssetReferencesCount; i++ )
     {
             ss << "  result->gameAssetReferences[" << i << "]:" << result->gameAssetReferences[i]; Log(ss); // PFMultiplayerServerAssetReference
-    }     
+    }         
     ss << "  gameCertificateReferencesCount " << result->gameCertificateReferencesCount; Log(ss);
 
     // PFMultiplayerServerGameCertificateReference
     for( uint32_t i=0; i<result->gameCertificateReferencesCount; i++ )
     {
             ss << "  result->gameCertificateReferences[" << i << "]:" << result->gameCertificateReferences[i]; Log(ss); // PFMultiplayerServerGameCertificateReference
-    } 
-    ss << "  linuxInstrumentationConfiguration " << result->linuxInstrumentationConfiguration; Log(ss); // Class: PFMultiplayerServerLinuxInstrumentationConfiguration     
+    }     
+    ss << "  linuxInstrumentationConfiguration " << result->linuxInstrumentationConfiguration; Log(ss); // Class: PFMultiplayerServerLinuxInstrumentationConfiguration         
     ss << "  metadataCount " << result->metadataCount; Log(ss);
 
     // PFStringDictionaryEntry
@@ -177,25 +178,26 @@ HRESULT AutoGenMultiplayerServerTests::LogPFMultiplayerServerCreateBuildWithCust
     {
             ss << "  result->metadata[" << i << "]:" << result->metadata[i].key << "=" << result->metadata[i].value; Log(ss);
             
-    } 
-    ss << "  multiplayerServerCountPerVm " << result->multiplayerServerCountPerVm; Log(ss); // Class: int32_t 
-    if( result->osPlatform ) { ss << "  osPlatform " << result->osPlatform; Log(ss); } else { ss << "  osPlatform = nullptr"; Log(ss); } // Class: const char*     
+    }     
+    ss << "  monitoringApplicationConfiguration " << result->monitoringApplicationConfiguration; Log(ss); // Class: PFMultiplayerServerMonitoringApplicationConfiguration     
+    ss << "  multiplayerServerCountPerVm " << result->multiplayerServerCountPerVm; Log(ss); // Class: int32_t     
+    if( result->osPlatform ) { ss << "  osPlatform " << result->osPlatform; Log(ss); } else { ss << "  osPlatform = nullptr"; Log(ss); } // Class: const char*         
     ss << "  portsCount " << result->portsCount; Log(ss);
 
     // PFPort
     for( uint32_t i=0; i<result->portsCount; i++ )
     {
             ss << "  result->ports[" << i << "]:" << result->ports[i]; Log(ss); // PFPort
-    }     
+    }         
     ss << "  regionConfigurationsCount " << result->regionConfigurationsCount; Log(ss);
 
     // PFMultiplayerServerBuildRegion
     for( uint32_t i=0; i<result->regionConfigurationsCount; i++ )
     {
             ss << "  result->regionConfigurations[" << i << "]:" << result->regionConfigurations[i]; Log(ss); // PFMultiplayerServerBuildRegion
-    } 
-    if( result->serverType ) { ss << "  serverType " << result->serverType; Log(ss); } else { ss << "  serverType = nullptr"; Log(ss); } // Class: const char* 
-    ss << "  useStreamingForAssetDownloads " << result->useStreamingForAssetDownloads; Log(ss); // Class: bool 
+    }     
+    if( result->serverType ) { ss << "  serverType " << result->serverType; Log(ss); } else { ss << "  serverType = nullptr"; Log(ss); } // Class: const char*     
+    ss << "  useStreamingForAssetDownloads " << result->useStreamingForAssetDownloads; Log(ss); // Class: bool     
     ss << "  vmSize " << result->vmSize; Log(ss); // Class: PFMultiplayerServerAzureVmSize 
     return S_OK;
 }
@@ -250,6 +252,7 @@ void AutoGenMultiplayerServerTests::LogCreateBuildWithManagedContainerRequest(PF
             ss << "  request->metadata[" << i << "]:" << request->metadata[i].key << "=" << request->metadata[i].value; Log(ss);
             
     } 
+    ss << "  monitoringApplicationConfiguration " << request->monitoringApplicationConfiguration; Log(ss); // Class: PFMultiplayerServerMonitoringApplicationConfigurationParams 
     ss << "  multiplayerServerCountPerVm " << request->multiplayerServerCountPerVm; Log(ss); // Class: int32_t     
     ss << "  portsCount " << request->portsCount; Log(ss);
 
@@ -281,28 +284,28 @@ HRESULT AutoGenMultiplayerServerTests::LogPFMultiplayerServerCreateBuildWithMana
     std::stringstream ss;
     ss << "Response:"; Log(ss);
 
-    // Found PlayFabMultiplayerServerCreateBuildWithManagedContainerResponse
-    ss << "  areAssetsReadonly " << result->areAssetsReadonly; Log(ss); // Class: bool 
-    if( result->buildId ) { ss << "  buildId " << result->buildId; Log(ss); } else { ss << "  buildId = nullptr"; Log(ss); } // Class: const char* 
-    if( result->buildName ) { ss << "  buildName " << result->buildName; Log(ss); } else { ss << "  buildName = nullptr"; Log(ss); } // Class: const char* 
-    ss << "  containerFlavor " << result->containerFlavor; Log(ss); // Class: PFMultiplayerServerContainerFlavor 
-    ss << "  creationTime " << result->creationTime; Log(ss); // Class: time_t     
+    // Found PlayFabMultiplayerServerCreateBuildWithManagedContainerResponse    
+    ss << "  areAssetsReadonly " << result->areAssetsReadonly; Log(ss); // Class: bool     
+    if( result->buildId ) { ss << "  buildId " << result->buildId; Log(ss); } else { ss << "  buildId = nullptr"; Log(ss); } // Class: const char*     
+    if( result->buildName ) { ss << "  buildName " << result->buildName; Log(ss); } else { ss << "  buildName = nullptr"; Log(ss); } // Class: const char*     
+    ss << "  containerFlavor " << result->containerFlavor; Log(ss); // Class: PFMultiplayerServerContainerFlavor     
+    ss << "  creationTime " << result->creationTime; Log(ss); // Class: time_t         
     ss << "  gameAssetReferencesCount " << result->gameAssetReferencesCount; Log(ss);
 
     // PFMultiplayerServerAssetReference
     for( uint32_t i=0; i<result->gameAssetReferencesCount; i++ )
     {
             ss << "  result->gameAssetReferences[" << i << "]:" << result->gameAssetReferences[i]; Log(ss); // PFMultiplayerServerAssetReference
-    }     
+    }         
     ss << "  gameCertificateReferencesCount " << result->gameCertificateReferencesCount; Log(ss);
 
     // PFMultiplayerServerGameCertificateReference
     for( uint32_t i=0; i<result->gameCertificateReferencesCount; i++ )
     {
             ss << "  result->gameCertificateReferences[" << i << "]:" << result->gameCertificateReferences[i]; Log(ss); // PFMultiplayerServerGameCertificateReference
-    } 
-    if( result->gameWorkingDirectory ) { ss << "  gameWorkingDirectory " << result->gameWorkingDirectory; Log(ss); } else { ss << "  gameWorkingDirectory = nullptr"; Log(ss); } // Class: const char* 
-    ss << "  instrumentationConfiguration " << result->instrumentationConfiguration; Log(ss); // Class: PFMultiplayerServerInstrumentationConfiguration     
+    }     
+    if( result->gameWorkingDirectory ) { ss << "  gameWorkingDirectory " << result->gameWorkingDirectory; Log(ss); } else { ss << "  gameWorkingDirectory = nullptr"; Log(ss); } // Class: const char*     
+    ss << "  instrumentationConfiguration " << result->instrumentationConfiguration; Log(ss); // Class: PFMultiplayerServerInstrumentationConfiguration         
     ss << "  metadataCount " << result->metadataCount; Log(ss);
 
     // PFStringDictionaryEntry
@@ -310,26 +313,27 @@ HRESULT AutoGenMultiplayerServerTests::LogPFMultiplayerServerCreateBuildWithMana
     {
             ss << "  result->metadata[" << i << "]:" << result->metadata[i].key << "=" << result->metadata[i].value; Log(ss);
             
-    } 
-    ss << "  multiplayerServerCountPerVm " << result->multiplayerServerCountPerVm; Log(ss); // Class: int32_t 
-    if( result->osPlatform ) { ss << "  osPlatform " << result->osPlatform; Log(ss); } else { ss << "  osPlatform = nullptr"; Log(ss); } // Class: const char*     
+    }     
+    ss << "  monitoringApplicationConfiguration " << result->monitoringApplicationConfiguration; Log(ss); // Class: PFMultiplayerServerMonitoringApplicationConfiguration     
+    ss << "  multiplayerServerCountPerVm " << result->multiplayerServerCountPerVm; Log(ss); // Class: int32_t     
+    if( result->osPlatform ) { ss << "  osPlatform " << result->osPlatform; Log(ss); } else { ss << "  osPlatform = nullptr"; Log(ss); } // Class: const char*         
     ss << "  portsCount " << result->portsCount; Log(ss);
 
     // PFPort
     for( uint32_t i=0; i<result->portsCount; i++ )
     {
             ss << "  result->ports[" << i << "]:" << result->ports[i]; Log(ss); // PFPort
-    }     
+    }         
     ss << "  regionConfigurationsCount " << result->regionConfigurationsCount; Log(ss);
 
     // PFMultiplayerServerBuildRegion
     for( uint32_t i=0; i<result->regionConfigurationsCount; i++ )
     {
             ss << "  result->regionConfigurations[" << i << "]:" << result->regionConfigurations[i]; Log(ss); // PFMultiplayerServerBuildRegion
-    } 
-    if( result->serverType ) { ss << "  serverType " << result->serverType; Log(ss); } else { ss << "  serverType = nullptr"; Log(ss); } // Class: const char* 
-    if( result->startMultiplayerServerCommand ) { ss << "  startMultiplayerServerCommand " << result->startMultiplayerServerCommand; Log(ss); } else { ss << "  startMultiplayerServerCommand = nullptr"; Log(ss); } // Class: const char* 
-    ss << "  useStreamingForAssetDownloads " << result->useStreamingForAssetDownloads; Log(ss); // Class: bool 
+    }     
+    if( result->serverType ) { ss << "  serverType " << result->serverType; Log(ss); } else { ss << "  serverType = nullptr"; Log(ss); } // Class: const char*     
+    if( result->startMultiplayerServerCommand ) { ss << "  startMultiplayerServerCommand " << result->startMultiplayerServerCommand; Log(ss); } else { ss << "  startMultiplayerServerCommand = nullptr"; Log(ss); } // Class: const char*     
+    ss << "  useStreamingForAssetDownloads " << result->useStreamingForAssetDownloads; Log(ss); // Class: bool     
     ss << "  vmSize " << result->vmSize; Log(ss); // Class: PFMultiplayerServerAzureVmSize 
     return S_OK;
 }
@@ -384,6 +388,7 @@ void AutoGenMultiplayerServerTests::LogCreateBuildWithProcessBasedServerRequest(
             ss << "  request->metadata[" << i << "]:" << request->metadata[i].key << "=" << request->metadata[i].value; Log(ss);
             
     } 
+    ss << "  monitoringApplicationConfiguration " << request->monitoringApplicationConfiguration; Log(ss); // Class: PFMultiplayerServerMonitoringApplicationConfigurationParams 
     ss << "  multiplayerServerCountPerVm " << request->multiplayerServerCountPerVm; Log(ss); // Class: int32_t 
     if( request->osPlatform ) { ss << "  osPlatform " << request->osPlatform; Log(ss); } else { ss << "  osPlatform = nullptr"; Log(ss); } // Class: const char*     
     ss << "  portsCount " << request->portsCount; Log(ss);
@@ -416,29 +421,29 @@ HRESULT AutoGenMultiplayerServerTests::LogPFMultiplayerServerCreateBuildWithProc
     std::stringstream ss;
     ss << "Response:"; Log(ss);
 
-    // Found PlayFabMultiplayerServerCreateBuildWithProcessBasedServerResponse
-    ss << "  areAssetsReadonly " << result->areAssetsReadonly; Log(ss); // Class: bool 
-    if( result->buildId ) { ss << "  buildId " << result->buildId; Log(ss); } else { ss << "  buildId = nullptr"; Log(ss); } // Class: const char* 
-    if( result->buildName ) { ss << "  buildName " << result->buildName; Log(ss); } else { ss << "  buildName = nullptr"; Log(ss); } // Class: const char* 
-    ss << "  containerFlavor " << result->containerFlavor; Log(ss); // Class: PFMultiplayerServerContainerFlavor 
-    ss << "  creationTime " << result->creationTime; Log(ss); // Class: time_t     
+    // Found PlayFabMultiplayerServerCreateBuildWithProcessBasedServerResponse    
+    ss << "  areAssetsReadonly " << result->areAssetsReadonly; Log(ss); // Class: bool     
+    if( result->buildId ) { ss << "  buildId " << result->buildId; Log(ss); } else { ss << "  buildId = nullptr"; Log(ss); } // Class: const char*     
+    if( result->buildName ) { ss << "  buildName " << result->buildName; Log(ss); } else { ss << "  buildName = nullptr"; Log(ss); } // Class: const char*     
+    ss << "  containerFlavor " << result->containerFlavor; Log(ss); // Class: PFMultiplayerServerContainerFlavor     
+    ss << "  creationTime " << result->creationTime; Log(ss); // Class: time_t         
     ss << "  gameAssetReferencesCount " << result->gameAssetReferencesCount; Log(ss);
 
     // PFMultiplayerServerAssetReference
     for( uint32_t i=0; i<result->gameAssetReferencesCount; i++ )
     {
             ss << "  result->gameAssetReferences[" << i << "]:" << result->gameAssetReferences[i]; Log(ss); // PFMultiplayerServerAssetReference
-    }     
+    }         
     ss << "  gameCertificateReferencesCount " << result->gameCertificateReferencesCount; Log(ss);
 
     // PFMultiplayerServerGameCertificateReference
     for( uint32_t i=0; i<result->gameCertificateReferencesCount; i++ )
     {
             ss << "  result->gameCertificateReferences[" << i << "]:" << result->gameCertificateReferences[i]; Log(ss); // PFMultiplayerServerGameCertificateReference
-    } 
-    if( result->gameWorkingDirectory ) { ss << "  gameWorkingDirectory " << result->gameWorkingDirectory; Log(ss); } else { ss << "  gameWorkingDirectory = nullptr"; Log(ss); } // Class: const char* 
-    ss << "  instrumentationConfiguration " << result->instrumentationConfiguration; Log(ss); // Class: PFMultiplayerServerInstrumentationConfiguration 
-    ss << "  isOSPreview " << result->isOSPreview; Log(ss); // Class: bool     
+    }     
+    if( result->gameWorkingDirectory ) { ss << "  gameWorkingDirectory " << result->gameWorkingDirectory; Log(ss); } else { ss << "  gameWorkingDirectory = nullptr"; Log(ss); } // Class: const char*     
+    ss << "  instrumentationConfiguration " << result->instrumentationConfiguration; Log(ss); // Class: PFMultiplayerServerInstrumentationConfiguration     
+    ss << "  isOSPreview " << result->isOSPreview; Log(ss); // Class: bool         
     ss << "  metadataCount " << result->metadataCount; Log(ss);
 
     // PFStringDictionaryEntry
@@ -446,26 +451,27 @@ HRESULT AutoGenMultiplayerServerTests::LogPFMultiplayerServerCreateBuildWithProc
     {
             ss << "  result->metadata[" << i << "]:" << result->metadata[i].key << "=" << result->metadata[i].value; Log(ss);
             
-    } 
-    ss << "  multiplayerServerCountPerVm " << result->multiplayerServerCountPerVm; Log(ss); // Class: int32_t 
-    if( result->osPlatform ) { ss << "  osPlatform " << result->osPlatform; Log(ss); } else { ss << "  osPlatform = nullptr"; Log(ss); } // Class: const char*     
+    }     
+    ss << "  monitoringApplicationConfiguration " << result->monitoringApplicationConfiguration; Log(ss); // Class: PFMultiplayerServerMonitoringApplicationConfiguration     
+    ss << "  multiplayerServerCountPerVm " << result->multiplayerServerCountPerVm; Log(ss); // Class: int32_t     
+    if( result->osPlatform ) { ss << "  osPlatform " << result->osPlatform; Log(ss); } else { ss << "  osPlatform = nullptr"; Log(ss); } // Class: const char*         
     ss << "  portsCount " << result->portsCount; Log(ss);
 
     // PFPort
     for( uint32_t i=0; i<result->portsCount; i++ )
     {
             ss << "  result->ports[" << i << "]:" << result->ports[i]; Log(ss); // PFPort
-    }     
+    }         
     ss << "  regionConfigurationsCount " << result->regionConfigurationsCount; Log(ss);
 
     // PFMultiplayerServerBuildRegion
     for( uint32_t i=0; i<result->regionConfigurationsCount; i++ )
     {
             ss << "  result->regionConfigurations[" << i << "]:" << result->regionConfigurations[i]; Log(ss); // PFMultiplayerServerBuildRegion
-    } 
-    if( result->serverType ) { ss << "  serverType " << result->serverType; Log(ss); } else { ss << "  serverType = nullptr"; Log(ss); } // Class: const char* 
-    if( result->startMultiplayerServerCommand ) { ss << "  startMultiplayerServerCommand " << result->startMultiplayerServerCommand; Log(ss); } else { ss << "  startMultiplayerServerCommand = nullptr"; Log(ss); } // Class: const char* 
-    ss << "  useStreamingForAssetDownloads " << result->useStreamingForAssetDownloads; Log(ss); // Class: bool 
+    }     
+    if( result->serverType ) { ss << "  serverType " << result->serverType; Log(ss); } else { ss << "  serverType = nullptr"; Log(ss); } // Class: const char*     
+    if( result->startMultiplayerServerCommand ) { ss << "  startMultiplayerServerCommand " << result->startMultiplayerServerCommand; Log(ss); } else { ss << "  startMultiplayerServerCommand = nullptr"; Log(ss); } // Class: const char*     
+    ss << "  useStreamingForAssetDownloads " << result->useStreamingForAssetDownloads; Log(ss); // Class: bool     
     ss << "  vmSize " << result->vmSize; Log(ss); // Class: PFMultiplayerServerAzureVmSize 
     return S_OK;
 }
@@ -511,9 +517,9 @@ HRESULT AutoGenMultiplayerServerTests::LogPFMultiplayerServerCreateRemoteUserRes
     std::stringstream ss;
     ss << "Response:"; Log(ss);
 
-    // Found PlayFabMultiplayerServerCreateRemoteUserResponse
-    ss << "  expirationTime " << result->expirationTime; Log(ss); // Class: time_t 
-    if( result->password ) { ss << "  password " << result->password; Log(ss); } else { ss << "  password = nullptr"; Log(ss); } // Class: const char* 
+    // Found PlayFabMultiplayerServerCreateRemoteUserResponse    
+    ss << "  expirationTime " << result->expirationTime; Log(ss); // Class: time_t     
+    if( result->password ) { ss << "  password " << result->password; Log(ss); } else { ss << "  password = nullptr"; Log(ss); } // Class: const char*     
     if( result->username ) { ss << "  username " << result->username; Log(ss); } else { ss << "  username = nullptr"; Log(ss); } // Class: const char* 
     return S_OK;
 }
@@ -565,8 +571,8 @@ HRESULT AutoGenMultiplayerServerTests::LogPFMultiplayerServerCreateTitleMultipla
     std::stringstream ss;
     ss << "Response:"; Log(ss);
 
-    // Found PlayFabMultiplayerServerCreateTitleMultiplayerServersQuotaChangeResponse
-    if( result->requestId ) { ss << "  requestId " << result->requestId; Log(ss); } else { ss << "  requestId = nullptr"; Log(ss); } // Class: const char* 
+    // Found PlayFabMultiplayerServerCreateTitleMultiplayerServersQuotaChangeResponse    
+    if( result->requestId ) { ss << "  requestId " << result->requestId; Log(ss); } else { ss << "  requestId = nullptr"; Log(ss); } // Class: const char*     
     ss << "  wasApproved " << result->wasApproved; Log(ss); // Class: bool 
     return S_OK;
 }
@@ -804,7 +810,7 @@ HRESULT AutoGenMultiplayerServerTests::LogPFMultiplayerServerEnableMultiplayerSe
     std::stringstream ss;
     ss << "Response:"; Log(ss);
 
-    // Found PlayFabMultiplayerServerEnableMultiplayerServersForTitleResponse
+    // Found PlayFabMultiplayerServerEnableMultiplayerServersForTitleResponse    
     ss << "  status " << result->status; Log(ss); // Class: PFMultiplayerServerTitleMultiplayerServerEnabledStatus 
     return S_OK;
 }
@@ -847,8 +853,8 @@ HRESULT AutoGenMultiplayerServerTests::LogPFMultiplayerServerGetAssetDownloadUrl
     std::stringstream ss;
     ss << "Response:"; Log(ss);
 
-    // Found PlayFabMultiplayerServerGetAssetDownloadUrlResponse
-    if( result->assetDownloadUrl ) { ss << "  assetDownloadUrl " << result->assetDownloadUrl; Log(ss); } else { ss << "  assetDownloadUrl = nullptr"; Log(ss); } // Class: const char* 
+    // Found PlayFabMultiplayerServerGetAssetDownloadUrlResponse    
+    if( result->assetDownloadUrl ) { ss << "  assetDownloadUrl " << result->assetDownloadUrl; Log(ss); } else { ss << "  assetDownloadUrl = nullptr"; Log(ss); } // Class: const char*     
     if( result->fileName ) { ss << "  fileName " << result->fileName; Log(ss); } else { ss << "  fileName = nullptr"; Log(ss); } // Class: const char* 
     return S_OK;
 }
@@ -891,8 +897,8 @@ HRESULT AutoGenMultiplayerServerTests::LogPFMultiplayerServerGetAssetUploadUrlRe
     std::stringstream ss;
     ss << "Response:"; Log(ss);
 
-    // Found PlayFabMultiplayerServerGetAssetUploadUrlResponse
-    if( result->assetUploadUrl ) { ss << "  assetUploadUrl " << result->assetUploadUrl; Log(ss); } else { ss << "  assetUploadUrl = nullptr"; Log(ss); } // Class: const char* 
+    // Found PlayFabMultiplayerServerGetAssetUploadUrlResponse    
+    if( result->assetUploadUrl ) { ss << "  assetUploadUrl " << result->assetUploadUrl; Log(ss); } else { ss << "  assetUploadUrl = nullptr"; Log(ss); } // Class: const char*     
     if( result->fileName ) { ss << "  fileName " << result->fileName; Log(ss); } else { ss << "  fileName = nullptr"; Log(ss); } // Class: const char* 
     return S_OK;
 }
@@ -934,30 +940,30 @@ HRESULT AutoGenMultiplayerServerTests::LogPFMultiplayerServerGetBuildResponse(PF
     std::stringstream ss;
     ss << "Response:"; Log(ss);
 
-    // Found PlayFabMultiplayerServerGetBuildResponse
-    ss << "  areAssetsReadonly " << result->areAssetsReadonly; Log(ss); // Class: bool 
-    if( result->buildId ) { ss << "  buildId " << result->buildId; Log(ss); } else { ss << "  buildId = nullptr"; Log(ss); } // Class: const char* 
-    if( result->buildName ) { ss << "  buildName " << result->buildName; Log(ss); } else { ss << "  buildName = nullptr"; Log(ss); } // Class: const char* 
-    if( result->buildStatus ) { ss << "  buildStatus " << result->buildStatus; Log(ss); } else { ss << "  buildStatus = nullptr"; Log(ss); } // Class: const char* 
-    ss << "  containerFlavor " << result->containerFlavor; Log(ss); // Class: PFMultiplayerServerContainerFlavor 
-    if( result->containerRunCommand ) { ss << "  containerRunCommand " << result->containerRunCommand; Log(ss); } else { ss << "  containerRunCommand = nullptr"; Log(ss); } // Class: const char* 
-    ss << "  creationTime " << result->creationTime; Log(ss); // Class: time_t 
-    ss << "  customGameContainerImage " << result->customGameContainerImage; Log(ss); // Class: PFMultiplayerServerContainerImageReference     
+    // Found PlayFabMultiplayerServerGetBuildResponse    
+    ss << "  areAssetsReadonly " << result->areAssetsReadonly; Log(ss); // Class: bool     
+    if( result->buildId ) { ss << "  buildId " << result->buildId; Log(ss); } else { ss << "  buildId = nullptr"; Log(ss); } // Class: const char*     
+    if( result->buildName ) { ss << "  buildName " << result->buildName; Log(ss); } else { ss << "  buildName = nullptr"; Log(ss); } // Class: const char*     
+    if( result->buildStatus ) { ss << "  buildStatus " << result->buildStatus; Log(ss); } else { ss << "  buildStatus = nullptr"; Log(ss); } // Class: const char*     
+    ss << "  containerFlavor " << result->containerFlavor; Log(ss); // Class: PFMultiplayerServerContainerFlavor     
+    if( result->containerRunCommand ) { ss << "  containerRunCommand " << result->containerRunCommand; Log(ss); } else { ss << "  containerRunCommand = nullptr"; Log(ss); } // Class: const char*     
+    ss << "  creationTime " << result->creationTime; Log(ss); // Class: time_t     
+    ss << "  customGameContainerImage " << result->customGameContainerImage; Log(ss); // Class: PFMultiplayerServerContainerImageReference         
     ss << "  gameAssetReferencesCount " << result->gameAssetReferencesCount; Log(ss);
 
     // PFMultiplayerServerAssetReference
     for( uint32_t i=0; i<result->gameAssetReferencesCount; i++ )
     {
             ss << "  result->gameAssetReferences[" << i << "]:" << result->gameAssetReferences[i]; Log(ss); // PFMultiplayerServerAssetReference
-    }     
+    }         
     ss << "  gameCertificateReferencesCount " << result->gameCertificateReferencesCount; Log(ss);
 
     // PFMultiplayerServerGameCertificateReference
     for( uint32_t i=0; i<result->gameCertificateReferencesCount; i++ )
     {
             ss << "  result->gameCertificateReferences[" << i << "]:" << result->gameCertificateReferences[i]; Log(ss); // PFMultiplayerServerGameCertificateReference
-    } 
-    ss << "  instrumentationConfiguration " << result->instrumentationConfiguration; Log(ss); // Class: PFMultiplayerServerInstrumentationConfiguration     
+    }     
+    ss << "  instrumentationConfiguration " << result->instrumentationConfiguration; Log(ss); // Class: PFMultiplayerServerInstrumentationConfiguration         
     ss << "  metadataCount " << result->metadataCount; Log(ss);
 
     // PFStringDictionaryEntry
@@ -965,26 +971,26 @@ HRESULT AutoGenMultiplayerServerTests::LogPFMultiplayerServerGetBuildResponse(PF
     {
             ss << "  result->metadata[" << i << "]:" << result->metadata[i].key << "=" << result->metadata[i].value; Log(ss);
             
-    } 
-    ss << "  multiplayerServerCountPerVm " << result->multiplayerServerCountPerVm; Log(ss); // Class: int32_t 
-    if( result->osPlatform ) { ss << "  osPlatform " << result->osPlatform; Log(ss); } else { ss << "  osPlatform = nullptr"; Log(ss); } // Class: const char*     
+    }     
+    ss << "  multiplayerServerCountPerVm " << result->multiplayerServerCountPerVm; Log(ss); // Class: int32_t     
+    if( result->osPlatform ) { ss << "  osPlatform " << result->osPlatform; Log(ss); } else { ss << "  osPlatform = nullptr"; Log(ss); } // Class: const char*         
     ss << "  portsCount " << result->portsCount; Log(ss);
 
     // PFPort
     for( uint32_t i=0; i<result->portsCount; i++ )
     {
             ss << "  result->ports[" << i << "]:" << result->ports[i]; Log(ss); // PFPort
-    }     
+    }         
     ss << "  regionConfigurationsCount " << result->regionConfigurationsCount; Log(ss);
 
     // PFMultiplayerServerBuildRegion
     for( uint32_t i=0; i<result->regionConfigurationsCount; i++ )
     {
             ss << "  result->regionConfigurations[" << i << "]:" << result->regionConfigurations[i]; Log(ss); // PFMultiplayerServerBuildRegion
-    } 
-    if( result->serverType ) { ss << "  serverType " << result->serverType; Log(ss); } else { ss << "  serverType = nullptr"; Log(ss); } // Class: const char* 
-    if( result->startMultiplayerServerCommand ) { ss << "  startMultiplayerServerCommand " << result->startMultiplayerServerCommand; Log(ss); } else { ss << "  startMultiplayerServerCommand = nullptr"; Log(ss); } // Class: const char* 
-    ss << "  useStreamingForAssetDownloads " << result->useStreamingForAssetDownloads; Log(ss); // Class: bool 
+    }     
+    if( result->serverType ) { ss << "  serverType " << result->serverType; Log(ss); } else { ss << "  serverType = nullptr"; Log(ss); } // Class: const char*     
+    if( result->startMultiplayerServerCommand ) { ss << "  startMultiplayerServerCommand " << result->startMultiplayerServerCommand; Log(ss); } else { ss << "  startMultiplayerServerCommand = nullptr"; Log(ss); } // Class: const char*     
+    ss << "  useStreamingForAssetDownloads " << result->useStreamingForAssetDownloads; Log(ss); // Class: bool     
     ss << "  vmSize " << result->vmSize; Log(ss); // Class: PFMultiplayerServerAzureVmSize 
     return S_OK;
 }
@@ -1053,9 +1059,9 @@ HRESULT AutoGenMultiplayerServerTests::LogPFMultiplayerServerGetContainerRegistr
     std::stringstream ss;
     ss << "Response:"; Log(ss);
 
-    // Found PlayFabMultiplayerServerGetContainerRegistryCredentialsResponse
-    if( result->dnsName ) { ss << "  dnsName " << result->dnsName; Log(ss); } else { ss << "  dnsName = nullptr"; Log(ss); } // Class: const char* 
-    if( result->password ) { ss << "  password " << result->password; Log(ss); } else { ss << "  password = nullptr"; Log(ss); } // Class: const char* 
+    // Found PlayFabMultiplayerServerGetContainerRegistryCredentialsResponse    
+    if( result->dnsName ) { ss << "  dnsName " << result->dnsName; Log(ss); } else { ss << "  dnsName = nullptr"; Log(ss); } // Class: const char*     
+    if( result->password ) { ss << "  password " << result->password; Log(ss); } else { ss << "  password = nullptr"; Log(ss); } // Class: const char*     
     if( result->username ) { ss << "  username " << result->username; Log(ss); } else { ss << "  username = nullptr"; Log(ss); } // Class: const char* 
     return S_OK;
 }
@@ -1099,29 +1105,29 @@ HRESULT AutoGenMultiplayerServerTests::LogPFMultiplayerServerGetMultiplayerServe
     std::stringstream ss;
     ss << "Response:"; Log(ss);
 
-    // Found PlayFabMultiplayerServerGetMultiplayerServerDetailsResponse
-    if( result->buildId ) { ss << "  buildId " << result->buildId; Log(ss); } else { ss << "  buildId = nullptr"; Log(ss); } // Class: const char*     
+    // Found PlayFabMultiplayerServerGetMultiplayerServerDetailsResponse    
+    if( result->buildId ) { ss << "  buildId " << result->buildId; Log(ss); } else { ss << "  buildId = nullptr"; Log(ss); } // Class: const char*         
     ss << "  connectedPlayersCount " << result->connectedPlayersCount; Log(ss);
 
     // PFMultiplayerServerConnectedPlayer
     for( uint32_t i=0; i<result->connectedPlayersCount; i++ )
     {
             ss << "  result->connectedPlayers[" << i << "]:" << result->connectedPlayers[i]; Log(ss); // PFMultiplayerServerConnectedPlayer
-    } 
-    if( result->fQDN ) { ss << "  fQDN " << result->fQDN; Log(ss); } else { ss << "  fQDN = nullptr"; Log(ss); } // Class: const char* 
-    if( result->iPV4Address ) { ss << "  iPV4Address " << result->iPV4Address; Log(ss); } else { ss << "  iPV4Address = nullptr"; Log(ss); } // Class: const char* 
-    ss << "  lastStateTransitionTime " << result->lastStateTransitionTime; Log(ss); // Class: time_t     
+    }     
+    if( result->fQDN ) { ss << "  fQDN " << result->fQDN; Log(ss); } else { ss << "  fQDN = nullptr"; Log(ss); } // Class: const char*     
+    if( result->iPV4Address ) { ss << "  iPV4Address " << result->iPV4Address; Log(ss); } else { ss << "  iPV4Address = nullptr"; Log(ss); } // Class: const char*     
+    ss << "  lastStateTransitionTime " << result->lastStateTransitionTime; Log(ss); // Class: time_t         
     ss << "  portsCount " << result->portsCount; Log(ss);
 
     // PFPort
     for( uint32_t i=0; i<result->portsCount; i++ )
     {
             ss << "  result->ports[" << i << "]:" << result->ports[i]; Log(ss); // PFPort
-    } 
-    if( result->region ) { ss << "  region " << result->region; Log(ss); } else { ss << "  region = nullptr"; Log(ss); } // Class: const char* 
-    if( result->serverId ) { ss << "  serverId " << result->serverId; Log(ss); } else { ss << "  serverId = nullptr"; Log(ss); } // Class: const char* 
-    if( result->sessionId ) { ss << "  sessionId " << result->sessionId; Log(ss); } else { ss << "  sessionId = nullptr"; Log(ss); } // Class: const char* 
-    if( result->state ) { ss << "  state " << result->state; Log(ss); } else { ss << "  state = nullptr"; Log(ss); } // Class: const char* 
+    }     
+    if( result->region ) { ss << "  region " << result->region; Log(ss); } else { ss << "  region = nullptr"; Log(ss); } // Class: const char*     
+    if( result->serverId ) { ss << "  serverId " << result->serverId; Log(ss); } else { ss << "  serverId = nullptr"; Log(ss); } // Class: const char*     
+    if( result->sessionId ) { ss << "  sessionId " << result->sessionId; Log(ss); } else { ss << "  sessionId = nullptr"; Log(ss); } // Class: const char*     
+    if( result->state ) { ss << "  state " << result->state; Log(ss); } else { ss << "  state = nullptr"; Log(ss); } // Class: const char*     
     if( result->vmId ) { ss << "  vmId " << result->vmId; Log(ss); } else { ss << "  vmId = nullptr"; Log(ss); } // Class: const char* 
     return S_OK;
 }
@@ -1164,7 +1170,7 @@ HRESULT AutoGenMultiplayerServerTests::LogPFMultiplayerServerGetMultiplayerServe
     std::stringstream ss;
     ss << "Response:"; Log(ss);
 
-    // Found PlayFabMultiplayerServerGetMultiplayerServerLogsResponse
+    // Found PlayFabMultiplayerServerGetMultiplayerServerLogsResponse    
     if( result->logDownloadUrl ) { ss << "  logDownloadUrl " << result->logDownloadUrl; Log(ss); } else { ss << "  logDownloadUrl = nullptr"; Log(ss); } // Class: const char* 
     return S_OK;
 }
@@ -1236,8 +1242,8 @@ HRESULT AutoGenMultiplayerServerTests::LogPFMultiplayerServerGetRemoteLoginEndpo
     std::stringstream ss;
     ss << "Response:"; Log(ss);
 
-    // Found PlayFabMultiplayerServerGetRemoteLoginEndpointResponse
-    if( result->iPV4Address ) { ss << "  iPV4Address " << result->iPV4Address; Log(ss); } else { ss << "  iPV4Address = nullptr"; Log(ss); } // Class: const char* 
+    // Found PlayFabMultiplayerServerGetRemoteLoginEndpointResponse    
+    if( result->iPV4Address ) { ss << "  iPV4Address " << result->iPV4Address; Log(ss); } else { ss << "  iPV4Address = nullptr"; Log(ss); } // Class: const char*     
     ss << "  port " << result->port; Log(ss); // Class: int32_t 
     return S_OK;
 }
@@ -1279,7 +1285,7 @@ HRESULT AutoGenMultiplayerServerTests::LogPFMultiplayerServerGetTitleEnabledForM
     std::stringstream ss;
     ss << "Response:"; Log(ss);
 
-    // Found PlayFabMultiplayerServerGetTitleEnabledForMultiplayerServersStatusResponse
+    // Found PlayFabMultiplayerServerGetTitleEnabledForMultiplayerServersStatusResponse    
     ss << "  status " << result->status; Log(ss); // Class: PFMultiplayerServerTitleMultiplayerServerEnabledStatus 
     return S_OK;
 }
@@ -1322,7 +1328,7 @@ HRESULT AutoGenMultiplayerServerTests::LogPFMultiplayerServerGetTitleMultiplayer
     std::stringstream ss;
     ss << "Response:"; Log(ss);
 
-    // Found PlayFabMultiplayerServerGetTitleMultiplayerServersQuotaChangeResponse
+    // Found PlayFabMultiplayerServerGetTitleMultiplayerServersQuotaChangeResponse    
     ss << "  change " << result->change; Log(ss); // Class: PFMultiplayerServerQuotaChange 
     return S_OK;
 }
@@ -1364,7 +1370,7 @@ HRESULT AutoGenMultiplayerServerTests::LogPFMultiplayerServerGetTitleMultiplayer
     std::stringstream ss;
     ss << "Response:"; Log(ss);
 
-    // Found PlayFabMultiplayerServerGetTitleMultiplayerServersQuotasResponse
+    // Found PlayFabMultiplayerServerGetTitleMultiplayerServersQuotasResponse    
     ss << "  quotas " << result->quotas; Log(ss); // Class: PFMultiplayerServerTitleMultiplayerServersQuotas 
     return S_OK;
 }
@@ -1409,15 +1415,15 @@ HRESULT AutoGenMultiplayerServerTests::LogPFMultiplayerServerListMultiplayerServ
     std::stringstream ss;
     ss << "Response:"; Log(ss);
 
-    // Found PlayFabMultiplayerServerListMultiplayerServersResponse    
+    // Found PlayFabMultiplayerServerListMultiplayerServersResponse        
     ss << "  multiplayerServerSummariesCount " << result->multiplayerServerSummariesCount; Log(ss);
 
     // PFMultiplayerServerMultiplayerServerSummary
     for( uint32_t i=0; i<result->multiplayerServerSummariesCount; i++ )
     {
             ss << "  result->multiplayerServerSummaries[" << i << "]:" << result->multiplayerServerSummaries[i]; Log(ss); // PFMultiplayerServerMultiplayerServerSummary
-    } 
-    ss << "  pageSize " << result->pageSize; Log(ss); // Class: int32_t 
+    }     
+    ss << "  pageSize " << result->pageSize; Log(ss); // Class: int32_t     
     if( result->skipToken ) { ss << "  skipToken " << result->skipToken; Log(ss); } else { ss << "  skipToken = nullptr"; Log(ss); } // Class: const char* 
     return S_OK;
 }
@@ -1461,15 +1467,15 @@ HRESULT AutoGenMultiplayerServerTests::LogPFMultiplayerServerListAssetSummariesR
     std::stringstream ss;
     ss << "Response:"; Log(ss);
 
-    // Found PlayFabMultiplayerServerListAssetSummariesResponse    
+    // Found PlayFabMultiplayerServerListAssetSummariesResponse        
     ss << "  assetSummariesCount " << result->assetSummariesCount; Log(ss);
 
     // PFMultiplayerServerAssetSummary
     for( uint32_t i=0; i<result->assetSummariesCount; i++ )
     {
             ss << "  result->assetSummaries[" << i << "]:" << result->assetSummaries[i]; Log(ss); // PFMultiplayerServerAssetSummary
-    } 
-    ss << "  pageSize " << result->pageSize; Log(ss); // Class: int32_t 
+    }     
+    ss << "  pageSize " << result->pageSize; Log(ss); // Class: int32_t     
     if( result->skipToken ) { ss << "  skipToken " << result->skipToken; Log(ss); } else { ss << "  skipToken = nullptr"; Log(ss); } // Class: const char* 
     return S_OK;
 }
@@ -1513,15 +1519,15 @@ HRESULT AutoGenMultiplayerServerTests::LogPFMultiplayerServerListBuildAliasesRes
     std::stringstream ss;
     ss << "Response:"; Log(ss);
 
-    // Found PlayFabMultiplayerServerListBuildAliasesResponse    
+    // Found PlayFabMultiplayerServerListBuildAliasesResponse        
     ss << "  buildAliasesCount " << result->buildAliasesCount; Log(ss);
 
     // PFMultiplayerServerBuildAliasDetailsResponse
     for( uint32_t i=0; i<result->buildAliasesCount; i++ )
     {
             ss << "  result->buildAliases[" << i << "]:" << result->buildAliases[i]; Log(ss); // PFMultiplayerServerBuildAliasDetailsResponse
-    } 
-    ss << "  pageSize " << result->pageSize; Log(ss); // Class: int32_t 
+    }     
+    ss << "  pageSize " << result->pageSize; Log(ss); // Class: int32_t     
     if( result->skipToken ) { ss << "  skipToken " << result->skipToken; Log(ss); } else { ss << "  skipToken = nullptr"; Log(ss); } // Class: const char* 
     return S_OK;
 }
@@ -1565,15 +1571,15 @@ HRESULT AutoGenMultiplayerServerTests::LogPFMultiplayerServerListBuildSummariesR
     std::stringstream ss;
     ss << "Response:"; Log(ss);
 
-    // Found PlayFabMultiplayerServerListBuildSummariesResponse    
+    // Found PlayFabMultiplayerServerListBuildSummariesResponse        
     ss << "  buildSummariesCount " << result->buildSummariesCount; Log(ss);
 
     // PFMultiplayerServerBuildSummary
     for( uint32_t i=0; i<result->buildSummariesCount; i++ )
     {
             ss << "  result->buildSummaries[" << i << "]:" << result->buildSummaries[i]; Log(ss); // PFMultiplayerServerBuildSummary
-    } 
-    ss << "  pageSize " << result->pageSize; Log(ss); // Class: int32_t 
+    }     
+    ss << "  pageSize " << result->pageSize; Log(ss); // Class: int32_t     
     if( result->skipToken ) { ss << "  skipToken " << result->skipToken; Log(ss); } else { ss << "  skipToken = nullptr"; Log(ss); } // Class: const char* 
     return S_OK;
 }
@@ -1617,15 +1623,15 @@ HRESULT AutoGenMultiplayerServerTests::LogPFMultiplayerServerListCertificateSumm
     std::stringstream ss;
     ss << "Response:"; Log(ss);
 
-    // Found PlayFabMultiplayerServerListCertificateSummariesResponse    
+    // Found PlayFabMultiplayerServerListCertificateSummariesResponse        
     ss << "  certificateSummariesCount " << result->certificateSummariesCount; Log(ss);
 
     // PFMultiplayerServerCertificateSummary
     for( uint32_t i=0; i<result->certificateSummariesCount; i++ )
     {
             ss << "  result->certificateSummaries[" << i << "]:" << result->certificateSummaries[i]; Log(ss); // PFMultiplayerServerCertificateSummary
-    } 
-    ss << "  pageSize " << result->pageSize; Log(ss); // Class: int32_t 
+    }     
+    ss << "  pageSize " << result->pageSize; Log(ss); // Class: int32_t     
     if( result->skipToken ) { ss << "  skipToken " << result->skipToken; Log(ss); } else { ss << "  skipToken = nullptr"; Log(ss); } // Class: const char* 
     return S_OK;
 }
@@ -1669,15 +1675,15 @@ HRESULT AutoGenMultiplayerServerTests::LogPFMultiplayerServerListContainerImages
     std::stringstream ss;
     ss << "Response:"; Log(ss);
 
-    // Found PlayFabMultiplayerServerListContainerImagesResponse    
+    // Found PlayFabMultiplayerServerListContainerImagesResponse        
     ss << "  imagesCount " << result->imagesCount; Log(ss);
 
     // const char*
     for( uint32_t i=0; i<result->imagesCount; i++ )
     {
             ss << "  result->images[" << i << "]:" << result->images[i]; Log(ss); // const char*
-    } 
-    ss << "  pageSize " << result->pageSize; Log(ss); // Class: int32_t 
+    }     
+    ss << "  pageSize " << result->pageSize; Log(ss); // Class: int32_t     
     if( result->skipToken ) { ss << "  skipToken " << result->skipToken; Log(ss); } else { ss << "  skipToken = nullptr"; Log(ss); } // Class: const char* 
     return S_OK;
 }
@@ -1720,7 +1726,7 @@ HRESULT AutoGenMultiplayerServerTests::LogPFMultiplayerServerListContainerImageT
     std::stringstream ss;
     ss << "Response:"; Log(ss);
 
-    // Found PlayFabMultiplayerServerListContainerImageTagsResponse    
+    // Found PlayFabMultiplayerServerListContainerImageTagsResponse        
     ss << "  tagsCount " << result->tagsCount; Log(ss);
 
     // const char*
@@ -1768,15 +1774,15 @@ HRESULT AutoGenMultiplayerServerTests::LogPFMultiplayerServerListPartyQosServers
     std::stringstream ss;
     ss << "Response:"; Log(ss);
 
-    // Found PlayFabMultiplayerServerListPartyQosServersResponse
-    ss << "  pageSize " << result->pageSize; Log(ss); // Class: int32_t     
+    // Found PlayFabMultiplayerServerListPartyQosServersResponse    
+    ss << "  pageSize " << result->pageSize; Log(ss); // Class: int32_t         
     ss << "  qosServersCount " << result->qosServersCount; Log(ss);
 
     // PFMultiplayerServerQosServer
     for( uint32_t i=0; i<result->qosServersCount; i++ )
     {
             ss << "  result->qosServers[" << i << "]:" << result->qosServers[i]; Log(ss); // PFMultiplayerServerQosServer
-    } 
+    }     
     if( result->skipToken ) { ss << "  skipToken " << result->skipToken; Log(ss); } else { ss << "  skipToken = nullptr"; Log(ss); } // Class: const char* 
     return S_OK;
 }
@@ -1819,15 +1825,15 @@ HRESULT AutoGenMultiplayerServerTests::LogPFMultiplayerServerListQosServersForTi
     std::stringstream ss;
     ss << "Response:"; Log(ss);
 
-    // Found PlayFabMultiplayerServerListQosServersForTitleResponse
-    ss << "  pageSize " << result->pageSize; Log(ss); // Class: int32_t     
+    // Found PlayFabMultiplayerServerListQosServersForTitleResponse    
+    ss << "  pageSize " << result->pageSize; Log(ss); // Class: int32_t         
     ss << "  qosServersCount " << result->qosServersCount; Log(ss);
 
     // PFMultiplayerServerQosServer
     for( uint32_t i=0; i<result->qosServersCount; i++ )
     {
             ss << "  result->qosServers[" << i << "]:" << result->qosServers[i]; Log(ss); // PFMultiplayerServerQosServer
-    } 
+    }     
     if( result->skipToken ) { ss << "  skipToken " << result->skipToken; Log(ss); } else { ss << "  skipToken = nullptr"; Log(ss); } // Class: const char* 
     return S_OK;
 }
@@ -1869,7 +1875,7 @@ HRESULT AutoGenMultiplayerServerTests::LogPFMultiplayerServerListTitleMultiplaye
     std::stringstream ss;
     ss << "Response:"; Log(ss);
 
-    // Found PlayFabMultiplayerServerListTitleMultiplayerServersQuotaChangesResponse    
+    // Found PlayFabMultiplayerServerListTitleMultiplayerServersQuotaChangesResponse        
     ss << "  changesCount " << result->changesCount; Log(ss);
 
     // PFMultiplayerServerQuotaChange
@@ -1920,9 +1926,9 @@ HRESULT AutoGenMultiplayerServerTests::LogPFMultiplayerServerListVirtualMachineS
     std::stringstream ss;
     ss << "Response:"; Log(ss);
 
-    // Found PlayFabMultiplayerServerListVirtualMachineSummariesResponse
-    ss << "  pageSize " << result->pageSize; Log(ss); // Class: int32_t 
-    if( result->skipToken ) { ss << "  skipToken " << result->skipToken; Log(ss); } else { ss << "  skipToken = nullptr"; Log(ss); } // Class: const char*     
+    // Found PlayFabMultiplayerServerListVirtualMachineSummariesResponse    
+    ss << "  pageSize " << result->pageSize; Log(ss); // Class: int32_t     
+    if( result->skipToken ) { ss << "  skipToken " << result->skipToken; Log(ss); } else { ss << "  skipToken = nullptr"; Log(ss); } // Class: const char*         
     ss << "  virtualMachinesCount " << result->virtualMachinesCount; Log(ss);
 
     // PFMultiplayerServerVirtualMachineSummary
@@ -1987,29 +1993,29 @@ HRESULT AutoGenMultiplayerServerTests::LogPFMultiplayerServerRequestMultiplayerS
     std::stringstream ss;
     ss << "Response:"; Log(ss);
 
-    // Found PlayFabMultiplayerServerRequestMultiplayerServerResponse
-    if( result->buildId ) { ss << "  buildId " << result->buildId; Log(ss); } else { ss << "  buildId = nullptr"; Log(ss); } // Class: const char*     
+    // Found PlayFabMultiplayerServerRequestMultiplayerServerResponse    
+    if( result->buildId ) { ss << "  buildId " << result->buildId; Log(ss); } else { ss << "  buildId = nullptr"; Log(ss); } // Class: const char*         
     ss << "  connectedPlayersCount " << result->connectedPlayersCount; Log(ss);
 
     // PFMultiplayerServerConnectedPlayer
     for( uint32_t i=0; i<result->connectedPlayersCount; i++ )
     {
             ss << "  result->connectedPlayers[" << i << "]:" << result->connectedPlayers[i]; Log(ss); // PFMultiplayerServerConnectedPlayer
-    } 
-    if( result->fQDN ) { ss << "  fQDN " << result->fQDN; Log(ss); } else { ss << "  fQDN = nullptr"; Log(ss); } // Class: const char* 
-    if( result->iPV4Address ) { ss << "  iPV4Address " << result->iPV4Address; Log(ss); } else { ss << "  iPV4Address = nullptr"; Log(ss); } // Class: const char* 
-    ss << "  lastStateTransitionTime " << result->lastStateTransitionTime; Log(ss); // Class: time_t     
+    }     
+    if( result->fQDN ) { ss << "  fQDN " << result->fQDN; Log(ss); } else { ss << "  fQDN = nullptr"; Log(ss); } // Class: const char*     
+    if( result->iPV4Address ) { ss << "  iPV4Address " << result->iPV4Address; Log(ss); } else { ss << "  iPV4Address = nullptr"; Log(ss); } // Class: const char*     
+    ss << "  lastStateTransitionTime " << result->lastStateTransitionTime; Log(ss); // Class: time_t         
     ss << "  portsCount " << result->portsCount; Log(ss);
 
     // PFPort
     for( uint32_t i=0; i<result->portsCount; i++ )
     {
             ss << "  result->ports[" << i << "]:" << result->ports[i]; Log(ss); // PFPort
-    } 
-    if( result->region ) { ss << "  region " << result->region; Log(ss); } else { ss << "  region = nullptr"; Log(ss); } // Class: const char* 
-    if( result->serverId ) { ss << "  serverId " << result->serverId; Log(ss); } else { ss << "  serverId = nullptr"; Log(ss); } // Class: const char* 
-    if( result->sessionId ) { ss << "  sessionId " << result->sessionId; Log(ss); } else { ss << "  sessionId = nullptr"; Log(ss); } // Class: const char* 
-    if( result->state ) { ss << "  state " << result->state; Log(ss); } else { ss << "  state = nullptr"; Log(ss); } // Class: const char* 
+    }     
+    if( result->region ) { ss << "  region " << result->region; Log(ss); } else { ss << "  region = nullptr"; Log(ss); } // Class: const char*     
+    if( result->serverId ) { ss << "  serverId " << result->serverId; Log(ss); } else { ss << "  serverId = nullptr"; Log(ss); } // Class: const char*     
+    if( result->sessionId ) { ss << "  sessionId " << result->sessionId; Log(ss); } else { ss << "  sessionId = nullptr"; Log(ss); } // Class: const char*     
+    if( result->state ) { ss << "  state " << result->state; Log(ss); } else { ss << "  state = nullptr"; Log(ss); } // Class: const char*     
     if( result->vmId ) { ss << "  vmId " << result->vmId; Log(ss); } else { ss << "  vmId = nullptr"; Log(ss); } // Class: const char* 
     return S_OK;
 }
@@ -2051,9 +2057,9 @@ HRESULT AutoGenMultiplayerServerTests::LogPFMultiplayerServerRolloverContainerRe
     std::stringstream ss;
     ss << "Response:"; Log(ss);
 
-    // Found PlayFabMultiplayerServerRolloverContainerRegistryCredentialsResponse
-    if( result->dnsName ) { ss << "  dnsName " << result->dnsName; Log(ss); } else { ss << "  dnsName = nullptr"; Log(ss); } // Class: const char* 
-    if( result->password ) { ss << "  password " << result->password; Log(ss); } else { ss << "  password = nullptr"; Log(ss); } // Class: const char* 
+    // Found PlayFabMultiplayerServerRolloverContainerRegistryCredentialsResponse    
+    if( result->dnsName ) { ss << "  dnsName " << result->dnsName; Log(ss); } else { ss << "  dnsName = nullptr"; Log(ss); } // Class: const char*     
+    if( result->password ) { ss << "  password " << result->password; Log(ss); } else { ss << "  password = nullptr"; Log(ss); } // Class: const char*     
     if( result->username ) { ss << "  username " << result->username; Log(ss); } else { ss << "  username = nullptr"; Log(ss); } // Class: const char* 
     return S_OK;
 }

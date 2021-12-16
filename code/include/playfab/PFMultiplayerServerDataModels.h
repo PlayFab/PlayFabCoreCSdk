@@ -280,6 +280,34 @@ typedef struct PFMultiplayerServerLinuxInstrumentationConfiguration
 } PFMultiplayerServerLinuxInstrumentationConfiguration;
 
 /// <summary>
+/// PFMultiplayerServerMonitoringApplicationConfigurationParams data model.
+/// </summary>
+typedef struct PFMultiplayerServerMonitoringApplicationConfigurationParams
+{
+    /// <summary>
+    /// Asset which contains the monitoring application files and scripts.
+    /// </summary>
+    PFMultiplayerServerAssetReferenceParams const* assetReference;
+
+    /// <summary>
+    /// Execution script name, this will be the main executable for the monitoring application.
+    /// </summary>
+    _Null_terminated_ const char* executionScriptName;
+
+    /// <summary>
+    /// (Optional) Installation script name, this will be run before the ExecutionScript.
+    /// </summary>
+    _Maybenull_ _Null_terminated_ const char* installationScriptName;
+
+    /// <summary>
+    /// (Optional) Timespan the monitoring application will be kept alive when running from the start
+    /// of the VM.
+    /// </summary>
+    _Maybenull_ double const* onStartRuntimeInMinutes;
+
+} PFMultiplayerServerMonitoringApplicationConfigurationParams;
+
+/// <summary>
 /// PFMultiplayerServerDynamicStandbyThreshold data model.
 /// </summary>
 typedef struct PFMultiplayerServerDynamicStandbyThreshold
@@ -513,6 +541,11 @@ typedef struct PFMultiplayerServerCreateBuildWithCustomContainerRequest
     uint32_t metadataCount;
 
     /// <summary>
+    /// (Optional) The configuration for the monitoring application on the build.
+    /// </summary>
+    _Maybenull_ PFMultiplayerServerMonitoringApplicationConfigurationParams const* monitoringApplicationConfiguration;
+
+    /// <summary>
     /// The number of multiplayer servers to host on a single VM.
     /// </summary>
     int32_t multiplayerServerCountPerVm;
@@ -587,6 +620,34 @@ typedef struct PFMultiplayerServerGameCertificateReference
     _Maybenull_ _Null_terminated_ const char* name;
 
 } PFMultiplayerServerGameCertificateReference;
+
+/// <summary>
+/// PFMultiplayerServerMonitoringApplicationConfiguration data model.
+/// </summary>
+typedef struct PFMultiplayerServerMonitoringApplicationConfiguration
+{
+    /// <summary>
+    /// Asset which contains the monitoring application files and scripts.
+    /// </summary>
+    PFMultiplayerServerAssetReference const* assetReference;
+
+    /// <summary>
+    /// Execution script name, this will be the main executable for the monitoring application.
+    /// </summary>
+    _Null_terminated_ const char* executionScriptName;
+
+    /// <summary>
+    /// (Optional) Installation script name, this will be run before the ExecutionScript.
+    /// </summary>
+    _Maybenull_ _Null_terminated_ const char* installationScriptName;
+
+    /// <summary>
+    /// (Optional) Timespan the monitoring application will be kept alive when running from the start
+    /// of the VM.
+    /// </summary>
+    _Maybenull_ double const* onStartRuntimeInMinutes;
+
+} PFMultiplayerServerMonitoringApplicationConfiguration;
 
 /// <summary>
 /// PFMultiplayerServerCurrentServerStats data model.
@@ -748,6 +809,11 @@ typedef struct PFMultiplayerServerCreateBuildWithCustomContainerResponse
     uint32_t metadataCount;
 
     /// <summary>
+    /// (Optional) The configuration for the monitoring application for the build.
+    /// </summary>
+    _Maybenull_ PFMultiplayerServerMonitoringApplicationConfiguration const* monitoringApplicationConfiguration;
+
+    /// <summary>
     /// The number of multiplayer servers to host on a single VM of the build.
     /// </summary>
     int32_t multiplayerServerCountPerVm;
@@ -899,6 +965,11 @@ typedef struct PFMultiplayerServerCreateBuildWithManagedContainerRequest
     uint32_t metadataCount;
 
     /// <summary>
+    /// (Optional) The configuration for the monitoring application on the build.
+    /// </summary>
+    _Maybenull_ PFMultiplayerServerMonitoringApplicationConfigurationParams const* monitoringApplicationConfiguration;
+
+    /// <summary>
     /// The number of multiplayer servers to host on a single VM.
     /// </summary>
     int32_t multiplayerServerCountPerVm;
@@ -1013,6 +1084,11 @@ typedef struct PFMultiplayerServerCreateBuildWithManagedContainerResponse
     /// Count of metadata
     /// </summary>
     uint32_t metadataCount;
+
+    /// <summary>
+    /// (Optional) The configuration for the monitoring application for the build.
+    /// </summary>
+    _Maybenull_ PFMultiplayerServerMonitoringApplicationConfiguration const* monitoringApplicationConfiguration;
 
     /// <summary>
     /// The number of multiplayer servers to host on a single VM of the build.
@@ -1146,6 +1222,11 @@ typedef struct PFMultiplayerServerCreateBuildWithProcessBasedServerRequest
     uint32_t metadataCount;
 
     /// <summary>
+    /// (Optional) The configuration for the monitoring application on the build.
+    /// </summary>
+    _Maybenull_ PFMultiplayerServerMonitoringApplicationConfigurationParams const* monitoringApplicationConfiguration;
+
+    /// <summary>
     /// The number of multiplayer servers to host on a single VM.
     /// </summary>
     int32_t multiplayerServerCountPerVm;
@@ -1272,6 +1353,11 @@ typedef struct PFMultiplayerServerCreateBuildWithProcessBasedServerResponse
     /// Count of metadata
     /// </summary>
     uint32_t metadataCount;
+
+    /// <summary>
+    /// (Optional) The configuration for the monitoring application for the build.
+    /// </summary>
+    _Maybenull_ PFMultiplayerServerMonitoringApplicationConfiguration const* monitoringApplicationConfiguration;
 
     /// <summary>
     /// The number of multiplayer servers to host on a single VM of the build.

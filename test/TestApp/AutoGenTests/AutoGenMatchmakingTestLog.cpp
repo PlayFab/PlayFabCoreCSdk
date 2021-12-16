@@ -38,24 +38,24 @@ HRESULT AutoGenMatchmakingTests::LogPFMatchmakingGetMatchmakerGameInfoResult(PFM
     std::stringstream ss;
     ss << "Response:"; Log(ss);
 
-    // Found PlayFabMatchmakingGetMatchmakerGameInfoResult
-    if( result->buildVersion ) { ss << "  buildVersion " << result->buildVersion; Log(ss); } else { ss << "  buildVersion = nullptr"; Log(ss); } // Class: const char* 
-    ss << "  endTime " << result->endTime; Log(ss); // Class: time_t 
-    if( result->lobbyId ) { ss << "  lobbyId " << result->lobbyId; Log(ss); } else { ss << "  lobbyId = nullptr"; Log(ss); } // Class: const char* 
-    if( result->mode ) { ss << "  mode " << result->mode; Log(ss); } else { ss << "  mode = nullptr"; Log(ss); } // Class: const char*     
+    // Found PlayFabMatchmakingGetMatchmakerGameInfoResult    
+    if( result->buildVersion ) { ss << "  buildVersion " << result->buildVersion; Log(ss); } else { ss << "  buildVersion = nullptr"; Log(ss); } // Class: const char*     
+    ss << "  endTime " << result->endTime; Log(ss); // Class: time_t     
+    if( result->lobbyId ) { ss << "  lobbyId " << result->lobbyId; Log(ss); } else { ss << "  lobbyId = nullptr"; Log(ss); } // Class: const char*     
+    if( result->mode ) { ss << "  mode " << result->mode; Log(ss); } else { ss << "  mode = nullptr"; Log(ss); } // Class: const char*         
     ss << "  playersCount " << result->playersCount; Log(ss);
 
     // const char*
     for( uint32_t i=0; i<result->playersCount; i++ )
     {
             ss << "  result->players[" << i << "]:" << result->players[i]; Log(ss); // const char*
-    } 
-    ss << "  region " << result->region; Log(ss); // Class: PFRegion 
-    if( result->serverIPV4Address ) { ss << "  serverIPV4Address " << result->serverIPV4Address; Log(ss); } else { ss << "  serverIPV4Address = nullptr"; Log(ss); } // Class: const char* 
-    if( result->serverIPV6Address ) { ss << "  serverIPV6Address " << result->serverIPV6Address; Log(ss); } else { ss << "  serverIPV6Address = nullptr"; Log(ss); } // Class: const char* 
-    ss << "  serverPort " << result->serverPort; Log(ss); // Class: uint32_t 
-    if( result->serverPublicDNSName ) { ss << "  serverPublicDNSName " << result->serverPublicDNSName; Log(ss); } else { ss << "  serverPublicDNSName = nullptr"; Log(ss); } // Class: const char* 
-    ss << "  startTime " << result->startTime; Log(ss); // Class: time_t 
+    }     
+    ss << "  region " << result->region; Log(ss); // Class: PFRegion     
+    if( result->serverIPV4Address ) { ss << "  serverIPV4Address " << result->serverIPV4Address; Log(ss); } else { ss << "  serverIPV4Address = nullptr"; Log(ss); } // Class: const char*     
+    if( result->serverIPV6Address ) { ss << "  serverIPV6Address " << result->serverIPV6Address; Log(ss); } else { ss << "  serverIPV6Address = nullptr"; Log(ss); } // Class: const char*     
+    ss << "  serverPort " << result->serverPort; Log(ss); // Class: uint32_t     
+    if( result->serverPublicDNSName ) { ss << "  serverPublicDNSName " << result->serverPublicDNSName; Log(ss); } else { ss << "  serverPublicDNSName = nullptr"; Log(ss); } // Class: const char*     
+    ss << "  startTime " << result->startTime; Log(ss); // Class: time_t     
     if( result->titleId ) { ss << "  titleId " << result->titleId; Log(ss); } else { ss << "  titleId = nullptr"; Log(ss); } // Class: const char* 
     return S_OK;
 }
@@ -89,7 +89,7 @@ HRESULT AutoGenMatchmakingTests::LogPFMatchmakingGetMatchmakerGameModesResult(PF
     std::stringstream ss;
     ss << "Response:"; Log(ss);
 
-    // Found PlayFabMatchmakingGetMatchmakerGameModesResult    
+    // Found PlayFabMatchmakingGetMatchmakerGameModesResult        
     ss << "  gameModesCount " << result->gameModesCount; Log(ss);
 
     // PFMatchmakingGameModeInfo
@@ -159,15 +159,15 @@ HRESULT AutoGenMatchmakingTests::LogPFMatchmakingCurrentGamesResult(PFMatchmakin
     std::stringstream ss;
     ss << "Response:"; Log(ss);
 
-    // Found PlayFabMatchmakingCurrentGamesResult
-    ss << "  gameCount " << result->gameCount; Log(ss); // Class: int32_t     
+    // Found PlayFabMatchmakingCurrentGamesResult    
+    ss << "  gameCount " << result->gameCount; Log(ss); // Class: int32_t         
     ss << "  gamesCount " << result->gamesCount; Log(ss);
 
     // PFMatchmakingGameInfo
     for( uint32_t i=0; i<result->gamesCount; i++ )
     {
             ss << "  result->games[" << i << "]:" << result->games[i]; Log(ss); // PFMatchmakingGameInfo
-    } 
+    }     
     ss << "  playerCount " << result->playerCount; Log(ss); // Class: int32_t 
     return S_OK;
 }
@@ -202,7 +202,7 @@ HRESULT AutoGenMatchmakingTests::LogPFMatchmakingGameServerRegionsResult(PFMatch
     std::stringstream ss;
     ss << "Response:"; Log(ss);
 
-    // Found PlayFabMatchmakingGameServerRegionsResult    
+    // Found PlayFabMatchmakingGameServerRegionsResult        
     ss << "  regionsCount " << result->regionsCount; Log(ss);
 
     // PFMatchmakingRegionInfo
@@ -257,15 +257,15 @@ HRESULT AutoGenMatchmakingTests::LogPFMatchmakingMatchmakeResult(PFMatchmakingMa
     std::stringstream ss;
     ss << "Response:"; Log(ss);
 
-    // Found PlayFabMatchmakingMatchmakeResult
-    if( result->expires ) { ss << "  expires " << result->expires; Log(ss); } else { ss << "  expires = nullptr"; Log(ss); } // Class: const char* 
-    if( result->lobbyID ) { ss << "  lobbyID " << result->lobbyID; Log(ss); } else { ss << "  lobbyID = nullptr"; Log(ss); } // Class: const char* 
-    ss << "  pollWaitTimeMS " << result->pollWaitTimeMS; Log(ss); // Class: int32_t 
-    if( result->serverIPV4Address ) { ss << "  serverIPV4Address " << result->serverIPV4Address; Log(ss); } else { ss << "  serverIPV4Address = nullptr"; Log(ss); } // Class: const char* 
-    if( result->serverIPV6Address ) { ss << "  serverIPV6Address " << result->serverIPV6Address; Log(ss); } else { ss << "  serverIPV6Address = nullptr"; Log(ss); } // Class: const char* 
-    ss << "  serverPort " << result->serverPort; Log(ss); // Class: int32_t 
-    if( result->serverPublicDNSName ) { ss << "  serverPublicDNSName " << result->serverPublicDNSName; Log(ss); } else { ss << "  serverPublicDNSName = nullptr"; Log(ss); } // Class: const char* 
-    ss << "  status " << result->status; Log(ss); // Class: PFMatchmakingMatchmakeStatus 
+    // Found PlayFabMatchmakingMatchmakeResult    
+    if( result->expires ) { ss << "  expires " << result->expires; Log(ss); } else { ss << "  expires = nullptr"; Log(ss); } // Class: const char*     
+    if( result->lobbyID ) { ss << "  lobbyID " << result->lobbyID; Log(ss); } else { ss << "  lobbyID = nullptr"; Log(ss); } // Class: const char*     
+    ss << "  pollWaitTimeMS " << result->pollWaitTimeMS; Log(ss); // Class: int32_t     
+    if( result->serverIPV4Address ) { ss << "  serverIPV4Address " << result->serverIPV4Address; Log(ss); } else { ss << "  serverIPV4Address = nullptr"; Log(ss); } // Class: const char*     
+    if( result->serverIPV6Address ) { ss << "  serverIPV6Address " << result->serverIPV6Address; Log(ss); } else { ss << "  serverIPV6Address = nullptr"; Log(ss); } // Class: const char*     
+    ss << "  serverPort " << result->serverPort; Log(ss); // Class: int32_t     
+    if( result->serverPublicDNSName ) { ss << "  serverPublicDNSName " << result->serverPublicDNSName; Log(ss); } else { ss << "  serverPublicDNSName = nullptr"; Log(ss); } // Class: const char*     
+    ss << "  status " << result->status; Log(ss); // Class: PFMatchmakingMatchmakeStatus     
     if( result->ticket ) { ss << "  ticket " << result->ticket; Log(ss); } else { ss << "  ticket = nullptr"; Log(ss); } // Class: const char* 
     return S_OK;
 }
@@ -312,14 +312,14 @@ HRESULT AutoGenMatchmakingTests::LogPFMatchmakingStartGameResult(PFMatchmakingSt
     std::stringstream ss;
     ss << "Response:"; Log(ss);
 
-    // Found PlayFabMatchmakingStartGameResult
-    if( result->expires ) { ss << "  expires " << result->expires; Log(ss); } else { ss << "  expires = nullptr"; Log(ss); } // Class: const char* 
-    if( result->lobbyID ) { ss << "  lobbyID " << result->lobbyID; Log(ss); } else { ss << "  lobbyID = nullptr"; Log(ss); } // Class: const char* 
-    if( result->password ) { ss << "  password " << result->password; Log(ss); } else { ss << "  password = nullptr"; Log(ss); } // Class: const char* 
-    if( result->serverIPV4Address ) { ss << "  serverIPV4Address " << result->serverIPV4Address; Log(ss); } else { ss << "  serverIPV4Address = nullptr"; Log(ss); } // Class: const char* 
-    if( result->serverIPV6Address ) { ss << "  serverIPV6Address " << result->serverIPV6Address; Log(ss); } else { ss << "  serverIPV6Address = nullptr"; Log(ss); } // Class: const char* 
-    ss << "  serverPort " << result->serverPort; Log(ss); // Class: int32_t 
-    if( result->serverPublicDNSName ) { ss << "  serverPublicDNSName " << result->serverPublicDNSName; Log(ss); } else { ss << "  serverPublicDNSName = nullptr"; Log(ss); } // Class: const char* 
+    // Found PlayFabMatchmakingStartGameResult    
+    if( result->expires ) { ss << "  expires " << result->expires; Log(ss); } else { ss << "  expires = nullptr"; Log(ss); } // Class: const char*     
+    if( result->lobbyID ) { ss << "  lobbyID " << result->lobbyID; Log(ss); } else { ss << "  lobbyID = nullptr"; Log(ss); } // Class: const char*     
+    if( result->password ) { ss << "  password " << result->password; Log(ss); } else { ss << "  password = nullptr"; Log(ss); } // Class: const char*     
+    if( result->serverIPV4Address ) { ss << "  serverIPV4Address " << result->serverIPV4Address; Log(ss); } else { ss << "  serverIPV4Address = nullptr"; Log(ss); } // Class: const char*     
+    if( result->serverIPV6Address ) { ss << "  serverIPV6Address " << result->serverIPV6Address; Log(ss); } else { ss << "  serverIPV6Address = nullptr"; Log(ss); } // Class: const char*     
+    ss << "  serverPort " << result->serverPort; Log(ss); // Class: int32_t     
+    if( result->serverPublicDNSName ) { ss << "  serverPublicDNSName " << result->serverPublicDNSName; Log(ss); } else { ss << "  serverPublicDNSName = nullptr"; Log(ss); } // Class: const char*     
     if( result->ticket ) { ss << "  ticket " << result->ticket; Log(ss); } else { ss << "  ticket = nullptr"; Log(ss); } // Class: const char* 
     return S_OK;
 }
@@ -353,8 +353,8 @@ HRESULT AutoGenMatchmakingTests::LogPFMatchmakingAuthUserResponse(PFMatchmakingA
     std::stringstream ss;
     ss << "Response:"; Log(ss);
 
-    // Found PlayFabMatchmakingAuthUserResponse
-    ss << "  authorized " << result->authorized; Log(ss); // Class: bool 
+    // Found PlayFabMatchmakingAuthUserResponse    
+    ss << "  authorized " << result->authorized; Log(ss); // Class: bool     
     if( result->playFabId ) { ss << "  playFabId " << result->playFabId; Log(ss); } else { ss << "  playFabId = nullptr"; Log(ss); } // Class: const char* 
     return S_OK;
 }
@@ -458,11 +458,11 @@ HRESULT AutoGenMatchmakingTests::LogPFMatchmakingStartGameResponse(PFMatchmaking
     std::stringstream ss;
     ss << "Response:"; Log(ss);
 
-    // Found PlayFabMatchmakingStartGameResponse
-    if( result->gameID ) { ss << "  gameID " << result->gameID; Log(ss); } else { ss << "  gameID = nullptr"; Log(ss); } // Class: const char* 
-    if( result->serverIPV4Address ) { ss << "  serverIPV4Address " << result->serverIPV4Address; Log(ss); } else { ss << "  serverIPV4Address = nullptr"; Log(ss); } // Class: const char* 
-    if( result->serverIPV6Address ) { ss << "  serverIPV6Address " << result->serverIPV6Address; Log(ss); } else { ss << "  serverIPV6Address = nullptr"; Log(ss); } // Class: const char* 
-    ss << "  serverPort " << result->serverPort; Log(ss); // Class: uint32_t 
+    // Found PlayFabMatchmakingStartGameResponse    
+    if( result->gameID ) { ss << "  gameID " << result->gameID; Log(ss); } else { ss << "  gameID = nullptr"; Log(ss); } // Class: const char*     
+    if( result->serverIPV4Address ) { ss << "  serverIPV4Address " << result->serverIPV4Address; Log(ss); } else { ss << "  serverIPV4Address = nullptr"; Log(ss); } // Class: const char*     
+    if( result->serverIPV6Address ) { ss << "  serverIPV6Address " << result->serverIPV6Address; Log(ss); } else { ss << "  serverIPV6Address = nullptr"; Log(ss); } // Class: const char*     
+    ss << "  serverPort " << result->serverPort; Log(ss); // Class: uint32_t     
     if( result->serverPublicDNSName ) { ss << "  serverPublicDNSName " << result->serverPublicDNSName; Log(ss); } else { ss << "  serverPublicDNSName = nullptr"; Log(ss); } // Class: const char* 
     return S_OK;
 }
@@ -506,19 +506,19 @@ HRESULT AutoGenMatchmakingTests::LogPFMatchmakingUserInfoResponse(PFMatchmakingU
     std::stringstream ss;
     ss << "Response:"; Log(ss);
 
-    // Found PlayFabMatchmakingUserInfoResponse    
+    // Found PlayFabMatchmakingUserInfoResponse        
     ss << "  inventoryCount " << result->inventoryCount; Log(ss);
 
     // PFItemInstance
     for( uint32_t i=0; i<result->inventoryCount; i++ )
     {
             ss << "  result->inventory[" << i << "]:" << result->inventory[i]; Log(ss); // PFItemInstance
-    } 
-    ss << "  isDeveloper " << result->isDeveloper; Log(ss); // Class: bool 
-    if( result->playFabId ) { ss << "  playFabId " << result->playFabId; Log(ss); } else { ss << "  playFabId = nullptr"; Log(ss); } // Class: const char* 
-    if( result->steamId ) { ss << "  steamId " << result->steamId; Log(ss); } else { ss << "  steamId = nullptr"; Log(ss); } // Class: const char* 
-    if( result->titleDisplayName ) { ss << "  titleDisplayName " << result->titleDisplayName; Log(ss); } else { ss << "  titleDisplayName = nullptr"; Log(ss); } // Class: const char* 
-    if( result->username ) { ss << "  username " << result->username; Log(ss); } else { ss << "  username = nullptr"; Log(ss); } // Class: const char*     
+    }     
+    ss << "  isDeveloper " << result->isDeveloper; Log(ss); // Class: bool     
+    if( result->playFabId ) { ss << "  playFabId " << result->playFabId; Log(ss); } else { ss << "  playFabId = nullptr"; Log(ss); } // Class: const char*     
+    if( result->steamId ) { ss << "  steamId " << result->steamId; Log(ss); } else { ss << "  steamId = nullptr"; Log(ss); } // Class: const char*     
+    if( result->titleDisplayName ) { ss << "  titleDisplayName " << result->titleDisplayName; Log(ss); } else { ss << "  titleDisplayName = nullptr"; Log(ss); } // Class: const char*     
+    if( result->username ) { ss << "  username " << result->username; Log(ss); } else { ss << "  username = nullptr"; Log(ss); } // Class: const char*         
     ss << "  virtualCurrencyCount " << result->virtualCurrencyCount; Log(ss);
 
     // PFInt32DictionaryEntry
@@ -526,7 +526,7 @@ HRESULT AutoGenMatchmakingTests::LogPFMatchmakingUserInfoResponse(PFMatchmakingU
     {
             ss << "  result->virtualCurrency[" << i << "]:" << result->virtualCurrency[i].key << "=" << result->virtualCurrency[i].value; Log(ss);
             
-    }     
+    }         
     ss << "  virtualCurrencyRechargeTimesCount " << result->virtualCurrencyRechargeTimesCount; Log(ss);
 
     // PFVirtualCurrencyRechargeTimeDictionaryEntry
@@ -605,7 +605,7 @@ HRESULT AutoGenMatchmakingTests::LogPFMatchmakingNotifyMatchmakerPlayerLeftResul
     std::stringstream ss;
     ss << "Response:"; Log(ss);
 
-    // Found PlayFabMatchmakingNotifyMatchmakerPlayerLeftResult
+    // Found PlayFabMatchmakingNotifyMatchmakerPlayerLeftResult    
     ss << "  playerState " << result->playerState; Log(ss); // Class: PFMatchmakingPlayerConnectionState 
     return S_OK;
 }
@@ -649,9 +649,9 @@ HRESULT AutoGenMatchmakingTests::LogPFMatchmakingRedeemMatchmakerTicketResult(PF
     std::stringstream ss;
     ss << "Response:"; Log(ss);
 
-    // Found PlayFabMatchmakingRedeemMatchmakerTicketResult
-    if( result->error ) { ss << "  error " << result->error; Log(ss); } else { ss << "  error = nullptr"; Log(ss); } // Class: const char* 
-    ss << "  ticketIsValid " << result->ticketIsValid; Log(ss); // Class: bool 
+    // Found PlayFabMatchmakingRedeemMatchmakerTicketResult    
+    if( result->error ) { ss << "  error " << result->error; Log(ss); } else { ss << "  error = nullptr"; Log(ss); } // Class: const char*     
+    ss << "  ticketIsValid " << result->ticketIsValid; Log(ss); // Class: bool     
     ss << "  userInfo " << result->userInfo; Log(ss); // Class: PFUserAccountInfo 
     return S_OK;
 }
@@ -727,7 +727,7 @@ HRESULT AutoGenMatchmakingTests::LogPFMatchmakingRegisterGameResponse(PFMatchmak
     std::stringstream ss;
     ss << "Response:"; Log(ss);
 
-    // Found PlayFabMatchmakingRegisterGameResponse
+    // Found PlayFabMatchmakingRegisterGameResponse    
     if( result->lobbyId ) { ss << "  lobbyId " << result->lobbyId; Log(ss); } else { ss << "  lobbyId = nullptr"; Log(ss); } // Class: const char* 
     return S_OK;
 }
@@ -961,7 +961,7 @@ HRESULT AutoGenMatchmakingTests::LogPFMatchmakingCreateMatchmakingTicketResult(P
     std::stringstream ss;
     ss << "Response:"; Log(ss);
 
-    // Found PlayFabMatchmakingCreateMatchmakingTicketResult
+    // Found PlayFabMatchmakingCreateMatchmakingTicketResult    
     if( result->ticketId ) { ss << "  ticketId " << result->ticketId; Log(ss); } else { ss << "  ticketId = nullptr"; Log(ss); } // Class: const char* 
     return S_OK;
 }
@@ -1013,7 +1013,7 @@ HRESULT AutoGenMatchmakingTests::LogPFMatchmakingCreateServerBackfillTicketResul
     std::stringstream ss;
     ss << "Response:"; Log(ss);
 
-    // Found PlayFabMatchmakingCreateServerBackfillTicketResult
+    // Found PlayFabMatchmakingCreateServerBackfillTicketResult    
     if( result->ticketId ) { ss << "  ticketId " << result->ticketId; Log(ss); } else { ss << "  ticketId = nullptr"; Log(ss); } // Class: const char* 
     return S_OK;
 }
@@ -1095,22 +1095,22 @@ HRESULT AutoGenMatchmakingTests::LogPFMatchmakingGetMatchResult(PFMatchmakingGet
     std::stringstream ss;
     ss << "Response:"; Log(ss);
 
-    // Found PlayFabMatchmakingGetMatchResult
-    if( result->matchId ) { ss << "  matchId " << result->matchId; Log(ss); } else { ss << "  matchId = nullptr"; Log(ss); } // Class: const char*     
+    // Found PlayFabMatchmakingGetMatchResult    
+    if( result->matchId ) { ss << "  matchId " << result->matchId; Log(ss); } else { ss << "  matchId = nullptr"; Log(ss); } // Class: const char*         
     ss << "  membersCount " << result->membersCount; Log(ss);
 
     // PFMatchmakingMatchmakingPlayerWithTeamAssignment
     for( uint32_t i=0; i<result->membersCount; i++ )
     {
             ss << "  result->members[" << i << "]:" << result->members[i]; Log(ss); // PFMatchmakingMatchmakingPlayerWithTeamAssignment
-    }     
+    }         
     ss << "  regionPreferencesCount " << result->regionPreferencesCount; Log(ss);
 
     // const char*
     for( uint32_t i=0; i<result->regionPreferencesCount; i++ )
     {
             ss << "  result->regionPreferences[" << i << "]:" << result->regionPreferences[i]; Log(ss); // const char*
-    } 
+    }     
     ss << "  serverDetails " << result->serverDetails; Log(ss); // Class: PFMatchmakingServerDetails 
     return S_OK;
 }
@@ -1155,28 +1155,28 @@ HRESULT AutoGenMatchmakingTests::LogPFMatchmakingGetMatchmakingTicketResult(PFMa
     std::stringstream ss;
     ss << "Response:"; Log(ss);
 
-    // Found PlayFabMatchmakingGetMatchmakingTicketResult
-    if( result->cancellationReasonString ) { ss << "  cancellationReasonString " << result->cancellationReasonString; Log(ss); } else { ss << "  cancellationReasonString = nullptr"; Log(ss); } // Class: const char* 
-    ss << "  created " << result->created; Log(ss); // Class: time_t 
-    ss << "  creator " << result->creator; Log(ss); // Class: PFEntityKey 
-    ss << "  giveUpAfterSeconds " << result->giveUpAfterSeconds; Log(ss); // Class: int32_t 
-    if( result->matchId ) { ss << "  matchId " << result->matchId; Log(ss); } else { ss << "  matchId = nullptr"; Log(ss); } // Class: const char*     
+    // Found PlayFabMatchmakingGetMatchmakingTicketResult    
+    if( result->cancellationReasonString ) { ss << "  cancellationReasonString " << result->cancellationReasonString; Log(ss); } else { ss << "  cancellationReasonString = nullptr"; Log(ss); } // Class: const char*     
+    ss << "  created " << result->created; Log(ss); // Class: time_t     
+    ss << "  creator " << result->creator; Log(ss); // Class: PFEntityKey     
+    ss << "  giveUpAfterSeconds " << result->giveUpAfterSeconds; Log(ss); // Class: int32_t     
+    if( result->matchId ) { ss << "  matchId " << result->matchId; Log(ss); } else { ss << "  matchId = nullptr"; Log(ss); } // Class: const char*         
     ss << "  membersCount " << result->membersCount; Log(ss);
 
     // PFMatchmakingMatchmakingPlayer
     for( uint32_t i=0; i<result->membersCount; i++ )
     {
             ss << "  result->members[" << i << "]:" << result->members[i]; Log(ss); // PFMatchmakingMatchmakingPlayer
-    }     
+    }         
     ss << "  membersToMatchWithCount " << result->membersToMatchWithCount; Log(ss);
 
     // PFEntityKey
     for( uint32_t i=0; i<result->membersToMatchWithCount; i++ )
     {
             ss << "  result->membersToMatchWith[" << i << "]:" << result->membersToMatchWith[i]; Log(ss); // PFEntityKey
-    } 
-    if( result->queueName ) { ss << "  queueName " << result->queueName; Log(ss); } else { ss << "  queueName = nullptr"; Log(ss); } // Class: const char* 
-    if( result->status ) { ss << "  status " << result->status; Log(ss); } else { ss << "  status = nullptr"; Log(ss); } // Class: const char* 
+    }     
+    if( result->queueName ) { ss << "  queueName " << result->queueName; Log(ss); } else { ss << "  queueName = nullptr"; Log(ss); } // Class: const char*     
+    if( result->status ) { ss << "  status " << result->status; Log(ss); } else { ss << "  status = nullptr"; Log(ss); } // Class: const char*     
     if( result->ticketId ) { ss << "  ticketId " << result->ticketId; Log(ss); } else { ss << "  ticketId = nullptr"; Log(ss); } // Class: const char* 
     return S_OK;
 }
@@ -1219,8 +1219,8 @@ HRESULT AutoGenMatchmakingTests::LogPFMatchmakingGetQueueStatisticsResult(PFMatc
     std::stringstream ss;
     ss << "Response:"; Log(ss);
 
-    // Found PlayFabMatchmakingGetQueueStatisticsResult
-    ss << "  numberOfPlayersMatching " << result->numberOfPlayersMatching; Log(ss); // Class: uint32_t 
+    // Found PlayFabMatchmakingGetQueueStatisticsResult    
+    ss << "  numberOfPlayersMatching " << result->numberOfPlayersMatching; Log(ss); // Class: uint32_t     
     ss << "  timeToMatchStatisticsInSeconds " << result->timeToMatchStatisticsInSeconds; Log(ss); // Class: PFMatchmakingStatistics 
     return S_OK;
 }
@@ -1265,21 +1265,21 @@ HRESULT AutoGenMatchmakingTests::LogPFMatchmakingGetServerBackfillTicketResult(P
     std::stringstream ss;
     ss << "Response:"; Log(ss);
 
-    // Found PlayFabMatchmakingGetServerBackfillTicketResult
-    if( result->cancellationReasonString ) { ss << "  cancellationReasonString " << result->cancellationReasonString; Log(ss); } else { ss << "  cancellationReasonString = nullptr"; Log(ss); } // Class: const char* 
-    ss << "  created " << result->created; Log(ss); // Class: time_t 
-    ss << "  giveUpAfterSeconds " << result->giveUpAfterSeconds; Log(ss); // Class: int32_t 
-    if( result->matchId ) { ss << "  matchId " << result->matchId; Log(ss); } else { ss << "  matchId = nullptr"; Log(ss); } // Class: const char*     
+    // Found PlayFabMatchmakingGetServerBackfillTicketResult    
+    if( result->cancellationReasonString ) { ss << "  cancellationReasonString " << result->cancellationReasonString; Log(ss); } else { ss << "  cancellationReasonString = nullptr"; Log(ss); } // Class: const char*     
+    ss << "  created " << result->created; Log(ss); // Class: time_t     
+    ss << "  giveUpAfterSeconds " << result->giveUpAfterSeconds; Log(ss); // Class: int32_t     
+    if( result->matchId ) { ss << "  matchId " << result->matchId; Log(ss); } else { ss << "  matchId = nullptr"; Log(ss); } // Class: const char*         
     ss << "  membersCount " << result->membersCount; Log(ss);
 
     // PFMatchmakingMatchmakingPlayerWithTeamAssignment
     for( uint32_t i=0; i<result->membersCount; i++ )
     {
             ss << "  result->members[" << i << "]:" << result->members[i]; Log(ss); // PFMatchmakingMatchmakingPlayerWithTeamAssignment
-    } 
-    if( result->queueName ) { ss << "  queueName " << result->queueName; Log(ss); } else { ss << "  queueName = nullptr"; Log(ss); } // Class: const char* 
-    ss << "  serverDetails " << result->serverDetails; Log(ss); // Class: PFMatchmakingServerDetails 
-    if( result->status ) { ss << "  status " << result->status; Log(ss); } else { ss << "  status = nullptr"; Log(ss); } // Class: const char* 
+    }     
+    if( result->queueName ) { ss << "  queueName " << result->queueName; Log(ss); } else { ss << "  queueName = nullptr"; Log(ss); } // Class: const char*     
+    ss << "  serverDetails " << result->serverDetails; Log(ss); // Class: PFMatchmakingServerDetails     
+    if( result->status ) { ss << "  status " << result->status; Log(ss); } else { ss << "  status = nullptr"; Log(ss); } // Class: const char*     
     if( result->ticketId ) { ss << "  ticketId " << result->ticketId; Log(ss); } else { ss << "  ticketId = nullptr"; Log(ss); } // Class: const char* 
     return S_OK;
 }
@@ -1353,7 +1353,7 @@ HRESULT AutoGenMatchmakingTests::LogPFMatchmakingListMatchmakingTicketsForPlayer
     std::stringstream ss;
     ss << "Response:"; Log(ss);
 
-    // Found PlayFabMatchmakingListMatchmakingTicketsForPlayerResult    
+    // Found PlayFabMatchmakingListMatchmakingTicketsForPlayerResult        
     ss << "  ticketIdsCount " << result->ticketIdsCount; Log(ss);
 
     // const char*
@@ -1403,7 +1403,7 @@ HRESULT AutoGenMatchmakingTests::LogPFMatchmakingListServerBackfillTicketsForPla
     std::stringstream ss;
     ss << "Response:"; Log(ss);
 
-    // Found PlayFabMatchmakingListServerBackfillTicketsForPlayerResult    
+    // Found PlayFabMatchmakingListServerBackfillTicketsForPlayerResult        
     ss << "  ticketIdsCount " << result->ticketIdsCount; Log(ss);
 
     // const char*

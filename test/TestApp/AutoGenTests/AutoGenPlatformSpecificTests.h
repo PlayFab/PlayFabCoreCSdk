@@ -15,31 +15,51 @@ private:
     static void Log(std::stringstream& ss);
     static HRESULT LogHR(HRESULT hr);
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestPlatformSpecificClientAndroidDevicePushNotificationRegistration(TestContext& testContext);
+#endif
 
     void TestPlatformSpecificClientConsumeMicrosoftStoreEntitlements(TestContext& testContext);
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestPlatformSpecificClientConsumePS5Entitlements(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestPlatformSpecificClientConsumePSNEntitlements(TestContext& testContext);
+#endif
 
     void TestPlatformSpecificClientConsumeXboxEntitlements(TestContext& testContext);
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestPlatformSpecificClientRefreshPSNAuthToken(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestPlatformSpecificClientRegisterForIOSPushNotification(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestPlatformSpecificClientRestoreIOSPurchases(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestPlatformSpecificClientValidateAmazonIAPReceipt(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestPlatformSpecificClientValidateGooglePlayPurchase(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestPlatformSpecificClientValidateIOSReceipt(TestContext& testContext);
+#endif
 
     void TestPlatformSpecificClientValidateWindowsStoreReceipt(TestContext& testContext);
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestPlatformSpecificServerAwardSteamAchievement(TestContext& testContext);
+#endif
 
 
 protected:

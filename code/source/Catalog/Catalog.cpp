@@ -593,6 +593,48 @@ AsyncOp<GetItemReviewSummaryResponse> CatalogAPI::GetItemReviewSummary(
     });
 }
 
+AsyncOp<GetItemsResponse> CatalogAPI::GetItems(
+    SharedPtr<Entity> entity,
+    const GetItemsRequest& request,
+    const TaskQueue& queue
+)
+{
+    auto entityToken{ entity->EntityToken() };
+    if (!entityToken || !entityToken->token) 
+    {
+        return E_PF_NOENTITYTOKEN;
+    }
+
+    const char* path{ "/Catalog/GetItems" };
+    JsonValue requestBody{ request.ToJson() };
+    UnorderedMap<String, String> headers{{ kEntityTokenHeaderName, entityToken->token }};
+
+    auto requestOp = entity->HttpClient()->MakeEntityRequest(
+        entity,
+        path,
+        std::move(headers),
+        std::move(requestBody),
+        queue
+    );
+
+    return requestOp.Then([](Result<ServiceResponse> result) -> Result<GetItemsResponse>
+    {
+        RETURN_IF_FAILED(result.hr);
+
+        auto serviceResponse = result.ExtractPayload();
+        if (serviceResponse.HttpCode == 200)
+        {
+            GetItemsResponse resultModel;
+            resultModel.FromJson(serviceResponse.Data);
+            return resultModel;
+        }
+        else
+        {
+            return Result<GetItemsResponse>{ ServiceErrorToHR(serviceResponse.ErrorCode), std::move(serviceResponse.ErrorMessage) };
+        }
+    });
+}
+
 AsyncOp<void> CatalogAPI::PublishDraftItem(
     SharedPtr<Entity> entity,
     const PublishDraftItemRequest& request,

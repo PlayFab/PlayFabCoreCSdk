@@ -39,17 +39,17 @@ HRESULT AutoGenCloudScriptTests::LogPFCloudScriptGetCloudScriptRevisionResult(PF
     std::stringstream ss;
     ss << "Response:"; Log(ss);
 
-    // Found PlayFabCloudScriptGetCloudScriptRevisionResult
-    ss << "  createdAt " << result->createdAt; Log(ss); // Class: time_t     
+    // Found PlayFabCloudScriptGetCloudScriptRevisionResult    
+    ss << "  createdAt " << result->createdAt; Log(ss); // Class: time_t         
     ss << "  filesCount " << result->filesCount; Log(ss);
 
     // PFCloudScriptCloudScriptFile
     for( uint32_t i=0; i<result->filesCount; i++ )
     {
             ss << "  result->files[" << i << "]:" << result->files[i]; Log(ss); // PFCloudScriptCloudScriptFile
-    } 
-    ss << "  isPublished " << result->isPublished; Log(ss); // Class: bool 
-    ss << "  revision " << result->revision; Log(ss); // Class: int32_t 
+    }     
+    ss << "  isPublished " << result->isPublished; Log(ss); // Class: bool     
+    ss << "  revision " << result->revision; Log(ss); // Class: int32_t     
     ss << "  version " << result->version; Log(ss); // Class: int32_t 
     return S_OK;
 }
@@ -64,7 +64,7 @@ HRESULT AutoGenCloudScriptTests::LogPFCloudScriptGetCloudScriptVersionsResult(PF
     std::stringstream ss;
     ss << "Response:"; Log(ss);
 
-    // Found PlayFabCloudScriptGetCloudScriptVersionsResult    
+    // Found PlayFabCloudScriptGetCloudScriptVersionsResult        
     ss << "  versionsCount " << result->versionsCount; Log(ss);
 
     // PFCloudScriptCloudScriptVersionStatus
@@ -150,8 +150,8 @@ HRESULT AutoGenCloudScriptTests::LogPFCloudScriptUpdateCloudScriptResult(PFCloud
     std::stringstream ss;
     ss << "Response:"; Log(ss);
 
-    // Found PlayFabCloudScriptUpdateCloudScriptResult
-    ss << "  revision " << result->revision; Log(ss); // Class: int32_t 
+    // Found PlayFabCloudScriptUpdateCloudScriptResult    
+    ss << "  revision " << result->revision; Log(ss); // Class: int32_t     
     ss << "  version " << result->version; Log(ss); // Class: int32_t 
     return S_OK;
 }
@@ -198,24 +198,24 @@ HRESULT AutoGenCloudScriptTests::LogPFExecuteCloudScriptResult(PFExecuteCloudScr
     std::stringstream ss;
     ss << "Response:"; Log(ss);
 
-    // Found PlayFabCloudScriptExecuteCloudScriptResult
-    ss << "  aPIRequestsIssued " << result->aPIRequestsIssued; Log(ss); // Class: int32_t 
-    ss << "  error " << result->error; Log(ss); // Class: PFScriptExecutionError 
-    ss << "  executionTimeSeconds " << result->executionTimeSeconds; Log(ss); // Class: double 
-    if( result->functionName ) { ss << "  functionName " << result->functionName; Log(ss); } else { ss << "  functionName = nullptr"; Log(ss); } // Class: const char* 
-    if( result->functionResult.stringValue ) { ss << "  functionResult " << result->functionResult.stringValue; Log(ss); } else { ss << "  functionResult = nullptr"; Log(ss); } // Class: PFJsonObject 
-    ss << "  functionResultTooLarge " << result->functionResultTooLarge; Log(ss); // Class: bool 
-    ss << "  httpRequestsIssued " << result->httpRequestsIssued; Log(ss); // Class: int32_t     
+    // Found PlayFabCloudScriptExecuteCloudScriptResult    
+    ss << "  aPIRequestsIssued " << result->aPIRequestsIssued; Log(ss); // Class: int32_t     
+    ss << "  error " << result->error; Log(ss); // Class: PFScriptExecutionError     
+    ss << "  executionTimeSeconds " << result->executionTimeSeconds; Log(ss); // Class: double     
+    if( result->functionName ) { ss << "  functionName " << result->functionName; Log(ss); } else { ss << "  functionName = nullptr"; Log(ss); } // Class: const char*     
+    if( result->functionResult.stringValue ) { ss << "  functionResult " << result->functionResult.stringValue; Log(ss); } else { ss << "  functionResult = nullptr"; Log(ss); } // Class: PFJsonObject     
+    ss << "  functionResultTooLarge " << result->functionResultTooLarge; Log(ss); // Class: bool     
+    ss << "  httpRequestsIssued " << result->httpRequestsIssued; Log(ss); // Class: int32_t         
     ss << "  logsCount " << result->logsCount; Log(ss);
 
     // PFLogStatement
     for( uint32_t i=0; i<result->logsCount; i++ )
     {
             ss << "  result->logs[" << i << "]:" << result->logs[i]; Log(ss); // PFLogStatement
-    } 
-    ss << "  logsTooLarge " << result->logsTooLarge; Log(ss); // Class: bool 
-    ss << "  memoryConsumedBytes " << result->memoryConsumedBytes; Log(ss); // Class: uint32_t 
-    ss << "  processorTimeSeconds " << result->processorTimeSeconds; Log(ss); // Class: double 
+    }     
+    ss << "  logsTooLarge " << result->logsTooLarge; Log(ss); // Class: bool     
+    ss << "  memoryConsumedBytes " << result->memoryConsumedBytes; Log(ss); // Class: uint32_t     
+    ss << "  processorTimeSeconds " << result->processorTimeSeconds; Log(ss); // Class: double     
     ss << "  revision " << result->revision; Log(ss); // Class: int32_t 
     return S_OK;
 }
@@ -327,11 +327,11 @@ HRESULT AutoGenCloudScriptTests::LogPFCloudScriptExecuteFunctionResult(PFCloudSc
     std::stringstream ss;
     ss << "Response:"; Log(ss);
 
-    // Found PlayFabCloudScriptExecuteFunctionResult
-    ss << "  error " << result->error; Log(ss); // Class: PFCloudScriptFunctionExecutionError 
-    ss << "  executionTimeMilliseconds " << result->executionTimeMilliseconds; Log(ss); // Class: int32_t 
-    if( result->functionName ) { ss << "  functionName " << result->functionName; Log(ss); } else { ss << "  functionName = nullptr"; Log(ss); } // Class: const char* 
-    if( result->functionResult.stringValue ) { ss << "  functionResult " << result->functionResult.stringValue; Log(ss); } else { ss << "  functionResult = nullptr"; Log(ss); } // Class: PFJsonObject 
+    // Found PlayFabCloudScriptExecuteFunctionResult    
+    ss << "  error " << result->error; Log(ss); // Class: PFCloudScriptFunctionExecutionError     
+    ss << "  executionTimeMilliseconds " << result->executionTimeMilliseconds; Log(ss); // Class: int32_t     
+    if( result->functionName ) { ss << "  functionName " << result->functionName; Log(ss); } else { ss << "  functionName = nullptr"; Log(ss); } // Class: const char*     
+    if( result->functionResult.stringValue ) { ss << "  functionResult " << result->functionResult.stringValue; Log(ss); } else { ss << "  functionResult = nullptr"; Log(ss); } // Class: PFJsonObject     
     ss << "  functionResultTooLarge " << result->functionResultTooLarge; Log(ss); // Class: bool 
     return S_OK;
 }
@@ -375,11 +375,11 @@ HRESULT AutoGenCloudScriptTests::LogPFCloudScriptGetFunctionResult(PFCloudScript
     std::stringstream ss;
     ss << "Response:"; Log(ss);
 
-    // Found PlayFabCloudScriptGetFunctionResult
-    if( result->connectionString ) { ss << "  connectionString " << result->connectionString; Log(ss); } else { ss << "  connectionString = nullptr"; Log(ss); } // Class: const char* 
-    if( result->functionUrl ) { ss << "  functionUrl " << result->functionUrl; Log(ss); } else { ss << "  functionUrl = nullptr"; Log(ss); } // Class: const char* 
-    if( result->queueName ) { ss << "  queueName " << result->queueName; Log(ss); } else { ss << "  queueName = nullptr"; Log(ss); } // Class: const char* 
-    ss << "  systemData " << result->systemData; Log(ss); // Class: PFCloudScriptAzureResourceSystemData 
+    // Found PlayFabCloudScriptGetFunctionResult    
+    if( result->connectionString ) { ss << "  connectionString " << result->connectionString; Log(ss); } else { ss << "  connectionString = nullptr"; Log(ss); } // Class: const char*     
+    if( result->functionUrl ) { ss << "  functionUrl " << result->functionUrl; Log(ss); } else { ss << "  functionUrl = nullptr"; Log(ss); } // Class: const char*     
+    if( result->queueName ) { ss << "  queueName " << result->queueName; Log(ss); } else { ss << "  queueName = nullptr"; Log(ss); } // Class: const char*     
+    ss << "  systemData " << result->systemData; Log(ss); // Class: PFAzureResourceSystemData     
     if( result->triggerType ) { ss << "  triggerType " << result->triggerType; Log(ss); } else { ss << "  triggerType = nullptr"; Log(ss); } // Class: const char* 
     return S_OK;
 }
@@ -422,7 +422,7 @@ HRESULT AutoGenCloudScriptTests::LogPFCloudScriptListFunctionsResult(PFCloudScri
     std::stringstream ss;
     ss << "Response:"; Log(ss);
 
-    // Found PlayFabCloudScriptListFunctionsResult    
+    // Found PlayFabCloudScriptListFunctionsResult        
     ss << "  functionsCount " << result->functionsCount; Log(ss);
 
     // PFCloudScriptFunctionModel
@@ -443,7 +443,7 @@ HRESULT AutoGenCloudScriptTests::LogPFCloudScriptListHttpFunctionsResult(PFCloud
     std::stringstream ss;
     ss << "Response:"; Log(ss);
 
-    // Found PlayFabCloudScriptListHttpFunctionsResult    
+    // Found PlayFabCloudScriptListHttpFunctionsResult        
     ss << "  functionsCount " << result->functionsCount; Log(ss);
 
     // PFCloudScriptHttpFunctionModel
@@ -464,7 +464,7 @@ HRESULT AutoGenCloudScriptTests::LogPFCloudScriptListQueuedFunctionsResult(PFClo
     std::stringstream ss;
     ss << "Response:"; Log(ss);
 
-    // Found PlayFabCloudScriptListQueuedFunctionsResult    
+    // Found PlayFabCloudScriptListQueuedFunctionsResult        
     ss << "  functionsCount " << result->functionsCount; Log(ss);
 
     // PFCloudScriptQueuedFunctionModel
@@ -620,7 +620,7 @@ void AutoGenCloudScriptTests::LogRegisterHttpFunctionRequest(PFCloudScriptRegist
     } 
     if( request->functionName ) { ss << "  functionName " << request->functionName; Log(ss); } else { ss << "  functionName = nullptr"; Log(ss); } // Class: const char* 
     if( request->functionUrl ) { ss << "  functionUrl " << request->functionUrl; Log(ss); } else { ss << "  functionUrl = nullptr"; Log(ss); } // Class: const char* 
-    ss << "  systemData " << request->systemData; Log(ss); // Class: PFCloudScriptAzureResourceSystemData 
+    ss << "  systemData " << request->systemData; Log(ss); // Class: PFAzureResourceSystemData 
     if( request->titleId ) { ss << "  titleId " << request->titleId; Log(ss); } else { ss << "  titleId = nullptr"; Log(ss); } // Class: const char* 
 
 }
@@ -652,7 +652,7 @@ void AutoGenCloudScriptTests::LogRegisterQueuedFunctionRequest(PFCloudScriptRegi
     } 
     if( request->functionName ) { ss << "  functionName " << request->functionName; Log(ss); } else { ss << "  functionName = nullptr"; Log(ss); } // Class: const char* 
     if( request->queueName ) { ss << "  queueName " << request->queueName; Log(ss); } else { ss << "  queueName = nullptr"; Log(ss); } // Class: const char* 
-    ss << "  systemData " << request->systemData; Log(ss); // Class: PFCloudScriptAzureResourceSystemData 
+    ss << "  systemData " << request->systemData; Log(ss); // Class: PFAzureResourceSystemData 
     if( request->titleId ) { ss << "  titleId " << request->titleId; Log(ss); } else { ss << "  titleId = nullptr"; Log(ss); } // Class: const char* 
 
 }

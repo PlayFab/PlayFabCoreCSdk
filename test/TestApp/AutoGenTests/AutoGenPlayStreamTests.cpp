@@ -32,37 +32,31 @@ HRESULT AutoGenPlayStreamTests::LogHR(HRESULT hr)
 void AutoGenPlayStreamTests::AddTests()
 {
     // Generated tests 
-    AddTest("TestPlayStreamAdminAddPlayerTag", &AutoGenPlayStreamTests::TestPlayStreamAdminAddPlayerTag);
-
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestPlayStreamAdminGetAllSegments", &AutoGenPlayStreamTests::TestPlayStreamAdminGetAllSegments);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestPlayStreamAdminGetPlayerSegments", &AutoGenPlayStreamTests::TestPlayStreamAdminGetPlayerSegments);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestPlayStreamAdminGetPlayersInSegment", &AutoGenPlayStreamTests::TestPlayStreamAdminGetPlayersInSegment);
-
-    AddTest("TestPlayStreamAdminGetPlayerTags", &AutoGenPlayStreamTests::TestPlayStreamAdminGetPlayerTags);
-
-    AddTest("TestPlayStreamAdminRemovePlayerTag", &AutoGenPlayStreamTests::TestPlayStreamAdminRemovePlayerTag);
+#endif
 
     AddTest("TestPlayStreamClientGetPlayerSegments", &AutoGenPlayStreamTests::TestPlayStreamClientGetPlayerSegments);
 
-    AddTest("TestPlayStreamClientGetPlayerTags", &AutoGenPlayStreamTests::TestPlayStreamClientGetPlayerTags);
-
-    AddTest("TestPlayStreamServerAddPlayerTag", &AutoGenPlayStreamTests::TestPlayStreamServerAddPlayerTag);
-
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestPlayStreamServerGetAllSegments", &AutoGenPlayStreamTests::TestPlayStreamServerGetAllSegments);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestPlayStreamServerGetPlayerSegments", &AutoGenPlayStreamTests::TestPlayStreamServerGetPlayerSegments);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestPlayStreamServerGetPlayersInSegment", &AutoGenPlayStreamTests::TestPlayStreamServerGetPlayersInSegment);
-
-    AddTest("TestPlayStreamServerGetPlayerTags", &AutoGenPlayStreamTests::TestPlayStreamServerGetPlayerTags);
-
-    AddTest("TestPlayStreamServerRemovePlayerTag", &AutoGenPlayStreamTests::TestPlayStreamServerRemovePlayerTag);
-
-    AddTest("TestPlayStreamWriteEvents", &AutoGenPlayStreamTests::TestPlayStreamWriteEvents);
-
-    AddTest("TestPlayStreamWriteTelemetryEvents", &AutoGenPlayStreamTests::TestPlayStreamWriteTelemetryEvents);
+#endif
 }
 
 void AutoGenPlayStreamTests::ClassSetUp()
@@ -170,31 +164,12 @@ void AutoGenPlayStreamTests::SetUp(TestContext& testContext)
 
 }
 
-#pragma region AdminAddPlayerTag
-
-void AutoGenPlayStreamTests::TestPlayStreamAdminAddPlayerTag(TestContext& testContext)
-{
-    auto async = std::make_unique<XAsyncHelper<XAsyncResult>>(testContext);
-
-    PFPlayStreamAddPlayerTagRequestWrapper<> request;
-    FillAddPlayerTagRequest(request);
-    LogAddPlayerTagRequest(&request.Model(), "TestPlayStreamAdminAddPlayerTag");
-    HRESULT hr = PFPlayStreamAdminAddPlayerTagAsync(stateHandle, &request.Model(), &async->asyncBlock);
-    if (FAILED(hr))
-    {
-        testContext.Fail("PFPlayStreamPlayStreamAdminAddPlayerTagAsync", hr);
-        return;
-    }
-    async.release(); 
-}
-
-#pragma endregion
-
 #pragma region AdminGetAllSegments
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenPlayStreamTests::TestPlayStreamAdminGetAllSegments(TestContext& testContext)
 {
-    struct AdminGetAllSegmentsResultHolder : public GetAllSegmentsResultHolder
+    struct AdminGetAllSegmentsResultHolderStruct : public GetAllSegmentsResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -213,7 +188,7 @@ void AutoGenPlayStreamTests::TestPlayStreamAdminGetAllSegments(TestContext& test
             return ValidatePFPlayStreamGetAllSegmentsResult(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<AdminGetAllSegmentsResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<AdminGetAllSegmentsResultHolderStruct>>(testContext);
 
     HRESULT hr = PFPlayStreamAdminGetAllSegmentsAsync(stateHandle, &async->asyncBlock);
     if (FAILED(hr))
@@ -223,14 +198,16 @@ void AutoGenPlayStreamTests::TestPlayStreamAdminGetAllSegments(TestContext& test
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region AdminGetPlayerSegments
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenPlayStreamTests::TestPlayStreamAdminGetPlayerSegments(TestContext& testContext)
 {
-    struct AdminGetPlayerSegmentsResultHolder : public GetPlayerSegmentsResultHolder
+    struct AdminGetPlayerSegmentsResultHolderStruct : public GetPlayerSegmentsResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -249,7 +226,7 @@ void AutoGenPlayStreamTests::TestPlayStreamAdminGetPlayerSegments(TestContext& t
             return ValidatePFPlayStreamGetPlayerSegmentsResult(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<AdminGetPlayerSegmentsResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<AdminGetPlayerSegmentsResultHolderStruct>>(testContext);
 
     PFPlayStreamGetPlayersSegmentsRequestWrapper<> request;
     FillGetPlayersSegmentsRequest(request);
@@ -262,14 +239,16 @@ void AutoGenPlayStreamTests::TestPlayStreamAdminGetPlayerSegments(TestContext& t
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region AdminGetPlayersInSegment
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenPlayStreamTests::TestPlayStreamAdminGetPlayersInSegment(TestContext& testContext)
 {
-    struct AdminGetPlayersInSegmentResultHolder : public GetPlayersInSegmentResultHolder
+    struct AdminGetPlayersInSegmentResultHolderStruct : public GetPlayersInSegmentResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -288,7 +267,7 @@ void AutoGenPlayStreamTests::TestPlayStreamAdminGetPlayersInSegment(TestContext&
             return ValidatePFPlayStreamGetPlayersInSegmentResult(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<AdminGetPlayersInSegmentResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<AdminGetPlayersInSegmentResultHolderStruct>>(testContext);
 
     PFPlayStreamGetPlayersInSegmentRequestWrapper<> request;
     FillGetPlayersInSegmentRequest(request);
@@ -301,65 +280,7 @@ void AutoGenPlayStreamTests::TestPlayStreamAdminGetPlayersInSegment(TestContext&
     }
     async.release(); 
 }
-
-#pragma endregion
-
-#pragma region AdminGetPlayerTags
-
-void AutoGenPlayStreamTests::TestPlayStreamAdminGetPlayerTags(TestContext& testContext)
-{
-    struct AdminGetPlayerTagsResultHolder : public GetPlayerTagsResultHolder
-    {
-        HRESULT Get(XAsyncBlock* async) override
-        {
-            size_t requiredBufferSize;
-            RETURN_IF_FAILED(LogHR(PFPlayStreamAdminGetPlayerTagsGetResultSize(async, &requiredBufferSize)));
-
-            resultBuffer.resize(requiredBufferSize);
-            RETURN_IF_FAILED(LogHR(PFPlayStreamAdminGetPlayerTagsGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
-            
-            LogPFPlayStreamGetPlayerTagsResult(result);
-            return S_OK;
-        }
-
-        HRESULT Validate() override
-        {
-            return ValidatePFPlayStreamGetPlayerTagsResult(result);
-        }
-    };
-    auto async = std::make_unique<XAsyncHelper<AdminGetPlayerTagsResultHolder>>(testContext);
-
-    PFPlayStreamGetPlayerTagsRequestWrapper<> request;
-    FillGetPlayerTagsRequest(request);
-    LogGetPlayerTagsRequest(&request.Model(), "TestPlayStreamAdminGetPlayerTags");
-    HRESULT hr = PFPlayStreamAdminGetPlayerTagsAsync(stateHandle, &request.Model(), &async->asyncBlock);
-    if (FAILED(hr))
-    {
-        testContext.Fail("PFPlayStreamPlayStreamAdminGetPlayerTagsAsync", hr);
-        return;
-    }
-    async.release(); 
-}
-
-#pragma endregion
-
-#pragma region AdminRemovePlayerTag
-
-void AutoGenPlayStreamTests::TestPlayStreamAdminRemovePlayerTag(TestContext& testContext)
-{
-    auto async = std::make_unique<XAsyncHelper<XAsyncResult>>(testContext);
-
-    PFPlayStreamRemovePlayerTagRequestWrapper<> request;
-    FillRemovePlayerTagRequest(request);
-    LogRemovePlayerTagRequest(&request.Model(), "TestPlayStreamAdminRemovePlayerTag");
-    HRESULT hr = PFPlayStreamAdminRemovePlayerTagAsync(stateHandle, &request.Model(), &async->asyncBlock);
-    if (FAILED(hr))
-    {
-        testContext.Fail("PFPlayStreamPlayStreamAdminRemovePlayerTagAsync", hr);
-        return;
-    }
-    async.release(); 
-}
+#endif
 
 #pragma endregion
 
@@ -367,7 +288,7 @@ void AutoGenPlayStreamTests::TestPlayStreamAdminRemovePlayerTag(TestContext& tes
 
 void AutoGenPlayStreamTests::TestPlayStreamClientGetPlayerSegments(TestContext& testContext)
 {
-    struct ClientGetPlayerSegmentsResultHolder : public GetPlayerSegmentsResultHolder
+    struct ClientGetPlayerSegmentsResultHolderStruct : public GetPlayerSegmentsResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -386,7 +307,7 @@ void AutoGenPlayStreamTests::TestPlayStreamClientGetPlayerSegments(TestContext& 
             return ValidatePFPlayStreamGetPlayerSegmentsResult(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<ClientGetPlayerSegmentsResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<ClientGetPlayerSegmentsResultHolderStruct>>(testContext);
 
     HRESULT hr = PFPlayStreamClientGetPlayerSegmentsAsync(titlePlayerHandle, &async->asyncBlock);
     if (FAILED(hr))
@@ -399,70 +320,12 @@ void AutoGenPlayStreamTests::TestPlayStreamClientGetPlayerSegments(TestContext& 
 
 #pragma endregion
 
-#pragma region ClientGetPlayerTags
-
-void AutoGenPlayStreamTests::TestPlayStreamClientGetPlayerTags(TestContext& testContext)
-{
-    struct ClientGetPlayerTagsResultHolder : public GetPlayerTagsResultHolder
-    {
-        HRESULT Get(XAsyncBlock* async) override
-        {
-            size_t requiredBufferSize;
-            RETURN_IF_FAILED(LogHR(PFPlayStreamClientGetPlayerTagsGetResultSize(async, &requiredBufferSize)));
-
-            resultBuffer.resize(requiredBufferSize);
-            RETURN_IF_FAILED(LogHR(PFPlayStreamClientGetPlayerTagsGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
-            
-            LogPFPlayStreamGetPlayerTagsResult(result);
-            return S_OK;
-        }
-
-        HRESULT Validate() override
-        {
-            return ValidatePFPlayStreamGetPlayerTagsResult(result);
-        }
-    };
-    auto async = std::make_unique<XAsyncHelper<ClientGetPlayerTagsResultHolder>>(testContext);
-
-    PFPlayStreamGetPlayerTagsRequestWrapper<> request;
-    FillGetPlayerTagsRequest(request);
-    LogGetPlayerTagsRequest(&request.Model(), "TestPlayStreamClientGetPlayerTags");
-    HRESULT hr = PFPlayStreamClientGetPlayerTagsAsync(titlePlayerHandle, &request.Model(), &async->asyncBlock);
-    if (FAILED(hr))
-    {
-        testContext.Fail("PFPlayStreamPlayStreamClientGetPlayerTagsAsync", hr);
-        return;
-    }
-    async.release(); 
-}
-
-#pragma endregion
-
-#pragma region ServerAddPlayerTag
-
-void AutoGenPlayStreamTests::TestPlayStreamServerAddPlayerTag(TestContext& testContext)
-{
-    auto async = std::make_unique<XAsyncHelper<XAsyncResult>>(testContext);
-
-    PFPlayStreamAddPlayerTagRequestWrapper<> request;
-    FillAddPlayerTagRequest(request);
-    LogAddPlayerTagRequest(&request.Model(), "TestPlayStreamServerAddPlayerTag");
-    HRESULT hr = PFPlayStreamServerAddPlayerTagAsync(stateHandle, &request.Model(), &async->asyncBlock);
-    if (FAILED(hr))
-    {
-        testContext.Fail("PFPlayStreamPlayStreamServerAddPlayerTagAsync", hr);
-        return;
-    }
-    async.release(); 
-}
-
-#pragma endregion
-
 #pragma region ServerGetAllSegments
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenPlayStreamTests::TestPlayStreamServerGetAllSegments(TestContext& testContext)
 {
-    struct ServerGetAllSegmentsResultHolder : public GetAllSegmentsResultHolder
+    struct ServerGetAllSegmentsResultHolderStruct : public GetAllSegmentsResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -481,7 +344,7 @@ void AutoGenPlayStreamTests::TestPlayStreamServerGetAllSegments(TestContext& tes
             return ValidatePFPlayStreamGetAllSegmentsResult(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<ServerGetAllSegmentsResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<ServerGetAllSegmentsResultHolderStruct>>(testContext);
 
     HRESULT hr = PFPlayStreamServerGetAllSegmentsAsync(stateHandle, &async->asyncBlock);
     if (FAILED(hr))
@@ -491,14 +354,16 @@ void AutoGenPlayStreamTests::TestPlayStreamServerGetAllSegments(TestContext& tes
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region ServerGetPlayerSegments
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenPlayStreamTests::TestPlayStreamServerGetPlayerSegments(TestContext& testContext)
 {
-    struct ServerGetPlayerSegmentsResultHolder : public GetPlayerSegmentsResultHolder
+    struct ServerGetPlayerSegmentsResultHolderStruct : public GetPlayerSegmentsResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -517,7 +382,7 @@ void AutoGenPlayStreamTests::TestPlayStreamServerGetPlayerSegments(TestContext& 
             return ValidatePFPlayStreamGetPlayerSegmentsResult(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<ServerGetPlayerSegmentsResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<ServerGetPlayerSegmentsResultHolderStruct>>(testContext);
 
     PFPlayStreamGetPlayersSegmentsRequestWrapper<> request;
     FillGetPlayersSegmentsRequest(request);
@@ -530,14 +395,16 @@ void AutoGenPlayStreamTests::TestPlayStreamServerGetPlayerSegments(TestContext& 
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region ServerGetPlayersInSegment
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenPlayStreamTests::TestPlayStreamServerGetPlayersInSegment(TestContext& testContext)
 {
-    struct ServerGetPlayersInSegmentResultHolder : public GetPlayersInSegmentResultHolder
+    struct ServerGetPlayersInSegmentResultHolderStruct : public GetPlayersInSegmentResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -556,7 +423,7 @@ void AutoGenPlayStreamTests::TestPlayStreamServerGetPlayersInSegment(TestContext
             return ValidatePFPlayStreamGetPlayersInSegmentResult(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<ServerGetPlayersInSegmentResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<ServerGetPlayersInSegmentResultHolderStruct>>(testContext);
 
     PFPlayStreamGetPlayersInSegmentRequestWrapper<> request;
     FillGetPlayersInSegmentRequest(request);
@@ -569,143 +436,7 @@ void AutoGenPlayStreamTests::TestPlayStreamServerGetPlayersInSegment(TestContext
     }
     async.release(); 
 }
-
-#pragma endregion
-
-#pragma region ServerGetPlayerTags
-
-void AutoGenPlayStreamTests::TestPlayStreamServerGetPlayerTags(TestContext& testContext)
-{
-    struct ServerGetPlayerTagsResultHolder : public GetPlayerTagsResultHolder
-    {
-        HRESULT Get(XAsyncBlock* async) override
-        {
-            size_t requiredBufferSize;
-            RETURN_IF_FAILED(LogHR(PFPlayStreamServerGetPlayerTagsGetResultSize(async, &requiredBufferSize)));
-
-            resultBuffer.resize(requiredBufferSize);
-            RETURN_IF_FAILED(LogHR(PFPlayStreamServerGetPlayerTagsGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
-            
-            LogPFPlayStreamGetPlayerTagsResult(result);
-            return S_OK;
-        }
-
-        HRESULT Validate() override
-        {
-            return ValidatePFPlayStreamGetPlayerTagsResult(result);
-        }
-    };
-    auto async = std::make_unique<XAsyncHelper<ServerGetPlayerTagsResultHolder>>(testContext);
-
-    PFPlayStreamGetPlayerTagsRequestWrapper<> request;
-    FillGetPlayerTagsRequest(request);
-    LogGetPlayerTagsRequest(&request.Model(), "TestPlayStreamServerGetPlayerTags");
-    HRESULT hr = PFPlayStreamServerGetPlayerTagsAsync(stateHandle, &request.Model(), &async->asyncBlock);
-    if (FAILED(hr))
-    {
-        testContext.Fail("PFPlayStreamPlayStreamServerGetPlayerTagsAsync", hr);
-        return;
-    }
-    async.release(); 
-}
-
-#pragma endregion
-
-#pragma region ServerRemovePlayerTag
-
-void AutoGenPlayStreamTests::TestPlayStreamServerRemovePlayerTag(TestContext& testContext)
-{
-    auto async = std::make_unique<XAsyncHelper<XAsyncResult>>(testContext);
-
-    PFPlayStreamRemovePlayerTagRequestWrapper<> request;
-    FillRemovePlayerTagRequest(request);
-    LogRemovePlayerTagRequest(&request.Model(), "TestPlayStreamServerRemovePlayerTag");
-    HRESULT hr = PFPlayStreamServerRemovePlayerTagAsync(stateHandle, &request.Model(), &async->asyncBlock);
-    if (FAILED(hr))
-    {
-        testContext.Fail("PFPlayStreamPlayStreamServerRemovePlayerTagAsync", hr);
-        return;
-    }
-    async.release(); 
-}
-
-#pragma endregion
-
-#pragma region WriteEvents
-
-void AutoGenPlayStreamTests::TestPlayStreamWriteEvents(TestContext& testContext)
-{
-    struct WriteEventsResultHolder : public WriteEventsResponseHolder
-    {
-        HRESULT Get(XAsyncBlock* async) override
-        {
-            size_t requiredBufferSize;
-            RETURN_IF_FAILED(LogHR(PFPlayStreamWriteEventsGetResultSize(async, &requiredBufferSize)));
-
-            resultBuffer.resize(requiredBufferSize);
-            RETURN_IF_FAILED(LogHR(PFPlayStreamWriteEventsGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
-            
-            LogPFPlayStreamWriteEventsResponse(result);
-            return S_OK;
-        }
-
-        HRESULT Validate() override
-        {
-            return ValidatePFPlayStreamWriteEventsResponse(result);
-        }
-    };
-    auto async = std::make_unique<XAsyncHelper<WriteEventsResultHolder>>(testContext);
-
-    PFPlayStreamWriteEventsRequestWrapper<> request;
-    FillWriteEventsRequest(request);
-    LogWriteEventsRequest(&request.Model(), "TestPlayStreamWriteEvents");
-    HRESULT hr = PFPlayStreamWriteEventsAsync(entityHandle, &request.Model(), &async->asyncBlock);
-    if (FAILED(hr))
-    {
-        testContext.Fail("PFPlayStreamPlayStreamWriteEventsAsync", hr);
-        return;
-    }
-    async.release(); 
-}
-
-#pragma endregion
-
-#pragma region WriteTelemetryEvents
-
-void AutoGenPlayStreamTests::TestPlayStreamWriteTelemetryEvents(TestContext& testContext)
-{
-    struct WriteTelemetryEventsResultHolder : public WriteEventsResponseHolder
-    {
-        HRESULT Get(XAsyncBlock* async) override
-        {
-            size_t requiredBufferSize;
-            RETURN_IF_FAILED(LogHR(PFPlayStreamWriteTelemetryEventsGetResultSize(async, &requiredBufferSize)));
-
-            resultBuffer.resize(requiredBufferSize);
-            RETURN_IF_FAILED(LogHR(PFPlayStreamWriteTelemetryEventsGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
-            
-            LogPFPlayStreamWriteEventsResponse(result);
-            return S_OK;
-        }
-
-        HRESULT Validate() override
-        {
-            return ValidatePFPlayStreamWriteEventsResponse(result);
-        }
-    };
-    auto async = std::make_unique<XAsyncHelper<WriteTelemetryEventsResultHolder>>(testContext);
-
-    PFPlayStreamWriteEventsRequestWrapper<> request;
-    FillWriteEventsRequest(request);
-    LogWriteEventsRequest(&request.Model(), "TestPlayStreamWriteTelemetryEvents");
-    HRESULT hr = PFPlayStreamWriteTelemetryEventsAsync(entityHandle, &request.Model(), &async->asyncBlock);
-    if (FAILED(hr))
-    {
-        testContext.Fail("PFPlayStreamPlayStreamWriteTelemetryEventsAsync", hr);
-        return;
-    }
-    async.release(); 
-}
+#endif
 
 #pragma endregion
 

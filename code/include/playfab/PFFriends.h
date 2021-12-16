@@ -24,6 +24,8 @@ extern "C"
 /// <param name="async">XAsyncBlock for the async operation.</param>
 /// <returns>Result code for this API operation.</returns>
 /// <remarks>
+/// See also ClientGetFriendsListAsync, ClientSetFriendTagsAsync.
+///
 /// If successful, call <see cref="PFFriendsClientAddFriendGetResult"/> to get the result.
 /// </remarks>
 HRESULT PFFriendsClientAddFriendAsync(
@@ -53,6 +55,8 @@ HRESULT PFFriendsClientAddFriendGetResult(
 /// <param name="async">XAsyncBlock for the async operation.</param>
 /// <returns>Result code for this API operation.</returns>
 /// <remarks>
+/// See also ClientAddFriendAsync, ClientGetPlayerProfileAsync, ClientRemoveFriendAsync.
+///
 /// If successful, call <see cref="PFFriendsClientGetFriendsListGetResult"/> to get the result.
 /// </remarks>
 HRESULT PFFriendsClientGetFriendsListAsync(
@@ -100,6 +104,8 @@ HRESULT PFFriendsClientGetFriendsListGetResult(
 /// <param name="async">XAsyncBlock for the async operation.</param>
 /// <returns>Result code for this API operation.</returns>
 /// <remarks>
+/// See also ClientAddFriendAsync, ClientSetFriendTagsAsync.
+///
 /// Call <see cref="XAsyncGetStatus"/> to get the status of the operation.
 /// </remarks>
 HRESULT PFFriendsClientRemoveFriendAsync(
@@ -119,7 +125,7 @@ HRESULT PFFriendsClientRemoveFriendAsync(
 /// This operation is not additive. It will completely replace the tag list for the specified user. Please
 /// note that only users in the PlayFab friends list can be assigned tags. Attempting to set a tag on
 /// a friend only included in the friends list from a social site integration (such as Facebook or Steam)
-/// will return the AccountNotFound error.
+/// will return the AccountNotFound error. See also ClientAddFriendAsync, ClientRemoveFriendAsync.
 ///
 /// Call <see cref="XAsyncGetStatus"/> to get the status of the operation.
 /// </remarks>
@@ -129,6 +135,7 @@ HRESULT PFFriendsClientSetFriendTagsAsync(
     _Inout_ XAsyncBlock* async
 ) noexcept;
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 /// <summary>
 /// Adds the Friend user to the friendlist of the user with PlayFabId. At least one of FriendPlayFabId,FriendUsername,FriendEmail,
 /// or FriendTitleDisplayName should be initialized.
@@ -147,7 +154,9 @@ HRESULT PFFriendsServerAddFriendAsync(
     _In_ const PFFriendsServerAddFriendRequest* request,
     _Inout_ XAsyncBlock* async
 ) noexcept;
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 /// <summary>
 /// Retrieves the current friends for the user with PlayFabId, constrained to users who have PlayFab
 /// accounts. Friends from linked accounts (Facebook, Steam) are also included. You may optionally exclude
@@ -198,7 +207,9 @@ HRESULT PFFriendsServerGetFriendsListGetResult(
     _Outptr_ PFFriendsGetFriendsListResult** result,
     _Out_opt_ size_t* bufferUsed
 ) noexcept;
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 /// <summary>
 /// Removes the specified friend from the the user's friend list
 /// </summary>
@@ -216,7 +227,9 @@ HRESULT PFFriendsServerRemoveFriendAsync(
     _In_ const PFFriendsServerRemoveFriendRequest* request,
     _Inout_ XAsyncBlock* async
 ) noexcept;
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 /// <summary>
 /// Updates the tag list for a specified user in the friend list of another user
 /// </summary>
@@ -237,6 +250,7 @@ HRESULT PFFriendsServerSetFriendTagsAsync(
     _In_ const PFFriendsServerSetFriendTagsRequest* request,
     _Inout_ XAsyncBlock* async
 ) noexcept;
+#endif
 
 
 }

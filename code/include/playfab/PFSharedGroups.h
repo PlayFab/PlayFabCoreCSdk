@@ -180,6 +180,7 @@ HRESULT PFSharedGroupsClientUpdateSharedGroupDataAsync(
     _Inout_ XAsyncBlock* async
 ) noexcept;
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 /// <summary>
 /// Adds users to the set of those able to update both the shared data, as well as the set of users in
 /// the group. Only users in the group (and the server) can add new members. Shared Groups are designed
@@ -197,7 +198,9 @@ HRESULT PFSharedGroupsServerAddSharedGroupMembersAsync(
     _In_ const PFSharedGroupsAddSharedGroupMembersRequest* request,
     _Inout_ XAsyncBlock* async
 ) noexcept;
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 /// <summary>
 /// Requests the creation of a shared group object, containing key/value pairs which may be updated by
 /// all members of the group. When created by a server, the group will initially have no members. Shared
@@ -251,7 +254,9 @@ HRESULT PFSharedGroupsServerCreateSharedGroupGetResult(
     _Outptr_ PFSharedGroupsCreateSharedGroupResult** result,
     _Out_opt_ size_t* bufferUsed
 ) noexcept;
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 /// <summary>
 /// Deletes a shared group, freeing up the shared group ID to be reused for a new group. Shared Groups
 /// are designed for sharing data between a very small number of players, please see our guide: https://docs.microsoft.com/gaming/playfab/features/social/groups/using-shared-group-data
@@ -268,7 +273,9 @@ HRESULT PFSharedGroupsServerDeleteSharedGroupAsync(
     _In_ const PFSharedGroupsDeleteSharedGroupRequest* request,
     _Inout_ XAsyncBlock* async
 ) noexcept;
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 /// <summary>
 /// Retrieves data stored in a shared group object, as well as the list of members in the group. The
 /// server can access all public and private group data. Shared Groups are designed for sharing data between
@@ -317,7 +324,9 @@ HRESULT PFSharedGroupsServerGetSharedGroupDataGetResult(
     _Outptr_ PFSharedGroupsGetSharedGroupDataResult** result,
     _Out_opt_ size_t* bufferUsed
 ) noexcept;
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 /// <summary>
 /// Removes users from the set of those able to update the shared data and the set of users in the group.
 /// Only users in the group can remove members. If as a result of the call, zero users remain with access,
@@ -336,7 +345,9 @@ HRESULT PFSharedGroupsServerRemoveSharedGroupMembersAsync(
     _In_ const PFSharedGroupsRemoveSharedGroupMembersRequest* request,
     _Inout_ XAsyncBlock* async
 ) noexcept;
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 /// <summary>
 /// Adds, updates, and removes data keys for a shared group object. If the permission is set to Public,
 /// all fields updated or added in this call will be readable by users not in the group. By default, data
@@ -361,6 +372,7 @@ HRESULT PFSharedGroupsServerUpdateSharedGroupDataAsync(
     _In_ const PFSharedGroupsUpdateSharedGroupDataRequest* request,
     _Inout_ XAsyncBlock* async
 ) noexcept;
+#endif
 
 
 }

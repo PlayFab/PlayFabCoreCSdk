@@ -32,41 +32,77 @@ HRESULT AutoGenAccountManagementTests::LogHR(HRESULT hr)
 void AutoGenAccountManagementTests::AddTests()
 {
     // Generated tests 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestAccountManagementAdminBanUsers", &AutoGenAccountManagementTests::TestAccountManagementAdminBanUsers);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestAccountManagementAdminDeleteMasterPlayerAccount", &AutoGenAccountManagementTests::TestAccountManagementAdminDeleteMasterPlayerAccount);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestAccountManagementAdminDeleteMembershipSubscription", &AutoGenAccountManagementTests::TestAccountManagementAdminDeleteMembershipSubscription);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestAccountManagementAdminDeletePlayer", &AutoGenAccountManagementTests::TestAccountManagementAdminDeletePlayer);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestAccountManagementAdminDeleteTitle", &AutoGenAccountManagementTests::TestAccountManagementAdminDeleteTitle);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestAccountManagementAdminExportMasterPlayerData", &AutoGenAccountManagementTests::TestAccountManagementAdminExportMasterPlayerData);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestAccountManagementAdminGetPlayedTitleList", &AutoGenAccountManagementTests::TestAccountManagementAdminGetPlayedTitleList);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestAccountManagementAdminGetPlayerIdFromAuthToken", &AutoGenAccountManagementTests::TestAccountManagementAdminGetPlayerIdFromAuthToken);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestAccountManagementAdminGetPlayerProfile", &AutoGenAccountManagementTests::TestAccountManagementAdminGetPlayerProfile);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestAccountManagementAdminGetUserAccountInfo", &AutoGenAccountManagementTests::TestAccountManagementAdminGetUserAccountInfo);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestAccountManagementAdminGetUserBans", &AutoGenAccountManagementTests::TestAccountManagementAdminGetUserBans);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestAccountManagementAdminResetPassword", &AutoGenAccountManagementTests::TestAccountManagementAdminResetPassword);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestAccountManagementAdminRevokeAllBansForUser", &AutoGenAccountManagementTests::TestAccountManagementAdminRevokeAllBansForUser);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestAccountManagementAdminRevokeBans", &AutoGenAccountManagementTests::TestAccountManagementAdminRevokeBans);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestAccountManagementAdminSendAccountRecoveryEmail", &AutoGenAccountManagementTests::TestAccountManagementAdminSendAccountRecoveryEmail);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestAccountManagementAdminSetMembershipOverride", &AutoGenAccountManagementTests::TestAccountManagementAdminSetMembershipOverride);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestAccountManagementAdminUpdateBans", &AutoGenAccountManagementTests::TestAccountManagementAdminUpdateBans);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestAccountManagementAdminUpdateUserTitleDisplayName", &AutoGenAccountManagementTests::TestAccountManagementAdminUpdateUserTitleDisplayName);
+#endif
 
     AddTest("TestAccountManagementClientAddGenericID", &AutoGenAccountManagementTests::TestAccountManagementClientAddGenericID);
 
@@ -102,35 +138,61 @@ void AutoGenAccountManagementTests::AddTests()
 
     AddTest("TestAccountManagementClientGetPlayFabIDsFromXboxLiveIDs", &AutoGenAccountManagementTests::TestAccountManagementClientGetPlayFabIDsFromXboxLiveIDs);
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestAccountManagementClientLinkAndroidDeviceID", &AutoGenAccountManagementTests::TestAccountManagementClientLinkAndroidDeviceID);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestAccountManagementClientLinkApple", &AutoGenAccountManagementTests::TestAccountManagementClientLinkApple);
+#endif
 
     AddTest("TestAccountManagementClientLinkCustomID", &AutoGenAccountManagementTests::TestAccountManagementClientLinkCustomID);
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestAccountManagementClientLinkFacebookAccount", &AutoGenAccountManagementTests::TestAccountManagementClientLinkFacebookAccount);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestAccountManagementClientLinkFacebookInstantGamesId", &AutoGenAccountManagementTests::TestAccountManagementClientLinkFacebookInstantGamesId);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestAccountManagementClientLinkGameCenterAccount", &AutoGenAccountManagementTests::TestAccountManagementClientLinkGameCenterAccount);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestAccountManagementClientLinkGoogleAccount", &AutoGenAccountManagementTests::TestAccountManagementClientLinkGoogleAccount);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestAccountManagementClientLinkIOSDeviceID", &AutoGenAccountManagementTests::TestAccountManagementClientLinkIOSDeviceID);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestAccountManagementClientLinkKongregate", &AutoGenAccountManagementTests::TestAccountManagementClientLinkKongregate);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestAccountManagementClientLinkNintendoServiceAccount", &AutoGenAccountManagementTests::TestAccountManagementClientLinkNintendoServiceAccount);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestAccountManagementClientLinkNintendoSwitchDeviceId", &AutoGenAccountManagementTests::TestAccountManagementClientLinkNintendoSwitchDeviceId);
+#endif
 
     AddTest("TestAccountManagementClientLinkOpenIdConnect", &AutoGenAccountManagementTests::TestAccountManagementClientLinkOpenIdConnect);
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestAccountManagementClientLinkPSNAccount", &AutoGenAccountManagementTests::TestAccountManagementClientLinkPSNAccount);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestAccountManagementClientLinkSteamAccount", &AutoGenAccountManagementTests::TestAccountManagementClientLinkSteamAccount);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestAccountManagementClientLinkTwitch", &AutoGenAccountManagementTests::TestAccountManagementClientLinkTwitch);
+#endif
 
     AddTest("TestAccountManagementClientLinkXboxAccount", &AutoGenAccountManagementTests::TestAccountManagementClientLinkXboxAccount);
 
@@ -142,35 +204,61 @@ void AutoGenAccountManagementTests::AddTests()
 
     AddTest("TestAccountManagementClientSendAccountRecoveryEmail", &AutoGenAccountManagementTests::TestAccountManagementClientSendAccountRecoveryEmail);
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestAccountManagementClientUnlinkAndroidDeviceID", &AutoGenAccountManagementTests::TestAccountManagementClientUnlinkAndroidDeviceID);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestAccountManagementClientUnlinkApple", &AutoGenAccountManagementTests::TestAccountManagementClientUnlinkApple);
+#endif
 
     AddTest("TestAccountManagementClientUnlinkCustomID", &AutoGenAccountManagementTests::TestAccountManagementClientUnlinkCustomID);
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestAccountManagementClientUnlinkFacebookAccount", &AutoGenAccountManagementTests::TestAccountManagementClientUnlinkFacebookAccount);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestAccountManagementClientUnlinkFacebookInstantGamesId", &AutoGenAccountManagementTests::TestAccountManagementClientUnlinkFacebookInstantGamesId);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestAccountManagementClientUnlinkGameCenterAccount", &AutoGenAccountManagementTests::TestAccountManagementClientUnlinkGameCenterAccount);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestAccountManagementClientUnlinkGoogleAccount", &AutoGenAccountManagementTests::TestAccountManagementClientUnlinkGoogleAccount);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestAccountManagementClientUnlinkIOSDeviceID", &AutoGenAccountManagementTests::TestAccountManagementClientUnlinkIOSDeviceID);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestAccountManagementClientUnlinkKongregate", &AutoGenAccountManagementTests::TestAccountManagementClientUnlinkKongregate);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestAccountManagementClientUnlinkNintendoServiceAccount", &AutoGenAccountManagementTests::TestAccountManagementClientUnlinkNintendoServiceAccount);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestAccountManagementClientUnlinkNintendoSwitchDeviceId", &AutoGenAccountManagementTests::TestAccountManagementClientUnlinkNintendoSwitchDeviceId);
+#endif
 
     AddTest("TestAccountManagementClientUnlinkOpenIdConnect", &AutoGenAccountManagementTests::TestAccountManagementClientUnlinkOpenIdConnect);
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestAccountManagementClientUnlinkPSNAccount", &AutoGenAccountManagementTests::TestAccountManagementClientUnlinkPSNAccount);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestAccountManagementClientUnlinkSteamAccount", &AutoGenAccountManagementTests::TestAccountManagementClientUnlinkSteamAccount);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestAccountManagementClientUnlinkTwitch", &AutoGenAccountManagementTests::TestAccountManagementClientUnlinkTwitch);
+#endif
 
     AddTest("TestAccountManagementClientUnlinkXboxAccount", &AutoGenAccountManagementTests::TestAccountManagementClientUnlinkXboxAccount);
 
@@ -178,67 +266,129 @@ void AutoGenAccountManagementTests::AddTests()
 
     AddTest("TestAccountManagementClientUpdateUserTitleDisplayName", &AutoGenAccountManagementTests::TestAccountManagementClientUpdateUserTitleDisplayName);
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestAccountManagementServerAddGenericID", &AutoGenAccountManagementTests::TestAccountManagementServerAddGenericID);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestAccountManagementServerBanUsers", &AutoGenAccountManagementTests::TestAccountManagementServerBanUsers);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestAccountManagementServerDeletePlayer", &AutoGenAccountManagementTests::TestAccountManagementServerDeletePlayer);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestAccountManagementServerDeletePushNotificationTemplate", &AutoGenAccountManagementTests::TestAccountManagementServerDeletePushNotificationTemplate);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestAccountManagementServerGetPlayerProfile", &AutoGenAccountManagementTests::TestAccountManagementServerGetPlayerProfile);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestAccountManagementServerGetPlayFabIDsFromFacebookIDs", &AutoGenAccountManagementTests::TestAccountManagementServerGetPlayFabIDsFromFacebookIDs);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestAccountManagementServerGetPlayFabIDsFromFacebookInstantGamesIds", &AutoGenAccountManagementTests::TestAccountManagementServerGetPlayFabIDsFromFacebookInstantGamesIds);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestAccountManagementServerGetPlayFabIDsFromGenericIDs", &AutoGenAccountManagementTests::TestAccountManagementServerGetPlayFabIDsFromGenericIDs);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestAccountManagementServerGetPlayFabIDsFromNintendoSwitchDeviceIds", &AutoGenAccountManagementTests::TestAccountManagementServerGetPlayFabIDsFromNintendoSwitchDeviceIds);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestAccountManagementServerGetPlayFabIDsFromPSNAccountIDs", &AutoGenAccountManagementTests::TestAccountManagementServerGetPlayFabIDsFromPSNAccountIDs);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestAccountManagementServerGetPlayFabIDsFromSteamIDs", &AutoGenAccountManagementTests::TestAccountManagementServerGetPlayFabIDsFromSteamIDs);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestAccountManagementServerGetPlayFabIDsFromXboxLiveIDs", &AutoGenAccountManagementTests::TestAccountManagementServerGetPlayFabIDsFromXboxLiveIDs);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestAccountManagementServerGetServerCustomIDsFromPlayFabIDs", &AutoGenAccountManagementTests::TestAccountManagementServerGetServerCustomIDsFromPlayFabIDs);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestAccountManagementServerGetUserAccountInfo", &AutoGenAccountManagementTests::TestAccountManagementServerGetUserAccountInfo);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestAccountManagementServerGetUserBans", &AutoGenAccountManagementTests::TestAccountManagementServerGetUserBans);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestAccountManagementServerLinkPSNAccount", &AutoGenAccountManagementTests::TestAccountManagementServerLinkPSNAccount);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestAccountManagementServerLinkServerCustomId", &AutoGenAccountManagementTests::TestAccountManagementServerLinkServerCustomId);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestAccountManagementServerLinkXboxAccount", &AutoGenAccountManagementTests::TestAccountManagementServerLinkXboxAccount);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestAccountManagementServerRemoveGenericID", &AutoGenAccountManagementTests::TestAccountManagementServerRemoveGenericID);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestAccountManagementServerRevokeAllBansForUser", &AutoGenAccountManagementTests::TestAccountManagementServerRevokeAllBansForUser);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestAccountManagementServerRevokeBans", &AutoGenAccountManagementTests::TestAccountManagementServerRevokeBans);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestAccountManagementServerSavePushNotificationTemplate", &AutoGenAccountManagementTests::TestAccountManagementServerSavePushNotificationTemplate);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestAccountManagementServerSendCustomAccountRecoveryEmail", &AutoGenAccountManagementTests::TestAccountManagementServerSendCustomAccountRecoveryEmail);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestAccountManagementServerSendEmailFromTemplate", &AutoGenAccountManagementTests::TestAccountManagementServerSendEmailFromTemplate);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestAccountManagementServerSendPushNotification", &AutoGenAccountManagementTests::TestAccountManagementServerSendPushNotification);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestAccountManagementServerSendPushNotificationFromTemplate", &AutoGenAccountManagementTests::TestAccountManagementServerSendPushNotificationFromTemplate);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestAccountManagementServerUnlinkPSNAccount", &AutoGenAccountManagementTests::TestAccountManagementServerUnlinkPSNAccount);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestAccountManagementServerUnlinkServerCustomId", &AutoGenAccountManagementTests::TestAccountManagementServerUnlinkServerCustomId);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestAccountManagementServerUnlinkXboxAccount", &AutoGenAccountManagementTests::TestAccountManagementServerUnlinkXboxAccount);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestAccountManagementServerUpdateAvatarUrl", &AutoGenAccountManagementTests::TestAccountManagementServerUpdateAvatarUrl);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestAccountManagementServerUpdateBans", &AutoGenAccountManagementTests::TestAccountManagementServerUpdateBans);
+#endif
 }
 
 void AutoGenAccountManagementTests::ClassSetUp()
@@ -348,9 +498,10 @@ void AutoGenAccountManagementTests::SetUp(TestContext& testContext)
 
 #pragma region AdminBanUsers
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenAccountManagementTests::TestAccountManagementAdminBanUsers(TestContext& testContext)
 {
-    struct AdminBanUsersResultHolder : public BanUsersResultHolder
+    struct AdminBanUsersResultHolderStruct : public BanUsersResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -369,7 +520,7 @@ void AutoGenAccountManagementTests::TestAccountManagementAdminBanUsers(TestConte
             return ValidatePFAccountManagementBanUsersResult(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<AdminBanUsersResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<AdminBanUsersResultHolderStruct>>(testContext);
 
     PFAccountManagementBanUsersRequestWrapper<> request;
     FillBanUsersRequest(request);
@@ -382,14 +533,16 @@ void AutoGenAccountManagementTests::TestAccountManagementAdminBanUsers(TestConte
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region AdminDeleteMasterPlayerAccount
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenAccountManagementTests::TestAccountManagementAdminDeleteMasterPlayerAccount(TestContext& testContext)
 {
-    struct AdminDeleteMasterPlayerAccountResultHolder : public DeleteMasterPlayerAccountResultHolder
+    struct AdminDeleteMasterPlayerAccountResultHolderStruct : public DeleteMasterPlayerAccountResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -408,7 +561,7 @@ void AutoGenAccountManagementTests::TestAccountManagementAdminDeleteMasterPlayer
             return ValidatePFAccountManagementDeleteMasterPlayerAccountResult(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<AdminDeleteMasterPlayerAccountResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<AdminDeleteMasterPlayerAccountResultHolderStruct>>(testContext);
 
     PFAccountManagementDeleteMasterPlayerAccountRequestWrapper<> request;
     FillDeleteMasterPlayerAccountRequest(request);
@@ -421,11 +574,13 @@ void AutoGenAccountManagementTests::TestAccountManagementAdminDeleteMasterPlayer
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region AdminDeleteMembershipSubscription
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenAccountManagementTests::TestAccountManagementAdminDeleteMembershipSubscription(TestContext& testContext)
 {
     auto async = std::make_unique<XAsyncHelper<XAsyncResult>>(testContext);
@@ -441,11 +596,13 @@ void AutoGenAccountManagementTests::TestAccountManagementAdminDeleteMembershipSu
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region AdminDeletePlayer
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenAccountManagementTests::TestAccountManagementAdminDeletePlayer(TestContext& testContext)
 {
     auto async = std::make_unique<XAsyncHelper<XAsyncResult>>(testContext);
@@ -461,11 +618,13 @@ void AutoGenAccountManagementTests::TestAccountManagementAdminDeletePlayer(TestC
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region AdminDeleteTitle
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenAccountManagementTests::TestAccountManagementAdminDeleteTitle(TestContext& testContext)
 {
     auto async = std::make_unique<XAsyncHelper<XAsyncResult>>(testContext);
@@ -478,14 +637,16 @@ void AutoGenAccountManagementTests::TestAccountManagementAdminDeleteTitle(TestCo
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region AdminExportMasterPlayerData
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenAccountManagementTests::TestAccountManagementAdminExportMasterPlayerData(TestContext& testContext)
 {
-    struct AdminExportMasterPlayerDataResultHolder : public ExportMasterPlayerDataResultHolder
+    struct AdminExportMasterPlayerDataResultHolderStruct : public ExportMasterPlayerDataResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -504,7 +665,7 @@ void AutoGenAccountManagementTests::TestAccountManagementAdminExportMasterPlayer
             return ValidatePFAccountManagementExportMasterPlayerDataResult(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<AdminExportMasterPlayerDataResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<AdminExportMasterPlayerDataResultHolderStruct>>(testContext);
 
     PFAccountManagementExportMasterPlayerDataRequestWrapper<> request;
     FillExportMasterPlayerDataRequest(request);
@@ -517,14 +678,16 @@ void AutoGenAccountManagementTests::TestAccountManagementAdminExportMasterPlayer
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region AdminGetPlayedTitleList
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenAccountManagementTests::TestAccountManagementAdminGetPlayedTitleList(TestContext& testContext)
 {
-    struct AdminGetPlayedTitleListResultHolder : public GetPlayedTitleListResultHolder
+    struct AdminGetPlayedTitleListResultHolderStruct : public GetPlayedTitleListResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -543,7 +706,7 @@ void AutoGenAccountManagementTests::TestAccountManagementAdminGetPlayedTitleList
             return ValidatePFAccountManagementGetPlayedTitleListResult(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<AdminGetPlayedTitleListResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<AdminGetPlayedTitleListResultHolderStruct>>(testContext);
 
     PFAccountManagementGetPlayedTitleListRequestWrapper<> request;
     FillGetPlayedTitleListRequest(request);
@@ -556,14 +719,16 @@ void AutoGenAccountManagementTests::TestAccountManagementAdminGetPlayedTitleList
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region AdminGetPlayerIdFromAuthToken
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenAccountManagementTests::TestAccountManagementAdminGetPlayerIdFromAuthToken(TestContext& testContext)
 {
-    struct AdminGetPlayerIdFromAuthTokenResultHolder : public GetPlayerIdFromAuthTokenResultHolder
+    struct AdminGetPlayerIdFromAuthTokenResultHolderStruct : public GetPlayerIdFromAuthTokenResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -582,7 +747,7 @@ void AutoGenAccountManagementTests::TestAccountManagementAdminGetPlayerIdFromAut
             return ValidatePFAccountManagementGetPlayerIdFromAuthTokenResult(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<AdminGetPlayerIdFromAuthTokenResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<AdminGetPlayerIdFromAuthTokenResultHolderStruct>>(testContext);
 
     PFAccountManagementGetPlayerIdFromAuthTokenRequestWrapper<> request;
     FillGetPlayerIdFromAuthTokenRequest(request);
@@ -595,14 +760,16 @@ void AutoGenAccountManagementTests::TestAccountManagementAdminGetPlayerIdFromAut
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region AdminGetPlayerProfile
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenAccountManagementTests::TestAccountManagementAdminGetPlayerProfile(TestContext& testContext)
 {
-    struct AdminGetPlayerProfileResultHolder : public GetPlayerProfileResultHolder
+    struct AdminGetPlayerProfileResultHolderStruct : public GetPlayerProfileResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -621,7 +788,7 @@ void AutoGenAccountManagementTests::TestAccountManagementAdminGetPlayerProfile(T
             return ValidatePFAccountManagementGetPlayerProfileResult(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<AdminGetPlayerProfileResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<AdminGetPlayerProfileResultHolderStruct>>(testContext);
 
     PFAccountManagementGetPlayerProfileRequestWrapper<> request;
     FillGetPlayerProfileRequest(request);
@@ -634,14 +801,16 @@ void AutoGenAccountManagementTests::TestAccountManagementAdminGetPlayerProfile(T
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region AdminGetUserAccountInfo
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenAccountManagementTests::TestAccountManagementAdminGetUserAccountInfo(TestContext& testContext)
 {
-    struct AdminGetUserAccountInfoResultHolder : public LookupUserAccountInfoResultHolder
+    struct AdminGetUserAccountInfoResultHolderStruct : public LookupUserAccountInfoResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -660,7 +829,7 @@ void AutoGenAccountManagementTests::TestAccountManagementAdminGetUserAccountInfo
             return ValidatePFAccountManagementLookupUserAccountInfoResult(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<AdminGetUserAccountInfoResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<AdminGetUserAccountInfoResultHolderStruct>>(testContext);
 
     PFAccountManagementLookupUserAccountInfoRequestWrapper<> request;
     FillLookupUserAccountInfoRequest(request);
@@ -673,14 +842,16 @@ void AutoGenAccountManagementTests::TestAccountManagementAdminGetUserAccountInfo
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region AdminGetUserBans
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenAccountManagementTests::TestAccountManagementAdminGetUserBans(TestContext& testContext)
 {
-    struct AdminGetUserBansResultHolder : public GetUserBansResultHolder
+    struct AdminGetUserBansResultHolderStruct : public GetUserBansResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -699,7 +870,7 @@ void AutoGenAccountManagementTests::TestAccountManagementAdminGetUserBans(TestCo
             return ValidatePFAccountManagementGetUserBansResult(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<AdminGetUserBansResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<AdminGetUserBansResultHolderStruct>>(testContext);
 
     PFAccountManagementGetUserBansRequestWrapper<> request;
     FillGetUserBansRequest(request);
@@ -712,11 +883,13 @@ void AutoGenAccountManagementTests::TestAccountManagementAdminGetUserBans(TestCo
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region AdminResetPassword
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenAccountManagementTests::TestAccountManagementAdminResetPassword(TestContext& testContext)
 {
     auto async = std::make_unique<XAsyncHelper<XAsyncResult>>(testContext);
@@ -732,14 +905,16 @@ void AutoGenAccountManagementTests::TestAccountManagementAdminResetPassword(Test
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region AdminRevokeAllBansForUser
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenAccountManagementTests::TestAccountManagementAdminRevokeAllBansForUser(TestContext& testContext)
 {
-    struct AdminRevokeAllBansForUserResultHolder : public RevokeAllBansForUserResultHolder
+    struct AdminRevokeAllBansForUserResultHolderStruct : public RevokeAllBansForUserResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -758,7 +933,7 @@ void AutoGenAccountManagementTests::TestAccountManagementAdminRevokeAllBansForUs
             return ValidatePFAccountManagementRevokeAllBansForUserResult(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<AdminRevokeAllBansForUserResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<AdminRevokeAllBansForUserResultHolderStruct>>(testContext);
 
     PFAccountManagementRevokeAllBansForUserRequestWrapper<> request;
     FillRevokeAllBansForUserRequest(request);
@@ -771,14 +946,16 @@ void AutoGenAccountManagementTests::TestAccountManagementAdminRevokeAllBansForUs
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region AdminRevokeBans
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenAccountManagementTests::TestAccountManagementAdminRevokeBans(TestContext& testContext)
 {
-    struct AdminRevokeBansResultHolder : public RevokeBansResultHolder
+    struct AdminRevokeBansResultHolderStruct : public RevokeBansResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -797,7 +974,7 @@ void AutoGenAccountManagementTests::TestAccountManagementAdminRevokeBans(TestCon
             return ValidatePFAccountManagementRevokeBansResult(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<AdminRevokeBansResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<AdminRevokeBansResultHolderStruct>>(testContext);
 
     PFAccountManagementRevokeBansRequestWrapper<> request;
     FillRevokeBansRequest(request);
@@ -810,11 +987,13 @@ void AutoGenAccountManagementTests::TestAccountManagementAdminRevokeBans(TestCon
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region AdminSendAccountRecoveryEmail
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenAccountManagementTests::TestAccountManagementAdminSendAccountRecoveryEmail(TestContext& testContext)
 {
     auto async = std::make_unique<XAsyncHelper<XAsyncResult>>(testContext);
@@ -830,11 +1009,13 @@ void AutoGenAccountManagementTests::TestAccountManagementAdminSendAccountRecover
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region AdminSetMembershipOverride
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenAccountManagementTests::TestAccountManagementAdminSetMembershipOverride(TestContext& testContext)
 {
     auto async = std::make_unique<XAsyncHelper<XAsyncResult>>(testContext);
@@ -850,14 +1031,16 @@ void AutoGenAccountManagementTests::TestAccountManagementAdminSetMembershipOverr
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region AdminUpdateBans
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenAccountManagementTests::TestAccountManagementAdminUpdateBans(TestContext& testContext)
 {
-    struct AdminUpdateBansResultHolder : public UpdateBansResultHolder
+    struct AdminUpdateBansResultHolderStruct : public UpdateBansResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -876,7 +1059,7 @@ void AutoGenAccountManagementTests::TestAccountManagementAdminUpdateBans(TestCon
             return ValidatePFAccountManagementUpdateBansResult(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<AdminUpdateBansResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<AdminUpdateBansResultHolderStruct>>(testContext);
 
     PFAccountManagementUpdateBansRequestWrapper<> request;
     FillUpdateBansRequest(request);
@@ -889,14 +1072,16 @@ void AutoGenAccountManagementTests::TestAccountManagementAdminUpdateBans(TestCon
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region AdminUpdateUserTitleDisplayName
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenAccountManagementTests::TestAccountManagementAdminUpdateUserTitleDisplayName(TestContext& testContext)
 {
-    struct AdminUpdateUserTitleDisplayNameResultHolder : public UpdateUserTitleDisplayNameResultHolder
+    struct AdminUpdateUserTitleDisplayNameResultHolderStruct : public UpdateUserTitleDisplayNameResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -915,7 +1100,7 @@ void AutoGenAccountManagementTests::TestAccountManagementAdminUpdateUserTitleDis
             return ValidatePFAccountManagementUpdateUserTitleDisplayNameResult(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<AdminUpdateUserTitleDisplayNameResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<AdminUpdateUserTitleDisplayNameResultHolderStruct>>(testContext);
 
     PFAccountManagementAdminUpdateUserTitleDisplayNameRequestWrapper<> request;
     FillAdminUpdateUserTitleDisplayNameRequest(request);
@@ -928,6 +1113,7 @@ void AutoGenAccountManagementTests::TestAccountManagementAdminUpdateUserTitleDis
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
@@ -975,7 +1161,7 @@ void AutoGenAccountManagementTests::TestAccountManagementClientAddOrUpdateContac
 
 void AutoGenAccountManagementTests::TestAccountManagementClientAddUsernamePassword(TestContext& testContext)
 {
-    struct ClientAddUsernamePasswordResultHolder : public AddUsernamePasswordResultHolder
+    struct ClientAddUsernamePasswordResultHolderStruct : public AddUsernamePasswordResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -994,7 +1180,7 @@ void AutoGenAccountManagementTests::TestAccountManagementClientAddUsernamePasswo
             return ValidatePFAccountManagementAddUsernamePasswordResult(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<ClientAddUsernamePasswordResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<ClientAddUsernamePasswordResultHolderStruct>>(testContext);
 
     PFAccountManagementAddUsernamePasswordRequestWrapper<> request;
     FillAddUsernamePasswordRequest(request);
@@ -1014,7 +1200,7 @@ void AutoGenAccountManagementTests::TestAccountManagementClientAddUsernamePasswo
 
 void AutoGenAccountManagementTests::TestAccountManagementClientGetAccountInfo(TestContext& testContext)
 {
-    struct ClientGetAccountInfoResultHolder : public GetAccountInfoResultHolder
+    struct ClientGetAccountInfoResultHolderStruct : public GetAccountInfoResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -1033,7 +1219,7 @@ void AutoGenAccountManagementTests::TestAccountManagementClientGetAccountInfo(Te
             return ValidatePFAccountManagementGetAccountInfoResult(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<ClientGetAccountInfoResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<ClientGetAccountInfoResultHolderStruct>>(testContext);
 
     PFAccountManagementGetAccountInfoRequestWrapper<> request;
     FillGetAccountInfoRequest(request);
@@ -1053,7 +1239,7 @@ void AutoGenAccountManagementTests::TestAccountManagementClientGetAccountInfo(Te
 
 void AutoGenAccountManagementTests::TestAccountManagementClientGetPlayerCombinedInfo(TestContext& testContext)
 {
-    struct ClientGetPlayerCombinedInfoResultHolder : public GetPlayerCombinedInfoResultHolder
+    struct ClientGetPlayerCombinedInfoResultHolderStruct : public GetPlayerCombinedInfoResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -1072,7 +1258,7 @@ void AutoGenAccountManagementTests::TestAccountManagementClientGetPlayerCombined
             return ValidatePFGetPlayerCombinedInfoResult(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<ClientGetPlayerCombinedInfoResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<ClientGetPlayerCombinedInfoResultHolderStruct>>(testContext);
 
     PFGetPlayerCombinedInfoRequestWrapper<> request;
     FillGetPlayerCombinedInfoRequest(request);
@@ -1092,7 +1278,7 @@ void AutoGenAccountManagementTests::TestAccountManagementClientGetPlayerCombined
 
 void AutoGenAccountManagementTests::TestAccountManagementClientGetPlayerProfile(TestContext& testContext)
 {
-    struct ClientGetPlayerProfileResultHolder : public GetPlayerProfileResultHolder
+    struct ClientGetPlayerProfileResultHolderStruct : public GetPlayerProfileResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -1111,7 +1297,7 @@ void AutoGenAccountManagementTests::TestAccountManagementClientGetPlayerProfile(
             return ValidatePFAccountManagementGetPlayerProfileResult(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<ClientGetPlayerProfileResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<ClientGetPlayerProfileResultHolderStruct>>(testContext);
 
     PFAccountManagementGetPlayerProfileRequestWrapper<> request;
     FillGetPlayerProfileRequest(request);
@@ -1131,7 +1317,7 @@ void AutoGenAccountManagementTests::TestAccountManagementClientGetPlayerProfile(
 
 void AutoGenAccountManagementTests::TestAccountManagementClientGetPlayFabIDsFromFacebookIDs(TestContext& testContext)
 {
-    struct ClientGetPlayFabIDsFromFacebookIDsResultHolder : public GetPlayFabIDsFromFacebookIDsResultHolder
+    struct ClientGetPlayFabIDsFromFacebookIDsResultHolderStruct : public GetPlayFabIDsFromFacebookIDsResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -1150,7 +1336,7 @@ void AutoGenAccountManagementTests::TestAccountManagementClientGetPlayFabIDsFrom
             return ValidatePFAccountManagementGetPlayFabIDsFromFacebookIDsResult(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<ClientGetPlayFabIDsFromFacebookIDsResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<ClientGetPlayFabIDsFromFacebookIDsResultHolderStruct>>(testContext);
 
     PFAccountManagementGetPlayFabIDsFromFacebookIDsRequestWrapper<> request;
     FillGetPlayFabIDsFromFacebookIDsRequest(request);
@@ -1170,7 +1356,7 @@ void AutoGenAccountManagementTests::TestAccountManagementClientGetPlayFabIDsFrom
 
 void AutoGenAccountManagementTests::TestAccountManagementClientGetPlayFabIDsFromFacebookInstantGamesIds(TestContext& testContext)
 {
-    struct ClientGetPlayFabIDsFromFacebookInstantGamesIdsResultHolder : public GetPlayFabIDsFromFacebookInstantGamesIdsResultHolder
+    struct ClientGetPlayFabIDsFromFacebookInstantGamesIdsResultHolderStruct : public GetPlayFabIDsFromFacebookInstantGamesIdsResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -1189,7 +1375,7 @@ void AutoGenAccountManagementTests::TestAccountManagementClientGetPlayFabIDsFrom
             return ValidatePFAccountManagementGetPlayFabIDsFromFacebookInstantGamesIdsResult(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<ClientGetPlayFabIDsFromFacebookInstantGamesIdsResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<ClientGetPlayFabIDsFromFacebookInstantGamesIdsResultHolderStruct>>(testContext);
 
     PFAccountManagementGetPlayFabIDsFromFacebookInstantGamesIdsRequestWrapper<> request;
     FillGetPlayFabIDsFromFacebookInstantGamesIdsRequest(request);
@@ -1209,7 +1395,7 @@ void AutoGenAccountManagementTests::TestAccountManagementClientGetPlayFabIDsFrom
 
 void AutoGenAccountManagementTests::TestAccountManagementClientGetPlayFabIDsFromGameCenterIDs(TestContext& testContext)
 {
-    struct ClientGetPlayFabIDsFromGameCenterIDsResultHolder : public GetPlayFabIDsFromGameCenterIDsResultHolder
+    struct ClientGetPlayFabIDsFromGameCenterIDsResultHolderStruct : public GetPlayFabIDsFromGameCenterIDsResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -1228,7 +1414,7 @@ void AutoGenAccountManagementTests::TestAccountManagementClientGetPlayFabIDsFrom
             return ValidatePFAccountManagementGetPlayFabIDsFromGameCenterIDsResult(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<ClientGetPlayFabIDsFromGameCenterIDsResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<ClientGetPlayFabIDsFromGameCenterIDsResultHolderStruct>>(testContext);
 
     PFAccountManagementGetPlayFabIDsFromGameCenterIDsRequestWrapper<> request;
     FillGetPlayFabIDsFromGameCenterIDsRequest(request);
@@ -1248,7 +1434,7 @@ void AutoGenAccountManagementTests::TestAccountManagementClientGetPlayFabIDsFrom
 
 void AutoGenAccountManagementTests::TestAccountManagementClientGetPlayFabIDsFromGenericIDs(TestContext& testContext)
 {
-    struct ClientGetPlayFabIDsFromGenericIDsResultHolder : public GetPlayFabIDsFromGenericIDsResultHolder
+    struct ClientGetPlayFabIDsFromGenericIDsResultHolderStruct : public GetPlayFabIDsFromGenericIDsResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -1267,7 +1453,7 @@ void AutoGenAccountManagementTests::TestAccountManagementClientGetPlayFabIDsFrom
             return ValidatePFAccountManagementGetPlayFabIDsFromGenericIDsResult(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<ClientGetPlayFabIDsFromGenericIDsResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<ClientGetPlayFabIDsFromGenericIDsResultHolderStruct>>(testContext);
 
     PFAccountManagementGetPlayFabIDsFromGenericIDsRequestWrapper<> request;
     FillGetPlayFabIDsFromGenericIDsRequest(request);
@@ -1287,7 +1473,7 @@ void AutoGenAccountManagementTests::TestAccountManagementClientGetPlayFabIDsFrom
 
 void AutoGenAccountManagementTests::TestAccountManagementClientGetPlayFabIDsFromGoogleIDs(TestContext& testContext)
 {
-    struct ClientGetPlayFabIDsFromGoogleIDsResultHolder : public GetPlayFabIDsFromGoogleIDsResultHolder
+    struct ClientGetPlayFabIDsFromGoogleIDsResultHolderStruct : public GetPlayFabIDsFromGoogleIDsResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -1306,7 +1492,7 @@ void AutoGenAccountManagementTests::TestAccountManagementClientGetPlayFabIDsFrom
             return ValidatePFAccountManagementGetPlayFabIDsFromGoogleIDsResult(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<ClientGetPlayFabIDsFromGoogleIDsResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<ClientGetPlayFabIDsFromGoogleIDsResultHolderStruct>>(testContext);
 
     PFAccountManagementGetPlayFabIDsFromGoogleIDsRequestWrapper<> request;
     FillGetPlayFabIDsFromGoogleIDsRequest(request);
@@ -1326,7 +1512,7 @@ void AutoGenAccountManagementTests::TestAccountManagementClientGetPlayFabIDsFrom
 
 void AutoGenAccountManagementTests::TestAccountManagementClientGetPlayFabIDsFromKongregateIDs(TestContext& testContext)
 {
-    struct ClientGetPlayFabIDsFromKongregateIDsResultHolder : public GetPlayFabIDsFromKongregateIDsResultHolder
+    struct ClientGetPlayFabIDsFromKongregateIDsResultHolderStruct : public GetPlayFabIDsFromKongregateIDsResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -1345,7 +1531,7 @@ void AutoGenAccountManagementTests::TestAccountManagementClientGetPlayFabIDsFrom
             return ValidatePFAccountManagementGetPlayFabIDsFromKongregateIDsResult(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<ClientGetPlayFabIDsFromKongregateIDsResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<ClientGetPlayFabIDsFromKongregateIDsResultHolderStruct>>(testContext);
 
     PFAccountManagementGetPlayFabIDsFromKongregateIDsRequestWrapper<> request;
     FillGetPlayFabIDsFromKongregateIDsRequest(request);
@@ -1365,7 +1551,7 @@ void AutoGenAccountManagementTests::TestAccountManagementClientGetPlayFabIDsFrom
 
 void AutoGenAccountManagementTests::TestAccountManagementClientGetPlayFabIDsFromNintendoSwitchDeviceIds(TestContext& testContext)
 {
-    struct ClientGetPlayFabIDsFromNintendoSwitchDeviceIdsResultHolder : public GetPlayFabIDsFromNintendoSwitchDeviceIdsResultHolder
+    struct ClientGetPlayFabIDsFromNintendoSwitchDeviceIdsResultHolderStruct : public GetPlayFabIDsFromNintendoSwitchDeviceIdsResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -1384,7 +1570,7 @@ void AutoGenAccountManagementTests::TestAccountManagementClientGetPlayFabIDsFrom
             return ValidatePFAccountManagementGetPlayFabIDsFromNintendoSwitchDeviceIdsResult(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<ClientGetPlayFabIDsFromNintendoSwitchDeviceIdsResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<ClientGetPlayFabIDsFromNintendoSwitchDeviceIdsResultHolderStruct>>(testContext);
 
     PFAccountManagementGetPlayFabIDsFromNintendoSwitchDeviceIdsRequestWrapper<> request;
     FillGetPlayFabIDsFromNintendoSwitchDeviceIdsRequest(request);
@@ -1404,7 +1590,7 @@ void AutoGenAccountManagementTests::TestAccountManagementClientGetPlayFabIDsFrom
 
 void AutoGenAccountManagementTests::TestAccountManagementClientGetPlayFabIDsFromPSNAccountIDs(TestContext& testContext)
 {
-    struct ClientGetPlayFabIDsFromPSNAccountIDsResultHolder : public GetPlayFabIDsFromPSNAccountIDsResultHolder
+    struct ClientGetPlayFabIDsFromPSNAccountIDsResultHolderStruct : public GetPlayFabIDsFromPSNAccountIDsResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -1423,7 +1609,7 @@ void AutoGenAccountManagementTests::TestAccountManagementClientGetPlayFabIDsFrom
             return ValidatePFAccountManagementGetPlayFabIDsFromPSNAccountIDsResult(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<ClientGetPlayFabIDsFromPSNAccountIDsResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<ClientGetPlayFabIDsFromPSNAccountIDsResultHolderStruct>>(testContext);
 
     PFAccountManagementGetPlayFabIDsFromPSNAccountIDsRequestWrapper<> request;
     FillGetPlayFabIDsFromPSNAccountIDsRequest(request);
@@ -1443,7 +1629,7 @@ void AutoGenAccountManagementTests::TestAccountManagementClientGetPlayFabIDsFrom
 
 void AutoGenAccountManagementTests::TestAccountManagementClientGetPlayFabIDsFromSteamIDs(TestContext& testContext)
 {
-    struct ClientGetPlayFabIDsFromSteamIDsResultHolder : public GetPlayFabIDsFromSteamIDsResultHolder
+    struct ClientGetPlayFabIDsFromSteamIDsResultHolderStruct : public GetPlayFabIDsFromSteamIDsResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -1462,7 +1648,7 @@ void AutoGenAccountManagementTests::TestAccountManagementClientGetPlayFabIDsFrom
             return ValidatePFAccountManagementGetPlayFabIDsFromSteamIDsResult(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<ClientGetPlayFabIDsFromSteamIDsResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<ClientGetPlayFabIDsFromSteamIDsResultHolderStruct>>(testContext);
 
     PFAccountManagementGetPlayFabIDsFromSteamIDsRequestWrapper<> request;
     FillGetPlayFabIDsFromSteamIDsRequest(request);
@@ -1482,7 +1668,7 @@ void AutoGenAccountManagementTests::TestAccountManagementClientGetPlayFabIDsFrom
 
 void AutoGenAccountManagementTests::TestAccountManagementClientGetPlayFabIDsFromTwitchIDs(TestContext& testContext)
 {
-    struct ClientGetPlayFabIDsFromTwitchIDsResultHolder : public GetPlayFabIDsFromTwitchIDsResultHolder
+    struct ClientGetPlayFabIDsFromTwitchIDsResultHolderStruct : public GetPlayFabIDsFromTwitchIDsResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -1501,7 +1687,7 @@ void AutoGenAccountManagementTests::TestAccountManagementClientGetPlayFabIDsFrom
             return ValidatePFAccountManagementGetPlayFabIDsFromTwitchIDsResult(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<ClientGetPlayFabIDsFromTwitchIDsResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<ClientGetPlayFabIDsFromTwitchIDsResultHolderStruct>>(testContext);
 
     PFAccountManagementGetPlayFabIDsFromTwitchIDsRequestWrapper<> request;
     FillGetPlayFabIDsFromTwitchIDsRequest(request);
@@ -1521,7 +1707,7 @@ void AutoGenAccountManagementTests::TestAccountManagementClientGetPlayFabIDsFrom
 
 void AutoGenAccountManagementTests::TestAccountManagementClientGetPlayFabIDsFromXboxLiveIDs(TestContext& testContext)
 {
-    struct ClientGetPlayFabIDsFromXboxLiveIDsResultHolder : public GetPlayFabIDsFromXboxLiveIDsResultHolder
+    struct ClientGetPlayFabIDsFromXboxLiveIDsResultHolderStruct : public GetPlayFabIDsFromXboxLiveIDsResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -1540,7 +1726,7 @@ void AutoGenAccountManagementTests::TestAccountManagementClientGetPlayFabIDsFrom
             return ValidatePFAccountManagementGetPlayFabIDsFromXboxLiveIDsResult(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<ClientGetPlayFabIDsFromXboxLiveIDsResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<ClientGetPlayFabIDsFromXboxLiveIDsResultHolderStruct>>(testContext);
 
     PFAccountManagementGetPlayFabIDsFromXboxLiveIDsRequestWrapper<> request;
     FillGetPlayFabIDsFromXboxLiveIDsRequest(request);
@@ -1558,6 +1744,7 @@ void AutoGenAccountManagementTests::TestAccountManagementClientGetPlayFabIDsFrom
 
 #pragma region ClientLinkAndroidDeviceID
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenAccountManagementTests::TestAccountManagementClientLinkAndroidDeviceID(TestContext& testContext)
 {
     auto async = std::make_unique<XAsyncHelper<XAsyncResult>>(testContext);
@@ -1573,11 +1760,13 @@ void AutoGenAccountManagementTests::TestAccountManagementClientLinkAndroidDevice
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region ClientLinkApple
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenAccountManagementTests::TestAccountManagementClientLinkApple(TestContext& testContext)
 {
     auto async = std::make_unique<XAsyncHelper<XAsyncResult>>(testContext);
@@ -1593,6 +1782,7 @@ void AutoGenAccountManagementTests::TestAccountManagementClientLinkApple(TestCon
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
@@ -1618,6 +1808,7 @@ void AutoGenAccountManagementTests::TestAccountManagementClientLinkCustomID(Test
 
 #pragma region ClientLinkFacebookAccount
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenAccountManagementTests::TestAccountManagementClientLinkFacebookAccount(TestContext& testContext)
 {
     auto async = std::make_unique<XAsyncHelper<XAsyncResult>>(testContext);
@@ -1633,11 +1824,13 @@ void AutoGenAccountManagementTests::TestAccountManagementClientLinkFacebookAccou
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region ClientLinkFacebookInstantGamesId
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenAccountManagementTests::TestAccountManagementClientLinkFacebookInstantGamesId(TestContext& testContext)
 {
     auto async = std::make_unique<XAsyncHelper<XAsyncResult>>(testContext);
@@ -1653,11 +1846,13 @@ void AutoGenAccountManagementTests::TestAccountManagementClientLinkFacebookInsta
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region ClientLinkGameCenterAccount
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenAccountManagementTests::TestAccountManagementClientLinkGameCenterAccount(TestContext& testContext)
 {
     auto async = std::make_unique<XAsyncHelper<XAsyncResult>>(testContext);
@@ -1673,11 +1868,13 @@ void AutoGenAccountManagementTests::TestAccountManagementClientLinkGameCenterAcc
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region ClientLinkGoogleAccount
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenAccountManagementTests::TestAccountManagementClientLinkGoogleAccount(TestContext& testContext)
 {
     auto async = std::make_unique<XAsyncHelper<XAsyncResult>>(testContext);
@@ -1693,11 +1890,13 @@ void AutoGenAccountManagementTests::TestAccountManagementClientLinkGoogleAccount
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region ClientLinkIOSDeviceID
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenAccountManagementTests::TestAccountManagementClientLinkIOSDeviceID(TestContext& testContext)
 {
     auto async = std::make_unique<XAsyncHelper<XAsyncResult>>(testContext);
@@ -1713,11 +1912,13 @@ void AutoGenAccountManagementTests::TestAccountManagementClientLinkIOSDeviceID(T
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region ClientLinkKongregate
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenAccountManagementTests::TestAccountManagementClientLinkKongregate(TestContext& testContext)
 {
     auto async = std::make_unique<XAsyncHelper<XAsyncResult>>(testContext);
@@ -1733,11 +1934,13 @@ void AutoGenAccountManagementTests::TestAccountManagementClientLinkKongregate(Te
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region ClientLinkNintendoServiceAccount
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenAccountManagementTests::TestAccountManagementClientLinkNintendoServiceAccount(TestContext& testContext)
 {
     auto async = std::make_unique<XAsyncHelper<XAsyncResult>>(testContext);
@@ -1753,11 +1956,13 @@ void AutoGenAccountManagementTests::TestAccountManagementClientLinkNintendoServi
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region ClientLinkNintendoSwitchDeviceId
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenAccountManagementTests::TestAccountManagementClientLinkNintendoSwitchDeviceId(TestContext& testContext)
 {
     auto async = std::make_unique<XAsyncHelper<XAsyncResult>>(testContext);
@@ -1773,6 +1978,7 @@ void AutoGenAccountManagementTests::TestAccountManagementClientLinkNintendoSwitc
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
@@ -1798,6 +2004,7 @@ void AutoGenAccountManagementTests::TestAccountManagementClientLinkOpenIdConnect
 
 #pragma region ClientLinkPSNAccount
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenAccountManagementTests::TestAccountManagementClientLinkPSNAccount(TestContext& testContext)
 {
     auto async = std::make_unique<XAsyncHelper<XAsyncResult>>(testContext);
@@ -1813,11 +2020,13 @@ void AutoGenAccountManagementTests::TestAccountManagementClientLinkPSNAccount(Te
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region ClientLinkSteamAccount
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenAccountManagementTests::TestAccountManagementClientLinkSteamAccount(TestContext& testContext)
 {
     auto async = std::make_unique<XAsyncHelper<XAsyncResult>>(testContext);
@@ -1833,11 +2042,13 @@ void AutoGenAccountManagementTests::TestAccountManagementClientLinkSteamAccount(
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region ClientLinkTwitch
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenAccountManagementTests::TestAccountManagementClientLinkTwitch(TestContext& testContext)
 {
     auto async = std::make_unique<XAsyncHelper<XAsyncResult>>(testContext);
@@ -1853,6 +2064,7 @@ void AutoGenAccountManagementTests::TestAccountManagementClientLinkTwitch(TestCo
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
@@ -1920,7 +2132,7 @@ void AutoGenAccountManagementTests::TestAccountManagementClientRemoveGenericID(T
 
 void AutoGenAccountManagementTests::TestAccountManagementClientReportPlayer(TestContext& testContext)
 {
-    struct ClientReportPlayerResultHolder : public ReportPlayerClientResultHolder
+    struct ClientReportPlayerResultHolderStruct : public ReportPlayerClientResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -1934,7 +2146,7 @@ void AutoGenAccountManagementTests::TestAccountManagementClientReportPlayer(Test
             return ValidatePFAccountManagementReportPlayerClientResult(&result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<ClientReportPlayerResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<ClientReportPlayerResultHolderStruct>>(testContext);
 
     PFAccountManagementReportPlayerClientRequestWrapper<> request;
     FillReportPlayerClientRequest(request);
@@ -1972,6 +2184,7 @@ void AutoGenAccountManagementTests::TestAccountManagementClientSendAccountRecove
 
 #pragma region ClientUnlinkAndroidDeviceID
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenAccountManagementTests::TestAccountManagementClientUnlinkAndroidDeviceID(TestContext& testContext)
 {
     auto async = std::make_unique<XAsyncHelper<XAsyncResult>>(testContext);
@@ -1987,11 +2200,13 @@ void AutoGenAccountManagementTests::TestAccountManagementClientUnlinkAndroidDevi
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region ClientUnlinkApple
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenAccountManagementTests::TestAccountManagementClientUnlinkApple(TestContext& testContext)
 {
     auto async = std::make_unique<XAsyncHelper<XAsyncResult>>(testContext);
@@ -2007,6 +2222,7 @@ void AutoGenAccountManagementTests::TestAccountManagementClientUnlinkApple(TestC
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
@@ -2032,6 +2248,7 @@ void AutoGenAccountManagementTests::TestAccountManagementClientUnlinkCustomID(Te
 
 #pragma region ClientUnlinkFacebookAccount
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenAccountManagementTests::TestAccountManagementClientUnlinkFacebookAccount(TestContext& testContext)
 {
     auto async = std::make_unique<XAsyncHelper<XAsyncResult>>(testContext);
@@ -2047,11 +2264,13 @@ void AutoGenAccountManagementTests::TestAccountManagementClientUnlinkFacebookAcc
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region ClientUnlinkFacebookInstantGamesId
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenAccountManagementTests::TestAccountManagementClientUnlinkFacebookInstantGamesId(TestContext& testContext)
 {
     auto async = std::make_unique<XAsyncHelper<XAsyncResult>>(testContext);
@@ -2067,11 +2286,13 @@ void AutoGenAccountManagementTests::TestAccountManagementClientUnlinkFacebookIns
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region ClientUnlinkGameCenterAccount
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenAccountManagementTests::TestAccountManagementClientUnlinkGameCenterAccount(TestContext& testContext)
 {
     auto async = std::make_unique<XAsyncHelper<XAsyncResult>>(testContext);
@@ -2087,11 +2308,13 @@ void AutoGenAccountManagementTests::TestAccountManagementClientUnlinkGameCenterA
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region ClientUnlinkGoogleAccount
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenAccountManagementTests::TestAccountManagementClientUnlinkGoogleAccount(TestContext& testContext)
 {
     auto async = std::make_unique<XAsyncHelper<XAsyncResult>>(testContext);
@@ -2107,11 +2330,13 @@ void AutoGenAccountManagementTests::TestAccountManagementClientUnlinkGoogleAccou
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region ClientUnlinkIOSDeviceID
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenAccountManagementTests::TestAccountManagementClientUnlinkIOSDeviceID(TestContext& testContext)
 {
     auto async = std::make_unique<XAsyncHelper<XAsyncResult>>(testContext);
@@ -2127,11 +2352,13 @@ void AutoGenAccountManagementTests::TestAccountManagementClientUnlinkIOSDeviceID
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region ClientUnlinkKongregate
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenAccountManagementTests::TestAccountManagementClientUnlinkKongregate(TestContext& testContext)
 {
     auto async = std::make_unique<XAsyncHelper<XAsyncResult>>(testContext);
@@ -2147,11 +2374,13 @@ void AutoGenAccountManagementTests::TestAccountManagementClientUnlinkKongregate(
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region ClientUnlinkNintendoServiceAccount
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenAccountManagementTests::TestAccountManagementClientUnlinkNintendoServiceAccount(TestContext& testContext)
 {
     auto async = std::make_unique<XAsyncHelper<XAsyncResult>>(testContext);
@@ -2167,11 +2396,13 @@ void AutoGenAccountManagementTests::TestAccountManagementClientUnlinkNintendoSer
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region ClientUnlinkNintendoSwitchDeviceId
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenAccountManagementTests::TestAccountManagementClientUnlinkNintendoSwitchDeviceId(TestContext& testContext)
 {
     auto async = std::make_unique<XAsyncHelper<XAsyncResult>>(testContext);
@@ -2187,6 +2418,7 @@ void AutoGenAccountManagementTests::TestAccountManagementClientUnlinkNintendoSwi
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
@@ -2212,6 +2444,7 @@ void AutoGenAccountManagementTests::TestAccountManagementClientUnlinkOpenIdConne
 
 #pragma region ClientUnlinkPSNAccount
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenAccountManagementTests::TestAccountManagementClientUnlinkPSNAccount(TestContext& testContext)
 {
     auto async = std::make_unique<XAsyncHelper<XAsyncResult>>(testContext);
@@ -2227,11 +2460,13 @@ void AutoGenAccountManagementTests::TestAccountManagementClientUnlinkPSNAccount(
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region ClientUnlinkSteamAccount
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenAccountManagementTests::TestAccountManagementClientUnlinkSteamAccount(TestContext& testContext)
 {
     auto async = std::make_unique<XAsyncHelper<XAsyncResult>>(testContext);
@@ -2247,11 +2482,13 @@ void AutoGenAccountManagementTests::TestAccountManagementClientUnlinkSteamAccoun
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region ClientUnlinkTwitch
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenAccountManagementTests::TestAccountManagementClientUnlinkTwitch(TestContext& testContext)
 {
     auto async = std::make_unique<XAsyncHelper<XAsyncResult>>(testContext);
@@ -2267,6 +2504,7 @@ void AutoGenAccountManagementTests::TestAccountManagementClientUnlinkTwitch(Test
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
@@ -2314,7 +2552,7 @@ void AutoGenAccountManagementTests::TestAccountManagementClientUpdateAvatarUrl(T
 
 void AutoGenAccountManagementTests::TestAccountManagementClientUpdateUserTitleDisplayName(TestContext& testContext)
 {
-    struct ClientUpdateUserTitleDisplayNameResultHolder : public UpdateUserTitleDisplayNameResultHolder
+    struct ClientUpdateUserTitleDisplayNameResultHolderStruct : public UpdateUserTitleDisplayNameResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -2333,7 +2571,7 @@ void AutoGenAccountManagementTests::TestAccountManagementClientUpdateUserTitleDi
             return ValidatePFAccountManagementUpdateUserTitleDisplayNameResult(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<ClientUpdateUserTitleDisplayNameResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<ClientUpdateUserTitleDisplayNameResultHolderStruct>>(testContext);
 
     PFAccountManagementClientUpdateUserTitleDisplayNameRequestWrapper<> request;
     FillClientUpdateUserTitleDisplayNameRequest(request);
@@ -2351,6 +2589,7 @@ void AutoGenAccountManagementTests::TestAccountManagementClientUpdateUserTitleDi
 
 #pragma region ServerAddGenericID
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenAccountManagementTests::TestAccountManagementServerAddGenericID(TestContext& testContext)
 {
     auto async = std::make_unique<XAsyncHelper<XAsyncResult>>(testContext);
@@ -2366,14 +2605,16 @@ void AutoGenAccountManagementTests::TestAccountManagementServerAddGenericID(Test
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region ServerBanUsers
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenAccountManagementTests::TestAccountManagementServerBanUsers(TestContext& testContext)
 {
-    struct ServerBanUsersResultHolder : public BanUsersResultHolder
+    struct ServerBanUsersResultHolderStruct : public BanUsersResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -2392,7 +2633,7 @@ void AutoGenAccountManagementTests::TestAccountManagementServerBanUsers(TestCont
             return ValidatePFAccountManagementBanUsersResult(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<ServerBanUsersResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<ServerBanUsersResultHolderStruct>>(testContext);
 
     PFAccountManagementBanUsersRequestWrapper<> request;
     FillBanUsersRequest(request);
@@ -2405,11 +2646,13 @@ void AutoGenAccountManagementTests::TestAccountManagementServerBanUsers(TestCont
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region ServerDeletePlayer
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenAccountManagementTests::TestAccountManagementServerDeletePlayer(TestContext& testContext)
 {
     auto async = std::make_unique<XAsyncHelper<XAsyncResult>>(testContext);
@@ -2425,11 +2668,13 @@ void AutoGenAccountManagementTests::TestAccountManagementServerDeletePlayer(Test
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region ServerDeletePushNotificationTemplate
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenAccountManagementTests::TestAccountManagementServerDeletePushNotificationTemplate(TestContext& testContext)
 {
     auto async = std::make_unique<XAsyncHelper<XAsyncResult>>(testContext);
@@ -2445,14 +2690,16 @@ void AutoGenAccountManagementTests::TestAccountManagementServerDeletePushNotific
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region ServerGetPlayerProfile
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenAccountManagementTests::TestAccountManagementServerGetPlayerProfile(TestContext& testContext)
 {
-    struct ServerGetPlayerProfileResultHolder : public GetPlayerProfileResultHolder
+    struct ServerGetPlayerProfileResultHolderStruct : public GetPlayerProfileResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -2471,7 +2718,7 @@ void AutoGenAccountManagementTests::TestAccountManagementServerGetPlayerProfile(
             return ValidatePFAccountManagementGetPlayerProfileResult(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<ServerGetPlayerProfileResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<ServerGetPlayerProfileResultHolderStruct>>(testContext);
 
     PFAccountManagementGetPlayerProfileRequestWrapper<> request;
     FillGetPlayerProfileRequest(request);
@@ -2484,14 +2731,16 @@ void AutoGenAccountManagementTests::TestAccountManagementServerGetPlayerProfile(
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region ServerGetPlayFabIDsFromFacebookIDs
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenAccountManagementTests::TestAccountManagementServerGetPlayFabIDsFromFacebookIDs(TestContext& testContext)
 {
-    struct ServerGetPlayFabIDsFromFacebookIDsResultHolder : public GetPlayFabIDsFromFacebookIDsResultHolder
+    struct ServerGetPlayFabIDsFromFacebookIDsResultHolderStruct : public GetPlayFabIDsFromFacebookIDsResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -2510,7 +2759,7 @@ void AutoGenAccountManagementTests::TestAccountManagementServerGetPlayFabIDsFrom
             return ValidatePFAccountManagementGetPlayFabIDsFromFacebookIDsResult(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<ServerGetPlayFabIDsFromFacebookIDsResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<ServerGetPlayFabIDsFromFacebookIDsResultHolderStruct>>(testContext);
 
     PFAccountManagementGetPlayFabIDsFromFacebookIDsRequestWrapper<> request;
     FillGetPlayFabIDsFromFacebookIDsRequest(request);
@@ -2523,14 +2772,16 @@ void AutoGenAccountManagementTests::TestAccountManagementServerGetPlayFabIDsFrom
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region ServerGetPlayFabIDsFromFacebookInstantGamesIds
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenAccountManagementTests::TestAccountManagementServerGetPlayFabIDsFromFacebookInstantGamesIds(TestContext& testContext)
 {
-    struct ServerGetPlayFabIDsFromFacebookInstantGamesIdsResultHolder : public GetPlayFabIDsFromFacebookInstantGamesIdsResultHolder
+    struct ServerGetPlayFabIDsFromFacebookInstantGamesIdsResultHolderStruct : public GetPlayFabIDsFromFacebookInstantGamesIdsResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -2549,7 +2800,7 @@ void AutoGenAccountManagementTests::TestAccountManagementServerGetPlayFabIDsFrom
             return ValidatePFAccountManagementGetPlayFabIDsFromFacebookInstantGamesIdsResult(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<ServerGetPlayFabIDsFromFacebookInstantGamesIdsResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<ServerGetPlayFabIDsFromFacebookInstantGamesIdsResultHolderStruct>>(testContext);
 
     PFAccountManagementGetPlayFabIDsFromFacebookInstantGamesIdsRequestWrapper<> request;
     FillGetPlayFabIDsFromFacebookInstantGamesIdsRequest(request);
@@ -2562,14 +2813,16 @@ void AutoGenAccountManagementTests::TestAccountManagementServerGetPlayFabIDsFrom
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region ServerGetPlayFabIDsFromGenericIDs
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenAccountManagementTests::TestAccountManagementServerGetPlayFabIDsFromGenericIDs(TestContext& testContext)
 {
-    struct ServerGetPlayFabIDsFromGenericIDsResultHolder : public GetPlayFabIDsFromGenericIDsResultHolder
+    struct ServerGetPlayFabIDsFromGenericIDsResultHolderStruct : public GetPlayFabIDsFromGenericIDsResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -2588,7 +2841,7 @@ void AutoGenAccountManagementTests::TestAccountManagementServerGetPlayFabIDsFrom
             return ValidatePFAccountManagementGetPlayFabIDsFromGenericIDsResult(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<ServerGetPlayFabIDsFromGenericIDsResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<ServerGetPlayFabIDsFromGenericIDsResultHolderStruct>>(testContext);
 
     PFAccountManagementGetPlayFabIDsFromGenericIDsRequestWrapper<> request;
     FillGetPlayFabIDsFromGenericIDsRequest(request);
@@ -2601,14 +2854,16 @@ void AutoGenAccountManagementTests::TestAccountManagementServerGetPlayFabIDsFrom
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region ServerGetPlayFabIDsFromNintendoSwitchDeviceIds
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenAccountManagementTests::TestAccountManagementServerGetPlayFabIDsFromNintendoSwitchDeviceIds(TestContext& testContext)
 {
-    struct ServerGetPlayFabIDsFromNintendoSwitchDeviceIdsResultHolder : public GetPlayFabIDsFromNintendoSwitchDeviceIdsResultHolder
+    struct ServerGetPlayFabIDsFromNintendoSwitchDeviceIdsResultHolderStruct : public GetPlayFabIDsFromNintendoSwitchDeviceIdsResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -2627,7 +2882,7 @@ void AutoGenAccountManagementTests::TestAccountManagementServerGetPlayFabIDsFrom
             return ValidatePFAccountManagementGetPlayFabIDsFromNintendoSwitchDeviceIdsResult(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<ServerGetPlayFabIDsFromNintendoSwitchDeviceIdsResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<ServerGetPlayFabIDsFromNintendoSwitchDeviceIdsResultHolderStruct>>(testContext);
 
     PFAccountManagementGetPlayFabIDsFromNintendoSwitchDeviceIdsRequestWrapper<> request;
     FillGetPlayFabIDsFromNintendoSwitchDeviceIdsRequest(request);
@@ -2640,14 +2895,16 @@ void AutoGenAccountManagementTests::TestAccountManagementServerGetPlayFabIDsFrom
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region ServerGetPlayFabIDsFromPSNAccountIDs
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenAccountManagementTests::TestAccountManagementServerGetPlayFabIDsFromPSNAccountIDs(TestContext& testContext)
 {
-    struct ServerGetPlayFabIDsFromPSNAccountIDsResultHolder : public GetPlayFabIDsFromPSNAccountIDsResultHolder
+    struct ServerGetPlayFabIDsFromPSNAccountIDsResultHolderStruct : public GetPlayFabIDsFromPSNAccountIDsResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -2666,7 +2923,7 @@ void AutoGenAccountManagementTests::TestAccountManagementServerGetPlayFabIDsFrom
             return ValidatePFAccountManagementGetPlayFabIDsFromPSNAccountIDsResult(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<ServerGetPlayFabIDsFromPSNAccountIDsResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<ServerGetPlayFabIDsFromPSNAccountIDsResultHolderStruct>>(testContext);
 
     PFAccountManagementGetPlayFabIDsFromPSNAccountIDsRequestWrapper<> request;
     FillGetPlayFabIDsFromPSNAccountIDsRequest(request);
@@ -2679,14 +2936,16 @@ void AutoGenAccountManagementTests::TestAccountManagementServerGetPlayFabIDsFrom
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region ServerGetPlayFabIDsFromSteamIDs
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenAccountManagementTests::TestAccountManagementServerGetPlayFabIDsFromSteamIDs(TestContext& testContext)
 {
-    struct ServerGetPlayFabIDsFromSteamIDsResultHolder : public GetPlayFabIDsFromSteamIDsResultHolder
+    struct ServerGetPlayFabIDsFromSteamIDsResultHolderStruct : public GetPlayFabIDsFromSteamIDsResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -2705,7 +2964,7 @@ void AutoGenAccountManagementTests::TestAccountManagementServerGetPlayFabIDsFrom
             return ValidatePFAccountManagementGetPlayFabIDsFromSteamIDsResult(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<ServerGetPlayFabIDsFromSteamIDsResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<ServerGetPlayFabIDsFromSteamIDsResultHolderStruct>>(testContext);
 
     PFAccountManagementGetPlayFabIDsFromSteamIDsRequestWrapper<> request;
     FillGetPlayFabIDsFromSteamIDsRequest(request);
@@ -2718,14 +2977,16 @@ void AutoGenAccountManagementTests::TestAccountManagementServerGetPlayFabIDsFrom
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region ServerGetPlayFabIDsFromXboxLiveIDs
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenAccountManagementTests::TestAccountManagementServerGetPlayFabIDsFromXboxLiveIDs(TestContext& testContext)
 {
-    struct ServerGetPlayFabIDsFromXboxLiveIDsResultHolder : public GetPlayFabIDsFromXboxLiveIDsResultHolder
+    struct ServerGetPlayFabIDsFromXboxLiveIDsResultHolderStruct : public GetPlayFabIDsFromXboxLiveIDsResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -2744,7 +3005,7 @@ void AutoGenAccountManagementTests::TestAccountManagementServerGetPlayFabIDsFrom
             return ValidatePFAccountManagementGetPlayFabIDsFromXboxLiveIDsResult(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<ServerGetPlayFabIDsFromXboxLiveIDsResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<ServerGetPlayFabIDsFromXboxLiveIDsResultHolderStruct>>(testContext);
 
     PFAccountManagementGetPlayFabIDsFromXboxLiveIDsRequestWrapper<> request;
     FillGetPlayFabIDsFromXboxLiveIDsRequest(request);
@@ -2757,14 +3018,16 @@ void AutoGenAccountManagementTests::TestAccountManagementServerGetPlayFabIDsFrom
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region ServerGetServerCustomIDsFromPlayFabIDs
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenAccountManagementTests::TestAccountManagementServerGetServerCustomIDsFromPlayFabIDs(TestContext& testContext)
 {
-    struct ServerGetServerCustomIDsFromPlayFabIDsResultHolder : public GetServerCustomIDsFromPlayFabIDsResultHolder
+    struct ServerGetServerCustomIDsFromPlayFabIDsResultHolderStruct : public GetServerCustomIDsFromPlayFabIDsResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -2783,7 +3046,7 @@ void AutoGenAccountManagementTests::TestAccountManagementServerGetServerCustomID
             return ValidatePFAccountManagementGetServerCustomIDsFromPlayFabIDsResult(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<ServerGetServerCustomIDsFromPlayFabIDsResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<ServerGetServerCustomIDsFromPlayFabIDsResultHolderStruct>>(testContext);
 
     PFAccountManagementGetServerCustomIDsFromPlayFabIDsRequestWrapper<> request;
     FillGetServerCustomIDsFromPlayFabIDsRequest(request);
@@ -2796,14 +3059,16 @@ void AutoGenAccountManagementTests::TestAccountManagementServerGetServerCustomID
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region ServerGetUserAccountInfo
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenAccountManagementTests::TestAccountManagementServerGetUserAccountInfo(TestContext& testContext)
 {
-    struct ServerGetUserAccountInfoResultHolder : public GetUserAccountInfoResultHolder
+    struct ServerGetUserAccountInfoResultHolderStruct : public GetUserAccountInfoResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -2822,7 +3087,7 @@ void AutoGenAccountManagementTests::TestAccountManagementServerGetUserAccountInf
             return ValidatePFAccountManagementGetUserAccountInfoResult(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<ServerGetUserAccountInfoResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<ServerGetUserAccountInfoResultHolderStruct>>(testContext);
 
     PFAccountManagementGetUserAccountInfoRequestWrapper<> request;
     FillGetUserAccountInfoRequest(request);
@@ -2835,14 +3100,16 @@ void AutoGenAccountManagementTests::TestAccountManagementServerGetUserAccountInf
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region ServerGetUserBans
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenAccountManagementTests::TestAccountManagementServerGetUserBans(TestContext& testContext)
 {
-    struct ServerGetUserBansResultHolder : public GetUserBansResultHolder
+    struct ServerGetUserBansResultHolderStruct : public GetUserBansResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -2861,7 +3128,7 @@ void AutoGenAccountManagementTests::TestAccountManagementServerGetUserBans(TestC
             return ValidatePFAccountManagementGetUserBansResult(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<ServerGetUserBansResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<ServerGetUserBansResultHolderStruct>>(testContext);
 
     PFAccountManagementGetUserBansRequestWrapper<> request;
     FillGetUserBansRequest(request);
@@ -2874,11 +3141,13 @@ void AutoGenAccountManagementTests::TestAccountManagementServerGetUserBans(TestC
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region ServerLinkPSNAccount
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenAccountManagementTests::TestAccountManagementServerLinkPSNAccount(TestContext& testContext)
 {
     auto async = std::make_unique<XAsyncHelper<XAsyncResult>>(testContext);
@@ -2894,11 +3163,13 @@ void AutoGenAccountManagementTests::TestAccountManagementServerLinkPSNAccount(Te
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region ServerLinkServerCustomId
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenAccountManagementTests::TestAccountManagementServerLinkServerCustomId(TestContext& testContext)
 {
     auto async = std::make_unique<XAsyncHelper<XAsyncResult>>(testContext);
@@ -2914,11 +3185,13 @@ void AutoGenAccountManagementTests::TestAccountManagementServerLinkServerCustomI
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region ServerLinkXboxAccount
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenAccountManagementTests::TestAccountManagementServerLinkXboxAccount(TestContext& testContext)
 {
     auto async = std::make_unique<XAsyncHelper<XAsyncResult>>(testContext);
@@ -2934,11 +3207,13 @@ void AutoGenAccountManagementTests::TestAccountManagementServerLinkXboxAccount(T
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region ServerRemoveGenericID
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenAccountManagementTests::TestAccountManagementServerRemoveGenericID(TestContext& testContext)
 {
     auto async = std::make_unique<XAsyncHelper<XAsyncResult>>(testContext);
@@ -2954,14 +3229,16 @@ void AutoGenAccountManagementTests::TestAccountManagementServerRemoveGenericID(T
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region ServerRevokeAllBansForUser
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenAccountManagementTests::TestAccountManagementServerRevokeAllBansForUser(TestContext& testContext)
 {
-    struct ServerRevokeAllBansForUserResultHolder : public RevokeAllBansForUserResultHolder
+    struct ServerRevokeAllBansForUserResultHolderStruct : public RevokeAllBansForUserResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -2980,7 +3257,7 @@ void AutoGenAccountManagementTests::TestAccountManagementServerRevokeAllBansForU
             return ValidatePFAccountManagementRevokeAllBansForUserResult(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<ServerRevokeAllBansForUserResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<ServerRevokeAllBansForUserResultHolderStruct>>(testContext);
 
     PFAccountManagementRevokeAllBansForUserRequestWrapper<> request;
     FillRevokeAllBansForUserRequest(request);
@@ -2993,14 +3270,16 @@ void AutoGenAccountManagementTests::TestAccountManagementServerRevokeAllBansForU
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region ServerRevokeBans
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenAccountManagementTests::TestAccountManagementServerRevokeBans(TestContext& testContext)
 {
-    struct ServerRevokeBansResultHolder : public RevokeBansResultHolder
+    struct ServerRevokeBansResultHolderStruct : public RevokeBansResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -3019,7 +3298,7 @@ void AutoGenAccountManagementTests::TestAccountManagementServerRevokeBans(TestCo
             return ValidatePFAccountManagementRevokeBansResult(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<ServerRevokeBansResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<ServerRevokeBansResultHolderStruct>>(testContext);
 
     PFAccountManagementRevokeBansRequestWrapper<> request;
     FillRevokeBansRequest(request);
@@ -3032,14 +3311,16 @@ void AutoGenAccountManagementTests::TestAccountManagementServerRevokeBans(TestCo
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region ServerSavePushNotificationTemplate
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenAccountManagementTests::TestAccountManagementServerSavePushNotificationTemplate(TestContext& testContext)
 {
-    struct ServerSavePushNotificationTemplateResultHolder : public SavePushNotificationTemplateResultHolder
+    struct ServerSavePushNotificationTemplateResultHolderStruct : public SavePushNotificationTemplateResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -3058,7 +3339,7 @@ void AutoGenAccountManagementTests::TestAccountManagementServerSavePushNotificat
             return ValidatePFAccountManagementSavePushNotificationTemplateResult(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<ServerSavePushNotificationTemplateResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<ServerSavePushNotificationTemplateResultHolderStruct>>(testContext);
 
     PFAccountManagementSavePushNotificationTemplateRequestWrapper<> request;
     FillSavePushNotificationTemplateRequest(request);
@@ -3071,11 +3352,13 @@ void AutoGenAccountManagementTests::TestAccountManagementServerSavePushNotificat
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region ServerSendCustomAccountRecoveryEmail
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenAccountManagementTests::TestAccountManagementServerSendCustomAccountRecoveryEmail(TestContext& testContext)
 {
     auto async = std::make_unique<XAsyncHelper<XAsyncResult>>(testContext);
@@ -3091,11 +3374,13 @@ void AutoGenAccountManagementTests::TestAccountManagementServerSendCustomAccount
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region ServerSendEmailFromTemplate
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenAccountManagementTests::TestAccountManagementServerSendEmailFromTemplate(TestContext& testContext)
 {
     auto async = std::make_unique<XAsyncHelper<XAsyncResult>>(testContext);
@@ -3111,11 +3396,13 @@ void AutoGenAccountManagementTests::TestAccountManagementServerSendEmailFromTemp
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region ServerSendPushNotification
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenAccountManagementTests::TestAccountManagementServerSendPushNotification(TestContext& testContext)
 {
     auto async = std::make_unique<XAsyncHelper<XAsyncResult>>(testContext);
@@ -3131,11 +3418,13 @@ void AutoGenAccountManagementTests::TestAccountManagementServerSendPushNotificat
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region ServerSendPushNotificationFromTemplate
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenAccountManagementTests::TestAccountManagementServerSendPushNotificationFromTemplate(TestContext& testContext)
 {
     auto async = std::make_unique<XAsyncHelper<XAsyncResult>>(testContext);
@@ -3151,11 +3440,13 @@ void AutoGenAccountManagementTests::TestAccountManagementServerSendPushNotificat
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region ServerUnlinkPSNAccount
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenAccountManagementTests::TestAccountManagementServerUnlinkPSNAccount(TestContext& testContext)
 {
     auto async = std::make_unique<XAsyncHelper<XAsyncResult>>(testContext);
@@ -3171,11 +3462,13 @@ void AutoGenAccountManagementTests::TestAccountManagementServerUnlinkPSNAccount(
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region ServerUnlinkServerCustomId
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenAccountManagementTests::TestAccountManagementServerUnlinkServerCustomId(TestContext& testContext)
 {
     auto async = std::make_unique<XAsyncHelper<XAsyncResult>>(testContext);
@@ -3191,11 +3484,13 @@ void AutoGenAccountManagementTests::TestAccountManagementServerUnlinkServerCusto
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region ServerUnlinkXboxAccount
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenAccountManagementTests::TestAccountManagementServerUnlinkXboxAccount(TestContext& testContext)
 {
     auto async = std::make_unique<XAsyncHelper<XAsyncResult>>(testContext);
@@ -3211,11 +3506,13 @@ void AutoGenAccountManagementTests::TestAccountManagementServerUnlinkXboxAccount
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region ServerUpdateAvatarUrl
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenAccountManagementTests::TestAccountManagementServerUpdateAvatarUrl(TestContext& testContext)
 {
     auto async = std::make_unique<XAsyncHelper<XAsyncResult>>(testContext);
@@ -3231,14 +3528,16 @@ void AutoGenAccountManagementTests::TestAccountManagementServerUpdateAvatarUrl(T
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region ServerUpdateBans
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenAccountManagementTests::TestAccountManagementServerUpdateBans(TestContext& testContext)
 {
-    struct ServerUpdateBansResultHolder : public UpdateBansResultHolder
+    struct ServerUpdateBansResultHolderStruct : public UpdateBansResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -3257,7 +3556,7 @@ void AutoGenAccountManagementTests::TestAccountManagementServerUpdateBans(TestCo
             return ValidatePFAccountManagementUpdateBansResult(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<ServerUpdateBansResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<ServerUpdateBansResultHolderStruct>>(testContext);
 
     PFAccountManagementUpdateBansRequestWrapper<> request;
     FillUpdateBansRequest(request);
@@ -3270,6 +3569,7 @@ void AutoGenAccountManagementTests::TestAccountManagementServerUpdateBans(TestCo
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 

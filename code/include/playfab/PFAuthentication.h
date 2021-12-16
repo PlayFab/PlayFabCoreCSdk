@@ -804,6 +804,8 @@ HRESULT PFAuthenticationClientLoginWithKongregateAsync(
 /// <param name="async">XAsyncBlock for the async operation.</param>
 /// <returns>Result code for this API operation.</returns>
 /// <remarks>
+/// See also ClientLinkNintendoServiceAccountAsync, ClientUnlinkNintendoServiceAccountAsync.
+///
 /// If successful, call <see cref="PFAuthenticationClientLoginGetResult"/> to get the result.
 /// </remarks>
 HRESULT PFAuthenticationClientLoginWithNintendoServiceAccountAsync(
@@ -821,6 +823,8 @@ HRESULT PFAuthenticationClientLoginWithNintendoServiceAccountAsync(
 /// <param name="async">XAsyncBlock for the async operation.</param>
 /// <returns>Result code for this API operation.</returns>
 /// <remarks>
+/// See also ClientLinkNintendoSwitchDeviceIdAsync, ClientUnlinkNintendoSwitchDeviceIdAsync.
+///
 /// If successful, call <see cref="PFAuthenticationClientLoginGetResult"/> to get the result.
 /// </remarks>
 HRESULT PFAuthenticationClientLoginWithNintendoSwitchDeviceIdAsync(
@@ -838,6 +842,8 @@ HRESULT PFAuthenticationClientLoginWithNintendoSwitchDeviceIdAsync(
 /// <param name="async">XAsyncBlock for the async operation.</param>
 /// <returns>Result code for this API operation.</returns>
 /// <remarks>
+/// See also ClientLinkOpenIdConnectAsync, ClientUnlinkOpenIdConnectAsync.
+///
 /// If successful, call <see cref="PFAuthenticationClientLoginGetResult"/> to get the result.
 /// </remarks>
 HRESULT PFAuthenticationClientLoginWithOpenIdConnectAsync(
@@ -936,7 +942,8 @@ HRESULT PFAuthenticationClientLoginWithSteamAsync(
 /// the PlayFab system. If CreateAccount is set to true and there is not already a user matched to the
 /// Twitch username that generated the token, then PlayFab will create a new account for this user and
 /// link the ID. In this case, no email or username will be associated with the PlayFab account. If there
-/// is already a different PlayFab user linked with this account, then an error will be returned.
+/// is already a different PlayFab user linked with this account, then an error will be returned. See
+/// also ClientLinkTwitchAsync, ClientUnlinkTwitchAsync.
 ///
 /// If successful, call <see cref="PFAuthenticationClientLoginGetResult"/> to get the result.
 /// </remarks>
@@ -1048,6 +1055,7 @@ HRESULT PFAuthenticationClientSetPlayerSecretAsync(
     _Inout_ XAsyncBlock* async
 ) noexcept;
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 /// <summary>
 /// Validated a client's session ticket, and if successful, returns details for that user
 /// </summary>
@@ -1100,7 +1108,9 @@ HRESULT PFAuthenticationServerAuthenticateSessionTicketGetResult(
     _Outptr_ PFAuthenticationAuthenticateSessionTicketResult** result,
     _Out_opt_ size_t* bufferUsed
 ) noexcept;
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 /// <summary>
 /// Securely login a game client from an external server backend using a custom identifier for that player.
 /// Server Custom ID and Client Custom ID are mutually exclusive and cannot be used to retrieve the same
@@ -1133,7 +1143,9 @@ HRESULT PFAuthenticationServerLoginGetResult(
     _In_ XAsyncBlock* async,
     _Out_ PFTitlePlayerHandle* titlePlayerHandle
 ) noexcept;
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 /// <summary>
 /// Signs the user in using an Steam ID, returning a session identifier that can subsequently be used
 /// for API calls which require an authenticated user
@@ -1158,7 +1170,9 @@ HRESULT PFAuthenticationServerLoginWithSteamIdAsync(
     _In_ const PFAuthenticationLoginWithSteamIdRequest* request,
     _Inout_ XAsyncBlock* async
 ) noexcept;
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 /// <summary>
 /// Signs the user in using a Xbox Live Token from an external server backend, returning a session identifier
 /// that can subsequently be used for API calls which require an authenticated user
@@ -1181,7 +1195,9 @@ HRESULT PFAuthenticationServerLoginWithXboxAsync(
     _In_ const PFAuthenticationServerLoginWithXboxRequest* request,
     _Inout_ XAsyncBlock* async
 ) noexcept;
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 /// <summary>
 /// Signs the user in using an Xbox ID and Sandbox ID, returning a session identifier that can subsequently
 /// be used for API calls which require an authenticated user
@@ -1204,7 +1220,9 @@ HRESULT PFAuthenticationServerLoginWithXboxIdAsync(
     _In_ const PFAuthenticationLoginWithXboxIdRequest* request,
     _Inout_ XAsyncBlock* async
 ) noexcept;
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 /// <summary>
 /// Sets the player's secret if it is not already set. Player secrets are used to sign API requests.
 /// To reset a player's secret use the Admin or Server API method SetPlayerSecret.
@@ -1228,6 +1246,7 @@ HRESULT PFAuthenticationServerSetPlayerSecretAsync(
     _In_ const PFAuthenticationServerSetPlayerSecretRequest* request,
     _Inout_ XAsyncBlock* async
 ) noexcept;
+#endif
 
 /// <summary>
 /// Method to exchange a title SecretKey for an Entity Token.

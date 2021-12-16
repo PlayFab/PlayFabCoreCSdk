@@ -15,17 +15,27 @@ private:
     static void Log(std::stringstream& ss);
     static HRESULT LogHR(HRESULT hr);
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestCloudScriptAdminGetCloudScriptRevision(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestCloudScriptAdminGetCloudScriptVersions(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestCloudScriptAdminSetPublishedRevision(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestCloudScriptAdminUpdateCloudScript(TestContext& testContext);
+#endif
 
     void TestCloudScriptClientExecuteCloudScript(TestContext& testContext);
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestCloudScriptServerExecuteCloudScript(TestContext& testContext);
+#endif
 
     void TestCloudScriptExecuteEntityCloudScript(TestContext& testContext);
 
@@ -33,25 +43,45 @@ private:
 
     void TestCloudScriptGetFunction(TestContext& testContext);
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestCloudScriptListFunctions(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestCloudScriptListHttpFunctions(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestCloudScriptListQueuedFunctions(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestCloudScriptPostFunctionResultForEntityTriggeredAction(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestCloudScriptPostFunctionResultForFunctionExecution(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestCloudScriptPostFunctionResultForPlayerTriggeredAction(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestCloudScriptPostFunctionResultForScheduledTask(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestCloudScriptRegisterHttpFunction(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestCloudScriptRegisterQueuedFunction(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestCloudScriptUnregisterFunction(TestContext& testContext);
+#endif
 
 
 protected:

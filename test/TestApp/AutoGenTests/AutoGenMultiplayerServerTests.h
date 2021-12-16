@@ -15,99 +15,183 @@ private:
     static void Log(std::stringstream& ss);
     static HRESULT LogHR(HRESULT hr);
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestMultiplayerServerCreateBuildAlias(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestMultiplayerServerCreateBuildWithCustomContainer(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestMultiplayerServerCreateBuildWithManagedContainer(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestMultiplayerServerCreateBuildWithProcessBasedServer(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestMultiplayerServerCreateRemoteUser(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestMultiplayerServerCreateTitleMultiplayerServersQuotaChange(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestMultiplayerServerDeleteAsset(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestMultiplayerServerDeleteBuild(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestMultiplayerServerDeleteBuildAlias(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestMultiplayerServerDeleteBuildRegion(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestMultiplayerServerDeleteCertificate(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestMultiplayerServerDeleteContainerImageRepository(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestMultiplayerServerDeleteRemoteUser(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestMultiplayerServerEnableMultiplayerServersForTitle(TestContext& testContext);
+#endif
 
     void TestMultiplayerServerGetAssetDownloadUrl(TestContext& testContext);
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestMultiplayerServerGetAssetUploadUrl(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestMultiplayerServerGetBuild(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestMultiplayerServerGetBuildAlias(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestMultiplayerServerGetContainerRegistryCredentials(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestMultiplayerServerGetMultiplayerServerDetails(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestMultiplayerServerGetMultiplayerServerLogs(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestMultiplayerServerGetMultiplayerSessionLogsBySessionId(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestMultiplayerServerGetRemoteLoginEndpoint(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestMultiplayerServerGetTitleEnabledForMultiplayerServersStatus(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestMultiplayerServerGetTitleMultiplayerServersQuotaChange(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestMultiplayerServerGetTitleMultiplayerServersQuotas(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestMultiplayerServerListArchivedMultiplayerServers(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestMultiplayerServerListAssetSummaries(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestMultiplayerServerListBuildAliases(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestMultiplayerServerListBuildSummariesV2(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestMultiplayerServerListCertificateSummaries(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestMultiplayerServerListContainerImages(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestMultiplayerServerListContainerImageTags(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestMultiplayerServerListMultiplayerServers(TestContext& testContext);
+#endif
 
     void TestMultiplayerServerListPartyQosServers(TestContext& testContext);
 
     void TestMultiplayerServerListQosServersForTitle(TestContext& testContext);
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestMultiplayerServerListTitleMultiplayerServersQuotaChanges(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestMultiplayerServerListVirtualMachineSummaries(TestContext& testContext);
+#endif
 
     void TestMultiplayerServerRequestMultiplayerServer(TestContext& testContext);
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestMultiplayerServerRolloverContainerRegistryCredentials(TestContext& testContext);
+#endif
 
     void TestMultiplayerServerShutdownMultiplayerServer(TestContext& testContext);
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestMultiplayerServerUntagContainerImage(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestMultiplayerServerUpdateBuildAlias(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestMultiplayerServerUpdateBuildName(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestMultiplayerServerUpdateBuildRegion(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestMultiplayerServerUpdateBuildRegions(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestMultiplayerServerUploadCertificate(TestContext& testContext);
+#endif
 
 
 protected:

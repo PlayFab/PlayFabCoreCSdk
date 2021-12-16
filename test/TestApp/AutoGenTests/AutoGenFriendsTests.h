@@ -25,13 +25,21 @@ private:
 
     void TestFriendsClientSetFriendTags(TestContext& testContext);
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestFriendsServerAddFriend(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestFriendsServerGetFriendsList(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestFriendsServerRemoveFriend(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestFriendsServerSetFriendTags(TestContext& testContext);
+#endif
 
 
 protected:

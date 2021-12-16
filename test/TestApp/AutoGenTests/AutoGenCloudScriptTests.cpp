@@ -32,17 +32,27 @@ HRESULT AutoGenCloudScriptTests::LogHR(HRESULT hr)
 void AutoGenCloudScriptTests::AddTests()
 {
     // Generated tests 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestCloudScriptAdminGetCloudScriptRevision", &AutoGenCloudScriptTests::TestCloudScriptAdminGetCloudScriptRevision);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestCloudScriptAdminGetCloudScriptVersions", &AutoGenCloudScriptTests::TestCloudScriptAdminGetCloudScriptVersions);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestCloudScriptAdminSetPublishedRevision", &AutoGenCloudScriptTests::TestCloudScriptAdminSetPublishedRevision);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestCloudScriptAdminUpdateCloudScript", &AutoGenCloudScriptTests::TestCloudScriptAdminUpdateCloudScript);
+#endif
 
     AddTest("TestCloudScriptClientExecuteCloudScript", &AutoGenCloudScriptTests::TestCloudScriptClientExecuteCloudScript);
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestCloudScriptServerExecuteCloudScript", &AutoGenCloudScriptTests::TestCloudScriptServerExecuteCloudScript);
+#endif
 
     AddTest("TestCloudScriptExecuteEntityCloudScript", &AutoGenCloudScriptTests::TestCloudScriptExecuteEntityCloudScript);
 
@@ -50,25 +60,45 @@ void AutoGenCloudScriptTests::AddTests()
 
     AddTest("TestCloudScriptGetFunction", &AutoGenCloudScriptTests::TestCloudScriptGetFunction);
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestCloudScriptListFunctions", &AutoGenCloudScriptTests::TestCloudScriptListFunctions);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestCloudScriptListHttpFunctions", &AutoGenCloudScriptTests::TestCloudScriptListHttpFunctions);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestCloudScriptListQueuedFunctions", &AutoGenCloudScriptTests::TestCloudScriptListQueuedFunctions);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestCloudScriptPostFunctionResultForEntityTriggeredAction", &AutoGenCloudScriptTests::TestCloudScriptPostFunctionResultForEntityTriggeredAction);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestCloudScriptPostFunctionResultForFunctionExecution", &AutoGenCloudScriptTests::TestCloudScriptPostFunctionResultForFunctionExecution);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestCloudScriptPostFunctionResultForPlayerTriggeredAction", &AutoGenCloudScriptTests::TestCloudScriptPostFunctionResultForPlayerTriggeredAction);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestCloudScriptPostFunctionResultForScheduledTask", &AutoGenCloudScriptTests::TestCloudScriptPostFunctionResultForScheduledTask);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestCloudScriptRegisterHttpFunction", &AutoGenCloudScriptTests::TestCloudScriptRegisterHttpFunction);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestCloudScriptRegisterQueuedFunction", &AutoGenCloudScriptTests::TestCloudScriptRegisterQueuedFunction);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestCloudScriptUnregisterFunction", &AutoGenCloudScriptTests::TestCloudScriptUnregisterFunction);
+#endif
 }
 
 void AutoGenCloudScriptTests::ClassSetUp()
@@ -178,9 +208,10 @@ void AutoGenCloudScriptTests::SetUp(TestContext& testContext)
 
 #pragma region AdminGetCloudScriptRevision
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenCloudScriptTests::TestCloudScriptAdminGetCloudScriptRevision(TestContext& testContext)
 {
-    struct AdminGetCloudScriptRevisionResultHolder : public GetCloudScriptRevisionResultHolder
+    struct AdminGetCloudScriptRevisionResultHolderStruct : public GetCloudScriptRevisionResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -199,7 +230,7 @@ void AutoGenCloudScriptTests::TestCloudScriptAdminGetCloudScriptRevision(TestCon
             return ValidatePFCloudScriptGetCloudScriptRevisionResult(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<AdminGetCloudScriptRevisionResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<AdminGetCloudScriptRevisionResultHolderStruct>>(testContext);
 
     PFCloudScriptGetCloudScriptRevisionRequestWrapper<> request;
     FillGetCloudScriptRevisionRequest(request);
@@ -212,14 +243,16 @@ void AutoGenCloudScriptTests::TestCloudScriptAdminGetCloudScriptRevision(TestCon
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region AdminGetCloudScriptVersions
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenCloudScriptTests::TestCloudScriptAdminGetCloudScriptVersions(TestContext& testContext)
 {
-    struct AdminGetCloudScriptVersionsResultHolder : public GetCloudScriptVersionsResultHolder
+    struct AdminGetCloudScriptVersionsResultHolderStruct : public GetCloudScriptVersionsResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -238,7 +271,7 @@ void AutoGenCloudScriptTests::TestCloudScriptAdminGetCloudScriptVersions(TestCon
             return ValidatePFCloudScriptGetCloudScriptVersionsResult(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<AdminGetCloudScriptVersionsResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<AdminGetCloudScriptVersionsResultHolderStruct>>(testContext);
 
     HRESULT hr = PFCloudScriptAdminGetCloudScriptVersionsAsync(stateHandle, &async->asyncBlock);
     if (FAILED(hr))
@@ -248,11 +281,13 @@ void AutoGenCloudScriptTests::TestCloudScriptAdminGetCloudScriptVersions(TestCon
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region AdminSetPublishedRevision
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenCloudScriptTests::TestCloudScriptAdminSetPublishedRevision(TestContext& testContext)
 {
     auto async = std::make_unique<XAsyncHelper<XAsyncResult>>(testContext);
@@ -268,14 +303,16 @@ void AutoGenCloudScriptTests::TestCloudScriptAdminSetPublishedRevision(TestConte
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region AdminUpdateCloudScript
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenCloudScriptTests::TestCloudScriptAdminUpdateCloudScript(TestContext& testContext)
 {
-    struct AdminUpdateCloudScriptResultHolder : public UpdateCloudScriptResultHolder
+    struct AdminUpdateCloudScriptResultHolderStruct : public UpdateCloudScriptResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -289,7 +326,7 @@ void AutoGenCloudScriptTests::TestCloudScriptAdminUpdateCloudScript(TestContext&
             return ValidatePFCloudScriptUpdateCloudScriptResult(&result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<AdminUpdateCloudScriptResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<AdminUpdateCloudScriptResultHolderStruct>>(testContext);
 
     PFCloudScriptUpdateCloudScriptRequestWrapper<> request;
     FillUpdateCloudScriptRequest(request);
@@ -302,6 +339,7 @@ void AutoGenCloudScriptTests::TestCloudScriptAdminUpdateCloudScript(TestContext&
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
@@ -309,7 +347,7 @@ void AutoGenCloudScriptTests::TestCloudScriptAdminUpdateCloudScript(TestContext&
 
 void AutoGenCloudScriptTests::TestCloudScriptClientExecuteCloudScript(TestContext& testContext)
 {
-    struct ClientExecuteCloudScriptResultHolder : public ExecuteCloudScriptResultHolder
+    struct ClientExecuteCloudScriptResultHolderStruct : public ExecuteCloudScriptResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -328,7 +366,7 @@ void AutoGenCloudScriptTests::TestCloudScriptClientExecuteCloudScript(TestContex
             return ValidatePFExecuteCloudScriptResult(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<ClientExecuteCloudScriptResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<ClientExecuteCloudScriptResultHolderStruct>>(testContext);
 
     PFCloudScriptExecuteCloudScriptRequestWrapper<> request;
     FillExecuteCloudScriptRequest(request);
@@ -346,9 +384,10 @@ void AutoGenCloudScriptTests::TestCloudScriptClientExecuteCloudScript(TestContex
 
 #pragma region ServerExecuteCloudScript
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenCloudScriptTests::TestCloudScriptServerExecuteCloudScript(TestContext& testContext)
 {
-    struct ServerExecuteCloudScriptResultHolder : public ExecuteCloudScriptResultHolder
+    struct ServerExecuteCloudScriptResultHolderStruct : public ExecuteCloudScriptResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -367,7 +406,7 @@ void AutoGenCloudScriptTests::TestCloudScriptServerExecuteCloudScript(TestContex
             return ValidatePFExecuteCloudScriptResult(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<ServerExecuteCloudScriptResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<ServerExecuteCloudScriptResultHolderStruct>>(testContext);
 
     PFCloudScriptExecuteCloudScriptServerRequestWrapper<> request;
     FillExecuteCloudScriptServerRequest(request);
@@ -380,6 +419,7 @@ void AutoGenCloudScriptTests::TestCloudScriptServerExecuteCloudScript(TestContex
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
@@ -387,7 +427,7 @@ void AutoGenCloudScriptTests::TestCloudScriptServerExecuteCloudScript(TestContex
 
 void AutoGenCloudScriptTests::TestCloudScriptExecuteEntityCloudScript(TestContext& testContext)
 {
-    struct ExecuteEntityCloudScriptResultHolder : public ExecuteCloudScriptResultHolder
+    struct ExecuteEntityCloudScriptResultHolderStruct : public ExecuteCloudScriptResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -406,7 +446,7 @@ void AutoGenCloudScriptTests::TestCloudScriptExecuteEntityCloudScript(TestContex
             return ValidatePFExecuteCloudScriptResult(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<ExecuteEntityCloudScriptResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<ExecuteEntityCloudScriptResultHolderStruct>>(testContext);
 
     PFCloudScriptExecuteEntityCloudScriptRequestWrapper<> request;
     FillExecuteEntityCloudScriptRequest(request);
@@ -426,7 +466,7 @@ void AutoGenCloudScriptTests::TestCloudScriptExecuteEntityCloudScript(TestContex
 
 void AutoGenCloudScriptTests::TestCloudScriptExecuteFunction(TestContext& testContext)
 {
-    struct ExecuteFunctionResultHolder : public ExecuteFunctionResultHolder
+    struct ExecuteFunctionResultHolderStruct : public ExecuteFunctionResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -445,7 +485,7 @@ void AutoGenCloudScriptTests::TestCloudScriptExecuteFunction(TestContext& testCo
             return ValidatePFCloudScriptExecuteFunctionResult(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<ExecuteFunctionResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<ExecuteFunctionResultHolderStruct>>(testContext);
 
     PFCloudScriptExecuteFunctionRequestWrapper<> request;
     FillExecuteFunctionRequest(request);
@@ -465,7 +505,7 @@ void AutoGenCloudScriptTests::TestCloudScriptExecuteFunction(TestContext& testCo
 
 void AutoGenCloudScriptTests::TestCloudScriptGetFunction(TestContext& testContext)
 {
-    struct GetFunctionResultHolder : public GetFunctionResultHolder
+    struct GetFunctionResultHolderStruct : public GetFunctionResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -484,7 +524,7 @@ void AutoGenCloudScriptTests::TestCloudScriptGetFunction(TestContext& testContex
             return ValidatePFCloudScriptGetFunctionResult(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<GetFunctionResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<GetFunctionResultHolderStruct>>(testContext);
 
     PFCloudScriptGetFunctionRequestWrapper<> request;
     FillGetFunctionRequest(request);
@@ -502,9 +542,10 @@ void AutoGenCloudScriptTests::TestCloudScriptGetFunction(TestContext& testContex
 
 #pragma region ListFunctions
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenCloudScriptTests::TestCloudScriptListFunctions(TestContext& testContext)
 {
-    struct ListFunctionsResultHolder : public ListFunctionsResultHolder
+    struct ListFunctionsResultHolderStruct : public ListFunctionsResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -523,7 +564,7 @@ void AutoGenCloudScriptTests::TestCloudScriptListFunctions(TestContext& testCont
             return ValidatePFCloudScriptListFunctionsResult(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<ListFunctionsResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<ListFunctionsResultHolderStruct>>(testContext);
 
     PFCloudScriptListFunctionsRequestWrapper<> request;
     FillListFunctionsRequest(request);
@@ -536,14 +577,16 @@ void AutoGenCloudScriptTests::TestCloudScriptListFunctions(TestContext& testCont
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region ListHttpFunctions
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenCloudScriptTests::TestCloudScriptListHttpFunctions(TestContext& testContext)
 {
-    struct ListHttpFunctionsResultHolder : public ListHttpFunctionsResultHolder
+    struct ListHttpFunctionsResultHolderStruct : public ListHttpFunctionsResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -562,7 +605,7 @@ void AutoGenCloudScriptTests::TestCloudScriptListHttpFunctions(TestContext& test
             return ValidatePFCloudScriptListHttpFunctionsResult(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<ListHttpFunctionsResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<ListHttpFunctionsResultHolderStruct>>(testContext);
 
     PFCloudScriptListFunctionsRequestWrapper<> request;
     FillListFunctionsRequest(request);
@@ -575,14 +618,16 @@ void AutoGenCloudScriptTests::TestCloudScriptListHttpFunctions(TestContext& test
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region ListQueuedFunctions
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenCloudScriptTests::TestCloudScriptListQueuedFunctions(TestContext& testContext)
 {
-    struct ListQueuedFunctionsResultHolder : public ListQueuedFunctionsResultHolder
+    struct ListQueuedFunctionsResultHolderStruct : public ListQueuedFunctionsResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -601,7 +646,7 @@ void AutoGenCloudScriptTests::TestCloudScriptListQueuedFunctions(TestContext& te
             return ValidatePFCloudScriptListQueuedFunctionsResult(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<ListQueuedFunctionsResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<ListQueuedFunctionsResultHolderStruct>>(testContext);
 
     PFCloudScriptListFunctionsRequestWrapper<> request;
     FillListFunctionsRequest(request);
@@ -614,11 +659,13 @@ void AutoGenCloudScriptTests::TestCloudScriptListQueuedFunctions(TestContext& te
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region PostFunctionResultForEntityTriggeredAction
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenCloudScriptTests::TestCloudScriptPostFunctionResultForEntityTriggeredAction(TestContext& testContext)
 {
     auto async = std::make_unique<XAsyncHelper<XAsyncResult>>(testContext);
@@ -634,11 +681,13 @@ void AutoGenCloudScriptTests::TestCloudScriptPostFunctionResultForEntityTriggere
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region PostFunctionResultForFunctionExecution
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenCloudScriptTests::TestCloudScriptPostFunctionResultForFunctionExecution(TestContext& testContext)
 {
     auto async = std::make_unique<XAsyncHelper<XAsyncResult>>(testContext);
@@ -654,11 +703,13 @@ void AutoGenCloudScriptTests::TestCloudScriptPostFunctionResultForFunctionExecut
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region PostFunctionResultForPlayerTriggeredAction
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenCloudScriptTests::TestCloudScriptPostFunctionResultForPlayerTriggeredAction(TestContext& testContext)
 {
     auto async = std::make_unique<XAsyncHelper<XAsyncResult>>(testContext);
@@ -674,11 +725,13 @@ void AutoGenCloudScriptTests::TestCloudScriptPostFunctionResultForPlayerTriggere
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region PostFunctionResultForScheduledTask
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenCloudScriptTests::TestCloudScriptPostFunctionResultForScheduledTask(TestContext& testContext)
 {
     auto async = std::make_unique<XAsyncHelper<XAsyncResult>>(testContext);
@@ -694,11 +747,13 @@ void AutoGenCloudScriptTests::TestCloudScriptPostFunctionResultForScheduledTask(
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region RegisterHttpFunction
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenCloudScriptTests::TestCloudScriptRegisterHttpFunction(TestContext& testContext)
 {
     auto async = std::make_unique<XAsyncHelper<XAsyncResult>>(testContext);
@@ -714,11 +769,13 @@ void AutoGenCloudScriptTests::TestCloudScriptRegisterHttpFunction(TestContext& t
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region RegisterQueuedFunction
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenCloudScriptTests::TestCloudScriptRegisterQueuedFunction(TestContext& testContext)
 {
     auto async = std::make_unique<XAsyncHelper<XAsyncResult>>(testContext);
@@ -734,11 +791,13 @@ void AutoGenCloudScriptTests::TestCloudScriptRegisterQueuedFunction(TestContext&
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region UnregisterFunction
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenCloudScriptTests::TestCloudScriptUnregisterFunction(TestContext& testContext)
 {
     auto async = std::make_unique<XAsyncHelper<XAsyncResult>>(testContext);
@@ -754,6 +813,7 @@ void AutoGenCloudScriptTests::TestCloudScriptUnregisterFunction(TestContext& tes
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 

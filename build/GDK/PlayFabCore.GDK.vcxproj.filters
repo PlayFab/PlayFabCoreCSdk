@@ -11,7 +11,7 @@
     <Filter Include="Source\Shared" />
     <Filter Include="Source\ScheduledTask" />
     <Filter Include="Source\TitleDataManagement" />
-    <Filter Include="Source\PlayStream" />
+    <Filter Include="Source\Events" />
     <Filter Include="Source\GameServer" />
     <Filter Include="Source\PlayerItemManagement" />
     <Filter Include="Source\AccountManagement" />
@@ -19,6 +19,7 @@
     <Filter Include="Source\PlayerDataManagement" />
     <Filter Include="Source\Segments" />
     <Filter Include="Source\Content" />
+    <Filter Include="Source\PlayStream" />
     <Filter Include="Source\CloudScript" />
     <Filter Include="Source\Matchmaking" />
     <Filter Include="Source\Character" />
@@ -262,29 +263,29 @@
     <ClCompile Include="$(PlayFabSourceDir)\source\TitleDataManagement\PFTitleDataManagement.cpp">
       <Filter>Source\TitleDataManagement</Filter>
     </ClCompile>
-    <ClInclude Include="$(PlayFabSourceDir)\include\playfab\PFPlayStreamDataModels.h">
+    <ClInclude Include="$(PlayFabSourceDir)\include\playfab\PFEventsDataModels.h">
       <Filter>C Public Includes\playfab</Filter>
     </ClInclude>
-    <ClInclude Include="$(PlayFabSourceDir)\include\playfab\cpp\PFPlayStreamDataModelWrappers.h">
+    <ClInclude Include="$(PlayFabSourceDir)\include\playfab\cpp\PFEventsDataModelWrappers.h">
       <Filter>C Public Includes\playfab\cpp</Filter>
     </ClInclude>
-    <ClInclude Include="$(PlayFabSourceDir)\source\PlayStream\PlayStreamDataModels.h">
-      <Filter>Source\PlayStream</Filter>
+    <ClInclude Include="$(PlayFabSourceDir)\source\Events\EventsDataModels.h">
+      <Filter>Source\Events</Filter>
     </ClInclude>
-    <ClCompile Include="$(PlayFabSourceDir)\source\PlayStream\PlayStreamDataModels.cpp">
-      <Filter>Source\PlayStream</Filter>
+    <ClCompile Include="$(PlayFabSourceDir)\source\Events\EventsDataModels.cpp">
+      <Filter>Source\Events</Filter>
     </ClCompile>
-    <ClInclude Include="$(PlayFabSourceDir)\source\PlayStream\PlayStream.h">
-      <Filter>Source\PlayStream</Filter>
+    <ClInclude Include="$(PlayFabSourceDir)\source\Events\Events.h">
+      <Filter>Source\Events</Filter>
     </ClInclude>
-    <ClCompile Include="$(PlayFabSourceDir)\source\PlayStream\PlayStream.cpp">
-      <Filter>Source\PlayStream</Filter>
+    <ClCompile Include="$(PlayFabSourceDir)\source\Events\Events.cpp">
+      <Filter>Source\Events</Filter>
     </ClCompile>
-    <ClInclude Include="$(PlayFabSourceDir)\include\playfab\PFPlayStream.h">
+    <ClInclude Include="$(PlayFabSourceDir)\include\playfab\PFEvents.h">
       <Filter>C Public Includes\playfab</Filter>
     </ClInclude>
-    <ClCompile Include="$(PlayFabSourceDir)\source\PlayStream\PFPlayStream.cpp">
-      <Filter>Source\PlayStream</Filter>
+    <ClCompile Include="$(PlayFabSourceDir)\source\Events\PFEvents.cpp">
+      <Filter>Source\Events</Filter>
     </ClCompile>
     <ClInclude Include="$(PlayFabSourceDir)\include\playfab\PFGameServerDataModels.h">
       <Filter>C Public Includes\playfab</Filter>
@@ -453,6 +454,30 @@
     </ClInclude>
     <ClCompile Include="$(PlayFabSourceDir)\source\Content\PFContent.cpp">
       <Filter>Source\Content</Filter>
+    </ClCompile>
+    <ClInclude Include="$(PlayFabSourceDir)\include\playfab\PFPlayStreamDataModels.h">
+      <Filter>C Public Includes\playfab</Filter>
+    </ClInclude>
+    <ClInclude Include="$(PlayFabSourceDir)\include\playfab\cpp\PFPlayStreamDataModelWrappers.h">
+      <Filter>C Public Includes\playfab\cpp</Filter>
+    </ClInclude>
+    <ClInclude Include="$(PlayFabSourceDir)\source\PlayStream\PlayStreamDataModels.h">
+      <Filter>Source\PlayStream</Filter>
+    </ClInclude>
+    <ClCompile Include="$(PlayFabSourceDir)\source\PlayStream\PlayStreamDataModels.cpp">
+      <Filter>Source\PlayStream</Filter>
+    </ClCompile>
+    <ClInclude Include="$(PlayFabSourceDir)\source\PlayStream\PlayStream.h">
+      <Filter>Source\PlayStream</Filter>
+    </ClInclude>
+    <ClCompile Include="$(PlayFabSourceDir)\source\PlayStream\PlayStream.cpp">
+      <Filter>Source\PlayStream</Filter>
+    </ClCompile>
+    <ClInclude Include="$(PlayFabSourceDir)\include\playfab\PFPlayStream.h">
+      <Filter>C Public Includes\playfab</Filter>
+    </ClInclude>
+    <ClCompile Include="$(PlayFabSourceDir)\source\PlayStream\PFPlayStream.cpp">
+      <Filter>Source\PlayStream</Filter>
     </ClCompile>
     <ClInclude Include="$(PlayFabSourceDir)\include\playfab\PFCloudScriptDataModels.h">
       <Filter>C Public Includes\playfab</Filter>

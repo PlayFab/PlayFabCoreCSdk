@@ -21,7 +21,6 @@
     <MinimumVisualStudioVersion>15.0</MinimumVisualStudioVersion>
     <TargetRuntime>Native</TargetRuntime>
   </PropertyGroup>
-  <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory), PlayFab.gdk.bwoi.props))\PlayFab.gdk.bwoi.props" />
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Gaming.Desktop.x64'" Label="Configuration">
     <ConfigurationType>StaticLibrary</ConfigurationType>
@@ -205,14 +204,14 @@
     <ClCompile Include="$(PlayFabSourceDir)\source\TitleDataManagement\TitleDataManagement.cpp" />
     <ClInclude Include="$(PlayFabSourceDir)\include\playfab\PFTitleDataManagement.h" />
     <ClCompile Include="$(PlayFabSourceDir)\source\TitleDataManagement\PFTitleDataManagement.cpp" />
-    <ClInclude Include="$(PlayFabSourceDir)\include\playfab\PFPlayStreamDataModels.h" />
-    <ClInclude Include="$(PlayFabSourceDir)\include\playfab\cpp\PFPlayStreamDataModelWrappers.h" />
-    <ClInclude Include="$(PlayFabSourceDir)\source\PlayStream\PlayStreamDataModels.h" />
-    <ClCompile Include="$(PlayFabSourceDir)\source\PlayStream\PlayStreamDataModels.cpp" />
-    <ClInclude Include="$(PlayFabSourceDir)\source\PlayStream\PlayStream.h" />
-    <ClCompile Include="$(PlayFabSourceDir)\source\PlayStream\PlayStream.cpp" />
-    <ClInclude Include="$(PlayFabSourceDir)\include\playfab\PFPlayStream.h" />
-    <ClCompile Include="$(PlayFabSourceDir)\source\PlayStream\PFPlayStream.cpp" />
+    <ClInclude Include="$(PlayFabSourceDir)\include\playfab\PFEventsDataModels.h" />
+    <ClInclude Include="$(PlayFabSourceDir)\include\playfab\cpp\PFEventsDataModelWrappers.h" />
+    <ClInclude Include="$(PlayFabSourceDir)\source\Events\EventsDataModels.h" />
+    <ClCompile Include="$(PlayFabSourceDir)\source\Events\EventsDataModels.cpp" />
+    <ClInclude Include="$(PlayFabSourceDir)\source\Events\Events.h" />
+    <ClCompile Include="$(PlayFabSourceDir)\source\Events\Events.cpp" />
+    <ClInclude Include="$(PlayFabSourceDir)\include\playfab\PFEvents.h" />
+    <ClCompile Include="$(PlayFabSourceDir)\source\Events\PFEvents.cpp" />
     <ClInclude Include="$(PlayFabSourceDir)\include\playfab\PFGameServerDataModels.h" />
     <ClInclude Include="$(PlayFabSourceDir)\include\playfab\cpp\PFGameServerDataModelWrappers.h" />
     <ClInclude Include="$(PlayFabSourceDir)\source\GameServer\GameServerDataModels.h" />
@@ -269,6 +268,14 @@
     <ClCompile Include="$(PlayFabSourceDir)\source\Content\Content.cpp" />
     <ClInclude Include="$(PlayFabSourceDir)\include\playfab\PFContent.h" />
     <ClCompile Include="$(PlayFabSourceDir)\source\Content\PFContent.cpp" />
+    <ClInclude Include="$(PlayFabSourceDir)\include\playfab\PFPlayStreamDataModels.h" />
+    <ClInclude Include="$(PlayFabSourceDir)\include\playfab\cpp\PFPlayStreamDataModelWrappers.h" />
+    <ClInclude Include="$(PlayFabSourceDir)\source\PlayStream\PlayStreamDataModels.h" />
+    <ClCompile Include="$(PlayFabSourceDir)\source\PlayStream\PlayStreamDataModels.cpp" />
+    <ClInclude Include="$(PlayFabSourceDir)\source\PlayStream\PlayStream.h" />
+    <ClCompile Include="$(PlayFabSourceDir)\source\PlayStream\PlayStream.cpp" />
+    <ClInclude Include="$(PlayFabSourceDir)\include\playfab\PFPlayStream.h" />
+    <ClCompile Include="$(PlayFabSourceDir)\source\PlayStream\PFPlayStream.cpp" />
     <ClInclude Include="$(PlayFabSourceDir)\include\playfab\PFCloudScriptDataModels.h" />
     <ClInclude Include="$(PlayFabSourceDir)\include\playfab\cpp\PFCloudScriptDataModelWrappers.h" />
     <ClInclude Include="$(PlayFabSourceDir)\source\CloudScript\CloudScriptDataModels.h" />

@@ -46,7 +46,7 @@ HRESULT AutoGenLocalizationTests::LogPFLocalizationGetLanguageListResponse(PFLoc
     std::stringstream ss;
     ss << "Response:"; Log(ss);
 
-    // Found PlayFabLocalizationGetLanguageListResponse    
+    // Found PlayFabLocalizationGetLanguageListResponse        
     ss << "  languageListCount " << result->languageListCount; Log(ss);
 
     // const char*

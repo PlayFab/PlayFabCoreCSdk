@@ -15,6 +15,7 @@
 #include "ApiTests.h" 
 #include "EntityTests.h"
 
+#include "AutoGenTests/AutoGenEventsTests.h" 
 #include "AutoGenTests/AutoGenFriendsTests.h" 
 #include "AutoGenTests/AutoGenSharedGroupsTests.h" 
 #include "AutoGenTests/AutoGenDataTests.h" 
@@ -31,6 +32,13 @@ PFTestTraceLevel TestApp::traceLevel = PFTestTraceLevel::Important;
     // Time out if waiting for the final cloudscript submission longer than this
     constexpr int CLOUDSCRIPT_TIMEOUT_MS = 30000;
 #endif // !defined(DISABLE_PLAYFABCLIENT_API)
+
+
+    void TestApp::LogInit()
+    {
+        // Delete existing log file if it exists
+        std::remove(s_logfileName);
+    }
 
 #if HC_PLATFORM != HC_PLATFORM_GDK
     void TestApp::Log(const char* format, ...)
@@ -55,8 +63,8 @@ PFTestTraceLevel TestApp::traceLevel = PFTestTraceLevel::Important;
 
     int TestApp::Main()
     {
-        HRESULT hr = HCInitialize(nullptr);
-        assert(SUCCEEDED(hr));
+        TestApp::LogInit();
+
         HCSettingsSetTraceLevel(HCTraceLevel::Verbose);
         HCTraceSetTraceToDebugger(true);
 
@@ -86,25 +94,29 @@ PFTestTraceLevel TestApp::traceLevel = PFTestTraceLevel::Important;
         testRunner.Add(apiTests);
 
 
-        AutoGenFriendsTests apiTests16;
-        apiTests16.SetTitleInfo(testTitleData);
-        testRunner.Add(apiTests16);
+        AutoGenEventsTests apiTests4;
+        apiTests4.SetTitleInfo(testTitleData);
+        testRunner.Add(apiTests4);
 
-        AutoGenSharedGroupsTests apiTests17;
+        AutoGenFriendsTests apiTests17;
         apiTests17.SetTitleInfo(testTitleData);
         testRunner.Add(apiTests17);
 
-        AutoGenDataTests apiTests21;
-        apiTests21.SetTitleInfo(testTitleData);
-        testRunner.Add(apiTests21);
+        AutoGenSharedGroupsTests apiTests18;
+        apiTests18.SetTitleInfo(testTitleData);
+        testRunner.Add(apiTests18);
 
-        AutoGenGroupsTests apiTests24;
-        apiTests24.SetTitleInfo(testTitleData);
-        testRunner.Add(apiTests24);
+        AutoGenDataTests apiTests22;
+        apiTests22.SetTitleInfo(testTitleData);
+        testRunner.Add(apiTests22);
 
-        AutoGenProfilesTests apiTests27;
-        apiTests27.SetTitleInfo(testTitleData);
-        testRunner.Add(apiTests27);
+        AutoGenGroupsTests apiTests25;
+        apiTests25.SetTitleInfo(testTitleData);
+        testRunner.Add(apiTests25);
+
+        AutoGenProfilesTests apiTests28;
+        apiTests28.SetTitleInfo(testTitleData);
+        testRunner.Add(apiTests28);
 
 
         // Run the tests (blocks until all tests have finished).

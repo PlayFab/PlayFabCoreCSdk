@@ -66,7 +66,7 @@ HRESULT AutoGenCharacterTests::LogPFCharacterListUsersCharactersResult(PFCharact
     std::stringstream ss;
     ss << "Response:"; Log(ss);
 
-    // Found PlayFabCharacterListUsersCharactersResult    
+    // Found PlayFabCharacterListUsersCharactersResult        
     ss << "  charactersCount " << result->charactersCount; Log(ss);
 
     // PFCharacterResult
@@ -115,6 +115,17 @@ HRESULT AutoGenCharacterTests::LogPFCharacterClientGetCharacterDataResult(PFChar
     std::stringstream ss;
     ss << "Response:"; Log(ss);
 
+    // Found PlayFabCharacterClientGetCharacterDataResult    
+    if( result->characterId ) { ss << "  characterId " << result->characterId; Log(ss); } else { ss << "  characterId = nullptr"; Log(ss); } // Class: const char*         
+    ss << "  dataCount " << result->dataCount; Log(ss);
+
+    // PFUserDataRecordDictionaryEntry
+    for( uint32_t i=0; i<result->dataCount; i++ )
+    {
+            ss << "  result->data[" << i << "]:" << result->data[i].key << "=" << result->data[i].value; Log(ss);
+            
+    }     
+    ss << "  dataVersion " << result->dataVersion; Log(ss); // Class: uint32_t 
     return S_OK;
 }
 
@@ -150,7 +161,7 @@ HRESULT AutoGenCharacterTests::LogPFCharacterGetCharacterLeaderboardResult(PFCha
     std::stringstream ss;
     ss << "Response:"; Log(ss);
 
-    // Found PlayFabCharacterGetCharacterLeaderboardResult    
+    // Found PlayFabCharacterGetCharacterLeaderboardResult        
     ss << "  leaderboardCount " << result->leaderboardCount; Log(ss);
 
     // PFCharacterCharacterLeaderboardEntry
@@ -190,6 +201,15 @@ HRESULT AutoGenCharacterTests::LogPFCharacterClientGetCharacterStatisticsResult(
     std::stringstream ss;
     ss << "Response:"; Log(ss);
 
+    // Found PlayFabCharacterClientGetCharacterStatisticsResult        
+    ss << "  characterStatisticsCount " << result->characterStatisticsCount; Log(ss);
+
+    // PFInt32DictionaryEntry
+    for( uint32_t i=0; i<result->characterStatisticsCount; i++ )
+    {
+            ss << "  result->characterStatistics[" << i << "]:" << result->characterStatistics[i].key << "=" << result->characterStatistics[i].value; Log(ss);
+            
+    } 
     return S_OK;
 }
 
@@ -225,7 +245,7 @@ HRESULT AutoGenCharacterTests::LogPFCharacterGetLeaderboardAroundCharacterResult
     std::stringstream ss;
     ss << "Response:"; Log(ss);
 
-    // Found PlayFabCharacterGetLeaderboardAroundCharacterResult    
+    // Found PlayFabCharacterGetLeaderboardAroundCharacterResult        
     ss << "  leaderboardCount " << result->leaderboardCount; Log(ss);
 
     // PFCharacterCharacterLeaderboardEntry
@@ -265,7 +285,7 @@ HRESULT AutoGenCharacterTests::LogPFCharacterGetLeaderboardForUsersCharactersRes
     std::stringstream ss;
     ss << "Response:"; Log(ss);
 
-    // Found PlayFabCharacterGetLeaderboardForUsersCharactersResult    
+    // Found PlayFabCharacterGetLeaderboardForUsersCharactersResult        
     ss << "  leaderboardCount " << result->leaderboardCount; Log(ss);
 
     // PFCharacterCharacterLeaderboardEntry
@@ -315,6 +335,10 @@ HRESULT AutoGenCharacterTests::LogPFCharacterClientGrantCharacterToUserResult(PF
     std::stringstream ss;
     ss << "Response:"; Log(ss);
 
+    // Found PlayFabCharacterClientGrantCharacterToUserResult    
+    if( result->characterId ) { ss << "  characterId " << result->characterId; Log(ss); } else { ss << "  characterId = nullptr"; Log(ss); } // Class: const char*     
+    if( result->characterType ) { ss << "  characterType " << result->characterType; Log(ss); } else { ss << "  characterType = nullptr"; Log(ss); } // Class: const char*     
+    ss << "  result " << result->result; Log(ss); // Class: bool 
     return S_OK;
 }
 
@@ -371,7 +395,7 @@ HRESULT AutoGenCharacterTests::LogPFCharacterUpdateCharacterDataResult(PFCharact
     std::stringstream ss;
     ss << "Response:"; Log(ss);
 
-    // Found PlayFabCharacterUpdateCharacterDataResult
+    // Found PlayFabCharacterUpdateCharacterDataResult    
     ss << "  dataVersion " << result->dataVersion; Log(ss); // Class: uint32_t 
     return S_OK;
 }
@@ -450,6 +474,18 @@ HRESULT AutoGenCharacterTests::LogPFCharacterServerGetCharacterDataResult(PFChar
     std::stringstream ss;
     ss << "Response:"; Log(ss);
 
+    // Found PlayFabCharacterServerGetCharacterDataResult    
+    if( result->characterId ) { ss << "  characterId " << result->characterId; Log(ss); } else { ss << "  characterId = nullptr"; Log(ss); } // Class: const char*         
+    ss << "  dataCount " << result->dataCount; Log(ss);
+
+    // PFUserDataRecordDictionaryEntry
+    for( uint32_t i=0; i<result->dataCount; i++ )
+    {
+            ss << "  result->data[" << i << "]:" << result->data[i].key << "=" << result->data[i].value; Log(ss);
+            
+    }     
+    ss << "  dataVersion " << result->dataVersion; Log(ss); // Class: uint32_t     
+    if( result->playFabId ) { ss << "  playFabId " << result->playFabId; Log(ss); } else { ss << "  playFabId = nullptr"; Log(ss); } // Class: const char* 
     return S_OK;
 }
 
@@ -483,6 +519,17 @@ HRESULT AutoGenCharacterTests::LogPFCharacterServerGetCharacterStatisticsResult(
     std::stringstream ss;
     ss << "Response:"; Log(ss);
 
+    // Found PlayFabCharacterServerGetCharacterStatisticsResult    
+    if( result->characterId ) { ss << "  characterId " << result->characterId; Log(ss); } else { ss << "  characterId = nullptr"; Log(ss); } // Class: const char*         
+    ss << "  characterStatisticsCount " << result->characterStatisticsCount; Log(ss);
+
+    // PFInt32DictionaryEntry
+    for( uint32_t i=0; i<result->characterStatisticsCount; i++ )
+    {
+            ss << "  result->characterStatistics[" << i << "]:" << result->characterStatistics[i].key << "=" << result->characterStatistics[i].value; Log(ss);
+            
+    }     
+    if( result->playFabId ) { ss << "  playFabId " << result->playFabId; Log(ss); } else { ss << "  playFabId = nullptr"; Log(ss); } // Class: const char* 
     return S_OK;
 }
 
@@ -568,6 +615,8 @@ HRESULT AutoGenCharacterTests::LogPFCharacterServerGrantCharacterToUserResult(PF
     std::stringstream ss;
     ss << "Response:"; Log(ss);
 
+    // Found PlayFabCharacterServerGrantCharacterToUserResult    
+    if( result->characterId ) { ss << "  characterId " << result->characterId; Log(ss); } else { ss << "  characterId = nullptr"; Log(ss); } // Class: const char* 
     return S_OK;
 }
 

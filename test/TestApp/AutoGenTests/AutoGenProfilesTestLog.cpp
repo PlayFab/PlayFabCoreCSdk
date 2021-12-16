@@ -18,7 +18,7 @@ void AutoGenProfilesTests::LogGetGlobalPolicyRequest(PFProfilesGetGlobalPolicyRe
 
     std::stringstream ss;
     ss << "----------"; Log(ss);
-    ss << "Test #" << g_ProfilesTestIndex++ << ": " << testName << ".  Last Known Status: PassingWithData"; Log(ss);
+    ss << "Test #" << g_ProfilesTestIndex++ << ": " << testName << ".  Last Known Status: Failing"; Log(ss);
     ss << "Request:"; Log(ss);
 
 
@@ -46,7 +46,7 @@ HRESULT AutoGenProfilesTests::LogPFProfilesGetGlobalPolicyResponse(PFProfilesGet
     std::stringstream ss;
     ss << "Response:"; Log(ss);
 
-    // Found PlayFabProfilesGetGlobalPolicyResponse    
+    // Found PlayFabProfilesGetGlobalPolicyResponse        
     ss << "  permissionsCount " << result->permissionsCount; Log(ss);
 
     // PFProfilesEntityPermissionStatement
@@ -96,7 +96,7 @@ HRESULT AutoGenProfilesTests::LogPFProfilesGetEntityProfileResponse(PFProfilesGe
     std::stringstream ss;
     ss << "Response:"; Log(ss);
 
-    // Found PlayFabProfilesGetEntityProfileResponse
+    // Found PlayFabProfilesGetEntityProfileResponse    
     ss << "  profile " << result->profile; Log(ss); // Class: PFProfilesEntityProfileBody 
     return S_OK;
 }
@@ -146,7 +146,7 @@ HRESULT AutoGenProfilesTests::LogPFProfilesGetEntityProfilesResponse(PFProfilesG
     std::stringstream ss;
     ss << "Response:"; Log(ss);
 
-    // Found PlayFabProfilesGetEntityProfilesResponse    
+    // Found PlayFabProfilesGetEntityProfilesResponse        
     ss << "  profilesCount " << result->profilesCount; Log(ss);
 
     // PFProfilesEntityProfileBody
@@ -202,8 +202,8 @@ HRESULT AutoGenProfilesTests::LogPFProfilesGetTitlePlayersFromMasterPlayerAccoun
     std::stringstream ss;
     ss << "Response:"; Log(ss);
 
-    // Found PlayFabProfilesGetTitlePlayersFromMasterPlayerAccountIdsResponse
-    if( result->titleId ) { ss << "  titleId " << result->titleId; Log(ss); } else { ss << "  titleId = nullptr"; Log(ss); } // Class: const char*     
+    // Found PlayFabProfilesGetTitlePlayersFromMasterPlayerAccountIdsResponse    
+    if( result->titleId ) { ss << "  titleId " << result->titleId; Log(ss); } else { ss << "  titleId = nullptr"; Log(ss); } // Class: const char*         
     ss << "  titlePlayerAccountsCount " << result->titlePlayerAccountsCount; Log(ss);
 
     // PFEntityKeyDictionaryEntry
@@ -224,7 +224,7 @@ void AutoGenProfilesTests::LogSetGlobalPolicyRequest(PFProfilesSetGlobalPolicyRe
 
     std::stringstream ss;
     ss << "----------"; Log(ss);
-    ss << "Test #" << g_ProfilesTestIndex++ << ": " << testName << ".  Last Known Status: PassingWithData"; Log(ss);
+    ss << "Test #" << g_ProfilesTestIndex++ << ": " << testName << ".  Last Known Status: Failing"; Log(ss);
     ss << "Request:"; Log(ss);
 
 
@@ -289,8 +289,8 @@ HRESULT AutoGenProfilesTests::LogPFProfilesSetProfileLanguageResponse(PFProfiles
     std::stringstream ss;
     ss << "Response:"; Log(ss);
 
-    // Found PlayFabProfilesSetProfileLanguageResponse
-    ss << "  operationResult " << result->operationResult; Log(ss); // Class: PFOperationTypes 
+    // Found PlayFabProfilesSetProfileLanguageResponse    
+    ss << "  operationResult " << result->operationResult; Log(ss); // Class: PFOperationTypes     
     ss << "  versionNumber " << result->versionNumber; Log(ss); // Class: int32_t 
     return S_OK;
 }
@@ -340,7 +340,7 @@ HRESULT AutoGenProfilesTests::LogPFProfilesSetEntityProfilePolicyResponse(PFProf
     std::stringstream ss;
     ss << "Response:"; Log(ss);
 
-    // Found PlayFabProfilesSetEntityProfilePolicyResponse    
+    // Found PlayFabProfilesSetEntityProfilePolicyResponse        
     ss << "  permissionsCount " << result->permissionsCount; Log(ss);
 
     // PFProfilesEntityPermissionStatement

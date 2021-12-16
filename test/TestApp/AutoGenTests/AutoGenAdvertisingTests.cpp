@@ -32,13 +32,21 @@ HRESULT AutoGenAdvertisingTests::LogHR(HRESULT hr)
 void AutoGenAdvertisingTests::AddTests()
 {
     // Generated tests 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestAdvertisingClientAttributeInstall", &AutoGenAdvertisingTests::TestAdvertisingClientAttributeInstall);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestAdvertisingClientGetAdPlacements", &AutoGenAdvertisingTests::TestAdvertisingClientGetAdPlacements);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestAdvertisingClientReportAdActivity", &AutoGenAdvertisingTests::TestAdvertisingClientReportAdActivity);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestAdvertisingClientRewardAdActivity", &AutoGenAdvertisingTests::TestAdvertisingClientRewardAdActivity);
+#endif
 }
 
 void AutoGenAdvertisingTests::ClassSetUp()
@@ -148,6 +156,7 @@ void AutoGenAdvertisingTests::SetUp(TestContext& testContext)
 
 #pragma region ClientAttributeInstall
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenAdvertisingTests::TestAdvertisingClientAttributeInstall(TestContext& testContext)
 {
     auto async = std::make_unique<XAsyncHelper<XAsyncResult>>(testContext);
@@ -163,14 +172,16 @@ void AutoGenAdvertisingTests::TestAdvertisingClientAttributeInstall(TestContext&
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region ClientGetAdPlacements
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenAdvertisingTests::TestAdvertisingClientGetAdPlacements(TestContext& testContext)
 {
-    struct ClientGetAdPlacementsResultHolder : public GetAdPlacementsResultHolder
+    struct ClientGetAdPlacementsResultHolderStruct : public GetAdPlacementsResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -189,7 +200,7 @@ void AutoGenAdvertisingTests::TestAdvertisingClientGetAdPlacements(TestContext& 
             return ValidatePFAdvertisingGetAdPlacementsResult(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<ClientGetAdPlacementsResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<ClientGetAdPlacementsResultHolderStruct>>(testContext);
 
     PFAdvertisingGetAdPlacementsRequestWrapper<> request;
     FillGetAdPlacementsRequest(request);
@@ -202,11 +213,13 @@ void AutoGenAdvertisingTests::TestAdvertisingClientGetAdPlacements(TestContext& 
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region ClientReportAdActivity
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenAdvertisingTests::TestAdvertisingClientReportAdActivity(TestContext& testContext)
 {
     auto async = std::make_unique<XAsyncHelper<XAsyncResult>>(testContext);
@@ -222,14 +235,16 @@ void AutoGenAdvertisingTests::TestAdvertisingClientReportAdActivity(TestContext&
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region ClientRewardAdActivity
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenAdvertisingTests::TestAdvertisingClientRewardAdActivity(TestContext& testContext)
 {
-    struct ClientRewardAdActivityResultHolder : public RewardAdActivityResultHolder
+    struct ClientRewardAdActivityResultHolderStruct : public RewardAdActivityResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -248,7 +263,7 @@ void AutoGenAdvertisingTests::TestAdvertisingClientRewardAdActivity(TestContext&
             return ValidatePFAdvertisingRewardAdActivityResult(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<ClientRewardAdActivityResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<ClientRewardAdActivityResultHolderStruct>>(testContext);
 
     PFAdvertisingRewardAdActivityRequestWrapper<> request;
     FillRewardAdActivityRequest(request);
@@ -261,6 +276,7 @@ void AutoGenAdvertisingTests::TestAdvertisingClientRewardAdActivity(TestContext&
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 

@@ -32,51 +32,97 @@ HRESULT AutoGenTitleDataManagementTests::LogHR(HRESULT hr)
 void AutoGenTitleDataManagementTests::AddTests()
 {
     // Generated tests 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestTitleDataManagementAdminAddLocalizedNews", &AutoGenTitleDataManagementTests::TestTitleDataManagementAdminAddLocalizedNews);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestTitleDataManagementAdminAddNews", &AutoGenTitleDataManagementTests::TestTitleDataManagementAdminAddNews);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestTitleDataManagementAdminAddVirtualCurrencyTypes", &AutoGenTitleDataManagementTests::TestTitleDataManagementAdminAddVirtualCurrencyTypes);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestTitleDataManagementAdminDeleteStore", &AutoGenTitleDataManagementTests::TestTitleDataManagementAdminDeleteStore);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestTitleDataManagementAdminDeleteTitleDataOverride", &AutoGenTitleDataManagementTests::TestTitleDataManagementAdminDeleteTitleDataOverride);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestTitleDataManagementAdminGetCatalogItems", &AutoGenTitleDataManagementTests::TestTitleDataManagementAdminGetCatalogItems);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestTitleDataManagementAdminGetPublisherData", &AutoGenTitleDataManagementTests::TestTitleDataManagementAdminGetPublisherData);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestTitleDataManagementAdminGetRandomResultTables", &AutoGenTitleDataManagementTests::TestTitleDataManagementAdminGetRandomResultTables);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestTitleDataManagementAdminGetStoreItems", &AutoGenTitleDataManagementTests::TestTitleDataManagementAdminGetStoreItems);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestTitleDataManagementAdminGetTitleData", &AutoGenTitleDataManagementTests::TestTitleDataManagementAdminGetTitleData);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestTitleDataManagementAdminGetTitleInternalData", &AutoGenTitleDataManagementTests::TestTitleDataManagementAdminGetTitleInternalData);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestTitleDataManagementAdminListVirtualCurrencyTypes", &AutoGenTitleDataManagementTests::TestTitleDataManagementAdminListVirtualCurrencyTypes);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestTitleDataManagementAdminRemoveVirtualCurrencyTypes", &AutoGenTitleDataManagementTests::TestTitleDataManagementAdminRemoveVirtualCurrencyTypes);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestTitleDataManagementAdminSetCatalogItems", &AutoGenTitleDataManagementTests::TestTitleDataManagementAdminSetCatalogItems);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestTitleDataManagementAdminSetPublisherData", &AutoGenTitleDataManagementTests::TestTitleDataManagementAdminSetPublisherData);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestTitleDataManagementAdminSetStoreItems", &AutoGenTitleDataManagementTests::TestTitleDataManagementAdminSetStoreItems);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestTitleDataManagementAdminSetTitleData", &AutoGenTitleDataManagementTests::TestTitleDataManagementAdminSetTitleData);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestTitleDataManagementAdminSetTitleDataAndOverrides", &AutoGenTitleDataManagementTests::TestTitleDataManagementAdminSetTitleDataAndOverrides);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestTitleDataManagementAdminSetTitleInternalData", &AutoGenTitleDataManagementTests::TestTitleDataManagementAdminSetTitleInternalData);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestTitleDataManagementAdminSetupPushNotification", &AutoGenTitleDataManagementTests::TestTitleDataManagementAdminSetupPushNotification);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestTitleDataManagementAdminUpdateCatalogItems", &AutoGenTitleDataManagementTests::TestTitleDataManagementAdminUpdateCatalogItems);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestTitleDataManagementAdminUpdateRandomResultTables", &AutoGenTitleDataManagementTests::TestTitleDataManagementAdminUpdateRandomResultTables);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestTitleDataManagementAdminUpdateStoreItems", &AutoGenTitleDataManagementTests::TestTitleDataManagementAdminUpdateStoreItems);
+#endif
 
     AddTest("TestTitleDataManagementClientGetCatalogItems", &AutoGenTitleDataManagementTests::TestTitleDataManagementClientGetCatalogItems);
 
@@ -90,25 +136,45 @@ void AutoGenTitleDataManagementTests::AddTests()
 
     AddTest("TestTitleDataManagementClientGetTitleNews", &AutoGenTitleDataManagementTests::TestTitleDataManagementClientGetTitleNews);
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestTitleDataManagementServerGetCatalogItems", &AutoGenTitleDataManagementTests::TestTitleDataManagementServerGetCatalogItems);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestTitleDataManagementServerGetPublisherData", &AutoGenTitleDataManagementTests::TestTitleDataManagementServerGetPublisherData);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestTitleDataManagementServerGetStoreItems", &AutoGenTitleDataManagementTests::TestTitleDataManagementServerGetStoreItems);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestTitleDataManagementServerGetTime", &AutoGenTitleDataManagementTests::TestTitleDataManagementServerGetTime);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestTitleDataManagementServerGetTitleData", &AutoGenTitleDataManagementTests::TestTitleDataManagementServerGetTitleData);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestTitleDataManagementServerGetTitleInternalData", &AutoGenTitleDataManagementTests::TestTitleDataManagementServerGetTitleInternalData);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestTitleDataManagementServerGetTitleNews", &AutoGenTitleDataManagementTests::TestTitleDataManagementServerGetTitleNews);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestTitleDataManagementServerSetPublisherData", &AutoGenTitleDataManagementTests::TestTitleDataManagementServerSetPublisherData);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestTitleDataManagementServerSetTitleData", &AutoGenTitleDataManagementTests::TestTitleDataManagementServerSetTitleData);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestTitleDataManagementServerSetTitleInternalData", &AutoGenTitleDataManagementTests::TestTitleDataManagementServerSetTitleInternalData);
+#endif
 }
 
 void AutoGenTitleDataManagementTests::ClassSetUp()
@@ -218,6 +284,7 @@ void AutoGenTitleDataManagementTests::SetUp(TestContext& testContext)
 
 #pragma region AdminAddLocalizedNews
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenTitleDataManagementTests::TestTitleDataManagementAdminAddLocalizedNews(TestContext& testContext)
 {
     auto async = std::make_unique<XAsyncHelper<XAsyncResult>>(testContext);
@@ -233,14 +300,16 @@ void AutoGenTitleDataManagementTests::TestTitleDataManagementAdminAddLocalizedNe
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region AdminAddNews
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenTitleDataManagementTests::TestTitleDataManagementAdminAddNews(TestContext& testContext)
 {
-    struct AdminAddNewsResultHolder : public AddNewsResultHolder
+    struct AdminAddNewsResultHolderStruct : public AddNewsResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -259,7 +328,7 @@ void AutoGenTitleDataManagementTests::TestTitleDataManagementAdminAddNews(TestCo
             return ValidatePFTitleDataManagementAddNewsResult(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<AdminAddNewsResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<AdminAddNewsResultHolderStruct>>(testContext);
 
     PFTitleDataManagementAddNewsRequestWrapper<> request;
     FillAddNewsRequest(request);
@@ -272,11 +341,13 @@ void AutoGenTitleDataManagementTests::TestTitleDataManagementAdminAddNews(TestCo
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region AdminAddVirtualCurrencyTypes
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenTitleDataManagementTests::TestTitleDataManagementAdminAddVirtualCurrencyTypes(TestContext& testContext)
 {
     auto async = std::make_unique<XAsyncHelper<XAsyncResult>>(testContext);
@@ -292,11 +363,13 @@ void AutoGenTitleDataManagementTests::TestTitleDataManagementAdminAddVirtualCurr
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region AdminDeleteStore
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenTitleDataManagementTests::TestTitleDataManagementAdminDeleteStore(TestContext& testContext)
 {
     auto async = std::make_unique<XAsyncHelper<XAsyncResult>>(testContext);
@@ -312,11 +385,13 @@ void AutoGenTitleDataManagementTests::TestTitleDataManagementAdminDeleteStore(Te
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region AdminDeleteTitleDataOverride
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenTitleDataManagementTests::TestTitleDataManagementAdminDeleteTitleDataOverride(TestContext& testContext)
 {
     auto async = std::make_unique<XAsyncHelper<XAsyncResult>>(testContext);
@@ -332,14 +407,16 @@ void AutoGenTitleDataManagementTests::TestTitleDataManagementAdminDeleteTitleDat
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region AdminGetCatalogItems
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenTitleDataManagementTests::TestTitleDataManagementAdminGetCatalogItems(TestContext& testContext)
 {
-    struct AdminGetCatalogItemsResultHolder : public GetCatalogItemsResultHolder
+    struct AdminGetCatalogItemsResultHolderStruct : public GetCatalogItemsResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -358,7 +435,7 @@ void AutoGenTitleDataManagementTests::TestTitleDataManagementAdminGetCatalogItem
             return ValidatePFTitleDataManagementGetCatalogItemsResult(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<AdminGetCatalogItemsResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<AdminGetCatalogItemsResultHolderStruct>>(testContext);
 
     PFTitleDataManagementGetCatalogItemsRequestWrapper<> request;
     FillGetCatalogItemsRequest(request);
@@ -371,14 +448,16 @@ void AutoGenTitleDataManagementTests::TestTitleDataManagementAdminGetCatalogItem
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region AdminGetPublisherData
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenTitleDataManagementTests::TestTitleDataManagementAdminGetPublisherData(TestContext& testContext)
 {
-    struct AdminGetPublisherDataResultHolder : public GetPublisherDataResultHolder
+    struct AdminGetPublisherDataResultHolderStruct : public GetPublisherDataResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -397,7 +476,7 @@ void AutoGenTitleDataManagementTests::TestTitleDataManagementAdminGetPublisherDa
             return ValidatePFTitleDataManagementGetPublisherDataResult(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<AdminGetPublisherDataResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<AdminGetPublisherDataResultHolderStruct>>(testContext);
 
     PFTitleDataManagementGetPublisherDataRequestWrapper<> request;
     FillGetPublisherDataRequest(request);
@@ -410,14 +489,16 @@ void AutoGenTitleDataManagementTests::TestTitleDataManagementAdminGetPublisherDa
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region AdminGetRandomResultTables
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenTitleDataManagementTests::TestTitleDataManagementAdminGetRandomResultTables(TestContext& testContext)
 {
-    struct AdminGetRandomResultTablesResultHolder : public GetRandomResultTablesResultHolder
+    struct AdminGetRandomResultTablesResultHolderStruct : public GetRandomResultTablesResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -436,7 +517,7 @@ void AutoGenTitleDataManagementTests::TestTitleDataManagementAdminGetRandomResul
             return ValidatePFGetRandomResultTablesResult(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<AdminGetRandomResultTablesResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<AdminGetRandomResultTablesResultHolderStruct>>(testContext);
 
     PFTitleDataManagementGetRandomResultTablesRequestWrapper<> request;
     FillGetRandomResultTablesRequest(request);
@@ -449,14 +530,16 @@ void AutoGenTitleDataManagementTests::TestTitleDataManagementAdminGetRandomResul
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region AdminGetStoreItems
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenTitleDataManagementTests::TestTitleDataManagementAdminGetStoreItems(TestContext& testContext)
 {
-    struct AdminGetStoreItemsResultHolder : public GetStoreItemsResultHolder
+    struct AdminGetStoreItemsResultHolderStruct : public GetStoreItemsResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -475,7 +558,7 @@ void AutoGenTitleDataManagementTests::TestTitleDataManagementAdminGetStoreItems(
             return ValidatePFTitleDataManagementGetStoreItemsResult(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<AdminGetStoreItemsResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<AdminGetStoreItemsResultHolderStruct>>(testContext);
 
     PFTitleDataManagementGetStoreItemsRequestWrapper<> request;
     FillGetStoreItemsRequest(request);
@@ -488,14 +571,16 @@ void AutoGenTitleDataManagementTests::TestTitleDataManagementAdminGetStoreItems(
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region AdminGetTitleData
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenTitleDataManagementTests::TestTitleDataManagementAdminGetTitleData(TestContext& testContext)
 {
-    struct AdminGetTitleDataResultHolder : public GetTitleDataResultHolder
+    struct AdminGetTitleDataResultHolderStruct : public GetTitleDataResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -514,7 +599,7 @@ void AutoGenTitleDataManagementTests::TestTitleDataManagementAdminGetTitleData(T
             return ValidatePFTitleDataManagementGetTitleDataResult(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<AdminGetTitleDataResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<AdminGetTitleDataResultHolderStruct>>(testContext);
 
     PFTitleDataManagementGetTitleDataRequestWrapper<> request;
     FillGetTitleDataRequest(request);
@@ -527,14 +612,16 @@ void AutoGenTitleDataManagementTests::TestTitleDataManagementAdminGetTitleData(T
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region AdminGetTitleInternalData
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenTitleDataManagementTests::TestTitleDataManagementAdminGetTitleInternalData(TestContext& testContext)
 {
-    struct AdminGetTitleInternalDataResultHolder : public GetTitleDataResultHolder
+    struct AdminGetTitleInternalDataResultHolderStruct : public GetTitleDataResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -553,7 +640,7 @@ void AutoGenTitleDataManagementTests::TestTitleDataManagementAdminGetTitleIntern
             return ValidatePFTitleDataManagementGetTitleDataResult(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<AdminGetTitleInternalDataResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<AdminGetTitleInternalDataResultHolderStruct>>(testContext);
 
     PFTitleDataManagementGetTitleDataRequestWrapper<> request;
     FillGetTitleDataRequest(request);
@@ -566,14 +653,16 @@ void AutoGenTitleDataManagementTests::TestTitleDataManagementAdminGetTitleIntern
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region AdminListVirtualCurrencyTypes
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenTitleDataManagementTests::TestTitleDataManagementAdminListVirtualCurrencyTypes(TestContext& testContext)
 {
-    struct AdminListVirtualCurrencyTypesResultHolder : public ListVirtualCurrencyTypesResultHolder
+    struct AdminListVirtualCurrencyTypesResultHolderStruct : public ListVirtualCurrencyTypesResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -592,7 +681,7 @@ void AutoGenTitleDataManagementTests::TestTitleDataManagementAdminListVirtualCur
             return ValidatePFTitleDataManagementListVirtualCurrencyTypesResult(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<AdminListVirtualCurrencyTypesResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<AdminListVirtualCurrencyTypesResultHolderStruct>>(testContext);
 
     HRESULT hr = PFTitleDataManagementAdminListVirtualCurrencyTypesAsync(stateHandle, &async->asyncBlock);
     if (FAILED(hr))
@@ -602,11 +691,13 @@ void AutoGenTitleDataManagementTests::TestTitleDataManagementAdminListVirtualCur
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region AdminRemoveVirtualCurrencyTypes
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenTitleDataManagementTests::TestTitleDataManagementAdminRemoveVirtualCurrencyTypes(TestContext& testContext)
 {
     auto async = std::make_unique<XAsyncHelper<XAsyncResult>>(testContext);
@@ -622,11 +713,13 @@ void AutoGenTitleDataManagementTests::TestTitleDataManagementAdminRemoveVirtualC
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region AdminSetCatalogItems
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenTitleDataManagementTests::TestTitleDataManagementAdminSetCatalogItems(TestContext& testContext)
 {
     auto async = std::make_unique<XAsyncHelper<XAsyncResult>>(testContext);
@@ -642,11 +735,13 @@ void AutoGenTitleDataManagementTests::TestTitleDataManagementAdminSetCatalogItem
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region AdminSetPublisherData
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenTitleDataManagementTests::TestTitleDataManagementAdminSetPublisherData(TestContext& testContext)
 {
     auto async = std::make_unique<XAsyncHelper<XAsyncResult>>(testContext);
@@ -662,11 +757,13 @@ void AutoGenTitleDataManagementTests::TestTitleDataManagementAdminSetPublisherDa
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region AdminSetStoreItems
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenTitleDataManagementTests::TestTitleDataManagementAdminSetStoreItems(TestContext& testContext)
 {
     auto async = std::make_unique<XAsyncHelper<XAsyncResult>>(testContext);
@@ -682,14 +779,16 @@ void AutoGenTitleDataManagementTests::TestTitleDataManagementAdminSetStoreItems(
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region AdminSetTitleData
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenTitleDataManagementTests::TestTitleDataManagementAdminSetTitleData(TestContext& testContext)
 {
-    struct AdminSetTitleDataResultHolder : public SetTitleDataResultHolder
+    struct AdminSetTitleDataResultHolderStruct : public SetTitleDataResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -708,7 +807,7 @@ void AutoGenTitleDataManagementTests::TestTitleDataManagementAdminSetTitleData(T
             return ValidatePFTitleDataManagementSetTitleDataResult(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<AdminSetTitleDataResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<AdminSetTitleDataResultHolderStruct>>(testContext);
 
     PFTitleDataManagementSetTitleDataRequestWrapper<> request;
     FillSetTitleDataRequest(request);
@@ -721,11 +820,13 @@ void AutoGenTitleDataManagementTests::TestTitleDataManagementAdminSetTitleData(T
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region AdminSetTitleDataAndOverrides
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenTitleDataManagementTests::TestTitleDataManagementAdminSetTitleDataAndOverrides(TestContext& testContext)
 {
     auto async = std::make_unique<XAsyncHelper<XAsyncResult>>(testContext);
@@ -741,14 +842,16 @@ void AutoGenTitleDataManagementTests::TestTitleDataManagementAdminSetTitleDataAn
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region AdminSetTitleInternalData
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenTitleDataManagementTests::TestTitleDataManagementAdminSetTitleInternalData(TestContext& testContext)
 {
-    struct AdminSetTitleInternalDataResultHolder : public SetTitleDataResultHolder
+    struct AdminSetTitleInternalDataResultHolderStruct : public SetTitleDataResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -767,7 +870,7 @@ void AutoGenTitleDataManagementTests::TestTitleDataManagementAdminSetTitleIntern
             return ValidatePFTitleDataManagementSetTitleDataResult(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<AdminSetTitleInternalDataResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<AdminSetTitleInternalDataResultHolderStruct>>(testContext);
 
     PFTitleDataManagementSetTitleDataRequestWrapper<> request;
     FillSetTitleDataRequest(request);
@@ -780,14 +883,16 @@ void AutoGenTitleDataManagementTests::TestTitleDataManagementAdminSetTitleIntern
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region AdminSetupPushNotification
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenTitleDataManagementTests::TestTitleDataManagementAdminSetupPushNotification(TestContext& testContext)
 {
-    struct AdminSetupPushNotificationResultHolder : public SetupPushNotificationResultHolder
+    struct AdminSetupPushNotificationResultHolderStruct : public SetupPushNotificationResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -806,7 +911,7 @@ void AutoGenTitleDataManagementTests::TestTitleDataManagementAdminSetupPushNotif
             return ValidatePFTitleDataManagementSetupPushNotificationResult(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<AdminSetupPushNotificationResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<AdminSetupPushNotificationResultHolderStruct>>(testContext);
 
     PFTitleDataManagementSetupPushNotificationRequestWrapper<> request;
     FillSetupPushNotificationRequest(request);
@@ -819,11 +924,13 @@ void AutoGenTitleDataManagementTests::TestTitleDataManagementAdminSetupPushNotif
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region AdminUpdateCatalogItems
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenTitleDataManagementTests::TestTitleDataManagementAdminUpdateCatalogItems(TestContext& testContext)
 {
     auto async = std::make_unique<XAsyncHelper<XAsyncResult>>(testContext);
@@ -839,11 +946,13 @@ void AutoGenTitleDataManagementTests::TestTitleDataManagementAdminUpdateCatalogI
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region AdminUpdateRandomResultTables
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenTitleDataManagementTests::TestTitleDataManagementAdminUpdateRandomResultTables(TestContext& testContext)
 {
     auto async = std::make_unique<XAsyncHelper<XAsyncResult>>(testContext);
@@ -859,11 +968,13 @@ void AutoGenTitleDataManagementTests::TestTitleDataManagementAdminUpdateRandomRe
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region AdminUpdateStoreItems
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenTitleDataManagementTests::TestTitleDataManagementAdminUpdateStoreItems(TestContext& testContext)
 {
     auto async = std::make_unique<XAsyncHelper<XAsyncResult>>(testContext);
@@ -879,6 +990,7 @@ void AutoGenTitleDataManagementTests::TestTitleDataManagementAdminUpdateStoreIte
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
@@ -886,7 +998,7 @@ void AutoGenTitleDataManagementTests::TestTitleDataManagementAdminUpdateStoreIte
 
 void AutoGenTitleDataManagementTests::TestTitleDataManagementClientGetCatalogItems(TestContext& testContext)
 {
-    struct ClientGetCatalogItemsResultHolder : public GetCatalogItemsResultHolder
+    struct ClientGetCatalogItemsResultHolderStruct : public GetCatalogItemsResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -905,7 +1017,7 @@ void AutoGenTitleDataManagementTests::TestTitleDataManagementClientGetCatalogIte
             return ValidatePFTitleDataManagementGetCatalogItemsResult(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<ClientGetCatalogItemsResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<ClientGetCatalogItemsResultHolderStruct>>(testContext);
 
     PFTitleDataManagementGetCatalogItemsRequestWrapper<> request;
     FillGetCatalogItemsRequest(request);
@@ -925,7 +1037,7 @@ void AutoGenTitleDataManagementTests::TestTitleDataManagementClientGetCatalogIte
 
 void AutoGenTitleDataManagementTests::TestTitleDataManagementClientGetPublisherData(TestContext& testContext)
 {
-    struct ClientGetPublisherDataResultHolder : public GetPublisherDataResultHolder
+    struct ClientGetPublisherDataResultHolderStruct : public GetPublisherDataResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -944,7 +1056,7 @@ void AutoGenTitleDataManagementTests::TestTitleDataManagementClientGetPublisherD
             return ValidatePFTitleDataManagementGetPublisherDataResult(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<ClientGetPublisherDataResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<ClientGetPublisherDataResultHolderStruct>>(testContext);
 
     PFTitleDataManagementGetPublisherDataRequestWrapper<> request;
     FillGetPublisherDataRequest(request);
@@ -964,7 +1076,7 @@ void AutoGenTitleDataManagementTests::TestTitleDataManagementClientGetPublisherD
 
 void AutoGenTitleDataManagementTests::TestTitleDataManagementClientGetStoreItems(TestContext& testContext)
 {
-    struct ClientGetStoreItemsResultHolder : public GetStoreItemsResultHolder
+    struct ClientGetStoreItemsResultHolderStruct : public GetStoreItemsResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -983,7 +1095,7 @@ void AutoGenTitleDataManagementTests::TestTitleDataManagementClientGetStoreItems
             return ValidatePFTitleDataManagementGetStoreItemsResult(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<ClientGetStoreItemsResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<ClientGetStoreItemsResultHolderStruct>>(testContext);
 
     PFTitleDataManagementGetStoreItemsRequestWrapper<> request;
     FillGetStoreItemsRequest(request);
@@ -1003,7 +1115,7 @@ void AutoGenTitleDataManagementTests::TestTitleDataManagementClientGetStoreItems
 
 void AutoGenTitleDataManagementTests::TestTitleDataManagementClientGetTime(TestContext& testContext)
 {
-    struct ClientGetTimeResultHolder : public GetTimeResultHolder
+    struct ClientGetTimeResultHolderStruct : public GetTimeResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -1017,7 +1129,7 @@ void AutoGenTitleDataManagementTests::TestTitleDataManagementClientGetTime(TestC
             return ValidatePFTitleDataManagementGetTimeResult(&result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<ClientGetTimeResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<ClientGetTimeResultHolderStruct>>(testContext);
 
     HRESULT hr = PFTitleDataManagementClientGetTimeAsync(titlePlayerHandle, &async->asyncBlock);
     if (FAILED(hr))
@@ -1034,7 +1146,7 @@ void AutoGenTitleDataManagementTests::TestTitleDataManagementClientGetTime(TestC
 
 void AutoGenTitleDataManagementTests::TestTitleDataManagementClientGetTitleData(TestContext& testContext)
 {
-    struct ClientGetTitleDataResultHolder : public GetTitleDataResultHolder
+    struct ClientGetTitleDataResultHolderStruct : public GetTitleDataResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -1053,7 +1165,7 @@ void AutoGenTitleDataManagementTests::TestTitleDataManagementClientGetTitleData(
             return ValidatePFTitleDataManagementGetTitleDataResult(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<ClientGetTitleDataResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<ClientGetTitleDataResultHolderStruct>>(testContext);
 
     PFTitleDataManagementGetTitleDataRequestWrapper<> request;
     FillGetTitleDataRequest(request);
@@ -1073,7 +1185,7 @@ void AutoGenTitleDataManagementTests::TestTitleDataManagementClientGetTitleData(
 
 void AutoGenTitleDataManagementTests::TestTitleDataManagementClientGetTitleNews(TestContext& testContext)
 {
-    struct ClientGetTitleNewsResultHolder : public GetTitleNewsResultHolder
+    struct ClientGetTitleNewsResultHolderStruct : public GetTitleNewsResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -1092,7 +1204,7 @@ void AutoGenTitleDataManagementTests::TestTitleDataManagementClientGetTitleNews(
             return ValidatePFTitleDataManagementGetTitleNewsResult(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<ClientGetTitleNewsResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<ClientGetTitleNewsResultHolderStruct>>(testContext);
 
     PFTitleDataManagementGetTitleNewsRequestWrapper<> request;
     FillGetTitleNewsRequest(request);
@@ -1110,9 +1222,10 @@ void AutoGenTitleDataManagementTests::TestTitleDataManagementClientGetTitleNews(
 
 #pragma region ServerGetCatalogItems
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenTitleDataManagementTests::TestTitleDataManagementServerGetCatalogItems(TestContext& testContext)
 {
-    struct ServerGetCatalogItemsResultHolder : public GetCatalogItemsResultHolder
+    struct ServerGetCatalogItemsResultHolderStruct : public GetCatalogItemsResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -1131,7 +1244,7 @@ void AutoGenTitleDataManagementTests::TestTitleDataManagementServerGetCatalogIte
             return ValidatePFTitleDataManagementGetCatalogItemsResult(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<ServerGetCatalogItemsResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<ServerGetCatalogItemsResultHolderStruct>>(testContext);
 
     PFTitleDataManagementGetCatalogItemsRequestWrapper<> request;
     FillGetCatalogItemsRequest(request);
@@ -1144,14 +1257,16 @@ void AutoGenTitleDataManagementTests::TestTitleDataManagementServerGetCatalogIte
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region ServerGetPublisherData
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenTitleDataManagementTests::TestTitleDataManagementServerGetPublisherData(TestContext& testContext)
 {
-    struct ServerGetPublisherDataResultHolder : public GetPublisherDataResultHolder
+    struct ServerGetPublisherDataResultHolderStruct : public GetPublisherDataResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -1170,7 +1285,7 @@ void AutoGenTitleDataManagementTests::TestTitleDataManagementServerGetPublisherD
             return ValidatePFTitleDataManagementGetPublisherDataResult(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<ServerGetPublisherDataResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<ServerGetPublisherDataResultHolderStruct>>(testContext);
 
     PFTitleDataManagementGetPublisherDataRequestWrapper<> request;
     FillGetPublisherDataRequest(request);
@@ -1183,14 +1298,16 @@ void AutoGenTitleDataManagementTests::TestTitleDataManagementServerGetPublisherD
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region ServerGetStoreItems
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenTitleDataManagementTests::TestTitleDataManagementServerGetStoreItems(TestContext& testContext)
 {
-    struct ServerGetStoreItemsResultHolder : public GetStoreItemsResultHolder
+    struct ServerGetStoreItemsResultHolderStruct : public GetStoreItemsResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -1209,7 +1326,7 @@ void AutoGenTitleDataManagementTests::TestTitleDataManagementServerGetStoreItems
             return ValidatePFTitleDataManagementGetStoreItemsResult(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<ServerGetStoreItemsResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<ServerGetStoreItemsResultHolderStruct>>(testContext);
 
     PFTitleDataManagementGetStoreItemsServerRequestWrapper<> request;
     FillGetStoreItemsServerRequest(request);
@@ -1222,14 +1339,16 @@ void AutoGenTitleDataManagementTests::TestTitleDataManagementServerGetStoreItems
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region ServerGetTime
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenTitleDataManagementTests::TestTitleDataManagementServerGetTime(TestContext& testContext)
 {
-    struct ServerGetTimeResultHolder : public GetTimeResultHolder
+    struct ServerGetTimeResultHolderStruct : public GetTimeResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -1243,7 +1362,7 @@ void AutoGenTitleDataManagementTests::TestTitleDataManagementServerGetTime(TestC
             return ValidatePFTitleDataManagementGetTimeResult(&result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<ServerGetTimeResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<ServerGetTimeResultHolderStruct>>(testContext);
 
     HRESULT hr = PFTitleDataManagementServerGetTimeAsync(stateHandle, &async->asyncBlock);
     if (FAILED(hr))
@@ -1253,14 +1372,16 @@ void AutoGenTitleDataManagementTests::TestTitleDataManagementServerGetTime(TestC
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region ServerGetTitleData
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenTitleDataManagementTests::TestTitleDataManagementServerGetTitleData(TestContext& testContext)
 {
-    struct ServerGetTitleDataResultHolder : public GetTitleDataResultHolder
+    struct ServerGetTitleDataResultHolderStruct : public GetTitleDataResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -1279,7 +1400,7 @@ void AutoGenTitleDataManagementTests::TestTitleDataManagementServerGetTitleData(
             return ValidatePFTitleDataManagementGetTitleDataResult(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<ServerGetTitleDataResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<ServerGetTitleDataResultHolderStruct>>(testContext);
 
     PFTitleDataManagementGetTitleDataRequestWrapper<> request;
     FillGetTitleDataRequest(request);
@@ -1292,14 +1413,16 @@ void AutoGenTitleDataManagementTests::TestTitleDataManagementServerGetTitleData(
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region ServerGetTitleInternalData
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenTitleDataManagementTests::TestTitleDataManagementServerGetTitleInternalData(TestContext& testContext)
 {
-    struct ServerGetTitleInternalDataResultHolder : public GetTitleDataResultHolder
+    struct ServerGetTitleInternalDataResultHolderStruct : public GetTitleDataResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -1318,7 +1441,7 @@ void AutoGenTitleDataManagementTests::TestTitleDataManagementServerGetTitleInter
             return ValidatePFTitleDataManagementGetTitleDataResult(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<ServerGetTitleInternalDataResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<ServerGetTitleInternalDataResultHolderStruct>>(testContext);
 
     PFTitleDataManagementGetTitleDataRequestWrapper<> request;
     FillGetTitleDataRequest(request);
@@ -1331,14 +1454,16 @@ void AutoGenTitleDataManagementTests::TestTitleDataManagementServerGetTitleInter
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region ServerGetTitleNews
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenTitleDataManagementTests::TestTitleDataManagementServerGetTitleNews(TestContext& testContext)
 {
-    struct ServerGetTitleNewsResultHolder : public GetTitleNewsResultHolder
+    struct ServerGetTitleNewsResultHolderStruct : public GetTitleNewsResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -1357,7 +1482,7 @@ void AutoGenTitleDataManagementTests::TestTitleDataManagementServerGetTitleNews(
             return ValidatePFTitleDataManagementGetTitleNewsResult(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<ServerGetTitleNewsResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<ServerGetTitleNewsResultHolderStruct>>(testContext);
 
     PFTitleDataManagementGetTitleNewsRequestWrapper<> request;
     FillGetTitleNewsRequest(request);
@@ -1370,11 +1495,13 @@ void AutoGenTitleDataManagementTests::TestTitleDataManagementServerGetTitleNews(
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region ServerSetPublisherData
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenTitleDataManagementTests::TestTitleDataManagementServerSetPublisherData(TestContext& testContext)
 {
     auto async = std::make_unique<XAsyncHelper<XAsyncResult>>(testContext);
@@ -1390,14 +1517,16 @@ void AutoGenTitleDataManagementTests::TestTitleDataManagementServerSetPublisherD
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region ServerSetTitleData
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenTitleDataManagementTests::TestTitleDataManagementServerSetTitleData(TestContext& testContext)
 {
-    struct ServerSetTitleDataResultHolder : public SetTitleDataResultHolder
+    struct ServerSetTitleDataResultHolderStruct : public SetTitleDataResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -1416,7 +1545,7 @@ void AutoGenTitleDataManagementTests::TestTitleDataManagementServerSetTitleData(
             return ValidatePFTitleDataManagementSetTitleDataResult(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<ServerSetTitleDataResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<ServerSetTitleDataResultHolderStruct>>(testContext);
 
     PFTitleDataManagementSetTitleDataRequestWrapper<> request;
     FillSetTitleDataRequest(request);
@@ -1429,14 +1558,16 @@ void AutoGenTitleDataManagementTests::TestTitleDataManagementServerSetTitleData(
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region ServerSetTitleInternalData
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenTitleDataManagementTests::TestTitleDataManagementServerSetTitleInternalData(TestContext& testContext)
 {
-    struct ServerSetTitleInternalDataResultHolder : public SetTitleDataResultHolder
+    struct ServerSetTitleInternalDataResultHolderStruct : public SetTitleDataResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -1455,7 +1586,7 @@ void AutoGenTitleDataManagementTests::TestTitleDataManagementServerSetTitleInter
             return ValidatePFTitleDataManagementSetTitleDataResult(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<ServerSetTitleInternalDataResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<ServerSetTitleInternalDataResultHolderStruct>>(testContext);
 
     PFTitleDataManagementSetTitleDataRequestWrapper<> request;
     FillSetTitleDataRequest(request);
@@ -1468,6 +1599,7 @@ void AutoGenTitleDataManagementTests::TestTitleDataManagementServerSetTitleInter
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 

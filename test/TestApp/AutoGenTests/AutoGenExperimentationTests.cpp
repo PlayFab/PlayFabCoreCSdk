@@ -32,31 +32,57 @@ HRESULT AutoGenExperimentationTests::LogHR(HRESULT hr)
 void AutoGenExperimentationTests::AddTests()
 {
     // Generated tests 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestExperimentationCreateExclusionGroup", &AutoGenExperimentationTests::TestExperimentationCreateExclusionGroup);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestExperimentationCreateExperiment", &AutoGenExperimentationTests::TestExperimentationCreateExperiment);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestExperimentationDeleteExclusionGroup", &AutoGenExperimentationTests::TestExperimentationDeleteExclusionGroup);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestExperimentationDeleteExperiment", &AutoGenExperimentationTests::TestExperimentationDeleteExperiment);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestExperimentationGetExclusionGroups", &AutoGenExperimentationTests::TestExperimentationGetExclusionGroups);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestExperimentationGetExclusionGroupTraffic", &AutoGenExperimentationTests::TestExperimentationGetExclusionGroupTraffic);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestExperimentationGetExperiments", &AutoGenExperimentationTests::TestExperimentationGetExperiments);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestExperimentationGetLatestScorecard", &AutoGenExperimentationTests::TestExperimentationGetLatestScorecard);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestExperimentationGetTreatmentAssignment", &AutoGenExperimentationTests::TestExperimentationGetTreatmentAssignment);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestExperimentationStartExperiment", &AutoGenExperimentationTests::TestExperimentationStartExperiment);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestExperimentationStopExperiment", &AutoGenExperimentationTests::TestExperimentationStopExperiment);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestExperimentationUpdateExclusionGroup", &AutoGenExperimentationTests::TestExperimentationUpdateExclusionGroup);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestExperimentationUpdateExperiment", &AutoGenExperimentationTests::TestExperimentationUpdateExperiment);
+#endif
 }
 
 void AutoGenExperimentationTests::ClassSetUp()
@@ -166,9 +192,10 @@ void AutoGenExperimentationTests::SetUp(TestContext& testContext)
 
 #pragma region CreateExclusionGroup
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenExperimentationTests::TestExperimentationCreateExclusionGroup(TestContext& testContext)
 {
-    struct CreateExclusionGroupResultHolder : public CreateExclusionGroupResultHolder
+    struct CreateExclusionGroupResultHolderStruct : public CreateExclusionGroupResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -187,7 +214,7 @@ void AutoGenExperimentationTests::TestExperimentationCreateExclusionGroup(TestCo
             return ValidatePFExperimentationCreateExclusionGroupResult(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<CreateExclusionGroupResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<CreateExclusionGroupResultHolderStruct>>(testContext);
 
     PFExperimentationCreateExclusionGroupRequestWrapper<> request;
     FillCreateExclusionGroupRequest(request);
@@ -200,14 +227,16 @@ void AutoGenExperimentationTests::TestExperimentationCreateExclusionGroup(TestCo
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region CreateExperiment
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenExperimentationTests::TestExperimentationCreateExperiment(TestContext& testContext)
 {
-    struct CreateExperimentResultHolder : public CreateExperimentResultHolder
+    struct CreateExperimentResultHolderStruct : public CreateExperimentResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -226,7 +255,7 @@ void AutoGenExperimentationTests::TestExperimentationCreateExperiment(TestContex
             return ValidatePFExperimentationCreateExperimentResult(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<CreateExperimentResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<CreateExperimentResultHolderStruct>>(testContext);
 
     PFExperimentationCreateExperimentRequestWrapper<> request;
     FillCreateExperimentRequest(request);
@@ -239,11 +268,13 @@ void AutoGenExperimentationTests::TestExperimentationCreateExperiment(TestContex
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region DeleteExclusionGroup
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenExperimentationTests::TestExperimentationDeleteExclusionGroup(TestContext& testContext)
 {
     auto async = std::make_unique<XAsyncHelper<XAsyncResult>>(testContext);
@@ -259,11 +290,13 @@ void AutoGenExperimentationTests::TestExperimentationDeleteExclusionGroup(TestCo
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region DeleteExperiment
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenExperimentationTests::TestExperimentationDeleteExperiment(TestContext& testContext)
 {
     auto async = std::make_unique<XAsyncHelper<XAsyncResult>>(testContext);
@@ -279,14 +312,16 @@ void AutoGenExperimentationTests::TestExperimentationDeleteExperiment(TestContex
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region GetExclusionGroups
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenExperimentationTests::TestExperimentationGetExclusionGroups(TestContext& testContext)
 {
-    struct GetExclusionGroupsResultHolder : public GetExclusionGroupsResultHolder
+    struct GetExclusionGroupsResultHolderStruct : public GetExclusionGroupsResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -305,7 +340,7 @@ void AutoGenExperimentationTests::TestExperimentationGetExclusionGroups(TestCont
             return ValidatePFExperimentationGetExclusionGroupsResult(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<GetExclusionGroupsResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<GetExclusionGroupsResultHolderStruct>>(testContext);
 
     PFExperimentationGetExclusionGroupsRequestWrapper<> request;
     FillGetExclusionGroupsRequest(request);
@@ -318,14 +353,16 @@ void AutoGenExperimentationTests::TestExperimentationGetExclusionGroups(TestCont
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region GetExclusionGroupTraffic
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenExperimentationTests::TestExperimentationGetExclusionGroupTraffic(TestContext& testContext)
 {
-    struct GetExclusionGroupTrafficResultHolder : public GetExclusionGroupTrafficResultHolder
+    struct GetExclusionGroupTrafficResultHolderStruct : public GetExclusionGroupTrafficResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -344,7 +381,7 @@ void AutoGenExperimentationTests::TestExperimentationGetExclusionGroupTraffic(Te
             return ValidatePFExperimentationGetExclusionGroupTrafficResult(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<GetExclusionGroupTrafficResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<GetExclusionGroupTrafficResultHolderStruct>>(testContext);
 
     PFExperimentationGetExclusionGroupTrafficRequestWrapper<> request;
     FillGetExclusionGroupTrafficRequest(request);
@@ -357,14 +394,16 @@ void AutoGenExperimentationTests::TestExperimentationGetExclusionGroupTraffic(Te
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region GetExperiments
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenExperimentationTests::TestExperimentationGetExperiments(TestContext& testContext)
 {
-    struct GetExperimentsResultHolder : public GetExperimentsResultHolder
+    struct GetExperimentsResultHolderStruct : public GetExperimentsResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -383,7 +422,7 @@ void AutoGenExperimentationTests::TestExperimentationGetExperiments(TestContext&
             return ValidatePFExperimentationGetExperimentsResult(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<GetExperimentsResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<GetExperimentsResultHolderStruct>>(testContext);
 
     PFExperimentationGetExperimentsRequestWrapper<> request;
     FillGetExperimentsRequest(request);
@@ -396,14 +435,16 @@ void AutoGenExperimentationTests::TestExperimentationGetExperiments(TestContext&
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region GetLatestScorecard
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenExperimentationTests::TestExperimentationGetLatestScorecard(TestContext& testContext)
 {
-    struct GetLatestScorecardResultHolder : public GetLatestScorecardResultHolder
+    struct GetLatestScorecardResultHolderStruct : public GetLatestScorecardResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -422,7 +463,7 @@ void AutoGenExperimentationTests::TestExperimentationGetLatestScorecard(TestCont
             return ValidatePFExperimentationGetLatestScorecardResult(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<GetLatestScorecardResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<GetLatestScorecardResultHolderStruct>>(testContext);
 
     PFExperimentationGetLatestScorecardRequestWrapper<> request;
     FillGetLatestScorecardRequest(request);
@@ -435,14 +476,16 @@ void AutoGenExperimentationTests::TestExperimentationGetLatestScorecard(TestCont
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region GetTreatmentAssignment
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenExperimentationTests::TestExperimentationGetTreatmentAssignment(TestContext& testContext)
 {
-    struct GetTreatmentAssignmentResultHolder : public GetTreatmentAssignmentResultHolder
+    struct GetTreatmentAssignmentResultHolderStruct : public GetTreatmentAssignmentResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -461,7 +504,7 @@ void AutoGenExperimentationTests::TestExperimentationGetTreatmentAssignment(Test
             return ValidatePFExperimentationGetTreatmentAssignmentResult(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<GetTreatmentAssignmentResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<GetTreatmentAssignmentResultHolderStruct>>(testContext);
 
     PFExperimentationGetTreatmentAssignmentRequestWrapper<> request;
     FillGetTreatmentAssignmentRequest(request);
@@ -474,11 +517,13 @@ void AutoGenExperimentationTests::TestExperimentationGetTreatmentAssignment(Test
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region StartExperiment
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenExperimentationTests::TestExperimentationStartExperiment(TestContext& testContext)
 {
     auto async = std::make_unique<XAsyncHelper<XAsyncResult>>(testContext);
@@ -494,11 +539,13 @@ void AutoGenExperimentationTests::TestExperimentationStartExperiment(TestContext
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region StopExperiment
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenExperimentationTests::TestExperimentationStopExperiment(TestContext& testContext)
 {
     auto async = std::make_unique<XAsyncHelper<XAsyncResult>>(testContext);
@@ -514,11 +561,13 @@ void AutoGenExperimentationTests::TestExperimentationStopExperiment(TestContext&
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region UpdateExclusionGroup
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenExperimentationTests::TestExperimentationUpdateExclusionGroup(TestContext& testContext)
 {
     auto async = std::make_unique<XAsyncHelper<XAsyncResult>>(testContext);
@@ -534,11 +583,13 @@ void AutoGenExperimentationTests::TestExperimentationUpdateExclusionGroup(TestCo
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region UpdateExperiment
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenExperimentationTests::TestExperimentationUpdateExperiment(TestContext& testContext)
 {
     auto async = std::make_unique<XAsyncHelper<XAsyncResult>>(testContext);
@@ -554,6 +605,7 @@ void AutoGenExperimentationTests::TestExperimentationUpdateExperiment(TestContex
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 

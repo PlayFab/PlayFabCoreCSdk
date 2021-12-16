@@ -32,17 +32,29 @@ HRESULT AutoGenGameServerTests::LogHR(HRESULT hr)
 void AutoGenGameServerTests::AddTests()
 {
     // Generated tests 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestGameServerAdminAddServerBuild", &AutoGenGameServerTests::TestGameServerAdminAddServerBuild);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestGameServerAdminGetServerBuildInfo", &AutoGenGameServerTests::TestGameServerAdminGetServerBuildInfo);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestGameServerAdminGetServerBuildUploadUrl", &AutoGenGameServerTests::TestGameServerAdminGetServerBuildUploadUrl);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestGameServerAdminListServerBuilds", &AutoGenGameServerTests::TestGameServerAdminListServerBuilds);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestGameServerAdminModifyServerBuild", &AutoGenGameServerTests::TestGameServerAdminModifyServerBuild);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestGameServerAdminRemoveServerBuild", &AutoGenGameServerTests::TestGameServerAdminRemoveServerBuild);
+#endif
 }
 
 void AutoGenGameServerTests::ClassSetUp()
@@ -152,9 +164,10 @@ void AutoGenGameServerTests::SetUp(TestContext& testContext)
 
 #pragma region AdminAddServerBuild
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenGameServerTests::TestGameServerAdminAddServerBuild(TestContext& testContext)
 {
-    struct AdminAddServerBuildResultHolder : public AddServerBuildResultHolder
+    struct AdminAddServerBuildResultHolderStruct : public AddServerBuildResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -173,7 +186,7 @@ void AutoGenGameServerTests::TestGameServerAdminAddServerBuild(TestContext& test
             return ValidatePFGameServerAddServerBuildResult(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<AdminAddServerBuildResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<AdminAddServerBuildResultHolderStruct>>(testContext);
 
     PFGameServerAddServerBuildRequestWrapper<> request;
     FillAddServerBuildRequest(request);
@@ -186,14 +199,16 @@ void AutoGenGameServerTests::TestGameServerAdminAddServerBuild(TestContext& test
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region AdminGetServerBuildInfo
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenGameServerTests::TestGameServerAdminGetServerBuildInfo(TestContext& testContext)
 {
-    struct AdminGetServerBuildInfoResultHolder : public GetServerBuildInfoResultHolder
+    struct AdminGetServerBuildInfoResultHolderStruct : public GetServerBuildInfoResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -212,7 +227,7 @@ void AutoGenGameServerTests::TestGameServerAdminGetServerBuildInfo(TestContext& 
             return ValidatePFGameServerGetServerBuildInfoResult(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<AdminGetServerBuildInfoResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<AdminGetServerBuildInfoResultHolderStruct>>(testContext);
 
     PFGameServerGetServerBuildInfoRequestWrapper<> request;
     FillGetServerBuildInfoRequest(request);
@@ -225,14 +240,16 @@ void AutoGenGameServerTests::TestGameServerAdminGetServerBuildInfo(TestContext& 
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region AdminGetServerBuildUploadUrl
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenGameServerTests::TestGameServerAdminGetServerBuildUploadUrl(TestContext& testContext)
 {
-    struct AdminGetServerBuildUploadUrlResultHolder : public GetServerBuildUploadURLResultHolder
+    struct AdminGetServerBuildUploadUrlResultHolderStruct : public GetServerBuildUploadURLResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -251,7 +268,7 @@ void AutoGenGameServerTests::TestGameServerAdminGetServerBuildUploadUrl(TestCont
             return ValidatePFGameServerGetServerBuildUploadURLResult(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<AdminGetServerBuildUploadUrlResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<AdminGetServerBuildUploadUrlResultHolderStruct>>(testContext);
 
     PFGameServerGetServerBuildUploadURLRequestWrapper<> request;
     FillGetServerBuildUploadURLRequest(request);
@@ -264,14 +281,16 @@ void AutoGenGameServerTests::TestGameServerAdminGetServerBuildUploadUrl(TestCont
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region AdminListServerBuilds
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenGameServerTests::TestGameServerAdminListServerBuilds(TestContext& testContext)
 {
-    struct AdminListServerBuildsResultHolder : public ListBuildsResultHolder
+    struct AdminListServerBuildsResultHolderStruct : public ListBuildsResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -290,7 +309,7 @@ void AutoGenGameServerTests::TestGameServerAdminListServerBuilds(TestContext& te
             return ValidatePFGameServerListBuildsResult(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<AdminListServerBuildsResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<AdminListServerBuildsResultHolderStruct>>(testContext);
 
     HRESULT hr = PFGameServerAdminListServerBuildsAsync(stateHandle, &async->asyncBlock);
     if (FAILED(hr))
@@ -300,14 +319,16 @@ void AutoGenGameServerTests::TestGameServerAdminListServerBuilds(TestContext& te
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region AdminModifyServerBuild
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenGameServerTests::TestGameServerAdminModifyServerBuild(TestContext& testContext)
 {
-    struct AdminModifyServerBuildResultHolder : public ModifyServerBuildResultHolder
+    struct AdminModifyServerBuildResultHolderStruct : public ModifyServerBuildResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -326,7 +347,7 @@ void AutoGenGameServerTests::TestGameServerAdminModifyServerBuild(TestContext& t
             return ValidatePFGameServerModifyServerBuildResult(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<AdminModifyServerBuildResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<AdminModifyServerBuildResultHolderStruct>>(testContext);
 
     PFGameServerModifyServerBuildRequestWrapper<> request;
     FillModifyServerBuildRequest(request);
@@ -339,11 +360,13 @@ void AutoGenGameServerTests::TestGameServerAdminModifyServerBuild(TestContext& t
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region AdminRemoveServerBuild
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenGameServerTests::TestGameServerAdminRemoveServerBuild(TestContext& testContext)
 {
     auto async = std::make_unique<XAsyncHelper<XAsyncResult>>(testContext);
@@ -359,6 +382,7 @@ void AutoGenGameServerTests::TestGameServerAdminRemoveServerBuild(TestContext& t
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 

@@ -55,8 +55,8 @@ HRESULT AutoGenDataTests::LogPFDataAbortFileUploadsResponse(PFDataAbortFileUploa
     std::stringstream ss;
     ss << "Response:"; Log(ss);
 
-    // Found PlayFabDataAbortFileUploadsResponse
-    ss << "  entity " << result->entity; Log(ss); // Class: PFEntityKey 
+    // Found PlayFabDataAbortFileUploadsResponse    
+    ss << "  entity " << result->entity; Log(ss); // Class: PFEntityKey     
     ss << "  profileVersion " << result->profileVersion; Log(ss); // Class: int32_t 
     return S_OK;
 }
@@ -107,8 +107,8 @@ HRESULT AutoGenDataTests::LogPFDataDeleteFilesResponse(PFDataDeleteFilesResponse
     std::stringstream ss;
     ss << "Response:"; Log(ss);
 
-    // Found PlayFabDataDeleteFilesResponse
-    ss << "  entity " << result->entity; Log(ss); // Class: PFEntityKey 
+    // Found PlayFabDataDeleteFilesResponse    
+    ss << "  entity " << result->entity; Log(ss); // Class: PFEntityKey     
     ss << "  profileVersion " << result->profileVersion; Log(ss); // Class: int32_t 
     return S_OK;
 }
@@ -159,8 +159,8 @@ HRESULT AutoGenDataTests::LogPFDataFinalizeFileUploadsResponse(PFDataFinalizeFil
     std::stringstream ss;
     ss << "Response:"; Log(ss);
 
-    // Found PlayFabDataFinalizeFileUploadsResponse
-    ss << "  entity " << result->entity; Log(ss); // Class: PFEntityKey     
+    // Found PlayFabDataFinalizeFileUploadsResponse    
+    ss << "  entity " << result->entity; Log(ss); // Class: PFEntityKey         
     ss << "  metadataCount " << result->metadataCount; Log(ss);
 
     // PFDataGetFileMetadataDictionaryEntry
@@ -168,7 +168,7 @@ HRESULT AutoGenDataTests::LogPFDataFinalizeFileUploadsResponse(PFDataFinalizeFil
     {
             ss << "  result->metadata[" << i << "]:" << result->metadata[i].key << "=" << result->metadata[i].value; Log(ss);
             
-    } 
+    }     
     ss << "  profileVersion " << result->profileVersion; Log(ss); // Class: int32_t 
     return S_OK;
 }
@@ -211,8 +211,8 @@ HRESULT AutoGenDataTests::LogPFDataGetFilesResponse(PFDataGetFilesResponse const
     std::stringstream ss;
     ss << "Response:"; Log(ss);
 
-    // Found PlayFabDataGetFilesResponse
-    ss << "  entity " << result->entity; Log(ss); // Class: PFEntityKey     
+    // Found PlayFabDataGetFilesResponse    
+    ss << "  entity " << result->entity; Log(ss); // Class: PFEntityKey         
     ss << "  metadataCount " << result->metadataCount; Log(ss);
 
     // PFDataGetFileMetadataDictionaryEntry
@@ -220,7 +220,7 @@ HRESULT AutoGenDataTests::LogPFDataGetFilesResponse(PFDataGetFilesResponse const
     {
             ss << "  result->metadata[" << i << "]:" << result->metadata[i].key << "=" << result->metadata[i].value; Log(ss);
             
-    } 
+    }     
     ss << "  profileVersion " << result->profileVersion; Log(ss); // Class: int32_t 
     return S_OK;
 }
@@ -264,8 +264,8 @@ HRESULT AutoGenDataTests::LogPFDataGetObjectsResponse(PFDataGetObjectsResponse c
     std::stringstream ss;
     ss << "Response:"; Log(ss);
 
-    // Found PlayFabDataGetObjectsResponse
-    ss << "  entity " << result->entity; Log(ss); // Class: PFEntityKey     
+    // Found PlayFabDataGetObjectsResponse    
+    ss << "  entity " << result->entity; Log(ss); // Class: PFEntityKey         
     ss << "  objectsCount " << result->objectsCount; Log(ss);
 
     // PFDataObjectResultDictionaryEntry
@@ -273,7 +273,7 @@ HRESULT AutoGenDataTests::LogPFDataGetObjectsResponse(PFDataGetObjectsResponse c
     {
             ss << "  result->objects[" << i << "]:" << result->objects[i].key << "=" << result->objects[i].value; Log(ss);
             
-    } 
+    }     
     ss << "  profileVersion " << result->profileVersion; Log(ss); // Class: int32_t 
     return S_OK;
 }
@@ -324,9 +324,9 @@ HRESULT AutoGenDataTests::LogPFDataInitiateFileUploadsResponse(PFDataInitiateFil
     std::stringstream ss;
     ss << "Response:"; Log(ss);
 
-    // Found PlayFabDataInitiateFileUploadsResponse
-    ss << "  entity " << result->entity; Log(ss); // Class: PFEntityKey 
-    ss << "  profileVersion " << result->profileVersion; Log(ss); // Class: int32_t     
+    // Found PlayFabDataInitiateFileUploadsResponse    
+    ss << "  entity " << result->entity; Log(ss); // Class: PFEntityKey     
+    ss << "  profileVersion " << result->profileVersion; Log(ss); // Class: int32_t         
     ss << "  uploadDetailsCount " << result->uploadDetailsCount; Log(ss);
 
     // PFDataInitiateFileUploadMetadata
@@ -383,8 +383,8 @@ HRESULT AutoGenDataTests::LogPFDataSetObjectsResponse(PFDataSetObjectsResponse c
     std::stringstream ss;
     ss << "Response:"; Log(ss);
 
-    // Found PlayFabDataSetObjectsResponse
-    ss << "  profileVersion " << result->profileVersion; Log(ss); // Class: int32_t     
+    // Found PlayFabDataSetObjectsResponse    
+    ss << "  profileVersion " << result->profileVersion; Log(ss); // Class: int32_t         
     ss << "  setResultsCount " << result->setResultsCount; Log(ss);
 
     // PFDataSetObjectInfo

@@ -59,22 +59,22 @@ HRESULT AutoGenGameServerTests::LogPFGameServerAddServerBuildResult(PFGameServer
     std::stringstream ss;
     ss << "Response:"; Log(ss);
 
-    // Found PlayFabGameServerAddServerBuildResult    
+    // Found PlayFabGameServerAddServerBuildResult        
     ss << "  activeRegionsCount " << result->activeRegionsCount; Log(ss);
 
     // PFRegion
     for( uint32_t i=0; i<result->activeRegionsCount; i++ )
     {
             ss << "  result->activeRegions[" << i << "]:" << result->activeRegions[i]; Log(ss); // PFRegion
-    } 
-    if( result->buildId ) { ss << "  buildId " << result->buildId; Log(ss); } else { ss << "  buildId = nullptr"; Log(ss); } // Class: const char* 
-    if( result->commandLineTemplate ) { ss << "  commandLineTemplate " << result->commandLineTemplate; Log(ss); } else { ss << "  commandLineTemplate = nullptr"; Log(ss); } // Class: const char* 
-    if( result->comment ) { ss << "  comment " << result->comment; Log(ss); } else { ss << "  comment = nullptr"; Log(ss); } // Class: const char* 
-    if( result->executablePath ) { ss << "  executablePath " << result->executablePath; Log(ss); } else { ss << "  executablePath = nullptr"; Log(ss); } // Class: const char* 
-    ss << "  maxGamesPerHost " << result->maxGamesPerHost; Log(ss); // Class: int32_t 
-    ss << "  minFreeGameSlots " << result->minFreeGameSlots; Log(ss); // Class: int32_t 
-    ss << "  status " << result->status; Log(ss); // Class: PFGameServerGameBuildStatus 
-    ss << "  timestamp " << result->timestamp; Log(ss); // Class: time_t 
+    }     
+    if( result->buildId ) { ss << "  buildId " << result->buildId; Log(ss); } else { ss << "  buildId = nullptr"; Log(ss); } // Class: const char*     
+    if( result->commandLineTemplate ) { ss << "  commandLineTemplate " << result->commandLineTemplate; Log(ss); } else { ss << "  commandLineTemplate = nullptr"; Log(ss); } // Class: const char*     
+    if( result->comment ) { ss << "  comment " << result->comment; Log(ss); } else { ss << "  comment = nullptr"; Log(ss); } // Class: const char*     
+    if( result->executablePath ) { ss << "  executablePath " << result->executablePath; Log(ss); } else { ss << "  executablePath = nullptr"; Log(ss); } // Class: const char*     
+    ss << "  maxGamesPerHost " << result->maxGamesPerHost; Log(ss); // Class: int32_t     
+    ss << "  minFreeGameSlots " << result->minFreeGameSlots; Log(ss); // Class: int32_t     
+    ss << "  status " << result->status; Log(ss); // Class: PFGameServerGameBuildStatus     
+    ss << "  timestamp " << result->timestamp; Log(ss); // Class: time_t     
     if( result->titleId ) { ss << "  titleId " << result->titleId; Log(ss); } else { ss << "  titleId = nullptr"; Log(ss); } // Class: const char* 
     return S_OK;
 }
@@ -108,21 +108,21 @@ HRESULT AutoGenGameServerTests::LogPFGameServerGetServerBuildInfoResult(PFGameSe
     std::stringstream ss;
     ss << "Response:"; Log(ss);
 
-    // Found PlayFabGameServerGetServerBuildInfoResult    
+    // Found PlayFabGameServerGetServerBuildInfoResult        
     ss << "  activeRegionsCount " << result->activeRegionsCount; Log(ss);
 
     // PFRegion
     for( uint32_t i=0; i<result->activeRegionsCount; i++ )
     {
             ss << "  result->activeRegions[" << i << "]:" << result->activeRegions[i]; Log(ss); // PFRegion
-    } 
-    if( result->buildId ) { ss << "  buildId " << result->buildId; Log(ss); } else { ss << "  buildId = nullptr"; Log(ss); } // Class: const char* 
-    if( result->comment ) { ss << "  comment " << result->comment; Log(ss); } else { ss << "  comment = nullptr"; Log(ss); } // Class: const char* 
-    if( result->errorMessage ) { ss << "  errorMessage " << result->errorMessage; Log(ss); } else { ss << "  errorMessage = nullptr"; Log(ss); } // Class: const char* 
-    ss << "  maxGamesPerHost " << result->maxGamesPerHost; Log(ss); // Class: int32_t 
-    ss << "  minFreeGameSlots " << result->minFreeGameSlots; Log(ss); // Class: int32_t 
-    ss << "  status " << result->status; Log(ss); // Class: PFGameServerGameBuildStatus 
-    ss << "  timestamp " << result->timestamp; Log(ss); // Class: time_t 
+    }     
+    if( result->buildId ) { ss << "  buildId " << result->buildId; Log(ss); } else { ss << "  buildId = nullptr"; Log(ss); } // Class: const char*     
+    if( result->comment ) { ss << "  comment " << result->comment; Log(ss); } else { ss << "  comment = nullptr"; Log(ss); } // Class: const char*     
+    if( result->errorMessage ) { ss << "  errorMessage " << result->errorMessage; Log(ss); } else { ss << "  errorMessage = nullptr"; Log(ss); } // Class: const char*     
+    ss << "  maxGamesPerHost " << result->maxGamesPerHost; Log(ss); // Class: int32_t     
+    ss << "  minFreeGameSlots " << result->minFreeGameSlots; Log(ss); // Class: int32_t     
+    ss << "  status " << result->status; Log(ss); // Class: PFGameServerGameBuildStatus     
+    ss << "  timestamp " << result->timestamp; Log(ss); // Class: time_t     
     if( result->titleId ) { ss << "  titleId " << result->titleId; Log(ss); } else { ss << "  titleId = nullptr"; Log(ss); } // Class: const char* 
     return S_OK;
 }
@@ -156,7 +156,7 @@ HRESULT AutoGenGameServerTests::LogPFGameServerGetServerBuildUploadURLResult(PFG
     std::stringstream ss;
     ss << "Response:"; Log(ss);
 
-    // Found PlayFabGameServerGetServerBuildUploadURLResult
+    // Found PlayFabGameServerGetServerBuildUploadURLResult    
     if( result->URL ) { ss << "  URL " << result->URL; Log(ss); } else { ss << "  URL = nullptr"; Log(ss); } // Class: const char* 
     return S_OK;
 }
@@ -171,7 +171,7 @@ HRESULT AutoGenGameServerTests::LogPFGameServerListBuildsResult(PFGameServerList
     std::stringstream ss;
     ss << "Response:"; Log(ss);
 
-    // Found PlayFabGameServerListBuildsResult    
+    // Found PlayFabGameServerListBuildsResult        
     ss << "  buildsCount " << result->buildsCount; Log(ss);
 
     // PFGameServerGetServerBuildInfoResult
@@ -233,22 +233,22 @@ HRESULT AutoGenGameServerTests::LogPFGameServerModifyServerBuildResult(PFGameSer
     std::stringstream ss;
     ss << "Response:"; Log(ss);
 
-    // Found PlayFabGameServerModifyServerBuildResult    
+    // Found PlayFabGameServerModifyServerBuildResult        
     ss << "  activeRegionsCount " << result->activeRegionsCount; Log(ss);
 
     // PFRegion
     for( uint32_t i=0; i<result->activeRegionsCount; i++ )
     {
             ss << "  result->activeRegions[" << i << "]:" << result->activeRegions[i]; Log(ss); // PFRegion
-    } 
-    if( result->buildId ) { ss << "  buildId " << result->buildId; Log(ss); } else { ss << "  buildId = nullptr"; Log(ss); } // Class: const char* 
-    if( result->commandLineTemplate ) { ss << "  commandLineTemplate " << result->commandLineTemplate; Log(ss); } else { ss << "  commandLineTemplate = nullptr"; Log(ss); } // Class: const char* 
-    if( result->comment ) { ss << "  comment " << result->comment; Log(ss); } else { ss << "  comment = nullptr"; Log(ss); } // Class: const char* 
-    if( result->executablePath ) { ss << "  executablePath " << result->executablePath; Log(ss); } else { ss << "  executablePath = nullptr"; Log(ss); } // Class: const char* 
-    ss << "  maxGamesPerHost " << result->maxGamesPerHost; Log(ss); // Class: int32_t 
-    ss << "  minFreeGameSlots " << result->minFreeGameSlots; Log(ss); // Class: int32_t 
-    ss << "  status " << result->status; Log(ss); // Class: PFGameServerGameBuildStatus 
-    ss << "  timestamp " << result->timestamp; Log(ss); // Class: time_t 
+    }     
+    if( result->buildId ) { ss << "  buildId " << result->buildId; Log(ss); } else { ss << "  buildId = nullptr"; Log(ss); } // Class: const char*     
+    if( result->commandLineTemplate ) { ss << "  commandLineTemplate " << result->commandLineTemplate; Log(ss); } else { ss << "  commandLineTemplate = nullptr"; Log(ss); } // Class: const char*     
+    if( result->comment ) { ss << "  comment " << result->comment; Log(ss); } else { ss << "  comment = nullptr"; Log(ss); } // Class: const char*     
+    if( result->executablePath ) { ss << "  executablePath " << result->executablePath; Log(ss); } else { ss << "  executablePath = nullptr"; Log(ss); } // Class: const char*     
+    ss << "  maxGamesPerHost " << result->maxGamesPerHost; Log(ss); // Class: int32_t     
+    ss << "  minFreeGameSlots " << result->minFreeGameSlots; Log(ss); // Class: int32_t     
+    ss << "  status " << result->status; Log(ss); // Class: PFGameServerGameBuildStatus     
+    ss << "  timestamp " << result->timestamp; Log(ss); // Class: time_t     
     if( result->titleId ) { ss << "  titleId " << result->titleId; Log(ss); } else { ss << "  titleId = nullptr"; Log(ss); } // Class: const char* 
     return S_OK;
 }

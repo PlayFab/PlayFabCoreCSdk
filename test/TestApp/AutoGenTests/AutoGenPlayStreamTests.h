@@ -15,44 +15,35 @@ private:
     static void Log(std::stringstream& ss);
     static HRESULT LogHR(HRESULT hr);
 
-    void TestPlayStreamAdminAddPlayerTag(TestContext& testContext);
-
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestPlayStreamAdminGetAllSegments(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestPlayStreamAdminGetPlayerSegments(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestPlayStreamAdminGetPlayersInSegment(TestContext& testContext);
-
-    void TestPlayStreamAdminGetPlayerTags(TestContext& testContext);
-
-    void TestPlayStreamAdminRemovePlayerTag(TestContext& testContext);
+#endif
 
     void TestPlayStreamClientGetPlayerSegments(TestContext& testContext);
 
-    void TestPlayStreamClientGetPlayerTags(TestContext& testContext);
-
-    void TestPlayStreamServerAddPlayerTag(TestContext& testContext);
-
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestPlayStreamServerGetAllSegments(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestPlayStreamServerGetPlayerSegments(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestPlayStreamServerGetPlayersInSegment(TestContext& testContext);
-
-    void TestPlayStreamServerGetPlayerTags(TestContext& testContext);
-
-    void TestPlayStreamServerRemovePlayerTag(TestContext& testContext);
-
-    void TestPlayStreamWriteEvents(TestContext& testContext);
-
-    void TestPlayStreamWriteTelemetryEvents(TestContext& testContext);
+#endif
 
 
 protected:
     void AddTests();
-
-    static void LogAddPlayerTagRequest(PFPlayStreamAddPlayerTagRequest const* request, const char* testName);
-    static void FillAddPlayerTagRequest(PlayFab::Wrappers::PFPlayStreamAddPlayerTagRequestWrapper<>& request);
 
     static HRESULT LogPFPlayStreamGetAllSegmentsResult(PFPlayStreamGetAllSegmentsResult const* result);
     static HRESULT ValidatePFPlayStreamGetAllSegmentsResult(PFPlayStreamGetAllSegmentsResult* result);
@@ -67,26 +58,8 @@ protected:
     static HRESULT LogPFPlayStreamGetPlayersInSegmentResult(PFPlayStreamGetPlayersInSegmentResult const* result);
     static HRESULT ValidatePFPlayStreamGetPlayersInSegmentResult(PFPlayStreamGetPlayersInSegmentResult* result);
 
-    static void LogGetPlayerTagsRequest(PFPlayStreamGetPlayerTagsRequest const* request, const char* testName);
-    static void FillGetPlayerTagsRequest(PlayFab::Wrappers::PFPlayStreamGetPlayerTagsRequestWrapper<>& request);
-    static HRESULT LogPFPlayStreamGetPlayerTagsResult(PFPlayStreamGetPlayerTagsResult const* result);
-    static HRESULT ValidatePFPlayStreamGetPlayerTagsResult(PFPlayStreamGetPlayerTagsResult* result);
-
-    static void LogRemovePlayerTagRequest(PFPlayStreamRemovePlayerTagRequest const* request, const char* testName);
-    static void FillRemovePlayerTagRequest(PlayFab::Wrappers::PFPlayStreamRemovePlayerTagRequestWrapper<>& request);
 
 
-
-
-
-
-
-
-
-    static void LogWriteEventsRequest(PFPlayStreamWriteEventsRequest const* request, const char* testName);
-    static void FillWriteEventsRequest(PlayFab::Wrappers::PFPlayStreamWriteEventsRequestWrapper<>& request);
-    static HRESULT LogPFPlayStreamWriteEventsResponse(PFPlayStreamWriteEventsResponse const* result);
-    static HRESULT ValidatePFPlayStreamWriteEventsResponse(PFPlayStreamWriteEventsResponse* result);
 
 
     struct PlayStreamTestData

@@ -47,7 +47,7 @@ HRESULT AutoGenTradingTests::LogPFTradingAcceptTradeResponse(PFTradingAcceptTrad
     std::stringstream ss;
     ss << "Response:"; Log(ss);
 
-    // Found PlayFabTradingAcceptTradeResponse
+    // Found PlayFabTradingAcceptTradeResponse    
     ss << "  trade " << result->trade; Log(ss); // Class: PFTradingTradeInfo 
     return S_OK;
 }
@@ -81,7 +81,7 @@ HRESULT AutoGenTradingTests::LogPFTradingCancelTradeResponse(PFTradingCancelTrad
     std::stringstream ss;
     ss << "Response:"; Log(ss);
 
-    // Found PlayFabTradingCancelTradeResponse
+    // Found PlayFabTradingCancelTradeResponse    
     ss << "  trade " << result->trade; Log(ss); // Class: PFTradingTradeInfo 
     return S_OK;
 }
@@ -115,14 +115,14 @@ HRESULT AutoGenTradingTests::LogPFTradingGetPlayerTradesResponse(PFTradingGetPla
     std::stringstream ss;
     ss << "Response:"; Log(ss);
 
-    // Found PlayFabTradingGetPlayerTradesResponse    
+    // Found PlayFabTradingGetPlayerTradesResponse        
     ss << "  acceptedTradesCount " << result->acceptedTradesCount; Log(ss);
 
     // PFTradingTradeInfo
     for( uint32_t i=0; i<result->acceptedTradesCount; i++ )
     {
             ss << "  result->acceptedTrades[" << i << "]:" << result->acceptedTrades[i]; Log(ss); // PFTradingTradeInfo
-    }     
+    }         
     ss << "  openedTradesCount " << result->openedTradesCount; Log(ss);
 
     // PFTradingTradeInfo
@@ -163,7 +163,7 @@ HRESULT AutoGenTradingTests::LogPFTradingGetTradeStatusResponse(PFTradingGetTrad
     std::stringstream ss;
     ss << "Response:"; Log(ss);
 
-    // Found PlayFabTradingGetTradeStatusResponse
+    // Found PlayFabTradingGetTradeStatusResponse    
     ss << "  trade " << result->trade; Log(ss); // Class: PFTradingTradeInfo 
     return S_OK;
 }
@@ -218,7 +218,7 @@ HRESULT AutoGenTradingTests::LogPFTradingOpenTradeResponse(PFTradingOpenTradeRes
     std::stringstream ss;
     ss << "Response:"; Log(ss);
 
-    // Found PlayFabTradingOpenTradeResponse
+    // Found PlayFabTradingOpenTradeResponse    
     ss << "  trade " << result->trade; Log(ss); // Class: PFTradingTradeInfo 
     return S_OK;
 }

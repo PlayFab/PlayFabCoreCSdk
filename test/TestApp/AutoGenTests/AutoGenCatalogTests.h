@@ -43,6 +43,8 @@ private:
 
     void TestCatalogGetItemReviewSummary(TestContext& testContext);
 
+    void TestCatalogGetItems(TestContext& testContext);
+
     void TestCatalogPublishDraftItem(TestContext& testContext);
 
     void TestCatalogReportItem(TestContext& testContext);
@@ -132,6 +134,11 @@ protected:
     static void FillGetItemReviewSummaryRequest(PlayFab::Wrappers::PFCatalogGetItemReviewSummaryRequestWrapper<>& request);
     static HRESULT LogPFCatalogGetItemReviewSummaryResponse(PFCatalogGetItemReviewSummaryResponse const* result);
     static HRESULT ValidatePFCatalogGetItemReviewSummaryResponse(PFCatalogGetItemReviewSummaryResponse* result);
+
+    static void LogGetItemsRequest(PFCatalogGetItemsRequest const* request, const char* testName);
+    static void FillGetItemsRequest(PlayFab::Wrappers::PFCatalogGetItemsRequestWrapper<>& request);
+    static HRESULT LogPFCatalogGetItemsResponse(PFCatalogGetItemsResponse const* result);
+    static HRESULT ValidatePFCatalogGetItemsResponse(PFCatalogGetItemsResponse* result);
 
     static void LogPublishDraftItemRequest(PFCatalogPublishDraftItemRequest const* request, const char* testName);
     static void FillPublishDraftItemRequest(PlayFab::Wrappers::PFCatalogPublishDraftItemRequestWrapper<>& request);

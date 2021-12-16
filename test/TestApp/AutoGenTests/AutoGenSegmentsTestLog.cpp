@@ -38,8 +38,8 @@ HRESULT AutoGenSegmentsTests::LogPFSegmentsCreateSegmentResponse(PFSegmentsCreat
     std::stringstream ss;
     ss << "Response:"; Log(ss);
 
-    // Found PlayFabSegmentsCreateSegmentResponse
-    if( result->errorMessage ) { ss << "  errorMessage " << result->errorMessage; Log(ss); } else { ss << "  errorMessage = nullptr"; Log(ss); } // Class: const char* 
+    // Found PlayFabSegmentsCreateSegmentResponse    
+    if( result->errorMessage ) { ss << "  errorMessage " << result->errorMessage; Log(ss); } else { ss << "  errorMessage = nullptr"; Log(ss); } // Class: const char*     
     if( result->segmentId ) { ss << "  segmentId " << result->segmentId; Log(ss); } else { ss << "  segmentId = nullptr"; Log(ss); } // Class: const char* 
     return S_OK;
 }
@@ -73,7 +73,7 @@ HRESULT AutoGenSegmentsTests::LogPFSegmentsDeleteSegmentsResponse(PFSegmentsDele
     std::stringstream ss;
     ss << "Response:"; Log(ss);
 
-    // Found PlayFabSegmentsDeleteSegmentsResponse
+    // Found PlayFabSegmentsDeleteSegmentsResponse    
     if( result->errorMessage ) { ss << "  errorMessage " << result->errorMessage; Log(ss); } else { ss << "  errorMessage = nullptr"; Log(ss); } // Class: const char* 
     return S_OK;
 }
@@ -114,8 +114,8 @@ HRESULT AutoGenSegmentsTests::LogPFSegmentsGetSegmentsResponse(PFSegmentsGetSegm
     std::stringstream ss;
     ss << "Response:"; Log(ss);
 
-    // Found PlayFabSegmentsGetSegmentsResponse
-    if( result->errorMessage ) { ss << "  errorMessage " << result->errorMessage; Log(ss); } else { ss << "  errorMessage = nullptr"; Log(ss); } // Class: const char*     
+    // Found PlayFabSegmentsGetSegmentsResponse    
+    if( result->errorMessage ) { ss << "  errorMessage " << result->errorMessage; Log(ss); } else { ss << "  errorMessage = nullptr"; Log(ss); } // Class: const char*         
     ss << "  segmentsCount " << result->segmentsCount; Log(ss);
 
     // PFSegmentsSegmentModel
@@ -155,8 +155,8 @@ HRESULT AutoGenSegmentsTests::LogPFSegmentsUpdateSegmentResponse(PFSegmentsUpdat
     std::stringstream ss;
     ss << "Response:"; Log(ss);
 
-    // Found PlayFabSegmentsUpdateSegmentResponse
-    if( result->errorMessage ) { ss << "  errorMessage " << result->errorMessage; Log(ss); } else { ss << "  errorMessage = nullptr"; Log(ss); } // Class: const char* 
+    // Found PlayFabSegmentsUpdateSegmentResponse    
+    if( result->errorMessage ) { ss << "  errorMessage " << result->errorMessage; Log(ss); } else { ss << "  errorMessage = nullptr"; Log(ss); } // Class: const char*     
     if( result->segmentId ) { ss << "  segmentId " << result->segmentId; Log(ss); } else { ss << "  segmentId = nullptr"; Log(ss); } // Class: const char* 
     return S_OK;
 }

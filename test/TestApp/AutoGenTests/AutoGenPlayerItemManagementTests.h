@@ -15,21 +15,37 @@ private:
     static void Log(std::stringstream& ss);
     static HRESULT LogHR(HRESULT hr);
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestPlayerItemManagementAdminAddUserVirtualCurrency(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestPlayerItemManagementAdminCheckLimitedEditionItemAvailability(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestPlayerItemManagementAdminGetUserInventory(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestPlayerItemManagementAdminGrantItemsToUsers(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestPlayerItemManagementAdminIncrementLimitedEditionItemAvailability(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestPlayerItemManagementAdminRevokeInventoryItem(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestPlayerItemManagementAdminRevokeInventoryItems(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestPlayerItemManagementAdminSubtractUserVirtualCurrency(TestContext& testContext);
+#endif
 
     void TestPlayerItemManagementClientAddUserVirtualCurrency(TestContext& testContext);
 
@@ -59,51 +75,97 @@ private:
 
     void TestPlayerItemManagementClientUnlockContainerItem(TestContext& testContext);
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestPlayerItemManagementServerAddCharacterVirtualCurrency(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestPlayerItemManagementServerAddUserVirtualCurrency(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestPlayerItemManagementServerConsumeItem(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestPlayerItemManagementServerEvaluateRandomResultTable(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestPlayerItemManagementServerGetCharacterInventory(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestPlayerItemManagementServerGetRandomResultTables(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestPlayerItemManagementServerGetUserInventory(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestPlayerItemManagementServerGrantItemsToCharacter(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestPlayerItemManagementServerGrantItemsToUser(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestPlayerItemManagementServerGrantItemsToUsers(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestPlayerItemManagementServerModifyItemUses(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestPlayerItemManagementServerMoveItemToCharacterFromCharacter(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestPlayerItemManagementServerMoveItemToCharacterFromUser(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestPlayerItemManagementServerMoveItemToUserFromCharacter(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestPlayerItemManagementServerRedeemCoupon(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestPlayerItemManagementServerReportPlayer(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestPlayerItemManagementServerRevokeInventoryItem(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestPlayerItemManagementServerRevokeInventoryItems(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestPlayerItemManagementServerSubtractCharacterVirtualCurrency(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestPlayerItemManagementServerSubtractUserVirtualCurrency(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestPlayerItemManagementServerUnlockContainerInstance(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestPlayerItemManagementServerUnlockContainerItem(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestPlayerItemManagementServerUpdateUserInventoryItemCustomData(TestContext& testContext);
+#endif
 
 
 protected:

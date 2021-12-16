@@ -17,29 +17,29 @@ private:
 
     void TestAnalyticsClientReportDeviceInfo(TestContext& testContext);
 
-    void TestAnalyticsClientWriteCharacterEvent(TestContext& testContext);
-
-    void TestAnalyticsClientWritePlayerEvent(TestContext& testContext);
-
-    void TestAnalyticsClientWriteTitleEvent(TestContext& testContext);
-
-    void TestAnalyticsServerWriteCharacterEvent(TestContext& testContext);
-
-    void TestAnalyticsServerWritePlayerEvent(TestContext& testContext);
-
-    void TestAnalyticsServerWriteTitleEvent(TestContext& testContext);
-
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestAnalyticsGetDetails(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestAnalyticsGetLimits(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestAnalyticsGetOperationStatus(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestAnalyticsGetPendingOperations(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestAnalyticsSetPerformance(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestAnalyticsSetStorageRetention(TestContext& testContext);
+#endif
 
 
 protected:
@@ -47,24 +47,6 @@ protected:
 
     static void LogDeviceInfoRequest(PFAnalyticsDeviceInfoRequest const* request, const char* testName);
     static void FillDeviceInfoRequest(PlayFab::Wrappers::PFAnalyticsDeviceInfoRequestWrapper<>& request);
-
-    static void LogWriteClientCharacterEventRequest(PFAnalyticsWriteClientCharacterEventRequest const* request, const char* testName);
-    static void FillWriteClientCharacterEventRequest(PlayFab::Wrappers::PFAnalyticsWriteClientCharacterEventRequestWrapper<>& request);
-    static HRESULT LogPFAnalyticsWriteEventResponse(PFAnalyticsWriteEventResponse const* result);
-    static HRESULT ValidatePFAnalyticsWriteEventResponse(PFAnalyticsWriteEventResponse* result);
-
-    static void LogWriteClientPlayerEventRequest(PFAnalyticsWriteClientPlayerEventRequest const* request, const char* testName);
-    static void FillWriteClientPlayerEventRequest(PlayFab::Wrappers::PFAnalyticsWriteClientPlayerEventRequestWrapper<>& request);
-
-    static void LogWriteTitleEventRequest(PFAnalyticsWriteTitleEventRequest const* request, const char* testName);
-    static void FillWriteTitleEventRequest(PlayFab::Wrappers::PFAnalyticsWriteTitleEventRequestWrapper<>& request);
-
-    static void LogWriteServerCharacterEventRequest(PFAnalyticsWriteServerCharacterEventRequest const* request, const char* testName);
-    static void FillWriteServerCharacterEventRequest(PlayFab::Wrappers::PFAnalyticsWriteServerCharacterEventRequestWrapper<>& request);
-
-    static void LogWriteServerPlayerEventRequest(PFAnalyticsWriteServerPlayerEventRequest const* request, const char* testName);
-    static void FillWriteServerPlayerEventRequest(PlayFab::Wrappers::PFAnalyticsWriteServerPlayerEventRequestWrapper<>& request);
-
 
     static void LogInsightsEmptyRequest(PFAnalyticsInsightsEmptyRequest const* request, const char* testName);
     static void FillInsightsEmptyRequest(PlayFab::Wrappers::PFAnalyticsInsightsEmptyRequestWrapper<>& request);

@@ -152,7 +152,7 @@ void AutoGenTradingTests::SetUp(TestContext& testContext)
 
 void AutoGenTradingTests::TestTradingClientAcceptTrade(TestContext& testContext)
 {
-    struct ClientAcceptTradeResultHolder : public AcceptTradeResponseHolder
+    struct ClientAcceptTradeResultHolderStruct : public AcceptTradeResponseHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -171,7 +171,7 @@ void AutoGenTradingTests::TestTradingClientAcceptTrade(TestContext& testContext)
             return ValidatePFTradingAcceptTradeResponse(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<ClientAcceptTradeResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<ClientAcceptTradeResultHolderStruct>>(testContext);
 
     PFTradingAcceptTradeRequestWrapper<> request;
     FillAcceptTradeRequest(request);
@@ -191,7 +191,7 @@ void AutoGenTradingTests::TestTradingClientAcceptTrade(TestContext& testContext)
 
 void AutoGenTradingTests::TestTradingClientCancelTrade(TestContext& testContext)
 {
-    struct ClientCancelTradeResultHolder : public CancelTradeResponseHolder
+    struct ClientCancelTradeResultHolderStruct : public CancelTradeResponseHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -210,7 +210,7 @@ void AutoGenTradingTests::TestTradingClientCancelTrade(TestContext& testContext)
             return ValidatePFTradingCancelTradeResponse(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<ClientCancelTradeResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<ClientCancelTradeResultHolderStruct>>(testContext);
 
     PFTradingCancelTradeRequestWrapper<> request;
     FillCancelTradeRequest(request);
@@ -230,7 +230,7 @@ void AutoGenTradingTests::TestTradingClientCancelTrade(TestContext& testContext)
 
 void AutoGenTradingTests::TestTradingClientGetPlayerTrades(TestContext& testContext)
 {
-    struct ClientGetPlayerTradesResultHolder : public GetPlayerTradesResponseHolder
+    struct ClientGetPlayerTradesResultHolderStruct : public GetPlayerTradesResponseHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -249,7 +249,7 @@ void AutoGenTradingTests::TestTradingClientGetPlayerTrades(TestContext& testCont
             return ValidatePFTradingGetPlayerTradesResponse(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<ClientGetPlayerTradesResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<ClientGetPlayerTradesResultHolderStruct>>(testContext);
 
     PFTradingGetPlayerTradesRequestWrapper<> request;
     FillGetPlayerTradesRequest(request);
@@ -269,7 +269,7 @@ void AutoGenTradingTests::TestTradingClientGetPlayerTrades(TestContext& testCont
 
 void AutoGenTradingTests::TestTradingClientGetTradeStatus(TestContext& testContext)
 {
-    struct ClientGetTradeStatusResultHolder : public GetTradeStatusResponseHolder
+    struct ClientGetTradeStatusResultHolderStruct : public GetTradeStatusResponseHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -288,7 +288,7 @@ void AutoGenTradingTests::TestTradingClientGetTradeStatus(TestContext& testConte
             return ValidatePFTradingGetTradeStatusResponse(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<ClientGetTradeStatusResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<ClientGetTradeStatusResultHolderStruct>>(testContext);
 
     PFTradingGetTradeStatusRequestWrapper<> request;
     FillGetTradeStatusRequest(request);
@@ -308,7 +308,7 @@ void AutoGenTradingTests::TestTradingClientGetTradeStatus(TestContext& testConte
 
 void AutoGenTradingTests::TestTradingClientOpenTrade(TestContext& testContext)
 {
-    struct ClientOpenTradeResultHolder : public OpenTradeResponseHolder
+    struct ClientOpenTradeResultHolderStruct : public OpenTradeResponseHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -327,7 +327,7 @@ void AutoGenTradingTests::TestTradingClientOpenTrade(TestContext& testContext)
             return ValidatePFTradingOpenTradeResponse(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<ClientOpenTradeResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<ClientOpenTradeResultHolderStruct>>(testContext);
 
     PFTradingOpenTradeRequestWrapper<> request;
     FillOpenTradeRequest(request);

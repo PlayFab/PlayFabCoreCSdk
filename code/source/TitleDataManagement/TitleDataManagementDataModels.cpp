@@ -1286,6 +1286,7 @@ JsonValue SetTitleDataRequest::ToJson(const PFTitleDataManagementSetTitleDataReq
     JsonUtils::ObjectAddMember(output, "AzureResourceId", input.azureResourceId);
     JsonUtils::ObjectAddMemberDictionary(output, "CustomTags", input.customTags, input.customTagsCount);
     JsonUtils::ObjectAddMember(output, "Key", input.key);
+    JsonUtils::ObjectAddMember<AzureResourceSystemData>(output, "SystemData", input.systemData);
     JsonUtils::ObjectAddMember(output, "TitleId", input.titleId);
     JsonUtils::ObjectAddMember(output, "Value", input.value);
     return output;

@@ -32,15 +32,25 @@ HRESULT AutoGenContentTests::LogHR(HRESULT hr)
 void AutoGenContentTests::AddTests()
 {
     // Generated tests 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestContentAdminDeleteContent", &AutoGenContentTests::TestContentAdminDeleteContent);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestContentAdminGetContentList", &AutoGenContentTests::TestContentAdminGetContentList);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestContentAdminGetContentUploadUrl", &AutoGenContentTests::TestContentAdminGetContentUploadUrl);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestContentClientGetContentDownloadUrl", &AutoGenContentTests::TestContentClientGetContentDownloadUrl);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestContentServerGetContentDownloadUrl", &AutoGenContentTests::TestContentServerGetContentDownloadUrl);
+#endif
 }
 
 void AutoGenContentTests::ClassSetUp()
@@ -150,6 +160,7 @@ void AutoGenContentTests::SetUp(TestContext& testContext)
 
 #pragma region AdminDeleteContent
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenContentTests::TestContentAdminDeleteContent(TestContext& testContext)
 {
     auto async = std::make_unique<XAsyncHelper<XAsyncResult>>(testContext);
@@ -165,14 +176,16 @@ void AutoGenContentTests::TestContentAdminDeleteContent(TestContext& testContext
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region AdminGetContentList
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenContentTests::TestContentAdminGetContentList(TestContext& testContext)
 {
-    struct AdminGetContentListResultHolder : public GetContentListResultHolder
+    struct AdminGetContentListResultHolderStruct : public GetContentListResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -191,7 +204,7 @@ void AutoGenContentTests::TestContentAdminGetContentList(TestContext& testContex
             return ValidatePFContentGetContentListResult(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<AdminGetContentListResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<AdminGetContentListResultHolderStruct>>(testContext);
 
     PFContentGetContentListRequestWrapper<> request;
     FillGetContentListRequest(request);
@@ -204,14 +217,16 @@ void AutoGenContentTests::TestContentAdminGetContentList(TestContext& testContex
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region AdminGetContentUploadUrl
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenContentTests::TestContentAdminGetContentUploadUrl(TestContext& testContext)
 {
-    struct AdminGetContentUploadUrlResultHolder : public GetContentUploadUrlResultHolder
+    struct AdminGetContentUploadUrlResultHolderStruct : public GetContentUploadUrlResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -230,7 +245,7 @@ void AutoGenContentTests::TestContentAdminGetContentUploadUrl(TestContext& testC
             return ValidatePFContentGetContentUploadUrlResult(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<AdminGetContentUploadUrlResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<AdminGetContentUploadUrlResultHolderStruct>>(testContext);
 
     PFContentGetContentUploadUrlRequestWrapper<> request;
     FillGetContentUploadUrlRequest(request);
@@ -243,14 +258,16 @@ void AutoGenContentTests::TestContentAdminGetContentUploadUrl(TestContext& testC
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region ClientGetContentDownloadUrl
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenContentTests::TestContentClientGetContentDownloadUrl(TestContext& testContext)
 {
-    struct ClientGetContentDownloadUrlResultHolder : public GetContentDownloadUrlResultHolder
+    struct ClientGetContentDownloadUrlResultHolderStruct : public GetContentDownloadUrlResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -269,7 +286,7 @@ void AutoGenContentTests::TestContentClientGetContentDownloadUrl(TestContext& te
             return ValidatePFContentGetContentDownloadUrlResult(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<ClientGetContentDownloadUrlResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<ClientGetContentDownloadUrlResultHolderStruct>>(testContext);
 
     PFContentGetContentDownloadUrlRequestWrapper<> request;
     FillGetContentDownloadUrlRequest(request);
@@ -282,14 +299,16 @@ void AutoGenContentTests::TestContentClientGetContentDownloadUrl(TestContext& te
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region ServerGetContentDownloadUrl
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenContentTests::TestContentServerGetContentDownloadUrl(TestContext& testContext)
 {
-    struct ServerGetContentDownloadUrlResultHolder : public GetContentDownloadUrlResultHolder
+    struct ServerGetContentDownloadUrlResultHolderStruct : public GetContentDownloadUrlResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -308,7 +327,7 @@ void AutoGenContentTests::TestContentServerGetContentDownloadUrl(TestContext& te
             return ValidatePFContentGetContentDownloadUrlResult(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<ServerGetContentDownloadUrlResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<ServerGetContentDownloadUrlResultHolderStruct>>(testContext);
 
     PFContentGetContentDownloadUrlRequestWrapper<> request;
     FillGetContentDownloadUrlRequest(request);
@@ -321,6 +340,7 @@ void AutoGenContentTests::TestContentServerGetContentDownloadUrl(TestContext& te
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 

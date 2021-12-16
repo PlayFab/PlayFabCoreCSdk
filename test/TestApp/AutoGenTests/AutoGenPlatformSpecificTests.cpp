@@ -32,31 +32,51 @@ HRESULT AutoGenPlatformSpecificTests::LogHR(HRESULT hr)
 void AutoGenPlatformSpecificTests::AddTests()
 {
     // Generated tests 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestPlatformSpecificClientAndroidDevicePushNotificationRegistration", &AutoGenPlatformSpecificTests::TestPlatformSpecificClientAndroidDevicePushNotificationRegistration);
+#endif
 
     AddTest("TestPlatformSpecificClientConsumeMicrosoftStoreEntitlements", &AutoGenPlatformSpecificTests::TestPlatformSpecificClientConsumeMicrosoftStoreEntitlements);
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestPlatformSpecificClientConsumePS5Entitlements", &AutoGenPlatformSpecificTests::TestPlatformSpecificClientConsumePS5Entitlements);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestPlatformSpecificClientConsumePSNEntitlements", &AutoGenPlatformSpecificTests::TestPlatformSpecificClientConsumePSNEntitlements);
+#endif
 
     AddTest("TestPlatformSpecificClientConsumeXboxEntitlements", &AutoGenPlatformSpecificTests::TestPlatformSpecificClientConsumeXboxEntitlements);
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestPlatformSpecificClientRefreshPSNAuthToken", &AutoGenPlatformSpecificTests::TestPlatformSpecificClientRefreshPSNAuthToken);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestPlatformSpecificClientRegisterForIOSPushNotification", &AutoGenPlatformSpecificTests::TestPlatformSpecificClientRegisterForIOSPushNotification);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestPlatformSpecificClientRestoreIOSPurchases", &AutoGenPlatformSpecificTests::TestPlatformSpecificClientRestoreIOSPurchases);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestPlatformSpecificClientValidateAmazonIAPReceipt", &AutoGenPlatformSpecificTests::TestPlatformSpecificClientValidateAmazonIAPReceipt);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestPlatformSpecificClientValidateGooglePlayPurchase", &AutoGenPlatformSpecificTests::TestPlatformSpecificClientValidateGooglePlayPurchase);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestPlatformSpecificClientValidateIOSReceipt", &AutoGenPlatformSpecificTests::TestPlatformSpecificClientValidateIOSReceipt);
+#endif
 
     AddTest("TestPlatformSpecificClientValidateWindowsStoreReceipt", &AutoGenPlatformSpecificTests::TestPlatformSpecificClientValidateWindowsStoreReceipt);
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestPlatformSpecificServerAwardSteamAchievement", &AutoGenPlatformSpecificTests::TestPlatformSpecificServerAwardSteamAchievement);
+#endif
 }
 
 void AutoGenPlatformSpecificTests::ClassSetUp()
@@ -166,6 +186,7 @@ void AutoGenPlatformSpecificTests::SetUp(TestContext& testContext)
 
 #pragma region ClientAndroidDevicePushNotificationRegistration
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenPlatformSpecificTests::TestPlatformSpecificClientAndroidDevicePushNotificationRegistration(TestContext& testContext)
 {
     auto async = std::make_unique<XAsyncHelper<XAsyncResult>>(testContext);
@@ -181,6 +202,7 @@ void AutoGenPlatformSpecificTests::TestPlatformSpecificClientAndroidDevicePushNo
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
@@ -188,7 +210,7 @@ void AutoGenPlatformSpecificTests::TestPlatformSpecificClientAndroidDevicePushNo
 
 void AutoGenPlatformSpecificTests::TestPlatformSpecificClientConsumeMicrosoftStoreEntitlements(TestContext& testContext)
 {
-    struct ClientConsumeMicrosoftStoreEntitlementsResultHolder : public ConsumeMicrosoftStoreEntitlementsResponseHolder
+    struct ClientConsumeMicrosoftStoreEntitlementsResultHolderStruct : public ConsumeMicrosoftStoreEntitlementsResponseHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -207,7 +229,7 @@ void AutoGenPlatformSpecificTests::TestPlatformSpecificClientConsumeMicrosoftSto
             return ValidatePFPlatformSpecificConsumeMicrosoftStoreEntitlementsResponse(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<ClientConsumeMicrosoftStoreEntitlementsResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<ClientConsumeMicrosoftStoreEntitlementsResultHolderStruct>>(testContext);
 
     PFPlatformSpecificConsumeMicrosoftStoreEntitlementsRequestWrapper<> request;
     FillConsumeMicrosoftStoreEntitlementsRequest(request);
@@ -225,9 +247,10 @@ void AutoGenPlatformSpecificTests::TestPlatformSpecificClientConsumeMicrosoftSto
 
 #pragma region ClientConsumePS5Entitlements
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenPlatformSpecificTests::TestPlatformSpecificClientConsumePS5Entitlements(TestContext& testContext)
 {
-    struct ClientConsumePS5EntitlementsResultHolder : public ConsumePS5EntitlementsResultHolder
+    struct ClientConsumePS5EntitlementsResultHolderStruct : public ConsumePS5EntitlementsResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -246,7 +269,7 @@ void AutoGenPlatformSpecificTests::TestPlatformSpecificClientConsumePS5Entitleme
             return ValidatePFPlatformSpecificConsumePS5EntitlementsResult(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<ClientConsumePS5EntitlementsResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<ClientConsumePS5EntitlementsResultHolderStruct>>(testContext);
 
     PFPlatformSpecificConsumePS5EntitlementsRequestWrapper<> request;
     FillConsumePS5EntitlementsRequest(request);
@@ -259,14 +282,16 @@ void AutoGenPlatformSpecificTests::TestPlatformSpecificClientConsumePS5Entitleme
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region ClientConsumePSNEntitlements
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenPlatformSpecificTests::TestPlatformSpecificClientConsumePSNEntitlements(TestContext& testContext)
 {
-    struct ClientConsumePSNEntitlementsResultHolder : public ConsumePSNEntitlementsResultHolder
+    struct ClientConsumePSNEntitlementsResultHolderStruct : public ConsumePSNEntitlementsResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -285,7 +310,7 @@ void AutoGenPlatformSpecificTests::TestPlatformSpecificClientConsumePSNEntitleme
             return ValidatePFPlatformSpecificConsumePSNEntitlementsResult(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<ClientConsumePSNEntitlementsResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<ClientConsumePSNEntitlementsResultHolderStruct>>(testContext);
 
     PFPlatformSpecificConsumePSNEntitlementsRequestWrapper<> request;
     FillConsumePSNEntitlementsRequest(request);
@@ -298,6 +323,7 @@ void AutoGenPlatformSpecificTests::TestPlatformSpecificClientConsumePSNEntitleme
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
@@ -305,7 +331,7 @@ void AutoGenPlatformSpecificTests::TestPlatformSpecificClientConsumePSNEntitleme
 
 void AutoGenPlatformSpecificTests::TestPlatformSpecificClientConsumeXboxEntitlements(TestContext& testContext)
 {
-    struct ClientConsumeXboxEntitlementsResultHolder : public ConsumeXboxEntitlementsResultHolder
+    struct ClientConsumeXboxEntitlementsResultHolderStruct : public ConsumeXboxEntitlementsResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -324,7 +350,7 @@ void AutoGenPlatformSpecificTests::TestPlatformSpecificClientConsumeXboxEntitlem
             return ValidatePFPlatformSpecificConsumeXboxEntitlementsResult(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<ClientConsumeXboxEntitlementsResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<ClientConsumeXboxEntitlementsResultHolderStruct>>(testContext);
 
     PFPlatformSpecificConsumeXboxEntitlementsRequestWrapper<> request;
     FillConsumeXboxEntitlementsRequest(request);
@@ -342,6 +368,7 @@ void AutoGenPlatformSpecificTests::TestPlatformSpecificClientConsumeXboxEntitlem
 
 #pragma region ClientRefreshPSNAuthToken
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenPlatformSpecificTests::TestPlatformSpecificClientRefreshPSNAuthToken(TestContext& testContext)
 {
     auto async = std::make_unique<XAsyncHelper<XAsyncResult>>(testContext);
@@ -357,11 +384,13 @@ void AutoGenPlatformSpecificTests::TestPlatformSpecificClientRefreshPSNAuthToken
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region ClientRegisterForIOSPushNotification
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenPlatformSpecificTests::TestPlatformSpecificClientRegisterForIOSPushNotification(TestContext& testContext)
 {
     auto async = std::make_unique<XAsyncHelper<XAsyncResult>>(testContext);
@@ -377,14 +406,16 @@ void AutoGenPlatformSpecificTests::TestPlatformSpecificClientRegisterForIOSPushN
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region ClientRestoreIOSPurchases
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenPlatformSpecificTests::TestPlatformSpecificClientRestoreIOSPurchases(TestContext& testContext)
 {
-    struct ClientRestoreIOSPurchasesResultHolder : public RestoreIOSPurchasesResultHolder
+    struct ClientRestoreIOSPurchasesResultHolderStruct : public RestoreIOSPurchasesResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -403,7 +434,7 @@ void AutoGenPlatformSpecificTests::TestPlatformSpecificClientRestoreIOSPurchases
             return ValidatePFPlatformSpecificRestoreIOSPurchasesResult(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<ClientRestoreIOSPurchasesResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<ClientRestoreIOSPurchasesResultHolderStruct>>(testContext);
 
     PFPlatformSpecificRestoreIOSPurchasesRequestWrapper<> request;
     FillRestoreIOSPurchasesRequest(request);
@@ -416,14 +447,16 @@ void AutoGenPlatformSpecificTests::TestPlatformSpecificClientRestoreIOSPurchases
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region ClientValidateAmazonIAPReceipt
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenPlatformSpecificTests::TestPlatformSpecificClientValidateAmazonIAPReceipt(TestContext& testContext)
 {
-    struct ClientValidateAmazonIAPReceiptResultHolder : public ValidateAmazonReceiptResultHolder
+    struct ClientValidateAmazonIAPReceiptResultHolderStruct : public ValidateAmazonReceiptResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -442,7 +475,7 @@ void AutoGenPlatformSpecificTests::TestPlatformSpecificClientValidateAmazonIAPRe
             return ValidatePFPlatformSpecificValidateAmazonReceiptResult(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<ClientValidateAmazonIAPReceiptResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<ClientValidateAmazonIAPReceiptResultHolderStruct>>(testContext);
 
     PFPlatformSpecificValidateAmazonReceiptRequestWrapper<> request;
     FillValidateAmazonReceiptRequest(request);
@@ -455,14 +488,16 @@ void AutoGenPlatformSpecificTests::TestPlatformSpecificClientValidateAmazonIAPRe
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region ClientValidateGooglePlayPurchase
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenPlatformSpecificTests::TestPlatformSpecificClientValidateGooglePlayPurchase(TestContext& testContext)
 {
-    struct ClientValidateGooglePlayPurchaseResultHolder : public ValidateGooglePlayPurchaseResultHolder
+    struct ClientValidateGooglePlayPurchaseResultHolderStruct : public ValidateGooglePlayPurchaseResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -481,7 +516,7 @@ void AutoGenPlatformSpecificTests::TestPlatformSpecificClientValidateGooglePlayP
             return ValidatePFPlatformSpecificValidateGooglePlayPurchaseResult(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<ClientValidateGooglePlayPurchaseResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<ClientValidateGooglePlayPurchaseResultHolderStruct>>(testContext);
 
     PFPlatformSpecificValidateGooglePlayPurchaseRequestWrapper<> request;
     FillValidateGooglePlayPurchaseRequest(request);
@@ -494,14 +529,16 @@ void AutoGenPlatformSpecificTests::TestPlatformSpecificClientValidateGooglePlayP
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region ClientValidateIOSReceipt
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenPlatformSpecificTests::TestPlatformSpecificClientValidateIOSReceipt(TestContext& testContext)
 {
-    struct ClientValidateIOSReceiptResultHolder : public ValidateIOSReceiptResultHolder
+    struct ClientValidateIOSReceiptResultHolderStruct : public ValidateIOSReceiptResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -520,7 +557,7 @@ void AutoGenPlatformSpecificTests::TestPlatformSpecificClientValidateIOSReceipt(
             return ValidatePFPlatformSpecificValidateIOSReceiptResult(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<ClientValidateIOSReceiptResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<ClientValidateIOSReceiptResultHolderStruct>>(testContext);
 
     PFPlatformSpecificValidateIOSReceiptRequestWrapper<> request;
     FillValidateIOSReceiptRequest(request);
@@ -533,6 +570,7 @@ void AutoGenPlatformSpecificTests::TestPlatformSpecificClientValidateIOSReceipt(
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
@@ -540,7 +578,7 @@ void AutoGenPlatformSpecificTests::TestPlatformSpecificClientValidateIOSReceipt(
 
 void AutoGenPlatformSpecificTests::TestPlatformSpecificClientValidateWindowsStoreReceipt(TestContext& testContext)
 {
-    struct ClientValidateWindowsStoreReceiptResultHolder : public ValidateWindowsReceiptResultHolder
+    struct ClientValidateWindowsStoreReceiptResultHolderStruct : public ValidateWindowsReceiptResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -559,7 +597,7 @@ void AutoGenPlatformSpecificTests::TestPlatformSpecificClientValidateWindowsStor
             return ValidatePFPlatformSpecificValidateWindowsReceiptResult(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<ClientValidateWindowsStoreReceiptResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<ClientValidateWindowsStoreReceiptResultHolderStruct>>(testContext);
 
     PFPlatformSpecificValidateWindowsReceiptRequestWrapper<> request;
     FillValidateWindowsReceiptRequest(request);
@@ -577,9 +615,10 @@ void AutoGenPlatformSpecificTests::TestPlatformSpecificClientValidateWindowsStor
 
 #pragma region ServerAwardSteamAchievement
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenPlatformSpecificTests::TestPlatformSpecificServerAwardSteamAchievement(TestContext& testContext)
 {
-    struct ServerAwardSteamAchievementResultHolder : public AwardSteamAchievementResultHolder
+    struct ServerAwardSteamAchievementResultHolderStruct : public AwardSteamAchievementResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -598,7 +637,7 @@ void AutoGenPlatformSpecificTests::TestPlatformSpecificServerAwardSteamAchieveme
             return ValidatePFPlatformSpecificAwardSteamAchievementResult(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<ServerAwardSteamAchievementResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<ServerAwardSteamAchievementResultHolderStruct>>(testContext);
 
     PFPlatformSpecificAwardSteamAchievementRequestWrapper<> request;
     FillAwardSteamAchievementRequest(request);
@@ -611,6 +650,7 @@ void AutoGenPlatformSpecificTests::TestPlatformSpecificServerAwardSteamAchieveme
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
