@@ -32,6 +32,7 @@ public:
     static AsyncOp<GetItemPublishStatusResponse> GetItemPublishStatus(SharedPtr<Entity> entity, const GetItemPublishStatusRequest& request, const TaskQueue& queue);
     static AsyncOp<GetItemReviewsResponse> GetItemReviews(SharedPtr<Entity> entity, const GetItemReviewsRequest& request, const TaskQueue& queue);
     static AsyncOp<GetItemReviewSummaryResponse> GetItemReviewSummary(SharedPtr<Entity> entity, const GetItemReviewSummaryRequest& request, const TaskQueue& queue);
+    static AsyncOp<GetItemsResponse> GetItems(SharedPtr<Entity> entity, const GetItemsRequest& request, const TaskQueue& queue);
     static AsyncOp<void> PublishDraftItem(SharedPtr<Entity> entity, const PublishDraftItemRequest& request, const TaskQueue& queue);
     static AsyncOp<void> ReportItem(SharedPtr<Entity> entity, const ReportItemRequest& request, const TaskQueue& queue);
     static AsyncOp<void> ReportItemReview(SharedPtr<Entity> entity, const ReportItemReviewRequest& request, const TaskQueue& queue);

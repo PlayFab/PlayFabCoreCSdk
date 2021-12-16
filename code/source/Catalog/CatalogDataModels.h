@@ -730,6 +730,39 @@ public:
     static HRESULT Copy(const PFCatalogGetItemReviewSummaryResponse& input, PFCatalogGetItemReviewSummaryResponse& output, ModelBuffer& buffer);
 };
 
+class GetItemsRequest : public Wrappers::PFCatalogGetItemsRequestWrapper<Allocator>, public InputModel
+{
+public:
+    using ModelWrapperType = typename Wrappers::PFCatalogGetItemsRequestWrapper<Allocator>;
+    using ModelWrapperType::ModelType;
+
+    // Constructors
+    using ModelWrapperType::ModelWrapperType;
+
+    // InputModel
+    JsonValue ToJson() const override;
+    static JsonValue ToJson(const PFCatalogGetItemsRequest& input);
+
+};
+
+class GetItemsResponse : public Wrappers::PFCatalogGetItemsResponseWrapper<Allocator>, public OutputModel<PFCatalogGetItemsResponse>
+{
+public:
+    using ModelWrapperType = typename Wrappers::PFCatalogGetItemsResponseWrapper<Allocator>;
+    using ModelWrapperType::ModelType;
+
+    // Constructors
+    using ModelWrapperType::ModelWrapperType;
+
+    // OutputModel
+    void FromJson(const JsonValue& input) override;
+    size_t RequiredBufferSize() const override;
+    Result<PFCatalogGetItemsResponse const*> Copy(ModelBuffer& buffer) const override;
+
+    static size_t RequiredBufferSize(const PFCatalogGetItemsResponse& model);
+    static HRESULT Copy(const PFCatalogGetItemsResponse& input, PFCatalogGetItemsResponse& output, ModelBuffer& buffer);
+};
+
 class PublishDraftItemRequest : public Wrappers::PFCatalogPublishDraftItemRequestWrapper<Allocator>, public InputModel
 {
 public:

@@ -142,9 +142,9 @@ HRESULT AutoGenGroupsTests::LogPFGroupsApplyToGroupResponse(PFGroupsApplyToGroup
     std::stringstream ss;
     ss << "Response:"; Log(ss);
 
-    // Found PlayFabGroupsApplyToGroupResponse
-    ss << "  entity " << result->entity; Log(ss); // Class: PFGroupsEntityWithLineage 
-    ss << "  expires " << result->expires; Log(ss); // Class: time_t 
+    // Found PlayFabGroupsApplyToGroupResponse    
+    ss << "  entity " << result->entity; Log(ss); // Class: PFGroupsEntityWithLineage     
+    ss << "  expires " << result->expires; Log(ss); // Class: time_t     
     ss << "  group " << result->group; Log(ss); // Class: PFEntityKey 
     return S_OK;
 }
@@ -254,13 +254,13 @@ HRESULT AutoGenGroupsTests::LogPFGroupsCreateGroupResponse(PFGroupsCreateGroupRe
     std::stringstream ss;
     ss << "Response:"; Log(ss);
 
-    // Found PlayFabGroupsCreateGroupResponse
-    if( result->adminRoleId ) { ss << "  adminRoleId " << result->adminRoleId; Log(ss); } else { ss << "  adminRoleId = nullptr"; Log(ss); } // Class: const char* 
-    ss << "  created " << result->created; Log(ss); // Class: time_t 
-    ss << "  group " << result->group; Log(ss); // Class: PFEntityKey 
-    if( result->groupName ) { ss << "  groupName " << result->groupName; Log(ss); } else { ss << "  groupName = nullptr"; Log(ss); } // Class: const char* 
-    if( result->memberRoleId ) { ss << "  memberRoleId " << result->memberRoleId; Log(ss); } else { ss << "  memberRoleId = nullptr"; Log(ss); } // Class: const char* 
-    ss << "  profileVersion " << result->profileVersion; Log(ss); // Class: int32_t     
+    // Found PlayFabGroupsCreateGroupResponse    
+    if( result->adminRoleId ) { ss << "  adminRoleId " << result->adminRoleId; Log(ss); } else { ss << "  adminRoleId = nullptr"; Log(ss); } // Class: const char*     
+    ss << "  created " << result->created; Log(ss); // Class: time_t     
+    ss << "  group " << result->group; Log(ss); // Class: PFEntityKey     
+    if( result->groupName ) { ss << "  groupName " << result->groupName; Log(ss); } else { ss << "  groupName = nullptr"; Log(ss); } // Class: const char*     
+    if( result->memberRoleId ) { ss << "  memberRoleId " << result->memberRoleId; Log(ss); } else { ss << "  memberRoleId = nullptr"; Log(ss); } // Class: const char*     
+    ss << "  profileVersion " << result->profileVersion; Log(ss); // Class: int32_t         
     ss << "  rolesCount " << result->rolesCount; Log(ss);
 
     // PFStringDictionaryEntry
@@ -312,9 +312,9 @@ HRESULT AutoGenGroupsTests::LogPFGroupsCreateGroupRoleResponse(PFGroupsCreateGro
     std::stringstream ss;
     ss << "Response:"; Log(ss);
 
-    // Found PlayFabGroupsCreateGroupRoleResponse
-    ss << "  profileVersion " << result->profileVersion; Log(ss); // Class: int32_t 
-    if( result->roleId ) { ss << "  roleId " << result->roleId; Log(ss); } else { ss << "  roleId = nullptr"; Log(ss); } // Class: const char* 
+    // Found PlayFabGroupsCreateGroupRoleResponse    
+    ss << "  profileVersion " << result->profileVersion; Log(ss); // Class: int32_t     
+    if( result->roleId ) { ss << "  roleId " << result->roleId; Log(ss); } else { ss << "  roleId = nullptr"; Log(ss); } // Class: const char*     
     if( result->roleName ) { ss << "  roleName " << result->roleName; Log(ss); } else { ss << "  roleName = nullptr"; Log(ss); } // Class: const char* 
     return S_OK;
 }
@@ -415,13 +415,13 @@ HRESULT AutoGenGroupsTests::LogPFGroupsGetGroupResponse(PFGroupsGetGroupResponse
     std::stringstream ss;
     ss << "Response:"; Log(ss);
 
-    // Found PlayFabGroupsGetGroupResponse
-    if( result->adminRoleId ) { ss << "  adminRoleId " << result->adminRoleId; Log(ss); } else { ss << "  adminRoleId = nullptr"; Log(ss); } // Class: const char* 
-    ss << "  created " << result->created; Log(ss); // Class: time_t 
-    ss << "  group " << result->group; Log(ss); // Class: PFEntityKey 
-    if( result->groupName ) { ss << "  groupName " << result->groupName; Log(ss); } else { ss << "  groupName = nullptr"; Log(ss); } // Class: const char* 
-    if( result->memberRoleId ) { ss << "  memberRoleId " << result->memberRoleId; Log(ss); } else { ss << "  memberRoleId = nullptr"; Log(ss); } // Class: const char* 
-    ss << "  profileVersion " << result->profileVersion; Log(ss); // Class: int32_t     
+    // Found PlayFabGroupsGetGroupResponse    
+    if( result->adminRoleId ) { ss << "  adminRoleId " << result->adminRoleId; Log(ss); } else { ss << "  adminRoleId = nullptr"; Log(ss); } // Class: const char*     
+    ss << "  created " << result->created; Log(ss); // Class: time_t     
+    ss << "  group " << result->group; Log(ss); // Class: PFEntityKey     
+    if( result->groupName ) { ss << "  groupName " << result->groupName; Log(ss); } else { ss << "  groupName = nullptr"; Log(ss); } // Class: const char*     
+    if( result->memberRoleId ) { ss << "  memberRoleId " << result->memberRoleId; Log(ss); } else { ss << "  memberRoleId = nullptr"; Log(ss); } // Class: const char*     
+    ss << "  profileVersion " << result->profileVersion; Log(ss); // Class: int32_t         
     ss << "  rolesCount " << result->rolesCount; Log(ss);
 
     // PFStringDictionaryEntry
@@ -473,11 +473,11 @@ HRESULT AutoGenGroupsTests::LogPFGroupsInviteToGroupResponse(PFGroupsInviteToGro
     std::stringstream ss;
     ss << "Response:"; Log(ss);
 
-    // Found PlayFabGroupsInviteToGroupResponse
-    ss << "  expires " << result->expires; Log(ss); // Class: time_t 
-    ss << "  group " << result->group; Log(ss); // Class: PFEntityKey 
-    ss << "  invitedByEntity " << result->invitedByEntity; Log(ss); // Class: PFGroupsEntityWithLineage 
-    ss << "  invitedEntity " << result->invitedEntity; Log(ss); // Class: PFGroupsEntityWithLineage 
+    // Found PlayFabGroupsInviteToGroupResponse    
+    ss << "  expires " << result->expires; Log(ss); // Class: time_t     
+    ss << "  group " << result->group; Log(ss); // Class: PFEntityKey     
+    ss << "  invitedByEntity " << result->invitedByEntity; Log(ss); // Class: PFGroupsEntityWithLineage     
+    ss << "  invitedEntity " << result->invitedEntity; Log(ss); // Class: PFGroupsEntityWithLineage     
     if( result->roleId ) { ss << "  roleId " << result->roleId; Log(ss); } else { ss << "  roleId = nullptr"; Log(ss); } // Class: const char* 
     return S_OK;
 }
@@ -522,7 +522,7 @@ HRESULT AutoGenGroupsTests::LogPFGroupsIsMemberResponse(PFGroupsIsMemberResponse
     std::stringstream ss;
     ss << "Response:"; Log(ss);
 
-    // Found PlayFabGroupsIsMemberResponse
+    // Found PlayFabGroupsIsMemberResponse    
     ss << "  isMember " << result->isMember; Log(ss); // Class: bool 
     return S_OK;
 }
@@ -565,7 +565,7 @@ HRESULT AutoGenGroupsTests::LogPFGroupsListGroupApplicationsResponse(PFGroupsLis
     std::stringstream ss;
     ss << "Response:"; Log(ss);
 
-    // Found PlayFabGroupsListGroupApplicationsResponse    
+    // Found PlayFabGroupsListGroupApplicationsResponse        
     ss << "  applicationsCount " << result->applicationsCount; Log(ss);
 
     // PFGroupsGroupApplication
@@ -614,7 +614,7 @@ HRESULT AutoGenGroupsTests::LogPFGroupsListGroupBlocksResponse(PFGroupsListGroup
     std::stringstream ss;
     ss << "Response:"; Log(ss);
 
-    // Found PlayFabGroupsListGroupBlocksResponse    
+    // Found PlayFabGroupsListGroupBlocksResponse        
     ss << "  blockedEntitiesCount " << result->blockedEntitiesCount; Log(ss);
 
     // PFGroupsGroupBlock
@@ -663,7 +663,7 @@ HRESULT AutoGenGroupsTests::LogPFGroupsListGroupInvitationsResponse(PFGroupsList
     std::stringstream ss;
     ss << "Response:"; Log(ss);
 
-    // Found PlayFabGroupsListGroupInvitationsResponse    
+    // Found PlayFabGroupsListGroupInvitationsResponse        
     ss << "  invitationsCount " << result->invitationsCount; Log(ss);
 
     // PFGroupsGroupInvitation
@@ -712,7 +712,7 @@ HRESULT AutoGenGroupsTests::LogPFGroupsListGroupMembersResponse(PFGroupsListGrou
     std::stringstream ss;
     ss << "Response:"; Log(ss);
 
-    // Found PlayFabGroupsListGroupMembersResponse    
+    // Found PlayFabGroupsListGroupMembersResponse        
     ss << "  membersCount " << result->membersCount; Log(ss);
 
     // PFGroupsEntityMemberRole
@@ -761,7 +761,7 @@ HRESULT AutoGenGroupsTests::LogPFGroupsListMembershipResponse(PFGroupsListMember
     std::stringstream ss;
     ss << "Response:"; Log(ss);
 
-    // Found PlayFabGroupsListMembershipResponse    
+    // Found PlayFabGroupsListMembershipResponse        
     ss << "  groupsCount " << result->groupsCount; Log(ss);
 
     // PFGroupsGroupWithRoles
@@ -810,14 +810,14 @@ HRESULT AutoGenGroupsTests::LogPFGroupsListMembershipOpportunitiesResponse(PFGro
     std::stringstream ss;
     ss << "Response:"; Log(ss);
 
-    // Found PlayFabGroupsListMembershipOpportunitiesResponse    
+    // Found PlayFabGroupsListMembershipOpportunitiesResponse        
     ss << "  applicationsCount " << result->applicationsCount; Log(ss);
 
     // PFGroupsGroupApplication
     for( uint32_t i=0; i<result->applicationsCount; i++ )
     {
             ss << "  result->applications[" << i << "]:" << result->applications[i]; Log(ss); // PFGroupsGroupApplication
-    }     
+    }         
     ss << "  invitationsCount " << result->invitationsCount; Log(ss);
 
     // PFGroupsGroupInvitation
@@ -992,9 +992,9 @@ HRESULT AutoGenGroupsTests::LogPFGroupsUpdateGroupResponse(PFGroupsUpdateGroupRe
     std::stringstream ss;
     ss << "Response:"; Log(ss);
 
-    // Found PlayFabGroupsUpdateGroupResponse
-    if( result->operationReason ) { ss << "  operationReason " << result->operationReason; Log(ss); } else { ss << "  operationReason = nullptr"; Log(ss); } // Class: const char* 
-    ss << "  profileVersion " << result->profileVersion; Log(ss); // Class: int32_t 
+    // Found PlayFabGroupsUpdateGroupResponse    
+    if( result->operationReason ) { ss << "  operationReason " << result->operationReason; Log(ss); } else { ss << "  operationReason = nullptr"; Log(ss); } // Class: const char*     
+    ss << "  profileVersion " << result->profileVersion; Log(ss); // Class: int32_t     
     ss << "  setResult " << result->setResult; Log(ss); // Class: PFOperationTypes 
     return S_OK;
 }
@@ -1040,9 +1040,9 @@ HRESULT AutoGenGroupsTests::LogPFGroupsUpdateGroupRoleResponse(PFGroupsUpdateGro
     std::stringstream ss;
     ss << "Response:"; Log(ss);
 
-    // Found PlayFabGroupsUpdateGroupRoleResponse
-    if( result->operationReason ) { ss << "  operationReason " << result->operationReason; Log(ss); } else { ss << "  operationReason = nullptr"; Log(ss); } // Class: const char* 
-    ss << "  profileVersion " << result->profileVersion; Log(ss); // Class: int32_t 
+    // Found PlayFabGroupsUpdateGroupRoleResponse    
+    if( result->operationReason ) { ss << "  operationReason " << result->operationReason; Log(ss); } else { ss << "  operationReason = nullptr"; Log(ss); } // Class: const char*     
+    ss << "  profileVersion " << result->profileVersion; Log(ss); // Class: int32_t     
     ss << "  setResult " << result->setResult; Log(ss); // Class: PFOperationTypes 
     return S_OK;
 }

@@ -15,7 +15,9 @@ private:
     static void Log(std::stringstream& ss);
     static HRESULT LogHR(HRESULT hr);
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestProfilesGetGlobalPolicy(TestContext& testContext);
+#endif
 
     void TestProfilesGetProfile(TestContext& testContext);
 
@@ -23,7 +25,9 @@ private:
 
     void TestProfilesGetTitlePlayersFromMasterPlayerAccountIds(TestContext& testContext);
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestProfilesSetGlobalPolicy(TestContext& testContext);
+#endif
 
     void TestProfilesSetProfileLanguage(TestContext& testContext);
 

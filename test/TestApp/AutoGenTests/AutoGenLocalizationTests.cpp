@@ -144,7 +144,7 @@ void AutoGenLocalizationTests::SetUp(TestContext& testContext)
 
 void AutoGenLocalizationTests::TestLocalizationGetLanguageList(TestContext& testContext)
 {
-    struct GetLanguageListResultHolder : public GetLanguageListResponseHolder
+    struct GetLanguageListResultHolderStruct : public GetLanguageListResponseHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -163,7 +163,7 @@ void AutoGenLocalizationTests::TestLocalizationGetLanguageList(TestContext& test
             return ValidatePFLocalizationGetLanguageListResponse(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<GetLanguageListResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<GetLanguageListResultHolderStruct>>(testContext);
 
     PFLocalizationGetLanguageListRequestWrapper<> request;
     FillGetLanguageListRequest(request);

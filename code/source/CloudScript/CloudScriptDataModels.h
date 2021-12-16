@@ -268,28 +268,6 @@ public:
 
 };
 
-class AzureResourceSystemData : public Wrappers::PFCloudScriptAzureResourceSystemDataWrapper<Allocator>, public InputModel, public OutputModel<PFCloudScriptAzureResourceSystemData>
-{
-public:
-    using ModelWrapperType = typename Wrappers::PFCloudScriptAzureResourceSystemDataWrapper<Allocator>;
-    using ModelWrapperType::ModelType;
-
-    // Constructors
-    using ModelWrapperType::ModelWrapperType;
-
-    // InputModel
-    JsonValue ToJson() const override;
-    static JsonValue ToJson(const PFCloudScriptAzureResourceSystemData& input);
-
-    // OutputModel
-    void FromJson(const JsonValue& input) override;
-    size_t RequiredBufferSize() const override;
-    Result<PFCloudScriptAzureResourceSystemData const*> Copy(ModelBuffer& buffer) const override;
-
-    static size_t RequiredBufferSize(const PFCloudScriptAzureResourceSystemData& model);
-    static HRESULT Copy(const PFCloudScriptAzureResourceSystemData& input, PFCloudScriptAzureResourceSystemData& output, ModelBuffer& buffer);
-};
-
 class GetFunctionResult : public Wrappers::PFCloudScriptGetFunctionResultWrapper<Allocator>, public OutputModel<PFCloudScriptGetFunctionResult>
 {
 public:

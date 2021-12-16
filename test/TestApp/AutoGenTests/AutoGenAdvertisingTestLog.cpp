@@ -59,7 +59,7 @@ HRESULT AutoGenAdvertisingTests::LogPFAdvertisingGetAdPlacementsResult(PFAdverti
     std::stringstream ss;
     ss << "Response:"; Log(ss);
 
-    // Found PlayFabAdvertisingGetAdPlacementsResult    
+    // Found PlayFabAdvertisingGetAdPlacementsResult        
     ss << "  adPlacementsCount " << result->adPlacementsCount; Log(ss);
 
     // PFAdvertisingAdPlacementDetails
@@ -138,19 +138,19 @@ HRESULT AutoGenAdvertisingTests::LogPFAdvertisingRewardAdActivityResult(PFAdvert
     std::stringstream ss;
     ss << "Response:"; Log(ss);
 
-    // Found PlayFabAdvertisingRewardAdActivityResult
-    if( result->adActivityEventId ) { ss << "  adActivityEventId " << result->adActivityEventId; Log(ss); } else { ss << "  adActivityEventId = nullptr"; Log(ss); } // Class: const char*     
+    // Found PlayFabAdvertisingRewardAdActivityResult    
+    if( result->adActivityEventId ) { ss << "  adActivityEventId " << result->adActivityEventId; Log(ss); } else { ss << "  adActivityEventId = nullptr"; Log(ss); } // Class: const char*         
     ss << "  debugResultsCount " << result->debugResultsCount; Log(ss);
 
     // const char*
     for( uint32_t i=0; i<result->debugResultsCount; i++ )
     {
             ss << "  result->debugResults[" << i << "]:" << result->debugResults[i]; Log(ss); // const char*
-    } 
-    if( result->placementId ) { ss << "  placementId " << result->placementId; Log(ss); } else { ss << "  placementId = nullptr"; Log(ss); } // Class: const char* 
-    if( result->placementName ) { ss << "  placementName " << result->placementName; Log(ss); } else { ss << "  placementName = nullptr"; Log(ss); } // Class: const char* 
-    ss << "  placementViewsRemaining " << result->placementViewsRemaining; Log(ss); // Class: int32_t 
-    ss << "  placementViewsResetMinutes " << result->placementViewsResetMinutes; Log(ss); // Class: double 
+    }     
+    if( result->placementId ) { ss << "  placementId " << result->placementId; Log(ss); } else { ss << "  placementId = nullptr"; Log(ss); } // Class: const char*     
+    if( result->placementName ) { ss << "  placementName " << result->placementName; Log(ss); } else { ss << "  placementName = nullptr"; Log(ss); } // Class: const char*     
+    ss << "  placementViewsRemaining " << result->placementViewsRemaining; Log(ss); // Class: int32_t     
+    ss << "  placementViewsResetMinutes " << result->placementViewsResetMinutes; Log(ss); // Class: double     
     ss << "  rewardResults " << result->rewardResults; Log(ss); // Class: PFAdvertisingAdRewardResults 
     return S_OK;
 }

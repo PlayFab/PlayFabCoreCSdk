@@ -68,7 +68,7 @@ HRESULT AutoGenPlatformSpecificTests::LogPFPlatformSpecificConsumeMicrosoftStore
     std::stringstream ss;
     ss << "Response:"; Log(ss);
 
-    // Found PlayFabPlatformSpecificConsumeMicrosoftStoreEntitlementsResponse    
+    // Found PlayFabPlatformSpecificConsumeMicrosoftStoreEntitlementsResponse        
     ss << "  itemsCount " << result->itemsCount; Log(ss);
 
     // PFItemInstance
@@ -117,7 +117,7 @@ HRESULT AutoGenPlatformSpecificTests::LogPFPlatformSpecificConsumePS5Entitlement
     std::stringstream ss;
     ss << "Response:"; Log(ss);
 
-    // Found PlayFabPlatformSpecificConsumePS5EntitlementsResult    
+    // Found PlayFabPlatformSpecificConsumePS5EntitlementsResult        
     ss << "  itemsCount " << result->itemsCount; Log(ss);
 
     // PFItemInstance
@@ -166,7 +166,7 @@ HRESULT AutoGenPlatformSpecificTests::LogPFPlatformSpecificConsumePSNEntitlement
     std::stringstream ss;
     ss << "Response:"; Log(ss);
 
-    // Found PlayFabPlatformSpecificConsumePSNEntitlementsResult    
+    // Found PlayFabPlatformSpecificConsumePSNEntitlementsResult        
     ss << "  itemsGrantedCount " << result->itemsGrantedCount; Log(ss);
 
     // PFItemInstance
@@ -215,7 +215,7 @@ HRESULT AutoGenPlatformSpecificTests::LogPFPlatformSpecificConsumeXboxEntitlemen
     std::stringstream ss;
     ss << "Response:"; Log(ss);
 
-    // Found PlayFabPlatformSpecificConsumeXboxEntitlementsResult    
+    // Found PlayFabPlatformSpecificConsumeXboxEntitlementsResult        
     ss << "  itemsCount " << result->itemsCount; Log(ss);
 
     // PFItemInstance
@@ -306,7 +306,7 @@ HRESULT AutoGenPlatformSpecificTests::LogPFPlatformSpecificRestoreIOSPurchasesRe
     std::stringstream ss;
     ss << "Response:"; Log(ss);
 
-    // Found PlayFabPlatformSpecificRestoreIOSPurchasesResult    
+    // Found PlayFabPlatformSpecificRestoreIOSPurchasesResult        
     ss << "  fulfillmentsCount " << result->fulfillmentsCount; Log(ss);
 
     // PFPlatformSpecificPurchaseReceiptFulfillment
@@ -358,7 +358,7 @@ HRESULT AutoGenPlatformSpecificTests::LogPFPlatformSpecificValidateAmazonReceipt
     std::stringstream ss;
     ss << "Response:"; Log(ss);
 
-    // Found PlayFabPlatformSpecificValidateAmazonReceiptResult    
+    // Found PlayFabPlatformSpecificValidateAmazonReceiptResult        
     ss << "  fulfillmentsCount " << result->fulfillmentsCount; Log(ss);
 
     // PFPlatformSpecificPurchaseReceiptFulfillment
@@ -410,7 +410,7 @@ HRESULT AutoGenPlatformSpecificTests::LogPFPlatformSpecificValidateGooglePlayPur
     std::stringstream ss;
     ss << "Response:"; Log(ss);
 
-    // Found PlayFabPlatformSpecificValidateGooglePlayPurchaseResult    
+    // Found PlayFabPlatformSpecificValidateGooglePlayPurchaseResult        
     ss << "  fulfillmentsCount " << result->fulfillmentsCount; Log(ss);
 
     // PFPlatformSpecificPurchaseReceiptFulfillment
@@ -461,7 +461,7 @@ HRESULT AutoGenPlatformSpecificTests::LogPFPlatformSpecificValidateIOSReceiptRes
     std::stringstream ss;
     ss << "Response:"; Log(ss);
 
-    // Found PlayFabPlatformSpecificValidateIOSReceiptResult    
+    // Found PlayFabPlatformSpecificValidateIOSReceiptResult        
     ss << "  fulfillmentsCount " << result->fulfillmentsCount; Log(ss);
 
     // PFPlatformSpecificPurchaseReceiptFulfillment
@@ -512,7 +512,7 @@ HRESULT AutoGenPlatformSpecificTests::LogPFPlatformSpecificValidateWindowsReceip
     std::stringstream ss;
     ss << "Response:"; Log(ss);
 
-    // Found PlayFabPlatformSpecificValidateWindowsReceiptResult    
+    // Found PlayFabPlatformSpecificValidateWindowsReceiptResult        
     ss << "  fulfillmentsCount " << result->fulfillmentsCount; Log(ss);
 
     // PFPlatformSpecificPurchaseReceiptFulfillment
@@ -559,7 +559,7 @@ HRESULT AutoGenPlatformSpecificTests::LogPFPlatformSpecificAwardSteamAchievement
     std::stringstream ss;
     ss << "Response:"; Log(ss);
 
-    // Found PlayFabPlatformSpecificAwardSteamAchievementResult    
+    // Found PlayFabPlatformSpecificAwardSteamAchievementResult        
     ss << "  achievementResultsCount " << result->achievementResultsCount; Log(ss);
 
     // PFPlatformSpecificAwardSteamAchievementItem

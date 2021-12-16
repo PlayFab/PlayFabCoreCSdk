@@ -2223,6 +2223,7 @@ public:
         m_azureResourceId{ SafeString(model.azureResourceId) },
         m_customTags{ model.customTags, model.customTags + model.customTagsCount },
         m_key{ SafeString(model.key) },
+        m_systemData{ model.systemData ? StdExtra::optional<PFAzureResourceSystemDataWrapper<Alloc>>{ *model.systemData } : StdExtra::nullopt },
         m_titleId{ SafeString(model.titleId) },
         m_value{ SafeString(model.value) }
     {
@@ -2255,6 +2256,7 @@ public:
         swap(lhs.m_azureResourceId, rhs.m_azureResourceId);
         swap(lhs.m_customTags, rhs.m_customTags);
         swap(lhs.m_key, rhs.m_key);
+        swap(lhs.m_systemData, rhs.m_systemData);
         swap(lhs.m_titleId, rhs.m_titleId);
         swap(lhs.m_value, rhs.m_value);
         lhs.SetModelPointers();
@@ -2280,6 +2282,12 @@ public:
         this->m_model.key =  m_key.empty() ? nullptr : m_key.data();
     }
 
+    void SetSystemData(StdExtra::optional<PFAzureResourceSystemDataWrapper<Alloc>> value)
+    {
+        m_systemData = std::move(value);
+        this->m_model.systemData = m_systemData ? &m_systemData->Model() : nullptr;
+    }
+
     void SetTitleId(String value)
     {
         m_titleId = std::move(value);
@@ -2298,6 +2306,7 @@ private:
         this->m_model.azureResourceId = m_azureResourceId.empty() ? nullptr : m_azureResourceId.data();
         this->m_model.customTags = m_customTags.empty() ? nullptr : m_customTags.data();
         this->m_model.key = m_key.empty() ? nullptr : m_key.data();
+        this->m_model.systemData = m_systemData ?  &m_systemData->Model() : nullptr;
         this->m_model.titleId = m_titleId.empty() ? nullptr : m_titleId.data();
         this->m_model.value = m_value.empty() ? nullptr : m_value.data();
     }
@@ -2305,6 +2314,7 @@ private:
     String m_azureResourceId;
     StringDictionaryEntryVector<Alloc> m_customTags;
     String m_key;
+    StdExtra::optional<PFAzureResourceSystemDataWrapper<Alloc>> m_systemData;
     String m_titleId;
     String m_value;
 };

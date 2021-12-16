@@ -15,41 +15,77 @@ private:
     static void Log(std::stringstream& ss);
     static HRESULT LogHR(HRESULT hr);
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestAccountManagementAdminBanUsers(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestAccountManagementAdminDeleteMasterPlayerAccount(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestAccountManagementAdminDeleteMembershipSubscription(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestAccountManagementAdminDeletePlayer(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestAccountManagementAdminDeleteTitle(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestAccountManagementAdminExportMasterPlayerData(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestAccountManagementAdminGetPlayedTitleList(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestAccountManagementAdminGetPlayerIdFromAuthToken(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestAccountManagementAdminGetPlayerProfile(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestAccountManagementAdminGetUserAccountInfo(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestAccountManagementAdminGetUserBans(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestAccountManagementAdminResetPassword(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestAccountManagementAdminRevokeAllBansForUser(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestAccountManagementAdminRevokeBans(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestAccountManagementAdminSendAccountRecoveryEmail(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestAccountManagementAdminSetMembershipOverride(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestAccountManagementAdminUpdateBans(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestAccountManagementAdminUpdateUserTitleDisplayName(TestContext& testContext);
+#endif
 
     void TestAccountManagementClientAddGenericID(TestContext& testContext);
 
@@ -85,35 +121,61 @@ private:
 
     void TestAccountManagementClientGetPlayFabIDsFromXboxLiveIDs(TestContext& testContext);
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestAccountManagementClientLinkAndroidDeviceID(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestAccountManagementClientLinkApple(TestContext& testContext);
+#endif
 
     void TestAccountManagementClientLinkCustomID(TestContext& testContext);
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestAccountManagementClientLinkFacebookAccount(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestAccountManagementClientLinkFacebookInstantGamesId(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestAccountManagementClientLinkGameCenterAccount(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestAccountManagementClientLinkGoogleAccount(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestAccountManagementClientLinkIOSDeviceID(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestAccountManagementClientLinkKongregate(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestAccountManagementClientLinkNintendoServiceAccount(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestAccountManagementClientLinkNintendoSwitchDeviceId(TestContext& testContext);
+#endif
 
     void TestAccountManagementClientLinkOpenIdConnect(TestContext& testContext);
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestAccountManagementClientLinkPSNAccount(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestAccountManagementClientLinkSteamAccount(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestAccountManagementClientLinkTwitch(TestContext& testContext);
+#endif
 
     void TestAccountManagementClientLinkXboxAccount(TestContext& testContext);
 
@@ -125,35 +187,61 @@ private:
 
     void TestAccountManagementClientSendAccountRecoveryEmail(TestContext& testContext);
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestAccountManagementClientUnlinkAndroidDeviceID(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestAccountManagementClientUnlinkApple(TestContext& testContext);
+#endif
 
     void TestAccountManagementClientUnlinkCustomID(TestContext& testContext);
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestAccountManagementClientUnlinkFacebookAccount(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestAccountManagementClientUnlinkFacebookInstantGamesId(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestAccountManagementClientUnlinkGameCenterAccount(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestAccountManagementClientUnlinkGoogleAccount(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestAccountManagementClientUnlinkIOSDeviceID(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestAccountManagementClientUnlinkKongregate(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestAccountManagementClientUnlinkNintendoServiceAccount(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestAccountManagementClientUnlinkNintendoSwitchDeviceId(TestContext& testContext);
+#endif
 
     void TestAccountManagementClientUnlinkOpenIdConnect(TestContext& testContext);
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestAccountManagementClientUnlinkPSNAccount(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestAccountManagementClientUnlinkSteamAccount(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestAccountManagementClientUnlinkTwitch(TestContext& testContext);
+#endif
 
     void TestAccountManagementClientUnlinkXboxAccount(TestContext& testContext);
 
@@ -161,67 +249,129 @@ private:
 
     void TestAccountManagementClientUpdateUserTitleDisplayName(TestContext& testContext);
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestAccountManagementServerAddGenericID(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestAccountManagementServerBanUsers(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestAccountManagementServerDeletePlayer(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestAccountManagementServerDeletePushNotificationTemplate(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestAccountManagementServerGetPlayerProfile(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestAccountManagementServerGetPlayFabIDsFromFacebookIDs(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestAccountManagementServerGetPlayFabIDsFromFacebookInstantGamesIds(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestAccountManagementServerGetPlayFabIDsFromGenericIDs(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestAccountManagementServerGetPlayFabIDsFromNintendoSwitchDeviceIds(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestAccountManagementServerGetPlayFabIDsFromPSNAccountIDs(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestAccountManagementServerGetPlayFabIDsFromSteamIDs(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestAccountManagementServerGetPlayFabIDsFromXboxLiveIDs(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestAccountManagementServerGetServerCustomIDsFromPlayFabIDs(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestAccountManagementServerGetUserAccountInfo(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestAccountManagementServerGetUserBans(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestAccountManagementServerLinkPSNAccount(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestAccountManagementServerLinkServerCustomId(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestAccountManagementServerLinkXboxAccount(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestAccountManagementServerRemoveGenericID(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestAccountManagementServerRevokeAllBansForUser(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestAccountManagementServerRevokeBans(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestAccountManagementServerSavePushNotificationTemplate(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestAccountManagementServerSendCustomAccountRecoveryEmail(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestAccountManagementServerSendEmailFromTemplate(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestAccountManagementServerSendPushNotification(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestAccountManagementServerSendPushNotificationFromTemplate(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestAccountManagementServerUnlinkPSNAccount(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestAccountManagementServerUnlinkServerCustomId(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestAccountManagementServerUnlinkXboxAccount(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestAccountManagementServerUpdateAvatarUrl(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestAccountManagementServerUpdateBans(TestContext& testContext);
+#endif
 
 
 protected:

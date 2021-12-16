@@ -32,73 +32,141 @@ HRESULT AutoGenMatchmakingTests::LogHR(HRESULT hr)
 void AutoGenMatchmakingTests::AddTests()
 {
     // Generated tests 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestMatchmakingAdminGetMatchmakerGameInfo", &AutoGenMatchmakingTests::TestMatchmakingAdminGetMatchmakerGameInfo);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestMatchmakingAdminGetMatchmakerGameModes", &AutoGenMatchmakingTests::TestMatchmakingAdminGetMatchmakerGameModes);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestMatchmakingAdminModifyMatchmakerGameModes", &AutoGenMatchmakingTests::TestMatchmakingAdminModifyMatchmakerGameModes);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestMatchmakingClientGetCurrentGames", &AutoGenMatchmakingTests::TestMatchmakingClientGetCurrentGames);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestMatchmakingClientGetGameServerRegions", &AutoGenMatchmakingTests::TestMatchmakingClientGetGameServerRegions);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestMatchmakingClientMatchmake", &AutoGenMatchmakingTests::TestMatchmakingClientMatchmake);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestMatchmakingClientStartGame", &AutoGenMatchmakingTests::TestMatchmakingClientStartGame);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestMatchmakingAuthUser", &AutoGenMatchmakingTests::TestMatchmakingAuthUser);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestMatchmakingPlayerJoined", &AutoGenMatchmakingTests::TestMatchmakingPlayerJoined);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestMatchmakingPlayerLeft", &AutoGenMatchmakingTests::TestMatchmakingPlayerLeft);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestMatchmakingStartGame", &AutoGenMatchmakingTests::TestMatchmakingStartGame);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestMatchmakingUserInfo", &AutoGenMatchmakingTests::TestMatchmakingUserInfo);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestMatchmakingServerDeregisterGame", &AutoGenMatchmakingTests::TestMatchmakingServerDeregisterGame);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestMatchmakingServerNotifyMatchmakerPlayerLeft", &AutoGenMatchmakingTests::TestMatchmakingServerNotifyMatchmakerPlayerLeft);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestMatchmakingServerRedeemMatchmakerTicket", &AutoGenMatchmakingTests::TestMatchmakingServerRedeemMatchmakerTicket);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestMatchmakingServerRefreshGameServerInstanceHeartbeat", &AutoGenMatchmakingTests::TestMatchmakingServerRefreshGameServerInstanceHeartbeat);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestMatchmakingServerRegisterGame", &AutoGenMatchmakingTests::TestMatchmakingServerRegisterGame);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestMatchmakingServerSetGameServerInstanceData", &AutoGenMatchmakingTests::TestMatchmakingServerSetGameServerInstanceData);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestMatchmakingServerSetGameServerInstanceState", &AutoGenMatchmakingTests::TestMatchmakingServerSetGameServerInstanceState);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestMatchmakingServerSetGameServerInstanceTags", &AutoGenMatchmakingTests::TestMatchmakingServerSetGameServerInstanceTags);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestMatchmakingCancelAllMatchmakingTicketsForPlayer", &AutoGenMatchmakingTests::TestMatchmakingCancelAllMatchmakingTicketsForPlayer);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestMatchmakingCancelAllServerBackfillTicketsForPlayer", &AutoGenMatchmakingTests::TestMatchmakingCancelAllServerBackfillTicketsForPlayer);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestMatchmakingCancelMatchmakingTicket", &AutoGenMatchmakingTests::TestMatchmakingCancelMatchmakingTicket);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestMatchmakingCancelServerBackfillTicket", &AutoGenMatchmakingTests::TestMatchmakingCancelServerBackfillTicket);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestMatchmakingCreateMatchmakingTicket", &AutoGenMatchmakingTests::TestMatchmakingCreateMatchmakingTicket);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestMatchmakingCreateServerBackfillTicket", &AutoGenMatchmakingTests::TestMatchmakingCreateServerBackfillTicket);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestMatchmakingCreateServerMatchmakingTicket", &AutoGenMatchmakingTests::TestMatchmakingCreateServerMatchmakingTicket);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestMatchmakingGetMatch", &AutoGenMatchmakingTests::TestMatchmakingGetMatch);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestMatchmakingGetMatchmakingTicket", &AutoGenMatchmakingTests::TestMatchmakingGetMatchmakingTicket);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestMatchmakingGetQueueStatistics", &AutoGenMatchmakingTests::TestMatchmakingGetQueueStatistics);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestMatchmakingGetServerBackfillTicket", &AutoGenMatchmakingTests::TestMatchmakingGetServerBackfillTicket);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestMatchmakingJoinMatchmakingTicket", &AutoGenMatchmakingTests::TestMatchmakingJoinMatchmakingTicket);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestMatchmakingListMatchmakingTicketsForPlayer", &AutoGenMatchmakingTests::TestMatchmakingListMatchmakingTicketsForPlayer);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestMatchmakingListServerBackfillTicketsForPlayer", &AutoGenMatchmakingTests::TestMatchmakingListServerBackfillTicketsForPlayer);
+#endif
 }
 
 void AutoGenMatchmakingTests::ClassSetUp()
@@ -208,9 +276,10 @@ void AutoGenMatchmakingTests::SetUp(TestContext& testContext)
 
 #pragma region AdminGetMatchmakerGameInfo
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenMatchmakingTests::TestMatchmakingAdminGetMatchmakerGameInfo(TestContext& testContext)
 {
-    struct AdminGetMatchmakerGameInfoResultHolder : public GetMatchmakerGameInfoResultHolder
+    struct AdminGetMatchmakerGameInfoResultHolderStruct : public GetMatchmakerGameInfoResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -229,7 +298,7 @@ void AutoGenMatchmakingTests::TestMatchmakingAdminGetMatchmakerGameInfo(TestCont
             return ValidatePFMatchmakingGetMatchmakerGameInfoResult(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<AdminGetMatchmakerGameInfoResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<AdminGetMatchmakerGameInfoResultHolderStruct>>(testContext);
 
     PFMatchmakingGetMatchmakerGameInfoRequestWrapper<> request;
     FillGetMatchmakerGameInfoRequest(request);
@@ -242,14 +311,16 @@ void AutoGenMatchmakingTests::TestMatchmakingAdminGetMatchmakerGameInfo(TestCont
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region AdminGetMatchmakerGameModes
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenMatchmakingTests::TestMatchmakingAdminGetMatchmakerGameModes(TestContext& testContext)
 {
-    struct AdminGetMatchmakerGameModesResultHolder : public GetMatchmakerGameModesResultHolder
+    struct AdminGetMatchmakerGameModesResultHolderStruct : public GetMatchmakerGameModesResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -268,7 +339,7 @@ void AutoGenMatchmakingTests::TestMatchmakingAdminGetMatchmakerGameModes(TestCon
             return ValidatePFMatchmakingGetMatchmakerGameModesResult(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<AdminGetMatchmakerGameModesResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<AdminGetMatchmakerGameModesResultHolderStruct>>(testContext);
 
     PFMatchmakingGetMatchmakerGameModesRequestWrapper<> request;
     FillGetMatchmakerGameModesRequest(request);
@@ -281,11 +352,13 @@ void AutoGenMatchmakingTests::TestMatchmakingAdminGetMatchmakerGameModes(TestCon
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region AdminModifyMatchmakerGameModes
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenMatchmakingTests::TestMatchmakingAdminModifyMatchmakerGameModes(TestContext& testContext)
 {
     auto async = std::make_unique<XAsyncHelper<XAsyncResult>>(testContext);
@@ -301,14 +374,16 @@ void AutoGenMatchmakingTests::TestMatchmakingAdminModifyMatchmakerGameModes(Test
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region ClientGetCurrentGames
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenMatchmakingTests::TestMatchmakingClientGetCurrentGames(TestContext& testContext)
 {
-    struct ClientGetCurrentGamesResultHolder : public CurrentGamesResultHolder
+    struct ClientGetCurrentGamesResultHolderStruct : public CurrentGamesResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -327,7 +402,7 @@ void AutoGenMatchmakingTests::TestMatchmakingClientGetCurrentGames(TestContext& 
             return ValidatePFMatchmakingCurrentGamesResult(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<ClientGetCurrentGamesResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<ClientGetCurrentGamesResultHolderStruct>>(testContext);
 
     PFMatchmakingCurrentGamesRequestWrapper<> request;
     FillCurrentGamesRequest(request);
@@ -340,14 +415,16 @@ void AutoGenMatchmakingTests::TestMatchmakingClientGetCurrentGames(TestContext& 
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region ClientGetGameServerRegions
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenMatchmakingTests::TestMatchmakingClientGetGameServerRegions(TestContext& testContext)
 {
-    struct ClientGetGameServerRegionsResultHolder : public GameServerRegionsResultHolder
+    struct ClientGetGameServerRegionsResultHolderStruct : public GameServerRegionsResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -366,7 +443,7 @@ void AutoGenMatchmakingTests::TestMatchmakingClientGetGameServerRegions(TestCont
             return ValidatePFMatchmakingGameServerRegionsResult(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<ClientGetGameServerRegionsResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<ClientGetGameServerRegionsResultHolderStruct>>(testContext);
 
     PFMatchmakingGameServerRegionsRequestWrapper<> request;
     FillGameServerRegionsRequest(request);
@@ -379,14 +456,16 @@ void AutoGenMatchmakingTests::TestMatchmakingClientGetGameServerRegions(TestCont
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region ClientMatchmake
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenMatchmakingTests::TestMatchmakingClientMatchmake(TestContext& testContext)
 {
-    struct ClientMatchmakeResultHolder : public MatchmakeResultHolder
+    struct ClientMatchmakeResultHolderStruct : public MatchmakeResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -405,7 +484,7 @@ void AutoGenMatchmakingTests::TestMatchmakingClientMatchmake(TestContext& testCo
             return ValidatePFMatchmakingMatchmakeResult(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<ClientMatchmakeResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<ClientMatchmakeResultHolderStruct>>(testContext);
 
     PFMatchmakingMatchmakeRequestWrapper<> request;
     FillMatchmakeRequest(request);
@@ -418,14 +497,16 @@ void AutoGenMatchmakingTests::TestMatchmakingClientMatchmake(TestContext& testCo
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region ClientStartGame
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenMatchmakingTests::TestMatchmakingClientStartGame(TestContext& testContext)
 {
-    struct ClientStartGameResultHolder : public StartGameResultHolder
+    struct ClientStartGameResultHolderStruct : public StartGameResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -444,7 +525,7 @@ void AutoGenMatchmakingTests::TestMatchmakingClientStartGame(TestContext& testCo
             return ValidatePFMatchmakingStartGameResult(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<ClientStartGameResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<ClientStartGameResultHolderStruct>>(testContext);
 
     PFMatchmakingClientStartGameRequestWrapper<> request;
     FillClientStartGameRequest(request);
@@ -457,14 +538,16 @@ void AutoGenMatchmakingTests::TestMatchmakingClientStartGame(TestContext& testCo
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region AuthUser
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenMatchmakingTests::TestMatchmakingAuthUser(TestContext& testContext)
 {
-    struct AuthUserResultHolder : public AuthUserResponseHolder
+    struct AuthUserResultHolderStruct : public AuthUserResponseHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -483,7 +566,7 @@ void AutoGenMatchmakingTests::TestMatchmakingAuthUser(TestContext& testContext)
             return ValidatePFMatchmakingAuthUserResponse(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<AuthUserResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<AuthUserResultHolderStruct>>(testContext);
 
     PFMatchmakingAuthUserRequestWrapper<> request;
     FillAuthUserRequest(request);
@@ -496,11 +579,13 @@ void AutoGenMatchmakingTests::TestMatchmakingAuthUser(TestContext& testContext)
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region PlayerJoined
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenMatchmakingTests::TestMatchmakingPlayerJoined(TestContext& testContext)
 {
     auto async = std::make_unique<XAsyncHelper<XAsyncResult>>(testContext);
@@ -516,11 +601,13 @@ void AutoGenMatchmakingTests::TestMatchmakingPlayerJoined(TestContext& testConte
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region PlayerLeft
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenMatchmakingTests::TestMatchmakingPlayerLeft(TestContext& testContext)
 {
     auto async = std::make_unique<XAsyncHelper<XAsyncResult>>(testContext);
@@ -536,14 +623,16 @@ void AutoGenMatchmakingTests::TestMatchmakingPlayerLeft(TestContext& testContext
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region StartGame
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenMatchmakingTests::TestMatchmakingStartGame(TestContext& testContext)
 {
-    struct StartGameResultHolder : public StartGameResponseHolder
+    struct StartGameResultHolderStruct : public StartGameResponseHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -562,7 +651,7 @@ void AutoGenMatchmakingTests::TestMatchmakingStartGame(TestContext& testContext)
             return ValidatePFMatchmakingStartGameResponse(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<StartGameResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<StartGameResultHolderStruct>>(testContext);
 
     PFMatchmakingMatchmakerStartGameRequestWrapper<> request;
     FillMatchmakerStartGameRequest(request);
@@ -575,14 +664,16 @@ void AutoGenMatchmakingTests::TestMatchmakingStartGame(TestContext& testContext)
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region UserInfo
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenMatchmakingTests::TestMatchmakingUserInfo(TestContext& testContext)
 {
-    struct UserInfoResultHolder : public UserInfoResponseHolder
+    struct UserInfoResultHolderStruct : public UserInfoResponseHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -601,7 +692,7 @@ void AutoGenMatchmakingTests::TestMatchmakingUserInfo(TestContext& testContext)
             return ValidatePFMatchmakingUserInfoResponse(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<UserInfoResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<UserInfoResultHolderStruct>>(testContext);
 
     PFMatchmakingUserInfoRequestWrapper<> request;
     FillUserInfoRequest(request);
@@ -614,11 +705,13 @@ void AutoGenMatchmakingTests::TestMatchmakingUserInfo(TestContext& testContext)
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region ServerDeregisterGame
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenMatchmakingTests::TestMatchmakingServerDeregisterGame(TestContext& testContext)
 {
     auto async = std::make_unique<XAsyncHelper<XAsyncResult>>(testContext);
@@ -634,14 +727,16 @@ void AutoGenMatchmakingTests::TestMatchmakingServerDeregisterGame(TestContext& t
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region ServerNotifyMatchmakerPlayerLeft
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenMatchmakingTests::TestMatchmakingServerNotifyMatchmakerPlayerLeft(TestContext& testContext)
 {
-    struct ServerNotifyMatchmakerPlayerLeftResultHolder : public NotifyMatchmakerPlayerLeftResultHolder
+    struct ServerNotifyMatchmakerPlayerLeftResultHolderStruct : public NotifyMatchmakerPlayerLeftResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -660,7 +755,7 @@ void AutoGenMatchmakingTests::TestMatchmakingServerNotifyMatchmakerPlayerLeft(Te
             return ValidatePFMatchmakingNotifyMatchmakerPlayerLeftResult(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<ServerNotifyMatchmakerPlayerLeftResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<ServerNotifyMatchmakerPlayerLeftResultHolderStruct>>(testContext);
 
     PFMatchmakingNotifyMatchmakerPlayerLeftRequestWrapper<> request;
     FillNotifyMatchmakerPlayerLeftRequest(request);
@@ -673,14 +768,16 @@ void AutoGenMatchmakingTests::TestMatchmakingServerNotifyMatchmakerPlayerLeft(Te
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region ServerRedeemMatchmakerTicket
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenMatchmakingTests::TestMatchmakingServerRedeemMatchmakerTicket(TestContext& testContext)
 {
-    struct ServerRedeemMatchmakerTicketResultHolder : public RedeemMatchmakerTicketResultHolder
+    struct ServerRedeemMatchmakerTicketResultHolderStruct : public RedeemMatchmakerTicketResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -699,7 +796,7 @@ void AutoGenMatchmakingTests::TestMatchmakingServerRedeemMatchmakerTicket(TestCo
             return ValidatePFMatchmakingRedeemMatchmakerTicketResult(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<ServerRedeemMatchmakerTicketResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<ServerRedeemMatchmakerTicketResultHolderStruct>>(testContext);
 
     PFMatchmakingRedeemMatchmakerTicketRequestWrapper<> request;
     FillRedeemMatchmakerTicketRequest(request);
@@ -712,11 +809,13 @@ void AutoGenMatchmakingTests::TestMatchmakingServerRedeemMatchmakerTicket(TestCo
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region ServerRefreshGameServerInstanceHeartbeat
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenMatchmakingTests::TestMatchmakingServerRefreshGameServerInstanceHeartbeat(TestContext& testContext)
 {
     auto async = std::make_unique<XAsyncHelper<XAsyncResult>>(testContext);
@@ -732,14 +831,16 @@ void AutoGenMatchmakingTests::TestMatchmakingServerRefreshGameServerInstanceHear
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region ServerRegisterGame
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenMatchmakingTests::TestMatchmakingServerRegisterGame(TestContext& testContext)
 {
-    struct ServerRegisterGameResultHolder : public RegisterGameResponseHolder
+    struct ServerRegisterGameResultHolderStruct : public RegisterGameResponseHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -758,7 +859,7 @@ void AutoGenMatchmakingTests::TestMatchmakingServerRegisterGame(TestContext& tes
             return ValidatePFMatchmakingRegisterGameResponse(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<ServerRegisterGameResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<ServerRegisterGameResultHolderStruct>>(testContext);
 
     PFMatchmakingRegisterGameRequestWrapper<> request;
     FillRegisterGameRequest(request);
@@ -771,11 +872,13 @@ void AutoGenMatchmakingTests::TestMatchmakingServerRegisterGame(TestContext& tes
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region ServerSetGameServerInstanceData
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenMatchmakingTests::TestMatchmakingServerSetGameServerInstanceData(TestContext& testContext)
 {
     auto async = std::make_unique<XAsyncHelper<XAsyncResult>>(testContext);
@@ -791,11 +894,13 @@ void AutoGenMatchmakingTests::TestMatchmakingServerSetGameServerInstanceData(Tes
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region ServerSetGameServerInstanceState
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenMatchmakingTests::TestMatchmakingServerSetGameServerInstanceState(TestContext& testContext)
 {
     auto async = std::make_unique<XAsyncHelper<XAsyncResult>>(testContext);
@@ -811,11 +916,13 @@ void AutoGenMatchmakingTests::TestMatchmakingServerSetGameServerInstanceState(Te
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region ServerSetGameServerInstanceTags
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenMatchmakingTests::TestMatchmakingServerSetGameServerInstanceTags(TestContext& testContext)
 {
     auto async = std::make_unique<XAsyncHelper<XAsyncResult>>(testContext);
@@ -831,11 +938,13 @@ void AutoGenMatchmakingTests::TestMatchmakingServerSetGameServerInstanceTags(Tes
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region CancelAllMatchmakingTicketsForPlayer
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenMatchmakingTests::TestMatchmakingCancelAllMatchmakingTicketsForPlayer(TestContext& testContext)
 {
     auto async = std::make_unique<XAsyncHelper<XAsyncResult>>(testContext);
@@ -851,11 +960,13 @@ void AutoGenMatchmakingTests::TestMatchmakingCancelAllMatchmakingTicketsForPlaye
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region CancelAllServerBackfillTicketsForPlayer
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenMatchmakingTests::TestMatchmakingCancelAllServerBackfillTicketsForPlayer(TestContext& testContext)
 {
     auto async = std::make_unique<XAsyncHelper<XAsyncResult>>(testContext);
@@ -871,11 +982,13 @@ void AutoGenMatchmakingTests::TestMatchmakingCancelAllServerBackfillTicketsForPl
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region CancelMatchmakingTicket
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenMatchmakingTests::TestMatchmakingCancelMatchmakingTicket(TestContext& testContext)
 {
     auto async = std::make_unique<XAsyncHelper<XAsyncResult>>(testContext);
@@ -891,11 +1004,13 @@ void AutoGenMatchmakingTests::TestMatchmakingCancelMatchmakingTicket(TestContext
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region CancelServerBackfillTicket
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenMatchmakingTests::TestMatchmakingCancelServerBackfillTicket(TestContext& testContext)
 {
     auto async = std::make_unique<XAsyncHelper<XAsyncResult>>(testContext);
@@ -911,14 +1026,16 @@ void AutoGenMatchmakingTests::TestMatchmakingCancelServerBackfillTicket(TestCont
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region CreateMatchmakingTicket
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenMatchmakingTests::TestMatchmakingCreateMatchmakingTicket(TestContext& testContext)
 {
-    struct CreateMatchmakingTicketResultHolder : public CreateMatchmakingTicketResultHolder
+    struct CreateMatchmakingTicketResultHolderStruct : public CreateMatchmakingTicketResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -937,7 +1054,7 @@ void AutoGenMatchmakingTests::TestMatchmakingCreateMatchmakingTicket(TestContext
             return ValidatePFMatchmakingCreateMatchmakingTicketResult(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<CreateMatchmakingTicketResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<CreateMatchmakingTicketResultHolderStruct>>(testContext);
 
     PFMatchmakingCreateMatchmakingTicketRequestWrapper<> request;
     FillCreateMatchmakingTicketRequest(request);
@@ -950,14 +1067,16 @@ void AutoGenMatchmakingTests::TestMatchmakingCreateMatchmakingTicket(TestContext
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region CreateServerBackfillTicket
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenMatchmakingTests::TestMatchmakingCreateServerBackfillTicket(TestContext& testContext)
 {
-    struct CreateServerBackfillTicketResultHolder : public CreateServerBackfillTicketResultHolder
+    struct CreateServerBackfillTicketResultHolderStruct : public CreateServerBackfillTicketResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -976,7 +1095,7 @@ void AutoGenMatchmakingTests::TestMatchmakingCreateServerBackfillTicket(TestCont
             return ValidatePFMatchmakingCreateServerBackfillTicketResult(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<CreateServerBackfillTicketResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<CreateServerBackfillTicketResultHolderStruct>>(testContext);
 
     PFMatchmakingCreateServerBackfillTicketRequestWrapper<> request;
     FillCreateServerBackfillTicketRequest(request);
@@ -989,14 +1108,16 @@ void AutoGenMatchmakingTests::TestMatchmakingCreateServerBackfillTicket(TestCont
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region CreateServerMatchmakingTicket
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenMatchmakingTests::TestMatchmakingCreateServerMatchmakingTicket(TestContext& testContext)
 {
-    struct CreateServerMatchmakingTicketResultHolder : public CreateMatchmakingTicketResultHolder
+    struct CreateServerMatchmakingTicketResultHolderStruct : public CreateMatchmakingTicketResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -1015,7 +1136,7 @@ void AutoGenMatchmakingTests::TestMatchmakingCreateServerMatchmakingTicket(TestC
             return ValidatePFMatchmakingCreateMatchmakingTicketResult(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<CreateServerMatchmakingTicketResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<CreateServerMatchmakingTicketResultHolderStruct>>(testContext);
 
     PFMatchmakingCreateServerMatchmakingTicketRequestWrapper<> request;
     FillCreateServerMatchmakingTicketRequest(request);
@@ -1028,14 +1149,16 @@ void AutoGenMatchmakingTests::TestMatchmakingCreateServerMatchmakingTicket(TestC
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region GetMatch
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenMatchmakingTests::TestMatchmakingGetMatch(TestContext& testContext)
 {
-    struct GetMatchResultHolder : public GetMatchResultHolder
+    struct GetMatchResultHolderStruct : public GetMatchResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -1054,7 +1177,7 @@ void AutoGenMatchmakingTests::TestMatchmakingGetMatch(TestContext& testContext)
             return ValidatePFMatchmakingGetMatchResult(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<GetMatchResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<GetMatchResultHolderStruct>>(testContext);
 
     PFMatchmakingGetMatchRequestWrapper<> request;
     FillGetMatchRequest(request);
@@ -1067,14 +1190,16 @@ void AutoGenMatchmakingTests::TestMatchmakingGetMatch(TestContext& testContext)
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region GetMatchmakingTicket
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenMatchmakingTests::TestMatchmakingGetMatchmakingTicket(TestContext& testContext)
 {
-    struct GetMatchmakingTicketResultHolder : public GetMatchmakingTicketResultHolder
+    struct GetMatchmakingTicketResultHolderStruct : public GetMatchmakingTicketResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -1093,7 +1218,7 @@ void AutoGenMatchmakingTests::TestMatchmakingGetMatchmakingTicket(TestContext& t
             return ValidatePFMatchmakingGetMatchmakingTicketResult(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<GetMatchmakingTicketResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<GetMatchmakingTicketResultHolderStruct>>(testContext);
 
     PFMatchmakingGetMatchmakingTicketRequestWrapper<> request;
     FillGetMatchmakingTicketRequest(request);
@@ -1106,14 +1231,16 @@ void AutoGenMatchmakingTests::TestMatchmakingGetMatchmakingTicket(TestContext& t
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region GetQueueStatistics
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenMatchmakingTests::TestMatchmakingGetQueueStatistics(TestContext& testContext)
 {
-    struct GetQueueStatisticsResultHolder : public GetQueueStatisticsResultHolder
+    struct GetQueueStatisticsResultHolderStruct : public GetQueueStatisticsResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -1132,7 +1259,7 @@ void AutoGenMatchmakingTests::TestMatchmakingGetQueueStatistics(TestContext& tes
             return ValidatePFMatchmakingGetQueueStatisticsResult(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<GetQueueStatisticsResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<GetQueueStatisticsResultHolderStruct>>(testContext);
 
     PFMatchmakingGetQueueStatisticsRequestWrapper<> request;
     FillGetQueueStatisticsRequest(request);
@@ -1145,14 +1272,16 @@ void AutoGenMatchmakingTests::TestMatchmakingGetQueueStatistics(TestContext& tes
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region GetServerBackfillTicket
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenMatchmakingTests::TestMatchmakingGetServerBackfillTicket(TestContext& testContext)
 {
-    struct GetServerBackfillTicketResultHolder : public GetServerBackfillTicketResultHolder
+    struct GetServerBackfillTicketResultHolderStruct : public GetServerBackfillTicketResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -1171,7 +1300,7 @@ void AutoGenMatchmakingTests::TestMatchmakingGetServerBackfillTicket(TestContext
             return ValidatePFMatchmakingGetServerBackfillTicketResult(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<GetServerBackfillTicketResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<GetServerBackfillTicketResultHolderStruct>>(testContext);
 
     PFMatchmakingGetServerBackfillTicketRequestWrapper<> request;
     FillGetServerBackfillTicketRequest(request);
@@ -1184,11 +1313,13 @@ void AutoGenMatchmakingTests::TestMatchmakingGetServerBackfillTicket(TestContext
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region JoinMatchmakingTicket
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenMatchmakingTests::TestMatchmakingJoinMatchmakingTicket(TestContext& testContext)
 {
     auto async = std::make_unique<XAsyncHelper<XAsyncResult>>(testContext);
@@ -1204,14 +1335,16 @@ void AutoGenMatchmakingTests::TestMatchmakingJoinMatchmakingTicket(TestContext& 
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region ListMatchmakingTicketsForPlayer
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenMatchmakingTests::TestMatchmakingListMatchmakingTicketsForPlayer(TestContext& testContext)
 {
-    struct ListMatchmakingTicketsForPlayerResultHolder : public ListMatchmakingTicketsForPlayerResultHolder
+    struct ListMatchmakingTicketsForPlayerResultHolderStruct : public ListMatchmakingTicketsForPlayerResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -1230,7 +1363,7 @@ void AutoGenMatchmakingTests::TestMatchmakingListMatchmakingTicketsForPlayer(Tes
             return ValidatePFMatchmakingListMatchmakingTicketsForPlayerResult(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<ListMatchmakingTicketsForPlayerResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<ListMatchmakingTicketsForPlayerResultHolderStruct>>(testContext);
 
     PFMatchmakingListMatchmakingTicketsForPlayerRequestWrapper<> request;
     FillListMatchmakingTicketsForPlayerRequest(request);
@@ -1243,14 +1376,16 @@ void AutoGenMatchmakingTests::TestMatchmakingListMatchmakingTicketsForPlayer(Tes
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region ListServerBackfillTicketsForPlayer
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenMatchmakingTests::TestMatchmakingListServerBackfillTicketsForPlayer(TestContext& testContext)
 {
-    struct ListServerBackfillTicketsForPlayerResultHolder : public ListServerBackfillTicketsForPlayerResultHolder
+    struct ListServerBackfillTicketsForPlayerResultHolderStruct : public ListServerBackfillTicketsForPlayerResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -1269,7 +1404,7 @@ void AutoGenMatchmakingTests::TestMatchmakingListServerBackfillTicketsForPlayer(
             return ValidatePFMatchmakingListServerBackfillTicketsForPlayerResult(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<ListServerBackfillTicketsForPlayerResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<ListServerBackfillTicketsForPlayerResultHolderStruct>>(testContext);
 
     PFMatchmakingListServerBackfillTicketsForPlayerRequestWrapper<> request;
     FillListServerBackfillTicketsForPlayerRequest(request);
@@ -1282,6 +1417,7 @@ void AutoGenMatchmakingTests::TestMatchmakingListServerBackfillTicketsForPlayer(
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 

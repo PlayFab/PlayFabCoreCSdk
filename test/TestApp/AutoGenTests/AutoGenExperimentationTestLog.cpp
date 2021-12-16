@@ -48,7 +48,7 @@ HRESULT AutoGenExperimentationTests::LogPFExperimentationCreateExclusionGroupRes
     std::stringstream ss;
     ss << "Response:"; Log(ss);
 
-    // Found PlayFabExperimentationCreateExclusionGroupResult
+    // Found PlayFabExperimentationCreateExclusionGroupResult    
     if( result->exclusionGroupId ) { ss << "  exclusionGroupId " << result->exclusionGroupId; Log(ss); } else { ss << "  exclusionGroupId = nullptr"; Log(ss); } // Class: const char* 
     return S_OK;
 }
@@ -112,7 +112,7 @@ HRESULT AutoGenExperimentationTests::LogPFExperimentationCreateExperimentResult(
     std::stringstream ss;
     ss << "Response:"; Log(ss);
 
-    // Found PlayFabExperimentationCreateExperimentResult
+    // Found PlayFabExperimentationCreateExperimentResult    
     if( result->experimentId ) { ss << "  experimentId " << result->experimentId; Log(ss); } else { ss << "  experimentId = nullptr"; Log(ss); } // Class: const char* 
     return S_OK;
 }
@@ -210,7 +210,7 @@ HRESULT AutoGenExperimentationTests::LogPFExperimentationGetExclusionGroupsResul
     std::stringstream ss;
     ss << "Response:"; Log(ss);
 
-    // Found PlayFabExperimentationGetExclusionGroupsResult    
+    // Found PlayFabExperimentationGetExclusionGroupsResult        
     ss << "  exclusionGroupsCount " << result->exclusionGroupsCount; Log(ss);
 
     // PFExperimentationExperimentExclusionGroup
@@ -259,7 +259,7 @@ HRESULT AutoGenExperimentationTests::LogPFExperimentationGetExclusionGroupTraffi
     std::stringstream ss;
     ss << "Response:"; Log(ss);
 
-    // Found PlayFabExperimentationGetExclusionGroupTrafficResult    
+    // Found PlayFabExperimentationGetExclusionGroupTrafficResult        
     ss << "  trafficAllocationsCount " << result->trafficAllocationsCount; Log(ss);
 
     // PFExperimentationExclusionGroupTrafficAllocation
@@ -307,7 +307,7 @@ HRESULT AutoGenExperimentationTests::LogPFExperimentationGetExperimentsResult(PF
     std::stringstream ss;
     ss << "Response:"; Log(ss);
 
-    // Found PlayFabExperimentationGetExperimentsResult    
+    // Found PlayFabExperimentationGetExperimentsResult        
     ss << "  experimentsCount " << result->experimentsCount; Log(ss);
 
     // PFExperimentationExperiment
@@ -356,7 +356,7 @@ HRESULT AutoGenExperimentationTests::LogPFExperimentationGetLatestScorecardResul
     std::stringstream ss;
     ss << "Response:"; Log(ss);
 
-    // Found PlayFabExperimentationGetLatestScorecardResult
+    // Found PlayFabExperimentationGetLatestScorecardResult    
     ss << "  scorecard " << result->scorecard; Log(ss); // Class: PFExperimentationScorecard 
     return S_OK;
 }
@@ -399,7 +399,7 @@ HRESULT AutoGenExperimentationTests::LogPFExperimentationGetTreatmentAssignmentR
     std::stringstream ss;
     ss << "Response:"; Log(ss);
 
-    // Found PlayFabExperimentationGetTreatmentAssignmentResult
+    // Found PlayFabExperimentationGetTreatmentAssignmentResult    
     ss << "  treatmentAssignment " << result->treatmentAssignment; Log(ss); // Class: PFTreatmentAssignment 
     return S_OK;
 }

@@ -15,7 +15,9 @@ private:
     static void Log(std::stringstream& ss);
     static HRESULT LogHR(HRESULT hr);
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestCharacterAdminResetCharacterStatistics(TestContext& testContext);
+#endif
 
     void TestCharacterClientGetAllUsersCharacters(TestContext& testContext);
 
@@ -37,33 +39,61 @@ private:
 
     void TestCharacterClientUpdateCharacterStatistics(TestContext& testContext);
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestCharacterServerDeleteCharacterFromUser(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestCharacterServerGetAllUsersCharacters(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestCharacterServerGetCharacterData(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestCharacterServerGetCharacterInternalData(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestCharacterServerGetCharacterLeaderboard(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestCharacterServerGetCharacterReadOnlyData(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestCharacterServerGetCharacterStatistics(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestCharacterServerGetLeaderboardAroundCharacter(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestCharacterServerGetLeaderboardForUserCharacters(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestCharacterServerGrantCharacterToUser(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestCharacterServerUpdateCharacterData(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestCharacterServerUpdateCharacterInternalData(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestCharacterServerUpdateCharacterReadOnlyData(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestCharacterServerUpdateCharacterStatistics(TestContext& testContext);
+#endif
 
 
 protected:

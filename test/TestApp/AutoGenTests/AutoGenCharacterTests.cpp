@@ -32,7 +32,9 @@ HRESULT AutoGenCharacterTests::LogHR(HRESULT hr)
 void AutoGenCharacterTests::AddTests()
 {
     // Generated tests 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestCharacterAdminResetCharacterStatistics", &AutoGenCharacterTests::TestCharacterAdminResetCharacterStatistics);
+#endif
 
     AddTest("TestCharacterClientGetAllUsersCharacters", &AutoGenCharacterTests::TestCharacterClientGetAllUsersCharacters);
 
@@ -54,33 +56,61 @@ void AutoGenCharacterTests::AddTests()
 
     AddTest("TestCharacterClientUpdateCharacterStatistics", &AutoGenCharacterTests::TestCharacterClientUpdateCharacterStatistics);
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestCharacterServerDeleteCharacterFromUser", &AutoGenCharacterTests::TestCharacterServerDeleteCharacterFromUser);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestCharacterServerGetAllUsersCharacters", &AutoGenCharacterTests::TestCharacterServerGetAllUsersCharacters);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestCharacterServerGetCharacterData", &AutoGenCharacterTests::TestCharacterServerGetCharacterData);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestCharacterServerGetCharacterInternalData", &AutoGenCharacterTests::TestCharacterServerGetCharacterInternalData);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestCharacterServerGetCharacterLeaderboard", &AutoGenCharacterTests::TestCharacterServerGetCharacterLeaderboard);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestCharacterServerGetCharacterReadOnlyData", &AutoGenCharacterTests::TestCharacterServerGetCharacterReadOnlyData);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestCharacterServerGetCharacterStatistics", &AutoGenCharacterTests::TestCharacterServerGetCharacterStatistics);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestCharacterServerGetLeaderboardAroundCharacter", &AutoGenCharacterTests::TestCharacterServerGetLeaderboardAroundCharacter);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestCharacterServerGetLeaderboardForUserCharacters", &AutoGenCharacterTests::TestCharacterServerGetLeaderboardForUserCharacters);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestCharacterServerGrantCharacterToUser", &AutoGenCharacterTests::TestCharacterServerGrantCharacterToUser);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestCharacterServerUpdateCharacterData", &AutoGenCharacterTests::TestCharacterServerUpdateCharacterData);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestCharacterServerUpdateCharacterInternalData", &AutoGenCharacterTests::TestCharacterServerUpdateCharacterInternalData);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestCharacterServerUpdateCharacterReadOnlyData", &AutoGenCharacterTests::TestCharacterServerUpdateCharacterReadOnlyData);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestCharacterServerUpdateCharacterStatistics", &AutoGenCharacterTests::TestCharacterServerUpdateCharacterStatistics);
+#endif
 }
 
 void AutoGenCharacterTests::ClassSetUp()
@@ -190,6 +220,7 @@ void AutoGenCharacterTests::SetUp(TestContext& testContext)
 
 #pragma region AdminResetCharacterStatistics
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenCharacterTests::TestCharacterAdminResetCharacterStatistics(TestContext& testContext)
 {
     auto async = std::make_unique<XAsyncHelper<XAsyncResult>>(testContext);
@@ -205,6 +236,7 @@ void AutoGenCharacterTests::TestCharacterAdminResetCharacterStatistics(TestConte
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
@@ -212,7 +244,7 @@ void AutoGenCharacterTests::TestCharacterAdminResetCharacterStatistics(TestConte
 
 void AutoGenCharacterTests::TestCharacterClientGetAllUsersCharacters(TestContext& testContext)
 {
-    struct ClientGetAllUsersCharactersResultHolder : public ListUsersCharactersResultHolder
+    struct ClientGetAllUsersCharactersResultHolderStruct : public ListUsersCharactersResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -231,7 +263,7 @@ void AutoGenCharacterTests::TestCharacterClientGetAllUsersCharacters(TestContext
             return ValidatePFCharacterListUsersCharactersResult(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<ClientGetAllUsersCharactersResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<ClientGetAllUsersCharactersResultHolderStruct>>(testContext);
 
     PFCharacterListUsersCharactersRequestWrapper<> request;
     FillListUsersCharactersRequest(request);
@@ -251,7 +283,7 @@ void AutoGenCharacterTests::TestCharacterClientGetAllUsersCharacters(TestContext
 
 void AutoGenCharacterTests::TestCharacterClientGetCharacterData(TestContext& testContext)
 {
-    struct ClientGetCharacterDataResultHolder : public ClientGetCharacterDataResultHolder
+    struct ClientGetCharacterDataResultHolderStruct : public ClientGetCharacterDataResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -270,7 +302,7 @@ void AutoGenCharacterTests::TestCharacterClientGetCharacterData(TestContext& tes
             return ValidatePFCharacterClientGetCharacterDataResult(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<ClientGetCharacterDataResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<ClientGetCharacterDataResultHolderStruct>>(testContext);
 
     PFCharacterGetCharacterDataRequestWrapper<> request;
     FillGetCharacterDataRequest(request);
@@ -290,7 +322,7 @@ void AutoGenCharacterTests::TestCharacterClientGetCharacterData(TestContext& tes
 
 void AutoGenCharacterTests::TestCharacterClientGetCharacterLeaderboard(TestContext& testContext)
 {
-    struct ClientGetCharacterLeaderboardResultHolder : public GetCharacterLeaderboardResultHolder
+    struct ClientGetCharacterLeaderboardResultHolderStruct : public GetCharacterLeaderboardResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -309,7 +341,7 @@ void AutoGenCharacterTests::TestCharacterClientGetCharacterLeaderboard(TestConte
             return ValidatePFCharacterGetCharacterLeaderboardResult(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<ClientGetCharacterLeaderboardResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<ClientGetCharacterLeaderboardResultHolderStruct>>(testContext);
 
     PFCharacterGetCharacterLeaderboardRequestWrapper<> request;
     FillGetCharacterLeaderboardRequest(request);
@@ -329,7 +361,7 @@ void AutoGenCharacterTests::TestCharacterClientGetCharacterLeaderboard(TestConte
 
 void AutoGenCharacterTests::TestCharacterClientGetCharacterReadOnlyData(TestContext& testContext)
 {
-    struct ClientGetCharacterReadOnlyDataResultHolder : public ClientGetCharacterDataResultHolder
+    struct ClientGetCharacterReadOnlyDataResultHolderStruct : public ClientGetCharacterDataResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -348,7 +380,7 @@ void AutoGenCharacterTests::TestCharacterClientGetCharacterReadOnlyData(TestCont
             return ValidatePFCharacterClientGetCharacterDataResult(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<ClientGetCharacterReadOnlyDataResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<ClientGetCharacterReadOnlyDataResultHolderStruct>>(testContext);
 
     PFCharacterGetCharacterDataRequestWrapper<> request;
     FillGetCharacterDataRequest(request);
@@ -368,7 +400,7 @@ void AutoGenCharacterTests::TestCharacterClientGetCharacterReadOnlyData(TestCont
 
 void AutoGenCharacterTests::TestCharacterClientGetCharacterStatistics(TestContext& testContext)
 {
-    struct ClientGetCharacterStatisticsResultHolder : public ClientGetCharacterStatisticsResultHolder
+    struct ClientGetCharacterStatisticsResultHolderStruct : public ClientGetCharacterStatisticsResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -387,7 +419,7 @@ void AutoGenCharacterTests::TestCharacterClientGetCharacterStatistics(TestContex
             return ValidatePFCharacterClientGetCharacterStatisticsResult(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<ClientGetCharacterStatisticsResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<ClientGetCharacterStatisticsResultHolderStruct>>(testContext);
 
     PFCharacterClientGetCharacterStatisticsRequestWrapper<> request;
     FillClientGetCharacterStatisticsRequest(request);
@@ -407,7 +439,7 @@ void AutoGenCharacterTests::TestCharacterClientGetCharacterStatistics(TestContex
 
 void AutoGenCharacterTests::TestCharacterClientGetLeaderboardAroundCharacter(TestContext& testContext)
 {
-    struct ClientGetLeaderboardAroundCharacterResultHolder : public GetLeaderboardAroundCharacterResultHolder
+    struct ClientGetLeaderboardAroundCharacterResultHolderStruct : public GetLeaderboardAroundCharacterResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -426,7 +458,7 @@ void AutoGenCharacterTests::TestCharacterClientGetLeaderboardAroundCharacter(Tes
             return ValidatePFCharacterGetLeaderboardAroundCharacterResult(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<ClientGetLeaderboardAroundCharacterResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<ClientGetLeaderboardAroundCharacterResultHolderStruct>>(testContext);
 
     PFCharacterClientGetLeaderboardAroundCharacterRequestWrapper<> request;
     FillClientGetLeaderboardAroundCharacterRequest(request);
@@ -446,7 +478,7 @@ void AutoGenCharacterTests::TestCharacterClientGetLeaderboardAroundCharacter(Tes
 
 void AutoGenCharacterTests::TestCharacterClientGetLeaderboardForUserCharacters(TestContext& testContext)
 {
-    struct ClientGetLeaderboardForUserCharactersResultHolder : public GetLeaderboardForUsersCharactersResultHolder
+    struct ClientGetLeaderboardForUserCharactersResultHolderStruct : public GetLeaderboardForUsersCharactersResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -465,7 +497,7 @@ void AutoGenCharacterTests::TestCharacterClientGetLeaderboardForUserCharacters(T
             return ValidatePFCharacterGetLeaderboardForUsersCharactersResult(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<ClientGetLeaderboardForUserCharactersResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<ClientGetLeaderboardForUserCharactersResultHolderStruct>>(testContext);
 
     PFCharacterClientGetLeaderboardForUsersCharactersRequestWrapper<> request;
     FillClientGetLeaderboardForUsersCharactersRequest(request);
@@ -485,7 +517,7 @@ void AutoGenCharacterTests::TestCharacterClientGetLeaderboardForUserCharacters(T
 
 void AutoGenCharacterTests::TestCharacterClientGrantCharacterToUser(TestContext& testContext)
 {
-    struct ClientGrantCharacterToUserResultHolder : public ClientGrantCharacterToUserResultHolder
+    struct ClientGrantCharacterToUserResultHolderStruct : public ClientGrantCharacterToUserResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -504,7 +536,7 @@ void AutoGenCharacterTests::TestCharacterClientGrantCharacterToUser(TestContext&
             return ValidatePFCharacterClientGrantCharacterToUserResult(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<ClientGrantCharacterToUserResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<ClientGrantCharacterToUserResultHolderStruct>>(testContext);
 
     PFCharacterClientGrantCharacterToUserRequestWrapper<> request;
     FillClientGrantCharacterToUserRequest(request);
@@ -524,7 +556,7 @@ void AutoGenCharacterTests::TestCharacterClientGrantCharacterToUser(TestContext&
 
 void AutoGenCharacterTests::TestCharacterClientUpdateCharacterData(TestContext& testContext)
 {
-    struct ClientUpdateCharacterDataResultHolder : public UpdateCharacterDataResultHolder
+    struct ClientUpdateCharacterDataResultHolderStruct : public UpdateCharacterDataResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -538,7 +570,7 @@ void AutoGenCharacterTests::TestCharacterClientUpdateCharacterData(TestContext& 
             return ValidatePFCharacterUpdateCharacterDataResult(&result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<ClientUpdateCharacterDataResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<ClientUpdateCharacterDataResultHolderStruct>>(testContext);
 
     PFCharacterClientUpdateCharacterDataRequestWrapper<> request;
     FillClientUpdateCharacterDataRequest(request);
@@ -576,6 +608,7 @@ void AutoGenCharacterTests::TestCharacterClientUpdateCharacterStatistics(TestCon
 
 #pragma region ServerDeleteCharacterFromUser
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenCharacterTests::TestCharacterServerDeleteCharacterFromUser(TestContext& testContext)
 {
     auto async = std::make_unique<XAsyncHelper<XAsyncResult>>(testContext);
@@ -591,14 +624,16 @@ void AutoGenCharacterTests::TestCharacterServerDeleteCharacterFromUser(TestConte
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region ServerGetAllUsersCharacters
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenCharacterTests::TestCharacterServerGetAllUsersCharacters(TestContext& testContext)
 {
-    struct ServerGetAllUsersCharactersResultHolder : public ListUsersCharactersResultHolder
+    struct ServerGetAllUsersCharactersResultHolderStruct : public ListUsersCharactersResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -617,7 +652,7 @@ void AutoGenCharacterTests::TestCharacterServerGetAllUsersCharacters(TestContext
             return ValidatePFCharacterListUsersCharactersResult(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<ServerGetAllUsersCharactersResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<ServerGetAllUsersCharactersResultHolderStruct>>(testContext);
 
     PFCharacterListUsersCharactersRequestWrapper<> request;
     FillListUsersCharactersRequest(request);
@@ -630,14 +665,16 @@ void AutoGenCharacterTests::TestCharacterServerGetAllUsersCharacters(TestContext
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region ServerGetCharacterData
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenCharacterTests::TestCharacterServerGetCharacterData(TestContext& testContext)
 {
-    struct ServerGetCharacterDataResultHolder : public ServerGetCharacterDataResultHolder
+    struct ServerGetCharacterDataResultHolderStruct : public ServerGetCharacterDataResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -656,7 +693,7 @@ void AutoGenCharacterTests::TestCharacterServerGetCharacterData(TestContext& tes
             return ValidatePFCharacterServerGetCharacterDataResult(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<ServerGetCharacterDataResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<ServerGetCharacterDataResultHolderStruct>>(testContext);
 
     PFCharacterGetCharacterDataRequestWrapper<> request;
     FillGetCharacterDataRequest(request);
@@ -669,14 +706,16 @@ void AutoGenCharacterTests::TestCharacterServerGetCharacterData(TestContext& tes
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region ServerGetCharacterInternalData
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenCharacterTests::TestCharacterServerGetCharacterInternalData(TestContext& testContext)
 {
-    struct ServerGetCharacterInternalDataResultHolder : public ServerGetCharacterDataResultHolder
+    struct ServerGetCharacterInternalDataResultHolderStruct : public ServerGetCharacterDataResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -695,7 +734,7 @@ void AutoGenCharacterTests::TestCharacterServerGetCharacterInternalData(TestCont
             return ValidatePFCharacterServerGetCharacterDataResult(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<ServerGetCharacterInternalDataResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<ServerGetCharacterInternalDataResultHolderStruct>>(testContext);
 
     PFCharacterGetCharacterDataRequestWrapper<> request;
     FillGetCharacterDataRequest(request);
@@ -708,14 +747,16 @@ void AutoGenCharacterTests::TestCharacterServerGetCharacterInternalData(TestCont
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region ServerGetCharacterLeaderboard
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenCharacterTests::TestCharacterServerGetCharacterLeaderboard(TestContext& testContext)
 {
-    struct ServerGetCharacterLeaderboardResultHolder : public GetCharacterLeaderboardResultHolder
+    struct ServerGetCharacterLeaderboardResultHolderStruct : public GetCharacterLeaderboardResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -734,7 +775,7 @@ void AutoGenCharacterTests::TestCharacterServerGetCharacterLeaderboard(TestConte
             return ValidatePFCharacterGetCharacterLeaderboardResult(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<ServerGetCharacterLeaderboardResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<ServerGetCharacterLeaderboardResultHolderStruct>>(testContext);
 
     PFCharacterGetCharacterLeaderboardRequestWrapper<> request;
     FillGetCharacterLeaderboardRequest(request);
@@ -747,14 +788,16 @@ void AutoGenCharacterTests::TestCharacterServerGetCharacterLeaderboard(TestConte
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region ServerGetCharacterReadOnlyData
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenCharacterTests::TestCharacterServerGetCharacterReadOnlyData(TestContext& testContext)
 {
-    struct ServerGetCharacterReadOnlyDataResultHolder : public ServerGetCharacterDataResultHolder
+    struct ServerGetCharacterReadOnlyDataResultHolderStruct : public ServerGetCharacterDataResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -773,7 +816,7 @@ void AutoGenCharacterTests::TestCharacterServerGetCharacterReadOnlyData(TestCont
             return ValidatePFCharacterServerGetCharacterDataResult(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<ServerGetCharacterReadOnlyDataResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<ServerGetCharacterReadOnlyDataResultHolderStruct>>(testContext);
 
     PFCharacterGetCharacterDataRequestWrapper<> request;
     FillGetCharacterDataRequest(request);
@@ -786,14 +829,16 @@ void AutoGenCharacterTests::TestCharacterServerGetCharacterReadOnlyData(TestCont
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region ServerGetCharacterStatistics
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenCharacterTests::TestCharacterServerGetCharacterStatistics(TestContext& testContext)
 {
-    struct ServerGetCharacterStatisticsResultHolder : public ServerGetCharacterStatisticsResultHolder
+    struct ServerGetCharacterStatisticsResultHolderStruct : public ServerGetCharacterStatisticsResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -812,7 +857,7 @@ void AutoGenCharacterTests::TestCharacterServerGetCharacterStatistics(TestContex
             return ValidatePFCharacterServerGetCharacterStatisticsResult(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<ServerGetCharacterStatisticsResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<ServerGetCharacterStatisticsResultHolderStruct>>(testContext);
 
     PFCharacterServerGetCharacterStatisticsRequestWrapper<> request;
     FillServerGetCharacterStatisticsRequest(request);
@@ -825,14 +870,16 @@ void AutoGenCharacterTests::TestCharacterServerGetCharacterStatistics(TestContex
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region ServerGetLeaderboardAroundCharacter
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenCharacterTests::TestCharacterServerGetLeaderboardAroundCharacter(TestContext& testContext)
 {
-    struct ServerGetLeaderboardAroundCharacterResultHolder : public GetLeaderboardAroundCharacterResultHolder
+    struct ServerGetLeaderboardAroundCharacterResultHolderStruct : public GetLeaderboardAroundCharacterResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -851,7 +898,7 @@ void AutoGenCharacterTests::TestCharacterServerGetLeaderboardAroundCharacter(Tes
             return ValidatePFCharacterGetLeaderboardAroundCharacterResult(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<ServerGetLeaderboardAroundCharacterResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<ServerGetLeaderboardAroundCharacterResultHolderStruct>>(testContext);
 
     PFCharacterServerGetLeaderboardAroundCharacterRequestWrapper<> request;
     FillServerGetLeaderboardAroundCharacterRequest(request);
@@ -864,14 +911,16 @@ void AutoGenCharacterTests::TestCharacterServerGetLeaderboardAroundCharacter(Tes
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region ServerGetLeaderboardForUserCharacters
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenCharacterTests::TestCharacterServerGetLeaderboardForUserCharacters(TestContext& testContext)
 {
-    struct ServerGetLeaderboardForUserCharactersResultHolder : public GetLeaderboardForUsersCharactersResultHolder
+    struct ServerGetLeaderboardForUserCharactersResultHolderStruct : public GetLeaderboardForUsersCharactersResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -890,7 +939,7 @@ void AutoGenCharacterTests::TestCharacterServerGetLeaderboardForUserCharacters(T
             return ValidatePFCharacterGetLeaderboardForUsersCharactersResult(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<ServerGetLeaderboardForUserCharactersResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<ServerGetLeaderboardForUserCharactersResultHolderStruct>>(testContext);
 
     PFCharacterServerGetLeaderboardForUsersCharactersRequestWrapper<> request;
     FillServerGetLeaderboardForUsersCharactersRequest(request);
@@ -903,14 +952,16 @@ void AutoGenCharacterTests::TestCharacterServerGetLeaderboardForUserCharacters(T
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region ServerGrantCharacterToUser
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenCharacterTests::TestCharacterServerGrantCharacterToUser(TestContext& testContext)
 {
-    struct ServerGrantCharacterToUserResultHolder : public ServerGrantCharacterToUserResultHolder
+    struct ServerGrantCharacterToUserResultHolderStruct : public ServerGrantCharacterToUserResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -929,7 +980,7 @@ void AutoGenCharacterTests::TestCharacterServerGrantCharacterToUser(TestContext&
             return ValidatePFCharacterServerGrantCharacterToUserResult(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<ServerGrantCharacterToUserResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<ServerGrantCharacterToUserResultHolderStruct>>(testContext);
 
     PFCharacterServerGrantCharacterToUserRequestWrapper<> request;
     FillServerGrantCharacterToUserRequest(request);
@@ -942,14 +993,16 @@ void AutoGenCharacterTests::TestCharacterServerGrantCharacterToUser(TestContext&
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region ServerUpdateCharacterData
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenCharacterTests::TestCharacterServerUpdateCharacterData(TestContext& testContext)
 {
-    struct ServerUpdateCharacterDataResultHolder : public UpdateCharacterDataResultHolder
+    struct ServerUpdateCharacterDataResultHolderStruct : public UpdateCharacterDataResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -963,7 +1016,7 @@ void AutoGenCharacterTests::TestCharacterServerUpdateCharacterData(TestContext& 
             return ValidatePFCharacterUpdateCharacterDataResult(&result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<ServerUpdateCharacterDataResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<ServerUpdateCharacterDataResultHolderStruct>>(testContext);
 
     PFCharacterServerUpdateCharacterDataRequestWrapper<> request;
     FillServerUpdateCharacterDataRequest(request);
@@ -976,14 +1029,16 @@ void AutoGenCharacterTests::TestCharacterServerUpdateCharacterData(TestContext& 
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region ServerUpdateCharacterInternalData
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenCharacterTests::TestCharacterServerUpdateCharacterInternalData(TestContext& testContext)
 {
-    struct ServerUpdateCharacterInternalDataResultHolder : public UpdateCharacterDataResultHolder
+    struct ServerUpdateCharacterInternalDataResultHolderStruct : public UpdateCharacterDataResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -997,7 +1052,7 @@ void AutoGenCharacterTests::TestCharacterServerUpdateCharacterInternalData(TestC
             return ValidatePFCharacterUpdateCharacterDataResult(&result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<ServerUpdateCharacterInternalDataResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<ServerUpdateCharacterInternalDataResultHolderStruct>>(testContext);
 
     PFCharacterServerUpdateCharacterDataRequestWrapper<> request;
     FillServerUpdateCharacterDataRequest(request);
@@ -1010,14 +1065,16 @@ void AutoGenCharacterTests::TestCharacterServerUpdateCharacterInternalData(TestC
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region ServerUpdateCharacterReadOnlyData
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenCharacterTests::TestCharacterServerUpdateCharacterReadOnlyData(TestContext& testContext)
 {
-    struct ServerUpdateCharacterReadOnlyDataResultHolder : public UpdateCharacterDataResultHolder
+    struct ServerUpdateCharacterReadOnlyDataResultHolderStruct : public UpdateCharacterDataResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -1031,7 +1088,7 @@ void AutoGenCharacterTests::TestCharacterServerUpdateCharacterReadOnlyData(TestC
             return ValidatePFCharacterUpdateCharacterDataResult(&result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<ServerUpdateCharacterReadOnlyDataResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<ServerUpdateCharacterReadOnlyDataResultHolderStruct>>(testContext);
 
     PFCharacterServerUpdateCharacterDataRequestWrapper<> request;
     FillServerUpdateCharacterDataRequest(request);
@@ -1044,11 +1101,13 @@ void AutoGenCharacterTests::TestCharacterServerUpdateCharacterReadOnlyData(TestC
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region ServerUpdateCharacterStatistics
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenCharacterTests::TestCharacterServerUpdateCharacterStatistics(TestContext& testContext)
 {
     auto async = std::make_unique<XAsyncHelper<XAsyncResult>>(testContext);
@@ -1064,6 +1123,7 @@ void AutoGenCharacterTests::TestCharacterServerUpdateCharacterStatistics(TestCon
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 

@@ -32,21 +32,37 @@ HRESULT AutoGenPlayerItemManagementTests::LogHR(HRESULT hr)
 void AutoGenPlayerItemManagementTests::AddTests()
 {
     // Generated tests 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestPlayerItemManagementAdminAddUserVirtualCurrency", &AutoGenPlayerItemManagementTests::TestPlayerItemManagementAdminAddUserVirtualCurrency);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestPlayerItemManagementAdminCheckLimitedEditionItemAvailability", &AutoGenPlayerItemManagementTests::TestPlayerItemManagementAdminCheckLimitedEditionItemAvailability);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestPlayerItemManagementAdminGetUserInventory", &AutoGenPlayerItemManagementTests::TestPlayerItemManagementAdminGetUserInventory);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestPlayerItemManagementAdminGrantItemsToUsers", &AutoGenPlayerItemManagementTests::TestPlayerItemManagementAdminGrantItemsToUsers);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestPlayerItemManagementAdminIncrementLimitedEditionItemAvailability", &AutoGenPlayerItemManagementTests::TestPlayerItemManagementAdminIncrementLimitedEditionItemAvailability);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestPlayerItemManagementAdminRevokeInventoryItem", &AutoGenPlayerItemManagementTests::TestPlayerItemManagementAdminRevokeInventoryItem);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestPlayerItemManagementAdminRevokeInventoryItems", &AutoGenPlayerItemManagementTests::TestPlayerItemManagementAdminRevokeInventoryItems);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestPlayerItemManagementAdminSubtractUserVirtualCurrency", &AutoGenPlayerItemManagementTests::TestPlayerItemManagementAdminSubtractUserVirtualCurrency);
+#endif
 
     AddTest("TestPlayerItemManagementClientAddUserVirtualCurrency", &AutoGenPlayerItemManagementTests::TestPlayerItemManagementClientAddUserVirtualCurrency);
 
@@ -76,51 +92,97 @@ void AutoGenPlayerItemManagementTests::AddTests()
 
     AddTest("TestPlayerItemManagementClientUnlockContainerItem", &AutoGenPlayerItemManagementTests::TestPlayerItemManagementClientUnlockContainerItem);
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestPlayerItemManagementServerAddCharacterVirtualCurrency", &AutoGenPlayerItemManagementTests::TestPlayerItemManagementServerAddCharacterVirtualCurrency);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestPlayerItemManagementServerAddUserVirtualCurrency", &AutoGenPlayerItemManagementTests::TestPlayerItemManagementServerAddUserVirtualCurrency);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestPlayerItemManagementServerConsumeItem", &AutoGenPlayerItemManagementTests::TestPlayerItemManagementServerConsumeItem);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestPlayerItemManagementServerEvaluateRandomResultTable", &AutoGenPlayerItemManagementTests::TestPlayerItemManagementServerEvaluateRandomResultTable);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestPlayerItemManagementServerGetCharacterInventory", &AutoGenPlayerItemManagementTests::TestPlayerItemManagementServerGetCharacterInventory);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestPlayerItemManagementServerGetRandomResultTables", &AutoGenPlayerItemManagementTests::TestPlayerItemManagementServerGetRandomResultTables);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestPlayerItemManagementServerGetUserInventory", &AutoGenPlayerItemManagementTests::TestPlayerItemManagementServerGetUserInventory);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestPlayerItemManagementServerGrantItemsToCharacter", &AutoGenPlayerItemManagementTests::TestPlayerItemManagementServerGrantItemsToCharacter);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestPlayerItemManagementServerGrantItemsToUser", &AutoGenPlayerItemManagementTests::TestPlayerItemManagementServerGrantItemsToUser);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestPlayerItemManagementServerGrantItemsToUsers", &AutoGenPlayerItemManagementTests::TestPlayerItemManagementServerGrantItemsToUsers);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestPlayerItemManagementServerModifyItemUses", &AutoGenPlayerItemManagementTests::TestPlayerItemManagementServerModifyItemUses);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestPlayerItemManagementServerMoveItemToCharacterFromCharacter", &AutoGenPlayerItemManagementTests::TestPlayerItemManagementServerMoveItemToCharacterFromCharacter);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestPlayerItemManagementServerMoveItemToCharacterFromUser", &AutoGenPlayerItemManagementTests::TestPlayerItemManagementServerMoveItemToCharacterFromUser);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestPlayerItemManagementServerMoveItemToUserFromCharacter", &AutoGenPlayerItemManagementTests::TestPlayerItemManagementServerMoveItemToUserFromCharacter);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestPlayerItemManagementServerRedeemCoupon", &AutoGenPlayerItemManagementTests::TestPlayerItemManagementServerRedeemCoupon);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestPlayerItemManagementServerReportPlayer", &AutoGenPlayerItemManagementTests::TestPlayerItemManagementServerReportPlayer);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestPlayerItemManagementServerRevokeInventoryItem", &AutoGenPlayerItemManagementTests::TestPlayerItemManagementServerRevokeInventoryItem);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestPlayerItemManagementServerRevokeInventoryItems", &AutoGenPlayerItemManagementTests::TestPlayerItemManagementServerRevokeInventoryItems);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestPlayerItemManagementServerSubtractCharacterVirtualCurrency", &AutoGenPlayerItemManagementTests::TestPlayerItemManagementServerSubtractCharacterVirtualCurrency);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestPlayerItemManagementServerSubtractUserVirtualCurrency", &AutoGenPlayerItemManagementTests::TestPlayerItemManagementServerSubtractUserVirtualCurrency);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestPlayerItemManagementServerUnlockContainerInstance", &AutoGenPlayerItemManagementTests::TestPlayerItemManagementServerUnlockContainerInstance);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestPlayerItemManagementServerUnlockContainerItem", &AutoGenPlayerItemManagementTests::TestPlayerItemManagementServerUnlockContainerItem);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestPlayerItemManagementServerUpdateUserInventoryItemCustomData", &AutoGenPlayerItemManagementTests::TestPlayerItemManagementServerUpdateUserInventoryItemCustomData);
+#endif
 }
 
 void AutoGenPlayerItemManagementTests::ClassSetUp()
@@ -230,9 +292,10 @@ void AutoGenPlayerItemManagementTests::SetUp(TestContext& testContext)
 
 #pragma region AdminAddUserVirtualCurrency
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenPlayerItemManagementTests::TestPlayerItemManagementAdminAddUserVirtualCurrency(TestContext& testContext)
 {
-    struct AdminAddUserVirtualCurrencyResultHolder : public ModifyUserVirtualCurrencyResultHolder
+    struct AdminAddUserVirtualCurrencyResultHolderStruct : public ModifyUserVirtualCurrencyResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -251,7 +314,7 @@ void AutoGenPlayerItemManagementTests::TestPlayerItemManagementAdminAddUserVirtu
             return ValidatePFPlayerItemManagementModifyUserVirtualCurrencyResult(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<AdminAddUserVirtualCurrencyResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<AdminAddUserVirtualCurrencyResultHolderStruct>>(testContext);
 
     PFPlayerItemManagementAdminAddUserVirtualCurrencyRequestWrapper<> request;
     FillAdminAddUserVirtualCurrencyRequest(request);
@@ -264,14 +327,16 @@ void AutoGenPlayerItemManagementTests::TestPlayerItemManagementAdminAddUserVirtu
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region AdminCheckLimitedEditionItemAvailability
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenPlayerItemManagementTests::TestPlayerItemManagementAdminCheckLimitedEditionItemAvailability(TestContext& testContext)
 {
-    struct AdminCheckLimitedEditionItemAvailabilityResultHolder : public CheckLimitedEditionItemAvailabilityResultHolder
+    struct AdminCheckLimitedEditionItemAvailabilityResultHolderStruct : public CheckLimitedEditionItemAvailabilityResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -285,7 +350,7 @@ void AutoGenPlayerItemManagementTests::TestPlayerItemManagementAdminCheckLimited
             return ValidatePFPlayerItemManagementCheckLimitedEditionItemAvailabilityResult(&result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<AdminCheckLimitedEditionItemAvailabilityResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<AdminCheckLimitedEditionItemAvailabilityResultHolderStruct>>(testContext);
 
     PFPlayerItemManagementCheckLimitedEditionItemAvailabilityRequestWrapper<> request;
     FillCheckLimitedEditionItemAvailabilityRequest(request);
@@ -298,14 +363,16 @@ void AutoGenPlayerItemManagementTests::TestPlayerItemManagementAdminCheckLimited
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region AdminGetUserInventory
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenPlayerItemManagementTests::TestPlayerItemManagementAdminGetUserInventory(TestContext& testContext)
 {
-    struct AdminGetUserInventoryResultHolder : public AdminGetUserInventoryResultHolder
+    struct AdminGetUserInventoryResultHolderStruct : public AdminGetUserInventoryResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -324,7 +391,7 @@ void AutoGenPlayerItemManagementTests::TestPlayerItemManagementAdminGetUserInven
             return ValidatePFPlayerItemManagementAdminGetUserInventoryResult(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<AdminGetUserInventoryResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<AdminGetUserInventoryResultHolderStruct>>(testContext);
 
     PFPlayerItemManagementAdminGetUserInventoryRequestWrapper<> request;
     FillAdminGetUserInventoryRequest(request);
@@ -337,14 +404,16 @@ void AutoGenPlayerItemManagementTests::TestPlayerItemManagementAdminGetUserInven
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region AdminGrantItemsToUsers
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenPlayerItemManagementTests::TestPlayerItemManagementAdminGrantItemsToUsers(TestContext& testContext)
 {
-    struct AdminGrantItemsToUsersResultHolder : public GrantItemsToUsersResultHolder
+    struct AdminGrantItemsToUsersResultHolderStruct : public GrantItemsToUsersResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -363,7 +432,7 @@ void AutoGenPlayerItemManagementTests::TestPlayerItemManagementAdminGrantItemsTo
             return ValidatePFPlayerItemManagementGrantItemsToUsersResult(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<AdminGrantItemsToUsersResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<AdminGrantItemsToUsersResultHolderStruct>>(testContext);
 
     PFPlayerItemManagementGrantItemsToUsersRequestWrapper<> request;
     FillGrantItemsToUsersRequest(request);
@@ -376,11 +445,13 @@ void AutoGenPlayerItemManagementTests::TestPlayerItemManagementAdminGrantItemsTo
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region AdminIncrementLimitedEditionItemAvailability
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenPlayerItemManagementTests::TestPlayerItemManagementAdminIncrementLimitedEditionItemAvailability(TestContext& testContext)
 {
     auto async = std::make_unique<XAsyncHelper<XAsyncResult>>(testContext);
@@ -396,11 +467,13 @@ void AutoGenPlayerItemManagementTests::TestPlayerItemManagementAdminIncrementLim
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region AdminRevokeInventoryItem
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenPlayerItemManagementTests::TestPlayerItemManagementAdminRevokeInventoryItem(TestContext& testContext)
 {
     auto async = std::make_unique<XAsyncHelper<XAsyncResult>>(testContext);
@@ -416,14 +489,16 @@ void AutoGenPlayerItemManagementTests::TestPlayerItemManagementAdminRevokeInvent
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region AdminRevokeInventoryItems
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenPlayerItemManagementTests::TestPlayerItemManagementAdminRevokeInventoryItems(TestContext& testContext)
 {
-    struct AdminRevokeInventoryItemsResultHolder : public RevokeInventoryItemsResultHolder
+    struct AdminRevokeInventoryItemsResultHolderStruct : public RevokeInventoryItemsResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -442,7 +517,7 @@ void AutoGenPlayerItemManagementTests::TestPlayerItemManagementAdminRevokeInvent
             return ValidatePFPlayerItemManagementRevokeInventoryItemsResult(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<AdminRevokeInventoryItemsResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<AdminRevokeInventoryItemsResultHolderStruct>>(testContext);
 
     PFPlayerItemManagementRevokeInventoryItemsRequestWrapper<> request;
     FillRevokeInventoryItemsRequest(request);
@@ -455,14 +530,16 @@ void AutoGenPlayerItemManagementTests::TestPlayerItemManagementAdminRevokeInvent
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region AdminSubtractUserVirtualCurrency
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenPlayerItemManagementTests::TestPlayerItemManagementAdminSubtractUserVirtualCurrency(TestContext& testContext)
 {
-    struct AdminSubtractUserVirtualCurrencyResultHolder : public ModifyUserVirtualCurrencyResultHolder
+    struct AdminSubtractUserVirtualCurrencyResultHolderStruct : public ModifyUserVirtualCurrencyResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -481,7 +558,7 @@ void AutoGenPlayerItemManagementTests::TestPlayerItemManagementAdminSubtractUser
             return ValidatePFPlayerItemManagementModifyUserVirtualCurrencyResult(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<AdminSubtractUserVirtualCurrencyResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<AdminSubtractUserVirtualCurrencyResultHolderStruct>>(testContext);
 
     PFPlayerItemManagementAdminSubtractUserVirtualCurrencyRequestWrapper<> request;
     FillAdminSubtractUserVirtualCurrencyRequest(request);
@@ -494,6 +571,7 @@ void AutoGenPlayerItemManagementTests::TestPlayerItemManagementAdminSubtractUser
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
@@ -501,7 +579,7 @@ void AutoGenPlayerItemManagementTests::TestPlayerItemManagementAdminSubtractUser
 
 void AutoGenPlayerItemManagementTests::TestPlayerItemManagementClientAddUserVirtualCurrency(TestContext& testContext)
 {
-    struct ClientAddUserVirtualCurrencyResultHolder : public ModifyUserVirtualCurrencyResultHolder
+    struct ClientAddUserVirtualCurrencyResultHolderStruct : public ModifyUserVirtualCurrencyResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -520,7 +598,7 @@ void AutoGenPlayerItemManagementTests::TestPlayerItemManagementClientAddUserVirt
             return ValidatePFPlayerItemManagementModifyUserVirtualCurrencyResult(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<ClientAddUserVirtualCurrencyResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<ClientAddUserVirtualCurrencyResultHolderStruct>>(testContext);
 
     PFPlayerItemManagementClientAddUserVirtualCurrencyRequestWrapper<> request;
     FillClientAddUserVirtualCurrencyRequest(request);
@@ -540,7 +618,7 @@ void AutoGenPlayerItemManagementTests::TestPlayerItemManagementClientAddUserVirt
 
 void AutoGenPlayerItemManagementTests::TestPlayerItemManagementClientConfirmPurchase(TestContext& testContext)
 {
-    struct ClientConfirmPurchaseResultHolder : public ConfirmPurchaseResultHolder
+    struct ClientConfirmPurchaseResultHolderStruct : public ConfirmPurchaseResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -559,7 +637,7 @@ void AutoGenPlayerItemManagementTests::TestPlayerItemManagementClientConfirmPurc
             return ValidatePFPlayerItemManagementConfirmPurchaseResult(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<ClientConfirmPurchaseResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<ClientConfirmPurchaseResultHolderStruct>>(testContext);
 
     PFPlayerItemManagementConfirmPurchaseRequestWrapper<> request;
     FillConfirmPurchaseRequest(request);
@@ -579,7 +657,7 @@ void AutoGenPlayerItemManagementTests::TestPlayerItemManagementClientConfirmPurc
 
 void AutoGenPlayerItemManagementTests::TestPlayerItemManagementClientConsumeItem(TestContext& testContext)
 {
-    struct ClientConsumeItemResultHolder : public ConsumeItemResultHolder
+    struct ClientConsumeItemResultHolderStruct : public ConsumeItemResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -598,7 +676,7 @@ void AutoGenPlayerItemManagementTests::TestPlayerItemManagementClientConsumeItem
             return ValidatePFPlayerItemManagementConsumeItemResult(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<ClientConsumeItemResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<ClientConsumeItemResultHolderStruct>>(testContext);
 
     PFPlayerItemManagementClientConsumeItemRequestWrapper<> request;
     FillClientConsumeItemRequest(request);
@@ -618,7 +696,7 @@ void AutoGenPlayerItemManagementTests::TestPlayerItemManagementClientConsumeItem
 
 void AutoGenPlayerItemManagementTests::TestPlayerItemManagementClientGetCharacterInventory(TestContext& testContext)
 {
-    struct ClientGetCharacterInventoryResultHolder : public ClientGetCharacterInventoryResultHolder
+    struct ClientGetCharacterInventoryResultHolderStruct : public ClientGetCharacterInventoryResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -637,7 +715,7 @@ void AutoGenPlayerItemManagementTests::TestPlayerItemManagementClientGetCharacte
             return ValidatePFPlayerItemManagementClientGetCharacterInventoryResult(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<ClientGetCharacterInventoryResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<ClientGetCharacterInventoryResultHolderStruct>>(testContext);
 
     PFPlayerItemManagementClientGetCharacterInventoryRequestWrapper<> request;
     FillClientGetCharacterInventoryRequest(request);
@@ -657,7 +735,7 @@ void AutoGenPlayerItemManagementTests::TestPlayerItemManagementClientGetCharacte
 
 void AutoGenPlayerItemManagementTests::TestPlayerItemManagementClientGetPaymentToken(TestContext& testContext)
 {
-    struct ClientGetPaymentTokenResultHolder : public GetPaymentTokenResultHolder
+    struct ClientGetPaymentTokenResultHolderStruct : public GetPaymentTokenResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -676,7 +754,7 @@ void AutoGenPlayerItemManagementTests::TestPlayerItemManagementClientGetPaymentT
             return ValidatePFPlayerItemManagementGetPaymentTokenResult(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<ClientGetPaymentTokenResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<ClientGetPaymentTokenResultHolderStruct>>(testContext);
 
     PFPlayerItemManagementGetPaymentTokenRequestWrapper<> request;
     FillGetPaymentTokenRequest(request);
@@ -696,7 +774,7 @@ void AutoGenPlayerItemManagementTests::TestPlayerItemManagementClientGetPaymentT
 
 void AutoGenPlayerItemManagementTests::TestPlayerItemManagementClientGetPurchase(TestContext& testContext)
 {
-    struct ClientGetPurchaseResultHolder : public GetPurchaseResultHolder
+    struct ClientGetPurchaseResultHolderStruct : public GetPurchaseResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -715,7 +793,7 @@ void AutoGenPlayerItemManagementTests::TestPlayerItemManagementClientGetPurchase
             return ValidatePFPlayerItemManagementGetPurchaseResult(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<ClientGetPurchaseResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<ClientGetPurchaseResultHolderStruct>>(testContext);
 
     PFPlayerItemManagementGetPurchaseRequestWrapper<> request;
     FillGetPurchaseRequest(request);
@@ -735,7 +813,7 @@ void AutoGenPlayerItemManagementTests::TestPlayerItemManagementClientGetPurchase
 
 void AutoGenPlayerItemManagementTests::TestPlayerItemManagementClientGetUserInventory(TestContext& testContext)
 {
-    struct ClientGetUserInventoryResultHolder : public ClientGetUserInventoryResultHolder
+    struct ClientGetUserInventoryResultHolderStruct : public ClientGetUserInventoryResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -754,7 +832,7 @@ void AutoGenPlayerItemManagementTests::TestPlayerItemManagementClientGetUserInve
             return ValidatePFPlayerItemManagementClientGetUserInventoryResult(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<ClientGetUserInventoryResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<ClientGetUserInventoryResultHolderStruct>>(testContext);
 
     PFPlayerItemManagementClientGetUserInventoryRequestWrapper<> request;
     FillClientGetUserInventoryRequest(request);
@@ -774,7 +852,7 @@ void AutoGenPlayerItemManagementTests::TestPlayerItemManagementClientGetUserInve
 
 void AutoGenPlayerItemManagementTests::TestPlayerItemManagementClientPayForPurchase(TestContext& testContext)
 {
-    struct ClientPayForPurchaseResultHolder : public PayForPurchaseResultHolder
+    struct ClientPayForPurchaseResultHolderStruct : public PayForPurchaseResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -793,7 +871,7 @@ void AutoGenPlayerItemManagementTests::TestPlayerItemManagementClientPayForPurch
             return ValidatePFPlayerItemManagementPayForPurchaseResult(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<ClientPayForPurchaseResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<ClientPayForPurchaseResultHolderStruct>>(testContext);
 
     PFPlayerItemManagementPayForPurchaseRequestWrapper<> request;
     FillPayForPurchaseRequest(request);
@@ -813,7 +891,7 @@ void AutoGenPlayerItemManagementTests::TestPlayerItemManagementClientPayForPurch
 
 void AutoGenPlayerItemManagementTests::TestPlayerItemManagementClientPurchaseItem(TestContext& testContext)
 {
-    struct ClientPurchaseItemResultHolder : public PurchaseItemResultHolder
+    struct ClientPurchaseItemResultHolderStruct : public PurchaseItemResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -832,7 +910,7 @@ void AutoGenPlayerItemManagementTests::TestPlayerItemManagementClientPurchaseIte
             return ValidatePFPlayerItemManagementPurchaseItemResult(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<ClientPurchaseItemResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<ClientPurchaseItemResultHolderStruct>>(testContext);
 
     PFPlayerItemManagementPurchaseItemRequestWrapper<> request;
     FillPurchaseItemRequest(request);
@@ -852,7 +930,7 @@ void AutoGenPlayerItemManagementTests::TestPlayerItemManagementClientPurchaseIte
 
 void AutoGenPlayerItemManagementTests::TestPlayerItemManagementClientRedeemCoupon(TestContext& testContext)
 {
-    struct ClientRedeemCouponResultHolder : public RedeemCouponResultHolder
+    struct ClientRedeemCouponResultHolderStruct : public RedeemCouponResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -871,7 +949,7 @@ void AutoGenPlayerItemManagementTests::TestPlayerItemManagementClientRedeemCoupo
             return ValidatePFPlayerItemManagementRedeemCouponResult(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<ClientRedeemCouponResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<ClientRedeemCouponResultHolderStruct>>(testContext);
 
     PFPlayerItemManagementClientRedeemCouponRequestWrapper<> request;
     FillClientRedeemCouponRequest(request);
@@ -891,7 +969,7 @@ void AutoGenPlayerItemManagementTests::TestPlayerItemManagementClientRedeemCoupo
 
 void AutoGenPlayerItemManagementTests::TestPlayerItemManagementClientStartPurchase(TestContext& testContext)
 {
-    struct ClientStartPurchaseResultHolder : public StartPurchaseResultHolder
+    struct ClientStartPurchaseResultHolderStruct : public StartPurchaseResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -910,7 +988,7 @@ void AutoGenPlayerItemManagementTests::TestPlayerItemManagementClientStartPurcha
             return ValidatePFPlayerItemManagementStartPurchaseResult(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<ClientStartPurchaseResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<ClientStartPurchaseResultHolderStruct>>(testContext);
 
     PFPlayerItemManagementStartPurchaseRequestWrapper<> request;
     FillStartPurchaseRequest(request);
@@ -930,7 +1008,7 @@ void AutoGenPlayerItemManagementTests::TestPlayerItemManagementClientStartPurcha
 
 void AutoGenPlayerItemManagementTests::TestPlayerItemManagementClientSubtractUserVirtualCurrency(TestContext& testContext)
 {
-    struct ClientSubtractUserVirtualCurrencyResultHolder : public ModifyUserVirtualCurrencyResultHolder
+    struct ClientSubtractUserVirtualCurrencyResultHolderStruct : public ModifyUserVirtualCurrencyResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -949,7 +1027,7 @@ void AutoGenPlayerItemManagementTests::TestPlayerItemManagementClientSubtractUse
             return ValidatePFPlayerItemManagementModifyUserVirtualCurrencyResult(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<ClientSubtractUserVirtualCurrencyResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<ClientSubtractUserVirtualCurrencyResultHolderStruct>>(testContext);
 
     PFPlayerItemManagementClientSubtractUserVirtualCurrencyRequestWrapper<> request;
     FillClientSubtractUserVirtualCurrencyRequest(request);
@@ -969,7 +1047,7 @@ void AutoGenPlayerItemManagementTests::TestPlayerItemManagementClientSubtractUse
 
 void AutoGenPlayerItemManagementTests::TestPlayerItemManagementClientUnlockContainerInstance(TestContext& testContext)
 {
-    struct ClientUnlockContainerInstanceResultHolder : public UnlockContainerItemResultHolder
+    struct ClientUnlockContainerInstanceResultHolderStruct : public UnlockContainerItemResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -988,7 +1066,7 @@ void AutoGenPlayerItemManagementTests::TestPlayerItemManagementClientUnlockConta
             return ValidatePFPlayerItemManagementUnlockContainerItemResult(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<ClientUnlockContainerInstanceResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<ClientUnlockContainerInstanceResultHolderStruct>>(testContext);
 
     PFPlayerItemManagementClientUnlockContainerInstanceRequestWrapper<> request;
     FillClientUnlockContainerInstanceRequest(request);
@@ -1008,7 +1086,7 @@ void AutoGenPlayerItemManagementTests::TestPlayerItemManagementClientUnlockConta
 
 void AutoGenPlayerItemManagementTests::TestPlayerItemManagementClientUnlockContainerItem(TestContext& testContext)
 {
-    struct ClientUnlockContainerItemResultHolder : public UnlockContainerItemResultHolder
+    struct ClientUnlockContainerItemResultHolderStruct : public UnlockContainerItemResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -1027,7 +1105,7 @@ void AutoGenPlayerItemManagementTests::TestPlayerItemManagementClientUnlockConta
             return ValidatePFPlayerItemManagementUnlockContainerItemResult(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<ClientUnlockContainerItemResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<ClientUnlockContainerItemResultHolderStruct>>(testContext);
 
     PFPlayerItemManagementClientUnlockContainerItemRequestWrapper<> request;
     FillClientUnlockContainerItemRequest(request);
@@ -1045,9 +1123,10 @@ void AutoGenPlayerItemManagementTests::TestPlayerItemManagementClientUnlockConta
 
 #pragma region ServerAddCharacterVirtualCurrency
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenPlayerItemManagementTests::TestPlayerItemManagementServerAddCharacterVirtualCurrency(TestContext& testContext)
 {
-    struct ServerAddCharacterVirtualCurrencyResultHolder : public ModifyCharacterVirtualCurrencyResultHolder
+    struct ServerAddCharacterVirtualCurrencyResultHolderStruct : public ModifyCharacterVirtualCurrencyResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -1066,7 +1145,7 @@ void AutoGenPlayerItemManagementTests::TestPlayerItemManagementServerAddCharacte
             return ValidatePFPlayerItemManagementModifyCharacterVirtualCurrencyResult(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<ServerAddCharacterVirtualCurrencyResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<ServerAddCharacterVirtualCurrencyResultHolderStruct>>(testContext);
 
     PFPlayerItemManagementAddCharacterVirtualCurrencyRequestWrapper<> request;
     FillAddCharacterVirtualCurrencyRequest(request);
@@ -1079,14 +1158,16 @@ void AutoGenPlayerItemManagementTests::TestPlayerItemManagementServerAddCharacte
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region ServerAddUserVirtualCurrency
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenPlayerItemManagementTests::TestPlayerItemManagementServerAddUserVirtualCurrency(TestContext& testContext)
 {
-    struct ServerAddUserVirtualCurrencyResultHolder : public ModifyUserVirtualCurrencyResultHolder
+    struct ServerAddUserVirtualCurrencyResultHolderStruct : public ModifyUserVirtualCurrencyResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -1105,7 +1186,7 @@ void AutoGenPlayerItemManagementTests::TestPlayerItemManagementServerAddUserVirt
             return ValidatePFPlayerItemManagementModifyUserVirtualCurrencyResult(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<ServerAddUserVirtualCurrencyResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<ServerAddUserVirtualCurrencyResultHolderStruct>>(testContext);
 
     PFPlayerItemManagementServerAddUserVirtualCurrencyRequestWrapper<> request;
     FillServerAddUserVirtualCurrencyRequest(request);
@@ -1118,14 +1199,16 @@ void AutoGenPlayerItemManagementTests::TestPlayerItemManagementServerAddUserVirt
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region ServerConsumeItem
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenPlayerItemManagementTests::TestPlayerItemManagementServerConsumeItem(TestContext& testContext)
 {
-    struct ServerConsumeItemResultHolder : public ConsumeItemResultHolder
+    struct ServerConsumeItemResultHolderStruct : public ConsumeItemResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -1144,7 +1227,7 @@ void AutoGenPlayerItemManagementTests::TestPlayerItemManagementServerConsumeItem
             return ValidatePFPlayerItemManagementConsumeItemResult(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<ServerConsumeItemResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<ServerConsumeItemResultHolderStruct>>(testContext);
 
     PFPlayerItemManagementServerConsumeItemRequestWrapper<> request;
     FillServerConsumeItemRequest(request);
@@ -1157,14 +1240,16 @@ void AutoGenPlayerItemManagementTests::TestPlayerItemManagementServerConsumeItem
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region ServerEvaluateRandomResultTable
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenPlayerItemManagementTests::TestPlayerItemManagementServerEvaluateRandomResultTable(TestContext& testContext)
 {
-    struct ServerEvaluateRandomResultTableResultHolder : public EvaluateRandomResultTableResultHolder
+    struct ServerEvaluateRandomResultTableResultHolderStruct : public EvaluateRandomResultTableResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -1183,7 +1268,7 @@ void AutoGenPlayerItemManagementTests::TestPlayerItemManagementServerEvaluateRan
             return ValidatePFPlayerItemManagementEvaluateRandomResultTableResult(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<ServerEvaluateRandomResultTableResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<ServerEvaluateRandomResultTableResultHolderStruct>>(testContext);
 
     PFPlayerItemManagementEvaluateRandomResultTableRequestWrapper<> request;
     FillEvaluateRandomResultTableRequest(request);
@@ -1196,14 +1281,16 @@ void AutoGenPlayerItemManagementTests::TestPlayerItemManagementServerEvaluateRan
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region ServerGetCharacterInventory
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenPlayerItemManagementTests::TestPlayerItemManagementServerGetCharacterInventory(TestContext& testContext)
 {
-    struct ServerGetCharacterInventoryResultHolder : public ServerGetCharacterInventoryResultHolder
+    struct ServerGetCharacterInventoryResultHolderStruct : public ServerGetCharacterInventoryResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -1222,7 +1309,7 @@ void AutoGenPlayerItemManagementTests::TestPlayerItemManagementServerGetCharacte
             return ValidatePFPlayerItemManagementServerGetCharacterInventoryResult(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<ServerGetCharacterInventoryResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<ServerGetCharacterInventoryResultHolderStruct>>(testContext);
 
     PFPlayerItemManagementServerGetCharacterInventoryRequestWrapper<> request;
     FillServerGetCharacterInventoryRequest(request);
@@ -1235,14 +1322,16 @@ void AutoGenPlayerItemManagementTests::TestPlayerItemManagementServerGetCharacte
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region ServerGetRandomResultTables
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenPlayerItemManagementTests::TestPlayerItemManagementServerGetRandomResultTables(TestContext& testContext)
 {
-    struct ServerGetRandomResultTablesResultHolder : public GetRandomResultTablesResultHolder
+    struct ServerGetRandomResultTablesResultHolderStruct : public GetRandomResultTablesResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -1261,7 +1350,7 @@ void AutoGenPlayerItemManagementTests::TestPlayerItemManagementServerGetRandomRe
             return ValidatePFGetRandomResultTablesResult(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<ServerGetRandomResultTablesResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<ServerGetRandomResultTablesResultHolderStruct>>(testContext);
 
     PFPlayerItemManagementGetRandomResultTablesRequestWrapper<> request;
     FillGetRandomResultTablesRequest(request);
@@ -1274,14 +1363,16 @@ void AutoGenPlayerItemManagementTests::TestPlayerItemManagementServerGetRandomRe
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region ServerGetUserInventory
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenPlayerItemManagementTests::TestPlayerItemManagementServerGetUserInventory(TestContext& testContext)
 {
-    struct ServerGetUserInventoryResultHolder : public ServerGetUserInventoryResultHolder
+    struct ServerGetUserInventoryResultHolderStruct : public ServerGetUserInventoryResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -1300,7 +1391,7 @@ void AutoGenPlayerItemManagementTests::TestPlayerItemManagementServerGetUserInve
             return ValidatePFPlayerItemManagementServerGetUserInventoryResult(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<ServerGetUserInventoryResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<ServerGetUserInventoryResultHolderStruct>>(testContext);
 
     PFPlayerItemManagementServerGetUserInventoryRequestWrapper<> request;
     FillServerGetUserInventoryRequest(request);
@@ -1313,14 +1404,16 @@ void AutoGenPlayerItemManagementTests::TestPlayerItemManagementServerGetUserInve
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region ServerGrantItemsToCharacter
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenPlayerItemManagementTests::TestPlayerItemManagementServerGrantItemsToCharacter(TestContext& testContext)
 {
-    struct ServerGrantItemsToCharacterResultHolder : public GrantItemsToCharacterResultHolder
+    struct ServerGrantItemsToCharacterResultHolderStruct : public GrantItemsToCharacterResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -1339,7 +1432,7 @@ void AutoGenPlayerItemManagementTests::TestPlayerItemManagementServerGrantItemsT
             return ValidatePFPlayerItemManagementGrantItemsToCharacterResult(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<ServerGrantItemsToCharacterResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<ServerGrantItemsToCharacterResultHolderStruct>>(testContext);
 
     PFPlayerItemManagementGrantItemsToCharacterRequestWrapper<> request;
     FillGrantItemsToCharacterRequest(request);
@@ -1352,14 +1445,16 @@ void AutoGenPlayerItemManagementTests::TestPlayerItemManagementServerGrantItemsT
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region ServerGrantItemsToUser
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenPlayerItemManagementTests::TestPlayerItemManagementServerGrantItemsToUser(TestContext& testContext)
 {
-    struct ServerGrantItemsToUserResultHolder : public GrantItemsToUserResultHolder
+    struct ServerGrantItemsToUserResultHolderStruct : public GrantItemsToUserResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -1378,7 +1473,7 @@ void AutoGenPlayerItemManagementTests::TestPlayerItemManagementServerGrantItemsT
             return ValidatePFPlayerItemManagementGrantItemsToUserResult(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<ServerGrantItemsToUserResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<ServerGrantItemsToUserResultHolderStruct>>(testContext);
 
     PFPlayerItemManagementGrantItemsToUserRequestWrapper<> request;
     FillGrantItemsToUserRequest(request);
@@ -1391,14 +1486,16 @@ void AutoGenPlayerItemManagementTests::TestPlayerItemManagementServerGrantItemsT
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region ServerGrantItemsToUsers
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenPlayerItemManagementTests::TestPlayerItemManagementServerGrantItemsToUsers(TestContext& testContext)
 {
-    struct ServerGrantItemsToUsersResultHolder : public GrantItemsToUsersResultHolder
+    struct ServerGrantItemsToUsersResultHolderStruct : public GrantItemsToUsersResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -1417,7 +1514,7 @@ void AutoGenPlayerItemManagementTests::TestPlayerItemManagementServerGrantItemsT
             return ValidatePFPlayerItemManagementGrantItemsToUsersResult(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<ServerGrantItemsToUsersResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<ServerGrantItemsToUsersResultHolderStruct>>(testContext);
 
     PFPlayerItemManagementGrantItemsToUsersRequestWrapper<> request;
     FillGrantItemsToUsersRequest(request);
@@ -1430,14 +1527,16 @@ void AutoGenPlayerItemManagementTests::TestPlayerItemManagementServerGrantItemsT
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region ServerModifyItemUses
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenPlayerItemManagementTests::TestPlayerItemManagementServerModifyItemUses(TestContext& testContext)
 {
-    struct ServerModifyItemUsesResultHolder : public ModifyItemUsesResultHolder
+    struct ServerModifyItemUsesResultHolderStruct : public ModifyItemUsesResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -1456,7 +1555,7 @@ void AutoGenPlayerItemManagementTests::TestPlayerItemManagementServerModifyItemU
             return ValidatePFPlayerItemManagementModifyItemUsesResult(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<ServerModifyItemUsesResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<ServerModifyItemUsesResultHolderStruct>>(testContext);
 
     PFPlayerItemManagementModifyItemUsesRequestWrapper<> request;
     FillModifyItemUsesRequest(request);
@@ -1469,11 +1568,13 @@ void AutoGenPlayerItemManagementTests::TestPlayerItemManagementServerModifyItemU
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region ServerMoveItemToCharacterFromCharacter
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenPlayerItemManagementTests::TestPlayerItemManagementServerMoveItemToCharacterFromCharacter(TestContext& testContext)
 {
     auto async = std::make_unique<XAsyncHelper<XAsyncResult>>(testContext);
@@ -1489,11 +1590,13 @@ void AutoGenPlayerItemManagementTests::TestPlayerItemManagementServerMoveItemToC
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region ServerMoveItemToCharacterFromUser
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenPlayerItemManagementTests::TestPlayerItemManagementServerMoveItemToCharacterFromUser(TestContext& testContext)
 {
     auto async = std::make_unique<XAsyncHelper<XAsyncResult>>(testContext);
@@ -1509,11 +1612,13 @@ void AutoGenPlayerItemManagementTests::TestPlayerItemManagementServerMoveItemToC
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region ServerMoveItemToUserFromCharacter
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenPlayerItemManagementTests::TestPlayerItemManagementServerMoveItemToUserFromCharacter(TestContext& testContext)
 {
     auto async = std::make_unique<XAsyncHelper<XAsyncResult>>(testContext);
@@ -1529,14 +1634,16 @@ void AutoGenPlayerItemManagementTests::TestPlayerItemManagementServerMoveItemToU
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region ServerRedeemCoupon
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenPlayerItemManagementTests::TestPlayerItemManagementServerRedeemCoupon(TestContext& testContext)
 {
-    struct ServerRedeemCouponResultHolder : public RedeemCouponResultHolder
+    struct ServerRedeemCouponResultHolderStruct : public RedeemCouponResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -1555,7 +1662,7 @@ void AutoGenPlayerItemManagementTests::TestPlayerItemManagementServerRedeemCoupo
             return ValidatePFPlayerItemManagementRedeemCouponResult(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<ServerRedeemCouponResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<ServerRedeemCouponResultHolderStruct>>(testContext);
 
     PFPlayerItemManagementServerRedeemCouponRequestWrapper<> request;
     FillServerRedeemCouponRequest(request);
@@ -1568,14 +1675,16 @@ void AutoGenPlayerItemManagementTests::TestPlayerItemManagementServerRedeemCoupo
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region ServerReportPlayer
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenPlayerItemManagementTests::TestPlayerItemManagementServerReportPlayer(TestContext& testContext)
 {
-    struct ServerReportPlayerResultHolder : public ReportPlayerServerResultHolder
+    struct ServerReportPlayerResultHolderStruct : public ReportPlayerServerResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -1589,7 +1698,7 @@ void AutoGenPlayerItemManagementTests::TestPlayerItemManagementServerReportPlaye
             return ValidatePFPlayerItemManagementReportPlayerServerResult(&result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<ServerReportPlayerResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<ServerReportPlayerResultHolderStruct>>(testContext);
 
     PFPlayerItemManagementReportPlayerServerRequestWrapper<> request;
     FillReportPlayerServerRequest(request);
@@ -1602,11 +1711,13 @@ void AutoGenPlayerItemManagementTests::TestPlayerItemManagementServerReportPlaye
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region ServerRevokeInventoryItem
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenPlayerItemManagementTests::TestPlayerItemManagementServerRevokeInventoryItem(TestContext& testContext)
 {
     auto async = std::make_unique<XAsyncHelper<XAsyncResult>>(testContext);
@@ -1622,14 +1733,16 @@ void AutoGenPlayerItemManagementTests::TestPlayerItemManagementServerRevokeInven
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region ServerRevokeInventoryItems
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenPlayerItemManagementTests::TestPlayerItemManagementServerRevokeInventoryItems(TestContext& testContext)
 {
-    struct ServerRevokeInventoryItemsResultHolder : public RevokeInventoryItemsResultHolder
+    struct ServerRevokeInventoryItemsResultHolderStruct : public RevokeInventoryItemsResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -1648,7 +1761,7 @@ void AutoGenPlayerItemManagementTests::TestPlayerItemManagementServerRevokeInven
             return ValidatePFPlayerItemManagementRevokeInventoryItemsResult(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<ServerRevokeInventoryItemsResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<ServerRevokeInventoryItemsResultHolderStruct>>(testContext);
 
     PFPlayerItemManagementRevokeInventoryItemsRequestWrapper<> request;
     FillRevokeInventoryItemsRequest(request);
@@ -1661,14 +1774,16 @@ void AutoGenPlayerItemManagementTests::TestPlayerItemManagementServerRevokeInven
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region ServerSubtractCharacterVirtualCurrency
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenPlayerItemManagementTests::TestPlayerItemManagementServerSubtractCharacterVirtualCurrency(TestContext& testContext)
 {
-    struct ServerSubtractCharacterVirtualCurrencyResultHolder : public ModifyCharacterVirtualCurrencyResultHolder
+    struct ServerSubtractCharacterVirtualCurrencyResultHolderStruct : public ModifyCharacterVirtualCurrencyResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -1687,7 +1802,7 @@ void AutoGenPlayerItemManagementTests::TestPlayerItemManagementServerSubtractCha
             return ValidatePFPlayerItemManagementModifyCharacterVirtualCurrencyResult(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<ServerSubtractCharacterVirtualCurrencyResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<ServerSubtractCharacterVirtualCurrencyResultHolderStruct>>(testContext);
 
     PFPlayerItemManagementSubtractCharacterVirtualCurrencyRequestWrapper<> request;
     FillSubtractCharacterVirtualCurrencyRequest(request);
@@ -1700,14 +1815,16 @@ void AutoGenPlayerItemManagementTests::TestPlayerItemManagementServerSubtractCha
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region ServerSubtractUserVirtualCurrency
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenPlayerItemManagementTests::TestPlayerItemManagementServerSubtractUserVirtualCurrency(TestContext& testContext)
 {
-    struct ServerSubtractUserVirtualCurrencyResultHolder : public ModifyUserVirtualCurrencyResultHolder
+    struct ServerSubtractUserVirtualCurrencyResultHolderStruct : public ModifyUserVirtualCurrencyResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -1726,7 +1843,7 @@ void AutoGenPlayerItemManagementTests::TestPlayerItemManagementServerSubtractUse
             return ValidatePFPlayerItemManagementModifyUserVirtualCurrencyResult(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<ServerSubtractUserVirtualCurrencyResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<ServerSubtractUserVirtualCurrencyResultHolderStruct>>(testContext);
 
     PFPlayerItemManagementServerSubtractUserVirtualCurrencyRequestWrapper<> request;
     FillServerSubtractUserVirtualCurrencyRequest(request);
@@ -1739,14 +1856,16 @@ void AutoGenPlayerItemManagementTests::TestPlayerItemManagementServerSubtractUse
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region ServerUnlockContainerInstance
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenPlayerItemManagementTests::TestPlayerItemManagementServerUnlockContainerInstance(TestContext& testContext)
 {
-    struct ServerUnlockContainerInstanceResultHolder : public UnlockContainerItemResultHolder
+    struct ServerUnlockContainerInstanceResultHolderStruct : public UnlockContainerItemResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -1765,7 +1884,7 @@ void AutoGenPlayerItemManagementTests::TestPlayerItemManagementServerUnlockConta
             return ValidatePFPlayerItemManagementUnlockContainerItemResult(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<ServerUnlockContainerInstanceResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<ServerUnlockContainerInstanceResultHolderStruct>>(testContext);
 
     PFPlayerItemManagementServerUnlockContainerInstanceRequestWrapper<> request;
     FillServerUnlockContainerInstanceRequest(request);
@@ -1778,14 +1897,16 @@ void AutoGenPlayerItemManagementTests::TestPlayerItemManagementServerUnlockConta
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region ServerUnlockContainerItem
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenPlayerItemManagementTests::TestPlayerItemManagementServerUnlockContainerItem(TestContext& testContext)
 {
-    struct ServerUnlockContainerItemResultHolder : public UnlockContainerItemResultHolder
+    struct ServerUnlockContainerItemResultHolderStruct : public UnlockContainerItemResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -1804,7 +1925,7 @@ void AutoGenPlayerItemManagementTests::TestPlayerItemManagementServerUnlockConta
             return ValidatePFPlayerItemManagementUnlockContainerItemResult(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<ServerUnlockContainerItemResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<ServerUnlockContainerItemResultHolderStruct>>(testContext);
 
     PFPlayerItemManagementServerUnlockContainerItemRequestWrapper<> request;
     FillServerUnlockContainerItemRequest(request);
@@ -1817,11 +1938,13 @@ void AutoGenPlayerItemManagementTests::TestPlayerItemManagementServerUnlockConta
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region ServerUpdateUserInventoryItemCustomData
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenPlayerItemManagementTests::TestPlayerItemManagementServerUpdateUserInventoryItemCustomData(TestContext& testContext)
 {
     auto async = std::make_unique<XAsyncHelper<XAsyncResult>>(testContext);
@@ -1837,6 +1960,7 @@ void AutoGenPlayerItemManagementTests::TestPlayerItemManagementServerUpdateUserI
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 

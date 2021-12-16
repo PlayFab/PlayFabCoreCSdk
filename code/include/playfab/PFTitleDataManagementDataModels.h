@@ -910,6 +910,11 @@ typedef struct PFTitleDataManagementSetTitleDataRequest
     _Null_terminated_ const char* key;
 
     /// <summary>
+    /// (Optional) System Data of the Azure Resource.
+    /// </summary>
+    _Maybenull_ PFAzureResourceSystemData const* systemData;
+
+    /// <summary>
     /// (Optional) Unique identifier for the title, found in the Settings > Game Properties section of
     /// the PlayFab developer site when a title has been selected.
     /// </summary>

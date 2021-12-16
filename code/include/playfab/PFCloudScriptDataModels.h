@@ -501,43 +501,6 @@ typedef struct PFCloudScriptGetFunctionRequest
 } PFCloudScriptGetFunctionRequest;
 
 /// <summary>
-/// PFCloudScriptAzureResourceSystemData data model.
-/// </summary>
-typedef struct PFCloudScriptAzureResourceSystemData
-{
-    /// <summary>
-    /// (Optional) The timestamp of resource creation (UTC).
-    /// </summary>
-    _Maybenull_ time_t const* createdAt;
-
-    /// <summary>
-    /// (Optional) The identity that created the resource.
-    /// </summary>
-    _Maybenull_ _Null_terminated_ const char* createdBy;
-
-    /// <summary>
-    /// (Optional) The type of identity that created the resource.
-    /// </summary>
-    _Maybenull_ _Null_terminated_ const char* createdByType;
-
-    /// <summary>
-    /// (Optional) The type of identity that last modified the resource.
-    /// </summary>
-    _Maybenull_ time_t const* lastModifiedAt;
-
-    /// <summary>
-    /// (Optional) The identity that last modified the resource.
-    /// </summary>
-    _Maybenull_ _Null_terminated_ const char* lastModifiedBy;
-
-    /// <summary>
-    /// (Optional) The type of identity that last modified the resource.
-    /// </summary>
-    _Maybenull_ _Null_terminated_ const char* lastModifiedByType;
-
-} PFCloudScriptAzureResourceSystemData;
-
-/// <summary>
 /// PFCloudScriptGetFunctionResult data model.
 /// </summary>
 typedef struct PFCloudScriptGetFunctionResult
@@ -561,7 +524,7 @@ typedef struct PFCloudScriptGetFunctionResult
     /// <summary>
     /// (Optional) System Data of the Azure Resource.
     /// </summary>
-    _Maybenull_ PFCloudScriptAzureResourceSystemData const* systemData;
+    _Maybenull_ PFAzureResourceSystemData const* systemData;
 
     /// <summary>
     /// (Optional) The trigger type for the function.
@@ -651,7 +614,7 @@ typedef struct PFCloudScriptHttpFunctionModel
     /// <summary>
     /// (Optional) The System data of the Azure Resource.
     /// </summary>
-    _Maybenull_ PFCloudScriptAzureResourceSystemData const* systemData;
+    _Maybenull_ PFAzureResourceSystemData const* systemData;
 
 } PFCloudScriptHttpFunctionModel;
 
@@ -695,7 +658,7 @@ typedef struct PFCloudScriptQueuedFunctionModel
     /// <summary>
     /// (Optional) The System data of the Azure Resource.
     /// </summary>
-    _Maybenull_ PFCloudScriptAzureResourceSystemData const* systemData;
+    _Maybenull_ PFAzureResourceSystemData const* systemData;
 
 } PFCloudScriptQueuedFunctionModel;
 
@@ -914,7 +877,7 @@ typedef struct PFCloudScriptRegisterHttpFunctionRequest
     /// <summary>
     /// (Optional) System Data of the Azure Resource.
     /// </summary>
-    _Maybenull_ PFCloudScriptAzureResourceSystemData const* systemData;
+    _Maybenull_ PFAzureResourceSystemData const* systemData;
 
     /// <summary>
     /// (Optional) The Id of the parent Title.
@@ -963,7 +926,7 @@ typedef struct PFCloudScriptRegisterQueuedFunctionRequest
     /// <summary>
     /// (Optional) System Data of the Azure Resource.
     /// </summary>
-    _Maybenull_ PFCloudScriptAzureResourceSystemData const* systemData;
+    _Maybenull_ PFAzureResourceSystemData const* systemData;
 
     /// <summary>
     /// (Optional) The Id of the parent Title.

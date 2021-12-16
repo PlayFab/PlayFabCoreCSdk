@@ -42,29 +42,5 @@ struct GetPlayersInSegmentResultHolder : public XAsyncResult, public std::enable
     PFPlayStreamGetPlayersInSegmentResult* result{ nullptr };
 };
 
-struct GetPlayerTagsResultHolder : public XAsyncResult, public std::enable_shared_from_this<GetPlayerTagsResultHolder>
-{
-    GetPlayerTagsResultHolder() = default;
-    GetPlayerTagsResultHolder(const GetPlayerTagsResultHolder&) = delete;
-    GetPlayerTagsResultHolder(GetPlayerTagsResultHolder&&) = default;
-    GetPlayerTagsResultHolder& operator=(const GetPlayerTagsResultHolder&) = delete;
-    GetPlayerTagsResultHolder& operator=(GetPlayerTagsResultHolder&&) = default;
-    ~GetPlayerTagsResultHolder() = default;
-
-    PFPlayStreamGetPlayerTagsResult* result{ nullptr };
-};
-
-struct WriteEventsResponseHolder : public XAsyncResult, public std::enable_shared_from_this<WriteEventsResponseHolder>
-{
-    WriteEventsResponseHolder() = default;
-    WriteEventsResponseHolder(const WriteEventsResponseHolder&) = delete;
-    WriteEventsResponseHolder(WriteEventsResponseHolder&&) = default;
-    WriteEventsResponseHolder& operator=(const WriteEventsResponseHolder&) = delete;
-    WriteEventsResponseHolder& operator=(WriteEventsResponseHolder&&) = default;
-    ~WriteEventsResponseHolder() = default;
-
-    PFPlayStreamWriteEventsResponse* result{ nullptr };
-};
-
 
 }

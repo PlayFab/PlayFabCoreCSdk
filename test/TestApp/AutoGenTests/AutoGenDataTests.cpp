@@ -163,7 +163,7 @@ void AutoGenDataTests::SetUp(TestContext& testContext)
 
 void AutoGenDataTests::TestDataAbortFileUploadsPrerequisiteInitiateFileUploads(TestContext& testContext)
 {
-    struct InitiateFileUploadsResultHolder : public InitiateFileUploadsResponseHolder
+    struct InitiateFileUploadsResultHolderStruct : public InitiateFileUploadsResponseHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -177,7 +177,7 @@ void AutoGenDataTests::TestDataAbortFileUploadsPrerequisiteInitiateFileUploads(T
             return StoreAbortFileUploadsPrerequisitePFDataInitiateFileUploadsResponse(shared_from_this());
         }
     };
-    auto async = std::make_unique<XAsyncHelper<InitiateFileUploadsResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<InitiateFileUploadsResultHolderStruct>>(testContext);
 
     PFDataInitiateFileUploadsRequestWrapper<> request;
     FillAbortFileUploadsPrerequisiteInitiateFileUploadsRequest(request);
@@ -192,7 +192,7 @@ void AutoGenDataTests::TestDataAbortFileUploadsPrerequisiteInitiateFileUploads(T
 } 
 void AutoGenDataTests::TestDataAbortFileUploads(TestContext& testContext)
 {
-    struct AbortFileUploadsResultHolder : public AbortFileUploadsResponseHolder
+    struct AbortFileUploadsResultHolderStruct : public AbortFileUploadsResponseHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -211,7 +211,7 @@ void AutoGenDataTests::TestDataAbortFileUploads(TestContext& testContext)
             return ValidatePFDataAbortFileUploadsResponse(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<AbortFileUploadsResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<AbortFileUploadsResultHolderStruct>>(testContext);
 
     PFDataAbortFileUploadsRequestWrapper<> request;
     FillAbortFileUploadsRequest(request);
@@ -231,7 +231,7 @@ void AutoGenDataTests::TestDataAbortFileUploads(TestContext& testContext)
 
 void AutoGenDataTests::TestDataDeleteFilesPrerequisiteInitiateFileUploads(TestContext& testContext)
 {
-    struct InitiateFileUploadsResultHolder : public InitiateFileUploadsResponseHolder
+    struct InitiateFileUploadsResultHolderStruct : public InitiateFileUploadsResponseHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -245,7 +245,7 @@ void AutoGenDataTests::TestDataDeleteFilesPrerequisiteInitiateFileUploads(TestCo
             return StoreDeleteFilesPrerequisitePFDataInitiateFileUploadsResponse(shared_from_this());
         }
     };
-    auto async = std::make_unique<XAsyncHelper<InitiateFileUploadsResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<InitiateFileUploadsResultHolderStruct>>(testContext);
 
     PFDataInitiateFileUploadsRequestWrapper<> request;
     FillDeleteFilesPrerequisiteInitiateFileUploadsRequest(request);
@@ -260,7 +260,7 @@ void AutoGenDataTests::TestDataDeleteFilesPrerequisiteInitiateFileUploads(TestCo
 } 
 void AutoGenDataTests::TestDataDeleteFilesPrerequisiteFinalizeFileUploads(TestContext& testContext)
 {
-    struct FinalizeFileUploadsResultHolder : public FinalizeFileUploadsResponseHolder
+    struct FinalizeFileUploadsResultHolderStruct : public FinalizeFileUploadsResponseHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -274,7 +274,7 @@ void AutoGenDataTests::TestDataDeleteFilesPrerequisiteFinalizeFileUploads(TestCo
             return StoreDeleteFilesPrerequisitePFDataFinalizeFileUploadsResponse(shared_from_this());
         }
     };
-    auto async = std::make_unique<XAsyncHelper<FinalizeFileUploadsResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<FinalizeFileUploadsResultHolderStruct>>(testContext);
 
     PFDataFinalizeFileUploadsRequestWrapper<> request;
     FillDeleteFilesPrerequisiteFinalizeFileUploadsRequest(request);
@@ -289,7 +289,7 @@ void AutoGenDataTests::TestDataDeleteFilesPrerequisiteFinalizeFileUploads(TestCo
 } 
 void AutoGenDataTests::TestDataDeleteFiles(TestContext& testContext)
 {
-    struct DeleteFilesResultHolder : public DeleteFilesResponseHolder
+    struct DeleteFilesResultHolderStruct : public DeleteFilesResponseHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -308,7 +308,7 @@ void AutoGenDataTests::TestDataDeleteFiles(TestContext& testContext)
             return ValidatePFDataDeleteFilesResponse(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<DeleteFilesResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<DeleteFilesResultHolderStruct>>(testContext);
 
     PFDataDeleteFilesRequestWrapper<> request;
     FillDeleteFilesRequest(request);
@@ -328,7 +328,7 @@ void AutoGenDataTests::TestDataDeleteFiles(TestContext& testContext)
 
 void AutoGenDataTests::TestDataFinalizeFileUploadsPrerequisiteInitiateFileUploads(TestContext& testContext)
 {
-    struct InitiateFileUploadsResultHolder : public InitiateFileUploadsResponseHolder
+    struct InitiateFileUploadsResultHolderStruct : public InitiateFileUploadsResponseHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -342,7 +342,7 @@ void AutoGenDataTests::TestDataFinalizeFileUploadsPrerequisiteInitiateFileUpload
             return StoreFinalizeFileUploadsPrerequisitePFDataInitiateFileUploadsResponse(shared_from_this());
         }
     };
-    auto async = std::make_unique<XAsyncHelper<InitiateFileUploadsResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<InitiateFileUploadsResultHolderStruct>>(testContext);
 
     PFDataInitiateFileUploadsRequestWrapper<> request;
     FillFinalizeFileUploadsPrerequisiteInitiateFileUploadsRequest(request);
@@ -357,7 +357,7 @@ void AutoGenDataTests::TestDataFinalizeFileUploadsPrerequisiteInitiateFileUpload
 } 
 void AutoGenDataTests::TestDataFinalizeFileUploads(TestContext& testContext)
 {
-    struct FinalizeFileUploadsResultHolder : public FinalizeFileUploadsResponseHolder
+    struct FinalizeFileUploadsResultHolderStruct : public FinalizeFileUploadsResponseHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -376,7 +376,7 @@ void AutoGenDataTests::TestDataFinalizeFileUploads(TestContext& testContext)
             return ValidatePFDataFinalizeFileUploadsResponse(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<FinalizeFileUploadsResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<FinalizeFileUploadsResultHolderStruct>>(testContext);
 
     PFDataFinalizeFileUploadsRequestWrapper<> request;
     FillFinalizeFileUploadsRequest(request);
@@ -391,7 +391,7 @@ void AutoGenDataTests::TestDataFinalizeFileUploads(TestContext& testContext)
 }
 void AutoGenDataTests::TestDataFinalizeFileUploadsCleanupDeleteFiles(TestContext& testContext)
 {
-    struct DeleteFilesResultHolder : public DeleteFilesResponseHolder
+    struct DeleteFilesResultHolderStruct : public DeleteFilesResponseHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -403,7 +403,7 @@ void AutoGenDataTests::TestDataFinalizeFileUploadsCleanupDeleteFiles(TestContext
             return StoreFinalizeFileUploadsCleanupPFDataDeleteFilesResponse(shared_from_this());
         }
     };
-    auto async = std::make_unique<XAsyncHelper<DeleteFilesResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<DeleteFilesResultHolderStruct>>(testContext);
 
     PFDataDeleteFilesRequestWrapper<> request;
     FillFinalizeFileUploadsCleanupDeleteFilesRequest(request);
@@ -423,7 +423,7 @@ void AutoGenDataTests::TestDataFinalizeFileUploadsCleanupDeleteFiles(TestContext
 
 void AutoGenDataTests::TestDataGetFiles(TestContext& testContext)
 {
-    struct GetFilesResultHolder : public GetFilesResponseHolder
+    struct GetFilesResultHolderStruct : public GetFilesResponseHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -442,7 +442,7 @@ void AutoGenDataTests::TestDataGetFiles(TestContext& testContext)
             return ValidatePFDataGetFilesResponse(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<GetFilesResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<GetFilesResultHolderStruct>>(testContext);
 
     PFDataGetFilesRequestWrapper<> request;
     FillGetFilesRequest(request);
@@ -462,7 +462,7 @@ void AutoGenDataTests::TestDataGetFiles(TestContext& testContext)
 
 void AutoGenDataTests::TestDataGetObjects(TestContext& testContext)
 {
-    struct GetObjectsResultHolder : public GetObjectsResponseHolder
+    struct GetObjectsResultHolderStruct : public GetObjectsResponseHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -481,7 +481,7 @@ void AutoGenDataTests::TestDataGetObjects(TestContext& testContext)
             return ValidatePFDataGetObjectsResponse(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<GetObjectsResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<GetObjectsResultHolderStruct>>(testContext);
 
     PFDataGetObjectsRequestWrapper<> request;
     FillGetObjectsRequest(request);
@@ -501,7 +501,7 @@ void AutoGenDataTests::TestDataGetObjects(TestContext& testContext)
 
 void AutoGenDataTests::TestDataInitiateFileUploads(TestContext& testContext)
 {
-    struct InitiateFileUploadsResultHolder : public InitiateFileUploadsResponseHolder
+    struct InitiateFileUploadsResultHolderStruct : public InitiateFileUploadsResponseHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -520,7 +520,7 @@ void AutoGenDataTests::TestDataInitiateFileUploads(TestContext& testContext)
             return ValidatePFDataInitiateFileUploadsResponse(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<InitiateFileUploadsResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<InitiateFileUploadsResultHolderStruct>>(testContext);
 
     PFDataInitiateFileUploadsRequestWrapper<> request;
     FillInitiateFileUploadsRequest(request);
@@ -535,7 +535,7 @@ void AutoGenDataTests::TestDataInitiateFileUploads(TestContext& testContext)
 }
 void AutoGenDataTests::TestDataInitiateFileUploadsCleanupAbortFileUploads(TestContext& testContext)
 {
-    struct AbortFileUploadsResultHolder : public AbortFileUploadsResponseHolder
+    struct AbortFileUploadsResultHolderStruct : public AbortFileUploadsResponseHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -547,7 +547,7 @@ void AutoGenDataTests::TestDataInitiateFileUploadsCleanupAbortFileUploads(TestCo
             return StoreInitiateFileUploadsCleanupPFDataAbortFileUploadsResponse(shared_from_this());
         }
     };
-    auto async = std::make_unique<XAsyncHelper<AbortFileUploadsResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<AbortFileUploadsResultHolderStruct>>(testContext);
 
     PFDataAbortFileUploadsRequestWrapper<> request;
     FillInitiateFileUploadsCleanupAbortFileUploadsRequest(request);
@@ -567,7 +567,7 @@ void AutoGenDataTests::TestDataInitiateFileUploadsCleanupAbortFileUploads(TestCo
 
 void AutoGenDataTests::TestDataSetObjectsPrerequisiteSetObjects(TestContext& testContext)
 {
-    struct SetObjectsResultHolder : public SetObjectsResponseHolder
+    struct SetObjectsResultHolderStruct : public SetObjectsResponseHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -581,7 +581,7 @@ void AutoGenDataTests::TestDataSetObjectsPrerequisiteSetObjects(TestContext& tes
             return StoreSetObjectsPrerequisitePFDataSetObjectsResponse(shared_from_this());
         }
     };
-    auto async = std::make_unique<XAsyncHelper<SetObjectsResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<SetObjectsResultHolderStruct>>(testContext);
 
     PFDataSetObjectsRequestWrapper<> request;
     FillSetObjectsPrerequisiteSetObjectsRequest(request);
@@ -596,7 +596,7 @@ void AutoGenDataTests::TestDataSetObjectsPrerequisiteSetObjects(TestContext& tes
 } 
 void AutoGenDataTests::TestDataSetObjects(TestContext& testContext)
 {
-    struct SetObjectsResultHolder : public SetObjectsResponseHolder
+    struct SetObjectsResultHolderStruct : public SetObjectsResponseHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -615,7 +615,7 @@ void AutoGenDataTests::TestDataSetObjects(TestContext& testContext)
             return ValidatePFDataSetObjectsResponse(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<SetObjectsResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<SetObjectsResultHolderStruct>>(testContext);
 
     PFDataSetObjectsRequestWrapper<> request;
     FillSetObjectsRequest(request);

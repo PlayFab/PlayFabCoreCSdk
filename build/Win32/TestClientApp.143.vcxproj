@@ -167,6 +167,8 @@
     <ClInclude Include="$(PlayFabTestDir)\TestApp\TestRunner.h" />
     <ClCompile Include="$(PlayFabTestDir)\TestApp\TestUtils.cpp" />
     <ClInclude Include="$(PlayFabTestDir)\TestApp\TestUtils.h" />
+    <ClCompile Include="$(PlayFabTestDir)\TestApp\XAsyncDispatcher.cpp" />
+    <ClInclude Include="$(PlayFabTestDir)\TestApp\XAsyncDispatcher.h" />
     <ClInclude Include="$(PlayFabTestDir)\TestApp\XAsyncHelper.h" />
   </ItemGroup>
   <ItemGroup>
@@ -174,6 +176,11 @@
     <ClCompile Include="$(PlayFabTestDir)\TestApp\TestAppPch.cpp">
       <PrecompiledHeader>Create</PrecompiledHeader>
     </ClCompile>
+    <ClInclude Include="$(PlayFabTestDir)\TestApp\AutoGenTests\AutoGenEventsTests.h" />
+    <ClInclude Include="$(PlayFabTestDir)\TestApp\AutoGenTests\AutoGenEventsResultHolders.h" />
+    <ClCompile Include="$(PlayFabTestDir)\TestApp\AutoGenTests\AutoGenEventsTestData.cpp" />
+    <ClCompile Include="$(PlayFabTestDir)\TestApp\AutoGenTests\AutoGenEventsTestLog.cpp" />
+    <ClCompile Include="$(PlayFabTestDir)\TestApp\AutoGenTests\AutoGenEventsTests.cpp" /> 
     <ClInclude Include="$(PlayFabTestDir)\TestApp\AutoGenTests\AutoGenFriendsTests.h" />
     <ClInclude Include="$(PlayFabTestDir)\TestApp\AutoGenTests\AutoGenFriendsResultHolders.h" />
     <ClCompile Include="$(PlayFabTestDir)\TestApp\AutoGenTests\AutoGenFriendsTestData.cpp" />

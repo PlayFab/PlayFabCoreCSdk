@@ -48,7 +48,7 @@ HRESULT AutoGenPlayerDataManagementTests::LogPFPlayerDataManagementCreatePlayerS
     std::stringstream ss;
     ss << "Response:"; Log(ss);
 
-    // Found PlayFabPlayerDataManagementCreatePlayerStatisticDefinitionResult
+    // Found PlayFabPlayerDataManagementCreatePlayerStatisticDefinitionResult    
     ss << "  statistic " << result->statistic; Log(ss); // Class: PFPlayerDataManagementPlayerStatisticDefinition 
     return S_OK;
 }
@@ -85,7 +85,7 @@ HRESULT AutoGenPlayerDataManagementTests::LogPFPlayerDataManagementGetDataReport
     std::stringstream ss;
     ss << "Response:"; Log(ss);
 
-    // Found PlayFabPlayerDataManagementGetDataReportResult
+    // Found PlayFabPlayerDataManagementGetDataReportResult    
     if( result->downloadUrl ) { ss << "  downloadUrl " << result->downloadUrl; Log(ss); } else { ss << "  downloadUrl = nullptr"; Log(ss); } // Class: const char* 
     return S_OK;
 }
@@ -100,7 +100,7 @@ HRESULT AutoGenPlayerDataManagementTests::LogPFPlayerDataManagementGetPlayerStat
     std::stringstream ss;
     ss << "Response:"; Log(ss);
 
-    // Found PlayFabPlayerDataManagementGetPlayerStatisticDefinitionsResult    
+    // Found PlayFabPlayerDataManagementGetPlayerStatisticDefinitionsResult        
     ss << "  statisticsCount " << result->statisticsCount; Log(ss);
 
     // PFPlayerDataManagementPlayerStatisticDefinition
@@ -149,7 +149,7 @@ HRESULT AutoGenPlayerDataManagementTests::LogPFPlayerDataManagementGetPlayerStat
     std::stringstream ss;
     ss << "Response:"; Log(ss);
 
-    // Found PlayFabPlayerDataManagementGetPlayerStatisticVersionsResult    
+    // Found PlayFabPlayerDataManagementGetPlayerStatisticVersionsResult        
     ss << "  statisticVersionsCount " << result->statisticVersionsCount; Log(ss);
 
     // PFPlayerDataManagementPlayerStatisticVersion
@@ -197,6 +197,17 @@ HRESULT AutoGenPlayerDataManagementTests::LogPFPlayerDataManagementAdminGetUserD
     std::stringstream ss;
     ss << "Response:"; Log(ss);
 
+    // Found PlayFabPlayerDataManagementAdminGetUserDataResult        
+    ss << "  dataCount " << result->dataCount; Log(ss);
+
+    // PFUserDataRecordDictionaryEntry
+    for( uint32_t i=0; i<result->dataCount; i++ )
+    {
+            ss << "  result->data[" << i << "]:" << result->data[i].key << "=" << result->data[i].value; Log(ss);
+            
+    }     
+    ss << "  dataVersion " << result->dataVersion; Log(ss); // Class: uint32_t     
+    if( result->playFabId ) { ss << "  playFabId " << result->playFabId; Log(ss); } else { ss << "  playFabId = nullptr"; Log(ss); } // Class: const char* 
     return S_OK;
 }
 
@@ -238,7 +249,7 @@ HRESULT AutoGenPlayerDataManagementTests::LogPFPlayerDataManagementIncrementPlay
     std::stringstream ss;
     ss << "Response:"; Log(ss);
 
-    // Found PlayFabPlayerDataManagementIncrementPlayerStatisticVersionResult
+    // Found PlayFabPlayerDataManagementIncrementPlayerStatisticVersionResult    
     ss << "  statisticVersion " << result->statisticVersion; Log(ss); // Class: PFPlayerDataManagementPlayerStatisticVersion 
     return S_OK;
 }
@@ -274,7 +285,7 @@ HRESULT AutoGenPlayerDataManagementTests::LogPFPlayerDataManagementRefundPurchas
     std::stringstream ss;
     ss << "Response:"; Log(ss);
 
-    // Found PlayFabPlayerDataManagementRefundPurchaseResponse
+    // Found PlayFabPlayerDataManagementRefundPurchaseResponse    
     if( result->purchaseStatus ) { ss << "  purchaseStatus " << result->purchaseStatus; Log(ss); } else { ss << "  purchaseStatus = nullptr"; Log(ss); } // Class: const char* 
     return S_OK;
 }
@@ -339,7 +350,7 @@ HRESULT AutoGenPlayerDataManagementTests::LogPFPlayerDataManagementResolvePurcha
     std::stringstream ss;
     ss << "Response:"; Log(ss);
 
-    // Found PlayFabPlayerDataManagementResolvePurchaseDisputeResponse
+    // Found PlayFabPlayerDataManagementResolvePurchaseDisputeResponse    
     if( result->purchaseStatus ) { ss << "  purchaseStatus " << result->purchaseStatus; Log(ss); } else { ss << "  purchaseStatus = nullptr"; Log(ss); } // Class: const char* 
     return S_OK;
 }
@@ -375,7 +386,7 @@ HRESULT AutoGenPlayerDataManagementTests::LogPFPlayerDataManagementUpdatePlayerS
     std::stringstream ss;
     ss << "Response:"; Log(ss);
 
-    // Found PlayFabPlayerDataManagementUpdatePlayerStatisticDefinitionResult
+    // Found PlayFabPlayerDataManagementUpdatePlayerStatisticDefinitionResult    
     ss << "  statistic " << result->statistic; Log(ss); // Class: PFPlayerDataManagementPlayerStatisticDefinition 
     return S_OK;
 }
@@ -434,7 +445,7 @@ HRESULT AutoGenPlayerDataManagementTests::LogPFPlayerDataManagementUpdateUserDat
     std::stringstream ss;
     ss << "Response:"; Log(ss);
 
-    // Found PlayFabPlayerDataManagementUpdateUserDataResult
+    // Found PlayFabPlayerDataManagementUpdateUserDataResult    
     ss << "  dataVersion " << result->dataVersion; Log(ss); // Class: uint32_t 
     return S_OK;
 }
@@ -527,15 +538,15 @@ HRESULT AutoGenPlayerDataManagementTests::LogPFPlayerDataManagementGetLeaderboar
     std::stringstream ss;
     ss << "Response:"; Log(ss);
 
-    // Found PlayFabPlayerDataManagementGetLeaderboardResult    
+    // Found PlayFabPlayerDataManagementGetLeaderboardResult        
     ss << "  leaderboardCount " << result->leaderboardCount; Log(ss);
 
     // PFPlayerDataManagementPlayerLeaderboardEntry
     for( uint32_t i=0; i<result->leaderboardCount; i++ )
     {
             ss << "  result->leaderboard[" << i << "]:" << result->leaderboard[i]; Log(ss); // PFPlayerDataManagementPlayerLeaderboardEntry
-    } 
-    ss << "  nextReset " << result->nextReset; Log(ss); // Class: time_t 
+    }     
+    ss << "  nextReset " << result->nextReset; Log(ss); // Class: time_t     
     ss << "  version " << result->version; Log(ss); // Class: int32_t 
     return S_OK;
 }
@@ -585,15 +596,15 @@ HRESULT AutoGenPlayerDataManagementTests::LogPFPlayerDataManagementGetFriendLead
     std::stringstream ss;
     ss << "Response:"; Log(ss);
 
-    // Found PlayFabPlayerDataManagementGetFriendLeaderboardAroundPlayerResult    
+    // Found PlayFabPlayerDataManagementGetFriendLeaderboardAroundPlayerResult        
     ss << "  leaderboardCount " << result->leaderboardCount; Log(ss);
 
     // PFPlayerDataManagementPlayerLeaderboardEntry
     for( uint32_t i=0; i<result->leaderboardCount; i++ )
     {
             ss << "  result->leaderboard[" << i << "]:" << result->leaderboard[i]; Log(ss); // PFPlayerDataManagementPlayerLeaderboardEntry
-    } 
-    ss << "  nextReset " << result->nextReset; Log(ss); // Class: time_t 
+    }     
+    ss << "  nextReset " << result->nextReset; Log(ss); // Class: time_t     
     ss << "  version " << result->version; Log(ss); // Class: int32_t 
     return S_OK;
 }
@@ -672,15 +683,15 @@ HRESULT AutoGenPlayerDataManagementTests::LogPFPlayerDataManagementGetLeaderboar
     std::stringstream ss;
     ss << "Response:"; Log(ss);
 
-    // Found PlayFabPlayerDataManagementGetLeaderboardAroundPlayerResult    
+    // Found PlayFabPlayerDataManagementGetLeaderboardAroundPlayerResult        
     ss << "  leaderboardCount " << result->leaderboardCount; Log(ss);
 
     // PFPlayerDataManagementPlayerLeaderboardEntry
     for( uint32_t i=0; i<result->leaderboardCount; i++ )
     {
             ss << "  result->leaderboard[" << i << "]:" << result->leaderboard[i]; Log(ss); // PFPlayerDataManagementPlayerLeaderboardEntry
-    } 
-    ss << "  nextReset " << result->nextReset; Log(ss); // Class: time_t 
+    }     
+    ss << "  nextReset " << result->nextReset; Log(ss); // Class: time_t     
     ss << "  version " << result->version; Log(ss); // Class: int32_t 
     return S_OK;
 }
@@ -736,6 +747,14 @@ HRESULT AutoGenPlayerDataManagementTests::LogPFPlayerDataManagementClientGetPlay
     std::stringstream ss;
     ss << "Response:"; Log(ss);
 
+    // Found PlayFabPlayerDataManagementClientGetPlayerStatisticsResult        
+    ss << "  statisticsCount " << result->statisticsCount; Log(ss);
+
+    // PFStatisticValue
+    for( uint32_t i=0; i<result->statisticsCount; i++ )
+    {
+            ss << "  result->statistics[" << i << "]:" << result->statistics[i]; Log(ss); // PFStatisticValue
+    } 
     return S_OK;
 }
 
@@ -749,6 +768,16 @@ HRESULT AutoGenPlayerDataManagementTests::LogPFPlayerDataManagementClientGetUser
     std::stringstream ss;
     ss << "Response:"; Log(ss);
 
+    // Found PlayFabPlayerDataManagementClientGetUserDataResult        
+    ss << "  dataCount " << result->dataCount; Log(ss);
+
+    // PFUserDataRecordDictionaryEntry
+    for( uint32_t i=0; i<result->dataCount; i++ )
+    {
+            ss << "  result->data[" << i << "]:" << result->data[i].key << "=" << result->data[i].value; Log(ss);
+            
+    }     
+    ss << "  dataVersion " << result->dataVersion; Log(ss); // Class: uint32_t 
     return S_OK;
 }
 
@@ -907,15 +936,15 @@ HRESULT AutoGenPlayerDataManagementTests::LogPFPlayerDataManagementGetLeaderboar
     std::stringstream ss;
     ss << "Response:"; Log(ss);
 
-    // Found PlayFabPlayerDataManagementGetLeaderboardAroundUserResult    
+    // Found PlayFabPlayerDataManagementGetLeaderboardAroundUserResult        
     ss << "  leaderboardCount " << result->leaderboardCount; Log(ss);
 
     // PFPlayerDataManagementPlayerLeaderboardEntry
     for( uint32_t i=0; i<result->leaderboardCount; i++ )
     {
             ss << "  result->leaderboard[" << i << "]:" << result->leaderboard[i]; Log(ss); // PFPlayerDataManagementPlayerLeaderboardEntry
-    } 
-    ss << "  nextReset " << result->nextReset; Log(ss); // Class: time_t 
+    }     
+    ss << "  nextReset " << result->nextReset; Log(ss); // Class: time_t     
     ss << "  version " << result->version; Log(ss); // Class: int32_t 
     return S_OK;
 }
@@ -959,8 +988,8 @@ HRESULT AutoGenPlayerDataManagementTests::LogPFGetPlayerCombinedInfoResult(PFGet
     std::stringstream ss;
     ss << "Response:"; Log(ss);
 
-    // Found PlayFabPlayerDataManagementGetPlayerCombinedInfoResult
-    ss << "  infoResultPayload " << result->infoResultPayload; Log(ss); // Class: PFGetPlayerCombinedInfoResultPayload 
+    // Found PlayFabPlayerDataManagementGetPlayerCombinedInfoResult    
+    ss << "  infoResultPayload " << result->infoResultPayload; Log(ss); // Class: PFGetPlayerCombinedInfoResultPayload     
     if( result->playFabId ) { ss << "  playFabId " << result->playFabId; Log(ss); } else { ss << "  playFabId = nullptr"; Log(ss); } // Class: const char* 
     return S_OK;
 }
@@ -1017,6 +1046,15 @@ HRESULT AutoGenPlayerDataManagementTests::LogPFPlayerDataManagementServerGetPlay
     std::stringstream ss;
     ss << "Response:"; Log(ss);
 
+    // Found PlayFabPlayerDataManagementServerGetPlayerStatisticsResult    
+    if( result->playFabId ) { ss << "  playFabId " << result->playFabId; Log(ss); } else { ss << "  playFabId = nullptr"; Log(ss); } // Class: const char*         
+    ss << "  statisticsCount " << result->statisticsCount; Log(ss);
+
+    // PFStatisticValue
+    for( uint32_t i=0; i<result->statisticsCount; i++ )
+    {
+            ss << "  result->statistics[" << i << "]:" << result->statistics[i]; Log(ss); // PFStatisticValue
+    } 
     return S_OK;
 }
 
@@ -1030,6 +1068,17 @@ HRESULT AutoGenPlayerDataManagementTests::LogPFPlayerDataManagementServerGetUser
     std::stringstream ss;
     ss << "Response:"; Log(ss);
 
+    // Found PlayFabPlayerDataManagementServerGetUserDataResult        
+    ss << "  dataCount " << result->dataCount; Log(ss);
+
+    // PFUserDataRecordDictionaryEntry
+    for( uint32_t i=0; i<result->dataCount; i++ )
+    {
+            ss << "  result->data[" << i << "]:" << result->data[i].key << "=" << result->data[i].value; Log(ss);
+            
+    }     
+    ss << "  dataVersion " << result->dataVersion; Log(ss); // Class: uint32_t     
+    if( result->playFabId ) { ss << "  playFabId " << result->playFabId; Log(ss); } else { ss << "  playFabId = nullptr"; Log(ss); } // Class: const char* 
     return S_OK;
 }
 

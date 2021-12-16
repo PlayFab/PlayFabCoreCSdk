@@ -15,27 +15,49 @@ private:
     static void Log(std::stringstream& ss);
     static HRESULT LogHR(HRESULT hr);
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestAuthenticationAdminCreateOpenIdConnection(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestAuthenticationAdminCreatePlayerSharedSecret(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestAuthenticationAdminDeleteOpenIdConnection(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestAuthenticationAdminDeletePlayerSharedSecret(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestAuthenticationAdminGetPlayerSharedSecrets(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestAuthenticationAdminGetPolicy(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestAuthenticationAdminListOpenIdConnection(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestAuthenticationAdminSetPlayerSecret(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestAuthenticationAdminUpdateOpenIdConnection(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestAuthenticationAdminUpdatePlayerSharedSecret(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestAuthenticationAdminUpdatePolicy(TestContext& testContext);
+#endif
 
     void TestAuthenticationClientGetPhotonAuthenticationToken(TestContext& testContext);
 
@@ -81,17 +103,29 @@ private:
 
     void TestAuthenticationClientSetPlayerSecret(TestContext& testContext);
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestAuthenticationServerAuthenticateSessionTicket(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestAuthenticationServerLoginWithServerCustomId(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestAuthenticationServerLoginWithSteamId(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestAuthenticationServerLoginWithXbox(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestAuthenticationServerLoginWithXboxId(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestAuthenticationServerSetPlayerSecret(TestContext& testContext);
+#endif
 
     void TestAuthenticationGetEntityToken(TestContext& testContext);
 

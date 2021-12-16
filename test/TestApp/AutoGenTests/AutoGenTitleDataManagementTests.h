@@ -15,51 +15,97 @@ private:
     static void Log(std::stringstream& ss);
     static HRESULT LogHR(HRESULT hr);
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestTitleDataManagementAdminAddLocalizedNews(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestTitleDataManagementAdminAddNews(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestTitleDataManagementAdminAddVirtualCurrencyTypes(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestTitleDataManagementAdminDeleteStore(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestTitleDataManagementAdminDeleteTitleDataOverride(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestTitleDataManagementAdminGetCatalogItems(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestTitleDataManagementAdminGetPublisherData(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestTitleDataManagementAdminGetRandomResultTables(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestTitleDataManagementAdminGetStoreItems(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestTitleDataManagementAdminGetTitleData(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestTitleDataManagementAdminGetTitleInternalData(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestTitleDataManagementAdminListVirtualCurrencyTypes(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestTitleDataManagementAdminRemoveVirtualCurrencyTypes(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestTitleDataManagementAdminSetCatalogItems(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestTitleDataManagementAdminSetPublisherData(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestTitleDataManagementAdminSetStoreItems(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestTitleDataManagementAdminSetTitleData(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestTitleDataManagementAdminSetTitleDataAndOverrides(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestTitleDataManagementAdminSetTitleInternalData(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestTitleDataManagementAdminSetupPushNotification(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestTitleDataManagementAdminUpdateCatalogItems(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestTitleDataManagementAdminUpdateRandomResultTables(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestTitleDataManagementAdminUpdateStoreItems(TestContext& testContext);
+#endif
 
     void TestTitleDataManagementClientGetCatalogItems(TestContext& testContext);
 
@@ -73,25 +119,45 @@ private:
 
     void TestTitleDataManagementClientGetTitleNews(TestContext& testContext);
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestTitleDataManagementServerGetCatalogItems(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestTitleDataManagementServerGetPublisherData(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestTitleDataManagementServerGetStoreItems(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestTitleDataManagementServerGetTime(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestTitleDataManagementServerGetTitleData(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestTitleDataManagementServerGetTitleInternalData(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestTitleDataManagementServerGetTitleNews(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestTitleDataManagementServerSetPublisherData(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestTitleDataManagementServerSetTitleData(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestTitleDataManagementServerSetTitleInternalData(TestContext& testContext);
+#endif
 
 
 protected:

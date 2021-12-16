@@ -15,13 +15,21 @@ private:
     static void Log(std::stringstream& ss);
     static HRESULT LogHR(HRESULT hr);
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestAdvertisingClientAttributeInstall(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestAdvertisingClientGetAdPlacements(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestAdvertisingClientReportAdActivity(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestAdvertisingClientRewardAdActivity(TestContext& testContext);
+#endif
 
 
 protected:

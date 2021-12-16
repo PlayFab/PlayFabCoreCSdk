@@ -32,27 +32,49 @@ HRESULT AutoGenScheduledTaskTests::LogHR(HRESULT hr)
 void AutoGenScheduledTaskTests::AddTests()
 {
     // Generated tests 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestScheduledTaskAdminAbortTaskInstance", &AutoGenScheduledTaskTests::TestScheduledTaskAdminAbortTaskInstance);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestScheduledTaskAdminCreateActionsOnPlayersInSegmentTask", &AutoGenScheduledTaskTests::TestScheduledTaskAdminCreateActionsOnPlayersInSegmentTask);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestScheduledTaskAdminCreateCloudScriptTask", &AutoGenScheduledTaskTests::TestScheduledTaskAdminCreateCloudScriptTask);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestScheduledTaskAdminCreateInsightsScheduledScalingTask", &AutoGenScheduledTaskTests::TestScheduledTaskAdminCreateInsightsScheduledScalingTask);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestScheduledTaskAdminDeleteTask", &AutoGenScheduledTaskTests::TestScheduledTaskAdminDeleteTask);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestScheduledTaskAdminGetActionsOnPlayersInSegmentTaskInstance", &AutoGenScheduledTaskTests::TestScheduledTaskAdminGetActionsOnPlayersInSegmentTaskInstance);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestScheduledTaskAdminGetCloudScriptTaskInstance", &AutoGenScheduledTaskTests::TestScheduledTaskAdminGetCloudScriptTaskInstance);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestScheduledTaskAdminGetTaskInstances", &AutoGenScheduledTaskTests::TestScheduledTaskAdminGetTaskInstances);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestScheduledTaskAdminGetTasks", &AutoGenScheduledTaskTests::TestScheduledTaskAdminGetTasks);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestScheduledTaskAdminRunTask", &AutoGenScheduledTaskTests::TestScheduledTaskAdminRunTask);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestScheduledTaskAdminUpdateTask", &AutoGenScheduledTaskTests::TestScheduledTaskAdminUpdateTask);
+#endif
 }
 
 void AutoGenScheduledTaskTests::ClassSetUp()
@@ -162,6 +184,7 @@ void AutoGenScheduledTaskTests::SetUp(TestContext& testContext)
 
 #pragma region AdminAbortTaskInstance
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenScheduledTaskTests::TestScheduledTaskAdminAbortTaskInstance(TestContext& testContext)
 {
     auto async = std::make_unique<XAsyncHelper<XAsyncResult>>(testContext);
@@ -177,14 +200,16 @@ void AutoGenScheduledTaskTests::TestScheduledTaskAdminAbortTaskInstance(TestCont
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region AdminCreateActionsOnPlayersInSegmentTask
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenScheduledTaskTests::TestScheduledTaskAdminCreateActionsOnPlayersInSegmentTask(TestContext& testContext)
 {
-    struct AdminCreateActionsOnPlayersInSegmentTaskResultHolder : public CreateTaskResultHolder
+    struct AdminCreateActionsOnPlayersInSegmentTaskResultHolderStruct : public CreateTaskResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -203,7 +228,7 @@ void AutoGenScheduledTaskTests::TestScheduledTaskAdminCreateActionsOnPlayersInSe
             return ValidatePFScheduledTaskCreateTaskResult(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<AdminCreateActionsOnPlayersInSegmentTaskResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<AdminCreateActionsOnPlayersInSegmentTaskResultHolderStruct>>(testContext);
 
     PFScheduledTaskCreateActionsOnPlayerSegmentTaskRequestWrapper<> request;
     FillCreateActionsOnPlayerSegmentTaskRequest(request);
@@ -216,14 +241,16 @@ void AutoGenScheduledTaskTests::TestScheduledTaskAdminCreateActionsOnPlayersInSe
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region AdminCreateCloudScriptTask
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenScheduledTaskTests::TestScheduledTaskAdminCreateCloudScriptTask(TestContext& testContext)
 {
-    struct AdminCreateCloudScriptTaskResultHolder : public CreateTaskResultHolder
+    struct AdminCreateCloudScriptTaskResultHolderStruct : public CreateTaskResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -242,7 +269,7 @@ void AutoGenScheduledTaskTests::TestScheduledTaskAdminCreateCloudScriptTask(Test
             return ValidatePFScheduledTaskCreateTaskResult(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<AdminCreateCloudScriptTaskResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<AdminCreateCloudScriptTaskResultHolderStruct>>(testContext);
 
     PFScheduledTaskCreateCloudScriptTaskRequestWrapper<> request;
     FillCreateCloudScriptTaskRequest(request);
@@ -255,14 +282,16 @@ void AutoGenScheduledTaskTests::TestScheduledTaskAdminCreateCloudScriptTask(Test
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region AdminCreateInsightsScheduledScalingTask
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenScheduledTaskTests::TestScheduledTaskAdminCreateInsightsScheduledScalingTask(TestContext& testContext)
 {
-    struct AdminCreateInsightsScheduledScalingTaskResultHolder : public CreateTaskResultHolder
+    struct AdminCreateInsightsScheduledScalingTaskResultHolderStruct : public CreateTaskResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -281,7 +310,7 @@ void AutoGenScheduledTaskTests::TestScheduledTaskAdminCreateInsightsScheduledSca
             return ValidatePFScheduledTaskCreateTaskResult(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<AdminCreateInsightsScheduledScalingTaskResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<AdminCreateInsightsScheduledScalingTaskResultHolderStruct>>(testContext);
 
     PFScheduledTaskCreateInsightsScheduledScalingTaskRequestWrapper<> request;
     FillCreateInsightsScheduledScalingTaskRequest(request);
@@ -294,11 +323,13 @@ void AutoGenScheduledTaskTests::TestScheduledTaskAdminCreateInsightsScheduledSca
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region AdminDeleteTask
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenScheduledTaskTests::TestScheduledTaskAdminDeleteTask(TestContext& testContext)
 {
     auto async = std::make_unique<XAsyncHelper<XAsyncResult>>(testContext);
@@ -314,14 +345,16 @@ void AutoGenScheduledTaskTests::TestScheduledTaskAdminDeleteTask(TestContext& te
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region AdminGetActionsOnPlayersInSegmentTaskInstance
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenScheduledTaskTests::TestScheduledTaskAdminGetActionsOnPlayersInSegmentTaskInstance(TestContext& testContext)
 {
-    struct AdminGetActionsOnPlayersInSegmentTaskInstanceResultHolder : public GetActionsOnPlayersInSegmentTaskInstanceResultHolder
+    struct AdminGetActionsOnPlayersInSegmentTaskInstanceResultHolderStruct : public GetActionsOnPlayersInSegmentTaskInstanceResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -340,7 +373,7 @@ void AutoGenScheduledTaskTests::TestScheduledTaskAdminGetActionsOnPlayersInSegme
             return ValidatePFScheduledTaskGetActionsOnPlayersInSegmentTaskInstanceResult(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<AdminGetActionsOnPlayersInSegmentTaskInstanceResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<AdminGetActionsOnPlayersInSegmentTaskInstanceResultHolderStruct>>(testContext);
 
     PFScheduledTaskGetTaskInstanceRequestWrapper<> request;
     FillGetTaskInstanceRequest(request);
@@ -353,14 +386,16 @@ void AutoGenScheduledTaskTests::TestScheduledTaskAdminGetActionsOnPlayersInSegme
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region AdminGetCloudScriptTaskInstance
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenScheduledTaskTests::TestScheduledTaskAdminGetCloudScriptTaskInstance(TestContext& testContext)
 {
-    struct AdminGetCloudScriptTaskInstanceResultHolder : public GetCloudScriptTaskInstanceResultHolder
+    struct AdminGetCloudScriptTaskInstanceResultHolderStruct : public GetCloudScriptTaskInstanceResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -379,7 +414,7 @@ void AutoGenScheduledTaskTests::TestScheduledTaskAdminGetCloudScriptTaskInstance
             return ValidatePFScheduledTaskGetCloudScriptTaskInstanceResult(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<AdminGetCloudScriptTaskInstanceResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<AdminGetCloudScriptTaskInstanceResultHolderStruct>>(testContext);
 
     PFScheduledTaskGetTaskInstanceRequestWrapper<> request;
     FillGetTaskInstanceRequest(request);
@@ -392,14 +427,16 @@ void AutoGenScheduledTaskTests::TestScheduledTaskAdminGetCloudScriptTaskInstance
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region AdminGetTaskInstances
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenScheduledTaskTests::TestScheduledTaskAdminGetTaskInstances(TestContext& testContext)
 {
-    struct AdminGetTaskInstancesResultHolder : public GetTaskInstancesResultHolder
+    struct AdminGetTaskInstancesResultHolderStruct : public GetTaskInstancesResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -418,7 +455,7 @@ void AutoGenScheduledTaskTests::TestScheduledTaskAdminGetTaskInstances(TestConte
             return ValidatePFScheduledTaskGetTaskInstancesResult(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<AdminGetTaskInstancesResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<AdminGetTaskInstancesResultHolderStruct>>(testContext);
 
     PFScheduledTaskGetTaskInstancesRequestWrapper<> request;
     FillGetTaskInstancesRequest(request);
@@ -431,14 +468,16 @@ void AutoGenScheduledTaskTests::TestScheduledTaskAdminGetTaskInstances(TestConte
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region AdminGetTasks
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenScheduledTaskTests::TestScheduledTaskAdminGetTasks(TestContext& testContext)
 {
-    struct AdminGetTasksResultHolder : public GetTasksResultHolder
+    struct AdminGetTasksResultHolderStruct : public GetTasksResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -457,7 +496,7 @@ void AutoGenScheduledTaskTests::TestScheduledTaskAdminGetTasks(TestContext& test
             return ValidatePFScheduledTaskGetTasksResult(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<AdminGetTasksResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<AdminGetTasksResultHolderStruct>>(testContext);
 
     PFScheduledTaskGetTasksRequestWrapper<> request;
     FillGetTasksRequest(request);
@@ -470,14 +509,16 @@ void AutoGenScheduledTaskTests::TestScheduledTaskAdminGetTasks(TestContext& test
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region AdminRunTask
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenScheduledTaskTests::TestScheduledTaskAdminRunTask(TestContext& testContext)
 {
-    struct AdminRunTaskResultHolder : public RunTaskResultHolder
+    struct AdminRunTaskResultHolderStruct : public RunTaskResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -496,7 +537,7 @@ void AutoGenScheduledTaskTests::TestScheduledTaskAdminRunTask(TestContext& testC
             return ValidatePFScheduledTaskRunTaskResult(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<AdminRunTaskResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<AdminRunTaskResultHolderStruct>>(testContext);
 
     PFScheduledTaskRunTaskRequestWrapper<> request;
     FillRunTaskRequest(request);
@@ -509,11 +550,13 @@ void AutoGenScheduledTaskTests::TestScheduledTaskAdminRunTask(TestContext& testC
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region AdminUpdateTask
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenScheduledTaskTests::TestScheduledTaskAdminUpdateTask(TestContext& testContext)
 {
     auto async = std::make_unique<XAsyncHelper<XAsyncResult>>(testContext);
@@ -529,6 +572,7 @@ void AutoGenScheduledTaskTests::TestScheduledTaskAdminUpdateTask(TestContext& te
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 

@@ -44,7 +44,7 @@ HRESULT PFCharacterAdminResetCharacterStatisticsAsync(
 /// <param name="async">XAsyncBlock for the async operation.</param>
 /// <returns>Result code for this API operation.</returns>
 /// <remarks>
-/// Returns a list of every character that currently belongs to a user.
+/// Returns a list of every character that currently belongs to a user. See also ClientGetCharacterDataAsync.
 ///
 /// If successful, call <see cref="PFCharacterClientGetAllUsersCharactersGetResult"/> to get the result.
 /// </remarks>
@@ -146,6 +146,8 @@ HRESULT PFCharacterClientGetCharacterDataGetResult(
 /// <param name="async">XAsyncBlock for the async operation.</param>
 /// <returns>Result code for this API operation.</returns>
 /// <remarks>
+/// See also ClientGetCharacterStatisticsAsync, ClientGetLeaderboardAroundCharacterAsync, ClientUpdateCharacterStatisticsAsync.
+///
 /// If successful, call <see cref="PFCharacterClientGetCharacterLeaderboardGetResult"/> to get the result.
 /// </remarks>
 HRESULT PFCharacterClientGetCharacterLeaderboardAsync(
@@ -244,6 +246,9 @@ HRESULT PFCharacterClientGetCharacterReadOnlyDataGetResult(
 /// <param name="async">XAsyncBlock for the async operation.</param>
 /// <returns>Result code for this API operation.</returns>
 /// <remarks>
+/// See also ClientGetCharacterLeaderboardAsync, ClientGetLeaderboardAroundCharacterAsync, ClientGetLeaderboardForUserCharactersAsync,
+/// ClientUpdateCharacterStatisticsAsync.
+///
 /// If successful, call <see cref="PFCharacterClientGetCharacterStatisticsGetResult"/> to get the result.
 /// </remarks>
 HRESULT PFCharacterClientGetCharacterStatisticsAsync(
@@ -292,6 +297,8 @@ HRESULT PFCharacterClientGetCharacterStatisticsGetResult(
 /// <param name="async">XAsyncBlock for the async operation.</param>
 /// <returns>Result code for this API operation.</returns>
 /// <remarks>
+/// See also ClientGetCharacterLeaderboardAsync, ClientGetLeaderboardAsync, ClientUpdateCharacterStatisticsAsync.
+///
 /// If successful, call <see cref="PFCharacterClientGetLeaderboardAroundCharacterGetResult"/> to get
 /// the result.
 /// </remarks>
@@ -340,6 +347,8 @@ HRESULT PFCharacterClientGetLeaderboardAroundCharacterGetResult(
 /// <param name="async">XAsyncBlock for the async operation.</param>
 /// <returns>Result code for this API operation.</returns>
 /// <remarks>
+/// See also ClientGetCharacterLeaderboardAsync, ClientGetLeaderboardAsync, ServerGetLeaderboardAroundUserAsync.
+///
 /// If successful, call <see cref="PFCharacterClientGetLeaderboardForUserCharactersGetResult"/> to get
 /// the result.
 /// </remarks>
@@ -481,7 +490,8 @@ HRESULT PFCharacterClientUpdateCharacterDataGetResult(
 /// by the server. This operation is additive. Character Statistics not currently defined will be added,
 /// while those already defined will be updated with the given values. All other user statistics will
 /// remain unchanged. Character statistics are used by the character-leaderboard apis, and accessible
-/// for custom game-logic.
+/// for custom game-logic. See also ClientGetCharacterLeaderboardAsync, ClientGetCharacterStatisticsAsync,
+/// ClientGetLeaderboardAroundCharacterAsync, ClientGetLeaderboardForUserCharactersAsync.
 ///
 /// Call <see cref="XAsyncGetStatus"/> to get the status of the operation.
 /// </remarks>
@@ -491,6 +501,7 @@ HRESULT PFCharacterClientUpdateCharacterStatisticsAsync(
     _Inout_ XAsyncBlock* async
 ) noexcept;
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 /// <summary>
 /// Deletes the specific character ID from the specified user.
 /// </summary>
@@ -510,7 +521,9 @@ HRESULT PFCharacterServerDeleteCharacterFromUserAsync(
     _In_ const PFCharacterDeleteCharacterFromUserRequest* request,
     _Inout_ XAsyncBlock* async
 ) noexcept;
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 /// <summary>
 /// Lists all of the characters that belong to a specific user. CharacterIds are not globally unique;
 /// characterId must be evaluated with the parent PlayFabId to guarantee uniqueness.
@@ -560,7 +573,9 @@ HRESULT PFCharacterServerGetAllUsersCharactersGetResult(
     _Outptr_ PFCharacterListUsersCharactersResult** result,
     _Out_opt_ size_t* bufferUsed
 ) noexcept;
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 /// <summary>
 /// Retrieves the title-specific custom data for the user which is readable and writable by the client
 /// </summary>
@@ -612,7 +627,9 @@ HRESULT PFCharacterServerGetCharacterDataGetResult(
     _Outptr_ PFCharacterServerGetCharacterDataResult** result,
     _Out_opt_ size_t* bufferUsed
 ) noexcept;
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 /// <summary>
 /// Retrieves the title-specific custom data for the user's character which cannot be accessed by the
 /// client
@@ -665,7 +682,9 @@ HRESULT PFCharacterServerGetCharacterInternalDataGetResult(
     _Outptr_ PFCharacterServerGetCharacterDataResult** result,
     _Out_opt_ size_t* bufferUsed
 ) noexcept;
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 /// <summary>
 /// Retrieves a list of ranked characters for the given statistic, starting from the indicated point
 /// in the leaderboard
@@ -715,7 +734,9 @@ HRESULT PFCharacterServerGetCharacterLeaderboardGetResult(
     _Outptr_ PFCharacterGetCharacterLeaderboardResult** result,
     _Out_opt_ size_t* bufferUsed
 ) noexcept;
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 /// <summary>
 /// Retrieves the title-specific custom data for the user's character which can only be read by the client
 /// </summary>
@@ -767,7 +788,9 @@ HRESULT PFCharacterServerGetCharacterReadOnlyDataGetResult(
     _Outptr_ PFCharacterServerGetCharacterDataResult** result,
     _Out_opt_ size_t* bufferUsed
 ) noexcept;
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 /// <summary>
 /// Retrieves the details of all title-specific statistics for the specific character
 /// </summary>
@@ -819,7 +842,9 @@ HRESULT PFCharacterServerGetCharacterStatisticsGetResult(
     _Outptr_ PFCharacterServerGetCharacterStatisticsResult** result,
     _Out_opt_ size_t* bufferUsed
 ) noexcept;
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 /// <summary>
 /// Retrieves a list of ranked characters for the given statistic, centered on the requested user
 /// </summary>
@@ -869,7 +894,9 @@ HRESULT PFCharacterServerGetLeaderboardAroundCharacterGetResult(
     _Outptr_ PFCharacterGetLeaderboardAroundCharacterResult** result,
     _Out_opt_ size_t* bufferUsed
 ) noexcept;
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 /// <summary>
 /// Retrieves a list of all of the user's characters for the given statistic.
 /// </summary>
@@ -919,7 +946,9 @@ HRESULT PFCharacterServerGetLeaderboardForUserCharactersGetResult(
     _Outptr_ PFCharacterGetLeaderboardForUsersCharactersResult** result,
     _Out_opt_ size_t* bufferUsed
 ) noexcept;
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 /// <summary>
 /// Grants the specified character type to the user. CharacterIds are not globally unique; characterId
 /// must be evaluated with the parent PlayFabId to guarantee uniqueness.
@@ -969,7 +998,9 @@ HRESULT PFCharacterServerGrantCharacterToUserGetResult(
     _Outptr_ PFCharacterServerGrantCharacterToUserResult** result,
     _Out_opt_ size_t* bufferUsed
 ) noexcept;
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 /// <summary>
 /// Updates the title-specific custom data for the user's character which is readable and writable by
 /// the client
@@ -1003,7 +1034,9 @@ HRESULT PFCharacterServerUpdateCharacterDataGetResult(
     _Inout_ XAsyncBlock* async,
     _Out_ PFCharacterUpdateCharacterDataResult* result
 ) noexcept;
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 /// <summary>
 /// Updates the title-specific custom data for the user's character which cannot be accessed by the client
 /// </summary>
@@ -1037,7 +1070,9 @@ HRESULT PFCharacterServerUpdateCharacterInternalDataGetResult(
     _Inout_ XAsyncBlock* async,
     _Out_ PFCharacterUpdateCharacterDataResult* result
 ) noexcept;
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 /// <summary>
 /// Updates the title-specific custom data for the user's character which can only be read by the client
 /// </summary>
@@ -1071,7 +1106,9 @@ HRESULT PFCharacterServerUpdateCharacterReadOnlyDataGetResult(
     _Inout_ XAsyncBlock* async,
     _Out_ PFCharacterUpdateCharacterDataResult* result
 ) noexcept;
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 /// <summary>
 /// Updates the values of the specified title-specific statistics for the specific character
 /// </summary>
@@ -1092,6 +1129,7 @@ HRESULT PFCharacterServerUpdateCharacterStatisticsAsync(
     _In_ const PFCharacterServerUpdateCharacterStatisticsRequest* request,
     _Inout_ XAsyncBlock* async
 ) noexcept;
+#endif
 
 
 }

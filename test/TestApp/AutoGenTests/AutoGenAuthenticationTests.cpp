@@ -32,27 +32,49 @@ HRESULT AutoGenAuthenticationTests::LogHR(HRESULT hr)
 void AutoGenAuthenticationTests::AddTests()
 {
     // Generated tests 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestAuthenticationAdminCreateOpenIdConnection", &AutoGenAuthenticationTests::TestAuthenticationAdminCreateOpenIdConnection);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestAuthenticationAdminCreatePlayerSharedSecret", &AutoGenAuthenticationTests::TestAuthenticationAdminCreatePlayerSharedSecret);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestAuthenticationAdminDeleteOpenIdConnection", &AutoGenAuthenticationTests::TestAuthenticationAdminDeleteOpenIdConnection);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestAuthenticationAdminDeletePlayerSharedSecret", &AutoGenAuthenticationTests::TestAuthenticationAdminDeletePlayerSharedSecret);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestAuthenticationAdminGetPlayerSharedSecrets", &AutoGenAuthenticationTests::TestAuthenticationAdminGetPlayerSharedSecrets);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestAuthenticationAdminGetPolicy", &AutoGenAuthenticationTests::TestAuthenticationAdminGetPolicy);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestAuthenticationAdminListOpenIdConnection", &AutoGenAuthenticationTests::TestAuthenticationAdminListOpenIdConnection);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestAuthenticationAdminSetPlayerSecret", &AutoGenAuthenticationTests::TestAuthenticationAdminSetPlayerSecret);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestAuthenticationAdminUpdateOpenIdConnection", &AutoGenAuthenticationTests::TestAuthenticationAdminUpdateOpenIdConnection);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestAuthenticationAdminUpdatePlayerSharedSecret", &AutoGenAuthenticationTests::TestAuthenticationAdminUpdatePlayerSharedSecret);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestAuthenticationAdminUpdatePolicy", &AutoGenAuthenticationTests::TestAuthenticationAdminUpdatePolicy);
+#endif
 
     AddTest("TestAuthenticationClientGetPhotonAuthenticationToken", &AutoGenAuthenticationTests::TestAuthenticationClientGetPhotonAuthenticationToken);
 
@@ -98,17 +120,29 @@ void AutoGenAuthenticationTests::AddTests()
 
     AddTest("TestAuthenticationClientSetPlayerSecret", &AutoGenAuthenticationTests::TestAuthenticationClientSetPlayerSecret);
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestAuthenticationServerAuthenticateSessionTicket", &AutoGenAuthenticationTests::TestAuthenticationServerAuthenticateSessionTicket);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestAuthenticationServerLoginWithServerCustomId", &AutoGenAuthenticationTests::TestAuthenticationServerLoginWithServerCustomId);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestAuthenticationServerLoginWithSteamId", &AutoGenAuthenticationTests::TestAuthenticationServerLoginWithSteamId);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestAuthenticationServerLoginWithXbox", &AutoGenAuthenticationTests::TestAuthenticationServerLoginWithXbox);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestAuthenticationServerLoginWithXboxId", &AutoGenAuthenticationTests::TestAuthenticationServerLoginWithXboxId);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestAuthenticationServerSetPlayerSecret", &AutoGenAuthenticationTests::TestAuthenticationServerSetPlayerSecret);
+#endif
 
     AddTest("TestAuthenticationGetEntityToken", &AutoGenAuthenticationTests::TestAuthenticationGetEntityToken);
 
@@ -222,6 +256,7 @@ void AutoGenAuthenticationTests::SetUp(TestContext& testContext)
 
 #pragma region AdminCreateOpenIdConnection
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenAuthenticationTests::TestAuthenticationAdminCreateOpenIdConnection(TestContext& testContext)
 {
     auto async = std::make_unique<XAsyncHelper<XAsyncResult>>(testContext);
@@ -237,14 +272,16 @@ void AutoGenAuthenticationTests::TestAuthenticationAdminCreateOpenIdConnection(T
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region AdminCreatePlayerSharedSecret
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenAuthenticationTests::TestAuthenticationAdminCreatePlayerSharedSecret(TestContext& testContext)
 {
-    struct AdminCreatePlayerSharedSecretResultHolder : public CreatePlayerSharedSecretResultHolder
+    struct AdminCreatePlayerSharedSecretResultHolderStruct : public CreatePlayerSharedSecretResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -263,7 +300,7 @@ void AutoGenAuthenticationTests::TestAuthenticationAdminCreatePlayerSharedSecret
             return ValidatePFAuthenticationCreatePlayerSharedSecretResult(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<AdminCreatePlayerSharedSecretResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<AdminCreatePlayerSharedSecretResultHolderStruct>>(testContext);
 
     PFAuthenticationCreatePlayerSharedSecretRequestWrapper<> request;
     FillCreatePlayerSharedSecretRequest(request);
@@ -276,11 +313,13 @@ void AutoGenAuthenticationTests::TestAuthenticationAdminCreatePlayerSharedSecret
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region AdminDeleteOpenIdConnection
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenAuthenticationTests::TestAuthenticationAdminDeleteOpenIdConnection(TestContext& testContext)
 {
     auto async = std::make_unique<XAsyncHelper<XAsyncResult>>(testContext);
@@ -296,11 +335,13 @@ void AutoGenAuthenticationTests::TestAuthenticationAdminDeleteOpenIdConnection(T
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region AdminDeletePlayerSharedSecret
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenAuthenticationTests::TestAuthenticationAdminDeletePlayerSharedSecret(TestContext& testContext)
 {
     auto async = std::make_unique<XAsyncHelper<XAsyncResult>>(testContext);
@@ -316,14 +357,16 @@ void AutoGenAuthenticationTests::TestAuthenticationAdminDeletePlayerSharedSecret
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region AdminGetPlayerSharedSecrets
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenAuthenticationTests::TestAuthenticationAdminGetPlayerSharedSecrets(TestContext& testContext)
 {
-    struct AdminGetPlayerSharedSecretsResultHolder : public GetPlayerSharedSecretsResultHolder
+    struct AdminGetPlayerSharedSecretsResultHolderStruct : public GetPlayerSharedSecretsResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -342,7 +385,7 @@ void AutoGenAuthenticationTests::TestAuthenticationAdminGetPlayerSharedSecrets(T
             return ValidatePFAuthenticationGetPlayerSharedSecretsResult(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<AdminGetPlayerSharedSecretsResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<AdminGetPlayerSharedSecretsResultHolderStruct>>(testContext);
 
     HRESULT hr = PFAuthenticationAdminGetPlayerSharedSecretsAsync(stateHandle, &async->asyncBlock);
     if (FAILED(hr))
@@ -352,14 +395,16 @@ void AutoGenAuthenticationTests::TestAuthenticationAdminGetPlayerSharedSecrets(T
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region AdminGetPolicy
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenAuthenticationTests::TestAuthenticationAdminGetPolicy(TestContext& testContext)
 {
-    struct AdminGetPolicyResultHolder : public GetPolicyResponseHolder
+    struct AdminGetPolicyResultHolderStruct : public GetPolicyResponseHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -378,7 +423,7 @@ void AutoGenAuthenticationTests::TestAuthenticationAdminGetPolicy(TestContext& t
             return ValidatePFAuthenticationGetPolicyResponse(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<AdminGetPolicyResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<AdminGetPolicyResultHolderStruct>>(testContext);
 
     PFAuthenticationGetPolicyRequestWrapper<> request;
     FillGetPolicyRequest(request);
@@ -391,14 +436,16 @@ void AutoGenAuthenticationTests::TestAuthenticationAdminGetPolicy(TestContext& t
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region AdminListOpenIdConnection
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenAuthenticationTests::TestAuthenticationAdminListOpenIdConnection(TestContext& testContext)
 {
-    struct AdminListOpenIdConnectionResultHolder : public ListOpenIdConnectionResponseHolder
+    struct AdminListOpenIdConnectionResultHolderStruct : public ListOpenIdConnectionResponseHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -417,7 +464,7 @@ void AutoGenAuthenticationTests::TestAuthenticationAdminListOpenIdConnection(Tes
             return ValidatePFAuthenticationListOpenIdConnectionResponse(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<AdminListOpenIdConnectionResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<AdminListOpenIdConnectionResultHolderStruct>>(testContext);
 
     HRESULT hr = PFAuthenticationAdminListOpenIdConnectionAsync(stateHandle, &async->asyncBlock);
     if (FAILED(hr))
@@ -427,11 +474,13 @@ void AutoGenAuthenticationTests::TestAuthenticationAdminListOpenIdConnection(Tes
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region AdminSetPlayerSecret
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenAuthenticationTests::TestAuthenticationAdminSetPlayerSecret(TestContext& testContext)
 {
     auto async = std::make_unique<XAsyncHelper<XAsyncResult>>(testContext);
@@ -447,11 +496,13 @@ void AutoGenAuthenticationTests::TestAuthenticationAdminSetPlayerSecret(TestCont
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region AdminUpdateOpenIdConnection
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenAuthenticationTests::TestAuthenticationAdminUpdateOpenIdConnection(TestContext& testContext)
 {
     auto async = std::make_unique<XAsyncHelper<XAsyncResult>>(testContext);
@@ -467,11 +518,13 @@ void AutoGenAuthenticationTests::TestAuthenticationAdminUpdateOpenIdConnection(T
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region AdminUpdatePlayerSharedSecret
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenAuthenticationTests::TestAuthenticationAdminUpdatePlayerSharedSecret(TestContext& testContext)
 {
     auto async = std::make_unique<XAsyncHelper<XAsyncResult>>(testContext);
@@ -487,14 +540,16 @@ void AutoGenAuthenticationTests::TestAuthenticationAdminUpdatePlayerSharedSecret
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region AdminUpdatePolicy
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenAuthenticationTests::TestAuthenticationAdminUpdatePolicy(TestContext& testContext)
 {
-    struct AdminUpdatePolicyResultHolder : public UpdatePolicyResponseHolder
+    struct AdminUpdatePolicyResultHolderStruct : public UpdatePolicyResponseHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -513,7 +568,7 @@ void AutoGenAuthenticationTests::TestAuthenticationAdminUpdatePolicy(TestContext
             return ValidatePFAuthenticationUpdatePolicyResponse(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<AdminUpdatePolicyResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<AdminUpdatePolicyResultHolderStruct>>(testContext);
 
     PFAuthenticationUpdatePolicyRequestWrapper<> request;
     FillUpdatePolicyRequest(request);
@@ -526,6 +581,7 @@ void AutoGenAuthenticationTests::TestAuthenticationAdminUpdatePolicy(TestContext
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
@@ -533,7 +589,7 @@ void AutoGenAuthenticationTests::TestAuthenticationAdminUpdatePolicy(TestContext
 
 void AutoGenAuthenticationTests::TestAuthenticationClientGetPhotonAuthenticationToken(TestContext& testContext)
 {
-    struct ClientGetPhotonAuthenticationTokenResultHolder : public GetPhotonAuthenticationTokenResultHolder
+    struct ClientGetPhotonAuthenticationTokenResultHolderStruct : public GetPhotonAuthenticationTokenResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -552,7 +608,7 @@ void AutoGenAuthenticationTests::TestAuthenticationClientGetPhotonAuthentication
             return ValidatePFAuthenticationGetPhotonAuthenticationTokenResult(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<ClientGetPhotonAuthenticationTokenResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<ClientGetPhotonAuthenticationTokenResultHolderStruct>>(testContext);
 
     PFAuthenticationGetPhotonAuthenticationTokenRequestWrapper<> request;
     FillGetPhotonAuthenticationTokenRequest(request);
@@ -572,7 +628,7 @@ void AutoGenAuthenticationTests::TestAuthenticationClientGetPhotonAuthentication
 
 void AutoGenAuthenticationTests::TestAuthenticationClientGetTitlePublicKey(TestContext& testContext)
 {
-    struct ClientGetTitlePublicKeyResultHolder : public GetTitlePublicKeyResultHolder
+    struct ClientGetTitlePublicKeyResultHolderStruct : public GetTitlePublicKeyResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -591,7 +647,7 @@ void AutoGenAuthenticationTests::TestAuthenticationClientGetTitlePublicKey(TestC
             return ValidatePFAuthenticationGetTitlePublicKeyResult(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<ClientGetTitlePublicKeyResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<ClientGetTitlePublicKeyResultHolderStruct>>(testContext);
 
     PFAuthenticationGetTitlePublicKeyRequestWrapper<> request;
     FillGetTitlePublicKeyRequest(request);
@@ -611,7 +667,7 @@ void AutoGenAuthenticationTests::TestAuthenticationClientGetTitlePublicKey(TestC
 
 void AutoGenAuthenticationTests::TestAuthenticationClientLoginWithAndroidDeviceID(TestContext& testContext)
 {
-    struct ClientLoginWithAndroidDeviceIDResultHolder : public LoginResultHolder
+    struct ClientLoginWithAndroidDeviceIDResultHolderStruct : public LoginResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -630,7 +686,7 @@ void AutoGenAuthenticationTests::TestAuthenticationClientLoginWithAndroidDeviceI
             return ValidatePFAuthenticationLoginResult(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<ClientLoginWithAndroidDeviceIDResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<ClientLoginWithAndroidDeviceIDResultHolderStruct>>(testContext);
 
     PFAuthenticationLoginWithAndroidDeviceIDRequestWrapper<> request;
     FillLoginWithAndroidDeviceIDRequest(request);
@@ -650,7 +706,7 @@ void AutoGenAuthenticationTests::TestAuthenticationClientLoginWithAndroidDeviceI
 
 void AutoGenAuthenticationTests::TestAuthenticationClientLoginWithApple(TestContext& testContext)
 {
-    struct ClientLoginWithAppleResultHolder : public LoginResultHolder
+    struct ClientLoginWithAppleResultHolderStruct : public LoginResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -669,7 +725,7 @@ void AutoGenAuthenticationTests::TestAuthenticationClientLoginWithApple(TestCont
             return ValidatePFAuthenticationLoginResult(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<ClientLoginWithAppleResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<ClientLoginWithAppleResultHolderStruct>>(testContext);
 
     PFAuthenticationLoginWithAppleRequestWrapper<> request;
     FillLoginWithAppleRequest(request);
@@ -689,7 +745,7 @@ void AutoGenAuthenticationTests::TestAuthenticationClientLoginWithApple(TestCont
 
 void AutoGenAuthenticationTests::TestAuthenticationClientLoginWithCustomID(TestContext& testContext)
 {
-    struct ClientLoginWithCustomIDResultHolder : public LoginResultHolder
+    struct ClientLoginWithCustomIDResultHolderStruct : public LoginResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -708,7 +764,7 @@ void AutoGenAuthenticationTests::TestAuthenticationClientLoginWithCustomID(TestC
             return ValidatePFAuthenticationLoginResult(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<ClientLoginWithCustomIDResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<ClientLoginWithCustomIDResultHolderStruct>>(testContext);
 
     PFAuthenticationLoginWithCustomIDRequestWrapper<> request;
     FillLoginWithCustomIDRequest(request);
@@ -728,7 +784,7 @@ void AutoGenAuthenticationTests::TestAuthenticationClientLoginWithCustomID(TestC
 
 void AutoGenAuthenticationTests::TestAuthenticationClientLoginWithEmailAddress(TestContext& testContext)
 {
-    struct ClientLoginWithEmailAddressResultHolder : public LoginResultHolder
+    struct ClientLoginWithEmailAddressResultHolderStruct : public LoginResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -747,7 +803,7 @@ void AutoGenAuthenticationTests::TestAuthenticationClientLoginWithEmailAddress(T
             return ValidatePFAuthenticationLoginResult(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<ClientLoginWithEmailAddressResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<ClientLoginWithEmailAddressResultHolderStruct>>(testContext);
 
     PFAuthenticationLoginWithEmailAddressRequestWrapper<> request;
     FillLoginWithEmailAddressRequest(request);
@@ -767,7 +823,7 @@ void AutoGenAuthenticationTests::TestAuthenticationClientLoginWithEmailAddress(T
 
 void AutoGenAuthenticationTests::TestAuthenticationClientLoginWithFacebook(TestContext& testContext)
 {
-    struct ClientLoginWithFacebookResultHolder : public LoginResultHolder
+    struct ClientLoginWithFacebookResultHolderStruct : public LoginResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -786,7 +842,7 @@ void AutoGenAuthenticationTests::TestAuthenticationClientLoginWithFacebook(TestC
             return ValidatePFAuthenticationLoginResult(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<ClientLoginWithFacebookResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<ClientLoginWithFacebookResultHolderStruct>>(testContext);
 
     PFAuthenticationLoginWithFacebookRequestWrapper<> request;
     FillLoginWithFacebookRequest(request);
@@ -806,7 +862,7 @@ void AutoGenAuthenticationTests::TestAuthenticationClientLoginWithFacebook(TestC
 
 void AutoGenAuthenticationTests::TestAuthenticationClientLoginWithFacebookInstantGamesId(TestContext& testContext)
 {
-    struct ClientLoginWithFacebookInstantGamesIdResultHolder : public LoginResultHolder
+    struct ClientLoginWithFacebookInstantGamesIdResultHolderStruct : public LoginResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -825,7 +881,7 @@ void AutoGenAuthenticationTests::TestAuthenticationClientLoginWithFacebookInstan
             return ValidatePFAuthenticationLoginResult(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<ClientLoginWithFacebookInstantGamesIdResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<ClientLoginWithFacebookInstantGamesIdResultHolderStruct>>(testContext);
 
     PFAuthenticationLoginWithFacebookInstantGamesIdRequestWrapper<> request;
     FillLoginWithFacebookInstantGamesIdRequest(request);
@@ -845,7 +901,7 @@ void AutoGenAuthenticationTests::TestAuthenticationClientLoginWithFacebookInstan
 
 void AutoGenAuthenticationTests::TestAuthenticationClientLoginWithGameCenter(TestContext& testContext)
 {
-    struct ClientLoginWithGameCenterResultHolder : public LoginResultHolder
+    struct ClientLoginWithGameCenterResultHolderStruct : public LoginResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -864,7 +920,7 @@ void AutoGenAuthenticationTests::TestAuthenticationClientLoginWithGameCenter(Tes
             return ValidatePFAuthenticationLoginResult(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<ClientLoginWithGameCenterResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<ClientLoginWithGameCenterResultHolderStruct>>(testContext);
 
     PFAuthenticationLoginWithGameCenterRequestWrapper<> request;
     FillLoginWithGameCenterRequest(request);
@@ -884,7 +940,7 @@ void AutoGenAuthenticationTests::TestAuthenticationClientLoginWithGameCenter(Tes
 
 void AutoGenAuthenticationTests::TestAuthenticationClientLoginWithGoogleAccount(TestContext& testContext)
 {
-    struct ClientLoginWithGoogleAccountResultHolder : public LoginResultHolder
+    struct ClientLoginWithGoogleAccountResultHolderStruct : public LoginResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -903,7 +959,7 @@ void AutoGenAuthenticationTests::TestAuthenticationClientLoginWithGoogleAccount(
             return ValidatePFAuthenticationLoginResult(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<ClientLoginWithGoogleAccountResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<ClientLoginWithGoogleAccountResultHolderStruct>>(testContext);
 
     PFAuthenticationLoginWithGoogleAccountRequestWrapper<> request;
     FillLoginWithGoogleAccountRequest(request);
@@ -923,7 +979,7 @@ void AutoGenAuthenticationTests::TestAuthenticationClientLoginWithGoogleAccount(
 
 void AutoGenAuthenticationTests::TestAuthenticationClientLoginWithIOSDeviceID(TestContext& testContext)
 {
-    struct ClientLoginWithIOSDeviceIDResultHolder : public LoginResultHolder
+    struct ClientLoginWithIOSDeviceIDResultHolderStruct : public LoginResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -942,7 +998,7 @@ void AutoGenAuthenticationTests::TestAuthenticationClientLoginWithIOSDeviceID(Te
             return ValidatePFAuthenticationLoginResult(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<ClientLoginWithIOSDeviceIDResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<ClientLoginWithIOSDeviceIDResultHolderStruct>>(testContext);
 
     PFAuthenticationLoginWithIOSDeviceIDRequestWrapper<> request;
     FillLoginWithIOSDeviceIDRequest(request);
@@ -962,7 +1018,7 @@ void AutoGenAuthenticationTests::TestAuthenticationClientLoginWithIOSDeviceID(Te
 
 void AutoGenAuthenticationTests::TestAuthenticationClientLoginWithKongregate(TestContext& testContext)
 {
-    struct ClientLoginWithKongregateResultHolder : public LoginResultHolder
+    struct ClientLoginWithKongregateResultHolderStruct : public LoginResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -981,7 +1037,7 @@ void AutoGenAuthenticationTests::TestAuthenticationClientLoginWithKongregate(Tes
             return ValidatePFAuthenticationLoginResult(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<ClientLoginWithKongregateResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<ClientLoginWithKongregateResultHolderStruct>>(testContext);
 
     PFAuthenticationLoginWithKongregateRequestWrapper<> request;
     FillLoginWithKongregateRequest(request);
@@ -1001,7 +1057,7 @@ void AutoGenAuthenticationTests::TestAuthenticationClientLoginWithKongregate(Tes
 
 void AutoGenAuthenticationTests::TestAuthenticationClientLoginWithNintendoServiceAccount(TestContext& testContext)
 {
-    struct ClientLoginWithNintendoServiceAccountResultHolder : public LoginResultHolder
+    struct ClientLoginWithNintendoServiceAccountResultHolderStruct : public LoginResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -1020,7 +1076,7 @@ void AutoGenAuthenticationTests::TestAuthenticationClientLoginWithNintendoServic
             return ValidatePFAuthenticationLoginResult(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<ClientLoginWithNintendoServiceAccountResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<ClientLoginWithNintendoServiceAccountResultHolderStruct>>(testContext);
 
     PFAuthenticationLoginWithNintendoServiceAccountRequestWrapper<> request;
     FillLoginWithNintendoServiceAccountRequest(request);
@@ -1040,7 +1096,7 @@ void AutoGenAuthenticationTests::TestAuthenticationClientLoginWithNintendoServic
 
 void AutoGenAuthenticationTests::TestAuthenticationClientLoginWithNintendoSwitchDeviceId(TestContext& testContext)
 {
-    struct ClientLoginWithNintendoSwitchDeviceIdResultHolder : public LoginResultHolder
+    struct ClientLoginWithNintendoSwitchDeviceIdResultHolderStruct : public LoginResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -1059,7 +1115,7 @@ void AutoGenAuthenticationTests::TestAuthenticationClientLoginWithNintendoSwitch
             return ValidatePFAuthenticationLoginResult(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<ClientLoginWithNintendoSwitchDeviceIdResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<ClientLoginWithNintendoSwitchDeviceIdResultHolderStruct>>(testContext);
 
     PFAuthenticationLoginWithNintendoSwitchDeviceIdRequestWrapper<> request;
     FillLoginWithNintendoSwitchDeviceIdRequest(request);
@@ -1079,7 +1135,7 @@ void AutoGenAuthenticationTests::TestAuthenticationClientLoginWithNintendoSwitch
 
 void AutoGenAuthenticationTests::TestAuthenticationClientLoginWithOpenIdConnect(TestContext& testContext)
 {
-    struct ClientLoginWithOpenIdConnectResultHolder : public LoginResultHolder
+    struct ClientLoginWithOpenIdConnectResultHolderStruct : public LoginResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -1098,7 +1154,7 @@ void AutoGenAuthenticationTests::TestAuthenticationClientLoginWithOpenIdConnect(
             return ValidatePFAuthenticationLoginResult(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<ClientLoginWithOpenIdConnectResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<ClientLoginWithOpenIdConnectResultHolderStruct>>(testContext);
 
     PFAuthenticationLoginWithOpenIdConnectRequestWrapper<> request;
     FillLoginWithOpenIdConnectRequest(request);
@@ -1118,7 +1174,7 @@ void AutoGenAuthenticationTests::TestAuthenticationClientLoginWithOpenIdConnect(
 
 void AutoGenAuthenticationTests::TestAuthenticationClientLoginWithPlayFab(TestContext& testContext)
 {
-    struct ClientLoginWithPlayFabResultHolder : public LoginResultHolder
+    struct ClientLoginWithPlayFabResultHolderStruct : public LoginResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -1137,7 +1193,7 @@ void AutoGenAuthenticationTests::TestAuthenticationClientLoginWithPlayFab(TestCo
             return ValidatePFAuthenticationLoginResult(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<ClientLoginWithPlayFabResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<ClientLoginWithPlayFabResultHolderStruct>>(testContext);
 
     PFAuthenticationLoginWithPlayFabRequestWrapper<> request;
     FillLoginWithPlayFabRequest(request);
@@ -1157,7 +1213,7 @@ void AutoGenAuthenticationTests::TestAuthenticationClientLoginWithPlayFab(TestCo
 
 void AutoGenAuthenticationTests::TestAuthenticationClientLoginWithPSN(TestContext& testContext)
 {
-    struct ClientLoginWithPSNResultHolder : public LoginResultHolder
+    struct ClientLoginWithPSNResultHolderStruct : public LoginResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -1176,7 +1232,7 @@ void AutoGenAuthenticationTests::TestAuthenticationClientLoginWithPSN(TestContex
             return ValidatePFAuthenticationLoginResult(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<ClientLoginWithPSNResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<ClientLoginWithPSNResultHolderStruct>>(testContext);
 
     PFAuthenticationLoginWithPSNRequestWrapper<> request;
     FillLoginWithPSNRequest(request);
@@ -1196,7 +1252,7 @@ void AutoGenAuthenticationTests::TestAuthenticationClientLoginWithPSN(TestContex
 
 void AutoGenAuthenticationTests::TestAuthenticationClientLoginWithSteam(TestContext& testContext)
 {
-    struct ClientLoginWithSteamResultHolder : public LoginResultHolder
+    struct ClientLoginWithSteamResultHolderStruct : public LoginResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -1215,7 +1271,7 @@ void AutoGenAuthenticationTests::TestAuthenticationClientLoginWithSteam(TestCont
             return ValidatePFAuthenticationLoginResult(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<ClientLoginWithSteamResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<ClientLoginWithSteamResultHolderStruct>>(testContext);
 
     PFAuthenticationLoginWithSteamRequestWrapper<> request;
     FillLoginWithSteamRequest(request);
@@ -1235,7 +1291,7 @@ void AutoGenAuthenticationTests::TestAuthenticationClientLoginWithSteam(TestCont
 
 void AutoGenAuthenticationTests::TestAuthenticationClientLoginWithTwitch(TestContext& testContext)
 {
-    struct ClientLoginWithTwitchResultHolder : public LoginResultHolder
+    struct ClientLoginWithTwitchResultHolderStruct : public LoginResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -1254,7 +1310,7 @@ void AutoGenAuthenticationTests::TestAuthenticationClientLoginWithTwitch(TestCon
             return ValidatePFAuthenticationLoginResult(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<ClientLoginWithTwitchResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<ClientLoginWithTwitchResultHolderStruct>>(testContext);
 
     PFAuthenticationLoginWithTwitchRequestWrapper<> request;
     FillLoginWithTwitchRequest(request);
@@ -1274,7 +1330,7 @@ void AutoGenAuthenticationTests::TestAuthenticationClientLoginWithTwitch(TestCon
 
 void AutoGenAuthenticationTests::TestAuthenticationClientLoginWithXbox(TestContext& testContext)
 {
-    struct ClientLoginWithXboxResultHolder : public LoginResultHolder
+    struct ClientLoginWithXboxResultHolderStruct : public LoginResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -1293,7 +1349,7 @@ void AutoGenAuthenticationTests::TestAuthenticationClientLoginWithXbox(TestConte
             return ValidatePFAuthenticationLoginResult(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<ClientLoginWithXboxResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<ClientLoginWithXboxResultHolderStruct>>(testContext);
 
     PFAuthenticationClientLoginWithXboxRequestWrapper<> request;
     FillClientLoginWithXboxRequest(request);
@@ -1313,7 +1369,7 @@ void AutoGenAuthenticationTests::TestAuthenticationClientLoginWithXbox(TestConte
 
 void AutoGenAuthenticationTests::TestAuthenticationClientRegisterPlayFabUser(TestContext& testContext)
 {
-    struct ClientRegisterPlayFabUserResultHolder : public RegisterPlayFabUserResultHolder
+    struct ClientRegisterPlayFabUserResultHolderStruct : public RegisterPlayFabUserResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -1332,7 +1388,7 @@ void AutoGenAuthenticationTests::TestAuthenticationClientRegisterPlayFabUser(Tes
             return ValidatePFAuthenticationRegisterPlayFabUserResult(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<ClientRegisterPlayFabUserResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<ClientRegisterPlayFabUserResultHolderStruct>>(testContext);
 
     PFAuthenticationRegisterPlayFabUserRequestWrapper<> request;
     FillRegisterPlayFabUserRequest(request);
@@ -1370,9 +1426,10 @@ void AutoGenAuthenticationTests::TestAuthenticationClientSetPlayerSecret(TestCon
 
 #pragma region ServerAuthenticateSessionTicket
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenAuthenticationTests::TestAuthenticationServerAuthenticateSessionTicket(TestContext& testContext)
 {
-    struct ServerAuthenticateSessionTicketResultHolder : public AuthenticateSessionTicketResultHolder
+    struct ServerAuthenticateSessionTicketResultHolderStruct : public AuthenticateSessionTicketResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -1391,7 +1448,7 @@ void AutoGenAuthenticationTests::TestAuthenticationServerAuthenticateSessionTick
             return ValidatePFAuthenticationAuthenticateSessionTicketResult(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<ServerAuthenticateSessionTicketResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<ServerAuthenticateSessionTicketResultHolderStruct>>(testContext);
 
     PFAuthenticationAuthenticateSessionTicketRequestWrapper<> request;
     FillAuthenticateSessionTicketRequest(request);
@@ -1404,14 +1461,16 @@ void AutoGenAuthenticationTests::TestAuthenticationServerAuthenticateSessionTick
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region ServerLoginWithServerCustomId
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenAuthenticationTests::TestAuthenticationServerLoginWithServerCustomId(TestContext& testContext)
 {
-    struct ServerLoginWithServerCustomIdResultHolder : public ServerLoginResultHolder
+    struct ServerLoginWithServerCustomIdResultHolderStruct : public ServerLoginResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -1430,7 +1489,7 @@ void AutoGenAuthenticationTests::TestAuthenticationServerLoginWithServerCustomId
             return ValidatePFAuthenticationServerLoginResult(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<ServerLoginWithServerCustomIdResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<ServerLoginWithServerCustomIdResultHolderStruct>>(testContext);
 
     PFAuthenticationLoginWithServerCustomIdRequestWrapper<> request;
     FillLoginWithServerCustomIdRequest(request);
@@ -1443,14 +1502,16 @@ void AutoGenAuthenticationTests::TestAuthenticationServerLoginWithServerCustomId
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region ServerLoginWithSteamId
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenAuthenticationTests::TestAuthenticationServerLoginWithSteamId(TestContext& testContext)
 {
-    struct ServerLoginWithSteamIdResultHolder : public ServerLoginResultHolder
+    struct ServerLoginWithSteamIdResultHolderStruct : public ServerLoginResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -1469,7 +1530,7 @@ void AutoGenAuthenticationTests::TestAuthenticationServerLoginWithSteamId(TestCo
             return ValidatePFAuthenticationServerLoginResult(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<ServerLoginWithSteamIdResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<ServerLoginWithSteamIdResultHolderStruct>>(testContext);
 
     PFAuthenticationLoginWithSteamIdRequestWrapper<> request;
     FillLoginWithSteamIdRequest(request);
@@ -1482,14 +1543,16 @@ void AutoGenAuthenticationTests::TestAuthenticationServerLoginWithSteamId(TestCo
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region ServerLoginWithXbox
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenAuthenticationTests::TestAuthenticationServerLoginWithXbox(TestContext& testContext)
 {
-    struct ServerLoginWithXboxResultHolder : public ServerLoginResultHolder
+    struct ServerLoginWithXboxResultHolderStruct : public ServerLoginResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -1508,7 +1571,7 @@ void AutoGenAuthenticationTests::TestAuthenticationServerLoginWithXbox(TestConte
             return ValidatePFAuthenticationServerLoginResult(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<ServerLoginWithXboxResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<ServerLoginWithXboxResultHolderStruct>>(testContext);
 
     PFAuthenticationServerLoginWithXboxRequestWrapper<> request;
     FillServerLoginWithXboxRequest(request);
@@ -1521,14 +1584,16 @@ void AutoGenAuthenticationTests::TestAuthenticationServerLoginWithXbox(TestConte
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region ServerLoginWithXboxId
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenAuthenticationTests::TestAuthenticationServerLoginWithXboxId(TestContext& testContext)
 {
-    struct ServerLoginWithXboxIdResultHolder : public ServerLoginResultHolder
+    struct ServerLoginWithXboxIdResultHolderStruct : public ServerLoginResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -1547,7 +1612,7 @@ void AutoGenAuthenticationTests::TestAuthenticationServerLoginWithXboxId(TestCon
             return ValidatePFAuthenticationServerLoginResult(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<ServerLoginWithXboxIdResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<ServerLoginWithXboxIdResultHolderStruct>>(testContext);
 
     PFAuthenticationLoginWithXboxIdRequestWrapper<> request;
     FillLoginWithXboxIdRequest(request);
@@ -1560,11 +1625,13 @@ void AutoGenAuthenticationTests::TestAuthenticationServerLoginWithXboxId(TestCon
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region ServerSetPlayerSecret
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenAuthenticationTests::TestAuthenticationServerSetPlayerSecret(TestContext& testContext)
 {
     auto async = std::make_unique<XAsyncHelper<XAsyncResult>>(testContext);
@@ -1580,6 +1647,7 @@ void AutoGenAuthenticationTests::TestAuthenticationServerSetPlayerSecret(TestCon
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
@@ -1587,7 +1655,7 @@ void AutoGenAuthenticationTests::TestAuthenticationServerSetPlayerSecret(TestCon
 
 void AutoGenAuthenticationTests::TestAuthenticationGetEntityToken(TestContext& testContext)
 {
-    struct GetEntityTokenResultHolder : public GetEntityTokenResponseHolder
+    struct GetEntityTokenResultHolderStruct : public GetEntityTokenResponseHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -1606,7 +1674,7 @@ void AutoGenAuthenticationTests::TestAuthenticationGetEntityToken(TestContext& t
             return ValidatePFAuthenticationGetEntityTokenResponse(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<GetEntityTokenResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<GetEntityTokenResultHolderStruct>>(testContext);
 
     PFAuthenticationGetEntityTokenRequestWrapper<> request;
     FillGetEntityTokenRequest(request);
@@ -1626,7 +1694,7 @@ void AutoGenAuthenticationTests::TestAuthenticationGetEntityToken(TestContext& t
 
 void AutoGenAuthenticationTests::TestAuthenticationValidateEntityToken(TestContext& testContext)
 {
-    struct ValidateEntityTokenResultHolder : public ValidateEntityTokenResponseHolder
+    struct ValidateEntityTokenResultHolderStruct : public ValidateEntityTokenResponseHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -1645,7 +1713,7 @@ void AutoGenAuthenticationTests::TestAuthenticationValidateEntityToken(TestConte
             return ValidatePFAuthenticationValidateEntityTokenResponse(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<ValidateEntityTokenResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<ValidateEntityTokenResultHolderStruct>>(testContext);
 
     PFAuthenticationValidateEntityTokenRequestWrapper<> request;
     FillValidateEntityTokenRequest(request);

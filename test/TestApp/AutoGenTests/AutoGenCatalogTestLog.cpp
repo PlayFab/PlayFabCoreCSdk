@@ -48,7 +48,7 @@ HRESULT AutoGenCatalogTests::LogPFCatalogCreateDraftItemResponse(PFCatalogCreate
     std::stringstream ss;
     ss << "Response:"; Log(ss);
 
-    // Found PlayFabCatalogCreateDraftItemResponse
+    // Found PlayFabCatalogCreateDraftItemResponse    
     ss << "  item " << result->item; Log(ss); // Class: PFCatalogCatalogItem 
     return S_OK;
 }
@@ -97,7 +97,7 @@ HRESULT AutoGenCatalogTests::LogPFCatalogCreateUploadUrlsResponse(PFCatalogCreat
     std::stringstream ss;
     ss << "Response:"; Log(ss);
 
-    // Found PlayFabCatalogCreateUploadUrlsResponse    
+    // Found PlayFabCatalogCreateUploadUrlsResponse        
     ss << "  uploadUrlsCount " << result->uploadUrlsCount; Log(ss);
 
     // PFCatalogUploadUrlMetadata
@@ -202,7 +202,7 @@ HRESULT AutoGenCatalogTests::LogPFCatalogGetCatalogConfigResponse(PFCatalogGetCa
     std::stringstream ss;
     ss << "Response:"; Log(ss);
 
-    // Found PlayFabCatalogGetCatalogConfigResponse
+    // Found PlayFabCatalogGetCatalogConfigResponse    
     ss << "  config " << result->config; Log(ss); // Class: PFCatalogCatalogConfig 
     return S_OK;
 }
@@ -246,7 +246,7 @@ HRESULT AutoGenCatalogTests::LogPFCatalogGetDraftItemResponse(PFCatalogGetDraftI
     std::stringstream ss;
     ss << "Response:"; Log(ss);
 
-    // Found PlayFabCatalogGetDraftItemResponse
+    // Found PlayFabCatalogGetDraftItemResponse    
     ss << "  item " << result->item; Log(ss); // Class: PFCatalogCatalogItem 
     return S_OK;
 }
@@ -303,8 +303,8 @@ HRESULT AutoGenCatalogTests::LogPFCatalogGetDraftItemsResponse(PFCatalogGetDraft
     std::stringstream ss;
     ss << "Response:"; Log(ss);
 
-    // Found PlayFabCatalogGetDraftItemsResponse
-    if( result->continuationToken ) { ss << "  continuationToken " << result->continuationToken; Log(ss); } else { ss << "  continuationToken = nullptr"; Log(ss); } // Class: const char*     
+    // Found PlayFabCatalogGetDraftItemsResponse    
+    if( result->continuationToken ) { ss << "  continuationToken " << result->continuationToken; Log(ss); } else { ss << "  continuationToken = nullptr"; Log(ss); } // Class: const char*         
     ss << "  itemsCount " << result->itemsCount; Log(ss);
 
     // PFCatalogCatalogItem
@@ -354,8 +354,8 @@ HRESULT AutoGenCatalogTests::LogPFCatalogGetEntityDraftItemsResponse(PFCatalogGe
     std::stringstream ss;
     ss << "Response:"; Log(ss);
 
-    // Found PlayFabCatalogGetEntityDraftItemsResponse
-    if( result->continuationToken ) { ss << "  continuationToken " << result->continuationToken; Log(ss); } else { ss << "  continuationToken = nullptr"; Log(ss); } // Class: const char*     
+    // Found PlayFabCatalogGetEntityDraftItemsResponse    
+    if( result->continuationToken ) { ss << "  continuationToken " << result->continuationToken; Log(ss); } else { ss << "  continuationToken = nullptr"; Log(ss); } // Class: const char*         
     ss << "  itemsCount " << result->itemsCount; Log(ss);
 
     // PFCatalogCatalogItem
@@ -405,7 +405,7 @@ HRESULT AutoGenCatalogTests::LogPFCatalogGetEntityItemReviewResponse(PFCatalogGe
     std::stringstream ss;
     ss << "Response:"; Log(ss);
 
-    // Found PlayFabCatalogGetEntityItemReviewResponse
+    // Found PlayFabCatalogGetEntityItemReviewResponse    
     ss << "  review " << result->review; Log(ss); // Class: PFCatalogReview 
     return S_OK;
 }
@@ -449,7 +449,7 @@ HRESULT AutoGenCatalogTests::LogPFCatalogGetItemResponse(PFCatalogGetItemRespons
     std::stringstream ss;
     ss << "Response:"; Log(ss);
 
-    // Found PlayFabCatalogGetItemResponse
+    // Found PlayFabCatalogGetItemResponse    
     ss << "  item " << result->item; Log(ss); // Class: PFCatalogCatalogItem 
     return S_OK;
 }
@@ -492,7 +492,7 @@ HRESULT AutoGenCatalogTests::LogPFCatalogGetItemModerationStateResponse(PFCatalo
     std::stringstream ss;
     ss << "Response:"; Log(ss);
 
-    // Found PlayFabCatalogGetItemModerationStateResponse
+    // Found PlayFabCatalogGetItemModerationStateResponse    
     ss << "  state " << result->state; Log(ss); // Class: PFCatalogModerationState 
     return S_OK;
 }
@@ -536,15 +536,15 @@ HRESULT AutoGenCatalogTests::LogPFCatalogGetItemPublishStatusResponse(PFCatalogG
     std::stringstream ss;
     ss << "Response:"; Log(ss);
 
-    // Found PlayFabCatalogGetItemPublishStatusResponse    
+    // Found PlayFabCatalogGetItemPublishStatusResponse        
     ss << "  failedScanResultsCount " << result->failedScanResultsCount; Log(ss);
 
     // PFCatalogScanResult
     for( uint32_t i=0; i<result->failedScanResultsCount; i++ )
     {
             ss << "  result->failedScanResults[" << i << "]:" << result->failedScanResults[i]; Log(ss); // PFCatalogScanResult
-    } 
-    ss << "  result " << result->result; Log(ss); // Class: PFCatalogPublishResult 
+    }     
+    ss << "  result " << result->result; Log(ss); // Class: PFCatalogPublishResult     
     if( result->statusMessage ) { ss << "  statusMessage " << result->statusMessage; Log(ss); } else { ss << "  statusMessage = nullptr"; Log(ss); } // Class: const char* 
     return S_OK;
 }
@@ -590,8 +590,8 @@ HRESULT AutoGenCatalogTests::LogPFCatalogGetItemReviewsResponse(PFCatalogGetItem
     std::stringstream ss;
     ss << "Response:"; Log(ss);
 
-    // Found PlayFabCatalogGetItemReviewsResponse
-    if( result->continuationToken ) { ss << "  continuationToken " << result->continuationToken; Log(ss); } else { ss << "  continuationToken = nullptr"; Log(ss); } // Class: const char*     
+    // Found PlayFabCatalogGetItemReviewsResponse    
+    if( result->continuationToken ) { ss << "  continuationToken " << result->continuationToken; Log(ss); } else { ss << "  continuationToken = nullptr"; Log(ss); } // Class: const char*         
     ss << "  reviewsCount " << result->reviewsCount; Log(ss);
 
     // PFCatalogReview
@@ -640,11 +640,74 @@ HRESULT AutoGenCatalogTests::LogPFCatalogGetItemReviewSummaryResponse(PFCatalogG
     std::stringstream ss;
     ss << "Response:"; Log(ss);
 
-    // Found PlayFabCatalogGetItemReviewSummaryResponse
-    ss << "  leastFavorableReview " << result->leastFavorableReview; Log(ss); // Class: PFCatalogReview 
-    ss << "  mostFavorableReview " << result->mostFavorableReview; Log(ss); // Class: PFCatalogReview 
-    ss << "  rating " << result->rating; Log(ss); // Class: PFCatalogRating 
+    // Found PlayFabCatalogGetItemReviewSummaryResponse    
+    ss << "  leastFavorableReview " << result->leastFavorableReview; Log(ss); // Class: PFCatalogReview     
+    ss << "  mostFavorableReview " << result->mostFavorableReview; Log(ss); // Class: PFCatalogReview     
+    ss << "  rating " << result->rating; Log(ss); // Class: PFCatalogRating     
     ss << "  reviewsCount " << result->reviewsCount; Log(ss); // Class: int32_t 
+    return S_OK;
+}
+
+void AutoGenCatalogTests::LogGetItemsRequest(PFCatalogGetItemsRequest const* request, const char* testName)
+{
+    if( !TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    {
+        return;
+    }
+
+    std::stringstream ss;
+    ss << "----------"; Log(ss);
+    ss << "Test #" << g_CatalogTestIndex++ << ": " << testName << ".  Last Known Status: "; Log(ss);
+    ss << "Request:"; Log(ss);
+
+
+    // PlayFabCatalogGetItemsRequest struct:
+    // request->alternateIds: PFCatalogCatalogAlternateId const* const*
+    // request->alternateIdsCount: uint32_t    
+    ss << "  alternateIdsCount " << request->alternateIdsCount; Log(ss);
+
+    // PFCatalogCatalogAlternateId
+    for( uint32_t i=0; i<request->alternateIdsCount; i++ )
+    {
+            ss << "  request->alternateIds[" << i << "]:" << request->alternateIds[i]; Log(ss); // PFCatalogCatalogAlternateId
+    }     
+    ss << "  customTagsCount " << request->customTagsCount; Log(ss);
+
+    // PFStringDictionaryEntry
+    for( uint32_t i=0; i<request->customTagsCount; i++ )
+    {
+            ss << "  request->customTags[" << i << "]:" << request->customTags[i].key << "=" << request->customTags[i].value; Log(ss);
+            
+    } 
+    ss << "  entity " << request->entity; Log(ss); // Class: PFEntityKey     
+    ss << "  idsCount " << request->idsCount; Log(ss);
+
+    // const char*
+    for( uint32_t i=0; i<request->idsCount; i++ )
+    {
+            ss << "  request->ids[" << i << "]:" << request->ids[i]; Log(ss); // const char*
+    } 
+
+}
+
+HRESULT AutoGenCatalogTests::LogPFCatalogGetItemsResponse(PFCatalogGetItemsResponse const* result)
+{
+    if( !TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    {
+        return S_OK;
+    }
+
+    std::stringstream ss;
+    ss << "Response:"; Log(ss);
+
+    // Found PlayFabCatalogGetItemsResponse        
+    ss << "  itemsCount " << result->itemsCount; Log(ss);
+
+    // PFCatalogCatalogItem
+    for( uint32_t i=0; i<result->itemsCount; i++ )
+    {
+            ss << "  result->items[" << i << "]:" << result->items[i]; Log(ss); // PFCatalogCatalogItem
+    } 
     return S_OK;
 }
 
@@ -814,8 +877,8 @@ HRESULT AutoGenCatalogTests::LogPFCatalogSearchItemsResponse(PFCatalogSearchItem
     std::stringstream ss;
     ss << "Response:"; Log(ss);
 
-    // Found PlayFabCatalogSearchItemsResponse
-    if( result->continuationToken ) { ss << "  continuationToken " << result->continuationToken; Log(ss); } else { ss << "  continuationToken = nullptr"; Log(ss); } // Class: const char*     
+    // Found PlayFabCatalogSearchItemsResponse    
+    if( result->continuationToken ) { ss << "  continuationToken " << result->continuationToken; Log(ss); } else { ss << "  continuationToken = nullptr"; Log(ss); } // Class: const char*         
     ss << "  itemsCount " << result->itemsCount; Log(ss);
 
     // PFCatalogCatalogItem
@@ -987,7 +1050,7 @@ HRESULT AutoGenCatalogTests::LogPFCatalogUpdateDraftItemResponse(PFCatalogUpdate
     std::stringstream ss;
     ss << "Response:"; Log(ss);
 
-    // Found PlayFabCatalogUpdateDraftItemResponse
+    // Found PlayFabCatalogUpdateDraftItemResponse    
     ss << "  item " << result->item; Log(ss); // Class: PFCatalogCatalogItem 
     return S_OK;
 }

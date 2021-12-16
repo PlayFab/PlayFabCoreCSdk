@@ -48,10 +48,10 @@ HRESULT AutoGenPlayerItemManagementTests::LogPFPlayerItemManagementModifyUserVir
     std::stringstream ss;
     ss << "Response:"; Log(ss);
 
-    // Found PlayFabPlayerItemManagementModifyUserVirtualCurrencyResult
-    ss << "  balance " << result->balance; Log(ss); // Class: int32_t 
-    ss << "  balanceChange " << result->balanceChange; Log(ss); // Class: int32_t 
-    if( result->playFabId ) { ss << "  playFabId " << result->playFabId; Log(ss); } else { ss << "  playFabId = nullptr"; Log(ss); } // Class: const char* 
+    // Found PlayFabPlayerItemManagementModifyUserVirtualCurrencyResult    
+    ss << "  balance " << result->balance; Log(ss); // Class: int32_t     
+    ss << "  balanceChange " << result->balanceChange; Log(ss); // Class: int32_t     
+    if( result->playFabId ) { ss << "  playFabId " << result->playFabId; Log(ss); } else { ss << "  playFabId = nullptr"; Log(ss); } // Class: const char*     
     if( result->virtualCurrency ) { ss << "  virtualCurrency " << result->virtualCurrency; Log(ss); } else { ss << "  virtualCurrency = nullptr"; Log(ss); } // Class: const char* 
     return S_OK;
 }
@@ -86,7 +86,7 @@ HRESULT AutoGenPlayerItemManagementTests::LogPFPlayerItemManagementCheckLimitedE
     std::stringstream ss;
     ss << "Response:"; Log(ss);
 
-    // Found PlayFabPlayerItemManagementCheckLimitedEditionItemAvailabilityResult
+    // Found PlayFabPlayerItemManagementCheckLimitedEditionItemAvailabilityResult    
     ss << "  amount " << result->amount; Log(ss); // Class: int32_t 
     return S_OK;
 }
@@ -129,6 +129,31 @@ HRESULT AutoGenPlayerItemManagementTests::LogPFPlayerItemManagementAdminGetUserI
     std::stringstream ss;
     ss << "Response:"; Log(ss);
 
+    // Found PlayFabPlayerItemManagementAdminGetUserInventoryResult        
+    ss << "  inventoryCount " << result->inventoryCount; Log(ss);
+
+    // PFItemInstance
+    for( uint32_t i=0; i<result->inventoryCount; i++ )
+    {
+            ss << "  result->inventory[" << i << "]:" << result->inventory[i]; Log(ss); // PFItemInstance
+    }     
+    if( result->playFabId ) { ss << "  playFabId " << result->playFabId; Log(ss); } else { ss << "  playFabId = nullptr"; Log(ss); } // Class: const char*         
+    ss << "  virtualCurrencyCount " << result->virtualCurrencyCount; Log(ss);
+
+    // PFInt32DictionaryEntry
+    for( uint32_t i=0; i<result->virtualCurrencyCount; i++ )
+    {
+            ss << "  result->virtualCurrency[" << i << "]:" << result->virtualCurrency[i].key << "=" << result->virtualCurrency[i].value; Log(ss);
+            
+    }         
+    ss << "  virtualCurrencyRechargeTimesCount " << result->virtualCurrencyRechargeTimesCount; Log(ss);
+
+    // PFVirtualCurrencyRechargeTimeDictionaryEntry
+    for( uint32_t i=0; i<result->virtualCurrencyRechargeTimesCount; i++ )
+    {
+            ss << "  result->virtualCurrencyRechargeTimes[" << i << "]:" << result->virtualCurrencyRechargeTimes[i].key << "=" << result->virtualCurrencyRechargeTimes[i].value; Log(ss);
+            
+    } 
     return S_OK;
 }
 
@@ -176,7 +201,7 @@ HRESULT AutoGenPlayerItemManagementTests::LogPFPlayerItemManagementGrantItemsToU
     std::stringstream ss;
     ss << "Response:"; Log(ss);
 
-    // Found PlayFabPlayerItemManagementGrantItemsToUsersResult    
+    // Found PlayFabPlayerItemManagementGrantItemsToUsersResult        
     ss << "  itemGrantResultsCount " << result->itemGrantResultsCount; Log(ss);
 
     // PFPlayerItemManagementGrantedItemInstance
@@ -273,7 +298,7 @@ HRESULT AutoGenPlayerItemManagementTests::LogPFPlayerItemManagementRevokeInvento
     std::stringstream ss;
     ss << "Response:"; Log(ss);
 
-    // Found PlayFabPlayerItemManagementRevokeInventoryItemsResult    
+    // Found PlayFabPlayerItemManagementRevokeInventoryItemsResult        
     ss << "  errorsCount " << result->errorsCount; Log(ss);
 
     // PFPlayerItemManagementRevokeItemError
@@ -379,15 +404,15 @@ HRESULT AutoGenPlayerItemManagementTests::LogPFPlayerItemManagementConfirmPurcha
     std::stringstream ss;
     ss << "Response:"; Log(ss);
 
-    // Found PlayFabPlayerItemManagementConfirmPurchaseResult    
+    // Found PlayFabPlayerItemManagementConfirmPurchaseResult        
     ss << "  itemsCount " << result->itemsCount; Log(ss);
 
     // PFItemInstance
     for( uint32_t i=0; i<result->itemsCount; i++ )
     {
             ss << "  result->items[" << i << "]:" << result->items[i]; Log(ss); // PFItemInstance
-    } 
-    if( result->orderId ) { ss << "  orderId " << result->orderId; Log(ss); } else { ss << "  orderId = nullptr"; Log(ss); } // Class: const char* 
+    }     
+    if( result->orderId ) { ss << "  orderId " << result->orderId; Log(ss); } else { ss << "  orderId = nullptr"; Log(ss); } // Class: const char*     
     ss << "  purchaseDate " << result->purchaseDate; Log(ss); // Class: time_t 
     return S_OK;
 }
@@ -431,8 +456,8 @@ HRESULT AutoGenPlayerItemManagementTests::LogPFPlayerItemManagementConsumeItemRe
     std::stringstream ss;
     ss << "Response:"; Log(ss);
 
-    // Found PlayFabPlayerItemManagementConsumeItemResult
-    if( result->itemInstanceId ) { ss << "  itemInstanceId " << result->itemInstanceId; Log(ss); } else { ss << "  itemInstanceId = nullptr"; Log(ss); } // Class: const char* 
+    // Found PlayFabPlayerItemManagementConsumeItemResult    
+    if( result->itemInstanceId ) { ss << "  itemInstanceId " << result->itemInstanceId; Log(ss); } else { ss << "  itemInstanceId = nullptr"; Log(ss); } // Class: const char*     
     ss << "  remainingUses " << result->remainingUses; Log(ss); // Class: int32_t 
     return S_OK;
 }
@@ -475,6 +500,31 @@ HRESULT AutoGenPlayerItemManagementTests::LogPFPlayerItemManagementClientGetChar
     std::stringstream ss;
     ss << "Response:"; Log(ss);
 
+    // Found PlayFabPlayerItemManagementClientGetCharacterInventoryResult    
+    if( result->characterId ) { ss << "  characterId " << result->characterId; Log(ss); } else { ss << "  characterId = nullptr"; Log(ss); } // Class: const char*         
+    ss << "  inventoryCount " << result->inventoryCount; Log(ss);
+
+    // PFItemInstance
+    for( uint32_t i=0; i<result->inventoryCount; i++ )
+    {
+            ss << "  result->inventory[" << i << "]:" << result->inventory[i]; Log(ss); // PFItemInstance
+    }         
+    ss << "  virtualCurrencyCount " << result->virtualCurrencyCount; Log(ss);
+
+    // PFInt32DictionaryEntry
+    for( uint32_t i=0; i<result->virtualCurrencyCount; i++ )
+    {
+            ss << "  result->virtualCurrency[" << i << "]:" << result->virtualCurrency[i].key << "=" << result->virtualCurrency[i].value; Log(ss);
+            
+    }         
+    ss << "  virtualCurrencyRechargeTimesCount " << result->virtualCurrencyRechargeTimesCount; Log(ss);
+
+    // PFVirtualCurrencyRechargeTimeDictionaryEntry
+    for( uint32_t i=0; i<result->virtualCurrencyRechargeTimesCount; i++ )
+    {
+            ss << "  result->virtualCurrencyRechargeTimes[" << i << "]:" << result->virtualCurrencyRechargeTimes[i].key << "=" << result->virtualCurrencyRechargeTimes[i].value; Log(ss);
+            
+    } 
     return S_OK;
 }
 
@@ -507,8 +557,8 @@ HRESULT AutoGenPlayerItemManagementTests::LogPFPlayerItemManagementGetPaymentTok
     std::stringstream ss;
     ss << "Response:"; Log(ss);
 
-    // Found PlayFabPlayerItemManagementGetPaymentTokenResult
-    if( result->orderId ) { ss << "  orderId " << result->orderId; Log(ss); } else { ss << "  orderId = nullptr"; Log(ss); } // Class: const char* 
+    // Found PlayFabPlayerItemManagementGetPaymentTokenResult    
+    if( result->orderId ) { ss << "  orderId " << result->orderId; Log(ss); } else { ss << "  orderId = nullptr"; Log(ss); } // Class: const char*     
     if( result->providerToken ) { ss << "  providerToken " << result->providerToken; Log(ss); } else { ss << "  providerToken = nullptr"; Log(ss); } // Class: const char* 
     return S_OK;
 }
@@ -542,11 +592,11 @@ HRESULT AutoGenPlayerItemManagementTests::LogPFPlayerItemManagementGetPurchaseRe
     std::stringstream ss;
     ss << "Response:"; Log(ss);
 
-    // Found PlayFabPlayerItemManagementGetPurchaseResult
-    if( result->orderId ) { ss << "  orderId " << result->orderId; Log(ss); } else { ss << "  orderId = nullptr"; Log(ss); } // Class: const char* 
-    if( result->paymentProvider ) { ss << "  paymentProvider " << result->paymentProvider; Log(ss); } else { ss << "  paymentProvider = nullptr"; Log(ss); } // Class: const char* 
-    ss << "  purchaseDate " << result->purchaseDate; Log(ss); // Class: time_t 
-    if( result->transactionId ) { ss << "  transactionId " << result->transactionId; Log(ss); } else { ss << "  transactionId = nullptr"; Log(ss); } // Class: const char* 
+    // Found PlayFabPlayerItemManagementGetPurchaseResult    
+    if( result->orderId ) { ss << "  orderId " << result->orderId; Log(ss); } else { ss << "  orderId = nullptr"; Log(ss); } // Class: const char*     
+    if( result->paymentProvider ) { ss << "  paymentProvider " << result->paymentProvider; Log(ss); } else { ss << "  paymentProvider = nullptr"; Log(ss); } // Class: const char*     
+    ss << "  purchaseDate " << result->purchaseDate; Log(ss); // Class: time_t     
+    if( result->transactionId ) { ss << "  transactionId " << result->transactionId; Log(ss); } else { ss << "  transactionId = nullptr"; Log(ss); } // Class: const char*     
     if( result->transactionStatus ) { ss << "  transactionStatus " << result->transactionStatus; Log(ss); } else { ss << "  transactionStatus = nullptr"; Log(ss); } // Class: const char* 
     return S_OK;
 }
@@ -588,6 +638,30 @@ HRESULT AutoGenPlayerItemManagementTests::LogPFPlayerItemManagementClientGetUser
     std::stringstream ss;
     ss << "Response:"; Log(ss);
 
+    // Found PlayFabPlayerItemManagementClientGetUserInventoryResult        
+    ss << "  inventoryCount " << result->inventoryCount; Log(ss);
+
+    // PFItemInstance
+    for( uint32_t i=0; i<result->inventoryCount; i++ )
+    {
+            ss << "  result->inventory[" << i << "]:" << result->inventory[i]; Log(ss); // PFItemInstance
+    }         
+    ss << "  virtualCurrencyCount " << result->virtualCurrencyCount; Log(ss);
+
+    // PFInt32DictionaryEntry
+    for( uint32_t i=0; i<result->virtualCurrencyCount; i++ )
+    {
+            ss << "  result->virtualCurrency[" << i << "]:" << result->virtualCurrency[i].key << "=" << result->virtualCurrency[i].value; Log(ss);
+            
+    }         
+    ss << "  virtualCurrencyRechargeTimesCount " << result->virtualCurrencyRechargeTimesCount; Log(ss);
+
+    // PFVirtualCurrencyRechargeTimeDictionaryEntry
+    for( uint32_t i=0; i<result->virtualCurrencyRechargeTimesCount; i++ )
+    {
+            ss << "  result->virtualCurrencyRechargeTimes[" << i << "]:" << result->virtualCurrencyRechargeTimes[i].key << "=" << result->virtualCurrencyRechargeTimes[i].value; Log(ss);
+            
+    } 
     return S_OK;
 }
 
@@ -631,15 +705,15 @@ HRESULT AutoGenPlayerItemManagementTests::LogPFPlayerItemManagementPayForPurchas
     std::stringstream ss;
     ss << "Response:"; Log(ss);
 
-    // Found PlayFabPlayerItemManagementPayForPurchaseResult
-    ss << "  creditApplied " << result->creditApplied; Log(ss); // Class: uint32_t 
-    if( result->orderId ) { ss << "  orderId " << result->orderId; Log(ss); } else { ss << "  orderId = nullptr"; Log(ss); } // Class: const char* 
-    if( result->providerData ) { ss << "  providerData " << result->providerData; Log(ss); } else { ss << "  providerData = nullptr"; Log(ss); } // Class: const char* 
-    if( result->providerToken ) { ss << "  providerToken " << result->providerToken; Log(ss); } else { ss << "  providerToken = nullptr"; Log(ss); } // Class: const char* 
-    if( result->purchaseConfirmationPageURL ) { ss << "  purchaseConfirmationPageURL " << result->purchaseConfirmationPageURL; Log(ss); } else { ss << "  purchaseConfirmationPageURL = nullptr"; Log(ss); } // Class: const char* 
-    if( result->purchaseCurrency ) { ss << "  purchaseCurrency " << result->purchaseCurrency; Log(ss); } else { ss << "  purchaseCurrency = nullptr"; Log(ss); } // Class: const char* 
-    ss << "  purchasePrice " << result->purchasePrice; Log(ss); // Class: uint32_t 
-    ss << "  status " << result->status; Log(ss); // Class: PFPlayerItemManagementTransactionStatus     
+    // Found PlayFabPlayerItemManagementPayForPurchaseResult    
+    ss << "  creditApplied " << result->creditApplied; Log(ss); // Class: uint32_t     
+    if( result->orderId ) { ss << "  orderId " << result->orderId; Log(ss); } else { ss << "  orderId = nullptr"; Log(ss); } // Class: const char*     
+    if( result->providerData ) { ss << "  providerData " << result->providerData; Log(ss); } else { ss << "  providerData = nullptr"; Log(ss); } // Class: const char*     
+    if( result->providerToken ) { ss << "  providerToken " << result->providerToken; Log(ss); } else { ss << "  providerToken = nullptr"; Log(ss); } // Class: const char*     
+    if( result->purchaseConfirmationPageURL ) { ss << "  purchaseConfirmationPageURL " << result->purchaseConfirmationPageURL; Log(ss); } else { ss << "  purchaseConfirmationPageURL = nullptr"; Log(ss); } // Class: const char*     
+    if( result->purchaseCurrency ) { ss << "  purchaseCurrency " << result->purchaseCurrency; Log(ss); } else { ss << "  purchaseCurrency = nullptr"; Log(ss); } // Class: const char*     
+    ss << "  purchasePrice " << result->purchasePrice; Log(ss); // Class: uint32_t     
+    ss << "  status " << result->status; Log(ss); // Class: PFPlayerItemManagementTransactionStatus         
     ss << "  vCAmountCount " << result->vCAmountCount; Log(ss);
 
     // PFInt32DictionaryEntry
@@ -647,7 +721,7 @@ HRESULT AutoGenPlayerItemManagementTests::LogPFPlayerItemManagementPayForPurchas
     {
             ss << "  result->vCAmount[" << i << "]:" << result->vCAmount[i].key << "=" << result->vCAmount[i].value; Log(ss);
             
-    }     
+    }         
     ss << "  virtualCurrencyCount " << result->virtualCurrencyCount; Log(ss);
 
     // PFInt32DictionaryEntry
@@ -701,7 +775,7 @@ HRESULT AutoGenPlayerItemManagementTests::LogPFPlayerItemManagementPurchaseItemR
     std::stringstream ss;
     ss << "Response:"; Log(ss);
 
-    // Found PlayFabPlayerItemManagementPurchaseItemResult    
+    // Found PlayFabPlayerItemManagementPurchaseItemResult        
     ss << "  itemsCount " << result->itemsCount; Log(ss);
 
     // PFItemInstance
@@ -751,7 +825,7 @@ HRESULT AutoGenPlayerItemManagementTests::LogPFPlayerItemManagementRedeemCouponR
     std::stringstream ss;
     ss << "Response:"; Log(ss);
 
-    // Found PlayFabPlayerItemManagementRedeemCouponResult    
+    // Found PlayFabPlayerItemManagementRedeemCouponResult        
     ss << "  grantedItemsCount " << result->grantedItemsCount; Log(ss);
 
     // PFItemInstance
@@ -807,22 +881,22 @@ HRESULT AutoGenPlayerItemManagementTests::LogPFPlayerItemManagementStartPurchase
     std::stringstream ss;
     ss << "Response:"; Log(ss);
 
-    // Found PlayFabPlayerItemManagementStartPurchaseResult    
+    // Found PlayFabPlayerItemManagementStartPurchaseResult        
     ss << "  contentsCount " << result->contentsCount; Log(ss);
 
     // PFPlayerItemManagementCartItem
     for( uint32_t i=0; i<result->contentsCount; i++ )
     {
             ss << "  result->contents[" << i << "]:" << result->contents[i]; Log(ss); // PFPlayerItemManagementCartItem
-    } 
-    if( result->orderId ) { ss << "  orderId " << result->orderId; Log(ss); } else { ss << "  orderId = nullptr"; Log(ss); } // Class: const char*     
+    }     
+    if( result->orderId ) { ss << "  orderId " << result->orderId; Log(ss); } else { ss << "  orderId = nullptr"; Log(ss); } // Class: const char*         
     ss << "  paymentOptionsCount " << result->paymentOptionsCount; Log(ss);
 
     // PFPlayerItemManagementPaymentOption
     for( uint32_t i=0; i<result->paymentOptionsCount; i++ )
     {
             ss << "  result->paymentOptions[" << i << "]:" << result->paymentOptions[i]; Log(ss); // PFPlayerItemManagementPaymentOption
-    }     
+    }         
     ss << "  virtualCurrencyBalancesCount " << result->virtualCurrencyBalancesCount; Log(ss);
 
     // PFInt32DictionaryEntry
@@ -902,16 +976,16 @@ HRESULT AutoGenPlayerItemManagementTests::LogPFPlayerItemManagementUnlockContain
     std::stringstream ss;
     ss << "Response:"; Log(ss);
 
-    // Found PlayFabPlayerItemManagementUnlockContainerItemResult    
+    // Found PlayFabPlayerItemManagementUnlockContainerItemResult        
     ss << "  grantedItemsCount " << result->grantedItemsCount; Log(ss);
 
     // PFItemInstance
     for( uint32_t i=0; i<result->grantedItemsCount; i++ )
     {
             ss << "  result->grantedItems[" << i << "]:" << result->grantedItems[i]; Log(ss); // PFItemInstance
-    } 
-    if( result->unlockedItemInstanceId ) { ss << "  unlockedItemInstanceId " << result->unlockedItemInstanceId; Log(ss); } else { ss << "  unlockedItemInstanceId = nullptr"; Log(ss); } // Class: const char* 
-    if( result->unlockedWithItemInstanceId ) { ss << "  unlockedWithItemInstanceId " << result->unlockedWithItemInstanceId; Log(ss); } else { ss << "  unlockedWithItemInstanceId = nullptr"; Log(ss); } // Class: const char*     
+    }     
+    if( result->unlockedItemInstanceId ) { ss << "  unlockedItemInstanceId " << result->unlockedItemInstanceId; Log(ss); } else { ss << "  unlockedItemInstanceId = nullptr"; Log(ss); } // Class: const char*     
+    if( result->unlockedWithItemInstanceId ) { ss << "  unlockedWithItemInstanceId " << result->unlockedWithItemInstanceId; Log(ss); } else { ss << "  unlockedWithItemInstanceId = nullptr"; Log(ss); } // Class: const char*         
     ss << "  virtualCurrencyCount " << result->virtualCurrencyCount; Log(ss);
 
     // PFUint32DictionaryEntry
@@ -992,8 +1066,8 @@ HRESULT AutoGenPlayerItemManagementTests::LogPFPlayerItemManagementModifyCharact
     std::stringstream ss;
     ss << "Response:"; Log(ss);
 
-    // Found PlayFabPlayerItemManagementModifyCharacterVirtualCurrencyResult
-    ss << "  balance " << result->balance; Log(ss); // Class: int32_t 
+    // Found PlayFabPlayerItemManagementModifyCharacterVirtualCurrencyResult    
+    ss << "  balance " << result->balance; Log(ss); // Class: int32_t     
     if( result->virtualCurrency ) { ss << "  virtualCurrency " << result->virtualCurrency; Log(ss); } else { ss << "  virtualCurrency = nullptr"; Log(ss); } // Class: const char* 
     return S_OK;
 }
@@ -1087,7 +1161,7 @@ HRESULT AutoGenPlayerItemManagementTests::LogPFPlayerItemManagementEvaluateRando
     std::stringstream ss;
     ss << "Response:"; Log(ss);
 
-    // Found PlayFabPlayerItemManagementEvaluateRandomResultTableResult
+    // Found PlayFabPlayerItemManagementEvaluateRandomResultTableResult    
     if( result->resultItemId ) { ss << "  resultItemId " << result->resultItemId; Log(ss); } else { ss << "  resultItemId = nullptr"; Log(ss); } // Class: const char* 
     return S_OK;
 }
@@ -1131,6 +1205,32 @@ HRESULT AutoGenPlayerItemManagementTests::LogPFPlayerItemManagementServerGetChar
     std::stringstream ss;
     ss << "Response:"; Log(ss);
 
+    // Found PlayFabPlayerItemManagementServerGetCharacterInventoryResult    
+    if( result->characterId ) { ss << "  characterId " << result->characterId; Log(ss); } else { ss << "  characterId = nullptr"; Log(ss); } // Class: const char*         
+    ss << "  inventoryCount " << result->inventoryCount; Log(ss);
+
+    // PFItemInstance
+    for( uint32_t i=0; i<result->inventoryCount; i++ )
+    {
+            ss << "  result->inventory[" << i << "]:" << result->inventory[i]; Log(ss); // PFItemInstance
+    }     
+    if( result->playFabId ) { ss << "  playFabId " << result->playFabId; Log(ss); } else { ss << "  playFabId = nullptr"; Log(ss); } // Class: const char*         
+    ss << "  virtualCurrencyCount " << result->virtualCurrencyCount; Log(ss);
+
+    // PFInt32DictionaryEntry
+    for( uint32_t i=0; i<result->virtualCurrencyCount; i++ )
+    {
+            ss << "  result->virtualCurrency[" << i << "]:" << result->virtualCurrency[i].key << "=" << result->virtualCurrency[i].value; Log(ss);
+            
+    }         
+    ss << "  virtualCurrencyRechargeTimesCount " << result->virtualCurrencyRechargeTimesCount; Log(ss);
+
+    // PFVirtualCurrencyRechargeTimeDictionaryEntry
+    for( uint32_t i=0; i<result->virtualCurrencyRechargeTimesCount; i++ )
+    {
+            ss << "  result->virtualCurrencyRechargeTimes[" << i << "]:" << result->virtualCurrencyRechargeTimes[i].key << "=" << result->virtualCurrencyRechargeTimes[i].value; Log(ss);
+            
+    } 
     return S_OK;
 }
 
@@ -1170,7 +1270,7 @@ HRESULT AutoGenPlayerItemManagementTests::LogPFGetRandomResultTablesResult(PFGet
     std::stringstream ss;
     ss << "Response:"; Log(ss);
 
-    // Found PlayFabPlayerItemManagementGetRandomResultTablesResult    
+    // Found PlayFabPlayerItemManagementGetRandomResultTablesResult        
     ss << "  tablesCount " << result->tablesCount; Log(ss);
 
     // PFRandomResultTableListingDictionaryEntry
@@ -1220,6 +1320,31 @@ HRESULT AutoGenPlayerItemManagementTests::LogPFPlayerItemManagementServerGetUser
     std::stringstream ss;
     ss << "Response:"; Log(ss);
 
+    // Found PlayFabPlayerItemManagementServerGetUserInventoryResult        
+    ss << "  inventoryCount " << result->inventoryCount; Log(ss);
+
+    // PFItemInstance
+    for( uint32_t i=0; i<result->inventoryCount; i++ )
+    {
+            ss << "  result->inventory[" << i << "]:" << result->inventory[i]; Log(ss); // PFItemInstance
+    }     
+    if( result->playFabId ) { ss << "  playFabId " << result->playFabId; Log(ss); } else { ss << "  playFabId = nullptr"; Log(ss); } // Class: const char*         
+    ss << "  virtualCurrencyCount " << result->virtualCurrencyCount; Log(ss);
+
+    // PFInt32DictionaryEntry
+    for( uint32_t i=0; i<result->virtualCurrencyCount; i++ )
+    {
+            ss << "  result->virtualCurrency[" << i << "]:" << result->virtualCurrency[i].key << "=" << result->virtualCurrency[i].value; Log(ss);
+            
+    }         
+    ss << "  virtualCurrencyRechargeTimesCount " << result->virtualCurrencyRechargeTimesCount; Log(ss);
+
+    // PFVirtualCurrencyRechargeTimeDictionaryEntry
+    for( uint32_t i=0; i<result->virtualCurrencyRechargeTimesCount; i++ )
+    {
+            ss << "  result->virtualCurrencyRechargeTimes[" << i << "]:" << result->virtualCurrencyRechargeTimes[i].key << "=" << result->virtualCurrencyRechargeTimes[i].value; Log(ss);
+            
+    } 
     return S_OK;
 }
 
@@ -1270,7 +1395,7 @@ HRESULT AutoGenPlayerItemManagementTests::LogPFPlayerItemManagementGrantItemsToC
     std::stringstream ss;
     ss << "Response:"; Log(ss);
 
-    // Found PlayFabPlayerItemManagementGrantItemsToCharacterResult    
+    // Found PlayFabPlayerItemManagementGrantItemsToCharacterResult        
     ss << "  itemGrantResultsCount " << result->itemGrantResultsCount; Log(ss);
 
     // PFPlayerItemManagementGrantedItemInstance
@@ -1327,7 +1452,7 @@ HRESULT AutoGenPlayerItemManagementTests::LogPFPlayerItemManagementGrantItemsToU
     std::stringstream ss;
     ss << "Response:"; Log(ss);
 
-    // Found PlayFabPlayerItemManagementGrantItemsToUserResult    
+    // Found PlayFabPlayerItemManagementGrantItemsToUserResult        
     ss << "  itemGrantResultsCount " << result->itemGrantResultsCount; Log(ss);
 
     // PFPlayerItemManagementGrantedItemInstance
@@ -1378,8 +1503,8 @@ HRESULT AutoGenPlayerItemManagementTests::LogPFPlayerItemManagementModifyItemUse
     std::stringstream ss;
     ss << "Response:"; Log(ss);
 
-    // Found PlayFabPlayerItemManagementModifyItemUsesResult
-    if( result->itemInstanceId ) { ss << "  itemInstanceId " << result->itemInstanceId; Log(ss); } else { ss << "  itemInstanceId = nullptr"; Log(ss); } // Class: const char* 
+    // Found PlayFabPlayerItemManagementModifyItemUsesResult    
+    if( result->itemInstanceId ) { ss << "  itemInstanceId " << result->itemInstanceId; Log(ss); } else { ss << "  itemInstanceId = nullptr"; Log(ss); } // Class: const char*     
     ss << "  remainingUses " << result->remainingUses; Log(ss); // Class: int32_t 
     return S_OK;
 }
@@ -1517,7 +1642,7 @@ HRESULT AutoGenPlayerItemManagementTests::LogPFPlayerItemManagementReportPlayerS
     std::stringstream ss;
     ss << "Response:"; Log(ss);
 
-    // Found PlayFabPlayerItemManagementReportPlayerServerResult
+    // Found PlayFabPlayerItemManagementReportPlayerServerResult    
     ss << "  submissionsRemaining " << result->submissionsRemaining; Log(ss); // Class: int32_t 
     return S_OK;
 }

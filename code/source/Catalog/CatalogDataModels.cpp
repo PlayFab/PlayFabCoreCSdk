@@ -2133,6 +2133,60 @@ HRESULT GetItemReviewSummaryResponse::Copy(const PFCatalogGetItemReviewSummaryRe
     return S_OK;
 }
 
+JsonValue GetItemsRequest::ToJson() const
+{
+    return GetItemsRequest::ToJson(this->Model());
+}
+
+JsonValue GetItemsRequest::ToJson(const PFCatalogGetItemsRequest& input)
+{
+    JsonValue output{ rapidjson::kObjectType };
+    JsonUtils::ObjectAddMemberArray<CatalogAlternateId>(output, "AlternateIds", input.alternateIds, input.alternateIdsCount);
+    JsonUtils::ObjectAddMemberDictionary(output, "CustomTags", input.customTags, input.customTagsCount);
+    JsonUtils::ObjectAddMember<EntityKey>(output, "Entity", input.entity);
+    JsonUtils::ObjectAddMemberArray(output, "Ids", input.ids, input.idsCount);
+    return output;
+}
+
+void GetItemsResponse::FromJson(const JsonValue& input)
+{
+    ModelVector<CatalogItem> items{};
+    JsonUtils::ObjectGetMember<CatalogItem>(input, "Items", items);
+    this->SetItems(std::move(items));
+}
+
+size_t GetItemsResponse::RequiredBufferSize() const
+{
+    return RequiredBufferSize(this->Model());
+}
+
+Result<PFCatalogGetItemsResponse const*> GetItemsResponse::Copy(ModelBuffer& buffer) const
+{
+    return buffer.CopyTo<GetItemsResponse>(&this->Model());
+}
+
+size_t GetItemsResponse::RequiredBufferSize(const PFCatalogGetItemsResponse& model)
+{
+    size_t requiredSize{ alignof(ModelType) + sizeof(ModelType) };
+    requiredSize += (alignof(PFCatalogCatalogItem*) + sizeof(PFCatalogCatalogItem*) * model.itemsCount);
+    for (size_t i = 0; i < model.itemsCount; ++i)
+    {
+        requiredSize += CatalogItem::RequiredBufferSize(*model.items[i]);
+    }
+    return requiredSize;
+}
+
+HRESULT GetItemsResponse::Copy(const PFCatalogGetItemsResponse& input, PFCatalogGetItemsResponse& output, ModelBuffer& buffer)
+{
+    output = input;
+    {
+        auto propCopyResult = buffer.CopyToArray<CatalogItem>(input.items, input.itemsCount);
+        RETURN_IF_FAILED(propCopyResult.hr);
+        output.items = propCopyResult.ExtractPayload();
+    }
+    return S_OK;
+}
+
 JsonValue PublishDraftItemRequest::ToJson() const
 {
     return PublishDraftItemRequest::ToJson(this->Model());

@@ -53,7 +53,7 @@ HRESULT AutoGenAccountManagementTests::LogPFAccountManagementBanUsersResult(PFAc
     std::stringstream ss;
     ss << "Response:"; Log(ss);
 
-    // Found PlayFabAccountManagementBanUsersResult    
+    // Found PlayFabAccountManagementBanUsersResult        
     ss << "  banDataCount " << result->banDataCount; Log(ss);
 
     // PFAccountManagementBanInfo
@@ -94,8 +94,8 @@ HRESULT AutoGenAccountManagementTests::LogPFAccountManagementDeleteMasterPlayerA
     std::stringstream ss;
     ss << "Response:"; Log(ss);
 
-    // Found PlayFabAccountManagementDeleteMasterPlayerAccountResult
-    if( result->jobReceiptId ) { ss << "  jobReceiptId " << result->jobReceiptId; Log(ss); } else { ss << "  jobReceiptId = nullptr"; Log(ss); } // Class: const char*     
+    // Found PlayFabAccountManagementDeleteMasterPlayerAccountResult    
+    if( result->jobReceiptId ) { ss << "  jobReceiptId " << result->jobReceiptId; Log(ss); } else { ss << "  jobReceiptId = nullptr"; Log(ss); } // Class: const char*         
     ss << "  titleIdsCount " << result->titleIdsCount; Log(ss);
 
     // const char*
@@ -184,7 +184,7 @@ HRESULT AutoGenAccountManagementTests::LogPFAccountManagementExportMasterPlayerD
     std::stringstream ss;
     ss << "Response:"; Log(ss);
 
-    // Found PlayFabAccountManagementExportMasterPlayerDataResult
+    // Found PlayFabAccountManagementExportMasterPlayerDataResult    
     if( result->jobReceiptId ) { ss << "  jobReceiptId " << result->jobReceiptId; Log(ss); } else { ss << "  jobReceiptId = nullptr"; Log(ss); } // Class: const char* 
     return S_OK;
 }
@@ -218,7 +218,7 @@ HRESULT AutoGenAccountManagementTests::LogPFAccountManagementGetPlayedTitleListR
     std::stringstream ss;
     ss << "Response:"; Log(ss);
 
-    // Found PlayFabAccountManagementGetPlayedTitleListResult    
+    // Found PlayFabAccountManagementGetPlayedTitleListResult        
     ss << "  titleIdsCount " << result->titleIdsCount; Log(ss);
 
     // const char*
@@ -259,7 +259,7 @@ HRESULT AutoGenAccountManagementTests::LogPFAccountManagementGetPlayerIdFromAuth
     std::stringstream ss;
     ss << "Response:"; Log(ss);
 
-    // Found PlayFabAccountManagementGetPlayerIdFromAuthTokenResult
+    // Found PlayFabAccountManagementGetPlayerIdFromAuthTokenResult    
     if( result->playFabId ) { ss << "  playFabId " << result->playFabId; Log(ss); } else { ss << "  playFabId = nullptr"; Log(ss); } // Class: const char* 
     return S_OK;
 }
@@ -303,7 +303,7 @@ HRESULT AutoGenAccountManagementTests::LogPFAccountManagementGetPlayerProfileRes
     std::stringstream ss;
     ss << "Response:"; Log(ss);
 
-    // Found PlayFabAccountManagementGetPlayerProfileResult
+    // Found PlayFabAccountManagementGetPlayerProfileResult    
     ss << "  playerProfile " << result->playerProfile; Log(ss); // Class: PFPlayerProfileModel 
     return S_OK;
 }
@@ -340,7 +340,7 @@ HRESULT AutoGenAccountManagementTests::LogPFAccountManagementLookupUserAccountIn
     std::stringstream ss;
     ss << "Response:"; Log(ss);
 
-    // Found PlayFabAccountManagementLookupUserAccountInfoResult
+    // Found PlayFabAccountManagementLookupUserAccountInfoResult    
     ss << "  userInfo " << result->userInfo; Log(ss); // Class: PFUserAccountInfo 
     return S_OK;
 }
@@ -374,7 +374,7 @@ HRESULT AutoGenAccountManagementTests::LogPFAccountManagementGetUserBansResult(P
     std::stringstream ss;
     ss << "Response:"; Log(ss);
 
-    // Found PlayFabAccountManagementGetUserBansResult    
+    // Found PlayFabAccountManagementGetUserBansResult        
     ss << "  banDataCount " << result->banDataCount; Log(ss);
 
     // PFAccountManagementBanInfo
@@ -443,7 +443,7 @@ HRESULT AutoGenAccountManagementTests::LogPFAccountManagementRevokeAllBansForUse
     std::stringstream ss;
     ss << "Response:"; Log(ss);
 
-    // Found PlayFabAccountManagementRevokeAllBansForUserResult    
+    // Found PlayFabAccountManagementRevokeAllBansForUserResult        
     ss << "  banDataCount " << result->banDataCount; Log(ss);
 
     // PFAccountManagementBanInfo
@@ -490,7 +490,7 @@ HRESULT AutoGenAccountManagementTests::LogPFAccountManagementRevokeBansResult(PF
     std::stringstream ss;
     ss << "Response:"; Log(ss);
 
-    // Found PlayFabAccountManagementRevokeBansResult    
+    // Found PlayFabAccountManagementRevokeBansResult        
     ss << "  banDataCount " << result->banDataCount; Log(ss);
 
     // PFAccountManagementBanInfo
@@ -596,7 +596,7 @@ HRESULT AutoGenAccountManagementTests::LogPFAccountManagementUpdateBansResult(PF
     std::stringstream ss;
     ss << "Response:"; Log(ss);
 
-    // Found PlayFabAccountManagementUpdateBansResult    
+    // Found PlayFabAccountManagementUpdateBansResult        
     ss << "  banDataCount " << result->banDataCount; Log(ss);
 
     // PFAccountManagementBanInfo
@@ -646,7 +646,7 @@ HRESULT AutoGenAccountManagementTests::LogPFAccountManagementUpdateUserTitleDisp
     std::stringstream ss;
     ss << "Response:"; Log(ss);
 
-    // Found PlayFabAccountManagementUpdateUserTitleDisplayNameResult
+    // Found PlayFabAccountManagementUpdateUserTitleDisplayNameResult    
     if( result->displayName ) { ss << "  displayName " << result->displayName; Log(ss); } else { ss << "  displayName = nullptr"; Log(ss); } // Class: const char* 
     return S_OK;
 }
@@ -738,7 +738,7 @@ HRESULT AutoGenAccountManagementTests::LogPFAccountManagementAddUsernamePassword
     std::stringstream ss;
     ss << "Response:"; Log(ss);
 
-    // Found PlayFabAccountManagementAddUsernamePasswordResult
+    // Found PlayFabAccountManagementAddUsernamePasswordResult    
     if( result->username ) { ss << "  username " << result->username; Log(ss); } else { ss << "  username = nullptr"; Log(ss); } // Class: const char* 
     return S_OK;
 }
@@ -775,7 +775,7 @@ HRESULT AutoGenAccountManagementTests::LogPFAccountManagementGetAccountInfoResul
     std::stringstream ss;
     ss << "Response:"; Log(ss);
 
-    // Found PlayFabAccountManagementGetAccountInfoResult
+    // Found PlayFabAccountManagementGetAccountInfoResult    
     ss << "  accountInfo " << result->accountInfo; Log(ss); // Class: PFUserAccountInfo 
     return S_OK;
 }
@@ -819,8 +819,8 @@ HRESULT AutoGenAccountManagementTests::LogPFGetPlayerCombinedInfoResult(PFGetPla
     std::stringstream ss;
     ss << "Response:"; Log(ss);
 
-    // Found PlayFabAccountManagementGetPlayerCombinedInfoResult
-    ss << "  infoResultPayload " << result->infoResultPayload; Log(ss); // Class: PFGetPlayerCombinedInfoResultPayload 
+    // Found PlayFabAccountManagementGetPlayerCombinedInfoResult    
+    ss << "  infoResultPayload " << result->infoResultPayload; Log(ss); // Class: PFGetPlayerCombinedInfoResultPayload     
     if( result->playFabId ) { ss << "  playFabId " << result->playFabId; Log(ss); } else { ss << "  playFabId = nullptr"; Log(ss); } // Class: const char* 
     return S_OK;
 }
@@ -861,7 +861,7 @@ HRESULT AutoGenAccountManagementTests::LogPFAccountManagementGetPlayFabIDsFromFa
     std::stringstream ss;
     ss << "Response:"; Log(ss);
 
-    // Found PlayFabAccountManagementGetPlayFabIDsFromFacebookIDsResult    
+    // Found PlayFabAccountManagementGetPlayFabIDsFromFacebookIDsResult        
     ss << "  dataCount " << result->dataCount; Log(ss);
 
     // PFAccountManagementFacebookPlayFabIdPair
@@ -908,7 +908,7 @@ HRESULT AutoGenAccountManagementTests::LogPFAccountManagementGetPlayFabIDsFromFa
     std::stringstream ss;
     ss << "Response:"; Log(ss);
 
-    // Found PlayFabAccountManagementGetPlayFabIDsFromFacebookInstantGamesIdsResult    
+    // Found PlayFabAccountManagementGetPlayFabIDsFromFacebookInstantGamesIdsResult        
     ss << "  dataCount " << result->dataCount; Log(ss);
 
     // PFAccountManagementFacebookInstantGamesPlayFabIdPair
@@ -955,7 +955,7 @@ HRESULT AutoGenAccountManagementTests::LogPFAccountManagementGetPlayFabIDsFromGa
     std::stringstream ss;
     ss << "Response:"; Log(ss);
 
-    // Found PlayFabAccountManagementGetPlayFabIDsFromGameCenterIDsResult    
+    // Found PlayFabAccountManagementGetPlayFabIDsFromGameCenterIDsResult        
     ss << "  dataCount " << result->dataCount; Log(ss);
 
     // PFAccountManagementGameCenterPlayFabIdPair
@@ -1002,7 +1002,7 @@ HRESULT AutoGenAccountManagementTests::LogPFAccountManagementGetPlayFabIDsFromGe
     std::stringstream ss;
     ss << "Response:"; Log(ss);
 
-    // Found PlayFabAccountManagementGetPlayFabIDsFromGenericIDsResult    
+    // Found PlayFabAccountManagementGetPlayFabIDsFromGenericIDsResult        
     ss << "  dataCount " << result->dataCount; Log(ss);
 
     // PFAccountManagementGenericPlayFabIdPair
@@ -1049,7 +1049,7 @@ HRESULT AutoGenAccountManagementTests::LogPFAccountManagementGetPlayFabIDsFromGo
     std::stringstream ss;
     ss << "Response:"; Log(ss);
 
-    // Found PlayFabAccountManagementGetPlayFabIDsFromGoogleIDsResult    
+    // Found PlayFabAccountManagementGetPlayFabIDsFromGoogleIDsResult        
     ss << "  dataCount " << result->dataCount; Log(ss);
 
     // PFAccountManagementGooglePlayFabIdPair
@@ -1096,7 +1096,7 @@ HRESULT AutoGenAccountManagementTests::LogPFAccountManagementGetPlayFabIDsFromKo
     std::stringstream ss;
     ss << "Response:"; Log(ss);
 
-    // Found PlayFabAccountManagementGetPlayFabIDsFromKongregateIDsResult    
+    // Found PlayFabAccountManagementGetPlayFabIDsFromKongregateIDsResult        
     ss << "  dataCount " << result->dataCount; Log(ss);
 
     // PFAccountManagementKongregatePlayFabIdPair
@@ -1143,7 +1143,7 @@ HRESULT AutoGenAccountManagementTests::LogPFAccountManagementGetPlayFabIDsFromNi
     std::stringstream ss;
     ss << "Response:"; Log(ss);
 
-    // Found PlayFabAccountManagementGetPlayFabIDsFromNintendoSwitchDeviceIdsResult    
+    // Found PlayFabAccountManagementGetPlayFabIDsFromNintendoSwitchDeviceIdsResult        
     ss << "  dataCount " << result->dataCount; Log(ss);
 
     // PFAccountManagementNintendoSwitchPlayFabIdPair
@@ -1190,7 +1190,7 @@ HRESULT AutoGenAccountManagementTests::LogPFAccountManagementGetPlayFabIDsFromPS
     std::stringstream ss;
     ss << "Response:"; Log(ss);
 
-    // Found PlayFabAccountManagementGetPlayFabIDsFromPSNAccountIDsResult    
+    // Found PlayFabAccountManagementGetPlayFabIDsFromPSNAccountIDsResult        
     ss << "  dataCount " << result->dataCount; Log(ss);
 
     // PFAccountManagementPSNAccountPlayFabIdPair
@@ -1237,7 +1237,7 @@ HRESULT AutoGenAccountManagementTests::LogPFAccountManagementGetPlayFabIDsFromSt
     std::stringstream ss;
     ss << "Response:"; Log(ss);
 
-    // Found PlayFabAccountManagementGetPlayFabIDsFromSteamIDsResult    
+    // Found PlayFabAccountManagementGetPlayFabIDsFromSteamIDsResult        
     ss << "  dataCount " << result->dataCount; Log(ss);
 
     // PFAccountManagementSteamPlayFabIdPair
@@ -1284,7 +1284,7 @@ HRESULT AutoGenAccountManagementTests::LogPFAccountManagementGetPlayFabIDsFromTw
     std::stringstream ss;
     ss << "Response:"; Log(ss);
 
-    // Found PlayFabAccountManagementGetPlayFabIDsFromTwitchIDsResult    
+    // Found PlayFabAccountManagementGetPlayFabIDsFromTwitchIDsResult        
     ss << "  dataCount " << result->dataCount; Log(ss);
 
     // PFAccountManagementTwitchPlayFabIdPair
@@ -1331,7 +1331,7 @@ HRESULT AutoGenAccountManagementTests::LogPFAccountManagementGetPlayFabIDsFromXb
     std::stringstream ss;
     ss << "Response:"; Log(ss);
 
-    // Found PlayFabAccountManagementGetPlayFabIDsFromXboxLiveIDsResult    
+    // Found PlayFabAccountManagementGetPlayFabIDsFromXboxLiveIDsResult        
     ss << "  dataCount " << result->dataCount; Log(ss);
 
     // PFAccountManagementXboxLiveAccountPlayFabIdPair
@@ -1895,7 +1895,7 @@ HRESULT AutoGenAccountManagementTests::LogPFAccountManagementReportPlayerClientR
     std::stringstream ss;
     ss << "Response:"; Log(ss);
 
-    // Found PlayFabAccountManagementReportPlayerClientResult
+    // Found PlayFabAccountManagementReportPlayerClientResult    
     ss << "  submissionsRemaining " << result->submissionsRemaining; Log(ss); // Class: int32_t 
     return S_OK;
 }
@@ -2487,7 +2487,7 @@ HRESULT AutoGenAccountManagementTests::LogPFAccountManagementGetServerCustomIDsF
     std::stringstream ss;
     ss << "Response:"; Log(ss);
 
-    // Found PlayFabAccountManagementGetServerCustomIDsFromPlayFabIDsResult    
+    // Found PlayFabAccountManagementGetServerCustomIDsFromPlayFabIDsResult        
     ss << "  dataCount " << result->dataCount; Log(ss);
 
     // PFAccountManagementServerCustomIDPlayFabIDPair
@@ -2527,7 +2527,7 @@ HRESULT AutoGenAccountManagementTests::LogPFAccountManagementGetUserAccountInfoR
     std::stringstream ss;
     ss << "Response:"; Log(ss);
 
-    // Found PlayFabAccountManagementGetUserAccountInfoResult
+    // Found PlayFabAccountManagementGetUserAccountInfoResult    
     ss << "  userInfo " << result->userInfo; Log(ss); // Class: PFUserAccountInfo 
     return S_OK;
 }
@@ -2683,7 +2683,7 @@ HRESULT AutoGenAccountManagementTests::LogPFAccountManagementSavePushNotificatio
     std::stringstream ss;
     ss << "Response:"; Log(ss);
 
-    // Found PlayFabAccountManagementSavePushNotificationTemplateResult
+    // Found PlayFabAccountManagementSavePushNotificationTemplateResult    
     if( result->pushNotificationTemplateId ) { ss << "  pushNotificationTemplateId " << result->pushNotificationTemplateId; Log(ss); } else { ss << "  pushNotificationTemplateId = nullptr"; Log(ss); } // Class: const char* 
     return S_OK;
 }

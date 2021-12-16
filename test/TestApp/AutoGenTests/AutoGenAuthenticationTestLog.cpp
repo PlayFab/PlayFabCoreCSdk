@@ -62,7 +62,7 @@ HRESULT AutoGenAuthenticationTests::LogPFAuthenticationCreatePlayerSharedSecretR
     std::stringstream ss;
     ss << "Response:"; Log(ss);
 
-    // Found PlayFabAuthenticationCreatePlayerSharedSecretResult
+    // Found PlayFabAuthenticationCreatePlayerSharedSecretResult    
     if( result->secretKey ) { ss << "  secretKey " << result->secretKey; Log(ss); } else { ss << "  secretKey = nullptr"; Log(ss); } // Class: const char* 
     return S_OK;
 }
@@ -115,7 +115,7 @@ HRESULT AutoGenAuthenticationTests::LogPFAuthenticationGetPlayerSharedSecretsRes
     std::stringstream ss;
     ss << "Response:"; Log(ss);
 
-    // Found PlayFabAuthenticationGetPlayerSharedSecretsResult    
+    // Found PlayFabAuthenticationGetPlayerSharedSecretsResult        
     ss << "  sharedSecretsCount " << result->sharedSecretsCount; Log(ss);
 
     // PFAuthenticationSharedSecret
@@ -155,9 +155,9 @@ HRESULT AutoGenAuthenticationTests::LogPFAuthenticationGetPolicyResponse(PFAuthe
     std::stringstream ss;
     ss << "Response:"; Log(ss);
 
-    // Found PlayFabAuthenticationGetPolicyResponse
-    if( result->policyName ) { ss << "  policyName " << result->policyName; Log(ss); } else { ss << "  policyName = nullptr"; Log(ss); } // Class: const char* 
-    ss << "  policyVersion " << result->policyVersion; Log(ss); // Class: int32_t     
+    // Found PlayFabAuthenticationGetPolicyResponse    
+    if( result->policyName ) { ss << "  policyName " << result->policyName; Log(ss); } else { ss << "  policyName = nullptr"; Log(ss); } // Class: const char*     
+    ss << "  policyVersion " << result->policyVersion; Log(ss); // Class: int32_t         
     ss << "  statementsCount " << result->statementsCount; Log(ss);
 
     // PFAuthenticationPermissionStatement
@@ -178,7 +178,7 @@ HRESULT AutoGenAuthenticationTests::LogPFAuthenticationListOpenIdConnectionRespo
     std::stringstream ss;
     ss << "Response:"; Log(ss);
 
-    // Found PlayFabAuthenticationListOpenIdConnectionResponse    
+    // Found PlayFabAuthenticationListOpenIdConnectionResponse        
     ss << "  connectionsCount " << result->connectionsCount; Log(ss);
 
     // PFAuthenticationOpenIdConnection
@@ -291,8 +291,8 @@ HRESULT AutoGenAuthenticationTests::LogPFAuthenticationUpdatePolicyResponse(PFAu
     std::stringstream ss;
     ss << "Response:"; Log(ss);
 
-    // Found PlayFabAuthenticationUpdatePolicyResponse
-    if( result->policyName ) { ss << "  policyName " << result->policyName; Log(ss); } else { ss << "  policyName = nullptr"; Log(ss); } // Class: const char*     
+    // Found PlayFabAuthenticationUpdatePolicyResponse    
+    if( result->policyName ) { ss << "  policyName " << result->policyName; Log(ss); } else { ss << "  policyName = nullptr"; Log(ss); } // Class: const char*         
     ss << "  statementsCount " << result->statementsCount; Log(ss);
 
     // PFAuthenticationPermissionStatement
@@ -332,7 +332,7 @@ HRESULT AutoGenAuthenticationTests::LogPFAuthenticationGetPhotonAuthenticationTo
     std::stringstream ss;
     ss << "Response:"; Log(ss);
 
-    // Found PlayFabAuthenticationGetPhotonAuthenticationTokenResult
+    // Found PlayFabAuthenticationGetPhotonAuthenticationTokenResult    
     if( result->photonCustomAuthenticationToken ) { ss << "  photonCustomAuthenticationToken " << result->photonCustomAuthenticationToken; Log(ss); } else { ss << "  photonCustomAuthenticationToken = nullptr"; Log(ss); } // Class: const char* 
     return S_OK;
 }
@@ -367,7 +367,7 @@ HRESULT AutoGenAuthenticationTests::LogPFAuthenticationGetTitlePublicKeyResult(P
     std::stringstream ss;
     ss << "Response:"; Log(ss);
 
-    // Found PlayFabAuthenticationGetTitlePublicKeyResult
+    // Found PlayFabAuthenticationGetTitlePublicKeyResult    
     if( result->RSAPublicKey ) { ss << "  RSAPublicKey " << result->RSAPublicKey; Log(ss); } else { ss << "  RSAPublicKey = nullptr"; Log(ss); } // Class: const char* 
     return S_OK;
 }
@@ -414,14 +414,14 @@ HRESULT AutoGenAuthenticationTests::LogPFAuthenticationLoginResult(PFAuthenticat
     std::stringstream ss;
     ss << "Response:"; Log(ss);
 
-    // Found PlayFabAuthenticationLoginResult
-    ss << "  entityToken " << result->entityToken; Log(ss); // Class: PFAuthenticationEntityTokenResponse 
-    ss << "  infoResultPayload " << result->infoResultPayload; Log(ss); // Class: PFGetPlayerCombinedInfoResultPayload 
-    ss << "  lastLoginTime " << result->lastLoginTime; Log(ss); // Class: time_t 
-    ss << "  newlyCreated " << result->newlyCreated; Log(ss); // Class: bool 
-    if( result->playFabId ) { ss << "  playFabId " << result->playFabId; Log(ss); } else { ss << "  playFabId = nullptr"; Log(ss); } // Class: const char* 
-    if( result->sessionTicket ) { ss << "  sessionTicket " << result->sessionTicket; Log(ss); } else { ss << "  sessionTicket = nullptr"; Log(ss); } // Class: const char* 
-    ss << "  settingsForUser " << result->settingsForUser; Log(ss); // Class: PFAuthenticationUserSettings 
+    // Found PlayFabAuthenticationLoginResult    
+    ss << "  entityToken " << result->entityToken; Log(ss); // Class: PFAuthenticationEntityTokenResponse     
+    ss << "  infoResultPayload " << result->infoResultPayload; Log(ss); // Class: PFGetPlayerCombinedInfoResultPayload     
+    ss << "  lastLoginTime " << result->lastLoginTime; Log(ss); // Class: time_t     
+    ss << "  newlyCreated " << result->newlyCreated; Log(ss); // Class: bool     
+    if( result->playFabId ) { ss << "  playFabId " << result->playFabId; Log(ss); } else { ss << "  playFabId = nullptr"; Log(ss); } // Class: const char*     
+    if( result->sessionTicket ) { ss << "  sessionTicket " << result->sessionTicket; Log(ss); } else { ss << "  sessionTicket = nullptr"; Log(ss); } // Class: const char*     
+    ss << "  settingsForUser " << result->settingsForUser; Log(ss); // Class: PFAuthenticationUserSettings     
     ss << "  treatmentAssignment " << result->treatmentAssignment; Log(ss); // Class: PFTreatmentAssignment 
     return S_OK;
 }
@@ -990,11 +990,11 @@ HRESULT AutoGenAuthenticationTests::LogPFAuthenticationRegisterPlayFabUserResult
     std::stringstream ss;
     ss << "Response:"; Log(ss);
 
-    // Found PlayFabAuthenticationRegisterPlayFabUserResult
-    ss << "  entityToken " << result->entityToken; Log(ss); // Class: PFAuthenticationEntityTokenResponse 
-    if( result->playFabId ) { ss << "  playFabId " << result->playFabId; Log(ss); } else { ss << "  playFabId = nullptr"; Log(ss); } // Class: const char* 
-    if( result->sessionTicket ) { ss << "  sessionTicket " << result->sessionTicket; Log(ss); } else { ss << "  sessionTicket = nullptr"; Log(ss); } // Class: const char* 
-    ss << "  settingsForUser " << result->settingsForUser; Log(ss); // Class: PFAuthenticationUserSettings 
+    // Found PlayFabAuthenticationRegisterPlayFabUserResult    
+    ss << "  entityToken " << result->entityToken; Log(ss); // Class: PFAuthenticationEntityTokenResponse     
+    if( result->playFabId ) { ss << "  playFabId " << result->playFabId; Log(ss); } else { ss << "  playFabId = nullptr"; Log(ss); } // Class: const char*     
+    if( result->sessionTicket ) { ss << "  sessionTicket " << result->sessionTicket; Log(ss); } else { ss << "  sessionTicket = nullptr"; Log(ss); } // Class: const char*     
+    ss << "  settingsForUser " << result->settingsForUser; Log(ss); // Class: PFAuthenticationUserSettings     
     if( result->username ) { ss << "  username " << result->username; Log(ss); } else { ss << "  username = nullptr"; Log(ss); } // Class: const char* 
     return S_OK;
 }
@@ -1048,8 +1048,8 @@ HRESULT AutoGenAuthenticationTests::LogPFAuthenticationAuthenticateSessionTicket
     std::stringstream ss;
     ss << "Response:"; Log(ss);
 
-    // Found PlayFabAuthenticationAuthenticateSessionTicketResult
-    ss << "  isSessionTicketExpired " << result->isSessionTicketExpired; Log(ss); // Class: bool 
+    // Found PlayFabAuthenticationAuthenticateSessionTicketResult    
+    ss << "  isSessionTicketExpired " << result->isSessionTicketExpired; Log(ss); // Class: bool     
     ss << "  userInfo " << result->userInfo; Log(ss); // Class: PFUserAccountInfo 
     return S_OK;
 }
@@ -1094,14 +1094,14 @@ HRESULT AutoGenAuthenticationTests::LogPFAuthenticationServerLoginResult(PFAuthe
     std::stringstream ss;
     ss << "Response:"; Log(ss);
 
-    // Found PlayFabAuthenticationServerLoginResult
-    ss << "  entityToken " << result->entityToken; Log(ss); // Class: PFAuthenticationEntityTokenResponse 
-    ss << "  infoResultPayload " << result->infoResultPayload; Log(ss); // Class: PFGetPlayerCombinedInfoResultPayload 
-    ss << "  lastLoginTime " << result->lastLoginTime; Log(ss); // Class: time_t 
-    ss << "  newlyCreated " << result->newlyCreated; Log(ss); // Class: bool 
-    if( result->playFabId ) { ss << "  playFabId " << result->playFabId; Log(ss); } else { ss << "  playFabId = nullptr"; Log(ss); } // Class: const char* 
-    if( result->sessionTicket ) { ss << "  sessionTicket " << result->sessionTicket; Log(ss); } else { ss << "  sessionTicket = nullptr"; Log(ss); } // Class: const char* 
-    ss << "  settingsForUser " << result->settingsForUser; Log(ss); // Class: PFAuthenticationUserSettings 
+    // Found PlayFabAuthenticationServerLoginResult    
+    ss << "  entityToken " << result->entityToken; Log(ss); // Class: PFAuthenticationEntityTokenResponse     
+    ss << "  infoResultPayload " << result->infoResultPayload; Log(ss); // Class: PFGetPlayerCombinedInfoResultPayload     
+    ss << "  lastLoginTime " << result->lastLoginTime; Log(ss); // Class: time_t     
+    ss << "  newlyCreated " << result->newlyCreated; Log(ss); // Class: bool     
+    if( result->playFabId ) { ss << "  playFabId " << result->playFabId; Log(ss); } else { ss << "  playFabId = nullptr"; Log(ss); } // Class: const char*     
+    if( result->sessionTicket ) { ss << "  sessionTicket " << result->sessionTicket; Log(ss); } else { ss << "  sessionTicket = nullptr"; Log(ss); } // Class: const char*     
+    ss << "  settingsForUser " << result->settingsForUser; Log(ss); // Class: PFAuthenticationUserSettings     
     ss << "  treatmentAssignment " << result->treatmentAssignment; Log(ss); // Class: PFAuthenticationTreatmentAssignment 
     return S_OK;
 }
@@ -1252,9 +1252,9 @@ HRESULT AutoGenAuthenticationTests::LogPFAuthenticationGetEntityTokenResponse(PF
     std::stringstream ss;
     ss << "Response:"; Log(ss);
 
-    // Found PlayFabAuthenticationGetEntityTokenResponse
-    ss << "  entity " << result->entity; Log(ss); // Class: PFEntityKey 
-    if( result->entityToken ) { ss << "  entityToken " << result->entityToken; Log(ss); } else { ss << "  entityToken = nullptr"; Log(ss); } // Class: const char* 
+    // Found PlayFabAuthenticationGetEntityTokenResponse    
+    ss << "  entity " << result->entity; Log(ss); // Class: PFEntityKey     
+    if( result->entityToken ) { ss << "  entityToken " << result->entityToken; Log(ss); } else { ss << "  entityToken = nullptr"; Log(ss); } // Class: const char*     
     ss << "  tokenExpiration " << result->tokenExpiration; Log(ss); // Class: time_t 
     return S_OK;
 }
@@ -1297,11 +1297,11 @@ HRESULT AutoGenAuthenticationTests::LogPFAuthenticationValidateEntityTokenRespon
     std::stringstream ss;
     ss << "Response:"; Log(ss);
 
-    // Found PlayFabAuthenticationValidateEntityTokenResponse
-    ss << "  entity " << result->entity; Log(ss); // Class: PFEntityKey 
-    ss << "  identifiedDeviceType " << result->identifiedDeviceType; Log(ss); // Class: PFAuthenticationIdentifiedDeviceType 
-    ss << "  identityProvider " << result->identityProvider; Log(ss); // Class: PFLoginIdentityProvider 
-    if( result->identityProviderIssuedId ) { ss << "  identityProviderIssuedId " << result->identityProviderIssuedId; Log(ss); } else { ss << "  identityProviderIssuedId = nullptr"; Log(ss); } // Class: const char* 
+    // Found PlayFabAuthenticationValidateEntityTokenResponse    
+    ss << "  entity " << result->entity; Log(ss); // Class: PFEntityKey     
+    ss << "  identifiedDeviceType " << result->identifiedDeviceType; Log(ss); // Class: PFAuthenticationIdentifiedDeviceType     
+    ss << "  identityProvider " << result->identityProvider; Log(ss); // Class: PFLoginIdentityProvider     
+    if( result->identityProviderIssuedId ) { ss << "  identityProviderIssuedId " << result->identityProviderIssuedId; Log(ss); } else { ss << "  identityProviderIssuedId = nullptr"; Log(ss); } // Class: const char*     
     ss << "  lineage " << result->lineage; Log(ss); // Class: PFEntityLineage 
     return S_OK;
 }

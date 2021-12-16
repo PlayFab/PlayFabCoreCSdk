@@ -14,6 +14,7 @@
 extern "C"
 {
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 /// <summary>
 /// Gets the global title access policy 
 /// </summary>
@@ -64,6 +65,7 @@ HRESULT PFProfilesGetGlobalPolicyGetResult(
     _Outptr_ PFProfilesGetGlobalPolicyResponse** result,
     _Out_opt_ size_t* bufferUsed
 ) noexcept;
+#endif
 
 /// <summary>
 /// Retrieves the entity's profile.
@@ -220,6 +222,7 @@ HRESULT PFProfilesGetTitlePlayersFromMasterPlayerAccountIdsGetResult(
     _Out_opt_ size_t* bufferUsed
 ) noexcept;
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 /// <summary>
 /// Sets the global title access policy 
 /// </summary>
@@ -239,6 +242,7 @@ HRESULT PFProfilesSetGlobalPolicyAsync(
     _In_ const PFProfilesSetGlobalPolicyRequest* request,
     _Inout_ XAsyncBlock* async
 ) noexcept;
+#endif
 
 /// <summary>
 /// Updates the entity's language. The precedence hierarchy for communication to the player is Title

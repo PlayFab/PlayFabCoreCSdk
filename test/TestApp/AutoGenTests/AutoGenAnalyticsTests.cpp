@@ -34,29 +34,29 @@ void AutoGenAnalyticsTests::AddTests()
     // Generated tests 
     AddTest("TestAnalyticsClientReportDeviceInfo", &AutoGenAnalyticsTests::TestAnalyticsClientReportDeviceInfo);
 
-    AddTest("TestAnalyticsClientWriteCharacterEvent", &AutoGenAnalyticsTests::TestAnalyticsClientWriteCharacterEvent);
-
-    AddTest("TestAnalyticsClientWritePlayerEvent", &AutoGenAnalyticsTests::TestAnalyticsClientWritePlayerEvent);
-
-    AddTest("TestAnalyticsClientWriteTitleEvent", &AutoGenAnalyticsTests::TestAnalyticsClientWriteTitleEvent);
-
-    AddTest("TestAnalyticsServerWriteCharacterEvent", &AutoGenAnalyticsTests::TestAnalyticsServerWriteCharacterEvent);
-
-    AddTest("TestAnalyticsServerWritePlayerEvent", &AutoGenAnalyticsTests::TestAnalyticsServerWritePlayerEvent);
-
-    AddTest("TestAnalyticsServerWriteTitleEvent", &AutoGenAnalyticsTests::TestAnalyticsServerWriteTitleEvent);
-
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestAnalyticsGetDetails", &AutoGenAnalyticsTests::TestAnalyticsGetDetails);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestAnalyticsGetLimits", &AutoGenAnalyticsTests::TestAnalyticsGetLimits);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestAnalyticsGetOperationStatus", &AutoGenAnalyticsTests::TestAnalyticsGetOperationStatus);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestAnalyticsGetPendingOperations", &AutoGenAnalyticsTests::TestAnalyticsGetPendingOperations);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestAnalyticsSetPerformance", &AutoGenAnalyticsTests::TestAnalyticsSetPerformance);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestAnalyticsSetStorageRetention", &AutoGenAnalyticsTests::TestAnalyticsSetStorageRetention);
+#endif
 }
 
 void AutoGenAnalyticsTests::ClassSetUp()
@@ -184,245 +184,12 @@ void AutoGenAnalyticsTests::TestAnalyticsClientReportDeviceInfo(TestContext& tes
 
 #pragma endregion
 
-#pragma region ClientWriteCharacterEvent
-
-void AutoGenAnalyticsTests::TestAnalyticsClientWriteCharacterEvent(TestContext& testContext)
-{
-    struct ClientWriteCharacterEventResultHolder : public WriteEventResponseHolder
-    {
-        HRESULT Get(XAsyncBlock* async) override
-        {
-            size_t requiredBufferSize;
-            RETURN_IF_FAILED(LogHR(PFAnalyticsClientWriteCharacterEventGetResultSize(async, &requiredBufferSize)));
-
-            resultBuffer.resize(requiredBufferSize);
-            RETURN_IF_FAILED(LogHR(PFAnalyticsClientWriteCharacterEventGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
-            
-            LogPFAnalyticsWriteEventResponse(result);
-            return S_OK;
-        }
-
-        HRESULT Validate() override
-        {
-            return ValidatePFAnalyticsWriteEventResponse(result);
-        }
-    };
-    auto async = std::make_unique<XAsyncHelper<ClientWriteCharacterEventResultHolder>>(testContext);
-
-    PFAnalyticsWriteClientCharacterEventRequestWrapper<> request;
-    FillWriteClientCharacterEventRequest(request);
-    LogWriteClientCharacterEventRequest(&request.Model(), "TestAnalyticsClientWriteCharacterEvent");
-    HRESULT hr = PFAnalyticsClientWriteCharacterEventAsync(titlePlayerHandle, &request.Model(), &async->asyncBlock);
-    if (FAILED(hr))
-    {
-        testContext.Fail("PFAnalyticsAnalyticsClientWriteCharacterEventAsync", hr);
-        return;
-    }
-    async.release(); 
-}
-
-#pragma endregion
-
-#pragma region ClientWritePlayerEvent
-
-void AutoGenAnalyticsTests::TestAnalyticsClientWritePlayerEvent(TestContext& testContext)
-{
-    struct ClientWritePlayerEventResultHolder : public WriteEventResponseHolder
-    {
-        HRESULT Get(XAsyncBlock* async) override
-        {
-            size_t requiredBufferSize;
-            RETURN_IF_FAILED(LogHR(PFAnalyticsClientWritePlayerEventGetResultSize(async, &requiredBufferSize)));
-
-            resultBuffer.resize(requiredBufferSize);
-            RETURN_IF_FAILED(LogHR(PFAnalyticsClientWritePlayerEventGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
-            
-            LogPFAnalyticsWriteEventResponse(result);
-            return S_OK;
-        }
-
-        HRESULT Validate() override
-        {
-            return ValidatePFAnalyticsWriteEventResponse(result);
-        }
-    };
-    auto async = std::make_unique<XAsyncHelper<ClientWritePlayerEventResultHolder>>(testContext);
-
-    PFAnalyticsWriteClientPlayerEventRequestWrapper<> request;
-    FillWriteClientPlayerEventRequest(request);
-    LogWriteClientPlayerEventRequest(&request.Model(), "TestAnalyticsClientWritePlayerEvent");
-    HRESULT hr = PFAnalyticsClientWritePlayerEventAsync(titlePlayerHandle, &request.Model(), &async->asyncBlock);
-    if (FAILED(hr))
-    {
-        testContext.Fail("PFAnalyticsAnalyticsClientWritePlayerEventAsync", hr);
-        return;
-    }
-    async.release(); 
-}
-
-#pragma endregion
-
-#pragma region ClientWriteTitleEvent
-
-void AutoGenAnalyticsTests::TestAnalyticsClientWriteTitleEvent(TestContext& testContext)
-{
-    struct ClientWriteTitleEventResultHolder : public WriteEventResponseHolder
-    {
-        HRESULT Get(XAsyncBlock* async) override
-        {
-            size_t requiredBufferSize;
-            RETURN_IF_FAILED(LogHR(PFAnalyticsClientWriteTitleEventGetResultSize(async, &requiredBufferSize)));
-
-            resultBuffer.resize(requiredBufferSize);
-            RETURN_IF_FAILED(LogHR(PFAnalyticsClientWriteTitleEventGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
-            
-            LogPFAnalyticsWriteEventResponse(result);
-            return S_OK;
-        }
-
-        HRESULT Validate() override
-        {
-            return ValidatePFAnalyticsWriteEventResponse(result);
-        }
-    };
-    auto async = std::make_unique<XAsyncHelper<ClientWriteTitleEventResultHolder>>(testContext);
-
-    PFAnalyticsWriteTitleEventRequestWrapper<> request;
-    FillWriteTitleEventRequest(request);
-    LogWriteTitleEventRequest(&request.Model(), "TestAnalyticsClientWriteTitleEvent");
-    HRESULT hr = PFAnalyticsClientWriteTitleEventAsync(titlePlayerHandle, &request.Model(), &async->asyncBlock);
-    if (FAILED(hr))
-    {
-        testContext.Fail("PFAnalyticsAnalyticsClientWriteTitleEventAsync", hr);
-        return;
-    }
-    async.release(); 
-}
-
-#pragma endregion
-
-#pragma region ServerWriteCharacterEvent
-
-void AutoGenAnalyticsTests::TestAnalyticsServerWriteCharacterEvent(TestContext& testContext)
-{
-    struct ServerWriteCharacterEventResultHolder : public WriteEventResponseHolder
-    {
-        HRESULT Get(XAsyncBlock* async) override
-        {
-            size_t requiredBufferSize;
-            RETURN_IF_FAILED(LogHR(PFAnalyticsServerWriteCharacterEventGetResultSize(async, &requiredBufferSize)));
-
-            resultBuffer.resize(requiredBufferSize);
-            RETURN_IF_FAILED(LogHR(PFAnalyticsServerWriteCharacterEventGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
-            
-            LogPFAnalyticsWriteEventResponse(result);
-            return S_OK;
-        }
-
-        HRESULT Validate() override
-        {
-            return ValidatePFAnalyticsWriteEventResponse(result);
-        }
-    };
-    auto async = std::make_unique<XAsyncHelper<ServerWriteCharacterEventResultHolder>>(testContext);
-
-    PFAnalyticsWriteServerCharacterEventRequestWrapper<> request;
-    FillWriteServerCharacterEventRequest(request);
-    LogWriteServerCharacterEventRequest(&request.Model(), "TestAnalyticsServerWriteCharacterEvent");
-    HRESULT hr = PFAnalyticsServerWriteCharacterEventAsync(stateHandle, &request.Model(), &async->asyncBlock);
-    if (FAILED(hr))
-    {
-        testContext.Fail("PFAnalyticsAnalyticsServerWriteCharacterEventAsync", hr);
-        return;
-    }
-    async.release(); 
-}
-
-#pragma endregion
-
-#pragma region ServerWritePlayerEvent
-
-void AutoGenAnalyticsTests::TestAnalyticsServerWritePlayerEvent(TestContext& testContext)
-{
-    struct ServerWritePlayerEventResultHolder : public WriteEventResponseHolder
-    {
-        HRESULT Get(XAsyncBlock* async) override
-        {
-            size_t requiredBufferSize;
-            RETURN_IF_FAILED(LogHR(PFAnalyticsServerWritePlayerEventGetResultSize(async, &requiredBufferSize)));
-
-            resultBuffer.resize(requiredBufferSize);
-            RETURN_IF_FAILED(LogHR(PFAnalyticsServerWritePlayerEventGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
-            
-            LogPFAnalyticsWriteEventResponse(result);
-            return S_OK;
-        }
-
-        HRESULT Validate() override
-        {
-            return ValidatePFAnalyticsWriteEventResponse(result);
-        }
-    };
-    auto async = std::make_unique<XAsyncHelper<ServerWritePlayerEventResultHolder>>(testContext);
-
-    PFAnalyticsWriteServerPlayerEventRequestWrapper<> request;
-    FillWriteServerPlayerEventRequest(request);
-    LogWriteServerPlayerEventRequest(&request.Model(), "TestAnalyticsServerWritePlayerEvent");
-    HRESULT hr = PFAnalyticsServerWritePlayerEventAsync(stateHandle, &request.Model(), &async->asyncBlock);
-    if (FAILED(hr))
-    {
-        testContext.Fail("PFAnalyticsAnalyticsServerWritePlayerEventAsync", hr);
-        return;
-    }
-    async.release(); 
-}
-
-#pragma endregion
-
-#pragma region ServerWriteTitleEvent
-
-void AutoGenAnalyticsTests::TestAnalyticsServerWriteTitleEvent(TestContext& testContext)
-{
-    struct ServerWriteTitleEventResultHolder : public WriteEventResponseHolder
-    {
-        HRESULT Get(XAsyncBlock* async) override
-        {
-            size_t requiredBufferSize;
-            RETURN_IF_FAILED(LogHR(PFAnalyticsServerWriteTitleEventGetResultSize(async, &requiredBufferSize)));
-
-            resultBuffer.resize(requiredBufferSize);
-            RETURN_IF_FAILED(LogHR(PFAnalyticsServerWriteTitleEventGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
-            
-            LogPFAnalyticsWriteEventResponse(result);
-            return S_OK;
-        }
-
-        HRESULT Validate() override
-        {
-            return ValidatePFAnalyticsWriteEventResponse(result);
-        }
-    };
-    auto async = std::make_unique<XAsyncHelper<ServerWriteTitleEventResultHolder>>(testContext);
-
-    PFAnalyticsWriteTitleEventRequestWrapper<> request;
-    FillWriteTitleEventRequest(request);
-    LogWriteTitleEventRequest(&request.Model(), "TestAnalyticsServerWriteTitleEvent");
-    HRESULT hr = PFAnalyticsServerWriteTitleEventAsync(stateHandle, &request.Model(), &async->asyncBlock);
-    if (FAILED(hr))
-    {
-        testContext.Fail("PFAnalyticsAnalyticsServerWriteTitleEventAsync", hr);
-        return;
-    }
-    async.release(); 
-}
-
-#pragma endregion
-
 #pragma region GetDetails
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenAnalyticsTests::TestAnalyticsGetDetails(TestContext& testContext)
 {
-    struct GetDetailsResultHolder : public InsightsGetDetailsResponseHolder
+    struct GetDetailsResultHolderStruct : public InsightsGetDetailsResponseHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -441,7 +208,7 @@ void AutoGenAnalyticsTests::TestAnalyticsGetDetails(TestContext& testContext)
             return ValidatePFAnalyticsInsightsGetDetailsResponse(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<GetDetailsResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<GetDetailsResultHolderStruct>>(testContext);
 
     PFAnalyticsInsightsEmptyRequestWrapper<> request;
     FillInsightsEmptyRequest(request);
@@ -454,14 +221,16 @@ void AutoGenAnalyticsTests::TestAnalyticsGetDetails(TestContext& testContext)
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region GetLimits
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenAnalyticsTests::TestAnalyticsGetLimits(TestContext& testContext)
 {
-    struct GetLimitsResultHolder : public InsightsGetLimitsResponseHolder
+    struct GetLimitsResultHolderStruct : public InsightsGetLimitsResponseHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -480,7 +249,7 @@ void AutoGenAnalyticsTests::TestAnalyticsGetLimits(TestContext& testContext)
             return ValidatePFAnalyticsInsightsGetLimitsResponse(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<GetLimitsResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<GetLimitsResultHolderStruct>>(testContext);
 
     PFAnalyticsInsightsEmptyRequestWrapper<> request;
     FillInsightsEmptyRequest(request);
@@ -493,14 +262,16 @@ void AutoGenAnalyticsTests::TestAnalyticsGetLimits(TestContext& testContext)
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region GetOperationStatus
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenAnalyticsTests::TestAnalyticsGetOperationStatus(TestContext& testContext)
 {
-    struct GetOperationStatusResultHolder : public InsightsGetOperationStatusResponseHolder
+    struct GetOperationStatusResultHolderStruct : public InsightsGetOperationStatusResponseHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -519,7 +290,7 @@ void AutoGenAnalyticsTests::TestAnalyticsGetOperationStatus(TestContext& testCon
             return ValidatePFAnalyticsInsightsGetOperationStatusResponse(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<GetOperationStatusResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<GetOperationStatusResultHolderStruct>>(testContext);
 
     PFAnalyticsInsightsGetOperationStatusRequestWrapper<> request;
     FillInsightsGetOperationStatusRequest(request);
@@ -532,14 +303,16 @@ void AutoGenAnalyticsTests::TestAnalyticsGetOperationStatus(TestContext& testCon
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region GetPendingOperations
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenAnalyticsTests::TestAnalyticsGetPendingOperations(TestContext& testContext)
 {
-    struct GetPendingOperationsResultHolder : public InsightsGetPendingOperationsResponseHolder
+    struct GetPendingOperationsResultHolderStruct : public InsightsGetPendingOperationsResponseHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -558,7 +331,7 @@ void AutoGenAnalyticsTests::TestAnalyticsGetPendingOperations(TestContext& testC
             return ValidatePFAnalyticsInsightsGetPendingOperationsResponse(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<GetPendingOperationsResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<GetPendingOperationsResultHolderStruct>>(testContext);
 
     PFAnalyticsInsightsGetPendingOperationsRequestWrapper<> request;
     FillInsightsGetPendingOperationsRequest(request);
@@ -571,14 +344,16 @@ void AutoGenAnalyticsTests::TestAnalyticsGetPendingOperations(TestContext& testC
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region SetPerformance
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenAnalyticsTests::TestAnalyticsSetPerformance(TestContext& testContext)
 {
-    struct SetPerformanceResultHolder : public InsightsOperationResponseHolder
+    struct SetPerformanceResultHolderStruct : public InsightsOperationResponseHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -597,7 +372,7 @@ void AutoGenAnalyticsTests::TestAnalyticsSetPerformance(TestContext& testContext
             return ValidatePFAnalyticsInsightsOperationResponse(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<SetPerformanceResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<SetPerformanceResultHolderStruct>>(testContext);
 
     PFAnalyticsInsightsSetPerformanceRequestWrapper<> request;
     FillInsightsSetPerformanceRequest(request);
@@ -610,14 +385,16 @@ void AutoGenAnalyticsTests::TestAnalyticsSetPerformance(TestContext& testContext
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region SetStorageRetention
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenAnalyticsTests::TestAnalyticsSetStorageRetention(TestContext& testContext)
 {
-    struct SetStorageRetentionResultHolder : public InsightsOperationResponseHolder
+    struct SetStorageRetentionResultHolderStruct : public InsightsOperationResponseHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -636,7 +413,7 @@ void AutoGenAnalyticsTests::TestAnalyticsSetStorageRetention(TestContext& testCo
             return ValidatePFAnalyticsInsightsOperationResponse(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<SetStorageRetentionResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<SetStorageRetentionResultHolderStruct>>(testContext);
 
     PFAnalyticsInsightsSetStorageRetentionRequestWrapper<> request;
     FillInsightsSetStorageRetentionRequest(request);
@@ -649,6 +426,7 @@ void AutoGenAnalyticsTests::TestAnalyticsSetStorageRetention(TestContext& testCo
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 

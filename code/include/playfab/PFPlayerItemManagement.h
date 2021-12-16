@@ -366,6 +366,7 @@ HRESULT PFPlayerItemManagementAdminSubtractUserVirtualCurrencyGetResult(
 /// <returns>Result code for this API operation.</returns>
 /// <remarks>
 /// This API must be enabled for use as an option in the game manager website. It is disabled by default.
+/// See also ClientSubtractUserVirtualCurrencyAsync.
 ///
 /// If successful, call <see cref="PFPlayerItemManagementClientAddUserVirtualCurrencyGetResult"/> to
 /// get the result.
@@ -576,6 +577,8 @@ HRESULT PFPlayerItemManagementClientGetCharacterInventoryGetResult(
 /// <param name="async">XAsyncBlock for the async operation.</param>
 /// <returns>Result code for this API operation.</returns>
 /// <remarks>
+/// See also ClientGetPurchaseAsync.
+///
 /// If successful, call <see cref="PFPlayerItemManagementClientGetPaymentTokenGetResult"/> to get the
 /// result.
 /// </remarks>
@@ -938,6 +941,7 @@ HRESULT PFPlayerItemManagementClientStartPurchaseGetResult(
 /// <returns>Result code for this API operation.</returns>
 /// <remarks>
 /// This API must be enabled for use as an option in the game manager website. It is disabled by default.
+/// See also ClientAddUserVirtualCurrencyAsync.
 ///
 /// If successful, call <see cref="PFPlayerItemManagementClientSubtractUserVirtualCurrencyGetResult"/>
 /// to get the result.
@@ -1084,6 +1088,7 @@ HRESULT PFPlayerItemManagementClientUnlockContainerItemGetResult(
     _Out_opt_ size_t* bufferUsed
 ) noexcept;
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 /// <summary>
 /// Increments the character's balance of the specified virtual currency by the stated amount
 /// </summary>
@@ -1133,7 +1138,9 @@ HRESULT PFPlayerItemManagementServerAddCharacterVirtualCurrencyGetResult(
     _Outptr_ PFPlayerItemManagementModifyCharacterVirtualCurrencyResult** result,
     _Out_opt_ size_t* bufferUsed
 ) noexcept;
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 /// <summary>
 /// Increments the user's balance of the specified virtual currency by the stated amount
 /// </summary>
@@ -1183,7 +1190,9 @@ HRESULT PFPlayerItemManagementServerAddUserVirtualCurrencyGetResult(
     _Outptr_ PFPlayerItemManagementModifyUserVirtualCurrencyResult** result,
     _Out_opt_ size_t* bufferUsed
 ) noexcept;
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 /// <summary>
 /// Consume uses of a consumable item. When all uses are consumed, it will be removed from the player's
 /// inventory.
@@ -1231,7 +1240,9 @@ HRESULT PFPlayerItemManagementServerConsumeItemGetResult(
     _Outptr_ PFPlayerItemManagementConsumeItemResult** result,
     _Out_opt_ size_t* bufferUsed
 ) noexcept;
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 /// <summary>
 /// Returns the result of an evaluation of a Random Result Table - the ItemId from the game Catalog which
 /// would have been added to the player inventory, if the Random Result Table were added via a Bundle
@@ -1281,7 +1292,9 @@ HRESULT PFPlayerItemManagementServerEvaluateRandomResultTableGetResult(
     _Outptr_ PFPlayerItemManagementEvaluateRandomResultTableResult** result,
     _Out_opt_ size_t* bufferUsed
 ) noexcept;
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 /// <summary>
 /// Retrieves the specified character's current inventory of virtual goods
 /// </summary>
@@ -1334,7 +1347,9 @@ HRESULT PFPlayerItemManagementServerGetCharacterInventoryGetResult(
     _Outptr_ PFPlayerItemManagementServerGetCharacterInventoryResult** result,
     _Out_opt_ size_t* bufferUsed
 ) noexcept;
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 /// <summary>
 /// Retrieves the configuration information for the specified random results tables for the title, including
 /// all ItemId values and weights
@@ -1385,7 +1400,9 @@ HRESULT PFPlayerItemManagementServerGetRandomResultTablesGetResult(
     _Outptr_ PFGetRandomResultTablesResult** result,
     _Out_opt_ size_t* bufferUsed
 ) noexcept;
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 /// <summary>
 /// Retrieves the specified user's current inventory of virtual goods
 /// </summary>
@@ -1438,7 +1455,9 @@ HRESULT PFPlayerItemManagementServerGetUserInventoryGetResult(
     _Outptr_ PFPlayerItemManagementServerGetUserInventoryResult** result,
     _Out_opt_ size_t* bufferUsed
 ) noexcept;
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 /// <summary>
 /// Adds the specified items to the specified character's inventory
 /// </summary>
@@ -1491,7 +1510,9 @@ HRESULT PFPlayerItemManagementServerGrantItemsToCharacterGetResult(
     _Outptr_ PFPlayerItemManagementGrantItemsToCharacterResult** result,
     _Out_opt_ size_t* bufferUsed
 ) noexcept;
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 /// <summary>
 /// Adds the specified items to the specified user's inventory
 /// </summary>
@@ -1544,7 +1565,9 @@ HRESULT PFPlayerItemManagementServerGrantItemsToUserGetResult(
     _Outptr_ PFPlayerItemManagementGrantItemsToUserResult** result,
     _Out_opt_ size_t* bufferUsed
 ) noexcept;
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 /// <summary>
 /// Adds the specified items to the specified user inventories
 /// </summary>
@@ -1597,7 +1620,9 @@ HRESULT PFPlayerItemManagementServerGrantItemsToUsersGetResult(
     _Outptr_ PFPlayerItemManagementGrantItemsToUsersResult** result,
     _Out_opt_ size_t* bufferUsed
 ) noexcept;
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 /// <summary>
 /// Modifies the number of remaining uses of a player's inventory item
 /// </summary>
@@ -1648,7 +1673,9 @@ HRESULT PFPlayerItemManagementServerModifyItemUsesGetResult(
     _Outptr_ PFPlayerItemManagementModifyItemUsesResult** result,
     _Out_opt_ size_t* bufferUsed
 ) noexcept;
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 /// <summary>
 /// Moves an item from a character's inventory into another of the users's character's inventory.
 /// </summary>
@@ -1669,7 +1696,9 @@ HRESULT PFPlayerItemManagementServerMoveItemToCharacterFromCharacterAsync(
     _In_ const PFPlayerItemManagementMoveItemToCharacterFromCharacterRequest* request,
     _Inout_ XAsyncBlock* async
 ) noexcept;
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 /// <summary>
 /// Moves an item from a user's inventory into their character's inventory.
 /// </summary>
@@ -1689,7 +1718,9 @@ HRESULT PFPlayerItemManagementServerMoveItemToCharacterFromUserAsync(
     _In_ const PFPlayerItemManagementMoveItemToCharacterFromUserRequest* request,
     _Inout_ XAsyncBlock* async
 ) noexcept;
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 /// <summary>
 /// Moves an item from a character's inventory into the owning user's inventory.
 /// </summary>
@@ -1709,7 +1740,9 @@ HRESULT PFPlayerItemManagementServerMoveItemToUserFromCharacterAsync(
     _In_ const PFPlayerItemManagementMoveItemToUserFromCharacterRequest* request,
     _Inout_ XAsyncBlock* async
 ) noexcept;
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 /// <summary>
 /// Adds the virtual goods associated with the coupon to the user's inventory. Coupons can be generated
 /// via the Economy->Catalogs tab in the PlayFab Game Manager.
@@ -1762,7 +1795,9 @@ HRESULT PFPlayerItemManagementServerRedeemCouponGetResult(
     _Outptr_ PFPlayerItemManagementRedeemCouponResult** result,
     _Out_opt_ size_t* bufferUsed
 ) noexcept;
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 /// <summary>
 /// Submit a report about a player (due to bad bahavior, etc.) on behalf of another player, so that customer
 /// service representatives for the title can take action concerning potentially toxic players.
@@ -1790,7 +1825,9 @@ HRESULT PFPlayerItemManagementServerReportPlayerGetResult(
     _Inout_ XAsyncBlock* async,
     _Out_ PFPlayerItemManagementReportPlayerServerResult* result
 ) noexcept;
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 /// <summary>
 /// Revokes access to an item in a user's inventory
 /// </summary>
@@ -1810,7 +1847,9 @@ HRESULT PFPlayerItemManagementServerRevokeInventoryItemAsync(
     _In_ const PFPlayerItemManagementRevokeInventoryItemRequest* request,
     _Inout_ XAsyncBlock* async
 ) noexcept;
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 /// <summary>
 /// Revokes access for up to 25 items across multiple users and characters.
 /// </summary>
@@ -1862,7 +1901,9 @@ HRESULT PFPlayerItemManagementServerRevokeInventoryItemsGetResult(
     _Outptr_ PFPlayerItemManagementRevokeInventoryItemsResult** result,
     _Out_opt_ size_t* bufferUsed
 ) noexcept;
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 /// <summary>
 /// Decrements the character's balance of the specified virtual currency by the stated amount. It is
 /// possible to make a VC balance negative with this API.
@@ -1913,7 +1954,9 @@ HRESULT PFPlayerItemManagementServerSubtractCharacterVirtualCurrencyGetResult(
     _Outptr_ PFPlayerItemManagementModifyCharacterVirtualCurrencyResult** result,
     _Out_opt_ size_t* bufferUsed
 ) noexcept;
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 /// <summary>
 /// Decrements the user's balance of the specified virtual currency by the stated amount. It is possible
 /// to make a VC balance negative with this API.
@@ -1964,7 +2007,9 @@ HRESULT PFPlayerItemManagementServerSubtractUserVirtualCurrencyGetResult(
     _Outptr_ PFPlayerItemManagementModifyUserVirtualCurrencyResult** result,
     _Out_opt_ size_t* bufferUsed
 ) noexcept;
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 /// <summary>
 /// Opens a specific container (ContainerItemInstanceId), with a specific key (KeyItemInstanceId, when
 /// required), and returns the contents of the opened container. If the container (and key when relevant)
@@ -2017,7 +2062,9 @@ HRESULT PFPlayerItemManagementServerUnlockContainerInstanceGetResult(
     _Outptr_ PFPlayerItemManagementUnlockContainerItemResult** result,
     _Out_opt_ size_t* bufferUsed
 ) noexcept;
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 /// <summary>
 /// Searches Player or Character inventory for any ItemInstance matching the given CatalogItemId, if
 /// necessary unlocks it using any appropriate key, and returns the contents of the opened container.
@@ -2070,7 +2117,9 @@ HRESULT PFPlayerItemManagementServerUnlockContainerItemGetResult(
     _Outptr_ PFPlayerItemManagementUnlockContainerItemResult** result,
     _Out_opt_ size_t* bufferUsed
 ) noexcept;
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 /// <summary>
 /// Updates the key-value pair data tagged to the specified item, which is read-only from the client.
 /// </summary>
@@ -2092,6 +2141,7 @@ HRESULT PFPlayerItemManagementServerUpdateUserInventoryItemCustomDataAsync(
     _In_ const PFPlayerItemManagementUpdateUserInventoryItemDataRequest* request,
     _Inout_ XAsyncBlock* async
 ) noexcept;
+#endif
 
 
 }

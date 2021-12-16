@@ -78,7 +78,7 @@ HRESULT AutoGenTitleDataManagementTests::LogPFTitleDataManagementAddNewsResult(P
     std::stringstream ss;
     ss << "Response:"; Log(ss);
 
-    // Found PlayFabTitleDataManagementAddNewsResult
+    // Found PlayFabTitleDataManagementAddNewsResult    
     if( result->newsId ) { ss << "  newsId " << result->newsId; Log(ss); } else { ss << "  newsId = nullptr"; Log(ss); } // Class: const char* 
     return S_OK;
 }
@@ -185,7 +185,7 @@ HRESULT AutoGenTitleDataManagementTests::LogPFTitleDataManagementGetCatalogItems
     std::stringstream ss;
     ss << "Response:"; Log(ss);
 
-    // Found PlayFabTitleDataManagementGetCatalogItemsResult    
+    // Found PlayFabTitleDataManagementGetCatalogItemsResult        
     ss << "  catalogCount " << result->catalogCount; Log(ss);
 
     // PFTitleDataManagementCatalogItem
@@ -232,7 +232,7 @@ HRESULT AutoGenTitleDataManagementTests::LogPFTitleDataManagementGetPublisherDat
     std::stringstream ss;
     ss << "Response:"; Log(ss);
 
-    // Found PlayFabTitleDataManagementGetPublisherDataResult    
+    // Found PlayFabTitleDataManagementGetPublisherDataResult        
     ss << "  dataCount " << result->dataCount; Log(ss);
 
     // PFStringDictionaryEntry
@@ -273,7 +273,7 @@ HRESULT AutoGenTitleDataManagementTests::LogPFGetRandomResultTablesResult(PFGetR
     std::stringstream ss;
     ss << "Response:"; Log(ss);
 
-    // Found PlayFabTitleDataManagementGetRandomResultTablesResult    
+    // Found PlayFabTitleDataManagementGetRandomResultTablesResult        
     ss << "  tablesCount " << result->tablesCount; Log(ss);
 
     // PFRandomResultTableListingDictionaryEntry
@@ -315,17 +315,17 @@ HRESULT AutoGenTitleDataManagementTests::LogPFTitleDataManagementGetStoreItemsRe
     std::stringstream ss;
     ss << "Response:"; Log(ss);
 
-    // Found PlayFabTitleDataManagementGetStoreItemsResult
-    if( result->catalogVersion ) { ss << "  catalogVersion " << result->catalogVersion; Log(ss); } else { ss << "  catalogVersion = nullptr"; Log(ss); } // Class: const char* 
-    ss << "  marketingData " << result->marketingData; Log(ss); // Class: PFTitleDataManagementStoreMarketingModel 
-    ss << "  source " << result->source; Log(ss); // Class: PFTitleDataManagementSourceType     
+    // Found PlayFabTitleDataManagementGetStoreItemsResult    
+    if( result->catalogVersion ) { ss << "  catalogVersion " << result->catalogVersion; Log(ss); } else { ss << "  catalogVersion = nullptr"; Log(ss); } // Class: const char*     
+    ss << "  marketingData " << result->marketingData; Log(ss); // Class: PFTitleDataManagementStoreMarketingModel     
+    ss << "  source " << result->source; Log(ss); // Class: PFTitleDataManagementSourceType         
     ss << "  storeCount " << result->storeCount; Log(ss);
 
     // PFTitleDataManagementStoreItem
     for( uint32_t i=0; i<result->storeCount; i++ )
     {
             ss << "  result->store[" << i << "]:" << result->store[i]; Log(ss); // PFTitleDataManagementStoreItem
-    } 
+    }     
     if( result->storeId ) { ss << "  storeId " << result->storeId; Log(ss); } else { ss << "  storeId = nullptr"; Log(ss); } // Class: const char* 
     return S_OK;
 }
@@ -367,7 +367,7 @@ HRESULT AutoGenTitleDataManagementTests::LogPFTitleDataManagementGetTitleDataRes
     std::stringstream ss;
     ss << "Response:"; Log(ss);
 
-    // Found PlayFabTitleDataManagementGetTitleDataResult    
+    // Found PlayFabTitleDataManagementGetTitleDataResult        
     ss << "  dataCount " << result->dataCount; Log(ss);
 
     // PFStringDictionaryEntry
@@ -389,7 +389,7 @@ HRESULT AutoGenTitleDataManagementTests::LogPFTitleDataManagementListVirtualCurr
     std::stringstream ss;
     ss << "Response:"; Log(ss);
 
-    // Found PlayFabTitleDataManagementListVirtualCurrencyTypesResult    
+    // Found PlayFabTitleDataManagementListVirtualCurrencyTypesResult        
     ss << "  virtualCurrenciesCount " << result->virtualCurrenciesCount; Log(ss);
 
     // PFTitleDataManagementVirtualCurrencyData
@@ -543,6 +543,7 @@ void AutoGenTitleDataManagementTests::LogSetTitleDataRequest(PFTitleDataManageme
             
     } 
     if( request->key ) { ss << "  key " << request->key; Log(ss); } else { ss << "  key = nullptr"; Log(ss); } // Class: const char* 
+    ss << "  systemData " << request->systemData; Log(ss); // Class: PFAzureResourceSystemData 
     if( request->titleId ) { ss << "  titleId " << request->titleId; Log(ss); } else { ss << "  titleId = nullptr"; Log(ss); } // Class: const char* 
     if( request->value ) { ss << "  value " << request->value; Log(ss); } else { ss << "  value = nullptr"; Log(ss); } // Class: const char* 
 
@@ -558,7 +559,7 @@ HRESULT AutoGenTitleDataManagementTests::LogPFTitleDataManagementSetTitleDataRes
     std::stringstream ss;
     ss << "Response:"; Log(ss);
 
-    // Found PlayFabTitleDataManagementSetTitleDataResult
+    // Found PlayFabTitleDataManagementSetTitleDataResult    
     if( result->azureResourceId ) { ss << "  azureResourceId " << result->azureResourceId; Log(ss); } else { ss << "  azureResourceId = nullptr"; Log(ss); } // Class: const char* 
     return S_OK;
 }
@@ -623,7 +624,7 @@ HRESULT AutoGenTitleDataManagementTests::LogPFTitleDataManagementSetupPushNotifi
     std::stringstream ss;
     ss << "Response:"; Log(ss);
 
-    // Found PlayFabTitleDataManagementSetupPushNotificationResult
+    // Found PlayFabTitleDataManagementSetupPushNotificationResult    
     if( result->aRN ) { ss << "  aRN " << result->aRN; Log(ss); } else { ss << "  aRN = nullptr"; Log(ss); } // Class: const char* 
     return S_OK;
 }
@@ -672,7 +673,7 @@ HRESULT AutoGenTitleDataManagementTests::LogPFTitleDataManagementGetTimeResult(P
     std::stringstream ss;
     ss << "Response:"; Log(ss);
 
-    // Found PlayFabTitleDataManagementGetTimeResult
+    // Found PlayFabTitleDataManagementGetTimeResult    
     ss << "  time " << result->time; Log(ss); // Class: time_t 
     return S_OK;
 }
@@ -706,7 +707,7 @@ HRESULT AutoGenTitleDataManagementTests::LogPFTitleDataManagementGetTitleNewsRes
     std::stringstream ss;
     ss << "Response:"; Log(ss);
 
-    // Found PlayFabTitleDataManagementGetTitleNewsResult    
+    // Found PlayFabTitleDataManagementGetTitleNewsResult        
     ss << "  newsCount " << result->newsCount; Log(ss);
 
     // PFTitleDataManagementTitleNewsItem

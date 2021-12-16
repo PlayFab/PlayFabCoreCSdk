@@ -1187,6 +1187,7 @@ HRESULT PFTitleDataManagementClientGetTitleNewsGetResult(
     _Out_opt_ size_t* bufferUsed
 ) noexcept;
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 /// <summary>
 /// Retrieves the specified version of the title's catalog of virtual goods, including all defined properties
 /// </summary>
@@ -1234,7 +1235,9 @@ HRESULT PFTitleDataManagementServerGetCatalogItemsGetResult(
     _Outptr_ PFTitleDataManagementGetCatalogItemsResult** result,
     _Out_opt_ size_t* bufferUsed
 ) noexcept;
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 /// <summary>
 /// Retrieves the key-value store of custom publisher settings
 /// </summary>
@@ -1288,7 +1291,9 @@ HRESULT PFTitleDataManagementServerGetPublisherDataGetResult(
     _Outptr_ PFTitleDataManagementGetPublisherDataResult** result,
     _Out_opt_ size_t* bufferUsed
 ) noexcept;
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 /// <summary>
 /// Retrieves the set of items defined for the specified store, including all prices defined, for the
 /// specified player
@@ -1347,7 +1352,9 @@ HRESULT PFTitleDataManagementServerGetStoreItemsGetResult(
     _Outptr_ PFTitleDataManagementGetStoreItemsResult** result,
     _Out_opt_ size_t* bufferUsed
 ) noexcept;
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 /// <summary>
 /// Retrieves the current server time
 /// </summary>
@@ -1375,7 +1382,9 @@ HRESULT PFTitleDataManagementServerGetTimeGetResult(
     _Inout_ XAsyncBlock* async,
     _Out_ PFTitleDataManagementGetTimeResult* result
 ) noexcept;
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 /// <summary>
 /// Retrieves the key-value store of custom title settings
 /// </summary>
@@ -1430,7 +1439,9 @@ HRESULT PFTitleDataManagementServerGetTitleDataGetResult(
     _Outptr_ PFTitleDataManagementGetTitleDataResult** result,
     _Out_opt_ size_t* bufferUsed
 ) noexcept;
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 /// <summary>
 /// Retrieves the key-value store of custom internal title settings
 /// </summary>
@@ -1483,7 +1494,9 @@ HRESULT PFTitleDataManagementServerGetTitleInternalDataGetResult(
     _Outptr_ PFTitleDataManagementGetTitleDataResult** result,
     _Out_opt_ size_t* bufferUsed
 ) noexcept;
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 /// <summary>
 /// Retrieves the title news feed, as configured in the developer portal
 /// </summary>
@@ -1530,7 +1543,9 @@ HRESULT PFTitleDataManagementServerGetTitleNewsGetResult(
     _Outptr_ PFTitleDataManagementGetTitleNewsResult** result,
     _Out_opt_ size_t* bufferUsed
 ) noexcept;
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 /// <summary>
 /// Updates the key-value store of custom publisher settings
 /// </summary>
@@ -1553,7 +1568,9 @@ HRESULT PFTitleDataManagementServerSetPublisherDataAsync(
     _In_ const PFTitleDataManagementSetPublisherDataRequest* request,
     _Inout_ XAsyncBlock* async
 ) noexcept;
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 /// <summary>
 /// Updates the key-value store of custom title settings
 /// </summary>
@@ -1607,7 +1624,9 @@ HRESULT PFTitleDataManagementServerSetTitleDataGetResult(
     _Outptr_ PFTitleDataManagementSetTitleDataResult** result,
     _Out_opt_ size_t* bufferUsed
 ) noexcept;
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 /// <summary>
 /// Updates the key-value store of custom title settings
 /// </summary>
@@ -1661,6 +1680,7 @@ HRESULT PFTitleDataManagementServerSetTitleInternalDataGetResult(
     _Outptr_ PFTitleDataManagementSetTitleDataResult** result,
     _Out_opt_ size_t* bufferUsed
 ) noexcept;
+#endif
 
 
 }

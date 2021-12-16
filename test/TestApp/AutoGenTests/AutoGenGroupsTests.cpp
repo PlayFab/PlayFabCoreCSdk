@@ -236,7 +236,7 @@ void AutoGenGroupsTests::SetUp(TestContext& testContext)
 
 void AutoGenGroupsTests::TestGroupsAcceptGroupApplicationPrerequisiteGetGroup(TestContext& testContext)
 {
-    struct GetGroupResultHolder : public GetGroupResponseHolder
+    struct GetGroupResultHolderStruct : public GetGroupResponseHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -250,7 +250,7 @@ void AutoGenGroupsTests::TestGroupsAcceptGroupApplicationPrerequisiteGetGroup(Te
             return StoreAcceptGroupApplicationPrerequisitePFGroupsGetGroupResponse(shared_from_this());
         }
     };
-    auto async = std::make_unique<XAsyncHelper<GetGroupResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<GetGroupResultHolderStruct>>(testContext);
 
     PFGroupsGetGroupRequestWrapper<> request;
     FillAcceptGroupApplicationPrerequisiteGetGroupRequest(request);
@@ -265,7 +265,7 @@ void AutoGenGroupsTests::TestGroupsAcceptGroupApplicationPrerequisiteGetGroup(Te
 } 
 void AutoGenGroupsTests::TestGroupsAcceptGroupApplicationPrerequisiteApplyToGroup(TestContext& testContext)
 {
-    struct ApplyToGroupResultHolder : public ApplyToGroupResponseHolder
+    struct ApplyToGroupResultHolderStruct : public ApplyToGroupResponseHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -279,7 +279,7 @@ void AutoGenGroupsTests::TestGroupsAcceptGroupApplicationPrerequisiteApplyToGrou
             return StoreAcceptGroupApplicationPrerequisitePFGroupsApplyToGroupResponse(shared_from_this());
         }
     };
-    auto async = std::make_unique<XAsyncHelper<ApplyToGroupResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<ApplyToGroupResultHolderStruct>>(testContext);
 
     PFGroupsApplyToGroupRequestWrapper<> request;
     FillAcceptGroupApplicationPrerequisiteApplyToGroupRequest(request);
@@ -329,7 +329,7 @@ void AutoGenGroupsTests::TestGroupsAcceptGroupApplicationCleanupRemoveMembers(Te
 
 void AutoGenGroupsTests::TestGroupsAcceptGroupInvitationPrerequisiteGetGroup(TestContext& testContext)
 {
-    struct GetGroupResultHolder : public GetGroupResponseHolder
+    struct GetGroupResultHolderStruct : public GetGroupResponseHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -343,7 +343,7 @@ void AutoGenGroupsTests::TestGroupsAcceptGroupInvitationPrerequisiteGetGroup(Tes
             return StoreAcceptGroupInvitationPrerequisitePFGroupsGetGroupResponse(shared_from_this());
         }
     };
-    auto async = std::make_unique<XAsyncHelper<GetGroupResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<GetGroupResultHolderStruct>>(testContext);
 
     PFGroupsGetGroupRequestWrapper<> request;
     FillAcceptGroupInvitationPrerequisiteGetGroupRequest(request);
@@ -358,7 +358,7 @@ void AutoGenGroupsTests::TestGroupsAcceptGroupInvitationPrerequisiteGetGroup(Tes
 } 
 void AutoGenGroupsTests::TestGroupsAcceptGroupInvitationPrerequisiteInviteToGroup(TestContext& testContext)
 {
-    struct InviteToGroupResultHolder : public InviteToGroupResponseHolder
+    struct InviteToGroupResultHolderStruct : public InviteToGroupResponseHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -372,7 +372,7 @@ void AutoGenGroupsTests::TestGroupsAcceptGroupInvitationPrerequisiteInviteToGrou
             return StoreAcceptGroupInvitationPrerequisitePFGroupsInviteToGroupResponse(shared_from_this());
         }
     };
-    auto async = std::make_unique<XAsyncHelper<InviteToGroupResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<InviteToGroupResultHolderStruct>>(testContext);
 
     PFGroupsInviteToGroupRequestWrapper<> request;
     FillAcceptGroupInvitationPrerequisiteInviteToGroupRequest(request);
@@ -422,7 +422,7 @@ void AutoGenGroupsTests::TestGroupsAcceptGroupInvitationCleanupRemoveMembers(Tes
 
 void AutoGenGroupsTests::TestGroupsAddMembersPrerequisiteGetGroup(TestContext& testContext)
 {
-    struct GetGroupResultHolder : public GetGroupResponseHolder
+    struct GetGroupResultHolderStruct : public GetGroupResponseHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -436,7 +436,7 @@ void AutoGenGroupsTests::TestGroupsAddMembersPrerequisiteGetGroup(TestContext& t
             return StoreAddMembersPrerequisitePFGroupsGetGroupResponse(shared_from_this());
         }
     };
-    auto async = std::make_unique<XAsyncHelper<GetGroupResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<GetGroupResultHolderStruct>>(testContext);
 
     PFGroupsGetGroupRequestWrapper<> request;
     FillAddMembersPrerequisiteGetGroupRequest(request);
@@ -486,7 +486,7 @@ void AutoGenGroupsTests::TestGroupsAddMembersCleanupRemoveMembers(TestContext& t
 
 void AutoGenGroupsTests::TestGroupsApplyToGroupPrerequisiteGetGroup(TestContext& testContext)
 {
-    struct GetGroupResultHolder : public GetGroupResponseHolder
+    struct GetGroupResultHolderStruct : public GetGroupResponseHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -500,7 +500,7 @@ void AutoGenGroupsTests::TestGroupsApplyToGroupPrerequisiteGetGroup(TestContext&
             return StoreApplyToGroupPrerequisitePFGroupsGetGroupResponse(shared_from_this());
         }
     };
-    auto async = std::make_unique<XAsyncHelper<GetGroupResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<GetGroupResultHolderStruct>>(testContext);
 
     PFGroupsGetGroupRequestWrapper<> request;
     FillApplyToGroupPrerequisiteGetGroupRequest(request);
@@ -515,7 +515,7 @@ void AutoGenGroupsTests::TestGroupsApplyToGroupPrerequisiteGetGroup(TestContext&
 } 
 void AutoGenGroupsTests::TestGroupsApplyToGroup(TestContext& testContext)
 {
-    struct ApplyToGroupResultHolder : public ApplyToGroupResponseHolder
+    struct ApplyToGroupResultHolderStruct : public ApplyToGroupResponseHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -534,7 +534,7 @@ void AutoGenGroupsTests::TestGroupsApplyToGroup(TestContext& testContext)
             return ValidatePFGroupsApplyToGroupResponse(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<ApplyToGroupResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<ApplyToGroupResultHolderStruct>>(testContext);
 
     PFGroupsApplyToGroupRequestWrapper<> request;
     FillApplyToGroupRequest(request);
@@ -569,7 +569,7 @@ void AutoGenGroupsTests::TestGroupsApplyToGroupCleanupRemoveGroupApplication(Tes
 
 void AutoGenGroupsTests::TestGroupsBlockEntityPrerequisiteGetGroup(TestContext& testContext)
 {
-    struct GetGroupResultHolder : public GetGroupResponseHolder
+    struct GetGroupResultHolderStruct : public GetGroupResponseHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -583,7 +583,7 @@ void AutoGenGroupsTests::TestGroupsBlockEntityPrerequisiteGetGroup(TestContext& 
             return StoreBlockEntityPrerequisitePFGroupsGetGroupResponse(shared_from_this());
         }
     };
-    auto async = std::make_unique<XAsyncHelper<GetGroupResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<GetGroupResultHolderStruct>>(testContext);
 
     PFGroupsGetGroupRequestWrapper<> request;
     FillBlockEntityPrerequisiteGetGroupRequest(request);
@@ -633,7 +633,7 @@ void AutoGenGroupsTests::TestGroupsBlockEntityCleanupUnblockEntity(TestContext& 
 
 void AutoGenGroupsTests::TestGroupsChangeMemberRolePrerequisiteGetGroup(TestContext& testContext)
 {
-    struct GetGroupResultHolder : public GetGroupResponseHolder
+    struct GetGroupResultHolderStruct : public GetGroupResponseHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -647,7 +647,7 @@ void AutoGenGroupsTests::TestGroupsChangeMemberRolePrerequisiteGetGroup(TestCont
             return StoreChangeMemberRolePrerequisitePFGroupsGetGroupResponse(shared_from_this());
         }
     };
-    auto async = std::make_unique<XAsyncHelper<GetGroupResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<GetGroupResultHolderStruct>>(testContext);
 
     PFGroupsGetGroupRequestWrapper<> request;
     FillChangeMemberRolePrerequisiteGetGroupRequest(request);
@@ -697,7 +697,7 @@ void AutoGenGroupsTests::TestGroupsChangeMemberRoleCleanupChangeMemberRole(TestC
 
 void AutoGenGroupsTests::TestGroupsCreateGroup(TestContext& testContext)
 {
-    struct CreateGroupResultHolder : public CreateGroupResponseHolder
+    struct CreateGroupResultHolderStruct : public CreateGroupResponseHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -716,7 +716,7 @@ void AutoGenGroupsTests::TestGroupsCreateGroup(TestContext& testContext)
             return ValidatePFGroupsCreateGroupResponse(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<CreateGroupResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<CreateGroupResultHolderStruct>>(testContext);
 
     PFGroupsCreateGroupRequestWrapper<> request;
     FillCreateGroupRequest(request);
@@ -731,7 +731,7 @@ void AutoGenGroupsTests::TestGroupsCreateGroup(TestContext& testContext)
 }
 void AutoGenGroupsTests::TestGroupsCreateGroupCleanupGetGroup(TestContext& testContext)
 {
-    struct GetGroupResultHolder : public GetGroupResponseHolder
+    struct GetGroupResultHolderStruct : public GetGroupResponseHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -743,7 +743,7 @@ void AutoGenGroupsTests::TestGroupsCreateGroupCleanupGetGroup(TestContext& testC
             return StoreCreateGroupCleanupPFGroupsGetGroupResponse(shared_from_this());
         }
     };
-    auto async = std::make_unique<XAsyncHelper<GetGroupResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<GetGroupResultHolderStruct>>(testContext);
 
     PFGroupsGetGroupRequestWrapper<> request;
     FillCreateGroupCleanupGetGroupRequest(request);
@@ -778,7 +778,7 @@ void AutoGenGroupsTests::TestGroupsCreateGroupCleanupDeleteGroup(TestContext& te
 
 void AutoGenGroupsTests::TestGroupsCreateRolePrerequisiteGetGroup(TestContext& testContext)
 {
-    struct GetGroupResultHolder : public GetGroupResponseHolder
+    struct GetGroupResultHolderStruct : public GetGroupResponseHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -792,7 +792,7 @@ void AutoGenGroupsTests::TestGroupsCreateRolePrerequisiteGetGroup(TestContext& t
             return StoreCreateRolePrerequisitePFGroupsGetGroupResponse(shared_from_this());
         }
     };
-    auto async = std::make_unique<XAsyncHelper<GetGroupResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<GetGroupResultHolderStruct>>(testContext);
 
     PFGroupsGetGroupRequestWrapper<> request;
     FillCreateRolePrerequisiteGetGroupRequest(request);
@@ -807,7 +807,7 @@ void AutoGenGroupsTests::TestGroupsCreateRolePrerequisiteGetGroup(TestContext& t
 } 
 void AutoGenGroupsTests::TestGroupsCreateRole(TestContext& testContext)
 {
-    struct CreateRoleResultHolder : public CreateGroupRoleResponseHolder
+    struct CreateRoleResultHolderStruct : public CreateGroupRoleResponseHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -826,7 +826,7 @@ void AutoGenGroupsTests::TestGroupsCreateRole(TestContext& testContext)
             return ValidatePFGroupsCreateGroupRoleResponse(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<CreateRoleResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<CreateRoleResultHolderStruct>>(testContext);
 
     PFGroupsCreateGroupRoleRequestWrapper<> request;
     FillCreateGroupRoleRequest(request);
@@ -861,7 +861,7 @@ void AutoGenGroupsTests::TestGroupsCreateRoleCleanupDeleteRole(TestContext& test
 
 void AutoGenGroupsTests::TestGroupsDeleteGroupPrerequisiteCreateGroup(TestContext& testContext)
 {
-    struct CreateGroupResultHolder : public CreateGroupResponseHolder
+    struct CreateGroupResultHolderStruct : public CreateGroupResponseHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -875,7 +875,7 @@ void AutoGenGroupsTests::TestGroupsDeleteGroupPrerequisiteCreateGroup(TestContex
             return StoreDeleteGroupPrerequisitePFGroupsCreateGroupResponse(shared_from_this());
         }
     };
-    auto async = std::make_unique<XAsyncHelper<CreateGroupResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<CreateGroupResultHolderStruct>>(testContext);
 
     PFGroupsCreateGroupRequestWrapper<> request;
     FillDeleteGroupPrerequisiteCreateGroupRequest(request);
@@ -910,7 +910,7 @@ void AutoGenGroupsTests::TestGroupsDeleteGroup(TestContext& testContext)
 
 void AutoGenGroupsTests::TestGroupsDeleteRolePrerequisiteGetGroup(TestContext& testContext)
 {
-    struct GetGroupResultHolder : public GetGroupResponseHolder
+    struct GetGroupResultHolderStruct : public GetGroupResponseHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -924,7 +924,7 @@ void AutoGenGroupsTests::TestGroupsDeleteRolePrerequisiteGetGroup(TestContext& t
             return StoreDeleteRolePrerequisitePFGroupsGetGroupResponse(shared_from_this());
         }
     };
-    auto async = std::make_unique<XAsyncHelper<GetGroupResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<GetGroupResultHolderStruct>>(testContext);
 
     PFGroupsGetGroupRequestWrapper<> request;
     FillDeleteRolePrerequisiteGetGroupRequest(request);
@@ -939,7 +939,7 @@ void AutoGenGroupsTests::TestGroupsDeleteRolePrerequisiteGetGroup(TestContext& t
 } 
 void AutoGenGroupsTests::TestGroupsDeleteRolePrerequisiteCreateRole(TestContext& testContext)
 {
-    struct CreateRoleResultHolder : public CreateGroupRoleResponseHolder
+    struct CreateRoleResultHolderStruct : public CreateGroupRoleResponseHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -953,7 +953,7 @@ void AutoGenGroupsTests::TestGroupsDeleteRolePrerequisiteCreateRole(TestContext&
             return StoreDeleteRolePrerequisitePFGroupsCreateGroupRoleResponse(shared_from_this());
         }
     };
-    auto async = std::make_unique<XAsyncHelper<CreateRoleResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<CreateRoleResultHolderStruct>>(testContext);
 
     PFGroupsCreateGroupRoleRequestWrapper<> request;
     FillDeleteRolePrerequisiteCreateGroupRoleRequest(request);
@@ -988,7 +988,7 @@ void AutoGenGroupsTests::TestGroupsDeleteRole(TestContext& testContext)
 
 void AutoGenGroupsTests::TestGroupsGetGroup(TestContext& testContext)
 {
-    struct GetGroupResultHolder : public GetGroupResponseHolder
+    struct GetGroupResultHolderStruct : public GetGroupResponseHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -1007,7 +1007,7 @@ void AutoGenGroupsTests::TestGroupsGetGroup(TestContext& testContext)
             return ValidatePFGroupsGetGroupResponse(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<GetGroupResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<GetGroupResultHolderStruct>>(testContext);
 
     PFGroupsGetGroupRequestWrapper<> request;
     FillGetGroupRequest(request);
@@ -1027,7 +1027,7 @@ void AutoGenGroupsTests::TestGroupsGetGroup(TestContext& testContext)
 
 void AutoGenGroupsTests::TestGroupsInviteToGroupPrerequisiteGetGroup(TestContext& testContext)
 {
-    struct GetGroupResultHolder : public GetGroupResponseHolder
+    struct GetGroupResultHolderStruct : public GetGroupResponseHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -1041,7 +1041,7 @@ void AutoGenGroupsTests::TestGroupsInviteToGroupPrerequisiteGetGroup(TestContext
             return StoreInviteToGroupPrerequisitePFGroupsGetGroupResponse(shared_from_this());
         }
     };
-    auto async = std::make_unique<XAsyncHelper<GetGroupResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<GetGroupResultHolderStruct>>(testContext);
 
     PFGroupsGetGroupRequestWrapper<> request;
     FillInviteToGroupPrerequisiteGetGroupRequest(request);
@@ -1056,7 +1056,7 @@ void AutoGenGroupsTests::TestGroupsInviteToGroupPrerequisiteGetGroup(TestContext
 } 
 void AutoGenGroupsTests::TestGroupsInviteToGroup(TestContext& testContext)
 {
-    struct InviteToGroupResultHolder : public InviteToGroupResponseHolder
+    struct InviteToGroupResultHolderStruct : public InviteToGroupResponseHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -1075,7 +1075,7 @@ void AutoGenGroupsTests::TestGroupsInviteToGroup(TestContext& testContext)
             return ValidatePFGroupsInviteToGroupResponse(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<InviteToGroupResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<InviteToGroupResultHolderStruct>>(testContext);
 
     PFGroupsInviteToGroupRequestWrapper<> request;
     FillInviteToGroupRequest(request);
@@ -1110,7 +1110,7 @@ void AutoGenGroupsTests::TestGroupsInviteToGroupCleanupRemoveGroupInvitation(Tes
 
 void AutoGenGroupsTests::TestGroupsIsMemberPrerequisiteGetGroup(TestContext& testContext)
 {
-    struct GetGroupResultHolder : public GetGroupResponseHolder
+    struct GetGroupResultHolderStruct : public GetGroupResponseHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -1124,7 +1124,7 @@ void AutoGenGroupsTests::TestGroupsIsMemberPrerequisiteGetGroup(TestContext& tes
             return StoreIsMemberPrerequisitePFGroupsGetGroupResponse(shared_from_this());
         }
     };
-    auto async = std::make_unique<XAsyncHelper<GetGroupResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<GetGroupResultHolderStruct>>(testContext);
 
     PFGroupsGetGroupRequestWrapper<> request;
     FillIsMemberPrerequisiteGetGroupRequest(request);
@@ -1139,7 +1139,7 @@ void AutoGenGroupsTests::TestGroupsIsMemberPrerequisiteGetGroup(TestContext& tes
 } 
 void AutoGenGroupsTests::TestGroupsIsMember(TestContext& testContext)
 {
-    struct IsMemberResultHolder : public IsMemberResponseHolder
+    struct IsMemberResultHolderStruct : public IsMemberResponseHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -1153,7 +1153,7 @@ void AutoGenGroupsTests::TestGroupsIsMember(TestContext& testContext)
             return ValidatePFGroupsIsMemberResponse(&result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<IsMemberResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<IsMemberResultHolderStruct>>(testContext);
 
     PFGroupsIsMemberRequestWrapper<> request;
     FillIsMemberRequest(request);
@@ -1173,7 +1173,7 @@ void AutoGenGroupsTests::TestGroupsIsMember(TestContext& testContext)
 
 void AutoGenGroupsTests::TestGroupsListGroupApplicationsPrerequisiteGetGroup(TestContext& testContext)
 {
-    struct GetGroupResultHolder : public GetGroupResponseHolder
+    struct GetGroupResultHolderStruct : public GetGroupResponseHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -1187,7 +1187,7 @@ void AutoGenGroupsTests::TestGroupsListGroupApplicationsPrerequisiteGetGroup(Tes
             return StoreListGroupApplicationsPrerequisitePFGroupsGetGroupResponse(shared_from_this());
         }
     };
-    auto async = std::make_unique<XAsyncHelper<GetGroupResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<GetGroupResultHolderStruct>>(testContext);
 
     PFGroupsGetGroupRequestWrapper<> request;
     FillListGroupApplicationsPrerequisiteGetGroupRequest(request);
@@ -1202,7 +1202,7 @@ void AutoGenGroupsTests::TestGroupsListGroupApplicationsPrerequisiteGetGroup(Tes
 } 
 void AutoGenGroupsTests::TestGroupsListGroupApplications(TestContext& testContext)
 {
-    struct ListGroupApplicationsResultHolder : public ListGroupApplicationsResponseHolder
+    struct ListGroupApplicationsResultHolderStruct : public ListGroupApplicationsResponseHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -1221,7 +1221,7 @@ void AutoGenGroupsTests::TestGroupsListGroupApplications(TestContext& testContex
             return ValidatePFGroupsListGroupApplicationsResponse(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<ListGroupApplicationsResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<ListGroupApplicationsResultHolderStruct>>(testContext);
 
     PFGroupsListGroupApplicationsRequestWrapper<> request;
     FillListGroupApplicationsRequest(request);
@@ -1241,7 +1241,7 @@ void AutoGenGroupsTests::TestGroupsListGroupApplications(TestContext& testContex
 
 void AutoGenGroupsTests::TestGroupsListGroupBlocksPrerequisiteGetGroup(TestContext& testContext)
 {
-    struct GetGroupResultHolder : public GetGroupResponseHolder
+    struct GetGroupResultHolderStruct : public GetGroupResponseHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -1255,7 +1255,7 @@ void AutoGenGroupsTests::TestGroupsListGroupBlocksPrerequisiteGetGroup(TestConte
             return StoreListGroupBlocksPrerequisitePFGroupsGetGroupResponse(shared_from_this());
         }
     };
-    auto async = std::make_unique<XAsyncHelper<GetGroupResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<GetGroupResultHolderStruct>>(testContext);
 
     PFGroupsGetGroupRequestWrapper<> request;
     FillListGroupBlocksPrerequisiteGetGroupRequest(request);
@@ -1270,7 +1270,7 @@ void AutoGenGroupsTests::TestGroupsListGroupBlocksPrerequisiteGetGroup(TestConte
 } 
 void AutoGenGroupsTests::TestGroupsListGroupBlocks(TestContext& testContext)
 {
-    struct ListGroupBlocksResultHolder : public ListGroupBlocksResponseHolder
+    struct ListGroupBlocksResultHolderStruct : public ListGroupBlocksResponseHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -1289,7 +1289,7 @@ void AutoGenGroupsTests::TestGroupsListGroupBlocks(TestContext& testContext)
             return ValidatePFGroupsListGroupBlocksResponse(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<ListGroupBlocksResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<ListGroupBlocksResultHolderStruct>>(testContext);
 
     PFGroupsListGroupBlocksRequestWrapper<> request;
     FillListGroupBlocksRequest(request);
@@ -1309,7 +1309,7 @@ void AutoGenGroupsTests::TestGroupsListGroupBlocks(TestContext& testContext)
 
 void AutoGenGroupsTests::TestGroupsListGroupInvitationsPrerequisiteGetGroup(TestContext& testContext)
 {
-    struct GetGroupResultHolder : public GetGroupResponseHolder
+    struct GetGroupResultHolderStruct : public GetGroupResponseHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -1323,7 +1323,7 @@ void AutoGenGroupsTests::TestGroupsListGroupInvitationsPrerequisiteGetGroup(Test
             return StoreListGroupInvitationsPrerequisitePFGroupsGetGroupResponse(shared_from_this());
         }
     };
-    auto async = std::make_unique<XAsyncHelper<GetGroupResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<GetGroupResultHolderStruct>>(testContext);
 
     PFGroupsGetGroupRequestWrapper<> request;
     FillListGroupInvitationsPrerequisiteGetGroupRequest(request);
@@ -1338,7 +1338,7 @@ void AutoGenGroupsTests::TestGroupsListGroupInvitationsPrerequisiteGetGroup(Test
 } 
 void AutoGenGroupsTests::TestGroupsListGroupInvitations(TestContext& testContext)
 {
-    struct ListGroupInvitationsResultHolder : public ListGroupInvitationsResponseHolder
+    struct ListGroupInvitationsResultHolderStruct : public ListGroupInvitationsResponseHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -1357,7 +1357,7 @@ void AutoGenGroupsTests::TestGroupsListGroupInvitations(TestContext& testContext
             return ValidatePFGroupsListGroupInvitationsResponse(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<ListGroupInvitationsResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<ListGroupInvitationsResultHolderStruct>>(testContext);
 
     PFGroupsListGroupInvitationsRequestWrapper<> request;
     FillListGroupInvitationsRequest(request);
@@ -1377,7 +1377,7 @@ void AutoGenGroupsTests::TestGroupsListGroupInvitations(TestContext& testContext
 
 void AutoGenGroupsTests::TestGroupsListGroupMembersPrerequisiteGetGroup(TestContext& testContext)
 {
-    struct GetGroupResultHolder : public GetGroupResponseHolder
+    struct GetGroupResultHolderStruct : public GetGroupResponseHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -1391,7 +1391,7 @@ void AutoGenGroupsTests::TestGroupsListGroupMembersPrerequisiteGetGroup(TestCont
             return StoreListGroupMembersPrerequisitePFGroupsGetGroupResponse(shared_from_this());
         }
     };
-    auto async = std::make_unique<XAsyncHelper<GetGroupResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<GetGroupResultHolderStruct>>(testContext);
 
     PFGroupsGetGroupRequestWrapper<> request;
     FillListGroupMembersPrerequisiteGetGroupRequest(request);
@@ -1406,7 +1406,7 @@ void AutoGenGroupsTests::TestGroupsListGroupMembersPrerequisiteGetGroup(TestCont
 } 
 void AutoGenGroupsTests::TestGroupsListGroupMembers(TestContext& testContext)
 {
-    struct ListGroupMembersResultHolder : public ListGroupMembersResponseHolder
+    struct ListGroupMembersResultHolderStruct : public ListGroupMembersResponseHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -1425,7 +1425,7 @@ void AutoGenGroupsTests::TestGroupsListGroupMembers(TestContext& testContext)
             return ValidatePFGroupsListGroupMembersResponse(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<ListGroupMembersResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<ListGroupMembersResultHolderStruct>>(testContext);
 
     PFGroupsListGroupMembersRequestWrapper<> request;
     FillListGroupMembersRequest(request);
@@ -1445,7 +1445,7 @@ void AutoGenGroupsTests::TestGroupsListGroupMembers(TestContext& testContext)
 
 void AutoGenGroupsTests::TestGroupsListMembershipPrerequisiteGetGroup(TestContext& testContext)
 {
-    struct GetGroupResultHolder : public GetGroupResponseHolder
+    struct GetGroupResultHolderStruct : public GetGroupResponseHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -1459,7 +1459,7 @@ void AutoGenGroupsTests::TestGroupsListMembershipPrerequisiteGetGroup(TestContex
             return StoreListMembershipPrerequisitePFGroupsGetGroupResponse(shared_from_this());
         }
     };
-    auto async = std::make_unique<XAsyncHelper<GetGroupResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<GetGroupResultHolderStruct>>(testContext);
 
     PFGroupsGetGroupRequestWrapper<> request;
     FillListMembershipPrerequisiteGetGroupRequest(request);
@@ -1474,7 +1474,7 @@ void AutoGenGroupsTests::TestGroupsListMembershipPrerequisiteGetGroup(TestContex
 } 
 void AutoGenGroupsTests::TestGroupsListMembership(TestContext& testContext)
 {
-    struct ListMembershipResultHolder : public ListMembershipResponseHolder
+    struct ListMembershipResultHolderStruct : public ListMembershipResponseHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -1493,7 +1493,7 @@ void AutoGenGroupsTests::TestGroupsListMembership(TestContext& testContext)
             return ValidatePFGroupsListMembershipResponse(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<ListMembershipResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<ListMembershipResultHolderStruct>>(testContext);
 
     PFGroupsListMembershipRequestWrapper<> request;
     FillListMembershipRequest(request);
@@ -1513,7 +1513,7 @@ void AutoGenGroupsTests::TestGroupsListMembership(TestContext& testContext)
 
 void AutoGenGroupsTests::TestGroupsListMembershipOpportunitiesPrerequisiteGetGroup(TestContext& testContext)
 {
-    struct GetGroupResultHolder : public GetGroupResponseHolder
+    struct GetGroupResultHolderStruct : public GetGroupResponseHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -1527,7 +1527,7 @@ void AutoGenGroupsTests::TestGroupsListMembershipOpportunitiesPrerequisiteGetGro
             return StoreListMembershipOpportunitiesPrerequisitePFGroupsGetGroupResponse(shared_from_this());
         }
     };
-    auto async = std::make_unique<XAsyncHelper<GetGroupResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<GetGroupResultHolderStruct>>(testContext);
 
     PFGroupsGetGroupRequestWrapper<> request;
     FillListMembershipOpportunitiesPrerequisiteGetGroupRequest(request);
@@ -1542,7 +1542,7 @@ void AutoGenGroupsTests::TestGroupsListMembershipOpportunitiesPrerequisiteGetGro
 } 
 void AutoGenGroupsTests::TestGroupsListMembershipOpportunitiesPrerequisiteApplyToGroup(TestContext& testContext)
 {
-    struct ApplyToGroupResultHolder : public ApplyToGroupResponseHolder
+    struct ApplyToGroupResultHolderStruct : public ApplyToGroupResponseHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -1556,7 +1556,7 @@ void AutoGenGroupsTests::TestGroupsListMembershipOpportunitiesPrerequisiteApplyT
             return StoreListMembershipOpportunitiesPrerequisitePFGroupsApplyToGroupResponse(shared_from_this());
         }
     };
-    auto async = std::make_unique<XAsyncHelper<ApplyToGroupResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<ApplyToGroupResultHolderStruct>>(testContext);
 
     PFGroupsApplyToGroupRequestWrapper<> request;
     FillListMembershipOpportunitiesPrerequisiteApplyToGroupRequest(request);
@@ -1571,7 +1571,7 @@ void AutoGenGroupsTests::TestGroupsListMembershipOpportunitiesPrerequisiteApplyT
 } 
 void AutoGenGroupsTests::TestGroupsListMembershipOpportunities(TestContext& testContext)
 {
-    struct ListMembershipOpportunitiesResultHolder : public ListMembershipOpportunitiesResponseHolder
+    struct ListMembershipOpportunitiesResultHolderStruct : public ListMembershipOpportunitiesResponseHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -1590,7 +1590,7 @@ void AutoGenGroupsTests::TestGroupsListMembershipOpportunities(TestContext& test
             return ValidatePFGroupsListMembershipOpportunitiesResponse(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<ListMembershipOpportunitiesResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<ListMembershipOpportunitiesResultHolderStruct>>(testContext);
 
     PFGroupsListMembershipOpportunitiesRequestWrapper<> request;
     FillListMembershipOpportunitiesRequest(request);
@@ -1625,7 +1625,7 @@ void AutoGenGroupsTests::TestGroupsListMembershipOpportunitiesCleanupRemoveGroup
 
 void AutoGenGroupsTests::TestGroupsRemoveGroupApplicationPrerequisiteGetGroup(TestContext& testContext)
 {
-    struct GetGroupResultHolder : public GetGroupResponseHolder
+    struct GetGroupResultHolderStruct : public GetGroupResponseHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -1639,7 +1639,7 @@ void AutoGenGroupsTests::TestGroupsRemoveGroupApplicationPrerequisiteGetGroup(Te
             return StoreRemoveGroupApplicationPrerequisitePFGroupsGetGroupResponse(shared_from_this());
         }
     };
-    auto async = std::make_unique<XAsyncHelper<GetGroupResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<GetGroupResultHolderStruct>>(testContext);
 
     PFGroupsGetGroupRequestWrapper<> request;
     FillRemoveGroupApplicationPrerequisiteGetGroupRequest(request);
@@ -1654,7 +1654,7 @@ void AutoGenGroupsTests::TestGroupsRemoveGroupApplicationPrerequisiteGetGroup(Te
 } 
 void AutoGenGroupsTests::TestGroupsRemoveGroupApplicationPrerequisiteApplyToGroup(TestContext& testContext)
 {
-    struct ApplyToGroupResultHolder : public ApplyToGroupResponseHolder
+    struct ApplyToGroupResultHolderStruct : public ApplyToGroupResponseHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -1668,7 +1668,7 @@ void AutoGenGroupsTests::TestGroupsRemoveGroupApplicationPrerequisiteApplyToGrou
             return StoreRemoveGroupApplicationPrerequisitePFGroupsApplyToGroupResponse(shared_from_this());
         }
     };
-    auto async = std::make_unique<XAsyncHelper<ApplyToGroupResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<ApplyToGroupResultHolderStruct>>(testContext);
 
     PFGroupsApplyToGroupRequestWrapper<> request;
     FillRemoveGroupApplicationPrerequisiteApplyToGroupRequest(request);
@@ -1703,7 +1703,7 @@ void AutoGenGroupsTests::TestGroupsRemoveGroupApplication(TestContext& testConte
 
 void AutoGenGroupsTests::TestGroupsRemoveGroupInvitationPrerequisiteGetGroup(TestContext& testContext)
 {
-    struct GetGroupResultHolder : public GetGroupResponseHolder
+    struct GetGroupResultHolderStruct : public GetGroupResponseHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -1717,7 +1717,7 @@ void AutoGenGroupsTests::TestGroupsRemoveGroupInvitationPrerequisiteGetGroup(Tes
             return StoreRemoveGroupInvitationPrerequisitePFGroupsGetGroupResponse(shared_from_this());
         }
     };
-    auto async = std::make_unique<XAsyncHelper<GetGroupResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<GetGroupResultHolderStruct>>(testContext);
 
     PFGroupsGetGroupRequestWrapper<> request;
     FillRemoveGroupInvitationPrerequisiteGetGroupRequest(request);
@@ -1732,7 +1732,7 @@ void AutoGenGroupsTests::TestGroupsRemoveGroupInvitationPrerequisiteGetGroup(Tes
 } 
 void AutoGenGroupsTests::TestGroupsRemoveGroupInvitationPrerequisiteInviteToGroup(TestContext& testContext)
 {
-    struct InviteToGroupResultHolder : public InviteToGroupResponseHolder
+    struct InviteToGroupResultHolderStruct : public InviteToGroupResponseHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -1746,7 +1746,7 @@ void AutoGenGroupsTests::TestGroupsRemoveGroupInvitationPrerequisiteInviteToGrou
             return StoreRemoveGroupInvitationPrerequisitePFGroupsInviteToGroupResponse(shared_from_this());
         }
     };
-    auto async = std::make_unique<XAsyncHelper<InviteToGroupResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<InviteToGroupResultHolderStruct>>(testContext);
 
     PFGroupsInviteToGroupRequestWrapper<> request;
     FillRemoveGroupInvitationPrerequisiteInviteToGroupRequest(request);
@@ -1781,7 +1781,7 @@ void AutoGenGroupsTests::TestGroupsRemoveGroupInvitation(TestContext& testContex
 
 void AutoGenGroupsTests::TestGroupsRemoveMembersPrerequisiteGetGroup(TestContext& testContext)
 {
-    struct GetGroupResultHolder : public GetGroupResponseHolder
+    struct GetGroupResultHolderStruct : public GetGroupResponseHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -1795,7 +1795,7 @@ void AutoGenGroupsTests::TestGroupsRemoveMembersPrerequisiteGetGroup(TestContext
             return StoreRemoveMembersPrerequisitePFGroupsGetGroupResponse(shared_from_this());
         }
     };
-    auto async = std::make_unique<XAsyncHelper<GetGroupResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<GetGroupResultHolderStruct>>(testContext);
 
     PFGroupsGetGroupRequestWrapper<> request;
     FillRemoveMembersPrerequisiteGetGroupRequest(request);
@@ -1845,7 +1845,7 @@ void AutoGenGroupsTests::TestGroupsRemoveMembers(TestContext& testContext)
 
 void AutoGenGroupsTests::TestGroupsUnblockEntityPrerequisiteGetGroup(TestContext& testContext)
 {
-    struct GetGroupResultHolder : public GetGroupResponseHolder
+    struct GetGroupResultHolderStruct : public GetGroupResponseHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -1859,7 +1859,7 @@ void AutoGenGroupsTests::TestGroupsUnblockEntityPrerequisiteGetGroup(TestContext
             return StoreUnblockEntityPrerequisitePFGroupsGetGroupResponse(shared_from_this());
         }
     };
-    auto async = std::make_unique<XAsyncHelper<GetGroupResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<GetGroupResultHolderStruct>>(testContext);
 
     PFGroupsGetGroupRequestWrapper<> request;
     FillUnblockEntityPrerequisiteGetGroupRequest(request);
@@ -1909,7 +1909,7 @@ void AutoGenGroupsTests::TestGroupsUnblockEntity(TestContext& testContext)
 
 void AutoGenGroupsTests::TestGroupsUpdateGroupPrerequisiteCreateGroup(TestContext& testContext)
 {
-    struct CreateGroupResultHolder : public CreateGroupResponseHolder
+    struct CreateGroupResultHolderStruct : public CreateGroupResponseHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -1923,7 +1923,7 @@ void AutoGenGroupsTests::TestGroupsUpdateGroupPrerequisiteCreateGroup(TestContex
             return StoreUpdateGroupPrerequisitePFGroupsCreateGroupResponse(shared_from_this());
         }
     };
-    auto async = std::make_unique<XAsyncHelper<CreateGroupResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<CreateGroupResultHolderStruct>>(testContext);
 
     PFGroupsCreateGroupRequestWrapper<> request;
     FillUpdateGroupPrerequisiteCreateGroupRequest(request);
@@ -1938,7 +1938,7 @@ void AutoGenGroupsTests::TestGroupsUpdateGroupPrerequisiteCreateGroup(TestContex
 } 
 void AutoGenGroupsTests::TestGroupsUpdateGroup(TestContext& testContext)
 {
-    struct UpdateGroupResultHolder : public UpdateGroupResponseHolder
+    struct UpdateGroupResultHolderStruct : public UpdateGroupResponseHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -1957,7 +1957,7 @@ void AutoGenGroupsTests::TestGroupsUpdateGroup(TestContext& testContext)
             return ValidatePFGroupsUpdateGroupResponse(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<UpdateGroupResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<UpdateGroupResultHolderStruct>>(testContext);
 
     PFGroupsUpdateGroupRequestWrapper<> request;
     FillUpdateGroupRequest(request);
@@ -1992,7 +1992,7 @@ void AutoGenGroupsTests::TestGroupsUpdateGroupCleanupDeleteGroup(TestContext& te
 
 void AutoGenGroupsTests::TestGroupsUpdateRolePrerequisiteGetGroup(TestContext& testContext)
 {
-    struct GetGroupResultHolder : public GetGroupResponseHolder
+    struct GetGroupResultHolderStruct : public GetGroupResponseHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -2006,7 +2006,7 @@ void AutoGenGroupsTests::TestGroupsUpdateRolePrerequisiteGetGroup(TestContext& t
             return StoreUpdateRolePrerequisitePFGroupsGetGroupResponse(shared_from_this());
         }
     };
-    auto async = std::make_unique<XAsyncHelper<GetGroupResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<GetGroupResultHolderStruct>>(testContext);
 
     PFGroupsGetGroupRequestWrapper<> request;
     FillUpdateRolePrerequisiteGetGroupRequest(request);
@@ -2021,7 +2021,7 @@ void AutoGenGroupsTests::TestGroupsUpdateRolePrerequisiteGetGroup(TestContext& t
 } 
 void AutoGenGroupsTests::TestGroupsUpdateRolePrerequisiteUpdateRole(TestContext& testContext)
 {
-    struct UpdateRoleResultHolder : public UpdateGroupRoleResponseHolder
+    struct UpdateRoleResultHolderStruct : public UpdateGroupRoleResponseHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -2035,7 +2035,7 @@ void AutoGenGroupsTests::TestGroupsUpdateRolePrerequisiteUpdateRole(TestContext&
             return StoreUpdateRolePrerequisitePFGroupsUpdateGroupRoleResponse(shared_from_this());
         }
     };
-    auto async = std::make_unique<XAsyncHelper<UpdateRoleResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<UpdateRoleResultHolderStruct>>(testContext);
 
     PFGroupsUpdateGroupRoleRequestWrapper<> request;
     FillUpdateRolePrerequisiteUpdateGroupRoleRequest(request);
@@ -2050,7 +2050,7 @@ void AutoGenGroupsTests::TestGroupsUpdateRolePrerequisiteUpdateRole(TestContext&
 } 
 void AutoGenGroupsTests::TestGroupsUpdateRole(TestContext& testContext)
 {
-    struct UpdateRoleResultHolder : public UpdateGroupRoleResponseHolder
+    struct UpdateRoleResultHolderStruct : public UpdateGroupRoleResponseHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -2069,7 +2069,7 @@ void AutoGenGroupsTests::TestGroupsUpdateRole(TestContext& testContext)
             return ValidatePFGroupsUpdateGroupRoleResponse(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<UpdateRoleResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<UpdateRoleResultHolderStruct>>(testContext);
 
     PFGroupsUpdateGroupRoleRequestWrapper<> request;
     FillUpdateGroupRoleRequest(request);

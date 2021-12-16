@@ -32,47 +32,89 @@ HRESULT AutoGenPlayerDataManagementTests::LogHR(HRESULT hr)
 void AutoGenPlayerDataManagementTests::AddTests()
 {
     // Generated tests 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestPlayerDataManagementAdminCreatePlayerStatisticDefinition", &AutoGenPlayerDataManagementTests::TestPlayerDataManagementAdminCreatePlayerStatisticDefinition);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestPlayerDataManagementAdminGetDataReport", &AutoGenPlayerDataManagementTests::TestPlayerDataManagementAdminGetDataReport);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestPlayerDataManagementAdminGetPlayerStatisticDefinitions", &AutoGenPlayerDataManagementTests::TestPlayerDataManagementAdminGetPlayerStatisticDefinitions);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestPlayerDataManagementAdminGetPlayerStatisticVersions", &AutoGenPlayerDataManagementTests::TestPlayerDataManagementAdminGetPlayerStatisticVersions);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestPlayerDataManagementAdminGetUserData", &AutoGenPlayerDataManagementTests::TestPlayerDataManagementAdminGetUserData);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestPlayerDataManagementAdminGetUserInternalData", &AutoGenPlayerDataManagementTests::TestPlayerDataManagementAdminGetUserInternalData);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestPlayerDataManagementAdminGetUserPublisherData", &AutoGenPlayerDataManagementTests::TestPlayerDataManagementAdminGetUserPublisherData);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestPlayerDataManagementAdminGetUserPublisherInternalData", &AutoGenPlayerDataManagementTests::TestPlayerDataManagementAdminGetUserPublisherInternalData);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestPlayerDataManagementAdminGetUserPublisherReadOnlyData", &AutoGenPlayerDataManagementTests::TestPlayerDataManagementAdminGetUserPublisherReadOnlyData);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestPlayerDataManagementAdminGetUserReadOnlyData", &AutoGenPlayerDataManagementTests::TestPlayerDataManagementAdminGetUserReadOnlyData);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestPlayerDataManagementAdminIncrementPlayerStatisticVersion", &AutoGenPlayerDataManagementTests::TestPlayerDataManagementAdminIncrementPlayerStatisticVersion);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestPlayerDataManagementAdminRefundPurchase", &AutoGenPlayerDataManagementTests::TestPlayerDataManagementAdminRefundPurchase);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestPlayerDataManagementAdminResetUserStatistics", &AutoGenPlayerDataManagementTests::TestPlayerDataManagementAdminResetUserStatistics);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestPlayerDataManagementAdminResolvePurchaseDispute", &AutoGenPlayerDataManagementTests::TestPlayerDataManagementAdminResolvePurchaseDispute);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestPlayerDataManagementAdminUpdatePlayerStatisticDefinition", &AutoGenPlayerDataManagementTests::TestPlayerDataManagementAdminUpdatePlayerStatisticDefinition);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestPlayerDataManagementAdminUpdateUserData", &AutoGenPlayerDataManagementTests::TestPlayerDataManagementAdminUpdateUserData);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestPlayerDataManagementAdminUpdateUserInternalData", &AutoGenPlayerDataManagementTests::TestPlayerDataManagementAdminUpdateUserInternalData);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestPlayerDataManagementAdminUpdateUserPublisherData", &AutoGenPlayerDataManagementTests::TestPlayerDataManagementAdminUpdateUserPublisherData);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestPlayerDataManagementAdminUpdateUserPublisherInternalData", &AutoGenPlayerDataManagementTests::TestPlayerDataManagementAdminUpdateUserPublisherInternalData);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestPlayerDataManagementAdminUpdateUserPublisherReadOnlyData", &AutoGenPlayerDataManagementTests::TestPlayerDataManagementAdminUpdateUserPublisherReadOnlyData);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestPlayerDataManagementAdminUpdateUserReadOnlyData", &AutoGenPlayerDataManagementTests::TestPlayerDataManagementAdminUpdateUserReadOnlyData);
+#endif
 
     AddTest("TestPlayerDataManagementClientGetFriendLeaderboard", &AutoGenPlayerDataManagementTests::TestPlayerDataManagementClientGetFriendLeaderboard);
 
@@ -100,43 +142,81 @@ void AutoGenPlayerDataManagementTests::AddTests()
 
     AddTest("TestPlayerDataManagementClientUpdateUserPublisherData", &AutoGenPlayerDataManagementTests::TestPlayerDataManagementClientUpdateUserPublisherData);
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestPlayerDataManagementServerGetFriendLeaderboard", &AutoGenPlayerDataManagementTests::TestPlayerDataManagementServerGetFriendLeaderboard);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestPlayerDataManagementServerGetLeaderboard", &AutoGenPlayerDataManagementTests::TestPlayerDataManagementServerGetLeaderboard);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestPlayerDataManagementServerGetLeaderboardAroundUser", &AutoGenPlayerDataManagementTests::TestPlayerDataManagementServerGetLeaderboardAroundUser);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestPlayerDataManagementServerGetPlayerCombinedInfo", &AutoGenPlayerDataManagementTests::TestPlayerDataManagementServerGetPlayerCombinedInfo);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestPlayerDataManagementServerGetPlayerStatistics", &AutoGenPlayerDataManagementTests::TestPlayerDataManagementServerGetPlayerStatistics);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestPlayerDataManagementServerGetPlayerStatisticVersions", &AutoGenPlayerDataManagementTests::TestPlayerDataManagementServerGetPlayerStatisticVersions);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestPlayerDataManagementServerGetUserData", &AutoGenPlayerDataManagementTests::TestPlayerDataManagementServerGetUserData);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestPlayerDataManagementServerGetUserInternalData", &AutoGenPlayerDataManagementTests::TestPlayerDataManagementServerGetUserInternalData);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestPlayerDataManagementServerGetUserPublisherData", &AutoGenPlayerDataManagementTests::TestPlayerDataManagementServerGetUserPublisherData);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestPlayerDataManagementServerGetUserPublisherInternalData", &AutoGenPlayerDataManagementTests::TestPlayerDataManagementServerGetUserPublisherInternalData);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestPlayerDataManagementServerGetUserPublisherReadOnlyData", &AutoGenPlayerDataManagementTests::TestPlayerDataManagementServerGetUserPublisherReadOnlyData);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestPlayerDataManagementServerGetUserReadOnlyData", &AutoGenPlayerDataManagementTests::TestPlayerDataManagementServerGetUserReadOnlyData);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestPlayerDataManagementServerUpdatePlayerStatistics", &AutoGenPlayerDataManagementTests::TestPlayerDataManagementServerUpdatePlayerStatistics);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestPlayerDataManagementServerUpdateUserData", &AutoGenPlayerDataManagementTests::TestPlayerDataManagementServerUpdateUserData);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestPlayerDataManagementServerUpdateUserInternalData", &AutoGenPlayerDataManagementTests::TestPlayerDataManagementServerUpdateUserInternalData);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestPlayerDataManagementServerUpdateUserPublisherData", &AutoGenPlayerDataManagementTests::TestPlayerDataManagementServerUpdateUserPublisherData);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestPlayerDataManagementServerUpdateUserPublisherInternalData", &AutoGenPlayerDataManagementTests::TestPlayerDataManagementServerUpdateUserPublisherInternalData);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestPlayerDataManagementServerUpdateUserPublisherReadOnlyData", &AutoGenPlayerDataManagementTests::TestPlayerDataManagementServerUpdateUserPublisherReadOnlyData);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestPlayerDataManagementServerUpdateUserReadOnlyData", &AutoGenPlayerDataManagementTests::TestPlayerDataManagementServerUpdateUserReadOnlyData);
+#endif
 }
 
 void AutoGenPlayerDataManagementTests::ClassSetUp()
@@ -246,9 +326,10 @@ void AutoGenPlayerDataManagementTests::SetUp(TestContext& testContext)
 
 #pragma region AdminCreatePlayerStatisticDefinition
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenPlayerDataManagementTests::TestPlayerDataManagementAdminCreatePlayerStatisticDefinition(TestContext& testContext)
 {
-    struct AdminCreatePlayerStatisticDefinitionResultHolder : public CreatePlayerStatisticDefinitionResultHolder
+    struct AdminCreatePlayerStatisticDefinitionResultHolderStruct : public CreatePlayerStatisticDefinitionResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -267,7 +348,7 @@ void AutoGenPlayerDataManagementTests::TestPlayerDataManagementAdminCreatePlayer
             return ValidatePFPlayerDataManagementCreatePlayerStatisticDefinitionResult(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<AdminCreatePlayerStatisticDefinitionResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<AdminCreatePlayerStatisticDefinitionResultHolderStruct>>(testContext);
 
     PFPlayerDataManagementCreatePlayerStatisticDefinitionRequestWrapper<> request;
     FillCreatePlayerStatisticDefinitionRequest(request);
@@ -280,14 +361,16 @@ void AutoGenPlayerDataManagementTests::TestPlayerDataManagementAdminCreatePlayer
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region AdminGetDataReport
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenPlayerDataManagementTests::TestPlayerDataManagementAdminGetDataReport(TestContext& testContext)
 {
-    struct AdminGetDataReportResultHolder : public GetDataReportResultHolder
+    struct AdminGetDataReportResultHolderStruct : public GetDataReportResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -306,7 +389,7 @@ void AutoGenPlayerDataManagementTests::TestPlayerDataManagementAdminGetDataRepor
             return ValidatePFPlayerDataManagementGetDataReportResult(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<AdminGetDataReportResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<AdminGetDataReportResultHolderStruct>>(testContext);
 
     PFPlayerDataManagementGetDataReportRequestWrapper<> request;
     FillGetDataReportRequest(request);
@@ -319,14 +402,16 @@ void AutoGenPlayerDataManagementTests::TestPlayerDataManagementAdminGetDataRepor
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region AdminGetPlayerStatisticDefinitions
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenPlayerDataManagementTests::TestPlayerDataManagementAdminGetPlayerStatisticDefinitions(TestContext& testContext)
 {
-    struct AdminGetPlayerStatisticDefinitionsResultHolder : public GetPlayerStatisticDefinitionsResultHolder
+    struct AdminGetPlayerStatisticDefinitionsResultHolderStruct : public GetPlayerStatisticDefinitionsResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -345,7 +430,7 @@ void AutoGenPlayerDataManagementTests::TestPlayerDataManagementAdminGetPlayerSta
             return ValidatePFPlayerDataManagementGetPlayerStatisticDefinitionsResult(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<AdminGetPlayerStatisticDefinitionsResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<AdminGetPlayerStatisticDefinitionsResultHolderStruct>>(testContext);
 
     HRESULT hr = PFPlayerDataManagementAdminGetPlayerStatisticDefinitionsAsync(stateHandle, &async->asyncBlock);
     if (FAILED(hr))
@@ -355,14 +440,16 @@ void AutoGenPlayerDataManagementTests::TestPlayerDataManagementAdminGetPlayerSta
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region AdminGetPlayerStatisticVersions
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenPlayerDataManagementTests::TestPlayerDataManagementAdminGetPlayerStatisticVersions(TestContext& testContext)
 {
-    struct AdminGetPlayerStatisticVersionsResultHolder : public GetPlayerStatisticVersionsResultHolder
+    struct AdminGetPlayerStatisticVersionsResultHolderStruct : public GetPlayerStatisticVersionsResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -381,7 +468,7 @@ void AutoGenPlayerDataManagementTests::TestPlayerDataManagementAdminGetPlayerSta
             return ValidatePFPlayerDataManagementGetPlayerStatisticVersionsResult(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<AdminGetPlayerStatisticVersionsResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<AdminGetPlayerStatisticVersionsResultHolderStruct>>(testContext);
 
     PFPlayerDataManagementGetPlayerStatisticVersionsRequestWrapper<> request;
     FillGetPlayerStatisticVersionsRequest(request);
@@ -394,14 +481,16 @@ void AutoGenPlayerDataManagementTests::TestPlayerDataManagementAdminGetPlayerSta
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region AdminGetUserData
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenPlayerDataManagementTests::TestPlayerDataManagementAdminGetUserData(TestContext& testContext)
 {
-    struct AdminGetUserDataResultHolder : public AdminGetUserDataResultHolder
+    struct AdminGetUserDataResultHolderStruct : public AdminGetUserDataResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -420,7 +509,7 @@ void AutoGenPlayerDataManagementTests::TestPlayerDataManagementAdminGetUserData(
             return ValidatePFPlayerDataManagementAdminGetUserDataResult(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<AdminGetUserDataResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<AdminGetUserDataResultHolderStruct>>(testContext);
 
     PFPlayerDataManagementGetUserDataRequestWrapper<> request;
     FillGetUserDataRequest(request);
@@ -433,14 +522,16 @@ void AutoGenPlayerDataManagementTests::TestPlayerDataManagementAdminGetUserData(
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region AdminGetUserInternalData
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenPlayerDataManagementTests::TestPlayerDataManagementAdminGetUserInternalData(TestContext& testContext)
 {
-    struct AdminGetUserInternalDataResultHolder : public AdminGetUserDataResultHolder
+    struct AdminGetUserInternalDataResultHolderStruct : public AdminGetUserDataResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -459,7 +550,7 @@ void AutoGenPlayerDataManagementTests::TestPlayerDataManagementAdminGetUserInter
             return ValidatePFPlayerDataManagementAdminGetUserDataResult(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<AdminGetUserInternalDataResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<AdminGetUserInternalDataResultHolderStruct>>(testContext);
 
     PFPlayerDataManagementGetUserDataRequestWrapper<> request;
     FillGetUserDataRequest(request);
@@ -472,14 +563,16 @@ void AutoGenPlayerDataManagementTests::TestPlayerDataManagementAdminGetUserInter
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region AdminGetUserPublisherData
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenPlayerDataManagementTests::TestPlayerDataManagementAdminGetUserPublisherData(TestContext& testContext)
 {
-    struct AdminGetUserPublisherDataResultHolder : public AdminGetUserDataResultHolder
+    struct AdminGetUserPublisherDataResultHolderStruct : public AdminGetUserDataResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -498,7 +591,7 @@ void AutoGenPlayerDataManagementTests::TestPlayerDataManagementAdminGetUserPubli
             return ValidatePFPlayerDataManagementAdminGetUserDataResult(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<AdminGetUserPublisherDataResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<AdminGetUserPublisherDataResultHolderStruct>>(testContext);
 
     PFPlayerDataManagementGetUserDataRequestWrapper<> request;
     FillGetUserDataRequest(request);
@@ -511,14 +604,16 @@ void AutoGenPlayerDataManagementTests::TestPlayerDataManagementAdminGetUserPubli
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region AdminGetUserPublisherInternalData
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenPlayerDataManagementTests::TestPlayerDataManagementAdminGetUserPublisherInternalData(TestContext& testContext)
 {
-    struct AdminGetUserPublisherInternalDataResultHolder : public AdminGetUserDataResultHolder
+    struct AdminGetUserPublisherInternalDataResultHolderStruct : public AdminGetUserDataResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -537,7 +632,7 @@ void AutoGenPlayerDataManagementTests::TestPlayerDataManagementAdminGetUserPubli
             return ValidatePFPlayerDataManagementAdminGetUserDataResult(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<AdminGetUserPublisherInternalDataResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<AdminGetUserPublisherInternalDataResultHolderStruct>>(testContext);
 
     PFPlayerDataManagementGetUserDataRequestWrapper<> request;
     FillGetUserDataRequest(request);
@@ -550,14 +645,16 @@ void AutoGenPlayerDataManagementTests::TestPlayerDataManagementAdminGetUserPubli
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region AdminGetUserPublisherReadOnlyData
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenPlayerDataManagementTests::TestPlayerDataManagementAdminGetUserPublisherReadOnlyData(TestContext& testContext)
 {
-    struct AdminGetUserPublisherReadOnlyDataResultHolder : public AdminGetUserDataResultHolder
+    struct AdminGetUserPublisherReadOnlyDataResultHolderStruct : public AdminGetUserDataResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -576,7 +673,7 @@ void AutoGenPlayerDataManagementTests::TestPlayerDataManagementAdminGetUserPubli
             return ValidatePFPlayerDataManagementAdminGetUserDataResult(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<AdminGetUserPublisherReadOnlyDataResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<AdminGetUserPublisherReadOnlyDataResultHolderStruct>>(testContext);
 
     PFPlayerDataManagementGetUserDataRequestWrapper<> request;
     FillGetUserDataRequest(request);
@@ -589,14 +686,16 @@ void AutoGenPlayerDataManagementTests::TestPlayerDataManagementAdminGetUserPubli
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region AdminGetUserReadOnlyData
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenPlayerDataManagementTests::TestPlayerDataManagementAdminGetUserReadOnlyData(TestContext& testContext)
 {
-    struct AdminGetUserReadOnlyDataResultHolder : public AdminGetUserDataResultHolder
+    struct AdminGetUserReadOnlyDataResultHolderStruct : public AdminGetUserDataResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -615,7 +714,7 @@ void AutoGenPlayerDataManagementTests::TestPlayerDataManagementAdminGetUserReadO
             return ValidatePFPlayerDataManagementAdminGetUserDataResult(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<AdminGetUserReadOnlyDataResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<AdminGetUserReadOnlyDataResultHolderStruct>>(testContext);
 
     PFPlayerDataManagementGetUserDataRequestWrapper<> request;
     FillGetUserDataRequest(request);
@@ -628,14 +727,16 @@ void AutoGenPlayerDataManagementTests::TestPlayerDataManagementAdminGetUserReadO
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region AdminIncrementPlayerStatisticVersion
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenPlayerDataManagementTests::TestPlayerDataManagementAdminIncrementPlayerStatisticVersion(TestContext& testContext)
 {
-    struct AdminIncrementPlayerStatisticVersionResultHolder : public IncrementPlayerStatisticVersionResultHolder
+    struct AdminIncrementPlayerStatisticVersionResultHolderStruct : public IncrementPlayerStatisticVersionResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -654,7 +755,7 @@ void AutoGenPlayerDataManagementTests::TestPlayerDataManagementAdminIncrementPla
             return ValidatePFPlayerDataManagementIncrementPlayerStatisticVersionResult(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<AdminIncrementPlayerStatisticVersionResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<AdminIncrementPlayerStatisticVersionResultHolderStruct>>(testContext);
 
     PFPlayerDataManagementIncrementPlayerStatisticVersionRequestWrapper<> request;
     FillIncrementPlayerStatisticVersionRequest(request);
@@ -667,14 +768,16 @@ void AutoGenPlayerDataManagementTests::TestPlayerDataManagementAdminIncrementPla
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region AdminRefundPurchase
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenPlayerDataManagementTests::TestPlayerDataManagementAdminRefundPurchase(TestContext& testContext)
 {
-    struct AdminRefundPurchaseResultHolder : public RefundPurchaseResponseHolder
+    struct AdminRefundPurchaseResultHolderStruct : public RefundPurchaseResponseHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -693,7 +796,7 @@ void AutoGenPlayerDataManagementTests::TestPlayerDataManagementAdminRefundPurcha
             return ValidatePFPlayerDataManagementRefundPurchaseResponse(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<AdminRefundPurchaseResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<AdminRefundPurchaseResultHolderStruct>>(testContext);
 
     PFPlayerDataManagementRefundPurchaseRequestWrapper<> request;
     FillRefundPurchaseRequest(request);
@@ -706,11 +809,13 @@ void AutoGenPlayerDataManagementTests::TestPlayerDataManagementAdminRefundPurcha
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region AdminResetUserStatistics
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenPlayerDataManagementTests::TestPlayerDataManagementAdminResetUserStatistics(TestContext& testContext)
 {
     auto async = std::make_unique<XAsyncHelper<XAsyncResult>>(testContext);
@@ -726,14 +831,16 @@ void AutoGenPlayerDataManagementTests::TestPlayerDataManagementAdminResetUserSta
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region AdminResolvePurchaseDispute
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenPlayerDataManagementTests::TestPlayerDataManagementAdminResolvePurchaseDispute(TestContext& testContext)
 {
-    struct AdminResolvePurchaseDisputeResultHolder : public ResolvePurchaseDisputeResponseHolder
+    struct AdminResolvePurchaseDisputeResultHolderStruct : public ResolvePurchaseDisputeResponseHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -752,7 +859,7 @@ void AutoGenPlayerDataManagementTests::TestPlayerDataManagementAdminResolvePurch
             return ValidatePFPlayerDataManagementResolvePurchaseDisputeResponse(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<AdminResolvePurchaseDisputeResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<AdminResolvePurchaseDisputeResultHolderStruct>>(testContext);
 
     PFPlayerDataManagementResolvePurchaseDisputeRequestWrapper<> request;
     FillResolvePurchaseDisputeRequest(request);
@@ -765,14 +872,16 @@ void AutoGenPlayerDataManagementTests::TestPlayerDataManagementAdminResolvePurch
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region AdminUpdatePlayerStatisticDefinition
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenPlayerDataManagementTests::TestPlayerDataManagementAdminUpdatePlayerStatisticDefinition(TestContext& testContext)
 {
-    struct AdminUpdatePlayerStatisticDefinitionResultHolder : public UpdatePlayerStatisticDefinitionResultHolder
+    struct AdminUpdatePlayerStatisticDefinitionResultHolderStruct : public UpdatePlayerStatisticDefinitionResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -791,7 +900,7 @@ void AutoGenPlayerDataManagementTests::TestPlayerDataManagementAdminUpdatePlayer
             return ValidatePFPlayerDataManagementUpdatePlayerStatisticDefinitionResult(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<AdminUpdatePlayerStatisticDefinitionResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<AdminUpdatePlayerStatisticDefinitionResultHolderStruct>>(testContext);
 
     PFPlayerDataManagementUpdatePlayerStatisticDefinitionRequestWrapper<> request;
     FillUpdatePlayerStatisticDefinitionRequest(request);
@@ -804,14 +913,16 @@ void AutoGenPlayerDataManagementTests::TestPlayerDataManagementAdminUpdatePlayer
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region AdminUpdateUserData
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenPlayerDataManagementTests::TestPlayerDataManagementAdminUpdateUserData(TestContext& testContext)
 {
-    struct AdminUpdateUserDataResultHolder : public UpdateUserDataResultHolder
+    struct AdminUpdateUserDataResultHolderStruct : public UpdateUserDataResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -825,7 +936,7 @@ void AutoGenPlayerDataManagementTests::TestPlayerDataManagementAdminUpdateUserDa
             return ValidatePFPlayerDataManagementUpdateUserDataResult(&result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<AdminUpdateUserDataResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<AdminUpdateUserDataResultHolderStruct>>(testContext);
 
     PFPlayerDataManagementAdminUpdateUserDataRequestWrapper<> request;
     FillAdminUpdateUserDataRequest(request);
@@ -838,14 +949,16 @@ void AutoGenPlayerDataManagementTests::TestPlayerDataManagementAdminUpdateUserDa
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region AdminUpdateUserInternalData
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenPlayerDataManagementTests::TestPlayerDataManagementAdminUpdateUserInternalData(TestContext& testContext)
 {
-    struct AdminUpdateUserInternalDataResultHolder : public UpdateUserDataResultHolder
+    struct AdminUpdateUserInternalDataResultHolderStruct : public UpdateUserDataResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -859,7 +972,7 @@ void AutoGenPlayerDataManagementTests::TestPlayerDataManagementAdminUpdateUserIn
             return ValidatePFPlayerDataManagementUpdateUserDataResult(&result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<AdminUpdateUserInternalDataResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<AdminUpdateUserInternalDataResultHolderStruct>>(testContext);
 
     PFPlayerDataManagementUpdateUserInternalDataRequestWrapper<> request;
     FillUpdateUserInternalDataRequest(request);
@@ -872,14 +985,16 @@ void AutoGenPlayerDataManagementTests::TestPlayerDataManagementAdminUpdateUserIn
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region AdminUpdateUserPublisherData
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenPlayerDataManagementTests::TestPlayerDataManagementAdminUpdateUserPublisherData(TestContext& testContext)
 {
-    struct AdminUpdateUserPublisherDataResultHolder : public UpdateUserDataResultHolder
+    struct AdminUpdateUserPublisherDataResultHolderStruct : public UpdateUserDataResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -893,7 +1008,7 @@ void AutoGenPlayerDataManagementTests::TestPlayerDataManagementAdminUpdateUserPu
             return ValidatePFPlayerDataManagementUpdateUserDataResult(&result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<AdminUpdateUserPublisherDataResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<AdminUpdateUserPublisherDataResultHolderStruct>>(testContext);
 
     PFPlayerDataManagementAdminUpdateUserDataRequestWrapper<> request;
     FillAdminUpdateUserDataRequest(request);
@@ -906,14 +1021,16 @@ void AutoGenPlayerDataManagementTests::TestPlayerDataManagementAdminUpdateUserPu
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region AdminUpdateUserPublisherInternalData
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenPlayerDataManagementTests::TestPlayerDataManagementAdminUpdateUserPublisherInternalData(TestContext& testContext)
 {
-    struct AdminUpdateUserPublisherInternalDataResultHolder : public UpdateUserDataResultHolder
+    struct AdminUpdateUserPublisherInternalDataResultHolderStruct : public UpdateUserDataResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -927,7 +1044,7 @@ void AutoGenPlayerDataManagementTests::TestPlayerDataManagementAdminUpdateUserPu
             return ValidatePFPlayerDataManagementUpdateUserDataResult(&result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<AdminUpdateUserPublisherInternalDataResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<AdminUpdateUserPublisherInternalDataResultHolderStruct>>(testContext);
 
     PFPlayerDataManagementUpdateUserInternalDataRequestWrapper<> request;
     FillUpdateUserInternalDataRequest(request);
@@ -940,14 +1057,16 @@ void AutoGenPlayerDataManagementTests::TestPlayerDataManagementAdminUpdateUserPu
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region AdminUpdateUserPublisherReadOnlyData
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenPlayerDataManagementTests::TestPlayerDataManagementAdminUpdateUserPublisherReadOnlyData(TestContext& testContext)
 {
-    struct AdminUpdateUserPublisherReadOnlyDataResultHolder : public UpdateUserDataResultHolder
+    struct AdminUpdateUserPublisherReadOnlyDataResultHolderStruct : public UpdateUserDataResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -961,7 +1080,7 @@ void AutoGenPlayerDataManagementTests::TestPlayerDataManagementAdminUpdateUserPu
             return ValidatePFPlayerDataManagementUpdateUserDataResult(&result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<AdminUpdateUserPublisherReadOnlyDataResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<AdminUpdateUserPublisherReadOnlyDataResultHolderStruct>>(testContext);
 
     PFPlayerDataManagementAdminUpdateUserDataRequestWrapper<> request;
     FillAdminUpdateUserDataRequest(request);
@@ -974,14 +1093,16 @@ void AutoGenPlayerDataManagementTests::TestPlayerDataManagementAdminUpdateUserPu
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region AdminUpdateUserReadOnlyData
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenPlayerDataManagementTests::TestPlayerDataManagementAdminUpdateUserReadOnlyData(TestContext& testContext)
 {
-    struct AdminUpdateUserReadOnlyDataResultHolder : public UpdateUserDataResultHolder
+    struct AdminUpdateUserReadOnlyDataResultHolderStruct : public UpdateUserDataResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -995,7 +1116,7 @@ void AutoGenPlayerDataManagementTests::TestPlayerDataManagementAdminUpdateUserRe
             return ValidatePFPlayerDataManagementUpdateUserDataResult(&result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<AdminUpdateUserReadOnlyDataResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<AdminUpdateUserReadOnlyDataResultHolderStruct>>(testContext);
 
     PFPlayerDataManagementAdminUpdateUserDataRequestWrapper<> request;
     FillAdminUpdateUserDataRequest(request);
@@ -1008,6 +1129,7 @@ void AutoGenPlayerDataManagementTests::TestPlayerDataManagementAdminUpdateUserRe
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
@@ -1015,7 +1137,7 @@ void AutoGenPlayerDataManagementTests::TestPlayerDataManagementAdminUpdateUserRe
 
 void AutoGenPlayerDataManagementTests::TestPlayerDataManagementClientGetFriendLeaderboard(TestContext& testContext)
 {
-    struct ClientGetFriendLeaderboardResultHolder : public GetLeaderboardResultHolder
+    struct ClientGetFriendLeaderboardResultHolderStruct : public GetLeaderboardResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -1034,7 +1156,7 @@ void AutoGenPlayerDataManagementTests::TestPlayerDataManagementClientGetFriendLe
             return ValidatePFPlayerDataManagementGetLeaderboardResult(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<ClientGetFriendLeaderboardResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<ClientGetFriendLeaderboardResultHolderStruct>>(testContext);
 
     PFPlayerDataManagementClientGetFriendLeaderboardRequestWrapper<> request;
     FillClientGetFriendLeaderboardRequest(request);
@@ -1054,7 +1176,7 @@ void AutoGenPlayerDataManagementTests::TestPlayerDataManagementClientGetFriendLe
 
 void AutoGenPlayerDataManagementTests::TestPlayerDataManagementClientGetFriendLeaderboardAroundPlayer(TestContext& testContext)
 {
-    struct ClientGetFriendLeaderboardAroundPlayerResultHolder : public GetFriendLeaderboardAroundPlayerResultHolder
+    struct ClientGetFriendLeaderboardAroundPlayerResultHolderStruct : public GetFriendLeaderboardAroundPlayerResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -1073,7 +1195,7 @@ void AutoGenPlayerDataManagementTests::TestPlayerDataManagementClientGetFriendLe
             return ValidatePFPlayerDataManagementGetFriendLeaderboardAroundPlayerResult(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<ClientGetFriendLeaderboardAroundPlayerResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<ClientGetFriendLeaderboardAroundPlayerResultHolderStruct>>(testContext);
 
     PFPlayerDataManagementGetFriendLeaderboardAroundPlayerRequestWrapper<> request;
     FillGetFriendLeaderboardAroundPlayerRequest(request);
@@ -1093,7 +1215,7 @@ void AutoGenPlayerDataManagementTests::TestPlayerDataManagementClientGetFriendLe
 
 void AutoGenPlayerDataManagementTests::TestPlayerDataManagementClientGetLeaderboard(TestContext& testContext)
 {
-    struct ClientGetLeaderboardResultHolder : public GetLeaderboardResultHolder
+    struct ClientGetLeaderboardResultHolderStruct : public GetLeaderboardResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -1112,7 +1234,7 @@ void AutoGenPlayerDataManagementTests::TestPlayerDataManagementClientGetLeaderbo
             return ValidatePFPlayerDataManagementGetLeaderboardResult(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<ClientGetLeaderboardResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<ClientGetLeaderboardResultHolderStruct>>(testContext);
 
     PFPlayerDataManagementGetLeaderboardRequestWrapper<> request;
     FillGetLeaderboardRequest(request);
@@ -1132,7 +1254,7 @@ void AutoGenPlayerDataManagementTests::TestPlayerDataManagementClientGetLeaderbo
 
 void AutoGenPlayerDataManagementTests::TestPlayerDataManagementClientGetLeaderboardAroundPlayer(TestContext& testContext)
 {
-    struct ClientGetLeaderboardAroundPlayerResultHolder : public GetLeaderboardAroundPlayerResultHolder
+    struct ClientGetLeaderboardAroundPlayerResultHolderStruct : public GetLeaderboardAroundPlayerResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -1151,7 +1273,7 @@ void AutoGenPlayerDataManagementTests::TestPlayerDataManagementClientGetLeaderbo
             return ValidatePFPlayerDataManagementGetLeaderboardAroundPlayerResult(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<ClientGetLeaderboardAroundPlayerResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<ClientGetLeaderboardAroundPlayerResultHolderStruct>>(testContext);
 
     PFPlayerDataManagementGetLeaderboardAroundPlayerRequestWrapper<> request;
     FillGetLeaderboardAroundPlayerRequest(request);
@@ -1171,7 +1293,7 @@ void AutoGenPlayerDataManagementTests::TestPlayerDataManagementClientGetLeaderbo
 
 void AutoGenPlayerDataManagementTests::TestPlayerDataManagementClientGetPlayerStatistics(TestContext& testContext)
 {
-    struct ClientGetPlayerStatisticsResultHolder : public ClientGetPlayerStatisticsResultHolder
+    struct ClientGetPlayerStatisticsResultHolderStruct : public ClientGetPlayerStatisticsResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -1190,7 +1312,7 @@ void AutoGenPlayerDataManagementTests::TestPlayerDataManagementClientGetPlayerSt
             return ValidatePFPlayerDataManagementClientGetPlayerStatisticsResult(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<ClientGetPlayerStatisticsResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<ClientGetPlayerStatisticsResultHolderStruct>>(testContext);
 
     PFPlayerDataManagementClientGetPlayerStatisticsRequestWrapper<> request;
     FillClientGetPlayerStatisticsRequest(request);
@@ -1210,7 +1332,7 @@ void AutoGenPlayerDataManagementTests::TestPlayerDataManagementClientGetPlayerSt
 
 void AutoGenPlayerDataManagementTests::TestPlayerDataManagementClientGetPlayerStatisticVersions(TestContext& testContext)
 {
-    struct ClientGetPlayerStatisticVersionsResultHolder : public GetPlayerStatisticVersionsResultHolder
+    struct ClientGetPlayerStatisticVersionsResultHolderStruct : public GetPlayerStatisticVersionsResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -1229,7 +1351,7 @@ void AutoGenPlayerDataManagementTests::TestPlayerDataManagementClientGetPlayerSt
             return ValidatePFPlayerDataManagementGetPlayerStatisticVersionsResult(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<ClientGetPlayerStatisticVersionsResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<ClientGetPlayerStatisticVersionsResultHolderStruct>>(testContext);
 
     PFPlayerDataManagementGetPlayerStatisticVersionsRequestWrapper<> request;
     FillGetPlayerStatisticVersionsRequest(request);
@@ -1249,7 +1371,7 @@ void AutoGenPlayerDataManagementTests::TestPlayerDataManagementClientGetPlayerSt
 
 void AutoGenPlayerDataManagementTests::TestPlayerDataManagementClientGetUserData(TestContext& testContext)
 {
-    struct ClientGetUserDataResultHolder : public ClientGetUserDataResultHolder
+    struct ClientGetUserDataResultHolderStruct : public ClientGetUserDataResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -1268,7 +1390,7 @@ void AutoGenPlayerDataManagementTests::TestPlayerDataManagementClientGetUserData
             return ValidatePFPlayerDataManagementClientGetUserDataResult(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<ClientGetUserDataResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<ClientGetUserDataResultHolderStruct>>(testContext);
 
     PFPlayerDataManagementGetUserDataRequestWrapper<> request;
     FillGetUserDataRequest(request);
@@ -1288,7 +1410,7 @@ void AutoGenPlayerDataManagementTests::TestPlayerDataManagementClientGetUserData
 
 void AutoGenPlayerDataManagementTests::TestPlayerDataManagementClientGetUserPublisherData(TestContext& testContext)
 {
-    struct ClientGetUserPublisherDataResultHolder : public ClientGetUserDataResultHolder
+    struct ClientGetUserPublisherDataResultHolderStruct : public ClientGetUserDataResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -1307,7 +1429,7 @@ void AutoGenPlayerDataManagementTests::TestPlayerDataManagementClientGetUserPubl
             return ValidatePFPlayerDataManagementClientGetUserDataResult(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<ClientGetUserPublisherDataResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<ClientGetUserPublisherDataResultHolderStruct>>(testContext);
 
     PFPlayerDataManagementGetUserDataRequestWrapper<> request;
     FillGetUserDataRequest(request);
@@ -1327,7 +1449,7 @@ void AutoGenPlayerDataManagementTests::TestPlayerDataManagementClientGetUserPubl
 
 void AutoGenPlayerDataManagementTests::TestPlayerDataManagementClientGetUserPublisherReadOnlyData(TestContext& testContext)
 {
-    struct ClientGetUserPublisherReadOnlyDataResultHolder : public ClientGetUserDataResultHolder
+    struct ClientGetUserPublisherReadOnlyDataResultHolderStruct : public ClientGetUserDataResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -1346,7 +1468,7 @@ void AutoGenPlayerDataManagementTests::TestPlayerDataManagementClientGetUserPubl
             return ValidatePFPlayerDataManagementClientGetUserDataResult(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<ClientGetUserPublisherReadOnlyDataResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<ClientGetUserPublisherReadOnlyDataResultHolderStruct>>(testContext);
 
     PFPlayerDataManagementGetUserDataRequestWrapper<> request;
     FillGetUserDataRequest(request);
@@ -1366,7 +1488,7 @@ void AutoGenPlayerDataManagementTests::TestPlayerDataManagementClientGetUserPubl
 
 void AutoGenPlayerDataManagementTests::TestPlayerDataManagementClientGetUserReadOnlyData(TestContext& testContext)
 {
-    struct ClientGetUserReadOnlyDataResultHolder : public ClientGetUserDataResultHolder
+    struct ClientGetUserReadOnlyDataResultHolderStruct : public ClientGetUserDataResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -1385,7 +1507,7 @@ void AutoGenPlayerDataManagementTests::TestPlayerDataManagementClientGetUserRead
             return ValidatePFPlayerDataManagementClientGetUserDataResult(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<ClientGetUserReadOnlyDataResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<ClientGetUserReadOnlyDataResultHolderStruct>>(testContext);
 
     PFPlayerDataManagementGetUserDataRequestWrapper<> request;
     FillGetUserDataRequest(request);
@@ -1425,7 +1547,7 @@ void AutoGenPlayerDataManagementTests::TestPlayerDataManagementClientUpdatePlaye
 
 void AutoGenPlayerDataManagementTests::TestPlayerDataManagementClientUpdateUserData(TestContext& testContext)
 {
-    struct ClientUpdateUserDataResultHolder : public UpdateUserDataResultHolder
+    struct ClientUpdateUserDataResultHolderStruct : public UpdateUserDataResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -1439,7 +1561,7 @@ void AutoGenPlayerDataManagementTests::TestPlayerDataManagementClientUpdateUserD
             return ValidatePFPlayerDataManagementUpdateUserDataResult(&result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<ClientUpdateUserDataResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<ClientUpdateUserDataResultHolderStruct>>(testContext);
 
     PFPlayerDataManagementClientUpdateUserDataRequestWrapper<> request;
     FillClientUpdateUserDataRequest(request);
@@ -1459,7 +1581,7 @@ void AutoGenPlayerDataManagementTests::TestPlayerDataManagementClientUpdateUserD
 
 void AutoGenPlayerDataManagementTests::TestPlayerDataManagementClientUpdateUserPublisherData(TestContext& testContext)
 {
-    struct ClientUpdateUserPublisherDataResultHolder : public UpdateUserDataResultHolder
+    struct ClientUpdateUserPublisherDataResultHolderStruct : public UpdateUserDataResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -1473,7 +1595,7 @@ void AutoGenPlayerDataManagementTests::TestPlayerDataManagementClientUpdateUserP
             return ValidatePFPlayerDataManagementUpdateUserDataResult(&result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<ClientUpdateUserPublisherDataResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<ClientUpdateUserPublisherDataResultHolderStruct>>(testContext);
 
     PFPlayerDataManagementClientUpdateUserDataRequestWrapper<> request;
     FillClientUpdateUserDataRequest(request);
@@ -1491,9 +1613,10 @@ void AutoGenPlayerDataManagementTests::TestPlayerDataManagementClientUpdateUserP
 
 #pragma region ServerGetFriendLeaderboard
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenPlayerDataManagementTests::TestPlayerDataManagementServerGetFriendLeaderboard(TestContext& testContext)
 {
-    struct ServerGetFriendLeaderboardResultHolder : public GetLeaderboardResultHolder
+    struct ServerGetFriendLeaderboardResultHolderStruct : public GetLeaderboardResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -1512,7 +1635,7 @@ void AutoGenPlayerDataManagementTests::TestPlayerDataManagementServerGetFriendLe
             return ValidatePFPlayerDataManagementGetLeaderboardResult(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<ServerGetFriendLeaderboardResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<ServerGetFriendLeaderboardResultHolderStruct>>(testContext);
 
     PFPlayerDataManagementServerGetFriendLeaderboardRequestWrapper<> request;
     FillServerGetFriendLeaderboardRequest(request);
@@ -1525,14 +1648,16 @@ void AutoGenPlayerDataManagementTests::TestPlayerDataManagementServerGetFriendLe
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region ServerGetLeaderboard
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenPlayerDataManagementTests::TestPlayerDataManagementServerGetLeaderboard(TestContext& testContext)
 {
-    struct ServerGetLeaderboardResultHolder : public GetLeaderboardResultHolder
+    struct ServerGetLeaderboardResultHolderStruct : public GetLeaderboardResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -1551,7 +1676,7 @@ void AutoGenPlayerDataManagementTests::TestPlayerDataManagementServerGetLeaderbo
             return ValidatePFPlayerDataManagementGetLeaderboardResult(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<ServerGetLeaderboardResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<ServerGetLeaderboardResultHolderStruct>>(testContext);
 
     PFPlayerDataManagementGetLeaderboardRequestWrapper<> request;
     FillGetLeaderboardRequest(request);
@@ -1564,14 +1689,16 @@ void AutoGenPlayerDataManagementTests::TestPlayerDataManagementServerGetLeaderbo
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region ServerGetLeaderboardAroundUser
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenPlayerDataManagementTests::TestPlayerDataManagementServerGetLeaderboardAroundUser(TestContext& testContext)
 {
-    struct ServerGetLeaderboardAroundUserResultHolder : public GetLeaderboardAroundUserResultHolder
+    struct ServerGetLeaderboardAroundUserResultHolderStruct : public GetLeaderboardAroundUserResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -1590,7 +1717,7 @@ void AutoGenPlayerDataManagementTests::TestPlayerDataManagementServerGetLeaderbo
             return ValidatePFPlayerDataManagementGetLeaderboardAroundUserResult(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<ServerGetLeaderboardAroundUserResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<ServerGetLeaderboardAroundUserResultHolderStruct>>(testContext);
 
     PFPlayerDataManagementGetLeaderboardAroundUserRequestWrapper<> request;
     FillGetLeaderboardAroundUserRequest(request);
@@ -1603,14 +1730,16 @@ void AutoGenPlayerDataManagementTests::TestPlayerDataManagementServerGetLeaderbo
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region ServerGetPlayerCombinedInfo
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenPlayerDataManagementTests::TestPlayerDataManagementServerGetPlayerCombinedInfo(TestContext& testContext)
 {
-    struct ServerGetPlayerCombinedInfoResultHolder : public GetPlayerCombinedInfoResultHolder
+    struct ServerGetPlayerCombinedInfoResultHolderStruct : public GetPlayerCombinedInfoResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -1629,7 +1758,7 @@ void AutoGenPlayerDataManagementTests::TestPlayerDataManagementServerGetPlayerCo
             return ValidatePFGetPlayerCombinedInfoResult(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<ServerGetPlayerCombinedInfoResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<ServerGetPlayerCombinedInfoResultHolderStruct>>(testContext);
 
     PFGetPlayerCombinedInfoRequestWrapper<> request;
     FillGetPlayerCombinedInfoRequest(request);
@@ -1642,14 +1771,16 @@ void AutoGenPlayerDataManagementTests::TestPlayerDataManagementServerGetPlayerCo
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region ServerGetPlayerStatistics
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenPlayerDataManagementTests::TestPlayerDataManagementServerGetPlayerStatistics(TestContext& testContext)
 {
-    struct ServerGetPlayerStatisticsResultHolder : public ServerGetPlayerStatisticsResultHolder
+    struct ServerGetPlayerStatisticsResultHolderStruct : public ServerGetPlayerStatisticsResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -1668,7 +1799,7 @@ void AutoGenPlayerDataManagementTests::TestPlayerDataManagementServerGetPlayerSt
             return ValidatePFPlayerDataManagementServerGetPlayerStatisticsResult(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<ServerGetPlayerStatisticsResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<ServerGetPlayerStatisticsResultHolderStruct>>(testContext);
 
     PFPlayerDataManagementServerGetPlayerStatisticsRequestWrapper<> request;
     FillServerGetPlayerStatisticsRequest(request);
@@ -1681,14 +1812,16 @@ void AutoGenPlayerDataManagementTests::TestPlayerDataManagementServerGetPlayerSt
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region ServerGetPlayerStatisticVersions
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenPlayerDataManagementTests::TestPlayerDataManagementServerGetPlayerStatisticVersions(TestContext& testContext)
 {
-    struct ServerGetPlayerStatisticVersionsResultHolder : public GetPlayerStatisticVersionsResultHolder
+    struct ServerGetPlayerStatisticVersionsResultHolderStruct : public GetPlayerStatisticVersionsResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -1707,7 +1840,7 @@ void AutoGenPlayerDataManagementTests::TestPlayerDataManagementServerGetPlayerSt
             return ValidatePFPlayerDataManagementGetPlayerStatisticVersionsResult(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<ServerGetPlayerStatisticVersionsResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<ServerGetPlayerStatisticVersionsResultHolderStruct>>(testContext);
 
     PFPlayerDataManagementGetPlayerStatisticVersionsRequestWrapper<> request;
     FillGetPlayerStatisticVersionsRequest(request);
@@ -1720,14 +1853,16 @@ void AutoGenPlayerDataManagementTests::TestPlayerDataManagementServerGetPlayerSt
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region ServerGetUserData
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenPlayerDataManagementTests::TestPlayerDataManagementServerGetUserData(TestContext& testContext)
 {
-    struct ServerGetUserDataResultHolder : public ServerGetUserDataResultHolder
+    struct ServerGetUserDataResultHolderStruct : public ServerGetUserDataResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -1746,7 +1881,7 @@ void AutoGenPlayerDataManagementTests::TestPlayerDataManagementServerGetUserData
             return ValidatePFPlayerDataManagementServerGetUserDataResult(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<ServerGetUserDataResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<ServerGetUserDataResultHolderStruct>>(testContext);
 
     PFPlayerDataManagementGetUserDataRequestWrapper<> request;
     FillGetUserDataRequest(request);
@@ -1759,14 +1894,16 @@ void AutoGenPlayerDataManagementTests::TestPlayerDataManagementServerGetUserData
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region ServerGetUserInternalData
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenPlayerDataManagementTests::TestPlayerDataManagementServerGetUserInternalData(TestContext& testContext)
 {
-    struct ServerGetUserInternalDataResultHolder : public ServerGetUserDataResultHolder
+    struct ServerGetUserInternalDataResultHolderStruct : public ServerGetUserDataResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -1785,7 +1922,7 @@ void AutoGenPlayerDataManagementTests::TestPlayerDataManagementServerGetUserInte
             return ValidatePFPlayerDataManagementServerGetUserDataResult(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<ServerGetUserInternalDataResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<ServerGetUserInternalDataResultHolderStruct>>(testContext);
 
     PFPlayerDataManagementGetUserDataRequestWrapper<> request;
     FillGetUserDataRequest(request);
@@ -1798,14 +1935,16 @@ void AutoGenPlayerDataManagementTests::TestPlayerDataManagementServerGetUserInte
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region ServerGetUserPublisherData
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenPlayerDataManagementTests::TestPlayerDataManagementServerGetUserPublisherData(TestContext& testContext)
 {
-    struct ServerGetUserPublisherDataResultHolder : public ServerGetUserDataResultHolder
+    struct ServerGetUserPublisherDataResultHolderStruct : public ServerGetUserDataResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -1824,7 +1963,7 @@ void AutoGenPlayerDataManagementTests::TestPlayerDataManagementServerGetUserPubl
             return ValidatePFPlayerDataManagementServerGetUserDataResult(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<ServerGetUserPublisherDataResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<ServerGetUserPublisherDataResultHolderStruct>>(testContext);
 
     PFPlayerDataManagementGetUserDataRequestWrapper<> request;
     FillGetUserDataRequest(request);
@@ -1837,14 +1976,16 @@ void AutoGenPlayerDataManagementTests::TestPlayerDataManagementServerGetUserPubl
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region ServerGetUserPublisherInternalData
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenPlayerDataManagementTests::TestPlayerDataManagementServerGetUserPublisherInternalData(TestContext& testContext)
 {
-    struct ServerGetUserPublisherInternalDataResultHolder : public ServerGetUserDataResultHolder
+    struct ServerGetUserPublisherInternalDataResultHolderStruct : public ServerGetUserDataResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -1863,7 +2004,7 @@ void AutoGenPlayerDataManagementTests::TestPlayerDataManagementServerGetUserPubl
             return ValidatePFPlayerDataManagementServerGetUserDataResult(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<ServerGetUserPublisherInternalDataResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<ServerGetUserPublisherInternalDataResultHolderStruct>>(testContext);
 
     PFPlayerDataManagementGetUserDataRequestWrapper<> request;
     FillGetUserDataRequest(request);
@@ -1876,14 +2017,16 @@ void AutoGenPlayerDataManagementTests::TestPlayerDataManagementServerGetUserPubl
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region ServerGetUserPublisherReadOnlyData
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenPlayerDataManagementTests::TestPlayerDataManagementServerGetUserPublisherReadOnlyData(TestContext& testContext)
 {
-    struct ServerGetUserPublisherReadOnlyDataResultHolder : public ServerGetUserDataResultHolder
+    struct ServerGetUserPublisherReadOnlyDataResultHolderStruct : public ServerGetUserDataResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -1902,7 +2045,7 @@ void AutoGenPlayerDataManagementTests::TestPlayerDataManagementServerGetUserPubl
             return ValidatePFPlayerDataManagementServerGetUserDataResult(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<ServerGetUserPublisherReadOnlyDataResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<ServerGetUserPublisherReadOnlyDataResultHolderStruct>>(testContext);
 
     PFPlayerDataManagementGetUserDataRequestWrapper<> request;
     FillGetUserDataRequest(request);
@@ -1915,14 +2058,16 @@ void AutoGenPlayerDataManagementTests::TestPlayerDataManagementServerGetUserPubl
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region ServerGetUserReadOnlyData
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenPlayerDataManagementTests::TestPlayerDataManagementServerGetUserReadOnlyData(TestContext& testContext)
 {
-    struct ServerGetUserReadOnlyDataResultHolder : public ServerGetUserDataResultHolder
+    struct ServerGetUserReadOnlyDataResultHolderStruct : public ServerGetUserDataResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -1941,7 +2086,7 @@ void AutoGenPlayerDataManagementTests::TestPlayerDataManagementServerGetUserRead
             return ValidatePFPlayerDataManagementServerGetUserDataResult(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<ServerGetUserReadOnlyDataResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<ServerGetUserReadOnlyDataResultHolderStruct>>(testContext);
 
     PFPlayerDataManagementGetUserDataRequestWrapper<> request;
     FillGetUserDataRequest(request);
@@ -1954,11 +2099,13 @@ void AutoGenPlayerDataManagementTests::TestPlayerDataManagementServerGetUserRead
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region ServerUpdatePlayerStatistics
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenPlayerDataManagementTests::TestPlayerDataManagementServerUpdatePlayerStatistics(TestContext& testContext)
 {
     auto async = std::make_unique<XAsyncHelper<XAsyncResult>>(testContext);
@@ -1974,14 +2121,16 @@ void AutoGenPlayerDataManagementTests::TestPlayerDataManagementServerUpdatePlaye
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region ServerUpdateUserData
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenPlayerDataManagementTests::TestPlayerDataManagementServerUpdateUserData(TestContext& testContext)
 {
-    struct ServerUpdateUserDataResultHolder : public UpdateUserDataResultHolder
+    struct ServerUpdateUserDataResultHolderStruct : public UpdateUserDataResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -1995,7 +2144,7 @@ void AutoGenPlayerDataManagementTests::TestPlayerDataManagementServerUpdateUserD
             return ValidatePFPlayerDataManagementUpdateUserDataResult(&result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<ServerUpdateUserDataResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<ServerUpdateUserDataResultHolderStruct>>(testContext);
 
     PFPlayerDataManagementServerUpdateUserDataRequestWrapper<> request;
     FillServerUpdateUserDataRequest(request);
@@ -2008,14 +2157,16 @@ void AutoGenPlayerDataManagementTests::TestPlayerDataManagementServerUpdateUserD
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region ServerUpdateUserInternalData
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenPlayerDataManagementTests::TestPlayerDataManagementServerUpdateUserInternalData(TestContext& testContext)
 {
-    struct ServerUpdateUserInternalDataResultHolder : public UpdateUserDataResultHolder
+    struct ServerUpdateUserInternalDataResultHolderStruct : public UpdateUserDataResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -2029,7 +2180,7 @@ void AutoGenPlayerDataManagementTests::TestPlayerDataManagementServerUpdateUserI
             return ValidatePFPlayerDataManagementUpdateUserDataResult(&result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<ServerUpdateUserInternalDataResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<ServerUpdateUserInternalDataResultHolderStruct>>(testContext);
 
     PFPlayerDataManagementUpdateUserInternalDataRequestWrapper<> request;
     FillUpdateUserInternalDataRequest(request);
@@ -2042,14 +2193,16 @@ void AutoGenPlayerDataManagementTests::TestPlayerDataManagementServerUpdateUserI
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region ServerUpdateUserPublisherData
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenPlayerDataManagementTests::TestPlayerDataManagementServerUpdateUserPublisherData(TestContext& testContext)
 {
-    struct ServerUpdateUserPublisherDataResultHolder : public UpdateUserDataResultHolder
+    struct ServerUpdateUserPublisherDataResultHolderStruct : public UpdateUserDataResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -2063,7 +2216,7 @@ void AutoGenPlayerDataManagementTests::TestPlayerDataManagementServerUpdateUserP
             return ValidatePFPlayerDataManagementUpdateUserDataResult(&result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<ServerUpdateUserPublisherDataResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<ServerUpdateUserPublisherDataResultHolderStruct>>(testContext);
 
     PFPlayerDataManagementServerUpdateUserDataRequestWrapper<> request;
     FillServerUpdateUserDataRequest(request);
@@ -2076,14 +2229,16 @@ void AutoGenPlayerDataManagementTests::TestPlayerDataManagementServerUpdateUserP
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region ServerUpdateUserPublisherInternalData
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenPlayerDataManagementTests::TestPlayerDataManagementServerUpdateUserPublisherInternalData(TestContext& testContext)
 {
-    struct ServerUpdateUserPublisherInternalDataResultHolder : public UpdateUserDataResultHolder
+    struct ServerUpdateUserPublisherInternalDataResultHolderStruct : public UpdateUserDataResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -2097,7 +2252,7 @@ void AutoGenPlayerDataManagementTests::TestPlayerDataManagementServerUpdateUserP
             return ValidatePFPlayerDataManagementUpdateUserDataResult(&result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<ServerUpdateUserPublisherInternalDataResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<ServerUpdateUserPublisherInternalDataResultHolderStruct>>(testContext);
 
     PFPlayerDataManagementUpdateUserInternalDataRequestWrapper<> request;
     FillUpdateUserInternalDataRequest(request);
@@ -2110,14 +2265,16 @@ void AutoGenPlayerDataManagementTests::TestPlayerDataManagementServerUpdateUserP
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region ServerUpdateUserPublisherReadOnlyData
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenPlayerDataManagementTests::TestPlayerDataManagementServerUpdateUserPublisherReadOnlyData(TestContext& testContext)
 {
-    struct ServerUpdateUserPublisherReadOnlyDataResultHolder : public UpdateUserDataResultHolder
+    struct ServerUpdateUserPublisherReadOnlyDataResultHolderStruct : public UpdateUserDataResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -2131,7 +2288,7 @@ void AutoGenPlayerDataManagementTests::TestPlayerDataManagementServerUpdateUserP
             return ValidatePFPlayerDataManagementUpdateUserDataResult(&result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<ServerUpdateUserPublisherReadOnlyDataResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<ServerUpdateUserPublisherReadOnlyDataResultHolderStruct>>(testContext);
 
     PFPlayerDataManagementServerUpdateUserDataRequestWrapper<> request;
     FillServerUpdateUserDataRequest(request);
@@ -2144,14 +2301,16 @@ void AutoGenPlayerDataManagementTests::TestPlayerDataManagementServerUpdateUserP
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region ServerUpdateUserReadOnlyData
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenPlayerDataManagementTests::TestPlayerDataManagementServerUpdateUserReadOnlyData(TestContext& testContext)
 {
-    struct ServerUpdateUserReadOnlyDataResultHolder : public UpdateUserDataResultHolder
+    struct ServerUpdateUserReadOnlyDataResultHolderStruct : public UpdateUserDataResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -2165,7 +2324,7 @@ void AutoGenPlayerDataManagementTests::TestPlayerDataManagementServerUpdateUserR
             return ValidatePFPlayerDataManagementUpdateUserDataResult(&result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<ServerUpdateUserReadOnlyDataResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<ServerUpdateUserReadOnlyDataResultHolderStruct>>(testContext);
 
     PFPlayerDataManagementServerUpdateUserDataRequestWrapper<> request;
     FillServerUpdateUserDataRequest(request);
@@ -2178,6 +2337,7 @@ void AutoGenPlayerDataManagementTests::TestPlayerDataManagementServerUpdateUserR
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 

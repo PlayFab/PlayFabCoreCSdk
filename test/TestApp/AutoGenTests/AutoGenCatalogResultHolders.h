@@ -150,6 +150,18 @@ struct GetItemReviewSummaryResponseHolder : public XAsyncResult, public std::ena
     PFCatalogGetItemReviewSummaryResponse* result{ nullptr };
 };
 
+struct GetItemsResponseHolder : public XAsyncResult, public std::enable_shared_from_this<GetItemsResponseHolder>
+{
+    GetItemsResponseHolder() = default;
+    GetItemsResponseHolder(const GetItemsResponseHolder&) = delete;
+    GetItemsResponseHolder(GetItemsResponseHolder&&) = default;
+    GetItemsResponseHolder& operator=(const GetItemsResponseHolder&) = delete;
+    GetItemsResponseHolder& operator=(GetItemsResponseHolder&&) = default;
+    ~GetItemsResponseHolder() = default;
+
+    PFCatalogGetItemsResponse* result{ nullptr };
+};
+
 struct SearchItemsResponseHolder : public XAsyncResult, public std::enable_shared_from_this<SearchItemsResponseHolder>
 {
     SearchItemsResponseHolder() = default;

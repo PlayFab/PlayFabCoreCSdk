@@ -207,6 +207,7 @@ HRESULT PFCloudScriptClientExecuteCloudScriptGetResult(
     _Out_opt_ size_t* bufferUsed
 ) noexcept;
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 /// <summary>
 /// Executes a CloudScript function, with the 'currentPlayerId' variable set to the specified PlayFabId
 /// parameter value.
@@ -254,6 +255,7 @@ HRESULT PFCloudScriptServerExecuteCloudScriptGetResult(
     _Outptr_ PFExecuteCloudScriptResult** result,
     _Out_opt_ size_t* bufferUsed
 ) noexcept;
+#endif
 
 /// <summary>
 /// Cloud Script is one of PlayFab's most versatile features. It allows client code to request execution

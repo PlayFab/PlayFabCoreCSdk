@@ -79,7 +79,7 @@ HRESULT AutoGenScheduledTaskTests::LogPFScheduledTaskCreateTaskResult(PFSchedule
     std::stringstream ss;
     ss << "Response:"; Log(ss);
 
-    // Found PlayFabScheduledTaskCreateTaskResult
+    // Found PlayFabScheduledTaskCreateTaskResult    
     if( result->taskId ) { ss << "  taskId " << result->taskId; Log(ss); } else { ss << "  taskId = nullptr"; Log(ss); } // Class: const char* 
     return S_OK;
 }
@@ -196,8 +196,8 @@ HRESULT AutoGenScheduledTaskTests::LogPFScheduledTaskGetActionsOnPlayersInSegmen
     std::stringstream ss;
     ss << "Response:"; Log(ss);
 
-    // Found PlayFabScheduledTaskGetActionsOnPlayersInSegmentTaskInstanceResult
-    ss << "  parameter " << result->parameter; Log(ss); // Class: PFScheduledTaskActionsOnPlayersInSegmentTaskParameter 
+    // Found PlayFabScheduledTaskGetActionsOnPlayersInSegmentTaskInstanceResult    
+    ss << "  parameter " << result->parameter; Log(ss); // Class: PFScheduledTaskActionsOnPlayersInSegmentTaskParameter     
     ss << "  summary " << result->summary; Log(ss); // Class: PFScheduledTaskActionsOnPlayersInSegmentTaskSummary 
     return S_OK;
 }
@@ -212,8 +212,8 @@ HRESULT AutoGenScheduledTaskTests::LogPFScheduledTaskGetCloudScriptTaskInstanceR
     std::stringstream ss;
     ss << "Response:"; Log(ss);
 
-    // Found PlayFabScheduledTaskGetCloudScriptTaskInstanceResult
-    ss << "  parameter " << result->parameter; Log(ss); // Class: PFScheduledTaskCloudScriptTaskParameter 
+    // Found PlayFabScheduledTaskGetCloudScriptTaskInstanceResult    
+    ss << "  parameter " << result->parameter; Log(ss); // Class: PFScheduledTaskCloudScriptTaskParameter     
     ss << "  summary " << result->summary; Log(ss); // Class: PFScheduledTaskCloudScriptTaskSummary 
     return S_OK;
 }
@@ -250,7 +250,7 @@ HRESULT AutoGenScheduledTaskTests::LogPFScheduledTaskGetTaskInstancesResult(PFSc
     std::stringstream ss;
     ss << "Response:"; Log(ss);
 
-    // Found PlayFabScheduledTaskGetTaskInstancesResult    
+    // Found PlayFabScheduledTaskGetTaskInstancesResult        
     ss << "  summariesCount " << result->summariesCount; Log(ss);
 
     // PFScheduledTaskTaskInstanceBasicSummary
@@ -290,7 +290,7 @@ HRESULT AutoGenScheduledTaskTests::LogPFScheduledTaskGetTasksResult(PFScheduledT
     std::stringstream ss;
     ss << "Response:"; Log(ss);
 
-    // Found PlayFabScheduledTaskGetTasksResult    
+    // Found PlayFabScheduledTaskGetTasksResult        
     ss << "  tasksCount " << result->tasksCount; Log(ss);
 
     // PFScheduledTaskScheduledTask
@@ -339,7 +339,7 @@ HRESULT AutoGenScheduledTaskTests::LogPFScheduledTaskRunTaskResult(PFScheduledTa
     std::stringstream ss;
     ss << "Response:"; Log(ss);
 
-    // Found PlayFabScheduledTaskRunTaskResult
+    // Found PlayFabScheduledTaskRunTaskResult    
     if( result->taskInstanceId ) { ss << "  taskInstanceId " << result->taskInstanceId; Log(ss); } else { ss << "  taskInstanceId = nullptr"; Log(ss); } // Class: const char* 
     return S_OK;
 }

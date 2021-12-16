@@ -15,27 +15,49 @@ private:
     static void Log(std::stringstream& ss);
     static HRESULT LogHR(HRESULT hr);
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestScheduledTaskAdminAbortTaskInstance(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestScheduledTaskAdminCreateActionsOnPlayersInSegmentTask(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestScheduledTaskAdminCreateCloudScriptTask(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestScheduledTaskAdminCreateInsightsScheduledScalingTask(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestScheduledTaskAdminDeleteTask(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestScheduledTaskAdminGetActionsOnPlayersInSegmentTaskInstance(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestScheduledTaskAdminGetCloudScriptTaskInstance(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestScheduledTaskAdminGetTaskInstances(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestScheduledTaskAdminGetTasks(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestScheduledTaskAdminRunTask(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestScheduledTaskAdminUpdateTask(TestContext& testContext);
+#endif
 
 
 protected:

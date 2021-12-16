@@ -2293,6 +2293,43 @@ typedef struct PFGetRandomResultTablesResult
 } PFGetRandomResultTablesResult;
 
 /// <summary>
+/// PFAzureResourceSystemData data model.
+/// </summary>
+typedef struct PFAzureResourceSystemData
+{
+    /// <summary>
+    /// (Optional) The timestamp of resource creation (UTC).
+    /// </summary>
+    _Maybenull_ time_t const* createdAt;
+
+    /// <summary>
+    /// (Optional) The identity that created the resource.
+    /// </summary>
+    _Maybenull_ _Null_terminated_ const char* createdBy;
+
+    /// <summary>
+    /// (Optional) The type of identity that created the resource.
+    /// </summary>
+    _Maybenull_ _Null_terminated_ const char* createdByType;
+
+    /// <summary>
+    /// (Optional) The type of identity that last modified the resource.
+    /// </summary>
+    _Maybenull_ time_t const* lastModifiedAt;
+
+    /// <summary>
+    /// (Optional) The identity that last modified the resource.
+    /// </summary>
+    _Maybenull_ _Null_terminated_ const char* lastModifiedBy;
+
+    /// <summary>
+    /// (Optional) The type of identity that last modified the resource.
+    /// </summary>
+    _Maybenull_ _Null_terminated_ const char* lastModifiedByType;
+
+} PFAzureResourceSystemData;
+
+/// <summary>
 /// PFVariable data model.
 /// </summary>
 typedef struct PFVariable

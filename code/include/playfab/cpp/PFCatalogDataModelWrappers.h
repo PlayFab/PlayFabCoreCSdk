@@ -3358,6 +3358,160 @@ private:
 };
 
 template<template<typename AllocT> class Alloc = std::allocator>
+class PFCatalogGetItemsRequestWrapper : public ModelWrapper<PFCatalogGetItemsRequest, Alloc>
+{
+public:
+    using ModelType = typename PFCatalogGetItemsRequest;
+    using String = typename std::basic_string<char, std::char_traits<char>, Alloc<char>>;
+    template<typename T> using Vector = typename std::vector<T, Alloc<T>>;
+
+    PFCatalogGetItemsRequestWrapper() = default;
+
+    PFCatalogGetItemsRequestWrapper(const PFCatalogGetItemsRequest& model) :
+        ModelWrapper<PFCatalogGetItemsRequest, Alloc>{ model },
+        m_alternateIds{ model.alternateIds, model.alternateIds + model.alternateIdsCount },
+        m_customTags{ model.customTags, model.customTags + model.customTagsCount },
+        m_entity{ model.entity ? StdExtra::optional<PFEntityKeyWrapper<Alloc>>{ *model.entity } : StdExtra::nullopt },
+        m_ids{ model.ids, model.ids + model.idsCount }
+    {
+        SetModelPointers();
+    }
+
+    PFCatalogGetItemsRequestWrapper(const PFCatalogGetItemsRequestWrapper& src) :
+        PFCatalogGetItemsRequestWrapper{ src.Model() }
+    {
+    }
+
+    PFCatalogGetItemsRequestWrapper(PFCatalogGetItemsRequestWrapper&& src) :
+        PFCatalogGetItemsRequestWrapper{}
+    {
+        swap(*this, src);
+    }
+
+    PFCatalogGetItemsRequestWrapper& operator=(PFCatalogGetItemsRequestWrapper src) 
+    {
+        swap(*this, src);
+        return *this;
+    }
+
+    virtual ~PFCatalogGetItemsRequestWrapper() = default;
+
+    friend void swap(PFCatalogGetItemsRequestWrapper& lhs, PFCatalogGetItemsRequestWrapper& rhs)
+    {
+        using std::swap;
+        swap(lhs.m_model, rhs.m_model);
+        swap(lhs.m_alternateIds, rhs.m_alternateIds);
+        swap(lhs.m_customTags, rhs.m_customTags);
+        swap(lhs.m_entity, rhs.m_entity);
+        swap(lhs.m_ids, rhs.m_ids);
+        lhs.SetModelPointers();
+        rhs.SetModelPointers();
+    }
+
+    void SetAlternateIds(ModelVector<PFCatalogCatalogAlternateIdWrapper<Alloc>, Alloc> value)
+    {
+        m_alternateIds = std::move(value);
+        this->m_model.alternateIds =  m_alternateIds.empty() ? nullptr : m_alternateIds.data();
+        this->m_model.alternateIdsCount =  static_cast<uint32_t>(m_alternateIds.size());
+    }
+
+    void SetCustomTags(StringDictionaryEntryVector<Alloc> value)
+    {
+        m_customTags = std::move(value);
+        this->m_model.customTags =  m_customTags.empty() ? nullptr : m_customTags.data();
+        this->m_model.customTagsCount =  static_cast<uint32_t>(m_customTags.size());
+    }
+
+    void SetEntity(StdExtra::optional<PFEntityKeyWrapper<Alloc>> value)
+    {
+        m_entity = std::move(value);
+        this->m_model.entity = m_entity ? &m_entity->Model() : nullptr;
+    }
+
+    void SetIds(CStringVector<Alloc> value)
+    {
+        m_ids = std::move(value);
+        this->m_model.ids =  m_ids.empty() ? nullptr : m_ids.data();
+        this->m_model.idsCount =  static_cast<uint32_t>(m_ids.size());
+    }
+
+private:
+    void SetModelPointers()
+    {
+        this->m_model.alternateIds = m_alternateIds.empty() ? nullptr : m_alternateIds.data();
+        this->m_model.customTags = m_customTags.empty() ? nullptr : m_customTags.data();
+        this->m_model.entity = m_entity ?  &m_entity->Model() : nullptr;
+        this->m_model.ids = m_ids.empty() ? nullptr : m_ids.data();
+    }
+
+    ModelVector<PFCatalogCatalogAlternateIdWrapper<Alloc>, Alloc> m_alternateIds;
+    StringDictionaryEntryVector<Alloc> m_customTags;
+    StdExtra::optional<PFEntityKeyWrapper<Alloc>> m_entity;
+    CStringVector<Alloc> m_ids;
+};
+
+template<template<typename AllocT> class Alloc = std::allocator>
+class PFCatalogGetItemsResponseWrapper : public ModelWrapper<PFCatalogGetItemsResponse, Alloc>
+{
+public:
+    using ModelType = typename PFCatalogGetItemsResponse;
+    using String = typename std::basic_string<char, std::char_traits<char>, Alloc<char>>;
+    template<typename T> using Vector = typename std::vector<T, Alloc<T>>;
+
+    PFCatalogGetItemsResponseWrapper() = default;
+
+    PFCatalogGetItemsResponseWrapper(const PFCatalogGetItemsResponse& model) :
+        ModelWrapper<PFCatalogGetItemsResponse, Alloc>{ model },
+        m_items{ model.items, model.items + model.itemsCount }
+    {
+        SetModelPointers();
+    }
+
+    PFCatalogGetItemsResponseWrapper(const PFCatalogGetItemsResponseWrapper& src) :
+        PFCatalogGetItemsResponseWrapper{ src.Model() }
+    {
+    }
+
+    PFCatalogGetItemsResponseWrapper(PFCatalogGetItemsResponseWrapper&& src) :
+        PFCatalogGetItemsResponseWrapper{}
+    {
+        swap(*this, src);
+    }
+
+    PFCatalogGetItemsResponseWrapper& operator=(PFCatalogGetItemsResponseWrapper src) 
+    {
+        swap(*this, src);
+        return *this;
+    }
+
+    virtual ~PFCatalogGetItemsResponseWrapper() = default;
+
+    friend void swap(PFCatalogGetItemsResponseWrapper& lhs, PFCatalogGetItemsResponseWrapper& rhs)
+    {
+        using std::swap;
+        swap(lhs.m_model, rhs.m_model);
+        swap(lhs.m_items, rhs.m_items);
+        lhs.SetModelPointers();
+        rhs.SetModelPointers();
+    }
+
+    void SetItems(ModelVector<PFCatalogCatalogItemWrapper<Alloc>, Alloc> value)
+    {
+        m_items = std::move(value);
+        this->m_model.items =  m_items.empty() ? nullptr : m_items.data();
+        this->m_model.itemsCount =  static_cast<uint32_t>(m_items.size());
+    }
+
+private:
+    void SetModelPointers()
+    {
+        this->m_model.items = m_items.empty() ? nullptr : m_items.data();
+    }
+
+    ModelVector<PFCatalogCatalogItemWrapper<Alloc>, Alloc> m_items;
+};
+
+template<template<typename AllocT> class Alloc = std::allocator>
 class PFCatalogPublishDraftItemRequestWrapper : public ModelWrapper<PFCatalogPublishDraftItemRequest, Alloc>
 {
 public:
