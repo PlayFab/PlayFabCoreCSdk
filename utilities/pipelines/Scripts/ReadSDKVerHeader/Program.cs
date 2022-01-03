@@ -26,7 +26,7 @@ namespace GenSDKBuildCppFile
 
             TextReader tr = new StreamReader(fileName);
             string headerFileText = tr.ReadToEnd();
-            string defineToSearchFor = "XBOX_SERVICES_API_VERSION_STRING";
+            string defineToSearchFor = "PF_SDK_API_VERSION_STRING";
             int indexOfDefine = headerFileText.LastIndexOf(defineToSearchFor);
             if( indexOfDefine > 0 )
             {
@@ -68,7 +68,7 @@ namespace GenSDKBuildCppFile
             }
             else
             {
-                Console.WriteLine("Can't find XBOX_SERVICES_API_VERSION_STRING");
+                Console.WriteLine("Can't find PF_SDK_API_VERSION_STRING");
             }
         }
     }
