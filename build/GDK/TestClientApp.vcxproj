@@ -22,6 +22,7 @@
     <!-- - - - -->
     <MinimumVisualStudioVersion>14.0</MinimumVisualStudioVersion>
     <TargetRuntime>Native</TargetRuntime>
+    <XsapiBuildFromSource>true</XsapiBuildFromSource> <!-- needed only to support 2021 and prior GDKs -->
     <LibHttpClientBuildFromSource>true</LibHttpClientBuildFromSource>
     <WindowsTargetPlatformVersion>$([Microsoft.Build.Utilities.ToolLocationHelper]::GetLatestSDKTargetPlatformVersion('Windows', '10.0'))</WindowsTargetPlatformVersion>
   </PropertyGroup>
