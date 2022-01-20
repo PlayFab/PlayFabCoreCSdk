@@ -11,7 +11,7 @@ namespace PlayFabUnit
 
 void AutoGenDataTests::LogAbortFileUploadsRequest(PFDataAbortFileUploadsRequest const* request, const char* testName)
 {
-    if( !TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    if (!TestApp::ShouldTrace(PFTestTraceLevel::Information))
     {
         return;
     }
@@ -28,7 +28,7 @@ void AutoGenDataTests::LogAbortFileUploadsRequest(PFDataAbortFileUploadsRequest 
     ss << "  customTagsCount " << request->customTagsCount; Log(ss);
 
     // PFStringDictionaryEntry
-    for( uint32_t i=0; i<request->customTagsCount; i++ )
+    for (uint32_t i=0; i<request->customTagsCount; i++)
     {
             ss << "  request->customTags[" << i << "]:" << request->customTags[i].key << "=" << request->customTags[i].value; Log(ss);
             
@@ -37,7 +37,7 @@ void AutoGenDataTests::LogAbortFileUploadsRequest(PFDataAbortFileUploadsRequest 
     ss << "  fileNamesCount " << request->fileNamesCount; Log(ss);
 
     // const char*
-    for( uint32_t i=0; i<request->fileNamesCount; i++ )
+    for (uint32_t i=0; i<request->fileNamesCount; i++)
     {
             ss << "  request->fileNames[" << i << "]:" << request->fileNames[i]; Log(ss); // const char*
     } 
@@ -45,9 +45,9 @@ void AutoGenDataTests::LogAbortFileUploadsRequest(PFDataAbortFileUploadsRequest 
 
 }
 
-HRESULT AutoGenDataTests::LogPFDataAbortFileUploadsResponse(PFDataAbortFileUploadsResponse const* result)
+HRESULT AutoGenDataTests::LogAbortFileUploadsResponse(PFDataAbortFileUploadsResponse const* result)
 {
-    if( !TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    if (!TestApp::ShouldTrace(PFTestTraceLevel::Information))
     {
         return S_OK;
     }
@@ -63,7 +63,7 @@ HRESULT AutoGenDataTests::LogPFDataAbortFileUploadsResponse(PFDataAbortFileUploa
 
 void AutoGenDataTests::LogDeleteFilesRequest(PFDataDeleteFilesRequest const* request, const char* testName)
 {
-    if( !TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    if (!TestApp::ShouldTrace(PFTestTraceLevel::Information))
     {
         return;
     }
@@ -80,7 +80,7 @@ void AutoGenDataTests::LogDeleteFilesRequest(PFDataDeleteFilesRequest const* req
     ss << "  customTagsCount " << request->customTagsCount; Log(ss);
 
     // PFStringDictionaryEntry
-    for( uint32_t i=0; i<request->customTagsCount; i++ )
+    for (uint32_t i=0; i<request->customTagsCount; i++)
     {
             ss << "  request->customTags[" << i << "]:" << request->customTags[i].key << "=" << request->customTags[i].value; Log(ss);
             
@@ -89,7 +89,7 @@ void AutoGenDataTests::LogDeleteFilesRequest(PFDataDeleteFilesRequest const* req
     ss << "  fileNamesCount " << request->fileNamesCount; Log(ss);
 
     // const char*
-    for( uint32_t i=0; i<request->fileNamesCount; i++ )
+    for (uint32_t i=0; i<request->fileNamesCount; i++)
     {
             ss << "  request->fileNames[" << i << "]:" << request->fileNames[i]; Log(ss); // const char*
     } 
@@ -97,9 +97,9 @@ void AutoGenDataTests::LogDeleteFilesRequest(PFDataDeleteFilesRequest const* req
 
 }
 
-HRESULT AutoGenDataTests::LogPFDataDeleteFilesResponse(PFDataDeleteFilesResponse const* result)
+HRESULT AutoGenDataTests::LogDeleteFilesResponse(PFDataDeleteFilesResponse const* result)
 {
-    if( !TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    if (!TestApp::ShouldTrace(PFTestTraceLevel::Information))
     {
         return S_OK;
     }
@@ -115,7 +115,7 @@ HRESULT AutoGenDataTests::LogPFDataDeleteFilesResponse(PFDataDeleteFilesResponse
 
 void AutoGenDataTests::LogFinalizeFileUploadsRequest(PFDataFinalizeFileUploadsRequest const* request, const char* testName)
 {
-    if( !TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    if (!TestApp::ShouldTrace(PFTestTraceLevel::Information))
     {
         return;
     }
@@ -132,7 +132,7 @@ void AutoGenDataTests::LogFinalizeFileUploadsRequest(PFDataFinalizeFileUploadsRe
     ss << "  customTagsCount " << request->customTagsCount; Log(ss);
 
     // PFStringDictionaryEntry
-    for( uint32_t i=0; i<request->customTagsCount; i++ )
+    for (uint32_t i=0; i<request->customTagsCount; i++)
     {
             ss << "  request->customTags[" << i << "]:" << request->customTags[i].key << "=" << request->customTags[i].value; Log(ss);
             
@@ -141,7 +141,7 @@ void AutoGenDataTests::LogFinalizeFileUploadsRequest(PFDataFinalizeFileUploadsRe
     ss << "  fileNamesCount " << request->fileNamesCount; Log(ss);
 
     // const char*
-    for( uint32_t i=0; i<request->fileNamesCount; i++ )
+    for (uint32_t i=0; i<request->fileNamesCount; i++)
     {
             ss << "  request->fileNames[" << i << "]:" << request->fileNames[i]; Log(ss); // const char*
     } 
@@ -149,9 +149,9 @@ void AutoGenDataTests::LogFinalizeFileUploadsRequest(PFDataFinalizeFileUploadsRe
 
 }
 
-HRESULT AutoGenDataTests::LogPFDataFinalizeFileUploadsResponse(PFDataFinalizeFileUploadsResponse const* result)
+HRESULT AutoGenDataTests::LogFinalizeFileUploadsResponse(PFDataFinalizeFileUploadsResponse const* result)
 {
-    if( !TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    if (!TestApp::ShouldTrace(PFTestTraceLevel::Information))
     {
         return S_OK;
     }
@@ -164,7 +164,7 @@ HRESULT AutoGenDataTests::LogPFDataFinalizeFileUploadsResponse(PFDataFinalizeFil
     ss << "  metadataCount " << result->metadataCount; Log(ss);
 
     // PFDataGetFileMetadataDictionaryEntry
-    for( uint32_t i=0; i<result->metadataCount; i++ )
+    for (uint32_t i=0; i<result->metadataCount; i++)
     {
             ss << "  result->metadata[" << i << "]:" << result->metadata[i].key << "=" << result->metadata[i].value; Log(ss);
             
@@ -175,7 +175,7 @@ HRESULT AutoGenDataTests::LogPFDataFinalizeFileUploadsResponse(PFDataFinalizeFil
 
 void AutoGenDataTests::LogGetFilesRequest(PFDataGetFilesRequest const* request, const char* testName)
 {
-    if( !TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    if (!TestApp::ShouldTrace(PFTestTraceLevel::Information))
     {
         return;
     }
@@ -192,7 +192,7 @@ void AutoGenDataTests::LogGetFilesRequest(PFDataGetFilesRequest const* request, 
     ss << "  customTagsCount " << request->customTagsCount; Log(ss);
 
     // PFStringDictionaryEntry
-    for( uint32_t i=0; i<request->customTagsCount; i++ )
+    for (uint32_t i=0; i<request->customTagsCount; i++)
     {
             ss << "  request->customTags[" << i << "]:" << request->customTags[i].key << "=" << request->customTags[i].value; Log(ss);
             
@@ -201,9 +201,9 @@ void AutoGenDataTests::LogGetFilesRequest(PFDataGetFilesRequest const* request, 
 
 }
 
-HRESULT AutoGenDataTests::LogPFDataGetFilesResponse(PFDataGetFilesResponse const* result)
+HRESULT AutoGenDataTests::LogGetFilesResponse(PFDataGetFilesResponse const* result)
 {
-    if( !TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    if (!TestApp::ShouldTrace(PFTestTraceLevel::Information))
     {
         return S_OK;
     }
@@ -216,7 +216,7 @@ HRESULT AutoGenDataTests::LogPFDataGetFilesResponse(PFDataGetFilesResponse const
     ss << "  metadataCount " << result->metadataCount; Log(ss);
 
     // PFDataGetFileMetadataDictionaryEntry
-    for( uint32_t i=0; i<result->metadataCount; i++ )
+    for (uint32_t i=0; i<result->metadataCount; i++)
     {
             ss << "  result->metadata[" << i << "]:" << result->metadata[i].key << "=" << result->metadata[i].value; Log(ss);
             
@@ -227,7 +227,7 @@ HRESULT AutoGenDataTests::LogPFDataGetFilesResponse(PFDataGetFilesResponse const
 
 void AutoGenDataTests::LogGetObjectsRequest(PFDataGetObjectsRequest const* request, const char* testName)
 {
-    if( !TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    if (!TestApp::ShouldTrace(PFTestTraceLevel::Information))
     {
         return;
     }
@@ -244,7 +244,7 @@ void AutoGenDataTests::LogGetObjectsRequest(PFDataGetObjectsRequest const* reque
     ss << "  customTagsCount " << request->customTagsCount; Log(ss);
 
     // PFStringDictionaryEntry
-    for( uint32_t i=0; i<request->customTagsCount; i++ )
+    for (uint32_t i=0; i<request->customTagsCount; i++)
     {
             ss << "  request->customTags[" << i << "]:" << request->customTags[i].key << "=" << request->customTags[i].value; Log(ss);
             
@@ -254,9 +254,9 @@ void AutoGenDataTests::LogGetObjectsRequest(PFDataGetObjectsRequest const* reque
 
 }
 
-HRESULT AutoGenDataTests::LogPFDataGetObjectsResponse(PFDataGetObjectsResponse const* result)
+HRESULT AutoGenDataTests::LogGetObjectsResponse(PFDataGetObjectsResponse const* result)
 {
-    if( !TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    if (!TestApp::ShouldTrace(PFTestTraceLevel::Information))
     {
         return S_OK;
     }
@@ -269,7 +269,7 @@ HRESULT AutoGenDataTests::LogPFDataGetObjectsResponse(PFDataGetObjectsResponse c
     ss << "  objectsCount " << result->objectsCount; Log(ss);
 
     // PFDataObjectResultDictionaryEntry
-    for( uint32_t i=0; i<result->objectsCount; i++ )
+    for (uint32_t i=0; i<result->objectsCount; i++)
     {
             ss << "  result->objects[" << i << "]:" << result->objects[i].key << "=" << result->objects[i].value; Log(ss);
             
@@ -280,7 +280,7 @@ HRESULT AutoGenDataTests::LogPFDataGetObjectsResponse(PFDataGetObjectsResponse c
 
 void AutoGenDataTests::LogInitiateFileUploadsRequest(PFDataInitiateFileUploadsRequest const* request, const char* testName)
 {
-    if( !TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    if (!TestApp::ShouldTrace(PFTestTraceLevel::Information))
     {
         return;
     }
@@ -297,7 +297,7 @@ void AutoGenDataTests::LogInitiateFileUploadsRequest(PFDataInitiateFileUploadsRe
     ss << "  customTagsCount " << request->customTagsCount; Log(ss);
 
     // PFStringDictionaryEntry
-    for( uint32_t i=0; i<request->customTagsCount; i++ )
+    for (uint32_t i=0; i<request->customTagsCount; i++)
     {
             ss << "  request->customTags[" << i << "]:" << request->customTags[i].key << "=" << request->customTags[i].value; Log(ss);
             
@@ -306,7 +306,7 @@ void AutoGenDataTests::LogInitiateFileUploadsRequest(PFDataInitiateFileUploadsRe
     ss << "  fileNamesCount " << request->fileNamesCount; Log(ss);
 
     // const char*
-    for( uint32_t i=0; i<request->fileNamesCount; i++ )
+    for (uint32_t i=0; i<request->fileNamesCount; i++)
     {
             ss << "  request->fileNames[" << i << "]:" << request->fileNames[i]; Log(ss); // const char*
     } 
@@ -314,9 +314,9 @@ void AutoGenDataTests::LogInitiateFileUploadsRequest(PFDataInitiateFileUploadsRe
 
 }
 
-HRESULT AutoGenDataTests::LogPFDataInitiateFileUploadsResponse(PFDataInitiateFileUploadsResponse const* result)
+HRESULT AutoGenDataTests::LogInitiateFileUploadsResponse(PFDataInitiateFileUploadsResponse const* result)
 {
-    if( !TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    if (!TestApp::ShouldTrace(PFTestTraceLevel::Information))
     {
         return S_OK;
     }
@@ -330,7 +330,7 @@ HRESULT AutoGenDataTests::LogPFDataInitiateFileUploadsResponse(PFDataInitiateFil
     ss << "  uploadDetailsCount " << result->uploadDetailsCount; Log(ss);
 
     // PFDataInitiateFileUploadMetadata
-    for( uint32_t i=0; i<result->uploadDetailsCount; i++ )
+    for (uint32_t i=0; i<result->uploadDetailsCount; i++)
     {
             ss << "  result->uploadDetails[" << i << "]:" << result->uploadDetails[i]; Log(ss); // PFDataInitiateFileUploadMetadata
     } 
@@ -339,7 +339,7 @@ HRESULT AutoGenDataTests::LogPFDataInitiateFileUploadsResponse(PFDataInitiateFil
 
 void AutoGenDataTests::LogSetObjectsRequest(PFDataSetObjectsRequest const* request, const char* testName)
 {
-    if( !TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    if (!TestApp::ShouldTrace(PFTestTraceLevel::Information))
     {
         return;
     }
@@ -356,7 +356,7 @@ void AutoGenDataTests::LogSetObjectsRequest(PFDataSetObjectsRequest const* reque
     ss << "  customTagsCount " << request->customTagsCount; Log(ss);
 
     // PFStringDictionaryEntry
-    for( uint32_t i=0; i<request->customTagsCount; i++ )
+    for (uint32_t i=0; i<request->customTagsCount; i++)
     {
             ss << "  request->customTags[" << i << "]:" << request->customTags[i].key << "=" << request->customTags[i].value; Log(ss);
             
@@ -366,16 +366,16 @@ void AutoGenDataTests::LogSetObjectsRequest(PFDataSetObjectsRequest const* reque
     ss << "  objectsCount " << request->objectsCount; Log(ss);
 
     // PFDataSetObject
-    for( uint32_t i=0; i<request->objectsCount; i++ )
+    for (uint32_t i=0; i<request->objectsCount; i++)
     {
             ss << "  request->objects[" << i << "]:" << request->objects[i]; Log(ss); // PFDataSetObject
     } 
 
 }
 
-HRESULT AutoGenDataTests::LogPFDataSetObjectsResponse(PFDataSetObjectsResponse const* result)
+HRESULT AutoGenDataTests::LogSetObjectsResponse(PFDataSetObjectsResponse const* result)
 {
-    if( !TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    if (!TestApp::ShouldTrace(PFTestTraceLevel::Information))
     {
         return S_OK;
     }
@@ -388,7 +388,7 @@ HRESULT AutoGenDataTests::LogPFDataSetObjectsResponse(PFDataSetObjectsResponse c
     ss << "  setResultsCount " << result->setResultsCount; Log(ss);
 
     // PFDataSetObjectInfo
-    for( uint32_t i=0; i<result->setResultsCount; i++ )
+    for (uint32_t i=0; i<result->setResultsCount; i++)
     {
             ss << "  result->setResults[" << i << "]:" << result->setResults[i]; Log(ss); // PFDataSetObjectInfo
     } 

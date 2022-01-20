@@ -21,7 +21,7 @@ void AutoGenAnalyticsTests::Log(std::stringstream& ss)
 
 HRESULT AutoGenAnalyticsTests::LogHR(HRESULT hr)
 {
-    if( TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    if (TestApp::ShouldTrace(PFTestTraceLevel::Information))
     {
         TestApp::Log("Result: 0x%0.8x", hr);
     }
@@ -61,7 +61,7 @@ void AutoGenAnalyticsTests::AddTests()
 
 void AutoGenAnalyticsTests::ClassSetUp()
 {
-    HRESULT hr = PFAdminInitialize(testTitleData.titleId.data(), testTitleData.developerSecretKey.data(), nullptr, &stateHandle);
+    HRESULT hr = PFAdminInitialize(testTitleData.titleId.data(), testTitleData.developerSecretKey.data(), testTitleData.connectionString.data(), nullptr, &stateHandle);
     assert(SUCCEEDED(hr));
     if (SUCCEEDED(hr))
     {
@@ -171,7 +171,7 @@ void AutoGenAnalyticsTests::TestAnalyticsClientReportDeviceInfo(TestContext& tes
     auto async = std::make_unique<XAsyncHelper<XAsyncResult>>(testContext);
 
     PFAnalyticsDeviceInfoRequestWrapper<> request;
-    FillDeviceInfoRequest(request);
+    FillClientReportDeviceInfoRequest(request);
     LogDeviceInfoRequest(&request.Model(), "TestAnalyticsClientReportDeviceInfo");
     HRESULT hr = PFAnalyticsClientReportDeviceInfoAsync(titlePlayerHandle, &request.Model(), &async->asyncBlock);
     if (FAILED(hr))
@@ -199,19 +199,19 @@ void AutoGenAnalyticsTests::TestAnalyticsGetDetails(TestContext& testContext)
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFAnalyticsGetDetailsGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
             
-            LogPFAnalyticsInsightsGetDetailsResponse(result);
+            LogInsightsGetDetailsResponse(result);
             return S_OK;
         }
 
         HRESULT Validate() override
         {
-            return ValidatePFAnalyticsInsightsGetDetailsResponse(result);
+            return ValidateGetDetailsResponse(result);
         }
     };
     auto async = std::make_unique<XAsyncHelper<GetDetailsResultHolderStruct>>(testContext);
 
     PFAnalyticsInsightsEmptyRequestWrapper<> request;
-    FillInsightsEmptyRequest(request);
+    FillGetDetailsRequest(request);
     LogInsightsEmptyRequest(&request.Model(), "TestAnalyticsGetDetails");
     HRESULT hr = PFAnalyticsGetDetailsAsync(entityHandle, &request.Model(), &async->asyncBlock);
     if (FAILED(hr))
@@ -240,19 +240,19 @@ void AutoGenAnalyticsTests::TestAnalyticsGetLimits(TestContext& testContext)
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFAnalyticsGetLimitsGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
             
-            LogPFAnalyticsInsightsGetLimitsResponse(result);
+            LogInsightsGetLimitsResponse(result);
             return S_OK;
         }
 
         HRESULT Validate() override
         {
-            return ValidatePFAnalyticsInsightsGetLimitsResponse(result);
+            return ValidateGetLimitsResponse(result);
         }
     };
     auto async = std::make_unique<XAsyncHelper<GetLimitsResultHolderStruct>>(testContext);
 
     PFAnalyticsInsightsEmptyRequestWrapper<> request;
-    FillInsightsEmptyRequest(request);
+    FillGetLimitsRequest(request);
     LogInsightsEmptyRequest(&request.Model(), "TestAnalyticsGetLimits");
     HRESULT hr = PFAnalyticsGetLimitsAsync(entityHandle, &request.Model(), &async->asyncBlock);
     if (FAILED(hr))
@@ -281,19 +281,19 @@ void AutoGenAnalyticsTests::TestAnalyticsGetOperationStatus(TestContext& testCon
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFAnalyticsGetOperationStatusGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
             
-            LogPFAnalyticsInsightsGetOperationStatusResponse(result);
+            LogInsightsGetOperationStatusResponse(result);
             return S_OK;
         }
 
         HRESULT Validate() override
         {
-            return ValidatePFAnalyticsInsightsGetOperationStatusResponse(result);
+            return ValidateGetOperationStatusResponse(result);
         }
     };
     auto async = std::make_unique<XAsyncHelper<GetOperationStatusResultHolderStruct>>(testContext);
 
     PFAnalyticsInsightsGetOperationStatusRequestWrapper<> request;
-    FillInsightsGetOperationStatusRequest(request);
+    FillGetOperationStatusRequest(request);
     LogInsightsGetOperationStatusRequest(&request.Model(), "TestAnalyticsGetOperationStatus");
     HRESULT hr = PFAnalyticsGetOperationStatusAsync(entityHandle, &request.Model(), &async->asyncBlock);
     if (FAILED(hr))
@@ -322,19 +322,19 @@ void AutoGenAnalyticsTests::TestAnalyticsGetPendingOperations(TestContext& testC
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFAnalyticsGetPendingOperationsGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
             
-            LogPFAnalyticsInsightsGetPendingOperationsResponse(result);
+            LogInsightsGetPendingOperationsResponse(result);
             return S_OK;
         }
 
         HRESULT Validate() override
         {
-            return ValidatePFAnalyticsInsightsGetPendingOperationsResponse(result);
+            return ValidateGetPendingOperationsResponse(result);
         }
     };
     auto async = std::make_unique<XAsyncHelper<GetPendingOperationsResultHolderStruct>>(testContext);
 
     PFAnalyticsInsightsGetPendingOperationsRequestWrapper<> request;
-    FillInsightsGetPendingOperationsRequest(request);
+    FillGetPendingOperationsRequest(request);
     LogInsightsGetPendingOperationsRequest(&request.Model(), "TestAnalyticsGetPendingOperations");
     HRESULT hr = PFAnalyticsGetPendingOperationsAsync(entityHandle, &request.Model(), &async->asyncBlock);
     if (FAILED(hr))
@@ -363,19 +363,19 @@ void AutoGenAnalyticsTests::TestAnalyticsSetPerformance(TestContext& testContext
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFAnalyticsSetPerformanceGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
             
-            LogPFAnalyticsInsightsOperationResponse(result);
+            LogInsightsOperationResponse(result);
             return S_OK;
         }
 
         HRESULT Validate() override
         {
-            return ValidatePFAnalyticsInsightsOperationResponse(result);
+            return ValidateSetPerformanceResponse(result);
         }
     };
     auto async = std::make_unique<XAsyncHelper<SetPerformanceResultHolderStruct>>(testContext);
 
     PFAnalyticsInsightsSetPerformanceRequestWrapper<> request;
-    FillInsightsSetPerformanceRequest(request);
+    FillSetPerformanceRequest(request);
     LogInsightsSetPerformanceRequest(&request.Model(), "TestAnalyticsSetPerformance");
     HRESULT hr = PFAnalyticsSetPerformanceAsync(entityHandle, &request.Model(), &async->asyncBlock);
     if (FAILED(hr))
@@ -404,19 +404,19 @@ void AutoGenAnalyticsTests::TestAnalyticsSetStorageRetention(TestContext& testCo
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFAnalyticsSetStorageRetentionGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
             
-            LogPFAnalyticsInsightsOperationResponse(result);
+            LogInsightsOperationResponse(result);
             return S_OK;
         }
 
         HRESULT Validate() override
         {
-            return ValidatePFAnalyticsInsightsOperationResponse(result);
+            return ValidateSetStorageRetentionResponse(result);
         }
     };
     auto async = std::make_unique<XAsyncHelper<SetStorageRetentionResultHolderStruct>>(testContext);
 
     PFAnalyticsInsightsSetStorageRetentionRequestWrapper<> request;
-    FillInsightsSetStorageRetentionRequest(request);
+    FillSetStorageRetentionRequest(request);
     LogInsightsSetStorageRetentionRequest(&request.Model(), "TestAnalyticsSetStorageRetention");
     HRESULT hr = PFAnalyticsSetStorageRetentionAsync(entityHandle, &request.Model(), &async->asyncBlock);
     if (FAILED(hr))

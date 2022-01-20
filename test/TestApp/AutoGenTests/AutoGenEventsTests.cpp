@@ -21,7 +21,7 @@ void AutoGenEventsTests::Log(std::stringstream& ss)
 
 HRESULT AutoGenEventsTests::LogHR(HRESULT hr)
 {
-    if( TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    if (TestApp::ShouldTrace(PFTestTraceLevel::Information))
     {
         TestApp::Log("Result: 0x%0.8x", hr);
     }
@@ -83,7 +83,7 @@ void AutoGenEventsTests::AddTests()
 
 void AutoGenEventsTests::ClassSetUp()
 {
-    HRESULT hr = PFAdminInitialize(testTitleData.titleId.data(), testTitleData.developerSecretKey.data(), nullptr, &stateHandle);
+    HRESULT hr = PFAdminInitialize(testTitleData.titleId.data(), testTitleData.developerSecretKey.data(), testTitleData.connectionString.data(), nullptr, &stateHandle);
     assert(SUCCEEDED(hr));
     if (SUCCEEDED(hr))
     {
@@ -194,7 +194,7 @@ void AutoGenEventsTests::TestEventsAdminAddPlayerTag(TestContext& testContext)
     auto async = std::make_unique<XAsyncHelper<XAsyncResult>>(testContext);
 
     PFEventsAddPlayerTagRequestWrapper<> request;
-    FillAddPlayerTagRequest(request);
+    FillAdminAddPlayerTagRequest(request);
     LogAddPlayerTagRequest(&request.Model(), "TestEventsAdminAddPlayerTag");
     HRESULT hr = PFEventsAdminAddPlayerTagAsync(stateHandle, &request.Model(), &async->asyncBlock);
     if (FAILED(hr))
@@ -223,19 +223,19 @@ void AutoGenEventsTests::TestEventsAdminGetPlayerTags(TestContext& testContext)
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFEventsAdminGetPlayerTagsGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
             
-            LogPFEventsGetPlayerTagsResult(result);
+            LogGetPlayerTagsResult(result);
             return S_OK;
         }
 
         HRESULT Validate() override
         {
-            return ValidatePFEventsGetPlayerTagsResult(result);
+            return ValidateAdminGetPlayerTagsResponse(result);
         }
     };
     auto async = std::make_unique<XAsyncHelper<AdminGetPlayerTagsResultHolderStruct>>(testContext);
 
     PFEventsGetPlayerTagsRequestWrapper<> request;
-    FillGetPlayerTagsRequest(request);
+    FillAdminGetPlayerTagsRequest(request);
     LogGetPlayerTagsRequest(&request.Model(), "TestEventsAdminGetPlayerTags");
     HRESULT hr = PFEventsAdminGetPlayerTagsAsync(stateHandle, &request.Model(), &async->asyncBlock);
     if (FAILED(hr))
@@ -257,7 +257,7 @@ void AutoGenEventsTests::TestEventsAdminRemovePlayerTag(TestContext& testContext
     auto async = std::make_unique<XAsyncHelper<XAsyncResult>>(testContext);
 
     PFEventsRemovePlayerTagRequestWrapper<> request;
-    FillRemovePlayerTagRequest(request);
+    FillAdminRemovePlayerTagRequest(request);
     LogRemovePlayerTagRequest(&request.Model(), "TestEventsAdminRemovePlayerTag");
     HRESULT hr = PFEventsAdminRemovePlayerTagAsync(stateHandle, &request.Model(), &async->asyncBlock);
     if (FAILED(hr))
@@ -285,19 +285,19 @@ void AutoGenEventsTests::TestEventsClientGetPlayerTags(TestContext& testContext)
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFEventsClientGetPlayerTagsGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
             
-            LogPFEventsGetPlayerTagsResult(result);
+            LogGetPlayerTagsResult(result);
             return S_OK;
         }
 
         HRESULT Validate() override
         {
-            return ValidatePFEventsGetPlayerTagsResult(result);
+            return ValidateClientGetPlayerTagsResponse(result);
         }
     };
     auto async = std::make_unique<XAsyncHelper<ClientGetPlayerTagsResultHolderStruct>>(testContext);
 
     PFEventsGetPlayerTagsRequestWrapper<> request;
-    FillGetPlayerTagsRequest(request);
+    FillClientGetPlayerTagsRequest(request);
     LogGetPlayerTagsRequest(&request.Model(), "TestEventsClientGetPlayerTags");
     HRESULT hr = PFEventsClientGetPlayerTagsAsync(titlePlayerHandle, &request.Model(), &async->asyncBlock);
     if (FAILED(hr))
@@ -324,19 +324,19 @@ void AutoGenEventsTests::TestEventsClientWriteCharacterEvent(TestContext& testCo
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFEventsClientWriteCharacterEventGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
             
-            LogPFEventsWriteEventResponse(result);
+            LogWriteEventResponse(result);
             return S_OK;
         }
 
         HRESULT Validate() override
         {
-            return ValidatePFEventsWriteEventResponse(result);
+            return ValidateClientWriteCharacterEventResponse(result);
         }
     };
     auto async = std::make_unique<XAsyncHelper<ClientWriteCharacterEventResultHolderStruct>>(testContext);
 
     PFEventsWriteClientCharacterEventRequestWrapper<> request;
-    FillWriteClientCharacterEventRequest(request);
+    FillClientWriteCharacterEventRequest(request);
     LogWriteClientCharacterEventRequest(&request.Model(), "TestEventsClientWriteCharacterEvent");
     HRESULT hr = PFEventsClientWriteCharacterEventAsync(titlePlayerHandle, &request.Model(), &async->asyncBlock);
     if (FAILED(hr))
@@ -363,19 +363,19 @@ void AutoGenEventsTests::TestEventsClientWritePlayerEvent(TestContext& testConte
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFEventsClientWritePlayerEventGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
             
-            LogPFEventsWriteEventResponse(result);
+            LogWriteEventResponse(result);
             return S_OK;
         }
 
         HRESULT Validate() override
         {
-            return ValidatePFEventsWriteEventResponse(result);
+            return ValidateClientWritePlayerEventResponse(result);
         }
     };
     auto async = std::make_unique<XAsyncHelper<ClientWritePlayerEventResultHolderStruct>>(testContext);
 
     PFEventsWriteClientPlayerEventRequestWrapper<> request;
-    FillWriteClientPlayerEventRequest(request);
+    FillClientWritePlayerEventRequest(request);
     LogWriteClientPlayerEventRequest(&request.Model(), "TestEventsClientWritePlayerEvent");
     HRESULT hr = PFEventsClientWritePlayerEventAsync(titlePlayerHandle, &request.Model(), &async->asyncBlock);
     if (FAILED(hr))
@@ -402,19 +402,19 @@ void AutoGenEventsTests::TestEventsClientWriteTitleEvent(TestContext& testContex
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFEventsClientWriteTitleEventGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
             
-            LogPFEventsWriteEventResponse(result);
+            LogWriteEventResponse(result);
             return S_OK;
         }
 
         HRESULT Validate() override
         {
-            return ValidatePFEventsWriteEventResponse(result);
+            return ValidateClientWriteTitleEventResponse(result);
         }
     };
     auto async = std::make_unique<XAsyncHelper<ClientWriteTitleEventResultHolderStruct>>(testContext);
 
     PFEventsWriteTitleEventRequestWrapper<> request;
-    FillWriteTitleEventRequest(request);
+    FillClientWriteTitleEventRequest(request);
     LogWriteTitleEventRequest(&request.Model(), "TestEventsClientWriteTitleEvent");
     HRESULT hr = PFEventsClientWriteTitleEventAsync(titlePlayerHandle, &request.Model(), &async->asyncBlock);
     if (FAILED(hr))
@@ -435,7 +435,7 @@ void AutoGenEventsTests::TestEventsServerAddPlayerTag(TestContext& testContext)
     auto async = std::make_unique<XAsyncHelper<XAsyncResult>>(testContext);
 
     PFEventsAddPlayerTagRequestWrapper<> request;
-    FillAddPlayerTagRequest(request);
+    FillServerAddPlayerTagRequest(request);
     LogAddPlayerTagRequest(&request.Model(), "TestEventsServerAddPlayerTag");
     HRESULT hr = PFEventsServerAddPlayerTagAsync(stateHandle, &request.Model(), &async->asyncBlock);
     if (FAILED(hr))
@@ -464,19 +464,19 @@ void AutoGenEventsTests::TestEventsServerGetPlayerTags(TestContext& testContext)
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFEventsServerGetPlayerTagsGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
             
-            LogPFEventsGetPlayerTagsResult(result);
+            LogGetPlayerTagsResult(result);
             return S_OK;
         }
 
         HRESULT Validate() override
         {
-            return ValidatePFEventsGetPlayerTagsResult(result);
+            return ValidateServerGetPlayerTagsResponse(result);
         }
     };
     auto async = std::make_unique<XAsyncHelper<ServerGetPlayerTagsResultHolderStruct>>(testContext);
 
     PFEventsGetPlayerTagsRequestWrapper<> request;
-    FillGetPlayerTagsRequest(request);
+    FillServerGetPlayerTagsRequest(request);
     LogGetPlayerTagsRequest(&request.Model(), "TestEventsServerGetPlayerTags");
     HRESULT hr = PFEventsServerGetPlayerTagsAsync(stateHandle, &request.Model(), &async->asyncBlock);
     if (FAILED(hr))
@@ -498,7 +498,7 @@ void AutoGenEventsTests::TestEventsServerRemovePlayerTag(TestContext& testContex
     auto async = std::make_unique<XAsyncHelper<XAsyncResult>>(testContext);
 
     PFEventsRemovePlayerTagRequestWrapper<> request;
-    FillRemovePlayerTagRequest(request);
+    FillServerRemovePlayerTagRequest(request);
     LogRemovePlayerTagRequest(&request.Model(), "TestEventsServerRemovePlayerTag");
     HRESULT hr = PFEventsServerRemovePlayerTagAsync(stateHandle, &request.Model(), &async->asyncBlock);
     if (FAILED(hr))
@@ -527,19 +527,19 @@ void AutoGenEventsTests::TestEventsServerWriteCharacterEvent(TestContext& testCo
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFEventsServerWriteCharacterEventGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
             
-            LogPFEventsWriteEventResponse(result);
+            LogWriteEventResponse(result);
             return S_OK;
         }
 
         HRESULT Validate() override
         {
-            return ValidatePFEventsWriteEventResponse(result);
+            return ValidateServerWriteCharacterEventResponse(result);
         }
     };
     auto async = std::make_unique<XAsyncHelper<ServerWriteCharacterEventResultHolderStruct>>(testContext);
 
     PFEventsWriteServerCharacterEventRequestWrapper<> request;
-    FillWriteServerCharacterEventRequest(request);
+    FillServerWriteCharacterEventRequest(request);
     LogWriteServerCharacterEventRequest(&request.Model(), "TestEventsServerWriteCharacterEvent");
     HRESULT hr = PFEventsServerWriteCharacterEventAsync(stateHandle, &request.Model(), &async->asyncBlock);
     if (FAILED(hr))
@@ -568,19 +568,19 @@ void AutoGenEventsTests::TestEventsServerWritePlayerEvent(TestContext& testConte
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFEventsServerWritePlayerEventGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
             
-            LogPFEventsWriteEventResponse(result);
+            LogWriteEventResponse(result);
             return S_OK;
         }
 
         HRESULT Validate() override
         {
-            return ValidatePFEventsWriteEventResponse(result);
+            return ValidateServerWritePlayerEventResponse(result);
         }
     };
     auto async = std::make_unique<XAsyncHelper<ServerWritePlayerEventResultHolderStruct>>(testContext);
 
     PFEventsWriteServerPlayerEventRequestWrapper<> request;
-    FillWriteServerPlayerEventRequest(request);
+    FillServerWritePlayerEventRequest(request);
     LogWriteServerPlayerEventRequest(&request.Model(), "TestEventsServerWritePlayerEvent");
     HRESULT hr = PFEventsServerWritePlayerEventAsync(stateHandle, &request.Model(), &async->asyncBlock);
     if (FAILED(hr))
@@ -609,19 +609,19 @@ void AutoGenEventsTests::TestEventsServerWriteTitleEvent(TestContext& testContex
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFEventsServerWriteTitleEventGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
             
-            LogPFEventsWriteEventResponse(result);
+            LogWriteEventResponse(result);
             return S_OK;
         }
 
         HRESULT Validate() override
         {
-            return ValidatePFEventsWriteEventResponse(result);
+            return ValidateServerWriteTitleEventResponse(result);
         }
     };
     auto async = std::make_unique<XAsyncHelper<ServerWriteTitleEventResultHolderStruct>>(testContext);
 
     PFEventsWriteTitleEventRequestWrapper<> request;
-    FillWriteTitleEventRequest(request);
+    FillServerWriteTitleEventRequest(request);
     LogWriteTitleEventRequest(&request.Model(), "TestEventsServerWriteTitleEvent");
     HRESULT hr = PFEventsServerWriteTitleEventAsync(stateHandle, &request.Model(), &async->asyncBlock);
     if (FAILED(hr))
@@ -649,13 +649,13 @@ void AutoGenEventsTests::TestEventsWriteEvents(TestContext& testContext)
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFEventsWriteEventsGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
             
-            LogPFEventsWriteEventsResponse(result);
+            LogWriteEventsResponse(result);
             return S_OK;
         }
 
         HRESULT Validate() override
         {
-            return ValidatePFEventsWriteEventsResponse(result);
+            return ValidateWriteEventsResponse(result);
         }
     };
     auto async = std::make_unique<XAsyncHelper<WriteEventsResultHolderStruct>>(testContext);
@@ -688,19 +688,19 @@ void AutoGenEventsTests::TestEventsWriteTelemetryEvents(TestContext& testContext
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFEventsWriteTelemetryEventsGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
             
-            LogPFEventsWriteEventsResponse(result);
+            LogWriteEventsResponse(result);
             return S_OK;
         }
 
         HRESULT Validate() override
         {
-            return ValidatePFEventsWriteEventsResponse(result);
+            return ValidateWriteTelemetryEventsResponse(result);
         }
     };
     auto async = std::make_unique<XAsyncHelper<WriteTelemetryEventsResultHolderStruct>>(testContext);
 
     PFEventsWriteEventsRequestWrapper<> request;
-    FillWriteEventsRequest(request);
+    FillWriteTelemetryEventsRequest(request);
     LogWriteEventsRequest(&request.Model(), "TestEventsWriteTelemetryEvents");
     HRESULT hr = PFEventsWriteTelemetryEventsAsync(entityHandle, &request.Model(), &async->asyncBlock);
     if (FAILED(hr))

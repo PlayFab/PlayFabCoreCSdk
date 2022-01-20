@@ -402,6 +402,21 @@ public:
     static HRESULT Copy(const PFMultiplayerServerInstrumentationConfiguration& input, PFMultiplayerServerInstrumentationConfiguration& output, ModelBuffer& buffer);
 };
 
+class WindowsCrashDumpConfiguration : public Wrappers::PFMultiplayerServerWindowsCrashDumpConfigurationWrapper<Allocator>, public InputModel
+{
+public:
+    using ModelWrapperType = typename Wrappers::PFMultiplayerServerWindowsCrashDumpConfigurationWrapper<Allocator>;
+    using ModelWrapperType::ModelType;
+
+    // Constructors
+    using ModelWrapperType::ModelWrapperType;
+
+    // InputModel
+    JsonValue ToJson() const override;
+    static JsonValue ToJson(const PFMultiplayerServerWindowsCrashDumpConfiguration& input);
+
+};
+
 class CreateBuildWithManagedContainerRequest : public Wrappers::PFMultiplayerServerCreateBuildWithManagedContainerRequestWrapper<Allocator>, public InputModel
 {
 public:

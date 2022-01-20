@@ -1240,6 +1240,20 @@ HRESULT InstrumentationConfiguration::Copy(const PFMultiplayerServerInstrumentat
     return S_OK;
 }
 
+JsonValue WindowsCrashDumpConfiguration::ToJson() const
+{
+    return WindowsCrashDumpConfiguration::ToJson(this->Model());
+}
+
+JsonValue WindowsCrashDumpConfiguration::ToJson(const PFMultiplayerServerWindowsCrashDumpConfiguration& input)
+{
+    JsonValue output{ rapidjson::kObjectType };
+    JsonUtils::ObjectAddMember(output, "CustomDumpFlags", input.customDumpFlags);
+    JsonUtils::ObjectAddMember(output, "DumpType", input.dumpType);
+    JsonUtils::ObjectAddMember(output, "IsEnabled", input.isEnabled);
+    return output;
+}
+
 JsonValue CreateBuildWithManagedContainerRequest::ToJson() const
 {
     return CreateBuildWithManagedContainerRequest::ToJson(this->Model());
@@ -1264,6 +1278,7 @@ JsonValue CreateBuildWithManagedContainerRequest::ToJson(const PFMultiplayerServ
     JsonUtils::ObjectAddMember(output, "StartMultiplayerServerCommand", input.startMultiplayerServerCommand);
     JsonUtils::ObjectAddMember(output, "UseStreamingForAssetDownloads", input.useStreamingForAssetDownloads);
     JsonUtils::ObjectAddMember(output, "VmSize", input.vmSize);
+    JsonUtils::ObjectAddMember<WindowsCrashDumpConfiguration>(output, "WindowsCrashDumpConfiguration", input.windowsCrashDumpConfiguration);
     return output;
 }
 

@@ -21,7 +21,7 @@ void AutoGenFriendsTests::Log(std::stringstream& ss)
 
 HRESULT AutoGenFriendsTests::LogHR(HRESULT hr)
 {
-    if( TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    if (TestApp::ShouldTrace(PFTestTraceLevel::Information))
     {
         TestApp::Log("Result: 0x%0.8x", hr);
     }
@@ -61,7 +61,7 @@ void AutoGenFriendsTests::AddTests()
 
 void AutoGenFriendsTests::ClassSetUp()
 {
-    HRESULT hr = PFAdminInitialize(testTitleData.titleId.data(), testTitleData.developerSecretKey.data(), nullptr, &stateHandle);
+    HRESULT hr = PFAdminInitialize(testTitleData.titleId.data(), testTitleData.developerSecretKey.data(), testTitleData.connectionString.data(), nullptr, &stateHandle);
     assert(SUCCEEDED(hr));
     if (SUCCEEDED(hr))
     {
@@ -173,13 +173,13 @@ void AutoGenFriendsTests::TestFriendsClientAddFriend(TestContext& testContext)
         HRESULT Get(XAsyncBlock* async) override
         {
             RETURN_IF_FAILED(LogHR(PFFriendsClientAddFriendGetResult(async, &result)));
-            LogPFFriendsAddFriendResult(&result);
+            LogAddFriendResult(&result);
             return S_OK;
         }
 
         HRESULT Validate() override
         {
-            return ValidatePFFriendsAddFriendResult(&result);
+            return ValidateClientAddFriendResponse(&result);
         }
     };
     auto async = std::make_unique<XAsyncHelper<ClientAddFriendResultHolderStruct>>(testContext);
@@ -201,7 +201,6 @@ void AutoGenFriendsTests::TestFriendsClientAddFriendCleanupClientRemoveFriend(Te
 
     PFFriendsClientRemoveFriendRequestWrapper<> request;
     FillClientAddFriendCleanupClientRemoveFriendRequest(request);
-    LogClientRemoveFriendRequest(&request.Model(), "TestFriendsClientAddFriendCleanupClientRemoveFriend");
     HRESULT hr = PFFriendsClientRemoveFriendAsync(titlePlayerHandle, &request.Model(), &async->asyncBlock);
     if (FAILED(hr))
     {
@@ -227,13 +226,13 @@ void AutoGenFriendsTests::TestFriendsClientGetFriendsList(TestContext& testConte
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFFriendsClientGetFriendsListGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
             
-            LogPFFriendsGetFriendsListResult(result);
+            LogGetFriendsListResult(result);
             return S_OK;
         }
 
         HRESULT Validate() override
         {
-            return ValidatePFFriendsGetFriendsListResult(result);
+            return ValidateClientGetFriendsListResponse(result);
         }
     };
     auto async = std::make_unique<XAsyncHelper<ClientGetFriendsListResultHolderStruct>>(testContext);
@@ -261,15 +260,13 @@ void AutoGenFriendsTests::TestFriendsClientRemoveFriendPrerequisiteClientAddFrie
         HRESULT Get(XAsyncBlock* async) override
         {
             RETURN_IF_FAILED(LogHR(PFFriendsClientAddFriendGetResult(async, &result)));
-            LogPFFriendsAddFriendResult(&result);
-            return StoreClientRemoveFriendPrerequisitePFFriendsAddFriendResult(shared_from_this());
+            return StoreClientRemoveFriendPrerequisiteClientAddFriendResponse(shared_from_this());
         }
     };
     auto async = std::make_unique<XAsyncHelper<ClientAddFriendResultHolderStruct>>(testContext);
 
     PFFriendsClientAddFriendRequestWrapper<> request;
     FillClientRemoveFriendPrerequisiteClientAddFriendRequest(request);
-    LogClientAddFriendRequest(&request.Model(), "TestFriendsClientGetFriendsList");
     HRESULT hr = PFFriendsClientAddFriendAsync(titlePlayerHandle, &request.Model(), &async->asyncBlock);
     if (FAILED(hr))
     {
@@ -353,13 +350,13 @@ void AutoGenFriendsTests::TestFriendsServerGetFriendsList(TestContext& testConte
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFFriendsServerGetFriendsListGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
             
-            LogPFFriendsGetFriendsListResult(result);
+            LogGetFriendsListResult(result);
             return S_OK;
         }
 
         HRESULT Validate() override
         {
-            return ValidatePFFriendsGetFriendsListResult(result);
+            return ValidateServerGetFriendsListResponse(result);
         }
     };
     auto async = std::make_unique<XAsyncHelper<ServerGetFriendsListResultHolderStruct>>(testContext);

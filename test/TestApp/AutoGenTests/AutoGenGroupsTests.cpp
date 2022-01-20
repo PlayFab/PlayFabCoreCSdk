@@ -21,7 +21,7 @@ void AutoGenGroupsTests::Log(std::stringstream& ss)
 
 HRESULT AutoGenGroupsTests::LogHR(HRESULT hr)
 {
-    if( TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    if (TestApp::ShouldTrace(PFTestTraceLevel::Information))
     {
         TestApp::Log("Result: 0x%0.8x", hr);
     }
@@ -129,7 +129,7 @@ void AutoGenGroupsTests::AddTests()
 
 void AutoGenGroupsTests::ClassSetUp()
 {
-    HRESULT hr = PFAdminInitialize(testTitleData.titleId.data(), testTitleData.developerSecretKey.data(), nullptr, &stateHandle);
+    HRESULT hr = PFAdminInitialize(testTitleData.titleId.data(), testTitleData.developerSecretKey.data(), testTitleData.connectionString.data(), nullptr, &stateHandle);
     assert(SUCCEEDED(hr));
     if (SUCCEEDED(hr))
     {
@@ -245,16 +245,13 @@ void AutoGenGroupsTests::TestGroupsAcceptGroupApplicationPrerequisiteGetGroup(Te
 
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFGroupsGetGroupGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
-            
-            LogPFGroupsGetGroupResponse(result);
-            return StoreAcceptGroupApplicationPrerequisitePFGroupsGetGroupResponse(shared_from_this());
+            return StoreAcceptGroupApplicationPrerequisiteGetGroupResponse(shared_from_this());
         }
     };
     auto async = std::make_unique<XAsyncHelper<GetGroupResultHolderStruct>>(testContext);
 
     PFGroupsGetGroupRequestWrapper<> request;
     FillAcceptGroupApplicationPrerequisiteGetGroupRequest(request);
-    LogGetGroupRequest(&request.Model(), "TestGroupsUpdateRole");
     HRESULT hr = PFGroupsGetGroupAsync(entityHandle, &request.Model(), &async->asyncBlock);
     if (FAILED(hr))
     {
@@ -274,16 +271,13 @@ void AutoGenGroupsTests::TestGroupsAcceptGroupApplicationPrerequisiteApplyToGrou
 
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFGroupsApplyToGroupGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
-            
-            LogPFGroupsApplyToGroupResponse(result);
-            return StoreAcceptGroupApplicationPrerequisitePFGroupsApplyToGroupResponse(shared_from_this());
+            return StoreAcceptGroupApplicationPrerequisiteApplyToGroupResponse(shared_from_this());
         }
     };
     auto async = std::make_unique<XAsyncHelper<ApplyToGroupResultHolderStruct>>(testContext);
 
     PFGroupsApplyToGroupRequestWrapper<> request;
     FillAcceptGroupApplicationPrerequisiteApplyToGroupRequest(request);
-    LogApplyToGroupRequest(&request.Model(), "TestGroupsUpdateRole");
     HRESULT hr = PFGroupsApplyToGroupAsync(entityHandle2, &request.Model(), &async->asyncBlock);
     if (FAILED(hr))
     {
@@ -313,7 +307,6 @@ void AutoGenGroupsTests::TestGroupsAcceptGroupApplicationCleanupRemoveMembers(Te
 
     PFGroupsRemoveMembersRequestWrapper<> request;
     FillAcceptGroupApplicationCleanupRemoveMembersRequest(request);
-    LogRemoveMembersRequest(&request.Model(), "TestGroupsAcceptGroupApplicationCleanupRemoveMembers");
     HRESULT hr = PFGroupsRemoveMembersAsync(entityHandle, &request.Model(), &async->asyncBlock);
     if (FAILED(hr))
     {
@@ -338,16 +331,13 @@ void AutoGenGroupsTests::TestGroupsAcceptGroupInvitationPrerequisiteGetGroup(Tes
 
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFGroupsGetGroupGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
-            
-            LogPFGroupsGetGroupResponse(result);
-            return StoreAcceptGroupInvitationPrerequisitePFGroupsGetGroupResponse(shared_from_this());
+            return StoreAcceptGroupInvitationPrerequisiteGetGroupResponse(shared_from_this());
         }
     };
     auto async = std::make_unique<XAsyncHelper<GetGroupResultHolderStruct>>(testContext);
 
     PFGroupsGetGroupRequestWrapper<> request;
     FillAcceptGroupInvitationPrerequisiteGetGroupRequest(request);
-    LogGetGroupRequest(&request.Model(), "TestGroupsAcceptGroupApplication");
     HRESULT hr = PFGroupsGetGroupAsync(entityHandle, &request.Model(), &async->asyncBlock);
     if (FAILED(hr))
     {
@@ -367,16 +357,13 @@ void AutoGenGroupsTests::TestGroupsAcceptGroupInvitationPrerequisiteInviteToGrou
 
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFGroupsInviteToGroupGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
-            
-            LogPFGroupsInviteToGroupResponse(result);
-            return StoreAcceptGroupInvitationPrerequisitePFGroupsInviteToGroupResponse(shared_from_this());
+            return StoreAcceptGroupInvitationPrerequisiteInviteToGroupResponse(shared_from_this());
         }
     };
     auto async = std::make_unique<XAsyncHelper<InviteToGroupResultHolderStruct>>(testContext);
 
     PFGroupsInviteToGroupRequestWrapper<> request;
     FillAcceptGroupInvitationPrerequisiteInviteToGroupRequest(request);
-    LogInviteToGroupRequest(&request.Model(), "TestGroupsAcceptGroupApplication");
     HRESULT hr = PFGroupsInviteToGroupAsync(entityHandle, &request.Model(), &async->asyncBlock);
     if (FAILED(hr))
     {
@@ -406,7 +393,6 @@ void AutoGenGroupsTests::TestGroupsAcceptGroupInvitationCleanupRemoveMembers(Tes
 
     PFGroupsRemoveMembersRequestWrapper<> request;
     FillAcceptGroupInvitationCleanupRemoveMembersRequest(request);
-    LogRemoveMembersRequest(&request.Model(), "TestGroupsAcceptGroupInvitationCleanupRemoveMembers");
     HRESULT hr = PFGroupsRemoveMembersAsync(entityHandle, &request.Model(), &async->asyncBlock);
     if (FAILED(hr))
     {
@@ -431,16 +417,13 @@ void AutoGenGroupsTests::TestGroupsAddMembersPrerequisiteGetGroup(TestContext& t
 
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFGroupsGetGroupGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
-            
-            LogPFGroupsGetGroupResponse(result);
-            return StoreAddMembersPrerequisitePFGroupsGetGroupResponse(shared_from_this());
+            return StoreAddMembersPrerequisiteGetGroupResponse(shared_from_this());
         }
     };
     auto async = std::make_unique<XAsyncHelper<GetGroupResultHolderStruct>>(testContext);
 
     PFGroupsGetGroupRequestWrapper<> request;
     FillAddMembersPrerequisiteGetGroupRequest(request);
-    LogGetGroupRequest(&request.Model(), "TestGroupsAcceptGroupInvitation");
     HRESULT hr = PFGroupsGetGroupAsync(entityHandle, &request.Model(), &async->asyncBlock);
     if (FAILED(hr))
     {
@@ -470,7 +453,6 @@ void AutoGenGroupsTests::TestGroupsAddMembersCleanupRemoveMembers(TestContext& t
 
     PFGroupsRemoveMembersRequestWrapper<> request;
     FillAddMembersCleanupRemoveMembersRequest(request);
-    LogRemoveMembersRequest(&request.Model(), "TestGroupsAddMembersCleanupRemoveMembers");
     HRESULT hr = PFGroupsRemoveMembersAsync(entityHandle, &request.Model(), &async->asyncBlock);
     if (FAILED(hr))
     {
@@ -495,16 +477,13 @@ void AutoGenGroupsTests::TestGroupsApplyToGroupPrerequisiteGetGroup(TestContext&
 
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFGroupsGetGroupGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
-            
-            LogPFGroupsGetGroupResponse(result);
-            return StoreApplyToGroupPrerequisitePFGroupsGetGroupResponse(shared_from_this());
+            return StoreApplyToGroupPrerequisiteGetGroupResponse(shared_from_this());
         }
     };
     auto async = std::make_unique<XAsyncHelper<GetGroupResultHolderStruct>>(testContext);
 
     PFGroupsGetGroupRequestWrapper<> request;
     FillApplyToGroupPrerequisiteGetGroupRequest(request);
-    LogGetGroupRequest(&request.Model(), "TestGroupsAddMembers");
     HRESULT hr = PFGroupsGetGroupAsync(entityHandle, &request.Model(), &async->asyncBlock);
     if (FAILED(hr))
     {
@@ -525,13 +504,13 @@ void AutoGenGroupsTests::TestGroupsApplyToGroup(TestContext& testContext)
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFGroupsApplyToGroupGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
             
-            LogPFGroupsApplyToGroupResponse(result);
+            LogApplyToGroupResponse(result);
             return S_OK;
         }
 
         HRESULT Validate() override
         {
-            return ValidatePFGroupsApplyToGroupResponse(result);
+            return ValidateApplyToGroupResponse(result);
         }
     };
     auto async = std::make_unique<XAsyncHelper<ApplyToGroupResultHolderStruct>>(testContext);
@@ -553,7 +532,6 @@ void AutoGenGroupsTests::TestGroupsApplyToGroupCleanupRemoveGroupApplication(Tes
 
     PFGroupsRemoveGroupApplicationRequestWrapper<> request;
     FillApplyToGroupCleanupRemoveGroupApplicationRequest(request);
-    LogRemoveGroupApplicationRequest(&request.Model(), "TestGroupsApplyToGroupCleanupRemoveGroupApplication");
     HRESULT hr = PFGroupsRemoveGroupApplicationAsync(entityHandle, &request.Model(), &async->asyncBlock);
     if (FAILED(hr))
     {
@@ -578,16 +556,13 @@ void AutoGenGroupsTests::TestGroupsBlockEntityPrerequisiteGetGroup(TestContext& 
 
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFGroupsGetGroupGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
-            
-            LogPFGroupsGetGroupResponse(result);
-            return StoreBlockEntityPrerequisitePFGroupsGetGroupResponse(shared_from_this());
+            return StoreBlockEntityPrerequisiteGetGroupResponse(shared_from_this());
         }
     };
     auto async = std::make_unique<XAsyncHelper<GetGroupResultHolderStruct>>(testContext);
 
     PFGroupsGetGroupRequestWrapper<> request;
     FillBlockEntityPrerequisiteGetGroupRequest(request);
-    LogGetGroupRequest(&request.Model(), "TestGroupsApplyToGroup");
     HRESULT hr = PFGroupsGetGroupAsync(entityHandle, &request.Model(), &async->asyncBlock);
     if (FAILED(hr))
     {
@@ -617,7 +592,6 @@ void AutoGenGroupsTests::TestGroupsBlockEntityCleanupUnblockEntity(TestContext& 
 
     PFGroupsUnblockEntityRequestWrapper<> request;
     FillBlockEntityCleanupUnblockEntityRequest(request);
-    LogUnblockEntityRequest(&request.Model(), "TestGroupsBlockEntityCleanupUnblockEntity");
     HRESULT hr = PFGroupsUnblockEntityAsync(entityHandle, &request.Model(), &async->asyncBlock);
     if (FAILED(hr))
     {
@@ -642,16 +616,13 @@ void AutoGenGroupsTests::TestGroupsChangeMemberRolePrerequisiteGetGroup(TestCont
 
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFGroupsGetGroupGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
-            
-            LogPFGroupsGetGroupResponse(result);
-            return StoreChangeMemberRolePrerequisitePFGroupsGetGroupResponse(shared_from_this());
+            return StoreChangeMemberRolePrerequisiteGetGroupResponse(shared_from_this());
         }
     };
     auto async = std::make_unique<XAsyncHelper<GetGroupResultHolderStruct>>(testContext);
 
     PFGroupsGetGroupRequestWrapper<> request;
     FillChangeMemberRolePrerequisiteGetGroupRequest(request);
-    LogGetGroupRequest(&request.Model(), "TestGroupsBlockEntity");
     HRESULT hr = PFGroupsGetGroupAsync(entityHandle, &request.Model(), &async->asyncBlock);
     if (FAILED(hr))
     {
@@ -681,7 +652,6 @@ void AutoGenGroupsTests::TestGroupsChangeMemberRoleCleanupChangeMemberRole(TestC
 
     PFGroupsChangeMemberRoleRequestWrapper<> request;
     FillChangeMemberRoleCleanupChangeMemberRoleRequest(request);
-    LogChangeMemberRoleRequest(&request.Model(), "TestGroupsChangeMemberRoleCleanupChangeMemberRole");
     HRESULT hr = PFGroupsChangeMemberRoleAsync(entityHandle, &request.Model(), &async->asyncBlock);
     if (FAILED(hr))
     {
@@ -707,13 +677,13 @@ void AutoGenGroupsTests::TestGroupsCreateGroup(TestContext& testContext)
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFGroupsCreateGroupGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
             
-            LogPFGroupsCreateGroupResponse(result);
+            LogCreateGroupResponse(result);
             return S_OK;
         }
 
         HRESULT Validate() override
         {
-            return ValidatePFGroupsCreateGroupResponse(result);
+            return ValidateCreateGroupResponse(result);
         }
     };
     auto async = std::make_unique<XAsyncHelper<CreateGroupResultHolderStruct>>(testContext);
@@ -740,14 +710,13 @@ void AutoGenGroupsTests::TestGroupsCreateGroupCleanupGetGroup(TestContext& testC
 
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFGroupsGetGroupGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
-            return StoreCreateGroupCleanupPFGroupsGetGroupResponse(shared_from_this());
+            return StoreCreateGroupCleanupGetGroupResponse(shared_from_this());
         }
     };
     auto async = std::make_unique<XAsyncHelper<GetGroupResultHolderStruct>>(testContext);
 
     PFGroupsGetGroupRequestWrapper<> request;
     FillCreateGroupCleanupGetGroupRequest(request);
-    LogGetGroupRequest(&request.Model(), "TestGroupsCreateGroupCleanupGetGroup");
     HRESULT hr = PFGroupsGetGroupAsync(entityHandle, &request.Model(), &async->asyncBlock);
     if (FAILED(hr))
     {
@@ -762,7 +731,6 @@ void AutoGenGroupsTests::TestGroupsCreateGroupCleanupDeleteGroup(TestContext& te
 
     PFGroupsDeleteGroupRequestWrapper<> request;
     FillCreateGroupCleanupDeleteGroupRequest(request);
-    LogDeleteGroupRequest(&request.Model(), "TestGroupsCreateGroupCleanupDeleteGroup");
     HRESULT hr = PFGroupsDeleteGroupAsync(entityHandle, &request.Model(), &async->asyncBlock);
     if (FAILED(hr))
     {
@@ -787,16 +755,13 @@ void AutoGenGroupsTests::TestGroupsCreateRolePrerequisiteGetGroup(TestContext& t
 
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFGroupsGetGroupGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
-            
-            LogPFGroupsGetGroupResponse(result);
-            return StoreCreateRolePrerequisitePFGroupsGetGroupResponse(shared_from_this());
+            return StoreCreateRolePrerequisiteGetGroupResponse(shared_from_this());
         }
     };
     auto async = std::make_unique<XAsyncHelper<GetGroupResultHolderStruct>>(testContext);
 
     PFGroupsGetGroupRequestWrapper<> request;
     FillCreateRolePrerequisiteGetGroupRequest(request);
-    LogGetGroupRequest(&request.Model(), "TestGroupsCreateGroup");
     HRESULT hr = PFGroupsGetGroupAsync(entityHandle, &request.Model(), &async->asyncBlock);
     if (FAILED(hr))
     {
@@ -817,19 +782,19 @@ void AutoGenGroupsTests::TestGroupsCreateRole(TestContext& testContext)
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFGroupsCreateRoleGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
             
-            LogPFGroupsCreateGroupRoleResponse(result);
+            LogCreateGroupRoleResponse(result);
             return S_OK;
         }
 
         HRESULT Validate() override
         {
-            return ValidatePFGroupsCreateGroupRoleResponse(result);
+            return ValidateCreateRoleResponse(result);
         }
     };
     auto async = std::make_unique<XAsyncHelper<CreateRoleResultHolderStruct>>(testContext);
 
     PFGroupsCreateGroupRoleRequestWrapper<> request;
-    FillCreateGroupRoleRequest(request);
+    FillCreateRoleRequest(request);
     LogCreateGroupRoleRequest(&request.Model(), "TestGroupsCreateRole");
     HRESULT hr = PFGroupsCreateRoleAsync(entityHandle, &request.Model(), &async->asyncBlock);
     if (FAILED(hr))
@@ -845,7 +810,6 @@ void AutoGenGroupsTests::TestGroupsCreateRoleCleanupDeleteRole(TestContext& test
 
     PFGroupsDeleteRoleRequestWrapper<> request;
     FillCreateRoleCleanupDeleteRoleRequest(request);
-    LogDeleteRoleRequest(&request.Model(), "TestGroupsCreateRoleCleanupDeleteRole");
     HRESULT hr = PFGroupsDeleteRoleAsync(entityHandle, &request.Model(), &async->asyncBlock);
     if (FAILED(hr))
     {
@@ -870,16 +834,13 @@ void AutoGenGroupsTests::TestGroupsDeleteGroupPrerequisiteCreateGroup(TestContex
 
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFGroupsCreateGroupGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
-            
-            LogPFGroupsCreateGroupResponse(result);
-            return StoreDeleteGroupPrerequisitePFGroupsCreateGroupResponse(shared_from_this());
+            return StoreDeleteGroupPrerequisiteCreateGroupResponse(shared_from_this());
         }
     };
     auto async = std::make_unique<XAsyncHelper<CreateGroupResultHolderStruct>>(testContext);
 
     PFGroupsCreateGroupRequestWrapper<> request;
     FillDeleteGroupPrerequisiteCreateGroupRequest(request);
-    LogCreateGroupRequest(&request.Model(), "TestGroupsCreateRole");
     HRESULT hr = PFGroupsCreateGroupAsync(entityHandle, &request.Model(), &async->asyncBlock);
     if (FAILED(hr))
     {
@@ -919,16 +880,13 @@ void AutoGenGroupsTests::TestGroupsDeleteRolePrerequisiteGetGroup(TestContext& t
 
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFGroupsGetGroupGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
-            
-            LogPFGroupsGetGroupResponse(result);
-            return StoreDeleteRolePrerequisitePFGroupsGetGroupResponse(shared_from_this());
+            return StoreDeleteRolePrerequisiteGetGroupResponse(shared_from_this());
         }
     };
     auto async = std::make_unique<XAsyncHelper<GetGroupResultHolderStruct>>(testContext);
 
     PFGroupsGetGroupRequestWrapper<> request;
     FillDeleteRolePrerequisiteGetGroupRequest(request);
-    LogGetGroupRequest(&request.Model(), "TestGroupsDeleteGroup");
     HRESULT hr = PFGroupsGetGroupAsync(entityHandle, &request.Model(), &async->asyncBlock);
     if (FAILED(hr))
     {
@@ -948,16 +906,13 @@ void AutoGenGroupsTests::TestGroupsDeleteRolePrerequisiteCreateRole(TestContext&
 
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFGroupsCreateRoleGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
-            
-            LogPFGroupsCreateGroupRoleResponse(result);
-            return StoreDeleteRolePrerequisitePFGroupsCreateGroupRoleResponse(shared_from_this());
+            return StoreDeleteRolePrerequisiteCreateRoleResponse(shared_from_this());
         }
     };
     auto async = std::make_unique<XAsyncHelper<CreateRoleResultHolderStruct>>(testContext);
 
     PFGroupsCreateGroupRoleRequestWrapper<> request;
-    FillDeleteRolePrerequisiteCreateGroupRoleRequest(request);
-    LogCreateGroupRoleRequest(&request.Model(), "TestGroupsDeleteGroup");
+    FillDeleteRolePrerequisiteCreateRoleRequest(request);
     HRESULT hr = PFGroupsCreateRoleAsync(entityHandle, &request.Model(), &async->asyncBlock);
     if (FAILED(hr))
     {
@@ -998,13 +953,13 @@ void AutoGenGroupsTests::TestGroupsGetGroup(TestContext& testContext)
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFGroupsGetGroupGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
             
-            LogPFGroupsGetGroupResponse(result);
+            LogGetGroupResponse(result);
             return S_OK;
         }
 
         HRESULT Validate() override
         {
-            return ValidatePFGroupsGetGroupResponse(result);
+            return ValidateGetGroupResponse(result);
         }
     };
     auto async = std::make_unique<XAsyncHelper<GetGroupResultHolderStruct>>(testContext);
@@ -1036,16 +991,13 @@ void AutoGenGroupsTests::TestGroupsInviteToGroupPrerequisiteGetGroup(TestContext
 
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFGroupsGetGroupGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
-            
-            LogPFGroupsGetGroupResponse(result);
-            return StoreInviteToGroupPrerequisitePFGroupsGetGroupResponse(shared_from_this());
+            return StoreInviteToGroupPrerequisiteGetGroupResponse(shared_from_this());
         }
     };
     auto async = std::make_unique<XAsyncHelper<GetGroupResultHolderStruct>>(testContext);
 
     PFGroupsGetGroupRequestWrapper<> request;
     FillInviteToGroupPrerequisiteGetGroupRequest(request);
-    LogGetGroupRequest(&request.Model(), "TestGroupsGetGroup");
     HRESULT hr = PFGroupsGetGroupAsync(entityHandle, &request.Model(), &async->asyncBlock);
     if (FAILED(hr))
     {
@@ -1066,13 +1018,13 @@ void AutoGenGroupsTests::TestGroupsInviteToGroup(TestContext& testContext)
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFGroupsInviteToGroupGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
             
-            LogPFGroupsInviteToGroupResponse(result);
+            LogInviteToGroupResponse(result);
             return S_OK;
         }
 
         HRESULT Validate() override
         {
-            return ValidatePFGroupsInviteToGroupResponse(result);
+            return ValidateInviteToGroupResponse(result);
         }
     };
     auto async = std::make_unique<XAsyncHelper<InviteToGroupResultHolderStruct>>(testContext);
@@ -1094,7 +1046,6 @@ void AutoGenGroupsTests::TestGroupsInviteToGroupCleanupRemoveGroupInvitation(Tes
 
     PFGroupsRemoveGroupInvitationRequestWrapper<> request;
     FillInviteToGroupCleanupRemoveGroupInvitationRequest(request);
-    LogRemoveGroupInvitationRequest(&request.Model(), "TestGroupsInviteToGroupCleanupRemoveGroupInvitation");
     HRESULT hr = PFGroupsRemoveGroupInvitationAsync(entityHandle, &request.Model(), &async->asyncBlock);
     if (FAILED(hr))
     {
@@ -1119,16 +1070,13 @@ void AutoGenGroupsTests::TestGroupsIsMemberPrerequisiteGetGroup(TestContext& tes
 
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFGroupsGetGroupGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
-            
-            LogPFGroupsGetGroupResponse(result);
-            return StoreIsMemberPrerequisitePFGroupsGetGroupResponse(shared_from_this());
+            return StoreIsMemberPrerequisiteGetGroupResponse(shared_from_this());
         }
     };
     auto async = std::make_unique<XAsyncHelper<GetGroupResultHolderStruct>>(testContext);
 
     PFGroupsGetGroupRequestWrapper<> request;
     FillIsMemberPrerequisiteGetGroupRequest(request);
-    LogGetGroupRequest(&request.Model(), "TestGroupsInviteToGroup");
     HRESULT hr = PFGroupsGetGroupAsync(entityHandle, &request.Model(), &async->asyncBlock);
     if (FAILED(hr))
     {
@@ -1144,13 +1092,13 @@ void AutoGenGroupsTests::TestGroupsIsMember(TestContext& testContext)
         HRESULT Get(XAsyncBlock* async) override
         {
             RETURN_IF_FAILED(LogHR(PFGroupsIsMemberGetResult(async, &result)));
-            LogPFGroupsIsMemberResponse(&result);
+            LogIsMemberResponse(&result);
             return S_OK;
         }
 
         HRESULT Validate() override
         {
-            return ValidatePFGroupsIsMemberResponse(&result);
+            return ValidateIsMemberResponse(&result);
         }
     };
     auto async = std::make_unique<XAsyncHelper<IsMemberResultHolderStruct>>(testContext);
@@ -1182,16 +1130,13 @@ void AutoGenGroupsTests::TestGroupsListGroupApplicationsPrerequisiteGetGroup(Tes
 
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFGroupsGetGroupGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
-            
-            LogPFGroupsGetGroupResponse(result);
-            return StoreListGroupApplicationsPrerequisitePFGroupsGetGroupResponse(shared_from_this());
+            return StoreListGroupApplicationsPrerequisiteGetGroupResponse(shared_from_this());
         }
     };
     auto async = std::make_unique<XAsyncHelper<GetGroupResultHolderStruct>>(testContext);
 
     PFGroupsGetGroupRequestWrapper<> request;
     FillListGroupApplicationsPrerequisiteGetGroupRequest(request);
-    LogGetGroupRequest(&request.Model(), "TestGroupsIsMember");
     HRESULT hr = PFGroupsGetGroupAsync(entityHandle, &request.Model(), &async->asyncBlock);
     if (FAILED(hr))
     {
@@ -1212,13 +1157,13 @@ void AutoGenGroupsTests::TestGroupsListGroupApplications(TestContext& testContex
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFGroupsListGroupApplicationsGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
             
-            LogPFGroupsListGroupApplicationsResponse(result);
+            LogListGroupApplicationsResponse(result);
             return S_OK;
         }
 
         HRESULT Validate() override
         {
-            return ValidatePFGroupsListGroupApplicationsResponse(result);
+            return ValidateListGroupApplicationsResponse(result);
         }
     };
     auto async = std::make_unique<XAsyncHelper<ListGroupApplicationsResultHolderStruct>>(testContext);
@@ -1250,16 +1195,13 @@ void AutoGenGroupsTests::TestGroupsListGroupBlocksPrerequisiteGetGroup(TestConte
 
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFGroupsGetGroupGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
-            
-            LogPFGroupsGetGroupResponse(result);
-            return StoreListGroupBlocksPrerequisitePFGroupsGetGroupResponse(shared_from_this());
+            return StoreListGroupBlocksPrerequisiteGetGroupResponse(shared_from_this());
         }
     };
     auto async = std::make_unique<XAsyncHelper<GetGroupResultHolderStruct>>(testContext);
 
     PFGroupsGetGroupRequestWrapper<> request;
     FillListGroupBlocksPrerequisiteGetGroupRequest(request);
-    LogGetGroupRequest(&request.Model(), "TestGroupsListGroupApplications");
     HRESULT hr = PFGroupsGetGroupAsync(entityHandle, &request.Model(), &async->asyncBlock);
     if (FAILED(hr))
     {
@@ -1280,13 +1222,13 @@ void AutoGenGroupsTests::TestGroupsListGroupBlocks(TestContext& testContext)
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFGroupsListGroupBlocksGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
             
-            LogPFGroupsListGroupBlocksResponse(result);
+            LogListGroupBlocksResponse(result);
             return S_OK;
         }
 
         HRESULT Validate() override
         {
-            return ValidatePFGroupsListGroupBlocksResponse(result);
+            return ValidateListGroupBlocksResponse(result);
         }
     };
     auto async = std::make_unique<XAsyncHelper<ListGroupBlocksResultHolderStruct>>(testContext);
@@ -1318,16 +1260,13 @@ void AutoGenGroupsTests::TestGroupsListGroupInvitationsPrerequisiteGetGroup(Test
 
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFGroupsGetGroupGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
-            
-            LogPFGroupsGetGroupResponse(result);
-            return StoreListGroupInvitationsPrerequisitePFGroupsGetGroupResponse(shared_from_this());
+            return StoreListGroupInvitationsPrerequisiteGetGroupResponse(shared_from_this());
         }
     };
     auto async = std::make_unique<XAsyncHelper<GetGroupResultHolderStruct>>(testContext);
 
     PFGroupsGetGroupRequestWrapper<> request;
     FillListGroupInvitationsPrerequisiteGetGroupRequest(request);
-    LogGetGroupRequest(&request.Model(), "TestGroupsListGroupBlocks");
     HRESULT hr = PFGroupsGetGroupAsync(entityHandle, &request.Model(), &async->asyncBlock);
     if (FAILED(hr))
     {
@@ -1348,13 +1287,13 @@ void AutoGenGroupsTests::TestGroupsListGroupInvitations(TestContext& testContext
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFGroupsListGroupInvitationsGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
             
-            LogPFGroupsListGroupInvitationsResponse(result);
+            LogListGroupInvitationsResponse(result);
             return S_OK;
         }
 
         HRESULT Validate() override
         {
-            return ValidatePFGroupsListGroupInvitationsResponse(result);
+            return ValidateListGroupInvitationsResponse(result);
         }
     };
     auto async = std::make_unique<XAsyncHelper<ListGroupInvitationsResultHolderStruct>>(testContext);
@@ -1386,16 +1325,13 @@ void AutoGenGroupsTests::TestGroupsListGroupMembersPrerequisiteGetGroup(TestCont
 
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFGroupsGetGroupGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
-            
-            LogPFGroupsGetGroupResponse(result);
-            return StoreListGroupMembersPrerequisitePFGroupsGetGroupResponse(shared_from_this());
+            return StoreListGroupMembersPrerequisiteGetGroupResponse(shared_from_this());
         }
     };
     auto async = std::make_unique<XAsyncHelper<GetGroupResultHolderStruct>>(testContext);
 
     PFGroupsGetGroupRequestWrapper<> request;
     FillListGroupMembersPrerequisiteGetGroupRequest(request);
-    LogGetGroupRequest(&request.Model(), "TestGroupsListGroupInvitations");
     HRESULT hr = PFGroupsGetGroupAsync(entityHandle, &request.Model(), &async->asyncBlock);
     if (FAILED(hr))
     {
@@ -1416,13 +1352,13 @@ void AutoGenGroupsTests::TestGroupsListGroupMembers(TestContext& testContext)
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFGroupsListGroupMembersGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
             
-            LogPFGroupsListGroupMembersResponse(result);
+            LogListGroupMembersResponse(result);
             return S_OK;
         }
 
         HRESULT Validate() override
         {
-            return ValidatePFGroupsListGroupMembersResponse(result);
+            return ValidateListGroupMembersResponse(result);
         }
     };
     auto async = std::make_unique<XAsyncHelper<ListGroupMembersResultHolderStruct>>(testContext);
@@ -1454,16 +1390,13 @@ void AutoGenGroupsTests::TestGroupsListMembershipPrerequisiteGetGroup(TestContex
 
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFGroupsGetGroupGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
-            
-            LogPFGroupsGetGroupResponse(result);
-            return StoreListMembershipPrerequisitePFGroupsGetGroupResponse(shared_from_this());
+            return StoreListMembershipPrerequisiteGetGroupResponse(shared_from_this());
         }
     };
     auto async = std::make_unique<XAsyncHelper<GetGroupResultHolderStruct>>(testContext);
 
     PFGroupsGetGroupRequestWrapper<> request;
     FillListMembershipPrerequisiteGetGroupRequest(request);
-    LogGetGroupRequest(&request.Model(), "TestGroupsListGroupMembers");
     HRESULT hr = PFGroupsGetGroupAsync(entityHandle, &request.Model(), &async->asyncBlock);
     if (FAILED(hr))
     {
@@ -1484,13 +1417,13 @@ void AutoGenGroupsTests::TestGroupsListMembership(TestContext& testContext)
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFGroupsListMembershipGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
             
-            LogPFGroupsListMembershipResponse(result);
+            LogListMembershipResponse(result);
             return S_OK;
         }
 
         HRESULT Validate() override
         {
-            return ValidatePFGroupsListMembershipResponse(result);
+            return ValidateListMembershipResponse(result);
         }
     };
     auto async = std::make_unique<XAsyncHelper<ListMembershipResultHolderStruct>>(testContext);
@@ -1522,16 +1455,13 @@ void AutoGenGroupsTests::TestGroupsListMembershipOpportunitiesPrerequisiteGetGro
 
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFGroupsGetGroupGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
-            
-            LogPFGroupsGetGroupResponse(result);
-            return StoreListMembershipOpportunitiesPrerequisitePFGroupsGetGroupResponse(shared_from_this());
+            return StoreListMembershipOpportunitiesPrerequisiteGetGroupResponse(shared_from_this());
         }
     };
     auto async = std::make_unique<XAsyncHelper<GetGroupResultHolderStruct>>(testContext);
 
     PFGroupsGetGroupRequestWrapper<> request;
     FillListMembershipOpportunitiesPrerequisiteGetGroupRequest(request);
-    LogGetGroupRequest(&request.Model(), "TestGroupsListMembership");
     HRESULT hr = PFGroupsGetGroupAsync(entityHandle, &request.Model(), &async->asyncBlock);
     if (FAILED(hr))
     {
@@ -1551,16 +1481,13 @@ void AutoGenGroupsTests::TestGroupsListMembershipOpportunitiesPrerequisiteApplyT
 
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFGroupsApplyToGroupGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
-            
-            LogPFGroupsApplyToGroupResponse(result);
-            return StoreListMembershipOpportunitiesPrerequisitePFGroupsApplyToGroupResponse(shared_from_this());
+            return StoreListMembershipOpportunitiesPrerequisiteApplyToGroupResponse(shared_from_this());
         }
     };
     auto async = std::make_unique<XAsyncHelper<ApplyToGroupResultHolderStruct>>(testContext);
 
     PFGroupsApplyToGroupRequestWrapper<> request;
     FillListMembershipOpportunitiesPrerequisiteApplyToGroupRequest(request);
-    LogApplyToGroupRequest(&request.Model(), "TestGroupsListMembership");
     HRESULT hr = PFGroupsApplyToGroupAsync(entityHandle2, &request.Model(), &async->asyncBlock);
     if (FAILED(hr))
     {
@@ -1581,13 +1508,13 @@ void AutoGenGroupsTests::TestGroupsListMembershipOpportunities(TestContext& test
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFGroupsListMembershipOpportunitiesGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
             
-            LogPFGroupsListMembershipOpportunitiesResponse(result);
+            LogListMembershipOpportunitiesResponse(result);
             return S_OK;
         }
 
         HRESULT Validate() override
         {
-            return ValidatePFGroupsListMembershipOpportunitiesResponse(result);
+            return ValidateListMembershipOpportunitiesResponse(result);
         }
     };
     auto async = std::make_unique<XAsyncHelper<ListMembershipOpportunitiesResultHolderStruct>>(testContext);
@@ -1609,7 +1536,6 @@ void AutoGenGroupsTests::TestGroupsListMembershipOpportunitiesCleanupRemoveGroup
 
     PFGroupsRemoveGroupApplicationRequestWrapper<> request;
     FillListMembershipOpportunitiesCleanupRemoveGroupApplicationRequest(request);
-    LogRemoveGroupApplicationRequest(&request.Model(), "TestGroupsListMembershipOpportunitiesCleanupRemoveGroupApplication");
     HRESULT hr = PFGroupsRemoveGroupApplicationAsync(entityHandle, &request.Model(), &async->asyncBlock);
     if (FAILED(hr))
     {
@@ -1634,16 +1560,13 @@ void AutoGenGroupsTests::TestGroupsRemoveGroupApplicationPrerequisiteGetGroup(Te
 
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFGroupsGetGroupGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
-            
-            LogPFGroupsGetGroupResponse(result);
-            return StoreRemoveGroupApplicationPrerequisitePFGroupsGetGroupResponse(shared_from_this());
+            return StoreRemoveGroupApplicationPrerequisiteGetGroupResponse(shared_from_this());
         }
     };
     auto async = std::make_unique<XAsyncHelper<GetGroupResultHolderStruct>>(testContext);
 
     PFGroupsGetGroupRequestWrapper<> request;
     FillRemoveGroupApplicationPrerequisiteGetGroupRequest(request);
-    LogGetGroupRequest(&request.Model(), "TestGroupsListMembershipOpportunities");
     HRESULT hr = PFGroupsGetGroupAsync(entityHandle, &request.Model(), &async->asyncBlock);
     if (FAILED(hr))
     {
@@ -1663,16 +1586,13 @@ void AutoGenGroupsTests::TestGroupsRemoveGroupApplicationPrerequisiteApplyToGrou
 
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFGroupsApplyToGroupGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
-            
-            LogPFGroupsApplyToGroupResponse(result);
-            return StoreRemoveGroupApplicationPrerequisitePFGroupsApplyToGroupResponse(shared_from_this());
+            return StoreRemoveGroupApplicationPrerequisiteApplyToGroupResponse(shared_from_this());
         }
     };
     auto async = std::make_unique<XAsyncHelper<ApplyToGroupResultHolderStruct>>(testContext);
 
     PFGroupsApplyToGroupRequestWrapper<> request;
     FillRemoveGroupApplicationPrerequisiteApplyToGroupRequest(request);
-    LogApplyToGroupRequest(&request.Model(), "TestGroupsListMembershipOpportunities");
     HRESULT hr = PFGroupsApplyToGroupAsync(entityHandle2, &request.Model(), &async->asyncBlock);
     if (FAILED(hr))
     {
@@ -1712,16 +1632,13 @@ void AutoGenGroupsTests::TestGroupsRemoveGroupInvitationPrerequisiteGetGroup(Tes
 
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFGroupsGetGroupGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
-            
-            LogPFGroupsGetGroupResponse(result);
-            return StoreRemoveGroupInvitationPrerequisitePFGroupsGetGroupResponse(shared_from_this());
+            return StoreRemoveGroupInvitationPrerequisiteGetGroupResponse(shared_from_this());
         }
     };
     auto async = std::make_unique<XAsyncHelper<GetGroupResultHolderStruct>>(testContext);
 
     PFGroupsGetGroupRequestWrapper<> request;
     FillRemoveGroupInvitationPrerequisiteGetGroupRequest(request);
-    LogGetGroupRequest(&request.Model(), "TestGroupsRemoveGroupApplication");
     HRESULT hr = PFGroupsGetGroupAsync(entityHandle, &request.Model(), &async->asyncBlock);
     if (FAILED(hr))
     {
@@ -1741,16 +1658,13 @@ void AutoGenGroupsTests::TestGroupsRemoveGroupInvitationPrerequisiteInviteToGrou
 
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFGroupsInviteToGroupGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
-            
-            LogPFGroupsInviteToGroupResponse(result);
-            return StoreRemoveGroupInvitationPrerequisitePFGroupsInviteToGroupResponse(shared_from_this());
+            return StoreRemoveGroupInvitationPrerequisiteInviteToGroupResponse(shared_from_this());
         }
     };
     auto async = std::make_unique<XAsyncHelper<InviteToGroupResultHolderStruct>>(testContext);
 
     PFGroupsInviteToGroupRequestWrapper<> request;
     FillRemoveGroupInvitationPrerequisiteInviteToGroupRequest(request);
-    LogInviteToGroupRequest(&request.Model(), "TestGroupsRemoveGroupApplication");
     HRESULT hr = PFGroupsInviteToGroupAsync(entityHandle, &request.Model(), &async->asyncBlock);
     if (FAILED(hr))
     {
@@ -1790,16 +1704,13 @@ void AutoGenGroupsTests::TestGroupsRemoveMembersPrerequisiteGetGroup(TestContext
 
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFGroupsGetGroupGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
-            
-            LogPFGroupsGetGroupResponse(result);
-            return StoreRemoveMembersPrerequisitePFGroupsGetGroupResponse(shared_from_this());
+            return StoreRemoveMembersPrerequisiteGetGroupResponse(shared_from_this());
         }
     };
     auto async = std::make_unique<XAsyncHelper<GetGroupResultHolderStruct>>(testContext);
 
     PFGroupsGetGroupRequestWrapper<> request;
     FillRemoveMembersPrerequisiteGetGroupRequest(request);
-    LogGetGroupRequest(&request.Model(), "TestGroupsRemoveGroupInvitation");
     HRESULT hr = PFGroupsGetGroupAsync(entityHandle, &request.Model(), &async->asyncBlock);
     if (FAILED(hr))
     {
@@ -1814,7 +1725,6 @@ void AutoGenGroupsTests::TestGroupsRemoveMembersPrerequisiteAddMembers(TestConte
 
     PFGroupsAddMembersRequestWrapper<> request;
     FillRemoveMembersPrerequisiteAddMembersRequest(request);
-    LogAddMembersRequest(&request.Model(), "TestGroupsRemoveGroupInvitation");
     HRESULT hr = PFGroupsAddMembersAsync(titleEntityHandle, &request.Model(), &async->asyncBlock);
     if (FAILED(hr))
     {
@@ -1854,16 +1764,13 @@ void AutoGenGroupsTests::TestGroupsUnblockEntityPrerequisiteGetGroup(TestContext
 
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFGroupsGetGroupGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
-            
-            LogPFGroupsGetGroupResponse(result);
-            return StoreUnblockEntityPrerequisitePFGroupsGetGroupResponse(shared_from_this());
+            return StoreUnblockEntityPrerequisiteGetGroupResponse(shared_from_this());
         }
     };
     auto async = std::make_unique<XAsyncHelper<GetGroupResultHolderStruct>>(testContext);
 
     PFGroupsGetGroupRequestWrapper<> request;
     FillUnblockEntityPrerequisiteGetGroupRequest(request);
-    LogGetGroupRequest(&request.Model(), "TestGroupsRemoveMembers");
     HRESULT hr = PFGroupsGetGroupAsync(entityHandle, &request.Model(), &async->asyncBlock);
     if (FAILED(hr))
     {
@@ -1878,7 +1785,6 @@ void AutoGenGroupsTests::TestGroupsUnblockEntityPrerequisiteBlockEntity(TestCont
 
     PFGroupsBlockEntityRequestWrapper<> request;
     FillUnblockEntityPrerequisiteBlockEntityRequest(request);
-    LogBlockEntityRequest(&request.Model(), "TestGroupsRemoveMembers");
     HRESULT hr = PFGroupsBlockEntityAsync(entityHandle, &request.Model(), &async->asyncBlock);
     if (FAILED(hr))
     {
@@ -1918,16 +1824,13 @@ void AutoGenGroupsTests::TestGroupsUpdateGroupPrerequisiteCreateGroup(TestContex
 
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFGroupsCreateGroupGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
-            
-            LogPFGroupsCreateGroupResponse(result);
-            return StoreUpdateGroupPrerequisitePFGroupsCreateGroupResponse(shared_from_this());
+            return StoreUpdateGroupPrerequisiteCreateGroupResponse(shared_from_this());
         }
     };
     auto async = std::make_unique<XAsyncHelper<CreateGroupResultHolderStruct>>(testContext);
 
     PFGroupsCreateGroupRequestWrapper<> request;
     FillUpdateGroupPrerequisiteCreateGroupRequest(request);
-    LogCreateGroupRequest(&request.Model(), "TestGroupsUnblockEntity");
     HRESULT hr = PFGroupsCreateGroupAsync(entityHandle, &request.Model(), &async->asyncBlock);
     if (FAILED(hr))
     {
@@ -1948,13 +1851,13 @@ void AutoGenGroupsTests::TestGroupsUpdateGroup(TestContext& testContext)
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFGroupsUpdateGroupGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
             
-            LogPFGroupsUpdateGroupResponse(result);
+            LogUpdateGroupResponse(result);
             return S_OK;
         }
 
         HRESULT Validate() override
         {
-            return ValidatePFGroupsUpdateGroupResponse(result);
+            return ValidateUpdateGroupResponse(result);
         }
     };
     auto async = std::make_unique<XAsyncHelper<UpdateGroupResultHolderStruct>>(testContext);
@@ -1976,7 +1879,6 @@ void AutoGenGroupsTests::TestGroupsUpdateGroupCleanupDeleteGroup(TestContext& te
 
     PFGroupsDeleteGroupRequestWrapper<> request;
     FillUpdateGroupCleanupDeleteGroupRequest(request);
-    LogDeleteGroupRequest(&request.Model(), "TestGroupsUpdateGroupCleanupDeleteGroup");
     HRESULT hr = PFGroupsDeleteGroupAsync(entityHandle, &request.Model(), &async->asyncBlock);
     if (FAILED(hr))
     {
@@ -2001,16 +1903,13 @@ void AutoGenGroupsTests::TestGroupsUpdateRolePrerequisiteGetGroup(TestContext& t
 
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFGroupsGetGroupGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
-            
-            LogPFGroupsGetGroupResponse(result);
-            return StoreUpdateRolePrerequisitePFGroupsGetGroupResponse(shared_from_this());
+            return StoreUpdateRolePrerequisiteGetGroupResponse(shared_from_this());
         }
     };
     auto async = std::make_unique<XAsyncHelper<GetGroupResultHolderStruct>>(testContext);
 
     PFGroupsGetGroupRequestWrapper<> request;
     FillUpdateRolePrerequisiteGetGroupRequest(request);
-    LogGetGroupRequest(&request.Model(), "TestGroupsUpdateGroup");
     HRESULT hr = PFGroupsGetGroupAsync(entityHandle, &request.Model(), &async->asyncBlock);
     if (FAILED(hr))
     {
@@ -2030,16 +1929,13 @@ void AutoGenGroupsTests::TestGroupsUpdateRolePrerequisiteUpdateRole(TestContext&
 
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFGroupsUpdateRoleGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
-            
-            LogPFGroupsUpdateGroupRoleResponse(result);
-            return StoreUpdateRolePrerequisitePFGroupsUpdateGroupRoleResponse(shared_from_this());
+            return StoreUpdateRolePrerequisiteUpdateRoleResponse(shared_from_this());
         }
     };
     auto async = std::make_unique<XAsyncHelper<UpdateRoleResultHolderStruct>>(testContext);
 
     PFGroupsUpdateGroupRoleRequestWrapper<> request;
-    FillUpdateRolePrerequisiteUpdateGroupRoleRequest(request);
-    LogUpdateGroupRoleRequest(&request.Model(), "TestGroupsUpdateGroup");
+    FillUpdateRolePrerequisiteUpdateRoleRequest(request);
     HRESULT hr = PFGroupsUpdateRoleAsync(entityHandle, &request.Model(), &async->asyncBlock);
     if (FAILED(hr))
     {
@@ -2060,19 +1956,19 @@ void AutoGenGroupsTests::TestGroupsUpdateRole(TestContext& testContext)
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFGroupsUpdateRoleGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
             
-            LogPFGroupsUpdateGroupRoleResponse(result);
+            LogUpdateGroupRoleResponse(result);
             return S_OK;
         }
 
         HRESULT Validate() override
         {
-            return ValidatePFGroupsUpdateGroupRoleResponse(result);
+            return ValidateUpdateRoleResponse(result);
         }
     };
     auto async = std::make_unique<XAsyncHelper<UpdateRoleResultHolderStruct>>(testContext);
 
     PFGroupsUpdateGroupRoleRequestWrapper<> request;
-    FillUpdateGroupRoleRequest(request);
+    FillUpdateRoleRequest(request);
     LogUpdateGroupRoleRequest(&request.Model(), "TestGroupsUpdateRole");
     HRESULT hr = PFGroupsUpdateRoleAsync(entityHandle, &request.Model(), &async->asyncBlock);
     if (FAILED(hr))

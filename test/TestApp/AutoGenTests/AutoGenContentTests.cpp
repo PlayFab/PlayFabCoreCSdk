@@ -21,7 +21,7 @@ void AutoGenContentTests::Log(std::stringstream& ss)
 
 HRESULT AutoGenContentTests::LogHR(HRESULT hr)
 {
-    if( TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    if (TestApp::ShouldTrace(PFTestTraceLevel::Information))
     {
         TestApp::Log("Result: 0x%0.8x", hr);
     }
@@ -55,7 +55,7 @@ void AutoGenContentTests::AddTests()
 
 void AutoGenContentTests::ClassSetUp()
 {
-    HRESULT hr = PFAdminInitialize(testTitleData.titleId.data(), testTitleData.developerSecretKey.data(), nullptr, &stateHandle);
+    HRESULT hr = PFAdminInitialize(testTitleData.titleId.data(), testTitleData.developerSecretKey.data(), testTitleData.connectionString.data(), nullptr, &stateHandle);
     assert(SUCCEEDED(hr));
     if (SUCCEEDED(hr))
     {
@@ -166,7 +166,7 @@ void AutoGenContentTests::TestContentAdminDeleteContent(TestContext& testContext
     auto async = std::make_unique<XAsyncHelper<XAsyncResult>>(testContext);
 
     PFContentDeleteContentRequestWrapper<> request;
-    FillDeleteContentRequest(request);
+    FillAdminDeleteContentRequest(request);
     LogDeleteContentRequest(&request.Model(), "TestContentAdminDeleteContent");
     HRESULT hr = PFContentAdminDeleteContentAsync(stateHandle, &request.Model(), &async->asyncBlock);
     if (FAILED(hr))
@@ -195,19 +195,19 @@ void AutoGenContentTests::TestContentAdminGetContentList(TestContext& testContex
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFContentAdminGetContentListGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
             
-            LogPFContentGetContentListResult(result);
+            LogGetContentListResult(result);
             return S_OK;
         }
 
         HRESULT Validate() override
         {
-            return ValidatePFContentGetContentListResult(result);
+            return ValidateAdminGetContentListResponse(result);
         }
     };
     auto async = std::make_unique<XAsyncHelper<AdminGetContentListResultHolderStruct>>(testContext);
 
     PFContentGetContentListRequestWrapper<> request;
-    FillGetContentListRequest(request);
+    FillAdminGetContentListRequest(request);
     LogGetContentListRequest(&request.Model(), "TestContentAdminGetContentList");
     HRESULT hr = PFContentAdminGetContentListAsync(stateHandle, &request.Model(), &async->asyncBlock);
     if (FAILED(hr))
@@ -236,19 +236,19 @@ void AutoGenContentTests::TestContentAdminGetContentUploadUrl(TestContext& testC
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFContentAdminGetContentUploadUrlGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
             
-            LogPFContentGetContentUploadUrlResult(result);
+            LogGetContentUploadUrlResult(result);
             return S_OK;
         }
 
         HRESULT Validate() override
         {
-            return ValidatePFContentGetContentUploadUrlResult(result);
+            return ValidateAdminGetContentUploadUrlResponse(result);
         }
     };
     auto async = std::make_unique<XAsyncHelper<AdminGetContentUploadUrlResultHolderStruct>>(testContext);
 
     PFContentGetContentUploadUrlRequestWrapper<> request;
-    FillGetContentUploadUrlRequest(request);
+    FillAdminGetContentUploadUrlRequest(request);
     LogGetContentUploadUrlRequest(&request.Model(), "TestContentAdminGetContentUploadUrl");
     HRESULT hr = PFContentAdminGetContentUploadUrlAsync(stateHandle, &request.Model(), &async->asyncBlock);
     if (FAILED(hr))
@@ -277,19 +277,19 @@ void AutoGenContentTests::TestContentClientGetContentDownloadUrl(TestContext& te
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFContentClientGetContentDownloadUrlGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
             
-            LogPFContentGetContentDownloadUrlResult(result);
+            LogGetContentDownloadUrlResult(result);
             return S_OK;
         }
 
         HRESULT Validate() override
         {
-            return ValidatePFContentGetContentDownloadUrlResult(result);
+            return ValidateClientGetContentDownloadUrlResponse(result);
         }
     };
     auto async = std::make_unique<XAsyncHelper<ClientGetContentDownloadUrlResultHolderStruct>>(testContext);
 
     PFContentGetContentDownloadUrlRequestWrapper<> request;
-    FillGetContentDownloadUrlRequest(request);
+    FillClientGetContentDownloadUrlRequest(request);
     LogGetContentDownloadUrlRequest(&request.Model(), "TestContentClientGetContentDownloadUrl");
     HRESULT hr = PFContentClientGetContentDownloadUrlAsync(titlePlayerHandle, &request.Model(), &async->asyncBlock);
     if (FAILED(hr))
@@ -318,19 +318,19 @@ void AutoGenContentTests::TestContentServerGetContentDownloadUrl(TestContext& te
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFContentServerGetContentDownloadUrlGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
             
-            LogPFContentGetContentDownloadUrlResult(result);
+            LogGetContentDownloadUrlResult(result);
             return S_OK;
         }
 
         HRESULT Validate() override
         {
-            return ValidatePFContentGetContentDownloadUrlResult(result);
+            return ValidateServerGetContentDownloadUrlResponse(result);
         }
     };
     auto async = std::make_unique<XAsyncHelper<ServerGetContentDownloadUrlResultHolderStruct>>(testContext);
 
     PFContentGetContentDownloadUrlRequestWrapper<> request;
-    FillGetContentDownloadUrlRequest(request);
+    FillServerGetContentDownloadUrlRequest(request);
     LogGetContentDownloadUrlRequest(&request.Model(), "TestContentServerGetContentDownloadUrl");
     HRESULT hr = PFContentServerGetContentDownloadUrlAsync(stateHandle, &request.Model(), &async->asyncBlock);
     if (FAILED(hr))

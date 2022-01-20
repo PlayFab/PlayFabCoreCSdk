@@ -204,7 +204,6 @@ public:
         m_created{ model.created ? StdExtra::optional<time_t>{ *model.created } : StdExtra::nullopt },
         m_expires{ model.expires ? StdExtra::optional<time_t>{ *model.expires } : StdExtra::nullopt },
         m_IPAddress{ SafeString(model.IPAddress) },
-        m_MACAddress{ SafeString(model.MACAddress) },
         m_playFabId{ SafeString(model.playFabId) },
         m_reason{ SafeString(model.reason) }
     {
@@ -238,7 +237,6 @@ public:
         swap(lhs.m_created, rhs.m_created);
         swap(lhs.m_expires, rhs.m_expires);
         swap(lhs.m_IPAddress, rhs.m_IPAddress);
-        swap(lhs.m_MACAddress, rhs.m_MACAddress);
         swap(lhs.m_playFabId, rhs.m_playFabId);
         swap(lhs.m_reason, rhs.m_reason);
         lhs.SetModelPointers();
@@ -274,12 +272,6 @@ public:
         this->m_model.IPAddress =  m_IPAddress.empty() ? nullptr : m_IPAddress.data();
     }
 
-    void SetMACAddress(String value)
-    {
-        m_MACAddress = std::move(value);
-        this->m_model.MACAddress =  m_MACAddress.empty() ? nullptr : m_MACAddress.data();
-    }
-
     void SetPlayFabId(String value)
     {
         m_playFabId = std::move(value);
@@ -299,7 +291,6 @@ private:
         this->m_model.created = m_created ? m_created.operator->() : nullptr;
         this->m_model.expires = m_expires ? m_expires.operator->() : nullptr;
         this->m_model.IPAddress = m_IPAddress.empty() ? nullptr : m_IPAddress.data();
-        this->m_model.MACAddress = m_MACAddress.empty() ? nullptr : m_MACAddress.data();
         this->m_model.playFabId = m_playFabId.empty() ? nullptr : m_playFabId.data();
         this->m_model.reason = m_reason.empty() ? nullptr : m_reason.data();
     }
@@ -308,7 +299,6 @@ private:
     StdExtra::optional<time_t> m_created;
     StdExtra::optional<time_t> m_expires;
     String m_IPAddress;
-    String m_MACAddress;
     String m_playFabId;
     String m_reason;
 };
@@ -2818,6 +2808,157 @@ private:
     }
 
     StdExtra::optional<PFUserAccountInfoWrapper<Alloc>> m_accountInfo;
+};
+
+template<template<typename AllocT> class Alloc = std::allocator>
+class PFAccountManagementGetPlayerCombinedInfoRequestWrapper : public ModelWrapper<PFAccountManagementGetPlayerCombinedInfoRequest, Alloc>
+{
+public:
+    using ModelType = typename PFAccountManagementGetPlayerCombinedInfoRequest;
+    using String = typename std::basic_string<char, std::char_traits<char>, Alloc<char>>;
+    template<typename T> using Vector = typename std::vector<T, Alloc<T>>;
+
+    PFAccountManagementGetPlayerCombinedInfoRequestWrapper() = default;
+
+    PFAccountManagementGetPlayerCombinedInfoRequestWrapper(const PFAccountManagementGetPlayerCombinedInfoRequest& model) :
+        ModelWrapper<PFAccountManagementGetPlayerCombinedInfoRequest, Alloc>{ model },
+        m_customTags{ model.customTags, model.customTags + model.customTagsCount },
+        m_infoRequestParameters{ model.infoRequestParameters ? *model.infoRequestParameters : decltype(*model.infoRequestParameters){} },
+        m_playFabId{ SafeString(model.playFabId) }
+    {
+        SetModelPointers();
+    }
+
+    PFAccountManagementGetPlayerCombinedInfoRequestWrapper(const PFAccountManagementGetPlayerCombinedInfoRequestWrapper& src) :
+        PFAccountManagementGetPlayerCombinedInfoRequestWrapper{ src.Model() }
+    {
+    }
+
+    PFAccountManagementGetPlayerCombinedInfoRequestWrapper(PFAccountManagementGetPlayerCombinedInfoRequestWrapper&& src) :
+        PFAccountManagementGetPlayerCombinedInfoRequestWrapper{}
+    {
+        swap(*this, src);
+    }
+
+    PFAccountManagementGetPlayerCombinedInfoRequestWrapper& operator=(PFAccountManagementGetPlayerCombinedInfoRequestWrapper src) 
+    {
+        swap(*this, src);
+        return *this;
+    }
+
+    virtual ~PFAccountManagementGetPlayerCombinedInfoRequestWrapper() = default;
+
+    friend void swap(PFAccountManagementGetPlayerCombinedInfoRequestWrapper& lhs, PFAccountManagementGetPlayerCombinedInfoRequestWrapper& rhs)
+    {
+        using std::swap;
+        swap(lhs.m_model, rhs.m_model);
+        swap(lhs.m_customTags, rhs.m_customTags);
+        swap(lhs.m_infoRequestParameters, rhs.m_infoRequestParameters);
+        swap(lhs.m_playFabId, rhs.m_playFabId);
+        lhs.SetModelPointers();
+        rhs.SetModelPointers();
+    }
+
+    void SetCustomTags(StringDictionaryEntryVector<Alloc> value)
+    {
+        m_customTags = std::move(value);
+        this->m_model.customTags =  m_customTags.empty() ? nullptr : m_customTags.data();
+        this->m_model.customTagsCount =  static_cast<uint32_t>(m_customTags.size());
+    }
+
+    void SetInfoRequestParameters(PFGetPlayerCombinedInfoRequestParamsWrapper<Alloc> value)
+    {
+        m_infoRequestParameters = std::move(value);
+        this->m_model.infoRequestParameters = &m_infoRequestParameters.Model();
+    }
+
+    void SetPlayFabId(String value)
+    {
+        m_playFabId = std::move(value);
+        this->m_model.playFabId =  m_playFabId.empty() ? nullptr : m_playFabId.data();
+    }
+
+private:
+    void SetModelPointers()
+    {
+        this->m_model.customTags = m_customTags.empty() ? nullptr : m_customTags.data();
+        this->m_model.infoRequestParameters = &m_infoRequestParameters.Model();
+        this->m_model.playFabId = m_playFabId.empty() ? nullptr : m_playFabId.data();
+    }
+
+    StringDictionaryEntryVector<Alloc> m_customTags;
+    PFGetPlayerCombinedInfoRequestParamsWrapper<Alloc> m_infoRequestParameters;
+    String m_playFabId;
+};
+
+template<template<typename AllocT> class Alloc = std::allocator>
+class PFAccountManagementGetPlayerCombinedInfoResultWrapper : public ModelWrapper<PFAccountManagementGetPlayerCombinedInfoResult, Alloc>
+{
+public:
+    using ModelType = typename PFAccountManagementGetPlayerCombinedInfoResult;
+    using String = typename std::basic_string<char, std::char_traits<char>, Alloc<char>>;
+    template<typename T> using Vector = typename std::vector<T, Alloc<T>>;
+
+    PFAccountManagementGetPlayerCombinedInfoResultWrapper() = default;
+
+    PFAccountManagementGetPlayerCombinedInfoResultWrapper(const PFAccountManagementGetPlayerCombinedInfoResult& model) :
+        ModelWrapper<PFAccountManagementGetPlayerCombinedInfoResult, Alloc>{ model },
+        m_infoResultPayload{ model.infoResultPayload ? StdExtra::optional<PFGetPlayerCombinedInfoResultPayloadWrapper<Alloc>>{ *model.infoResultPayload } : StdExtra::nullopt },
+        m_playFabId{ SafeString(model.playFabId) }
+    {
+        SetModelPointers();
+    }
+
+    PFAccountManagementGetPlayerCombinedInfoResultWrapper(const PFAccountManagementGetPlayerCombinedInfoResultWrapper& src) :
+        PFAccountManagementGetPlayerCombinedInfoResultWrapper{ src.Model() }
+    {
+    }
+
+    PFAccountManagementGetPlayerCombinedInfoResultWrapper(PFAccountManagementGetPlayerCombinedInfoResultWrapper&& src) :
+        PFAccountManagementGetPlayerCombinedInfoResultWrapper{}
+    {
+        swap(*this, src);
+    }
+
+    PFAccountManagementGetPlayerCombinedInfoResultWrapper& operator=(PFAccountManagementGetPlayerCombinedInfoResultWrapper src) 
+    {
+        swap(*this, src);
+        return *this;
+    }
+
+    virtual ~PFAccountManagementGetPlayerCombinedInfoResultWrapper() = default;
+
+    friend void swap(PFAccountManagementGetPlayerCombinedInfoResultWrapper& lhs, PFAccountManagementGetPlayerCombinedInfoResultWrapper& rhs)
+    {
+        using std::swap;
+        swap(lhs.m_model, rhs.m_model);
+        swap(lhs.m_infoResultPayload, rhs.m_infoResultPayload);
+        swap(lhs.m_playFabId, rhs.m_playFabId);
+        lhs.SetModelPointers();
+        rhs.SetModelPointers();
+    }
+
+    void SetInfoResultPayload(StdExtra::optional<PFGetPlayerCombinedInfoResultPayloadWrapper<Alloc>> value)
+    {
+        m_infoResultPayload = std::move(value);
+        this->m_model.infoResultPayload = m_infoResultPayload ? &m_infoResultPayload->Model() : nullptr;
+    }
+
+    void SetPlayFabId(String value)
+    {
+        m_playFabId = std::move(value);
+        this->m_model.playFabId =  m_playFabId.empty() ? nullptr : m_playFabId.data();
+    }
+
+private:
+    void SetModelPointers()
+    {
+        this->m_model.infoResultPayload = m_infoResultPayload ?  &m_infoResultPayload->Model() : nullptr;
+        this->m_model.playFabId = m_playFabId.empty() ? nullptr : m_playFabId.data();
+    }
+
+    StdExtra::optional<PFGetPlayerCombinedInfoResultPayloadWrapper<Alloc>> m_infoResultPayload;
+    String m_playFabId;
 };
 
 template<template<typename AllocT> class Alloc = std::allocator>
@@ -7927,66 +8068,6 @@ private:
 };
 
 template<template<typename AllocT> class Alloc = std::allocator>
-class PFAccountManagementDeletePushNotificationTemplateRequestWrapper : public ModelWrapper<PFAccountManagementDeletePushNotificationTemplateRequest, Alloc>
-{
-public:
-    using ModelType = typename PFAccountManagementDeletePushNotificationTemplateRequest;
-    using String = typename std::basic_string<char, std::char_traits<char>, Alloc<char>>;
-    template<typename T> using Vector = typename std::vector<T, Alloc<T>>;
-
-    PFAccountManagementDeletePushNotificationTemplateRequestWrapper() = default;
-
-    PFAccountManagementDeletePushNotificationTemplateRequestWrapper(const PFAccountManagementDeletePushNotificationTemplateRequest& model) :
-        ModelWrapper<PFAccountManagementDeletePushNotificationTemplateRequest, Alloc>{ model },
-        m_pushNotificationTemplateId{ SafeString(model.pushNotificationTemplateId) }
-    {
-        SetModelPointers();
-    }
-
-    PFAccountManagementDeletePushNotificationTemplateRequestWrapper(const PFAccountManagementDeletePushNotificationTemplateRequestWrapper& src) :
-        PFAccountManagementDeletePushNotificationTemplateRequestWrapper{ src.Model() }
-    {
-    }
-
-    PFAccountManagementDeletePushNotificationTemplateRequestWrapper(PFAccountManagementDeletePushNotificationTemplateRequestWrapper&& src) :
-        PFAccountManagementDeletePushNotificationTemplateRequestWrapper{}
-    {
-        swap(*this, src);
-    }
-
-    PFAccountManagementDeletePushNotificationTemplateRequestWrapper& operator=(PFAccountManagementDeletePushNotificationTemplateRequestWrapper src) 
-    {
-        swap(*this, src);
-        return *this;
-    }
-
-    virtual ~PFAccountManagementDeletePushNotificationTemplateRequestWrapper() = default;
-
-    friend void swap(PFAccountManagementDeletePushNotificationTemplateRequestWrapper& lhs, PFAccountManagementDeletePushNotificationTemplateRequestWrapper& rhs)
-    {
-        using std::swap;
-        swap(lhs.m_model, rhs.m_model);
-        swap(lhs.m_pushNotificationTemplateId, rhs.m_pushNotificationTemplateId);
-        lhs.SetModelPointers();
-        rhs.SetModelPointers();
-    }
-
-    void SetPushNotificationTemplateId(String value)
-    {
-        m_pushNotificationTemplateId = std::move(value);
-        this->m_model.pushNotificationTemplateId =  m_pushNotificationTemplateId.empty() ? nullptr : m_pushNotificationTemplateId.data();
-    }
-
-private:
-    void SetModelPointers()
-    {
-        this->m_model.pushNotificationTemplateId = m_pushNotificationTemplateId.empty() ? nullptr : m_pushNotificationTemplateId.data();
-    }
-
-    String m_pushNotificationTemplateId;
-};
-
-template<template<typename AllocT> class Alloc = std::allocator>
 class PFAccountManagementGetServerCustomIDsFromPlayFabIDsRequestWrapper : public ModelWrapper<PFAccountManagementGetServerCustomIDsFromPlayFabIDsRequest, Alloc>
 {
 public:
@@ -8662,238 +8743,6 @@ private:
 };
 
 template<template<typename AllocT> class Alloc = std::allocator>
-class PFAccountManagementLocalizedPushNotificationPropertiesWrapper : public ModelWrapper<PFAccountManagementLocalizedPushNotificationProperties, Alloc>
-{
-public:
-    using ModelType = typename PFAccountManagementLocalizedPushNotificationProperties;
-    using DictionaryEntryType = typename PFAccountManagementLocalizedPushNotificationPropertiesDictionaryEntry;
-    using String = typename std::basic_string<char, std::char_traits<char>, Alloc<char>>;
-    template<typename T> using Vector = typename std::vector<T, Alloc<T>>;
-
-    PFAccountManagementLocalizedPushNotificationPropertiesWrapper() = default;
-
-    PFAccountManagementLocalizedPushNotificationPropertiesWrapper(const PFAccountManagementLocalizedPushNotificationProperties& model) :
-        ModelWrapper<PFAccountManagementLocalizedPushNotificationProperties, Alloc>{ model },
-        m_message{ SafeString(model.message) },
-        m_subject{ SafeString(model.subject) }
-    {
-        SetModelPointers();
-    }
-
-    PFAccountManagementLocalizedPushNotificationPropertiesWrapper(const PFAccountManagementLocalizedPushNotificationPropertiesWrapper& src) :
-        PFAccountManagementLocalizedPushNotificationPropertiesWrapper{ src.Model() }
-    {
-    }
-
-    PFAccountManagementLocalizedPushNotificationPropertiesWrapper(PFAccountManagementLocalizedPushNotificationPropertiesWrapper&& src) :
-        PFAccountManagementLocalizedPushNotificationPropertiesWrapper{}
-    {
-        swap(*this, src);
-    }
-
-    PFAccountManagementLocalizedPushNotificationPropertiesWrapper& operator=(PFAccountManagementLocalizedPushNotificationPropertiesWrapper src) 
-    {
-        swap(*this, src);
-        return *this;
-    }
-
-    virtual ~PFAccountManagementLocalizedPushNotificationPropertiesWrapper() = default;
-
-    friend void swap(PFAccountManagementLocalizedPushNotificationPropertiesWrapper& lhs, PFAccountManagementLocalizedPushNotificationPropertiesWrapper& rhs)
-    {
-        using std::swap;
-        swap(lhs.m_model, rhs.m_model);
-        swap(lhs.m_message, rhs.m_message);
-        swap(lhs.m_subject, rhs.m_subject);
-        lhs.SetModelPointers();
-        rhs.SetModelPointers();
-    }
-
-    void SetMessage(String value)
-    {
-        m_message = std::move(value);
-        this->m_model.message =  m_message.empty() ? nullptr : m_message.data();
-    }
-
-    void SetSubject(String value)
-    {
-        m_subject = std::move(value);
-        this->m_model.subject =  m_subject.empty() ? nullptr : m_subject.data();
-    }
-
-private:
-    void SetModelPointers()
-    {
-        this->m_model.message = m_message.empty() ? nullptr : m_message.data();
-        this->m_model.subject = m_subject.empty() ? nullptr : m_subject.data();
-    }
-
-    String m_message;
-    String m_subject;
-};
-
-template<template<typename AllocT> class Alloc = std::allocator>
-class PFAccountManagementSavePushNotificationTemplateRequestWrapper : public ModelWrapper<PFAccountManagementSavePushNotificationTemplateRequest, Alloc>
-{
-public:
-    using ModelType = typename PFAccountManagementSavePushNotificationTemplateRequest;
-    using String = typename std::basic_string<char, std::char_traits<char>, Alloc<char>>;
-    template<typename T> using Vector = typename std::vector<T, Alloc<T>>;
-
-    PFAccountManagementSavePushNotificationTemplateRequestWrapper() = default;
-
-    PFAccountManagementSavePushNotificationTemplateRequestWrapper(const PFAccountManagementSavePushNotificationTemplateRequest& model) :
-        ModelWrapper<PFAccountManagementSavePushNotificationTemplateRequest, Alloc>{ model },
-        m_androidPayload{ SafeString(model.androidPayload) },
-        m_id{ SafeString(model.id) },
-        m_iOSPayload{ SafeString(model.iOSPayload) },
-        m_localizedPushNotificationTemplates{ model.localizedPushNotificationTemplates, model.localizedPushNotificationTemplates + model.localizedPushNotificationTemplatesCount },
-        m_name{ SafeString(model.name) }
-    {
-        SetModelPointers();
-    }
-
-    PFAccountManagementSavePushNotificationTemplateRequestWrapper(const PFAccountManagementSavePushNotificationTemplateRequestWrapper& src) :
-        PFAccountManagementSavePushNotificationTemplateRequestWrapper{ src.Model() }
-    {
-    }
-
-    PFAccountManagementSavePushNotificationTemplateRequestWrapper(PFAccountManagementSavePushNotificationTemplateRequestWrapper&& src) :
-        PFAccountManagementSavePushNotificationTemplateRequestWrapper{}
-    {
-        swap(*this, src);
-    }
-
-    PFAccountManagementSavePushNotificationTemplateRequestWrapper& operator=(PFAccountManagementSavePushNotificationTemplateRequestWrapper src) 
-    {
-        swap(*this, src);
-        return *this;
-    }
-
-    virtual ~PFAccountManagementSavePushNotificationTemplateRequestWrapper() = default;
-
-    friend void swap(PFAccountManagementSavePushNotificationTemplateRequestWrapper& lhs, PFAccountManagementSavePushNotificationTemplateRequestWrapper& rhs)
-    {
-        using std::swap;
-        swap(lhs.m_model, rhs.m_model);
-        swap(lhs.m_androidPayload, rhs.m_androidPayload);
-        swap(lhs.m_id, rhs.m_id);
-        swap(lhs.m_iOSPayload, rhs.m_iOSPayload);
-        swap(lhs.m_localizedPushNotificationTemplates, rhs.m_localizedPushNotificationTemplates);
-        swap(lhs.m_name, rhs.m_name);
-        lhs.SetModelPointers();
-        rhs.SetModelPointers();
-    }
-
-    void SetAndroidPayload(String value)
-    {
-        m_androidPayload = std::move(value);
-        this->m_model.androidPayload =  m_androidPayload.empty() ? nullptr : m_androidPayload.data();
-    }
-
-    void SetId(String value)
-    {
-        m_id = std::move(value);
-        this->m_model.id =  m_id.empty() ? nullptr : m_id.data();
-    }
-
-    void SetIOSPayload(String value)
-    {
-        m_iOSPayload = std::move(value);
-        this->m_model.iOSPayload =  m_iOSPayload.empty() ? nullptr : m_iOSPayload.data();
-    }
-
-    void SetLocalizedPushNotificationTemplates(ModelDictionaryEntryVector<PFAccountManagementLocalizedPushNotificationPropertiesWrapper<Alloc>, Alloc> value)
-    {
-        m_localizedPushNotificationTemplates = std::move(value);
-        this->m_model.localizedPushNotificationTemplates =  m_localizedPushNotificationTemplates.empty() ? nullptr : m_localizedPushNotificationTemplates.data();
-        this->m_model.localizedPushNotificationTemplatesCount =  static_cast<uint32_t>(m_localizedPushNotificationTemplates.size());
-    }
-
-    void SetName(String value)
-    {
-        m_name = std::move(value);
-        this->m_model.name =  m_name.empty() ? nullptr : m_name.data();
-    }
-
-private:
-    void SetModelPointers()
-    {
-        this->m_model.androidPayload = m_androidPayload.empty() ? nullptr : m_androidPayload.data();
-        this->m_model.id = m_id.empty() ? nullptr : m_id.data();
-        this->m_model.iOSPayload = m_iOSPayload.empty() ? nullptr : m_iOSPayload.data();
-        this->m_model.localizedPushNotificationTemplates = m_localizedPushNotificationTemplates.empty() ? nullptr : m_localizedPushNotificationTemplates.data();
-        this->m_model.name = m_name.empty() ? nullptr : m_name.data();
-    }
-
-    String m_androidPayload;
-    String m_id;
-    String m_iOSPayload;
-    ModelDictionaryEntryVector<PFAccountManagementLocalizedPushNotificationPropertiesWrapper<Alloc>, Alloc> m_localizedPushNotificationTemplates;
-    String m_name;
-};
-
-template<template<typename AllocT> class Alloc = std::allocator>
-class PFAccountManagementSavePushNotificationTemplateResultWrapper : public ModelWrapper<PFAccountManagementSavePushNotificationTemplateResult, Alloc>
-{
-public:
-    using ModelType = typename PFAccountManagementSavePushNotificationTemplateResult;
-    using String = typename std::basic_string<char, std::char_traits<char>, Alloc<char>>;
-    template<typename T> using Vector = typename std::vector<T, Alloc<T>>;
-
-    PFAccountManagementSavePushNotificationTemplateResultWrapper() = default;
-
-    PFAccountManagementSavePushNotificationTemplateResultWrapper(const PFAccountManagementSavePushNotificationTemplateResult& model) :
-        ModelWrapper<PFAccountManagementSavePushNotificationTemplateResult, Alloc>{ model },
-        m_pushNotificationTemplateId{ SafeString(model.pushNotificationTemplateId) }
-    {
-        SetModelPointers();
-    }
-
-    PFAccountManagementSavePushNotificationTemplateResultWrapper(const PFAccountManagementSavePushNotificationTemplateResultWrapper& src) :
-        PFAccountManagementSavePushNotificationTemplateResultWrapper{ src.Model() }
-    {
-    }
-
-    PFAccountManagementSavePushNotificationTemplateResultWrapper(PFAccountManagementSavePushNotificationTemplateResultWrapper&& src) :
-        PFAccountManagementSavePushNotificationTemplateResultWrapper{}
-    {
-        swap(*this, src);
-    }
-
-    PFAccountManagementSavePushNotificationTemplateResultWrapper& operator=(PFAccountManagementSavePushNotificationTemplateResultWrapper src) 
-    {
-        swap(*this, src);
-        return *this;
-    }
-
-    virtual ~PFAccountManagementSavePushNotificationTemplateResultWrapper() = default;
-
-    friend void swap(PFAccountManagementSavePushNotificationTemplateResultWrapper& lhs, PFAccountManagementSavePushNotificationTemplateResultWrapper& rhs)
-    {
-        using std::swap;
-        swap(lhs.m_model, rhs.m_model);
-        swap(lhs.m_pushNotificationTemplateId, rhs.m_pushNotificationTemplateId);
-        lhs.SetModelPointers();
-        rhs.SetModelPointers();
-    }
-
-    void SetPushNotificationTemplateId(String value)
-    {
-        m_pushNotificationTemplateId = std::move(value);
-        this->m_model.pushNotificationTemplateId =  m_pushNotificationTemplateId.empty() ? nullptr : m_pushNotificationTemplateId.data();
-    }
-
-private:
-    void SetModelPointers()
-    {
-        this->m_model.pushNotificationTemplateId = m_pushNotificationTemplateId.empty() ? nullptr : m_pushNotificationTemplateId.data();
-    }
-
-    String m_pushNotificationTemplateId;
-};
-
-template<template<typename AllocT> class Alloc = std::allocator>
 class PFAccountManagementSendCustomAccountRecoveryEmailRequestWrapper : public ModelWrapper<PFAccountManagementSendCustomAccountRecoveryEmailRequest, Alloc>
 {
 public:
@@ -9063,390 +8912,6 @@ private:
     StringDictionaryEntryVector<Alloc> m_customTags;
     String m_emailTemplateId;
     String m_playFabId;
-};
-
-template<template<typename AllocT> class Alloc = std::allocator>
-class PFAccountManagementAdvancedPushPlatformMsgWrapper : public ModelWrapper<PFAccountManagementAdvancedPushPlatformMsg, Alloc>
-{
-public:
-    using ModelType = typename PFAccountManagementAdvancedPushPlatformMsg;
-    using String = typename std::basic_string<char, std::char_traits<char>, Alloc<char>>;
-    template<typename T> using Vector = typename std::vector<T, Alloc<T>>;
-
-    PFAccountManagementAdvancedPushPlatformMsgWrapper() = default;
-
-    PFAccountManagementAdvancedPushPlatformMsgWrapper(const PFAccountManagementAdvancedPushPlatformMsg& model) :
-        ModelWrapper<PFAccountManagementAdvancedPushPlatformMsg, Alloc>{ model },
-        m_gCMDataOnly{ model.gCMDataOnly ? StdExtra::optional<bool>{ *model.gCMDataOnly } : StdExtra::nullopt },
-        m_json{ SafeString(model.json) }
-    {
-        SetModelPointers();
-    }
-
-    PFAccountManagementAdvancedPushPlatformMsgWrapper(const PFAccountManagementAdvancedPushPlatformMsgWrapper& src) :
-        PFAccountManagementAdvancedPushPlatformMsgWrapper{ src.Model() }
-    {
-    }
-
-    PFAccountManagementAdvancedPushPlatformMsgWrapper(PFAccountManagementAdvancedPushPlatformMsgWrapper&& src) :
-        PFAccountManagementAdvancedPushPlatformMsgWrapper{}
-    {
-        swap(*this, src);
-    }
-
-    PFAccountManagementAdvancedPushPlatformMsgWrapper& operator=(PFAccountManagementAdvancedPushPlatformMsgWrapper src) 
-    {
-        swap(*this, src);
-        return *this;
-    }
-
-    virtual ~PFAccountManagementAdvancedPushPlatformMsgWrapper() = default;
-
-    friend void swap(PFAccountManagementAdvancedPushPlatformMsgWrapper& lhs, PFAccountManagementAdvancedPushPlatformMsgWrapper& rhs)
-    {
-        using std::swap;
-        swap(lhs.m_model, rhs.m_model);
-        swap(lhs.m_gCMDataOnly, rhs.m_gCMDataOnly);
-        swap(lhs.m_json, rhs.m_json);
-        lhs.SetModelPointers();
-        rhs.SetModelPointers();
-    }
-
-    void SetGCMDataOnly(StdExtra::optional<bool> value)
-    {
-        m_gCMDataOnly = std::move(value);
-        this->m_model.gCMDataOnly = m_gCMDataOnly ? m_gCMDataOnly.operator->() : nullptr;
-    }
-
-    void SetJson(String value)
-    {
-        m_json = std::move(value);
-        this->m_model.json =  m_json.empty() ? nullptr : m_json.data();
-    }
-
-    void SetPlatform(PFPushNotificationPlatform value)
-    {
-        this->m_model.platform = value;
-    }
-
-private:
-    void SetModelPointers()
-    {
-        this->m_model.gCMDataOnly = m_gCMDataOnly ? m_gCMDataOnly.operator->() : nullptr;
-        this->m_model.json = m_json.empty() ? nullptr : m_json.data();
-    }
-
-    StdExtra::optional<bool> m_gCMDataOnly;
-    String m_json;
-};
-
-template<template<typename AllocT> class Alloc = std::allocator>
-class PFAccountManagementPushNotificationPackageWrapper : public ModelWrapper<PFAccountManagementPushNotificationPackage, Alloc>
-{
-public:
-    using ModelType = typename PFAccountManagementPushNotificationPackage;
-    using String = typename std::basic_string<char, std::char_traits<char>, Alloc<char>>;
-    template<typename T> using Vector = typename std::vector<T, Alloc<T>>;
-
-    PFAccountManagementPushNotificationPackageWrapper() = default;
-
-    PFAccountManagementPushNotificationPackageWrapper(const PFAccountManagementPushNotificationPackage& model) :
-        ModelWrapper<PFAccountManagementPushNotificationPackage, Alloc>{ model },
-        m_customData{ SafeString(model.customData) },
-        m_icon{ SafeString(model.icon) },
-        m_message{ SafeString(model.message) },
-        m_sound{ SafeString(model.sound) },
-        m_title{ SafeString(model.title) }
-    {
-        SetModelPointers();
-    }
-
-    PFAccountManagementPushNotificationPackageWrapper(const PFAccountManagementPushNotificationPackageWrapper& src) :
-        PFAccountManagementPushNotificationPackageWrapper{ src.Model() }
-    {
-    }
-
-    PFAccountManagementPushNotificationPackageWrapper(PFAccountManagementPushNotificationPackageWrapper&& src) :
-        PFAccountManagementPushNotificationPackageWrapper{}
-    {
-        swap(*this, src);
-    }
-
-    PFAccountManagementPushNotificationPackageWrapper& operator=(PFAccountManagementPushNotificationPackageWrapper src) 
-    {
-        swap(*this, src);
-        return *this;
-    }
-
-    virtual ~PFAccountManagementPushNotificationPackageWrapper() = default;
-
-    friend void swap(PFAccountManagementPushNotificationPackageWrapper& lhs, PFAccountManagementPushNotificationPackageWrapper& rhs)
-    {
-        using std::swap;
-        swap(lhs.m_model, rhs.m_model);
-        swap(lhs.m_customData, rhs.m_customData);
-        swap(lhs.m_icon, rhs.m_icon);
-        swap(lhs.m_message, rhs.m_message);
-        swap(lhs.m_sound, rhs.m_sound);
-        swap(lhs.m_title, rhs.m_title);
-        lhs.SetModelPointers();
-        rhs.SetModelPointers();
-    }
-
-    void SetBadge(int32_t value)
-    {
-        this->m_model.badge = value;
-    }
-
-    void SetCustomData(String value)
-    {
-        m_customData = std::move(value);
-        this->m_model.customData =  m_customData.empty() ? nullptr : m_customData.data();
-    }
-
-    void SetIcon(String value)
-    {
-        m_icon = std::move(value);
-        this->m_model.icon =  m_icon.empty() ? nullptr : m_icon.data();
-    }
-
-    void SetMessage(String value)
-    {
-        m_message = std::move(value);
-        this->m_model.message =  m_message.empty() ? nullptr : m_message.data();
-    }
-
-    void SetSound(String value)
-    {
-        m_sound = std::move(value);
-        this->m_model.sound =  m_sound.empty() ? nullptr : m_sound.data();
-    }
-
-    void SetTitle(String value)
-    {
-        m_title = std::move(value);
-        this->m_model.title =  m_title.empty() ? nullptr : m_title.data();
-    }
-
-private:
-    void SetModelPointers()
-    {
-        this->m_model.customData = m_customData.empty() ? nullptr : m_customData.data();
-        this->m_model.icon = m_icon.empty() ? nullptr : m_icon.data();
-        this->m_model.message = m_message.empty() ? nullptr : m_message.data();
-        this->m_model.sound = m_sound.empty() ? nullptr : m_sound.data();
-        this->m_model.title = m_title.empty() ? nullptr : m_title.data();
-    }
-
-    String m_customData;
-    String m_icon;
-    String m_message;
-    String m_sound;
-    String m_title;
-};
-
-template<template<typename AllocT> class Alloc = std::allocator>
-class PFAccountManagementSendPushNotificationRequestWrapper : public ModelWrapper<PFAccountManagementSendPushNotificationRequest, Alloc>
-{
-public:
-    using ModelType = typename PFAccountManagementSendPushNotificationRequest;
-    using String = typename std::basic_string<char, std::char_traits<char>, Alloc<char>>;
-    template<typename T> using Vector = typename std::vector<T, Alloc<T>>;
-
-    PFAccountManagementSendPushNotificationRequestWrapper() = default;
-
-    PFAccountManagementSendPushNotificationRequestWrapper(const PFAccountManagementSendPushNotificationRequest& model) :
-        ModelWrapper<PFAccountManagementSendPushNotificationRequest, Alloc>{ model },
-        m_advancedPlatformDelivery{ model.advancedPlatformDelivery, model.advancedPlatformDelivery + model.advancedPlatformDeliveryCount },
-        m_customTags{ model.customTags, model.customTags + model.customTagsCount },
-        m_message{ SafeString(model.message) },
-        m_package{ model.package ? StdExtra::optional<PFAccountManagementPushNotificationPackageWrapper<Alloc>>{ *model.package } : StdExtra::nullopt },
-        m_recipient{ SafeString(model.recipient) },
-        m_subject{ SafeString(model.subject) },
-        m_targetPlatforms{ model.targetPlatforms, model.targetPlatforms + model.targetPlatformsCount }
-    {
-        SetModelPointers();
-    }
-
-    PFAccountManagementSendPushNotificationRequestWrapper(const PFAccountManagementSendPushNotificationRequestWrapper& src) :
-        PFAccountManagementSendPushNotificationRequestWrapper{ src.Model() }
-    {
-    }
-
-    PFAccountManagementSendPushNotificationRequestWrapper(PFAccountManagementSendPushNotificationRequestWrapper&& src) :
-        PFAccountManagementSendPushNotificationRequestWrapper{}
-    {
-        swap(*this, src);
-    }
-
-    PFAccountManagementSendPushNotificationRequestWrapper& operator=(PFAccountManagementSendPushNotificationRequestWrapper src) 
-    {
-        swap(*this, src);
-        return *this;
-    }
-
-    virtual ~PFAccountManagementSendPushNotificationRequestWrapper() = default;
-
-    friend void swap(PFAccountManagementSendPushNotificationRequestWrapper& lhs, PFAccountManagementSendPushNotificationRequestWrapper& rhs)
-    {
-        using std::swap;
-        swap(lhs.m_model, rhs.m_model);
-        swap(lhs.m_advancedPlatformDelivery, rhs.m_advancedPlatformDelivery);
-        swap(lhs.m_customTags, rhs.m_customTags);
-        swap(lhs.m_message, rhs.m_message);
-        swap(lhs.m_package, rhs.m_package);
-        swap(lhs.m_recipient, rhs.m_recipient);
-        swap(lhs.m_subject, rhs.m_subject);
-        swap(lhs.m_targetPlatforms, rhs.m_targetPlatforms);
-        lhs.SetModelPointers();
-        rhs.SetModelPointers();
-    }
-
-    void SetAdvancedPlatformDelivery(ModelVector<PFAccountManagementAdvancedPushPlatformMsgWrapper<Alloc>, Alloc> value)
-    {
-        m_advancedPlatformDelivery = std::move(value);
-        this->m_model.advancedPlatformDelivery =  m_advancedPlatformDelivery.empty() ? nullptr : m_advancedPlatformDelivery.data();
-        this->m_model.advancedPlatformDeliveryCount =  static_cast<uint32_t>(m_advancedPlatformDelivery.size());
-    }
-
-    void SetCustomTags(StringDictionaryEntryVector<Alloc> value)
-    {
-        m_customTags = std::move(value);
-        this->m_model.customTags =  m_customTags.empty() ? nullptr : m_customTags.data();
-        this->m_model.customTagsCount =  static_cast<uint32_t>(m_customTags.size());
-    }
-
-    void SetMessage(String value)
-    {
-        m_message = std::move(value);
-        this->m_model.message =  m_message.empty() ? nullptr : m_message.data();
-    }
-
-    void SetPackage(StdExtra::optional<PFAccountManagementPushNotificationPackageWrapper<Alloc>> value)
-    {
-        m_package = std::move(value);
-        this->m_model.package = m_package ? &m_package->Model() : nullptr;
-    }
-
-    void SetRecipient(String value)
-    {
-        m_recipient = std::move(value);
-        this->m_model.recipient =  m_recipient.empty() ? nullptr : m_recipient.data();
-    }
-
-    void SetSubject(String value)
-    {
-        m_subject = std::move(value);
-        this->m_model.subject =  m_subject.empty() ? nullptr : m_subject.data();
-    }
-
-    void SetTargetPlatforms(Vector<PFPushNotificationPlatform> value)
-    {
-        m_targetPlatforms = std::move(value);
-        this->m_model.targetPlatforms =  m_targetPlatforms.empty() ? nullptr : m_targetPlatforms.data();
-        this->m_model.targetPlatformsCount =  static_cast<uint32_t>(m_targetPlatforms.size());
-    }
-
-private:
-    void SetModelPointers()
-    {
-        this->m_model.advancedPlatformDelivery = m_advancedPlatformDelivery.empty() ? nullptr : m_advancedPlatformDelivery.data();
-        this->m_model.customTags = m_customTags.empty() ? nullptr : m_customTags.data();
-        this->m_model.message = m_message.empty() ? nullptr : m_message.data();
-        this->m_model.package = m_package ?  &m_package->Model() : nullptr;
-        this->m_model.recipient = m_recipient.empty() ? nullptr : m_recipient.data();
-        this->m_model.subject = m_subject.empty() ? nullptr : m_subject.data();
-        this->m_model.targetPlatforms = m_targetPlatforms.empty() ? nullptr : m_targetPlatforms.data();
-    }
-
-    ModelVector<PFAccountManagementAdvancedPushPlatformMsgWrapper<Alloc>, Alloc> m_advancedPlatformDelivery;
-    StringDictionaryEntryVector<Alloc> m_customTags;
-    String m_message;
-    StdExtra::optional<PFAccountManagementPushNotificationPackageWrapper<Alloc>> m_package;
-    String m_recipient;
-    String m_subject;
-    Vector<PFPushNotificationPlatform> m_targetPlatforms;
-};
-
-template<template<typename AllocT> class Alloc = std::allocator>
-class PFAccountManagementSendPushNotificationFromTemplateRequestWrapper : public ModelWrapper<PFAccountManagementSendPushNotificationFromTemplateRequest, Alloc>
-{
-public:
-    using ModelType = typename PFAccountManagementSendPushNotificationFromTemplateRequest;
-    using String = typename std::basic_string<char, std::char_traits<char>, Alloc<char>>;
-    template<typename T> using Vector = typename std::vector<T, Alloc<T>>;
-
-    PFAccountManagementSendPushNotificationFromTemplateRequestWrapper() = default;
-
-    PFAccountManagementSendPushNotificationFromTemplateRequestWrapper(const PFAccountManagementSendPushNotificationFromTemplateRequest& model) :
-        ModelWrapper<PFAccountManagementSendPushNotificationFromTemplateRequest, Alloc>{ model },
-        m_customTags{ model.customTags, model.customTags + model.customTagsCount },
-        m_pushNotificationTemplateId{ SafeString(model.pushNotificationTemplateId) },
-        m_recipient{ SafeString(model.recipient) }
-    {
-        SetModelPointers();
-    }
-
-    PFAccountManagementSendPushNotificationFromTemplateRequestWrapper(const PFAccountManagementSendPushNotificationFromTemplateRequestWrapper& src) :
-        PFAccountManagementSendPushNotificationFromTemplateRequestWrapper{ src.Model() }
-    {
-    }
-
-    PFAccountManagementSendPushNotificationFromTemplateRequestWrapper(PFAccountManagementSendPushNotificationFromTemplateRequestWrapper&& src) :
-        PFAccountManagementSendPushNotificationFromTemplateRequestWrapper{}
-    {
-        swap(*this, src);
-    }
-
-    PFAccountManagementSendPushNotificationFromTemplateRequestWrapper& operator=(PFAccountManagementSendPushNotificationFromTemplateRequestWrapper src) 
-    {
-        swap(*this, src);
-        return *this;
-    }
-
-    virtual ~PFAccountManagementSendPushNotificationFromTemplateRequestWrapper() = default;
-
-    friend void swap(PFAccountManagementSendPushNotificationFromTemplateRequestWrapper& lhs, PFAccountManagementSendPushNotificationFromTemplateRequestWrapper& rhs)
-    {
-        using std::swap;
-        swap(lhs.m_model, rhs.m_model);
-        swap(lhs.m_customTags, rhs.m_customTags);
-        swap(lhs.m_pushNotificationTemplateId, rhs.m_pushNotificationTemplateId);
-        swap(lhs.m_recipient, rhs.m_recipient);
-        lhs.SetModelPointers();
-        rhs.SetModelPointers();
-    }
-
-    void SetCustomTags(StringDictionaryEntryVector<Alloc> value)
-    {
-        m_customTags = std::move(value);
-        this->m_model.customTags =  m_customTags.empty() ? nullptr : m_customTags.data();
-        this->m_model.customTagsCount =  static_cast<uint32_t>(m_customTags.size());
-    }
-
-    void SetPushNotificationTemplateId(String value)
-    {
-        m_pushNotificationTemplateId = std::move(value);
-        this->m_model.pushNotificationTemplateId =  m_pushNotificationTemplateId.empty() ? nullptr : m_pushNotificationTemplateId.data();
-    }
-
-    void SetRecipient(String value)
-    {
-        m_recipient = std::move(value);
-        this->m_model.recipient =  m_recipient.empty() ? nullptr : m_recipient.data();
-    }
-
-private:
-    void SetModelPointers()
-    {
-        this->m_model.customTags = m_customTags.empty() ? nullptr : m_customTags.data();
-        this->m_model.pushNotificationTemplateId = m_pushNotificationTemplateId.empty() ? nullptr : m_pushNotificationTemplateId.data();
-        this->m_model.recipient = m_recipient.empty() ? nullptr : m_recipient.data();
-    }
-
-    StringDictionaryEntryVector<Alloc> m_customTags;
-    String m_pushNotificationTemplateId;
-    String m_recipient;
 };
 
 template<template<typename AllocT> class Alloc = std::allocator>

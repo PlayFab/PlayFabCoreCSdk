@@ -21,7 +21,7 @@ void AutoGenCloudScriptTests::Log(std::stringstream& ss)
 
 HRESULT AutoGenCloudScriptTests::LogHR(HRESULT hr)
 {
-    if( TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    if (TestApp::ShouldTrace(PFTestTraceLevel::Information))
     {
         TestApp::Log("Result: 0x%0.8x", hr);
     }
@@ -103,7 +103,7 @@ void AutoGenCloudScriptTests::AddTests()
 
 void AutoGenCloudScriptTests::ClassSetUp()
 {
-    HRESULT hr = PFAdminInitialize(testTitleData.titleId.data(), testTitleData.developerSecretKey.data(), nullptr, &stateHandle);
+    HRESULT hr = PFAdminInitialize(testTitleData.titleId.data(), testTitleData.developerSecretKey.data(), testTitleData.connectionString.data(), nullptr, &stateHandle);
     assert(SUCCEEDED(hr));
     if (SUCCEEDED(hr))
     {
@@ -221,19 +221,19 @@ void AutoGenCloudScriptTests::TestCloudScriptAdminGetCloudScriptRevision(TestCon
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFCloudScriptAdminGetCloudScriptRevisionGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
             
-            LogPFCloudScriptGetCloudScriptRevisionResult(result);
+            LogGetCloudScriptRevisionResult(result);
             return S_OK;
         }
 
         HRESULT Validate() override
         {
-            return ValidatePFCloudScriptGetCloudScriptRevisionResult(result);
+            return ValidateAdminGetCloudScriptRevisionResponse(result);
         }
     };
     auto async = std::make_unique<XAsyncHelper<AdminGetCloudScriptRevisionResultHolderStruct>>(testContext);
 
     PFCloudScriptGetCloudScriptRevisionRequestWrapper<> request;
-    FillGetCloudScriptRevisionRequest(request);
+    FillAdminGetCloudScriptRevisionRequest(request);
     LogGetCloudScriptRevisionRequest(&request.Model(), "TestCloudScriptAdminGetCloudScriptRevision");
     HRESULT hr = PFCloudScriptAdminGetCloudScriptRevisionAsync(stateHandle, &request.Model(), &async->asyncBlock);
     if (FAILED(hr))
@@ -262,13 +262,13 @@ void AutoGenCloudScriptTests::TestCloudScriptAdminGetCloudScriptVersions(TestCon
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFCloudScriptAdminGetCloudScriptVersionsGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
             
-            LogPFCloudScriptGetCloudScriptVersionsResult(result);
+            LogGetCloudScriptVersionsResult(result);
             return S_OK;
         }
 
         HRESULT Validate() override
         {
-            return ValidatePFCloudScriptGetCloudScriptVersionsResult(result);
+            return ValidateAdminGetCloudScriptVersionsResponse(result);
         }
     };
     auto async = std::make_unique<XAsyncHelper<AdminGetCloudScriptVersionsResultHolderStruct>>(testContext);
@@ -293,7 +293,7 @@ void AutoGenCloudScriptTests::TestCloudScriptAdminSetPublishedRevision(TestConte
     auto async = std::make_unique<XAsyncHelper<XAsyncResult>>(testContext);
 
     PFCloudScriptSetPublishedRevisionRequestWrapper<> request;
-    FillSetPublishedRevisionRequest(request);
+    FillAdminSetPublishedRevisionRequest(request);
     LogSetPublishedRevisionRequest(&request.Model(), "TestCloudScriptAdminSetPublishedRevision");
     HRESULT hr = PFCloudScriptAdminSetPublishedRevisionAsync(stateHandle, &request.Model(), &async->asyncBlock);
     if (FAILED(hr))
@@ -317,19 +317,19 @@ void AutoGenCloudScriptTests::TestCloudScriptAdminUpdateCloudScript(TestContext&
         HRESULT Get(XAsyncBlock* async) override
         {
             RETURN_IF_FAILED(LogHR(PFCloudScriptAdminUpdateCloudScriptGetResult(async, &result)));
-            LogPFCloudScriptUpdateCloudScriptResult(&result);
+            LogUpdateCloudScriptResult(&result);
             return S_OK;
         }
 
         HRESULT Validate() override
         {
-            return ValidatePFCloudScriptUpdateCloudScriptResult(&result);
+            return ValidateAdminUpdateCloudScriptResponse(&result);
         }
     };
     auto async = std::make_unique<XAsyncHelper<AdminUpdateCloudScriptResultHolderStruct>>(testContext);
 
     PFCloudScriptUpdateCloudScriptRequestWrapper<> request;
-    FillUpdateCloudScriptRequest(request);
+    FillAdminUpdateCloudScriptRequest(request);
     LogUpdateCloudScriptRequest(&request.Model(), "TestCloudScriptAdminUpdateCloudScript");
     HRESULT hr = PFCloudScriptAdminUpdateCloudScriptAsync(stateHandle, &request.Model(), &async->asyncBlock);
     if (FAILED(hr))
@@ -357,19 +357,19 @@ void AutoGenCloudScriptTests::TestCloudScriptClientExecuteCloudScript(TestContex
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFCloudScriptClientExecuteCloudScriptGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
             
-            LogPFExecuteCloudScriptResult(result);
+            LogExecuteCloudScriptResult(result);
             return S_OK;
         }
 
         HRESULT Validate() override
         {
-            return ValidatePFExecuteCloudScriptResult(result);
+            return ValidateClientExecuteCloudScriptResponse(result);
         }
     };
     auto async = std::make_unique<XAsyncHelper<ClientExecuteCloudScriptResultHolderStruct>>(testContext);
 
     PFCloudScriptExecuteCloudScriptRequestWrapper<> request;
-    FillExecuteCloudScriptRequest(request);
+    FillClientExecuteCloudScriptRequest(request);
     LogExecuteCloudScriptRequest(&request.Model(), "TestCloudScriptClientExecuteCloudScript");
     HRESULT hr = PFCloudScriptClientExecuteCloudScriptAsync(titlePlayerHandle, &request.Model(), &async->asyncBlock);
     if (FAILED(hr))
@@ -397,19 +397,19 @@ void AutoGenCloudScriptTests::TestCloudScriptServerExecuteCloudScript(TestContex
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFCloudScriptServerExecuteCloudScriptGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
             
-            LogPFExecuteCloudScriptResult(result);
+            LogExecuteCloudScriptResult(result);
             return S_OK;
         }
 
         HRESULT Validate() override
         {
-            return ValidatePFExecuteCloudScriptResult(result);
+            return ValidateServerExecuteCloudScriptResponse(result);
         }
     };
     auto async = std::make_unique<XAsyncHelper<ServerExecuteCloudScriptResultHolderStruct>>(testContext);
 
     PFCloudScriptExecuteCloudScriptServerRequestWrapper<> request;
-    FillExecuteCloudScriptServerRequest(request);
+    FillServerExecuteCloudScriptRequest(request);
     LogExecuteCloudScriptServerRequest(&request.Model(), "TestCloudScriptServerExecuteCloudScript");
     HRESULT hr = PFCloudScriptServerExecuteCloudScriptAsync(stateHandle, &request.Model(), &async->asyncBlock);
     if (FAILED(hr))
@@ -437,13 +437,13 @@ void AutoGenCloudScriptTests::TestCloudScriptExecuteEntityCloudScript(TestContex
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFCloudScriptExecuteEntityCloudScriptGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
             
-            LogPFExecuteCloudScriptResult(result);
+            LogExecuteCloudScriptResult(result);
             return S_OK;
         }
 
         HRESULT Validate() override
         {
-            return ValidatePFExecuteCloudScriptResult(result);
+            return ValidateExecuteEntityCloudScriptResponse(result);
         }
     };
     auto async = std::make_unique<XAsyncHelper<ExecuteEntityCloudScriptResultHolderStruct>>(testContext);
@@ -476,13 +476,13 @@ void AutoGenCloudScriptTests::TestCloudScriptExecuteFunction(TestContext& testCo
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFCloudScriptExecuteFunctionGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
             
-            LogPFCloudScriptExecuteFunctionResult(result);
+            LogExecuteFunctionResult(result);
             return S_OK;
         }
 
         HRESULT Validate() override
         {
-            return ValidatePFCloudScriptExecuteFunctionResult(result);
+            return ValidateExecuteFunctionResponse(result);
         }
     };
     auto async = std::make_unique<XAsyncHelper<ExecuteFunctionResultHolderStruct>>(testContext);
@@ -515,13 +515,13 @@ void AutoGenCloudScriptTests::TestCloudScriptGetFunction(TestContext& testContex
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFCloudScriptGetFunctionGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
             
-            LogPFCloudScriptGetFunctionResult(result);
+            LogGetFunctionResult(result);
             return S_OK;
         }
 
         HRESULT Validate() override
         {
-            return ValidatePFCloudScriptGetFunctionResult(result);
+            return ValidateGetFunctionResponse(result);
         }
     };
     auto async = std::make_unique<XAsyncHelper<GetFunctionResultHolderStruct>>(testContext);
@@ -555,13 +555,13 @@ void AutoGenCloudScriptTests::TestCloudScriptListFunctions(TestContext& testCont
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFCloudScriptListFunctionsGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
             
-            LogPFCloudScriptListFunctionsResult(result);
+            LogListFunctionsResult(result);
             return S_OK;
         }
 
         HRESULT Validate() override
         {
-            return ValidatePFCloudScriptListFunctionsResult(result);
+            return ValidateListFunctionsResponse(result);
         }
     };
     auto async = std::make_unique<XAsyncHelper<ListFunctionsResultHolderStruct>>(testContext);
@@ -596,19 +596,19 @@ void AutoGenCloudScriptTests::TestCloudScriptListHttpFunctions(TestContext& test
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFCloudScriptListHttpFunctionsGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
             
-            LogPFCloudScriptListHttpFunctionsResult(result);
+            LogListHttpFunctionsResult(result);
             return S_OK;
         }
 
         HRESULT Validate() override
         {
-            return ValidatePFCloudScriptListHttpFunctionsResult(result);
+            return ValidateListHttpFunctionsResponse(result);
         }
     };
     auto async = std::make_unique<XAsyncHelper<ListHttpFunctionsResultHolderStruct>>(testContext);
 
     PFCloudScriptListFunctionsRequestWrapper<> request;
-    FillListFunctionsRequest(request);
+    FillListHttpFunctionsRequest(request);
     LogListFunctionsRequest(&request.Model(), "TestCloudScriptListHttpFunctions");
     HRESULT hr = PFCloudScriptListHttpFunctionsAsync(entityHandle, &request.Model(), &async->asyncBlock);
     if (FAILED(hr))
@@ -637,19 +637,19 @@ void AutoGenCloudScriptTests::TestCloudScriptListQueuedFunctions(TestContext& te
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFCloudScriptListQueuedFunctionsGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
             
-            LogPFCloudScriptListQueuedFunctionsResult(result);
+            LogListQueuedFunctionsResult(result);
             return S_OK;
         }
 
         HRESULT Validate() override
         {
-            return ValidatePFCloudScriptListQueuedFunctionsResult(result);
+            return ValidateListQueuedFunctionsResponse(result);
         }
     };
     auto async = std::make_unique<XAsyncHelper<ListQueuedFunctionsResultHolderStruct>>(testContext);
 
     PFCloudScriptListFunctionsRequestWrapper<> request;
-    FillListFunctionsRequest(request);
+    FillListQueuedFunctionsRequest(request);
     LogListFunctionsRequest(&request.Model(), "TestCloudScriptListQueuedFunctions");
     HRESULT hr = PFCloudScriptListQueuedFunctionsAsync(entityHandle, &request.Model(), &async->asyncBlock);
     if (FAILED(hr))

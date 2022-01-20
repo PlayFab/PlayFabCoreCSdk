@@ -16,6 +16,8 @@
 #include "EntityTests.h"
 
 #include "AutoGenTests/AutoGenEventsTests.h" 
+#include "AutoGenTests/AutoGenAccountManagementTests.h" 
+#include "AutoGenTests/AutoGenPlayerDataManagementTests.h" 
 #include "AutoGenTests/AutoGenFriendsTests.h" 
 #include "AutoGenTests/AutoGenSharedGroupsTests.h" 
 #include "AutoGenTests/AutoGenDataTests.h" 
@@ -80,6 +82,7 @@ PFTestTraceLevel TestApp::traceLevel = PFTestTraceLevel::Important;
             testTitleData.titleId = ""; // The titleId for your title, found in the "Settings" section of PlayFab Game Manager
             testTitleData.userEmail = ""; // This is the email for a valid user (test tries to log into it with an invalid password, and verifies error result)
             testTitleData.developerSecretKey = "";
+            testTitleData.connectionString = "";
         }
 
         // Initialize the test runner/test data.
@@ -98,25 +101,33 @@ PFTestTraceLevel TestApp::traceLevel = PFTestTraceLevel::Important;
         apiTests4.SetTitleInfo(testTitleData);
         testRunner.Add(apiTests4);
 
-        AutoGenFriendsTests apiTests17;
-        apiTests17.SetTitleInfo(testTitleData);
-        testRunner.Add(apiTests17);
+        AutoGenAccountManagementTests apiTests7;
+        apiTests7.SetTitleInfo(testTitleData);
+        testRunner.Add(apiTests7);
 
-        AutoGenSharedGroupsTests apiTests18;
-        apiTests18.SetTitleInfo(testTitleData);
-        testRunner.Add(apiTests18);
+        AutoGenPlayerDataManagementTests apiTests14;
+        apiTests14.SetTitleInfo(testTitleData);
+        testRunner.Add(apiTests14);
 
-        AutoGenDataTests apiTests22;
-        apiTests22.SetTitleInfo(testTitleData);
-        testRunner.Add(apiTests22);
+        AutoGenFriendsTests apiTests19;
+        apiTests19.SetTitleInfo(testTitleData);
+        testRunner.Add(apiTests19);
 
-        AutoGenGroupsTests apiTests25;
+        AutoGenSharedGroupsTests apiTests20;
+        apiTests20.SetTitleInfo(testTitleData);
+        testRunner.Add(apiTests20);
+
+        AutoGenDataTests apiTests25;
         apiTests25.SetTitleInfo(testTitleData);
         testRunner.Add(apiTests25);
 
-        AutoGenProfilesTests apiTests28;
+        AutoGenGroupsTests apiTests28;
         apiTests28.SetTitleInfo(testTitleData);
         testRunner.Add(apiTests28);
+
+        AutoGenProfilesTests apiTests31;
+        apiTests31.SetTitleInfo(testTitleData);
+        testRunner.Add(apiTests31);
 
 
         // Run the tests (blocks until all tests have finished).
@@ -152,8 +163,18 @@ PFTestTraceLevel TestApp::traceLevel = PFTestTraceLevel::Important;
         if (!titleDataJson.HasParseError())
         {
             titleData.titleId = titleDataJson["titleId"].GetString();
-            titleData.userEmail = titleDataJson["userEmail"].GetString();
-            titleData.developerSecretKey = titleDataJson["developerSecretKey"].GetString();
+            if (titleDataJson.HasMember("userEmail"))
+            {
+                titleData.userEmail = titleDataJson["userEmail"].GetString();
+            }
+            if (titleDataJson.HasMember("developerSecretKey"))
+            {
+                titleData.developerSecretKey = titleDataJson["developerSecretKey"].GetString();
+            }
+            if (titleDataJson.HasMember("connectionString"))
+            {
+                titleData.connectionString = titleDataJson["connectionString"].GetString();
+            }
         }
 
         return !titleDataJson.HasParseError();

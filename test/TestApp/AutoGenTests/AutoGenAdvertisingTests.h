@@ -36,20 +36,21 @@ protected:
     void AddTests();
 
     static void LogAttributeInstallRequest(PFAdvertisingAttributeInstallRequest const* request, const char* testName);
-    static void FillAttributeInstallRequest(PlayFab::Wrappers::PFAdvertisingAttributeInstallRequestWrapper<>& request);
-
     static void LogGetAdPlacementsRequest(PFAdvertisingGetAdPlacementsRequest const* request, const char* testName);
-    static void FillGetAdPlacementsRequest(PlayFab::Wrappers::PFAdvertisingGetAdPlacementsRequestWrapper<>& request);
-    static HRESULT LogPFAdvertisingGetAdPlacementsResult(PFAdvertisingGetAdPlacementsResult const* result);
-    static HRESULT ValidatePFAdvertisingGetAdPlacementsResult(PFAdvertisingGetAdPlacementsResult* result);
-
+    static HRESULT LogGetAdPlacementsResult(PFAdvertisingGetAdPlacementsResult const* result);
     static void LogReportAdActivityRequest(PFAdvertisingReportAdActivityRequest const* request, const char* testName);
-    static void FillReportAdActivityRequest(PlayFab::Wrappers::PFAdvertisingReportAdActivityRequestWrapper<>& request);
-
     static void LogRewardAdActivityRequest(PFAdvertisingRewardAdActivityRequest const* request, const char* testName);
-    static void FillRewardAdActivityRequest(PlayFab::Wrappers::PFAdvertisingRewardAdActivityRequestWrapper<>& request);
-    static HRESULT LogPFAdvertisingRewardAdActivityResult(PFAdvertisingRewardAdActivityResult const* result);
-    static HRESULT ValidatePFAdvertisingRewardAdActivityResult(PFAdvertisingRewardAdActivityResult* result);
+    static HRESULT LogRewardAdActivityResult(PFAdvertisingRewardAdActivityResult const* result);
+
+    static void FillClientAttributeInstallRequest(PlayFab::Wrappers::PFAdvertisingAttributeInstallRequestWrapper<>& request);
+
+    static void FillClientGetAdPlacementsRequest(PlayFab::Wrappers::PFAdvertisingGetAdPlacementsRequestWrapper<>& request);
+    static HRESULT ValidateClientGetAdPlacementsResponse(PFAdvertisingGetAdPlacementsResult* result);
+
+    static void FillClientReportAdActivityRequest(PlayFab::Wrappers::PFAdvertisingReportAdActivityRequestWrapper<>& request);
+
+    static void FillClientRewardAdActivityRequest(PlayFab::Wrappers::PFAdvertisingRewardAdActivityRequestWrapper<>& request);
+    static HRESULT ValidateClientRewardAdActivityResponse(PFAdvertisingRewardAdActivityResult* result);
 
     struct AdvertisingTestData
     {

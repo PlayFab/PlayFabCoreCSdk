@@ -11,7 +11,7 @@ namespace PlayFabUnit
 
 void AutoGenEventsTests::LogAddPlayerTagRequest(PFEventsAddPlayerTagRequest const* request, const char* testName)
 {
-    if( !TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    if (!TestApp::ShouldTrace(PFTestTraceLevel::Information))
     {
         return;
     }
@@ -28,19 +28,19 @@ void AutoGenEventsTests::LogAddPlayerTagRequest(PFEventsAddPlayerTagRequest cons
     ss << "  customTagsCount " << request->customTagsCount; Log(ss);
 
     // PFStringDictionaryEntry
-    for( uint32_t i=0; i<request->customTagsCount; i++ )
+    for (uint32_t i=0; i<request->customTagsCount; i++)
     {
             ss << "  request->customTags[" << i << "]:" << request->customTags[i].key << "=" << request->customTags[i].value; Log(ss);
             
     } 
-    if( request->playFabId ) { ss << "  playFabId " << request->playFabId; Log(ss); } else { ss << "  playFabId = nullptr"; Log(ss); } // Class: const char* 
-    if( request->tagName ) { ss << "  tagName " << request->tagName; Log(ss); } else { ss << "  tagName = nullptr"; Log(ss); } // Class: const char* 
+    if (request->playFabId) { ss << "  playFabId " << request->playFabId; Log(ss); } else { ss << "  playFabId = nullptr"; Log(ss); } // Class: const char* 
+    if (request->tagName) { ss << "  tagName " << request->tagName; Log(ss); } else { ss << "  tagName = nullptr"; Log(ss); } // Class: const char* 
 
 }
 
 void AutoGenEventsTests::LogGetPlayerTagsRequest(PFEventsGetPlayerTagsRequest const* request, const char* testName)
 {
-    if( !TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    if (!TestApp::ShouldTrace(PFTestTraceLevel::Information))
     {
         return;
     }
@@ -57,19 +57,19 @@ void AutoGenEventsTests::LogGetPlayerTagsRequest(PFEventsGetPlayerTagsRequest co
     ss << "  customTagsCount " << request->customTagsCount; Log(ss);
 
     // PFStringDictionaryEntry
-    for( uint32_t i=0; i<request->customTagsCount; i++ )
+    for (uint32_t i=0; i<request->customTagsCount; i++)
     {
             ss << "  request->customTags[" << i << "]:" << request->customTags[i].key << "=" << request->customTags[i].value; Log(ss);
             
     } 
-    if( request->playfabNamespace ) { ss << "  playfabNamespace " << request->playfabNamespace; Log(ss); } else { ss << "  playfabNamespace = nullptr"; Log(ss); } // Class: const char* 
-    if( request->playFabId ) { ss << "  playFabId " << request->playFabId; Log(ss); } else { ss << "  playFabId = nullptr"; Log(ss); } // Class: const char* 
+    if (request->playfabNamespace) { ss << "  playfabNamespace " << request->playfabNamespace; Log(ss); } else { ss << "  playfabNamespace = nullptr"; Log(ss); } // Class: const char* 
+    if (request->playFabId) { ss << "  playFabId " << request->playFabId; Log(ss); } else { ss << "  playFabId = nullptr"; Log(ss); } // Class: const char* 
 
 }
 
-HRESULT AutoGenEventsTests::LogPFEventsGetPlayerTagsResult(PFEventsGetPlayerTagsResult const* result)
+HRESULT AutoGenEventsTests::LogGetPlayerTagsResult(PFEventsGetPlayerTagsResult const* result)
 {
-    if( !TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    if (!TestApp::ShouldTrace(PFTestTraceLevel::Information))
     {
         return S_OK;
     }
@@ -78,11 +78,11 @@ HRESULT AutoGenEventsTests::LogPFEventsGetPlayerTagsResult(PFEventsGetPlayerTags
     ss << "Response:"; Log(ss);
 
     // Found PlayFabEventsGetPlayerTagsResult    
-    if( result->playFabId ) { ss << "  playFabId " << result->playFabId; Log(ss); } else { ss << "  playFabId = nullptr"; Log(ss); } // Class: const char*         
+    if (result->playFabId) { ss << "  playFabId " << result->playFabId; Log(ss); } else { ss << "  playFabId = nullptr"; Log(ss); } // Class: const char*         
     ss << "  tagsCount " << result->tagsCount; Log(ss);
 
     // const char*
-    for( uint32_t i=0; i<result->tagsCount; i++ )
+    for (uint32_t i=0; i<result->tagsCount; i++)
     {
             ss << "  result->tags[" << i << "]:" << result->tags[i]; Log(ss); // const char*
     } 
@@ -91,7 +91,7 @@ HRESULT AutoGenEventsTests::LogPFEventsGetPlayerTagsResult(PFEventsGetPlayerTags
 
 void AutoGenEventsTests::LogRemovePlayerTagRequest(PFEventsRemovePlayerTagRequest const* request, const char* testName)
 {
-    if( !TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    if (!TestApp::ShouldTrace(PFTestTraceLevel::Information))
     {
         return;
     }
@@ -108,19 +108,19 @@ void AutoGenEventsTests::LogRemovePlayerTagRequest(PFEventsRemovePlayerTagReques
     ss << "  customTagsCount " << request->customTagsCount; Log(ss);
 
     // PFStringDictionaryEntry
-    for( uint32_t i=0; i<request->customTagsCount; i++ )
+    for (uint32_t i=0; i<request->customTagsCount; i++)
     {
             ss << "  request->customTags[" << i << "]:" << request->customTags[i].key << "=" << request->customTags[i].value; Log(ss);
             
     } 
-    if( request->playFabId ) { ss << "  playFabId " << request->playFabId; Log(ss); } else { ss << "  playFabId = nullptr"; Log(ss); } // Class: const char* 
-    if( request->tagName ) { ss << "  tagName " << request->tagName; Log(ss); } else { ss << "  tagName = nullptr"; Log(ss); } // Class: const char* 
+    if (request->playFabId) { ss << "  playFabId " << request->playFabId; Log(ss); } else { ss << "  playFabId = nullptr"; Log(ss); } // Class: const char* 
+    if (request->tagName) { ss << "  tagName " << request->tagName; Log(ss); } else { ss << "  tagName = nullptr"; Log(ss); } // Class: const char* 
 
 }
 
 void AutoGenEventsTests::LogWriteClientCharacterEventRequest(PFEventsWriteClientCharacterEventRequest const* request, const char* testName)
 {
-    if( !TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    if (!TestApp::ShouldTrace(PFTestTraceLevel::Information))
     {
         return;
     }
@@ -133,24 +133,24 @@ void AutoGenEventsTests::LogWriteClientCharacterEventRequest(PFEventsWriteClient
 
     // PlayFabEventsWriteClientCharacterEventRequest struct:
     // request->body: PFJsonObject
-    if( request->body.stringValue ) { ss << "  body " << request->body.stringValue; Log(ss); } else { ss << "  body = nullptr"; Log(ss); } // Class: PFJsonObject 
-    if( request->characterId ) { ss << "  characterId " << request->characterId; Log(ss); } else { ss << "  characterId = nullptr"; Log(ss); } // Class: const char*     
+    if (request->body.stringValue) { ss << "  body " << request->body.stringValue; Log(ss); } else { ss << "  body = nullptr"; Log(ss); } // Class: PFJsonObject 
+    if (request->characterId) { ss << "  characterId " << request->characterId; Log(ss); } else { ss << "  characterId = nullptr"; Log(ss); } // Class: const char*     
     ss << "  customTagsCount " << request->customTagsCount; Log(ss);
 
     // PFStringDictionaryEntry
-    for( uint32_t i=0; i<request->customTagsCount; i++ )
+    for (uint32_t i=0; i<request->customTagsCount; i++)
     {
             ss << "  request->customTags[" << i << "]:" << request->customTags[i].key << "=" << request->customTags[i].value; Log(ss);
             
     } 
-    if( request->eventName ) { ss << "  eventName " << request->eventName; Log(ss); } else { ss << "  eventName = nullptr"; Log(ss); } // Class: const char* 
+    if (request->eventName) { ss << "  eventName " << request->eventName; Log(ss); } else { ss << "  eventName = nullptr"; Log(ss); } // Class: const char* 
     ss << "  timestamp " << request->timestamp; Log(ss); // Class: time_t 
 
 }
 
-HRESULT AutoGenEventsTests::LogPFEventsWriteEventResponse(PFEventsWriteEventResponse const* result)
+HRESULT AutoGenEventsTests::LogWriteEventResponse(PFEventsWriteEventResponse const* result)
 {
-    if( !TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    if (!TestApp::ShouldTrace(PFTestTraceLevel::Information))
     {
         return S_OK;
     }
@@ -159,13 +159,13 @@ HRESULT AutoGenEventsTests::LogPFEventsWriteEventResponse(PFEventsWriteEventResp
     ss << "Response:"; Log(ss);
 
     // Found PlayFabEventsWriteEventResponse    
-    if( result->eventId ) { ss << "  eventId " << result->eventId; Log(ss); } else { ss << "  eventId = nullptr"; Log(ss); } // Class: const char* 
+    if (result->eventId) { ss << "  eventId " << result->eventId; Log(ss); } else { ss << "  eventId = nullptr"; Log(ss); } // Class: const char* 
     return S_OK;
 }
 
 void AutoGenEventsTests::LogWriteClientPlayerEventRequest(PFEventsWriteClientPlayerEventRequest const* request, const char* testName)
 {
-    if( !TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    if (!TestApp::ShouldTrace(PFTestTraceLevel::Information))
     {
         return;
     }
@@ -178,23 +178,23 @@ void AutoGenEventsTests::LogWriteClientPlayerEventRequest(PFEventsWriteClientPla
 
     // PlayFabEventsWriteClientPlayerEventRequest struct:
     // request->body: PFJsonObject
-    if( request->body.stringValue ) { ss << "  body " << request->body.stringValue; Log(ss); } else { ss << "  body = nullptr"; Log(ss); } // Class: PFJsonObject     
+    if (request->body.stringValue) { ss << "  body " << request->body.stringValue; Log(ss); } else { ss << "  body = nullptr"; Log(ss); } // Class: PFJsonObject     
     ss << "  customTagsCount " << request->customTagsCount; Log(ss);
 
     // PFStringDictionaryEntry
-    for( uint32_t i=0; i<request->customTagsCount; i++ )
+    for (uint32_t i=0; i<request->customTagsCount; i++)
     {
             ss << "  request->customTags[" << i << "]:" << request->customTags[i].key << "=" << request->customTags[i].value; Log(ss);
             
     } 
-    if( request->eventName ) { ss << "  eventName " << request->eventName; Log(ss); } else { ss << "  eventName = nullptr"; Log(ss); } // Class: const char* 
+    if (request->eventName) { ss << "  eventName " << request->eventName; Log(ss); } else { ss << "  eventName = nullptr"; Log(ss); } // Class: const char* 
     ss << "  timestamp " << request->timestamp; Log(ss); // Class: time_t 
 
 }
 
 void AutoGenEventsTests::LogWriteTitleEventRequest(PFEventsWriteTitleEventRequest const* request, const char* testName)
 {
-    if( !TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    if (!TestApp::ShouldTrace(PFTestTraceLevel::Information))
     {
         return;
     }
@@ -207,23 +207,23 @@ void AutoGenEventsTests::LogWriteTitleEventRequest(PFEventsWriteTitleEventReques
 
     // PlayFabEventsWriteTitleEventRequest struct:
     // request->body: PFJsonObject
-    if( request->body.stringValue ) { ss << "  body " << request->body.stringValue; Log(ss); } else { ss << "  body = nullptr"; Log(ss); } // Class: PFJsonObject     
+    if (request->body.stringValue) { ss << "  body " << request->body.stringValue; Log(ss); } else { ss << "  body = nullptr"; Log(ss); } // Class: PFJsonObject     
     ss << "  customTagsCount " << request->customTagsCount; Log(ss);
 
     // PFStringDictionaryEntry
-    for( uint32_t i=0; i<request->customTagsCount; i++ )
+    for (uint32_t i=0; i<request->customTagsCount; i++)
     {
             ss << "  request->customTags[" << i << "]:" << request->customTags[i].key << "=" << request->customTags[i].value; Log(ss);
             
     } 
-    if( request->eventName ) { ss << "  eventName " << request->eventName; Log(ss); } else { ss << "  eventName = nullptr"; Log(ss); } // Class: const char* 
+    if (request->eventName) { ss << "  eventName " << request->eventName; Log(ss); } else { ss << "  eventName = nullptr"; Log(ss); } // Class: const char* 
     ss << "  timestamp " << request->timestamp; Log(ss); // Class: time_t 
 
 }
 
 void AutoGenEventsTests::LogWriteServerCharacterEventRequest(PFEventsWriteServerCharacterEventRequest const* request, const char* testName)
 {
-    if( !TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    if (!TestApp::ShouldTrace(PFTestTraceLevel::Information))
     {
         return;
     }
@@ -236,25 +236,25 @@ void AutoGenEventsTests::LogWriteServerCharacterEventRequest(PFEventsWriteServer
 
     // PlayFabEventsWriteServerCharacterEventRequest struct:
     // request->body: PFJsonObject
-    if( request->body.stringValue ) { ss << "  body " << request->body.stringValue; Log(ss); } else { ss << "  body = nullptr"; Log(ss); } // Class: PFJsonObject 
-    if( request->characterId ) { ss << "  characterId " << request->characterId; Log(ss); } else { ss << "  characterId = nullptr"; Log(ss); } // Class: const char*     
+    if (request->body.stringValue) { ss << "  body " << request->body.stringValue; Log(ss); } else { ss << "  body = nullptr"; Log(ss); } // Class: PFJsonObject 
+    if (request->characterId) { ss << "  characterId " << request->characterId; Log(ss); } else { ss << "  characterId = nullptr"; Log(ss); } // Class: const char*     
     ss << "  customTagsCount " << request->customTagsCount; Log(ss);
 
     // PFStringDictionaryEntry
-    for( uint32_t i=0; i<request->customTagsCount; i++ )
+    for (uint32_t i=0; i<request->customTagsCount; i++)
     {
             ss << "  request->customTags[" << i << "]:" << request->customTags[i].key << "=" << request->customTags[i].value; Log(ss);
             
     } 
-    if( request->eventName ) { ss << "  eventName " << request->eventName; Log(ss); } else { ss << "  eventName = nullptr"; Log(ss); } // Class: const char* 
-    if( request->playFabId ) { ss << "  playFabId " << request->playFabId; Log(ss); } else { ss << "  playFabId = nullptr"; Log(ss); } // Class: const char* 
+    if (request->eventName) { ss << "  eventName " << request->eventName; Log(ss); } else { ss << "  eventName = nullptr"; Log(ss); } // Class: const char* 
+    if (request->playFabId) { ss << "  playFabId " << request->playFabId; Log(ss); } else { ss << "  playFabId = nullptr"; Log(ss); } // Class: const char* 
     ss << "  timestamp " << request->timestamp; Log(ss); // Class: time_t 
 
 }
 
 void AutoGenEventsTests::LogWriteServerPlayerEventRequest(PFEventsWriteServerPlayerEventRequest const* request, const char* testName)
 {
-    if( !TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    if (!TestApp::ShouldTrace(PFTestTraceLevel::Information))
     {
         return;
     }
@@ -267,24 +267,24 @@ void AutoGenEventsTests::LogWriteServerPlayerEventRequest(PFEventsWriteServerPla
 
     // PlayFabEventsWriteServerPlayerEventRequest struct:
     // request->body: PFJsonObject
-    if( request->body.stringValue ) { ss << "  body " << request->body.stringValue; Log(ss); } else { ss << "  body = nullptr"; Log(ss); } // Class: PFJsonObject     
+    if (request->body.stringValue) { ss << "  body " << request->body.stringValue; Log(ss); } else { ss << "  body = nullptr"; Log(ss); } // Class: PFJsonObject     
     ss << "  customTagsCount " << request->customTagsCount; Log(ss);
 
     // PFStringDictionaryEntry
-    for( uint32_t i=0; i<request->customTagsCount; i++ )
+    for (uint32_t i=0; i<request->customTagsCount; i++)
     {
             ss << "  request->customTags[" << i << "]:" << request->customTags[i].key << "=" << request->customTags[i].value; Log(ss);
             
     } 
-    if( request->eventName ) { ss << "  eventName " << request->eventName; Log(ss); } else { ss << "  eventName = nullptr"; Log(ss); } // Class: const char* 
-    if( request->playFabId ) { ss << "  playFabId " << request->playFabId; Log(ss); } else { ss << "  playFabId = nullptr"; Log(ss); } // Class: const char* 
+    if (request->eventName) { ss << "  eventName " << request->eventName; Log(ss); } else { ss << "  eventName = nullptr"; Log(ss); } // Class: const char* 
+    if (request->playFabId) { ss << "  playFabId " << request->playFabId; Log(ss); } else { ss << "  playFabId = nullptr"; Log(ss); } // Class: const char* 
     ss << "  timestamp " << request->timestamp; Log(ss); // Class: time_t 
 
 }
 
 void AutoGenEventsTests::LogWriteEventsRequest(PFEventsWriteEventsRequest const* request, const char* testName)
 {
-    if( !TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    if (!TestApp::ShouldTrace(PFTestTraceLevel::Information))
     {
         return;
     }
@@ -301,7 +301,7 @@ void AutoGenEventsTests::LogWriteEventsRequest(PFEventsWriteEventsRequest const*
     ss << "  customTagsCount " << request->customTagsCount; Log(ss);
 
     // PFStringDictionaryEntry
-    for( uint32_t i=0; i<request->customTagsCount; i++ )
+    for (uint32_t i=0; i<request->customTagsCount; i++)
     {
             ss << "  request->customTags[" << i << "]:" << request->customTags[i].key << "=" << request->customTags[i].value; Log(ss);
             
@@ -309,16 +309,16 @@ void AutoGenEventsTests::LogWriteEventsRequest(PFEventsWriteEventsRequest const*
     ss << "  eventsCount " << request->eventsCount; Log(ss);
 
     // PFEventsEventContents
-    for( uint32_t i=0; i<request->eventsCount; i++ )
+    for (uint32_t i=0; i<request->eventsCount; i++)
     {
             ss << "  request->events[" << i << "]:" << request->events[i]; Log(ss); // PFEventsEventContents
     } 
 
 }
 
-HRESULT AutoGenEventsTests::LogPFEventsWriteEventsResponse(PFEventsWriteEventsResponse const* result)
+HRESULT AutoGenEventsTests::LogWriteEventsResponse(PFEventsWriteEventsResponse const* result)
 {
-    if( !TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    if (!TestApp::ShouldTrace(PFTestTraceLevel::Information))
     {
         return S_OK;
     }
@@ -330,7 +330,7 @@ HRESULT AutoGenEventsTests::LogPFEventsWriteEventsResponse(PFEventsWriteEventsRe
     ss << "  assignedEventIdsCount " << result->assignedEventIdsCount; Log(ss);
 
     // const char*
-    for( uint32_t i=0; i<result->assignedEventIdsCount; i++ )
+    for (uint32_t i=0; i<result->assignedEventIdsCount; i++)
     {
             ss << "  result->assignedEventIds[" << i << "]:" << result->assignedEventIds[i]; Log(ss); // const char*
     } 

@@ -21,7 +21,7 @@ void AutoGenAdvertisingTests::Log(std::stringstream& ss)
 
 HRESULT AutoGenAdvertisingTests::LogHR(HRESULT hr)
 {
-    if( TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    if (TestApp::ShouldTrace(PFTestTraceLevel::Information))
     {
         TestApp::Log("Result: 0x%0.8x", hr);
     }
@@ -51,7 +51,7 @@ void AutoGenAdvertisingTests::AddTests()
 
 void AutoGenAdvertisingTests::ClassSetUp()
 {
-    HRESULT hr = PFAdminInitialize(testTitleData.titleId.data(), testTitleData.developerSecretKey.data(), nullptr, &stateHandle);
+    HRESULT hr = PFAdminInitialize(testTitleData.titleId.data(), testTitleData.developerSecretKey.data(), testTitleData.connectionString.data(), nullptr, &stateHandle);
     assert(SUCCEEDED(hr));
     if (SUCCEEDED(hr))
     {
@@ -162,7 +162,7 @@ void AutoGenAdvertisingTests::TestAdvertisingClientAttributeInstall(TestContext&
     auto async = std::make_unique<XAsyncHelper<XAsyncResult>>(testContext);
 
     PFAdvertisingAttributeInstallRequestWrapper<> request;
-    FillAttributeInstallRequest(request);
+    FillClientAttributeInstallRequest(request);
     LogAttributeInstallRequest(&request.Model(), "TestAdvertisingClientAttributeInstall");
     HRESULT hr = PFAdvertisingClientAttributeInstallAsync(titlePlayerHandle, &request.Model(), &async->asyncBlock);
     if (FAILED(hr))
@@ -191,19 +191,19 @@ void AutoGenAdvertisingTests::TestAdvertisingClientGetAdPlacements(TestContext& 
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFAdvertisingClientGetAdPlacementsGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
             
-            LogPFAdvertisingGetAdPlacementsResult(result);
+            LogGetAdPlacementsResult(result);
             return S_OK;
         }
 
         HRESULT Validate() override
         {
-            return ValidatePFAdvertisingGetAdPlacementsResult(result);
+            return ValidateClientGetAdPlacementsResponse(result);
         }
     };
     auto async = std::make_unique<XAsyncHelper<ClientGetAdPlacementsResultHolderStruct>>(testContext);
 
     PFAdvertisingGetAdPlacementsRequestWrapper<> request;
-    FillGetAdPlacementsRequest(request);
+    FillClientGetAdPlacementsRequest(request);
     LogGetAdPlacementsRequest(&request.Model(), "TestAdvertisingClientGetAdPlacements");
     HRESULT hr = PFAdvertisingClientGetAdPlacementsAsync(titlePlayerHandle, &request.Model(), &async->asyncBlock);
     if (FAILED(hr))
@@ -225,7 +225,7 @@ void AutoGenAdvertisingTests::TestAdvertisingClientReportAdActivity(TestContext&
     auto async = std::make_unique<XAsyncHelper<XAsyncResult>>(testContext);
 
     PFAdvertisingReportAdActivityRequestWrapper<> request;
-    FillReportAdActivityRequest(request);
+    FillClientReportAdActivityRequest(request);
     LogReportAdActivityRequest(&request.Model(), "TestAdvertisingClientReportAdActivity");
     HRESULT hr = PFAdvertisingClientReportAdActivityAsync(titlePlayerHandle, &request.Model(), &async->asyncBlock);
     if (FAILED(hr))
@@ -254,19 +254,19 @@ void AutoGenAdvertisingTests::TestAdvertisingClientRewardAdActivity(TestContext&
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFAdvertisingClientRewardAdActivityGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
             
-            LogPFAdvertisingRewardAdActivityResult(result);
+            LogRewardAdActivityResult(result);
             return S_OK;
         }
 
         HRESULT Validate() override
         {
-            return ValidatePFAdvertisingRewardAdActivityResult(result);
+            return ValidateClientRewardAdActivityResponse(result);
         }
     };
     auto async = std::make_unique<XAsyncHelper<ClientRewardAdActivityResultHolderStruct>>(testContext);
 
     PFAdvertisingRewardAdActivityRequestWrapper<> request;
-    FillRewardAdActivityRequest(request);
+    FillClientRewardAdActivityRequest(request);
     LogRewardAdActivityRequest(&request.Model(), "TestAdvertisingClientRewardAdActivity");
     HRESULT hr = PFAdvertisingClientRewardAdActivityAsync(titlePlayerHandle, &request.Model(), &async->asyncBlock);
     if (FAILED(hr))

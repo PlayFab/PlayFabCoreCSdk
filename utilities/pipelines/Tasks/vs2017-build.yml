@@ -18,13 +18,6 @@ steps:
       extSync: true
       disableMsbuildVersion: true
 
-  # Run PoliCheck.
-  # Ref: https://www.1eswiki.com/index.php?title=PoliCheck_Build_Task
-  - task: PoliCheck@1
-    displayName: Run PoliCheck
-    inputs:
-        optionsUEPATH: Utilities/Pipelines/Scripts/PoliCheckExclude.xml
-
   - task: BatchScript@1
     displayName: fetchTools.cmd
     inputs:

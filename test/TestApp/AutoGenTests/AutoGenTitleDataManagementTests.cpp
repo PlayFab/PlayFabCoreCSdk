@@ -21,7 +21,7 @@ void AutoGenTitleDataManagementTests::Log(std::stringstream& ss)
 
 HRESULT AutoGenTitleDataManagementTests::LogHR(HRESULT hr)
 {
-    if( TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    if (TestApp::ShouldTrace(PFTestTraceLevel::Information))
     {
         TestApp::Log("Result: 0x%0.8x", hr);
     }
@@ -179,7 +179,7 @@ void AutoGenTitleDataManagementTests::AddTests()
 
 void AutoGenTitleDataManagementTests::ClassSetUp()
 {
-    HRESULT hr = PFAdminInitialize(testTitleData.titleId.data(), testTitleData.developerSecretKey.data(), nullptr, &stateHandle);
+    HRESULT hr = PFAdminInitialize(testTitleData.titleId.data(), testTitleData.developerSecretKey.data(), testTitleData.connectionString.data(), nullptr, &stateHandle);
     assert(SUCCEEDED(hr));
     if (SUCCEEDED(hr))
     {
@@ -290,7 +290,7 @@ void AutoGenTitleDataManagementTests::TestTitleDataManagementAdminAddLocalizedNe
     auto async = std::make_unique<XAsyncHelper<XAsyncResult>>(testContext);
 
     PFTitleDataManagementAddLocalizedNewsRequestWrapper<> request;
-    FillAddLocalizedNewsRequest(request);
+    FillAdminAddLocalizedNewsRequest(request);
     LogAddLocalizedNewsRequest(&request.Model(), "TestTitleDataManagementAdminAddLocalizedNews");
     HRESULT hr = PFTitleDataManagementAdminAddLocalizedNewsAsync(stateHandle, &request.Model(), &async->asyncBlock);
     if (FAILED(hr))
@@ -319,19 +319,19 @@ void AutoGenTitleDataManagementTests::TestTitleDataManagementAdminAddNews(TestCo
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFTitleDataManagementAdminAddNewsGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
             
-            LogPFTitleDataManagementAddNewsResult(result);
+            LogAddNewsResult(result);
             return S_OK;
         }
 
         HRESULT Validate() override
         {
-            return ValidatePFTitleDataManagementAddNewsResult(result);
+            return ValidateAdminAddNewsResponse(result);
         }
     };
     auto async = std::make_unique<XAsyncHelper<AdminAddNewsResultHolderStruct>>(testContext);
 
     PFTitleDataManagementAddNewsRequestWrapper<> request;
-    FillAddNewsRequest(request);
+    FillAdminAddNewsRequest(request);
     LogAddNewsRequest(&request.Model(), "TestTitleDataManagementAdminAddNews");
     HRESULT hr = PFTitleDataManagementAdminAddNewsAsync(stateHandle, &request.Model(), &async->asyncBlock);
     if (FAILED(hr))
@@ -353,7 +353,7 @@ void AutoGenTitleDataManagementTests::TestTitleDataManagementAdminAddVirtualCurr
     auto async = std::make_unique<XAsyncHelper<XAsyncResult>>(testContext);
 
     PFTitleDataManagementAddVirtualCurrencyTypesRequestWrapper<> request;
-    FillAddVirtualCurrencyTypesRequest(request);
+    FillAdminAddVirtualCurrencyTypesRequest(request);
     LogAddVirtualCurrencyTypesRequest(&request.Model(), "TestTitleDataManagementAdminAddVirtualCurrencyTypes");
     HRESULT hr = PFTitleDataManagementAdminAddVirtualCurrencyTypesAsync(stateHandle, &request.Model(), &async->asyncBlock);
     if (FAILED(hr))
@@ -375,7 +375,7 @@ void AutoGenTitleDataManagementTests::TestTitleDataManagementAdminDeleteStore(Te
     auto async = std::make_unique<XAsyncHelper<XAsyncResult>>(testContext);
 
     PFTitleDataManagementDeleteStoreRequestWrapper<> request;
-    FillDeleteStoreRequest(request);
+    FillAdminDeleteStoreRequest(request);
     LogDeleteStoreRequest(&request.Model(), "TestTitleDataManagementAdminDeleteStore");
     HRESULT hr = PFTitleDataManagementAdminDeleteStoreAsync(stateHandle, &request.Model(), &async->asyncBlock);
     if (FAILED(hr))
@@ -397,7 +397,7 @@ void AutoGenTitleDataManagementTests::TestTitleDataManagementAdminDeleteTitleDat
     auto async = std::make_unique<XAsyncHelper<XAsyncResult>>(testContext);
 
     PFTitleDataManagementDeleteTitleDataOverrideRequestWrapper<> request;
-    FillDeleteTitleDataOverrideRequest(request);
+    FillAdminDeleteTitleDataOverrideRequest(request);
     LogDeleteTitleDataOverrideRequest(&request.Model(), "TestTitleDataManagementAdminDeleteTitleDataOverride");
     HRESULT hr = PFTitleDataManagementAdminDeleteTitleDataOverrideAsync(stateHandle, &request.Model(), &async->asyncBlock);
     if (FAILED(hr))
@@ -426,19 +426,19 @@ void AutoGenTitleDataManagementTests::TestTitleDataManagementAdminGetCatalogItem
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFTitleDataManagementAdminGetCatalogItemsGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
             
-            LogPFTitleDataManagementGetCatalogItemsResult(result);
+            LogGetCatalogItemsResult(result);
             return S_OK;
         }
 
         HRESULT Validate() override
         {
-            return ValidatePFTitleDataManagementGetCatalogItemsResult(result);
+            return ValidateAdminGetCatalogItemsResponse(result);
         }
     };
     auto async = std::make_unique<XAsyncHelper<AdminGetCatalogItemsResultHolderStruct>>(testContext);
 
     PFTitleDataManagementGetCatalogItemsRequestWrapper<> request;
-    FillGetCatalogItemsRequest(request);
+    FillAdminGetCatalogItemsRequest(request);
     LogGetCatalogItemsRequest(&request.Model(), "TestTitleDataManagementAdminGetCatalogItems");
     HRESULT hr = PFTitleDataManagementAdminGetCatalogItemsAsync(stateHandle, &request.Model(), &async->asyncBlock);
     if (FAILED(hr))
@@ -467,19 +467,19 @@ void AutoGenTitleDataManagementTests::TestTitleDataManagementAdminGetPublisherDa
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFTitleDataManagementAdminGetPublisherDataGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
             
-            LogPFTitleDataManagementGetPublisherDataResult(result);
+            LogGetPublisherDataResult(result);
             return S_OK;
         }
 
         HRESULT Validate() override
         {
-            return ValidatePFTitleDataManagementGetPublisherDataResult(result);
+            return ValidateAdminGetPublisherDataResponse(result);
         }
     };
     auto async = std::make_unique<XAsyncHelper<AdminGetPublisherDataResultHolderStruct>>(testContext);
 
     PFTitleDataManagementGetPublisherDataRequestWrapper<> request;
-    FillGetPublisherDataRequest(request);
+    FillAdminGetPublisherDataRequest(request);
     LogGetPublisherDataRequest(&request.Model(), "TestTitleDataManagementAdminGetPublisherData");
     HRESULT hr = PFTitleDataManagementAdminGetPublisherDataAsync(stateHandle, &request.Model(), &async->asyncBlock);
     if (FAILED(hr))
@@ -508,19 +508,19 @@ void AutoGenTitleDataManagementTests::TestTitleDataManagementAdminGetRandomResul
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFTitleDataManagementAdminGetRandomResultTablesGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
             
-            LogPFGetRandomResultTablesResult(result);
+            LogGetRandomResultTablesResult(result);
             return S_OK;
         }
 
         HRESULT Validate() override
         {
-            return ValidatePFGetRandomResultTablesResult(result);
+            return ValidateAdminGetRandomResultTablesResponse(result);
         }
     };
     auto async = std::make_unique<XAsyncHelper<AdminGetRandomResultTablesResultHolderStruct>>(testContext);
 
     PFTitleDataManagementGetRandomResultTablesRequestWrapper<> request;
-    FillGetRandomResultTablesRequest(request);
+    FillAdminGetRandomResultTablesRequest(request);
     LogGetRandomResultTablesRequest(&request.Model(), "TestTitleDataManagementAdminGetRandomResultTables");
     HRESULT hr = PFTitleDataManagementAdminGetRandomResultTablesAsync(stateHandle, &request.Model(), &async->asyncBlock);
     if (FAILED(hr))
@@ -549,19 +549,19 @@ void AutoGenTitleDataManagementTests::TestTitleDataManagementAdminGetStoreItems(
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFTitleDataManagementAdminGetStoreItemsGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
             
-            LogPFTitleDataManagementGetStoreItemsResult(result);
+            LogGetStoreItemsResult(result);
             return S_OK;
         }
 
         HRESULT Validate() override
         {
-            return ValidatePFTitleDataManagementGetStoreItemsResult(result);
+            return ValidateAdminGetStoreItemsResponse(result);
         }
     };
     auto async = std::make_unique<XAsyncHelper<AdminGetStoreItemsResultHolderStruct>>(testContext);
 
     PFTitleDataManagementGetStoreItemsRequestWrapper<> request;
-    FillGetStoreItemsRequest(request);
+    FillAdminGetStoreItemsRequest(request);
     LogGetStoreItemsRequest(&request.Model(), "TestTitleDataManagementAdminGetStoreItems");
     HRESULT hr = PFTitleDataManagementAdminGetStoreItemsAsync(stateHandle, &request.Model(), &async->asyncBlock);
     if (FAILED(hr))
@@ -590,19 +590,19 @@ void AutoGenTitleDataManagementTests::TestTitleDataManagementAdminGetTitleData(T
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFTitleDataManagementAdminGetTitleDataGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
             
-            LogPFTitleDataManagementGetTitleDataResult(result);
+            LogGetTitleDataResult(result);
             return S_OK;
         }
 
         HRESULT Validate() override
         {
-            return ValidatePFTitleDataManagementGetTitleDataResult(result);
+            return ValidateAdminGetTitleDataResponse(result);
         }
     };
     auto async = std::make_unique<XAsyncHelper<AdminGetTitleDataResultHolderStruct>>(testContext);
 
     PFTitleDataManagementGetTitleDataRequestWrapper<> request;
-    FillGetTitleDataRequest(request);
+    FillAdminGetTitleDataRequest(request);
     LogGetTitleDataRequest(&request.Model(), "TestTitleDataManagementAdminGetTitleData");
     HRESULT hr = PFTitleDataManagementAdminGetTitleDataAsync(stateHandle, &request.Model(), &async->asyncBlock);
     if (FAILED(hr))
@@ -631,19 +631,19 @@ void AutoGenTitleDataManagementTests::TestTitleDataManagementAdminGetTitleIntern
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFTitleDataManagementAdminGetTitleInternalDataGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
             
-            LogPFTitleDataManagementGetTitleDataResult(result);
+            LogGetTitleDataResult(result);
             return S_OK;
         }
 
         HRESULT Validate() override
         {
-            return ValidatePFTitleDataManagementGetTitleDataResult(result);
+            return ValidateAdminGetTitleInternalDataResponse(result);
         }
     };
     auto async = std::make_unique<XAsyncHelper<AdminGetTitleInternalDataResultHolderStruct>>(testContext);
 
     PFTitleDataManagementGetTitleDataRequestWrapper<> request;
-    FillGetTitleDataRequest(request);
+    FillAdminGetTitleInternalDataRequest(request);
     LogGetTitleDataRequest(&request.Model(), "TestTitleDataManagementAdminGetTitleInternalData");
     HRESULT hr = PFTitleDataManagementAdminGetTitleInternalDataAsync(stateHandle, &request.Model(), &async->asyncBlock);
     if (FAILED(hr))
@@ -672,13 +672,13 @@ void AutoGenTitleDataManagementTests::TestTitleDataManagementAdminListVirtualCur
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFTitleDataManagementAdminListVirtualCurrencyTypesGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
             
-            LogPFTitleDataManagementListVirtualCurrencyTypesResult(result);
+            LogListVirtualCurrencyTypesResult(result);
             return S_OK;
         }
 
         HRESULT Validate() override
         {
-            return ValidatePFTitleDataManagementListVirtualCurrencyTypesResult(result);
+            return ValidateAdminListVirtualCurrencyTypesResponse(result);
         }
     };
     auto async = std::make_unique<XAsyncHelper<AdminListVirtualCurrencyTypesResultHolderStruct>>(testContext);
@@ -703,7 +703,7 @@ void AutoGenTitleDataManagementTests::TestTitleDataManagementAdminRemoveVirtualC
     auto async = std::make_unique<XAsyncHelper<XAsyncResult>>(testContext);
 
     PFTitleDataManagementRemoveVirtualCurrencyTypesRequestWrapper<> request;
-    FillRemoveVirtualCurrencyTypesRequest(request);
+    FillAdminRemoveVirtualCurrencyTypesRequest(request);
     LogRemoveVirtualCurrencyTypesRequest(&request.Model(), "TestTitleDataManagementAdminRemoveVirtualCurrencyTypes");
     HRESULT hr = PFTitleDataManagementAdminRemoveVirtualCurrencyTypesAsync(stateHandle, &request.Model(), &async->asyncBlock);
     if (FAILED(hr))
@@ -725,7 +725,7 @@ void AutoGenTitleDataManagementTests::TestTitleDataManagementAdminSetCatalogItem
     auto async = std::make_unique<XAsyncHelper<XAsyncResult>>(testContext);
 
     PFTitleDataManagementUpdateCatalogItemsRequestWrapper<> request;
-    FillUpdateCatalogItemsRequest(request);
+    FillAdminSetCatalogItemsRequest(request);
     LogUpdateCatalogItemsRequest(&request.Model(), "TestTitleDataManagementAdminSetCatalogItems");
     HRESULT hr = PFTitleDataManagementAdminSetCatalogItemsAsync(stateHandle, &request.Model(), &async->asyncBlock);
     if (FAILED(hr))
@@ -747,7 +747,7 @@ void AutoGenTitleDataManagementTests::TestTitleDataManagementAdminSetPublisherDa
     auto async = std::make_unique<XAsyncHelper<XAsyncResult>>(testContext);
 
     PFTitleDataManagementSetPublisherDataRequestWrapper<> request;
-    FillSetPublisherDataRequest(request);
+    FillAdminSetPublisherDataRequest(request);
     LogSetPublisherDataRequest(&request.Model(), "TestTitleDataManagementAdminSetPublisherData");
     HRESULT hr = PFTitleDataManagementAdminSetPublisherDataAsync(stateHandle, &request.Model(), &async->asyncBlock);
     if (FAILED(hr))
@@ -769,7 +769,7 @@ void AutoGenTitleDataManagementTests::TestTitleDataManagementAdminSetStoreItems(
     auto async = std::make_unique<XAsyncHelper<XAsyncResult>>(testContext);
 
     PFTitleDataManagementUpdateStoreItemsRequestWrapper<> request;
-    FillUpdateStoreItemsRequest(request);
+    FillAdminSetStoreItemsRequest(request);
     LogUpdateStoreItemsRequest(&request.Model(), "TestTitleDataManagementAdminSetStoreItems");
     HRESULT hr = PFTitleDataManagementAdminSetStoreItemsAsync(stateHandle, &request.Model(), &async->asyncBlock);
     if (FAILED(hr))
@@ -798,19 +798,19 @@ void AutoGenTitleDataManagementTests::TestTitleDataManagementAdminSetTitleData(T
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFTitleDataManagementAdminSetTitleDataGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
             
-            LogPFTitleDataManagementSetTitleDataResult(result);
+            LogSetTitleDataResult(result);
             return S_OK;
         }
 
         HRESULT Validate() override
         {
-            return ValidatePFTitleDataManagementSetTitleDataResult(result);
+            return ValidateAdminSetTitleDataResponse(result);
         }
     };
     auto async = std::make_unique<XAsyncHelper<AdminSetTitleDataResultHolderStruct>>(testContext);
 
     PFTitleDataManagementSetTitleDataRequestWrapper<> request;
-    FillSetTitleDataRequest(request);
+    FillAdminSetTitleDataRequest(request);
     LogSetTitleDataRequest(&request.Model(), "TestTitleDataManagementAdminSetTitleData");
     HRESULT hr = PFTitleDataManagementAdminSetTitleDataAsync(stateHandle, &request.Model(), &async->asyncBlock);
     if (FAILED(hr))
@@ -832,7 +832,7 @@ void AutoGenTitleDataManagementTests::TestTitleDataManagementAdminSetTitleDataAn
     auto async = std::make_unique<XAsyncHelper<XAsyncResult>>(testContext);
 
     PFTitleDataManagementSetTitleDataAndOverridesRequestWrapper<> request;
-    FillSetTitleDataAndOverridesRequest(request);
+    FillAdminSetTitleDataAndOverridesRequest(request);
     LogSetTitleDataAndOverridesRequest(&request.Model(), "TestTitleDataManagementAdminSetTitleDataAndOverrides");
     HRESULT hr = PFTitleDataManagementAdminSetTitleDataAndOverridesAsync(stateHandle, &request.Model(), &async->asyncBlock);
     if (FAILED(hr))
@@ -861,19 +861,19 @@ void AutoGenTitleDataManagementTests::TestTitleDataManagementAdminSetTitleIntern
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFTitleDataManagementAdminSetTitleInternalDataGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
             
-            LogPFTitleDataManagementSetTitleDataResult(result);
+            LogSetTitleDataResult(result);
             return S_OK;
         }
 
         HRESULT Validate() override
         {
-            return ValidatePFTitleDataManagementSetTitleDataResult(result);
+            return ValidateAdminSetTitleInternalDataResponse(result);
         }
     };
     auto async = std::make_unique<XAsyncHelper<AdminSetTitleInternalDataResultHolderStruct>>(testContext);
 
     PFTitleDataManagementSetTitleDataRequestWrapper<> request;
-    FillSetTitleDataRequest(request);
+    FillAdminSetTitleInternalDataRequest(request);
     LogSetTitleDataRequest(&request.Model(), "TestTitleDataManagementAdminSetTitleInternalData");
     HRESULT hr = PFTitleDataManagementAdminSetTitleInternalDataAsync(stateHandle, &request.Model(), &async->asyncBlock);
     if (FAILED(hr))
@@ -902,19 +902,19 @@ void AutoGenTitleDataManagementTests::TestTitleDataManagementAdminSetupPushNotif
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFTitleDataManagementAdminSetupPushNotificationGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
             
-            LogPFTitleDataManagementSetupPushNotificationResult(result);
+            LogSetupPushNotificationResult(result);
             return S_OK;
         }
 
         HRESULT Validate() override
         {
-            return ValidatePFTitleDataManagementSetupPushNotificationResult(result);
+            return ValidateAdminSetupPushNotificationResponse(result);
         }
     };
     auto async = std::make_unique<XAsyncHelper<AdminSetupPushNotificationResultHolderStruct>>(testContext);
 
     PFTitleDataManagementSetupPushNotificationRequestWrapper<> request;
-    FillSetupPushNotificationRequest(request);
+    FillAdminSetupPushNotificationRequest(request);
     LogSetupPushNotificationRequest(&request.Model(), "TestTitleDataManagementAdminSetupPushNotification");
     HRESULT hr = PFTitleDataManagementAdminSetupPushNotificationAsync(stateHandle, &request.Model(), &async->asyncBlock);
     if (FAILED(hr))
@@ -936,7 +936,7 @@ void AutoGenTitleDataManagementTests::TestTitleDataManagementAdminUpdateCatalogI
     auto async = std::make_unique<XAsyncHelper<XAsyncResult>>(testContext);
 
     PFTitleDataManagementUpdateCatalogItemsRequestWrapper<> request;
-    FillUpdateCatalogItemsRequest(request);
+    FillAdminUpdateCatalogItemsRequest(request);
     LogUpdateCatalogItemsRequest(&request.Model(), "TestTitleDataManagementAdminUpdateCatalogItems");
     HRESULT hr = PFTitleDataManagementAdminUpdateCatalogItemsAsync(stateHandle, &request.Model(), &async->asyncBlock);
     if (FAILED(hr))
@@ -958,7 +958,7 @@ void AutoGenTitleDataManagementTests::TestTitleDataManagementAdminUpdateRandomRe
     auto async = std::make_unique<XAsyncHelper<XAsyncResult>>(testContext);
 
     PFTitleDataManagementUpdateRandomResultTablesRequestWrapper<> request;
-    FillUpdateRandomResultTablesRequest(request);
+    FillAdminUpdateRandomResultTablesRequest(request);
     LogUpdateRandomResultTablesRequest(&request.Model(), "TestTitleDataManagementAdminUpdateRandomResultTables");
     HRESULT hr = PFTitleDataManagementAdminUpdateRandomResultTablesAsync(stateHandle, &request.Model(), &async->asyncBlock);
     if (FAILED(hr))
@@ -980,7 +980,7 @@ void AutoGenTitleDataManagementTests::TestTitleDataManagementAdminUpdateStoreIte
     auto async = std::make_unique<XAsyncHelper<XAsyncResult>>(testContext);
 
     PFTitleDataManagementUpdateStoreItemsRequestWrapper<> request;
-    FillUpdateStoreItemsRequest(request);
+    FillAdminUpdateStoreItemsRequest(request);
     LogUpdateStoreItemsRequest(&request.Model(), "TestTitleDataManagementAdminUpdateStoreItems");
     HRESULT hr = PFTitleDataManagementAdminUpdateStoreItemsAsync(stateHandle, &request.Model(), &async->asyncBlock);
     if (FAILED(hr))
@@ -1008,19 +1008,19 @@ void AutoGenTitleDataManagementTests::TestTitleDataManagementClientGetCatalogIte
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFTitleDataManagementClientGetCatalogItemsGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
             
-            LogPFTitleDataManagementGetCatalogItemsResult(result);
+            LogGetCatalogItemsResult(result);
             return S_OK;
         }
 
         HRESULT Validate() override
         {
-            return ValidatePFTitleDataManagementGetCatalogItemsResult(result);
+            return ValidateClientGetCatalogItemsResponse(result);
         }
     };
     auto async = std::make_unique<XAsyncHelper<ClientGetCatalogItemsResultHolderStruct>>(testContext);
 
     PFTitleDataManagementGetCatalogItemsRequestWrapper<> request;
-    FillGetCatalogItemsRequest(request);
+    FillClientGetCatalogItemsRequest(request);
     LogGetCatalogItemsRequest(&request.Model(), "TestTitleDataManagementClientGetCatalogItems");
     HRESULT hr = PFTitleDataManagementClientGetCatalogItemsAsync(titlePlayerHandle, &request.Model(), &async->asyncBlock);
     if (FAILED(hr))
@@ -1047,19 +1047,19 @@ void AutoGenTitleDataManagementTests::TestTitleDataManagementClientGetPublisherD
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFTitleDataManagementClientGetPublisherDataGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
             
-            LogPFTitleDataManagementGetPublisherDataResult(result);
+            LogGetPublisherDataResult(result);
             return S_OK;
         }
 
         HRESULT Validate() override
         {
-            return ValidatePFTitleDataManagementGetPublisherDataResult(result);
+            return ValidateClientGetPublisherDataResponse(result);
         }
     };
     auto async = std::make_unique<XAsyncHelper<ClientGetPublisherDataResultHolderStruct>>(testContext);
 
     PFTitleDataManagementGetPublisherDataRequestWrapper<> request;
-    FillGetPublisherDataRequest(request);
+    FillClientGetPublisherDataRequest(request);
     LogGetPublisherDataRequest(&request.Model(), "TestTitleDataManagementClientGetPublisherData");
     HRESULT hr = PFTitleDataManagementClientGetPublisherDataAsync(titlePlayerHandle, &request.Model(), &async->asyncBlock);
     if (FAILED(hr))
@@ -1086,19 +1086,19 @@ void AutoGenTitleDataManagementTests::TestTitleDataManagementClientGetStoreItems
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFTitleDataManagementClientGetStoreItemsGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
             
-            LogPFTitleDataManagementGetStoreItemsResult(result);
+            LogGetStoreItemsResult(result);
             return S_OK;
         }
 
         HRESULT Validate() override
         {
-            return ValidatePFTitleDataManagementGetStoreItemsResult(result);
+            return ValidateClientGetStoreItemsResponse(result);
         }
     };
     auto async = std::make_unique<XAsyncHelper<ClientGetStoreItemsResultHolderStruct>>(testContext);
 
     PFTitleDataManagementGetStoreItemsRequestWrapper<> request;
-    FillGetStoreItemsRequest(request);
+    FillClientGetStoreItemsRequest(request);
     LogGetStoreItemsRequest(&request.Model(), "TestTitleDataManagementClientGetStoreItems");
     HRESULT hr = PFTitleDataManagementClientGetStoreItemsAsync(titlePlayerHandle, &request.Model(), &async->asyncBlock);
     if (FAILED(hr))
@@ -1120,13 +1120,13 @@ void AutoGenTitleDataManagementTests::TestTitleDataManagementClientGetTime(TestC
         HRESULT Get(XAsyncBlock* async) override
         {
             RETURN_IF_FAILED(LogHR(PFTitleDataManagementClientGetTimeGetResult(async, &result)));
-            LogPFTitleDataManagementGetTimeResult(&result);
+            LogGetTimeResult(&result);
             return S_OK;
         }
 
         HRESULT Validate() override
         {
-            return ValidatePFTitleDataManagementGetTimeResult(&result);
+            return ValidateClientGetTimeResponse(&result);
         }
     };
     auto async = std::make_unique<XAsyncHelper<ClientGetTimeResultHolderStruct>>(testContext);
@@ -1156,19 +1156,19 @@ void AutoGenTitleDataManagementTests::TestTitleDataManagementClientGetTitleData(
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFTitleDataManagementClientGetTitleDataGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
             
-            LogPFTitleDataManagementGetTitleDataResult(result);
+            LogGetTitleDataResult(result);
             return S_OK;
         }
 
         HRESULT Validate() override
         {
-            return ValidatePFTitleDataManagementGetTitleDataResult(result);
+            return ValidateClientGetTitleDataResponse(result);
         }
     };
     auto async = std::make_unique<XAsyncHelper<ClientGetTitleDataResultHolderStruct>>(testContext);
 
     PFTitleDataManagementGetTitleDataRequestWrapper<> request;
-    FillGetTitleDataRequest(request);
+    FillClientGetTitleDataRequest(request);
     LogGetTitleDataRequest(&request.Model(), "TestTitleDataManagementClientGetTitleData");
     HRESULT hr = PFTitleDataManagementClientGetTitleDataAsync(titlePlayerHandle, &request.Model(), &async->asyncBlock);
     if (FAILED(hr))
@@ -1195,19 +1195,19 @@ void AutoGenTitleDataManagementTests::TestTitleDataManagementClientGetTitleNews(
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFTitleDataManagementClientGetTitleNewsGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
             
-            LogPFTitleDataManagementGetTitleNewsResult(result);
+            LogGetTitleNewsResult(result);
             return S_OK;
         }
 
         HRESULT Validate() override
         {
-            return ValidatePFTitleDataManagementGetTitleNewsResult(result);
+            return ValidateClientGetTitleNewsResponse(result);
         }
     };
     auto async = std::make_unique<XAsyncHelper<ClientGetTitleNewsResultHolderStruct>>(testContext);
 
     PFTitleDataManagementGetTitleNewsRequestWrapper<> request;
-    FillGetTitleNewsRequest(request);
+    FillClientGetTitleNewsRequest(request);
     LogGetTitleNewsRequest(&request.Model(), "TestTitleDataManagementClientGetTitleNews");
     HRESULT hr = PFTitleDataManagementClientGetTitleNewsAsync(titlePlayerHandle, &request.Model(), &async->asyncBlock);
     if (FAILED(hr))
@@ -1235,19 +1235,19 @@ void AutoGenTitleDataManagementTests::TestTitleDataManagementServerGetCatalogIte
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFTitleDataManagementServerGetCatalogItemsGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
             
-            LogPFTitleDataManagementGetCatalogItemsResult(result);
+            LogGetCatalogItemsResult(result);
             return S_OK;
         }
 
         HRESULT Validate() override
         {
-            return ValidatePFTitleDataManagementGetCatalogItemsResult(result);
+            return ValidateServerGetCatalogItemsResponse(result);
         }
     };
     auto async = std::make_unique<XAsyncHelper<ServerGetCatalogItemsResultHolderStruct>>(testContext);
 
     PFTitleDataManagementGetCatalogItemsRequestWrapper<> request;
-    FillGetCatalogItemsRequest(request);
+    FillServerGetCatalogItemsRequest(request);
     LogGetCatalogItemsRequest(&request.Model(), "TestTitleDataManagementServerGetCatalogItems");
     HRESULT hr = PFTitleDataManagementServerGetCatalogItemsAsync(stateHandle, &request.Model(), &async->asyncBlock);
     if (FAILED(hr))
@@ -1276,19 +1276,19 @@ void AutoGenTitleDataManagementTests::TestTitleDataManagementServerGetPublisherD
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFTitleDataManagementServerGetPublisherDataGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
             
-            LogPFTitleDataManagementGetPublisherDataResult(result);
+            LogGetPublisherDataResult(result);
             return S_OK;
         }
 
         HRESULT Validate() override
         {
-            return ValidatePFTitleDataManagementGetPublisherDataResult(result);
+            return ValidateServerGetPublisherDataResponse(result);
         }
     };
     auto async = std::make_unique<XAsyncHelper<ServerGetPublisherDataResultHolderStruct>>(testContext);
 
     PFTitleDataManagementGetPublisherDataRequestWrapper<> request;
-    FillGetPublisherDataRequest(request);
+    FillServerGetPublisherDataRequest(request);
     LogGetPublisherDataRequest(&request.Model(), "TestTitleDataManagementServerGetPublisherData");
     HRESULT hr = PFTitleDataManagementServerGetPublisherDataAsync(stateHandle, &request.Model(), &async->asyncBlock);
     if (FAILED(hr))
@@ -1317,19 +1317,19 @@ void AutoGenTitleDataManagementTests::TestTitleDataManagementServerGetStoreItems
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFTitleDataManagementServerGetStoreItemsGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
             
-            LogPFTitleDataManagementGetStoreItemsResult(result);
+            LogGetStoreItemsResult(result);
             return S_OK;
         }
 
         HRESULT Validate() override
         {
-            return ValidatePFTitleDataManagementGetStoreItemsResult(result);
+            return ValidateServerGetStoreItemsResponse(result);
         }
     };
     auto async = std::make_unique<XAsyncHelper<ServerGetStoreItemsResultHolderStruct>>(testContext);
 
     PFTitleDataManagementGetStoreItemsServerRequestWrapper<> request;
-    FillGetStoreItemsServerRequest(request);
+    FillServerGetStoreItemsRequest(request);
     LogGetStoreItemsServerRequest(&request.Model(), "TestTitleDataManagementServerGetStoreItems");
     HRESULT hr = PFTitleDataManagementServerGetStoreItemsAsync(stateHandle, &request.Model(), &async->asyncBlock);
     if (FAILED(hr))
@@ -1353,13 +1353,13 @@ void AutoGenTitleDataManagementTests::TestTitleDataManagementServerGetTime(TestC
         HRESULT Get(XAsyncBlock* async) override
         {
             RETURN_IF_FAILED(LogHR(PFTitleDataManagementServerGetTimeGetResult(async, &result)));
-            LogPFTitleDataManagementGetTimeResult(&result);
+            LogGetTimeResult(&result);
             return S_OK;
         }
 
         HRESULT Validate() override
         {
-            return ValidatePFTitleDataManagementGetTimeResult(&result);
+            return ValidateServerGetTimeResponse(&result);
         }
     };
     auto async = std::make_unique<XAsyncHelper<ServerGetTimeResultHolderStruct>>(testContext);
@@ -1391,19 +1391,19 @@ void AutoGenTitleDataManagementTests::TestTitleDataManagementServerGetTitleData(
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFTitleDataManagementServerGetTitleDataGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
             
-            LogPFTitleDataManagementGetTitleDataResult(result);
+            LogGetTitleDataResult(result);
             return S_OK;
         }
 
         HRESULT Validate() override
         {
-            return ValidatePFTitleDataManagementGetTitleDataResult(result);
+            return ValidateServerGetTitleDataResponse(result);
         }
     };
     auto async = std::make_unique<XAsyncHelper<ServerGetTitleDataResultHolderStruct>>(testContext);
 
     PFTitleDataManagementGetTitleDataRequestWrapper<> request;
-    FillGetTitleDataRequest(request);
+    FillServerGetTitleDataRequest(request);
     LogGetTitleDataRequest(&request.Model(), "TestTitleDataManagementServerGetTitleData");
     HRESULT hr = PFTitleDataManagementServerGetTitleDataAsync(stateHandle, &request.Model(), &async->asyncBlock);
     if (FAILED(hr))
@@ -1432,19 +1432,19 @@ void AutoGenTitleDataManagementTests::TestTitleDataManagementServerGetTitleInter
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFTitleDataManagementServerGetTitleInternalDataGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
             
-            LogPFTitleDataManagementGetTitleDataResult(result);
+            LogGetTitleDataResult(result);
             return S_OK;
         }
 
         HRESULT Validate() override
         {
-            return ValidatePFTitleDataManagementGetTitleDataResult(result);
+            return ValidateServerGetTitleInternalDataResponse(result);
         }
     };
     auto async = std::make_unique<XAsyncHelper<ServerGetTitleInternalDataResultHolderStruct>>(testContext);
 
     PFTitleDataManagementGetTitleDataRequestWrapper<> request;
-    FillGetTitleDataRequest(request);
+    FillServerGetTitleInternalDataRequest(request);
     LogGetTitleDataRequest(&request.Model(), "TestTitleDataManagementServerGetTitleInternalData");
     HRESULT hr = PFTitleDataManagementServerGetTitleInternalDataAsync(stateHandle, &request.Model(), &async->asyncBlock);
     if (FAILED(hr))
@@ -1473,19 +1473,19 @@ void AutoGenTitleDataManagementTests::TestTitleDataManagementServerGetTitleNews(
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFTitleDataManagementServerGetTitleNewsGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
             
-            LogPFTitleDataManagementGetTitleNewsResult(result);
+            LogGetTitleNewsResult(result);
             return S_OK;
         }
 
         HRESULT Validate() override
         {
-            return ValidatePFTitleDataManagementGetTitleNewsResult(result);
+            return ValidateServerGetTitleNewsResponse(result);
         }
     };
     auto async = std::make_unique<XAsyncHelper<ServerGetTitleNewsResultHolderStruct>>(testContext);
 
     PFTitleDataManagementGetTitleNewsRequestWrapper<> request;
-    FillGetTitleNewsRequest(request);
+    FillServerGetTitleNewsRequest(request);
     LogGetTitleNewsRequest(&request.Model(), "TestTitleDataManagementServerGetTitleNews");
     HRESULT hr = PFTitleDataManagementServerGetTitleNewsAsync(stateHandle, &request.Model(), &async->asyncBlock);
     if (FAILED(hr))
@@ -1507,7 +1507,7 @@ void AutoGenTitleDataManagementTests::TestTitleDataManagementServerSetPublisherD
     auto async = std::make_unique<XAsyncHelper<XAsyncResult>>(testContext);
 
     PFTitleDataManagementSetPublisherDataRequestWrapper<> request;
-    FillSetPublisherDataRequest(request);
+    FillServerSetPublisherDataRequest(request);
     LogSetPublisherDataRequest(&request.Model(), "TestTitleDataManagementServerSetPublisherData");
     HRESULT hr = PFTitleDataManagementServerSetPublisherDataAsync(stateHandle, &request.Model(), &async->asyncBlock);
     if (FAILED(hr))
@@ -1536,19 +1536,19 @@ void AutoGenTitleDataManagementTests::TestTitleDataManagementServerSetTitleData(
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFTitleDataManagementServerSetTitleDataGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
             
-            LogPFTitleDataManagementSetTitleDataResult(result);
+            LogSetTitleDataResult(result);
             return S_OK;
         }
 
         HRESULT Validate() override
         {
-            return ValidatePFTitleDataManagementSetTitleDataResult(result);
+            return ValidateServerSetTitleDataResponse(result);
         }
     };
     auto async = std::make_unique<XAsyncHelper<ServerSetTitleDataResultHolderStruct>>(testContext);
 
     PFTitleDataManagementSetTitleDataRequestWrapper<> request;
-    FillSetTitleDataRequest(request);
+    FillServerSetTitleDataRequest(request);
     LogSetTitleDataRequest(&request.Model(), "TestTitleDataManagementServerSetTitleData");
     HRESULT hr = PFTitleDataManagementServerSetTitleDataAsync(stateHandle, &request.Model(), &async->asyncBlock);
     if (FAILED(hr))
@@ -1577,19 +1577,19 @@ void AutoGenTitleDataManagementTests::TestTitleDataManagementServerSetTitleInter
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFTitleDataManagementServerSetTitleInternalDataGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
             
-            LogPFTitleDataManagementSetTitleDataResult(result);
+            LogSetTitleDataResult(result);
             return S_OK;
         }
 
         HRESULT Validate() override
         {
-            return ValidatePFTitleDataManagementSetTitleDataResult(result);
+            return ValidateServerSetTitleInternalDataResponse(result);
         }
     };
     auto async = std::make_unique<XAsyncHelper<ServerSetTitleInternalDataResultHolderStruct>>(testContext);
 
     PFTitleDataManagementSetTitleDataRequestWrapper<> request;
-    FillSetTitleDataRequest(request);
+    FillServerSetTitleInternalDataRequest(request);
     LogSetTitleDataRequest(&request.Model(), "TestTitleDataManagementServerSetTitleInternalData");
     HRESULT hr = PFTitleDataManagementServerSetTitleInternalDataAsync(stateHandle, &request.Model(), &async->asyncBlock);
     if (FAILED(hr))

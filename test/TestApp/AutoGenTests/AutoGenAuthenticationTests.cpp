@@ -21,7 +21,7 @@ void AutoGenAuthenticationTests::Log(std::stringstream& ss)
 
 HRESULT AutoGenAuthenticationTests::LogHR(HRESULT hr)
 {
-    if( TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    if (TestApp::ShouldTrace(PFTestTraceLevel::Information))
     {
         TestApp::Log("Result: 0x%0.8x", hr);
     }
@@ -151,7 +151,7 @@ void AutoGenAuthenticationTests::AddTests()
 
 void AutoGenAuthenticationTests::ClassSetUp()
 {
-    HRESULT hr = PFAdminInitialize(testTitleData.titleId.data(), testTitleData.developerSecretKey.data(), nullptr, &stateHandle);
+    HRESULT hr = PFAdminInitialize(testTitleData.titleId.data(), testTitleData.developerSecretKey.data(), testTitleData.connectionString.data(), nullptr, &stateHandle);
     assert(SUCCEEDED(hr));
     if (SUCCEEDED(hr))
     {
@@ -262,7 +262,7 @@ void AutoGenAuthenticationTests::TestAuthenticationAdminCreateOpenIdConnection(T
     auto async = std::make_unique<XAsyncHelper<XAsyncResult>>(testContext);
 
     PFAuthenticationCreateOpenIdConnectionRequestWrapper<> request;
-    FillCreateOpenIdConnectionRequest(request);
+    FillAdminCreateOpenIdConnectionRequest(request);
     LogCreateOpenIdConnectionRequest(&request.Model(), "TestAuthenticationAdminCreateOpenIdConnection");
     HRESULT hr = PFAuthenticationAdminCreateOpenIdConnectionAsync(stateHandle, &request.Model(), &async->asyncBlock);
     if (FAILED(hr))
@@ -291,19 +291,19 @@ void AutoGenAuthenticationTests::TestAuthenticationAdminCreatePlayerSharedSecret
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFAuthenticationAdminCreatePlayerSharedSecretGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
             
-            LogPFAuthenticationCreatePlayerSharedSecretResult(result);
+            LogCreatePlayerSharedSecretResult(result);
             return S_OK;
         }
 
         HRESULT Validate() override
         {
-            return ValidatePFAuthenticationCreatePlayerSharedSecretResult(result);
+            return ValidateAdminCreatePlayerSharedSecretResponse(result);
         }
     };
     auto async = std::make_unique<XAsyncHelper<AdminCreatePlayerSharedSecretResultHolderStruct>>(testContext);
 
     PFAuthenticationCreatePlayerSharedSecretRequestWrapper<> request;
-    FillCreatePlayerSharedSecretRequest(request);
+    FillAdminCreatePlayerSharedSecretRequest(request);
     LogCreatePlayerSharedSecretRequest(&request.Model(), "TestAuthenticationAdminCreatePlayerSharedSecret");
     HRESULT hr = PFAuthenticationAdminCreatePlayerSharedSecretAsync(stateHandle, &request.Model(), &async->asyncBlock);
     if (FAILED(hr))
@@ -325,7 +325,7 @@ void AutoGenAuthenticationTests::TestAuthenticationAdminDeleteOpenIdConnection(T
     auto async = std::make_unique<XAsyncHelper<XAsyncResult>>(testContext);
 
     PFAuthenticationDeleteOpenIdConnectionRequestWrapper<> request;
-    FillDeleteOpenIdConnectionRequest(request);
+    FillAdminDeleteOpenIdConnectionRequest(request);
     LogDeleteOpenIdConnectionRequest(&request.Model(), "TestAuthenticationAdminDeleteOpenIdConnection");
     HRESULT hr = PFAuthenticationAdminDeleteOpenIdConnectionAsync(stateHandle, &request.Model(), &async->asyncBlock);
     if (FAILED(hr))
@@ -347,7 +347,7 @@ void AutoGenAuthenticationTests::TestAuthenticationAdminDeletePlayerSharedSecret
     auto async = std::make_unique<XAsyncHelper<XAsyncResult>>(testContext);
 
     PFAuthenticationDeletePlayerSharedSecretRequestWrapper<> request;
-    FillDeletePlayerSharedSecretRequest(request);
+    FillAdminDeletePlayerSharedSecretRequest(request);
     LogDeletePlayerSharedSecretRequest(&request.Model(), "TestAuthenticationAdminDeletePlayerSharedSecret");
     HRESULT hr = PFAuthenticationAdminDeletePlayerSharedSecretAsync(stateHandle, &request.Model(), &async->asyncBlock);
     if (FAILED(hr))
@@ -376,13 +376,13 @@ void AutoGenAuthenticationTests::TestAuthenticationAdminGetPlayerSharedSecrets(T
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFAuthenticationAdminGetPlayerSharedSecretsGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
             
-            LogPFAuthenticationGetPlayerSharedSecretsResult(result);
+            LogGetPlayerSharedSecretsResult(result);
             return S_OK;
         }
 
         HRESULT Validate() override
         {
-            return ValidatePFAuthenticationGetPlayerSharedSecretsResult(result);
+            return ValidateAdminGetPlayerSharedSecretsResponse(result);
         }
     };
     auto async = std::make_unique<XAsyncHelper<AdminGetPlayerSharedSecretsResultHolderStruct>>(testContext);
@@ -414,19 +414,19 @@ void AutoGenAuthenticationTests::TestAuthenticationAdminGetPolicy(TestContext& t
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFAuthenticationAdminGetPolicyGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
             
-            LogPFAuthenticationGetPolicyResponse(result);
+            LogGetPolicyResponse(result);
             return S_OK;
         }
 
         HRESULT Validate() override
         {
-            return ValidatePFAuthenticationGetPolicyResponse(result);
+            return ValidateAdminGetPolicyResponse(result);
         }
     };
     auto async = std::make_unique<XAsyncHelper<AdminGetPolicyResultHolderStruct>>(testContext);
 
     PFAuthenticationGetPolicyRequestWrapper<> request;
-    FillGetPolicyRequest(request);
+    FillAdminGetPolicyRequest(request);
     LogGetPolicyRequest(&request.Model(), "TestAuthenticationAdminGetPolicy");
     HRESULT hr = PFAuthenticationAdminGetPolicyAsync(stateHandle, &request.Model(), &async->asyncBlock);
     if (FAILED(hr))
@@ -455,13 +455,13 @@ void AutoGenAuthenticationTests::TestAuthenticationAdminListOpenIdConnection(Tes
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFAuthenticationAdminListOpenIdConnectionGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
             
-            LogPFAuthenticationListOpenIdConnectionResponse(result);
+            LogListOpenIdConnectionResponse(result);
             return S_OK;
         }
 
         HRESULT Validate() override
         {
-            return ValidatePFAuthenticationListOpenIdConnectionResponse(result);
+            return ValidateAdminListOpenIdConnectionResponse(result);
         }
     };
     auto async = std::make_unique<XAsyncHelper<AdminListOpenIdConnectionResultHolderStruct>>(testContext);
@@ -508,7 +508,7 @@ void AutoGenAuthenticationTests::TestAuthenticationAdminUpdateOpenIdConnection(T
     auto async = std::make_unique<XAsyncHelper<XAsyncResult>>(testContext);
 
     PFAuthenticationUpdateOpenIdConnectionRequestWrapper<> request;
-    FillUpdateOpenIdConnectionRequest(request);
+    FillAdminUpdateOpenIdConnectionRequest(request);
     LogUpdateOpenIdConnectionRequest(&request.Model(), "TestAuthenticationAdminUpdateOpenIdConnection");
     HRESULT hr = PFAuthenticationAdminUpdateOpenIdConnectionAsync(stateHandle, &request.Model(), &async->asyncBlock);
     if (FAILED(hr))
@@ -530,7 +530,7 @@ void AutoGenAuthenticationTests::TestAuthenticationAdminUpdatePlayerSharedSecret
     auto async = std::make_unique<XAsyncHelper<XAsyncResult>>(testContext);
 
     PFAuthenticationUpdatePlayerSharedSecretRequestWrapper<> request;
-    FillUpdatePlayerSharedSecretRequest(request);
+    FillAdminUpdatePlayerSharedSecretRequest(request);
     LogUpdatePlayerSharedSecretRequest(&request.Model(), "TestAuthenticationAdminUpdatePlayerSharedSecret");
     HRESULT hr = PFAuthenticationAdminUpdatePlayerSharedSecretAsync(stateHandle, &request.Model(), &async->asyncBlock);
     if (FAILED(hr))
@@ -559,19 +559,19 @@ void AutoGenAuthenticationTests::TestAuthenticationAdminUpdatePolicy(TestContext
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFAuthenticationAdminUpdatePolicyGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
             
-            LogPFAuthenticationUpdatePolicyResponse(result);
+            LogUpdatePolicyResponse(result);
             return S_OK;
         }
 
         HRESULT Validate() override
         {
-            return ValidatePFAuthenticationUpdatePolicyResponse(result);
+            return ValidateAdminUpdatePolicyResponse(result);
         }
     };
     auto async = std::make_unique<XAsyncHelper<AdminUpdatePolicyResultHolderStruct>>(testContext);
 
     PFAuthenticationUpdatePolicyRequestWrapper<> request;
-    FillUpdatePolicyRequest(request);
+    FillAdminUpdatePolicyRequest(request);
     LogUpdatePolicyRequest(&request.Model(), "TestAuthenticationAdminUpdatePolicy");
     HRESULT hr = PFAuthenticationAdminUpdatePolicyAsync(stateHandle, &request.Model(), &async->asyncBlock);
     if (FAILED(hr))
@@ -599,19 +599,19 @@ void AutoGenAuthenticationTests::TestAuthenticationClientGetPhotonAuthentication
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFAuthenticationClientGetPhotonAuthenticationTokenGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
             
-            LogPFAuthenticationGetPhotonAuthenticationTokenResult(result);
+            LogGetPhotonAuthenticationTokenResult(result);
             return S_OK;
         }
 
         HRESULT Validate() override
         {
-            return ValidatePFAuthenticationGetPhotonAuthenticationTokenResult(result);
+            return ValidateClientGetPhotonAuthenticationTokenResponse(result);
         }
     };
     auto async = std::make_unique<XAsyncHelper<ClientGetPhotonAuthenticationTokenResultHolderStruct>>(testContext);
 
     PFAuthenticationGetPhotonAuthenticationTokenRequestWrapper<> request;
-    FillGetPhotonAuthenticationTokenRequest(request);
+    FillClientGetPhotonAuthenticationTokenRequest(request);
     LogGetPhotonAuthenticationTokenRequest(&request.Model(), "TestAuthenticationClientGetPhotonAuthenticationToken");
     HRESULT hr = PFAuthenticationClientGetPhotonAuthenticationTokenAsync(titlePlayerHandle, &request.Model(), &async->asyncBlock);
     if (FAILED(hr))
@@ -638,19 +638,19 @@ void AutoGenAuthenticationTests::TestAuthenticationClientGetTitlePublicKey(TestC
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFAuthenticationClientGetTitlePublicKeyGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
             
-            LogPFAuthenticationGetTitlePublicKeyResult(result);
+            LogGetTitlePublicKeyResult(result);
             return S_OK;
         }
 
         HRESULT Validate() override
         {
-            return ValidatePFAuthenticationGetTitlePublicKeyResult(result);
+            return ValidateClientGetTitlePublicKeyResponse(result);
         }
     };
     auto async = std::make_unique<XAsyncHelper<ClientGetTitlePublicKeyResultHolderStruct>>(testContext);
 
     PFAuthenticationGetTitlePublicKeyRequestWrapper<> request;
-    FillGetTitlePublicKeyRequest(request);
+    FillClientGetTitlePublicKeyRequest(request);
     LogGetTitlePublicKeyRequest(&request.Model(), "TestAuthenticationClientGetTitlePublicKey");
     HRESULT hr = PFAuthenticationClientGetTitlePublicKeyAsync(stateHandle, &request.Model(), &async->asyncBlock);
     if (FAILED(hr))
@@ -677,19 +677,19 @@ void AutoGenAuthenticationTests::TestAuthenticationClientLoginWithAndroidDeviceI
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFAuthenticationClientLoginWithAndroidDeviceIDGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
             
-            LogPFAuthenticationLoginResult(result);
+            LogLoginResult(result);
             return S_OK;
         }
 
         HRESULT Validate() override
         {
-            return ValidatePFAuthenticationLoginResult(result);
+            return ValidateClientLoginWithAndroidDeviceIDResponse(result);
         }
     };
     auto async = std::make_unique<XAsyncHelper<ClientLoginWithAndroidDeviceIDResultHolderStruct>>(testContext);
 
     PFAuthenticationLoginWithAndroidDeviceIDRequestWrapper<> request;
-    FillLoginWithAndroidDeviceIDRequest(request);
+    FillClientLoginWithAndroidDeviceIDRequest(request);
     LogLoginWithAndroidDeviceIDRequest(&request.Model(), "TestAuthenticationClientLoginWithAndroidDeviceID");
     HRESULT hr = PFAuthenticationClientLoginWithAndroidDeviceIDAsync(stateHandle, &request.Model(), &async->asyncBlock);
     if (FAILED(hr))
@@ -716,19 +716,19 @@ void AutoGenAuthenticationTests::TestAuthenticationClientLoginWithApple(TestCont
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFAuthenticationClientLoginWithAppleGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
             
-            LogPFAuthenticationLoginResult(result);
+            LogLoginResult(result);
             return S_OK;
         }
 
         HRESULT Validate() override
         {
-            return ValidatePFAuthenticationLoginResult(result);
+            return ValidateClientLoginWithAppleResponse(result);
         }
     };
     auto async = std::make_unique<XAsyncHelper<ClientLoginWithAppleResultHolderStruct>>(testContext);
 
     PFAuthenticationLoginWithAppleRequestWrapper<> request;
-    FillLoginWithAppleRequest(request);
+    FillClientLoginWithAppleRequest(request);
     LogLoginWithAppleRequest(&request.Model(), "TestAuthenticationClientLoginWithApple");
     HRESULT hr = PFAuthenticationClientLoginWithAppleAsync(stateHandle, &request.Model(), &async->asyncBlock);
     if (FAILED(hr))
@@ -755,19 +755,19 @@ void AutoGenAuthenticationTests::TestAuthenticationClientLoginWithCustomID(TestC
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFAuthenticationClientLoginWithCustomIDGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
             
-            LogPFAuthenticationLoginResult(result);
+            LogLoginResult(result);
             return S_OK;
         }
 
         HRESULT Validate() override
         {
-            return ValidatePFAuthenticationLoginResult(result);
+            return ValidateClientLoginWithCustomIDResponse(result);
         }
     };
     auto async = std::make_unique<XAsyncHelper<ClientLoginWithCustomIDResultHolderStruct>>(testContext);
 
     PFAuthenticationLoginWithCustomIDRequestWrapper<> request;
-    FillLoginWithCustomIDRequest(request);
+    FillClientLoginWithCustomIDRequest(request);
     LogLoginWithCustomIDRequest(&request.Model(), "TestAuthenticationClientLoginWithCustomID");
     HRESULT hr = PFAuthenticationClientLoginWithCustomIDAsync(stateHandle, &request.Model(), &async->asyncBlock);
     if (FAILED(hr))
@@ -794,19 +794,19 @@ void AutoGenAuthenticationTests::TestAuthenticationClientLoginWithEmailAddress(T
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFAuthenticationClientLoginWithEmailAddressGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
             
-            LogPFAuthenticationLoginResult(result);
+            LogLoginResult(result);
             return S_OK;
         }
 
         HRESULT Validate() override
         {
-            return ValidatePFAuthenticationLoginResult(result);
+            return ValidateClientLoginWithEmailAddressResponse(result);
         }
     };
     auto async = std::make_unique<XAsyncHelper<ClientLoginWithEmailAddressResultHolderStruct>>(testContext);
 
     PFAuthenticationLoginWithEmailAddressRequestWrapper<> request;
-    FillLoginWithEmailAddressRequest(request);
+    FillClientLoginWithEmailAddressRequest(request);
     LogLoginWithEmailAddressRequest(&request.Model(), "TestAuthenticationClientLoginWithEmailAddress");
     HRESULT hr = PFAuthenticationClientLoginWithEmailAddressAsync(stateHandle, &request.Model(), &async->asyncBlock);
     if (FAILED(hr))
@@ -833,19 +833,19 @@ void AutoGenAuthenticationTests::TestAuthenticationClientLoginWithFacebook(TestC
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFAuthenticationClientLoginWithFacebookGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
             
-            LogPFAuthenticationLoginResult(result);
+            LogLoginResult(result);
             return S_OK;
         }
 
         HRESULT Validate() override
         {
-            return ValidatePFAuthenticationLoginResult(result);
+            return ValidateClientLoginWithFacebookResponse(result);
         }
     };
     auto async = std::make_unique<XAsyncHelper<ClientLoginWithFacebookResultHolderStruct>>(testContext);
 
     PFAuthenticationLoginWithFacebookRequestWrapper<> request;
-    FillLoginWithFacebookRequest(request);
+    FillClientLoginWithFacebookRequest(request);
     LogLoginWithFacebookRequest(&request.Model(), "TestAuthenticationClientLoginWithFacebook");
     HRESULT hr = PFAuthenticationClientLoginWithFacebookAsync(stateHandle, &request.Model(), &async->asyncBlock);
     if (FAILED(hr))
@@ -872,19 +872,19 @@ void AutoGenAuthenticationTests::TestAuthenticationClientLoginWithFacebookInstan
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFAuthenticationClientLoginWithFacebookInstantGamesIdGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
             
-            LogPFAuthenticationLoginResult(result);
+            LogLoginResult(result);
             return S_OK;
         }
 
         HRESULT Validate() override
         {
-            return ValidatePFAuthenticationLoginResult(result);
+            return ValidateClientLoginWithFacebookInstantGamesIdResponse(result);
         }
     };
     auto async = std::make_unique<XAsyncHelper<ClientLoginWithFacebookInstantGamesIdResultHolderStruct>>(testContext);
 
     PFAuthenticationLoginWithFacebookInstantGamesIdRequestWrapper<> request;
-    FillLoginWithFacebookInstantGamesIdRequest(request);
+    FillClientLoginWithFacebookInstantGamesIdRequest(request);
     LogLoginWithFacebookInstantGamesIdRequest(&request.Model(), "TestAuthenticationClientLoginWithFacebookInstantGamesId");
     HRESULT hr = PFAuthenticationClientLoginWithFacebookInstantGamesIdAsync(stateHandle, &request.Model(), &async->asyncBlock);
     if (FAILED(hr))
@@ -911,19 +911,19 @@ void AutoGenAuthenticationTests::TestAuthenticationClientLoginWithGameCenter(Tes
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFAuthenticationClientLoginWithGameCenterGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
             
-            LogPFAuthenticationLoginResult(result);
+            LogLoginResult(result);
             return S_OK;
         }
 
         HRESULT Validate() override
         {
-            return ValidatePFAuthenticationLoginResult(result);
+            return ValidateClientLoginWithGameCenterResponse(result);
         }
     };
     auto async = std::make_unique<XAsyncHelper<ClientLoginWithGameCenterResultHolderStruct>>(testContext);
 
     PFAuthenticationLoginWithGameCenterRequestWrapper<> request;
-    FillLoginWithGameCenterRequest(request);
+    FillClientLoginWithGameCenterRequest(request);
     LogLoginWithGameCenterRequest(&request.Model(), "TestAuthenticationClientLoginWithGameCenter");
     HRESULT hr = PFAuthenticationClientLoginWithGameCenterAsync(stateHandle, &request.Model(), &async->asyncBlock);
     if (FAILED(hr))
@@ -950,19 +950,19 @@ void AutoGenAuthenticationTests::TestAuthenticationClientLoginWithGoogleAccount(
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFAuthenticationClientLoginWithGoogleAccountGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
             
-            LogPFAuthenticationLoginResult(result);
+            LogLoginResult(result);
             return S_OK;
         }
 
         HRESULT Validate() override
         {
-            return ValidatePFAuthenticationLoginResult(result);
+            return ValidateClientLoginWithGoogleAccountResponse(result);
         }
     };
     auto async = std::make_unique<XAsyncHelper<ClientLoginWithGoogleAccountResultHolderStruct>>(testContext);
 
     PFAuthenticationLoginWithGoogleAccountRequestWrapper<> request;
-    FillLoginWithGoogleAccountRequest(request);
+    FillClientLoginWithGoogleAccountRequest(request);
     LogLoginWithGoogleAccountRequest(&request.Model(), "TestAuthenticationClientLoginWithGoogleAccount");
     HRESULT hr = PFAuthenticationClientLoginWithGoogleAccountAsync(stateHandle, &request.Model(), &async->asyncBlock);
     if (FAILED(hr))
@@ -989,19 +989,19 @@ void AutoGenAuthenticationTests::TestAuthenticationClientLoginWithIOSDeviceID(Te
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFAuthenticationClientLoginWithIOSDeviceIDGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
             
-            LogPFAuthenticationLoginResult(result);
+            LogLoginResult(result);
             return S_OK;
         }
 
         HRESULT Validate() override
         {
-            return ValidatePFAuthenticationLoginResult(result);
+            return ValidateClientLoginWithIOSDeviceIDResponse(result);
         }
     };
     auto async = std::make_unique<XAsyncHelper<ClientLoginWithIOSDeviceIDResultHolderStruct>>(testContext);
 
     PFAuthenticationLoginWithIOSDeviceIDRequestWrapper<> request;
-    FillLoginWithIOSDeviceIDRequest(request);
+    FillClientLoginWithIOSDeviceIDRequest(request);
     LogLoginWithIOSDeviceIDRequest(&request.Model(), "TestAuthenticationClientLoginWithIOSDeviceID");
     HRESULT hr = PFAuthenticationClientLoginWithIOSDeviceIDAsync(stateHandle, &request.Model(), &async->asyncBlock);
     if (FAILED(hr))
@@ -1028,19 +1028,19 @@ void AutoGenAuthenticationTests::TestAuthenticationClientLoginWithKongregate(Tes
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFAuthenticationClientLoginWithKongregateGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
             
-            LogPFAuthenticationLoginResult(result);
+            LogLoginResult(result);
             return S_OK;
         }
 
         HRESULT Validate() override
         {
-            return ValidatePFAuthenticationLoginResult(result);
+            return ValidateClientLoginWithKongregateResponse(result);
         }
     };
     auto async = std::make_unique<XAsyncHelper<ClientLoginWithKongregateResultHolderStruct>>(testContext);
 
     PFAuthenticationLoginWithKongregateRequestWrapper<> request;
-    FillLoginWithKongregateRequest(request);
+    FillClientLoginWithKongregateRequest(request);
     LogLoginWithKongregateRequest(&request.Model(), "TestAuthenticationClientLoginWithKongregate");
     HRESULT hr = PFAuthenticationClientLoginWithKongregateAsync(stateHandle, &request.Model(), &async->asyncBlock);
     if (FAILED(hr))
@@ -1067,19 +1067,19 @@ void AutoGenAuthenticationTests::TestAuthenticationClientLoginWithNintendoServic
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFAuthenticationClientLoginWithNintendoServiceAccountGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
             
-            LogPFAuthenticationLoginResult(result);
+            LogLoginResult(result);
             return S_OK;
         }
 
         HRESULT Validate() override
         {
-            return ValidatePFAuthenticationLoginResult(result);
+            return ValidateClientLoginWithNintendoServiceAccountResponse(result);
         }
     };
     auto async = std::make_unique<XAsyncHelper<ClientLoginWithNintendoServiceAccountResultHolderStruct>>(testContext);
 
     PFAuthenticationLoginWithNintendoServiceAccountRequestWrapper<> request;
-    FillLoginWithNintendoServiceAccountRequest(request);
+    FillClientLoginWithNintendoServiceAccountRequest(request);
     LogLoginWithNintendoServiceAccountRequest(&request.Model(), "TestAuthenticationClientLoginWithNintendoServiceAccount");
     HRESULT hr = PFAuthenticationClientLoginWithNintendoServiceAccountAsync(stateHandle, &request.Model(), &async->asyncBlock);
     if (FAILED(hr))
@@ -1106,19 +1106,19 @@ void AutoGenAuthenticationTests::TestAuthenticationClientLoginWithNintendoSwitch
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFAuthenticationClientLoginWithNintendoSwitchDeviceIdGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
             
-            LogPFAuthenticationLoginResult(result);
+            LogLoginResult(result);
             return S_OK;
         }
 
         HRESULT Validate() override
         {
-            return ValidatePFAuthenticationLoginResult(result);
+            return ValidateClientLoginWithNintendoSwitchDeviceIdResponse(result);
         }
     };
     auto async = std::make_unique<XAsyncHelper<ClientLoginWithNintendoSwitchDeviceIdResultHolderStruct>>(testContext);
 
     PFAuthenticationLoginWithNintendoSwitchDeviceIdRequestWrapper<> request;
-    FillLoginWithNintendoSwitchDeviceIdRequest(request);
+    FillClientLoginWithNintendoSwitchDeviceIdRequest(request);
     LogLoginWithNintendoSwitchDeviceIdRequest(&request.Model(), "TestAuthenticationClientLoginWithNintendoSwitchDeviceId");
     HRESULT hr = PFAuthenticationClientLoginWithNintendoSwitchDeviceIdAsync(stateHandle, &request.Model(), &async->asyncBlock);
     if (FAILED(hr))
@@ -1145,19 +1145,19 @@ void AutoGenAuthenticationTests::TestAuthenticationClientLoginWithOpenIdConnect(
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFAuthenticationClientLoginWithOpenIdConnectGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
             
-            LogPFAuthenticationLoginResult(result);
+            LogLoginResult(result);
             return S_OK;
         }
 
         HRESULT Validate() override
         {
-            return ValidatePFAuthenticationLoginResult(result);
+            return ValidateClientLoginWithOpenIdConnectResponse(result);
         }
     };
     auto async = std::make_unique<XAsyncHelper<ClientLoginWithOpenIdConnectResultHolderStruct>>(testContext);
 
     PFAuthenticationLoginWithOpenIdConnectRequestWrapper<> request;
-    FillLoginWithOpenIdConnectRequest(request);
+    FillClientLoginWithOpenIdConnectRequest(request);
     LogLoginWithOpenIdConnectRequest(&request.Model(), "TestAuthenticationClientLoginWithOpenIdConnect");
     HRESULT hr = PFAuthenticationClientLoginWithOpenIdConnectAsync(stateHandle, &request.Model(), &async->asyncBlock);
     if (FAILED(hr))
@@ -1184,19 +1184,19 @@ void AutoGenAuthenticationTests::TestAuthenticationClientLoginWithPlayFab(TestCo
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFAuthenticationClientLoginWithPlayFabGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
             
-            LogPFAuthenticationLoginResult(result);
+            LogLoginResult(result);
             return S_OK;
         }
 
         HRESULT Validate() override
         {
-            return ValidatePFAuthenticationLoginResult(result);
+            return ValidateClientLoginWithPlayFabResponse(result);
         }
     };
     auto async = std::make_unique<XAsyncHelper<ClientLoginWithPlayFabResultHolderStruct>>(testContext);
 
     PFAuthenticationLoginWithPlayFabRequestWrapper<> request;
-    FillLoginWithPlayFabRequest(request);
+    FillClientLoginWithPlayFabRequest(request);
     LogLoginWithPlayFabRequest(&request.Model(), "TestAuthenticationClientLoginWithPlayFab");
     HRESULT hr = PFAuthenticationClientLoginWithPlayFabAsync(stateHandle, &request.Model(), &async->asyncBlock);
     if (FAILED(hr))
@@ -1223,19 +1223,19 @@ void AutoGenAuthenticationTests::TestAuthenticationClientLoginWithPSN(TestContex
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFAuthenticationClientLoginWithPSNGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
             
-            LogPFAuthenticationLoginResult(result);
+            LogLoginResult(result);
             return S_OK;
         }
 
         HRESULT Validate() override
         {
-            return ValidatePFAuthenticationLoginResult(result);
+            return ValidateClientLoginWithPSNResponse(result);
         }
     };
     auto async = std::make_unique<XAsyncHelper<ClientLoginWithPSNResultHolderStruct>>(testContext);
 
     PFAuthenticationLoginWithPSNRequestWrapper<> request;
-    FillLoginWithPSNRequest(request);
+    FillClientLoginWithPSNRequest(request);
     LogLoginWithPSNRequest(&request.Model(), "TestAuthenticationClientLoginWithPSN");
     HRESULT hr = PFAuthenticationClientLoginWithPSNAsync(stateHandle, &request.Model(), &async->asyncBlock);
     if (FAILED(hr))
@@ -1262,19 +1262,19 @@ void AutoGenAuthenticationTests::TestAuthenticationClientLoginWithSteam(TestCont
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFAuthenticationClientLoginWithSteamGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
             
-            LogPFAuthenticationLoginResult(result);
+            LogLoginResult(result);
             return S_OK;
         }
 
         HRESULT Validate() override
         {
-            return ValidatePFAuthenticationLoginResult(result);
+            return ValidateClientLoginWithSteamResponse(result);
         }
     };
     auto async = std::make_unique<XAsyncHelper<ClientLoginWithSteamResultHolderStruct>>(testContext);
 
     PFAuthenticationLoginWithSteamRequestWrapper<> request;
-    FillLoginWithSteamRequest(request);
+    FillClientLoginWithSteamRequest(request);
     LogLoginWithSteamRequest(&request.Model(), "TestAuthenticationClientLoginWithSteam");
     HRESULT hr = PFAuthenticationClientLoginWithSteamAsync(stateHandle, &request.Model(), &async->asyncBlock);
     if (FAILED(hr))
@@ -1301,19 +1301,19 @@ void AutoGenAuthenticationTests::TestAuthenticationClientLoginWithTwitch(TestCon
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFAuthenticationClientLoginWithTwitchGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
             
-            LogPFAuthenticationLoginResult(result);
+            LogLoginResult(result);
             return S_OK;
         }
 
         HRESULT Validate() override
         {
-            return ValidatePFAuthenticationLoginResult(result);
+            return ValidateClientLoginWithTwitchResponse(result);
         }
     };
     auto async = std::make_unique<XAsyncHelper<ClientLoginWithTwitchResultHolderStruct>>(testContext);
 
     PFAuthenticationLoginWithTwitchRequestWrapper<> request;
-    FillLoginWithTwitchRequest(request);
+    FillClientLoginWithTwitchRequest(request);
     LogLoginWithTwitchRequest(&request.Model(), "TestAuthenticationClientLoginWithTwitch");
     HRESULT hr = PFAuthenticationClientLoginWithTwitchAsync(stateHandle, &request.Model(), &async->asyncBlock);
     if (FAILED(hr))
@@ -1340,13 +1340,13 @@ void AutoGenAuthenticationTests::TestAuthenticationClientLoginWithXbox(TestConte
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFAuthenticationClientLoginWithXboxGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
             
-            LogPFAuthenticationLoginResult(result);
+            LogLoginResult(result);
             return S_OK;
         }
 
         HRESULT Validate() override
         {
-            return ValidatePFAuthenticationLoginResult(result);
+            return ValidateClientLoginWithXboxResponse(result);
         }
     };
     auto async = std::make_unique<XAsyncHelper<ClientLoginWithXboxResultHolderStruct>>(testContext);
@@ -1379,19 +1379,19 @@ void AutoGenAuthenticationTests::TestAuthenticationClientRegisterPlayFabUser(Tes
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFAuthenticationClientRegisterPlayFabUserGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
             
-            LogPFAuthenticationRegisterPlayFabUserResult(result);
+            LogRegisterPlayFabUserResult(result);
             return S_OK;
         }
 
         HRESULT Validate() override
         {
-            return ValidatePFAuthenticationRegisterPlayFabUserResult(result);
+            return ValidateClientRegisterPlayFabUserResponse(result);
         }
     };
     auto async = std::make_unique<XAsyncHelper<ClientRegisterPlayFabUserResultHolderStruct>>(testContext);
 
     PFAuthenticationRegisterPlayFabUserRequestWrapper<> request;
-    FillRegisterPlayFabUserRequest(request);
+    FillClientRegisterPlayFabUserRequest(request);
     LogRegisterPlayFabUserRequest(&request.Model(), "TestAuthenticationClientRegisterPlayFabUser");
     HRESULT hr = PFAuthenticationClientRegisterPlayFabUserAsync(stateHandle, &request.Model(), &async->asyncBlock);
     if (FAILED(hr))
@@ -1439,19 +1439,19 @@ void AutoGenAuthenticationTests::TestAuthenticationServerAuthenticateSessionTick
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFAuthenticationServerAuthenticateSessionTicketGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
             
-            LogPFAuthenticationAuthenticateSessionTicketResult(result);
+            LogAuthenticateSessionTicketResult(result);
             return S_OK;
         }
 
         HRESULT Validate() override
         {
-            return ValidatePFAuthenticationAuthenticateSessionTicketResult(result);
+            return ValidateServerAuthenticateSessionTicketResponse(result);
         }
     };
     auto async = std::make_unique<XAsyncHelper<ServerAuthenticateSessionTicketResultHolderStruct>>(testContext);
 
     PFAuthenticationAuthenticateSessionTicketRequestWrapper<> request;
-    FillAuthenticateSessionTicketRequest(request);
+    FillServerAuthenticateSessionTicketRequest(request);
     LogAuthenticateSessionTicketRequest(&request.Model(), "TestAuthenticationServerAuthenticateSessionTicket");
     HRESULT hr = PFAuthenticationServerAuthenticateSessionTicketAsync(stateHandle, &request.Model(), &async->asyncBlock);
     if (FAILED(hr))
@@ -1480,19 +1480,19 @@ void AutoGenAuthenticationTests::TestAuthenticationServerLoginWithServerCustomId
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFAuthenticationServerLoginWithServerCustomIdGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
             
-            LogPFAuthenticationServerLoginResult(result);
+            LogServerLoginResult(result);
             return S_OK;
         }
 
         HRESULT Validate() override
         {
-            return ValidatePFAuthenticationServerLoginResult(result);
+            return ValidateServerLoginWithServerCustomIdResponse(result);
         }
     };
     auto async = std::make_unique<XAsyncHelper<ServerLoginWithServerCustomIdResultHolderStruct>>(testContext);
 
     PFAuthenticationLoginWithServerCustomIdRequestWrapper<> request;
-    FillLoginWithServerCustomIdRequest(request);
+    FillServerLoginWithServerCustomIdRequest(request);
     LogLoginWithServerCustomIdRequest(&request.Model(), "TestAuthenticationServerLoginWithServerCustomId");
     HRESULT hr = PFAuthenticationServerLoginWithServerCustomIdAsync(stateHandle, &request.Model(), &async->asyncBlock);
     if (FAILED(hr))
@@ -1521,19 +1521,19 @@ void AutoGenAuthenticationTests::TestAuthenticationServerLoginWithSteamId(TestCo
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFAuthenticationServerLoginWithSteamIdGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
             
-            LogPFAuthenticationServerLoginResult(result);
+            LogServerLoginResult(result);
             return S_OK;
         }
 
         HRESULT Validate() override
         {
-            return ValidatePFAuthenticationServerLoginResult(result);
+            return ValidateServerLoginWithSteamIdResponse(result);
         }
     };
     auto async = std::make_unique<XAsyncHelper<ServerLoginWithSteamIdResultHolderStruct>>(testContext);
 
     PFAuthenticationLoginWithSteamIdRequestWrapper<> request;
-    FillLoginWithSteamIdRequest(request);
+    FillServerLoginWithSteamIdRequest(request);
     LogLoginWithSteamIdRequest(&request.Model(), "TestAuthenticationServerLoginWithSteamId");
     HRESULT hr = PFAuthenticationServerLoginWithSteamIdAsync(stateHandle, &request.Model(), &async->asyncBlock);
     if (FAILED(hr))
@@ -1562,13 +1562,13 @@ void AutoGenAuthenticationTests::TestAuthenticationServerLoginWithXbox(TestConte
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFAuthenticationServerLoginWithXboxGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
             
-            LogPFAuthenticationServerLoginResult(result);
+            LogServerLoginResult(result);
             return S_OK;
         }
 
         HRESULT Validate() override
         {
-            return ValidatePFAuthenticationServerLoginResult(result);
+            return ValidateServerLoginWithXboxResponse(result);
         }
     };
     auto async = std::make_unique<XAsyncHelper<ServerLoginWithXboxResultHolderStruct>>(testContext);
@@ -1603,19 +1603,19 @@ void AutoGenAuthenticationTests::TestAuthenticationServerLoginWithXboxId(TestCon
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFAuthenticationServerLoginWithXboxIdGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
             
-            LogPFAuthenticationServerLoginResult(result);
+            LogServerLoginResult(result);
             return S_OK;
         }
 
         HRESULT Validate() override
         {
-            return ValidatePFAuthenticationServerLoginResult(result);
+            return ValidateServerLoginWithXboxIdResponse(result);
         }
     };
     auto async = std::make_unique<XAsyncHelper<ServerLoginWithXboxIdResultHolderStruct>>(testContext);
 
     PFAuthenticationLoginWithXboxIdRequestWrapper<> request;
-    FillLoginWithXboxIdRequest(request);
+    FillServerLoginWithXboxIdRequest(request);
     LogLoginWithXboxIdRequest(&request.Model(), "TestAuthenticationServerLoginWithXboxId");
     HRESULT hr = PFAuthenticationServerLoginWithXboxIdAsync(stateHandle, &request.Model(), &async->asyncBlock);
     if (FAILED(hr))
@@ -1665,13 +1665,13 @@ void AutoGenAuthenticationTests::TestAuthenticationGetEntityToken(TestContext& t
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFAuthenticationGetEntityTokenGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
             
-            LogPFAuthenticationGetEntityTokenResponse(result);
+            LogGetEntityTokenResponse(result);
             return S_OK;
         }
 
         HRESULT Validate() override
         {
-            return ValidatePFAuthenticationGetEntityTokenResponse(result);
+            return ValidateGetEntityTokenResponse(result);
         }
     };
     auto async = std::make_unique<XAsyncHelper<GetEntityTokenResultHolderStruct>>(testContext);
@@ -1704,13 +1704,13 @@ void AutoGenAuthenticationTests::TestAuthenticationValidateEntityToken(TestConte
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFAuthenticationValidateEntityTokenGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
             
-            LogPFAuthenticationValidateEntityTokenResponse(result);
+            LogValidateEntityTokenResponse(result);
             return S_OK;
         }
 
         HRESULT Validate() override
         {
-            return ValidatePFAuthenticationValidateEntityTokenResponse(result);
+            return ValidateValidateEntityTokenResponse(result);
         }
     };
     auto async = std::make_unique<XAsyncHelper<ValidateEntityTokenResultHolderStruct>>(testContext);

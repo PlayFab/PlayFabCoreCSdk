@@ -2181,51 +2181,6 @@ typedef struct PFGetPlayerCombinedInfoResultPayload
 } PFGetPlayerCombinedInfoResultPayload;
 
 /// <summary>
-/// PFGetPlayerCombinedInfoRequest data model.
-/// </summary>
-typedef struct PFGetPlayerCombinedInfoRequest
-{
-    /// <summary>
-    /// (Optional) The optional custom tags associated with the request (e.g. build number, external
-    /// trace identifiers, etc.).
-    /// </summary>
-    _Maybenull_ _Field_size_(customTagsCount) struct PFStringDictionaryEntry const* customTags;
-
-    /// <summary>
-    /// Count of customTags
-    /// </summary>
-    uint32_t customTagsCount;
-
-    /// <summary>
-    /// Flags for which pieces of info to return for the user.
-    /// </summary>
-    PFGetPlayerCombinedInfoRequestParams const* infoRequestParameters;
-
-    /// <summary>
-    /// PlayFabId of the user whose data will be returned.
-    /// </summary>
-    _Null_terminated_ const char* playFabId;
-
-} PFGetPlayerCombinedInfoRequest;
-
-/// <summary>
-/// PFGetPlayerCombinedInfoResult data model.
-/// </summary>
-typedef struct PFGetPlayerCombinedInfoResult
-{
-    /// <summary>
-    /// (Optional) Results for requested info.
-    /// </summary>
-    _Maybenull_ PFGetPlayerCombinedInfoResultPayload const* infoResultPayload;
-
-    /// <summary>
-    /// (Optional) Unique PlayFab assigned ID of the user on whom the operation will be performed.
-    /// </summary>
-    _Maybenull_ _Null_terminated_ const char* playFabId;
-
-} PFGetPlayerCombinedInfoResult;
-
-/// <summary>
 /// PFResultTableNode data model.
 /// </summary>
 typedef struct PFResultTableNode

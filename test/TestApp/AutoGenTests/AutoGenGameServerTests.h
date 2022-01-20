@@ -44,30 +44,31 @@ protected:
     void AddTests();
 
     static void LogAddServerBuildRequest(PFGameServerAddServerBuildRequest const* request, const char* testName);
-    static void FillAddServerBuildRequest(PlayFab::Wrappers::PFGameServerAddServerBuildRequestWrapper<>& request);
-    static HRESULT LogPFGameServerAddServerBuildResult(PFGameServerAddServerBuildResult const* result);
-    static HRESULT ValidatePFGameServerAddServerBuildResult(PFGameServerAddServerBuildResult* result);
-
+    static HRESULT LogAddServerBuildResult(PFGameServerAddServerBuildResult const* result);
     static void LogGetServerBuildInfoRequest(PFGameServerGetServerBuildInfoRequest const* request, const char* testName);
-    static void FillGetServerBuildInfoRequest(PlayFab::Wrappers::PFGameServerGetServerBuildInfoRequestWrapper<>& request);
-    static HRESULT LogPFGameServerGetServerBuildInfoResult(PFGameServerGetServerBuildInfoResult const* result);
-    static HRESULT ValidatePFGameServerGetServerBuildInfoResult(PFGameServerGetServerBuildInfoResult* result);
-
+    static HRESULT LogGetServerBuildInfoResult(PFGameServerGetServerBuildInfoResult const* result);
     static void LogGetServerBuildUploadURLRequest(PFGameServerGetServerBuildUploadURLRequest const* request, const char* testName);
-    static void FillGetServerBuildUploadURLRequest(PlayFab::Wrappers::PFGameServerGetServerBuildUploadURLRequestWrapper<>& request);
-    static HRESULT LogPFGameServerGetServerBuildUploadURLResult(PFGameServerGetServerBuildUploadURLResult const* result);
-    static HRESULT ValidatePFGameServerGetServerBuildUploadURLResult(PFGameServerGetServerBuildUploadURLResult* result);
-
-    static HRESULT LogPFGameServerListBuildsResult(PFGameServerListBuildsResult const* result);
-    static HRESULT ValidatePFGameServerListBuildsResult(PFGameServerListBuildsResult* result);
-
+    static HRESULT LogGetServerBuildUploadURLResult(PFGameServerGetServerBuildUploadURLResult const* result);
+    static HRESULT LogListBuildsResult(PFGameServerListBuildsResult const* result);
     static void LogModifyServerBuildRequest(PFGameServerModifyServerBuildRequest const* request, const char* testName);
-    static void FillModifyServerBuildRequest(PlayFab::Wrappers::PFGameServerModifyServerBuildRequestWrapper<>& request);
-    static HRESULT LogPFGameServerModifyServerBuildResult(PFGameServerModifyServerBuildResult const* result);
-    static HRESULT ValidatePFGameServerModifyServerBuildResult(PFGameServerModifyServerBuildResult* result);
-
+    static HRESULT LogModifyServerBuildResult(PFGameServerModifyServerBuildResult const* result);
     static void LogRemoveServerBuildRequest(PFGameServerRemoveServerBuildRequest const* request, const char* testName);
-    static void FillRemoveServerBuildRequest(PlayFab::Wrappers::PFGameServerRemoveServerBuildRequestWrapper<>& request);
+
+    static void FillAdminAddServerBuildRequest(PlayFab::Wrappers::PFGameServerAddServerBuildRequestWrapper<>& request);
+    static HRESULT ValidateAdminAddServerBuildResponse(PFGameServerAddServerBuildResult* result);
+
+    static void FillAdminGetServerBuildInfoRequest(PlayFab::Wrappers::PFGameServerGetServerBuildInfoRequestWrapper<>& request);
+    static HRESULT ValidateAdminGetServerBuildInfoResponse(PFGameServerGetServerBuildInfoResult* result);
+
+    static void FillAdminGetServerBuildUploadUrlRequest(PlayFab::Wrappers::PFGameServerGetServerBuildUploadURLRequestWrapper<>& request);
+    static HRESULT ValidateAdminGetServerBuildUploadUrlResponse(PFGameServerGetServerBuildUploadURLResult* result);
+
+    static HRESULT ValidateAdminListServerBuildsResponse(PFGameServerListBuildsResult* result);
+
+    static void FillAdminModifyServerBuildRequest(PlayFab::Wrappers::PFGameServerModifyServerBuildRequestWrapper<>& request);
+    static HRESULT ValidateAdminModifyServerBuildResponse(PFGameServerModifyServerBuildResult* result);
+
+    static void FillAdminRemoveServerBuildRequest(PlayFab::Wrappers::PFGameServerRemoveServerBuildRequestWrapper<>& request);
 
     struct GameServerTestData
     {

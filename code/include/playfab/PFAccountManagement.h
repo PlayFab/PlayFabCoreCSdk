@@ -961,7 +961,7 @@ HRESULT PFAccountManagementClientGetAccountInfoGetResult(
 /// </remarks>
 HRESULT PFAccountManagementClientGetPlayerCombinedInfoAsync(
     _In_ PFTitlePlayerHandle titlePlayerHandle,
-    _In_ const PFGetPlayerCombinedInfoRequest* request,
+    _In_ const PFAccountManagementGetPlayerCombinedInfoRequest* request,
     _Inout_ XAsyncBlock* async
 ) noexcept;
 
@@ -992,7 +992,7 @@ HRESULT PFAccountManagementClientGetPlayerCombinedInfoGetResult(
     _Inout_ XAsyncBlock* async,
     _In_ size_t bufferSize,
     _Out_writes_bytes_to_(bufferSize, *bufferUsed) void* buffer,
-    _Outptr_ PFGetPlayerCombinedInfoResult** result,
+    _Outptr_ PFAccountManagementGetPlayerCombinedInfoResult** result,
     _Out_opt_ size_t* bufferUsed
 ) noexcept;
 
@@ -2498,19 +2498,52 @@ HRESULT PFAccountManagementServerDeletePlayerAsync(
 
 #if HC_PLATFORM != HC_PLATFORM_GDK
 /// <summary>
-/// Deletes push notification template for title
+/// Returns whatever info is requested in the response for the user. Note that PII (like email address,
+/// facebook id) may be returned. All parameters default to false.
 /// </summary>
 /// <param name="stateHandle">PFStateHandle returned from PFInitialize call.</param>
 /// <param name="request">Populated request object.</param>
 /// <param name="async">XAsyncBlock for the async operation.</param>
 /// <returns>Result code for this API operation.</returns>
 /// <remarks>
-/// Call <see cref="XAsyncGetStatus"/> to get the status of the operation.
+/// If successful, call <see cref="PFAccountManagementServerGetPlayerCombinedInfoGetResult"/> to get
+/// the result.
 /// </remarks>
-HRESULT PFAccountManagementServerDeletePushNotificationTemplateAsync(
+HRESULT PFAccountManagementServerGetPlayerCombinedInfoAsync(
     _In_ PFStateHandle stateHandle,
-    _In_ const PFAccountManagementDeletePushNotificationTemplateRequest* request,
+    _In_ const PFAccountManagementGetPlayerCombinedInfoRequest* request,
     _Inout_ XAsyncBlock* async
+) noexcept;
+
+/// <summary>
+/// Get the size in bytes needed to store the result of a ServerGetPlayerCombinedInfo call.
+/// </summary>
+/// <param name="async">XAsyncBlock for the async operation.</param>
+/// <param name="bufferSize">The buffer size in bytes required for the result.</param>
+/// <returns>Result code for this API operation.</returns>
+HRESULT PFAccountManagementServerGetPlayerCombinedInfoGetResultSize(
+    _Inout_ XAsyncBlock* async,
+    _Out_ size_t* bufferSize
+) noexcept;
+
+/// <summary>
+/// Gets the result of a successful PFAccountManagementServerGetPlayerCombinedInfoAsync call.
+/// </summary>
+/// <param name="async">XAsyncBlock for the async operation.</param>
+/// <param name="bufferSize">The size of the buffer for the result object.</param>
+/// <param name="buffer">Byte buffer used for the result value and its fields.</param>
+/// <param name="result">Pointer to the result object.</param>
+/// <param name="bufferUsed">The number of bytes in the provided buffer that were used.</param>
+/// <returns>Result code for this API operation.</returns>
+/// <remarks>
+/// result is a pointer within buffer and does not need to be freed separately.
+/// </remarks>
+HRESULT PFAccountManagementServerGetPlayerCombinedInfoGetResult(
+    _Inout_ XAsyncBlock* async,
+    _In_ size_t bufferSize,
+    _Out_writes_bytes_to_(bufferSize, *bufferUsed) void* buffer,
+    _Outptr_ PFAccountManagementGetPlayerCombinedInfoResult** result,
+    _Out_opt_ size_t* bufferUsed
 ) noexcept;
 #endif
 
@@ -3270,56 +3303,6 @@ HRESULT PFAccountManagementServerRevokeBansGetResult(
 
 #if HC_PLATFORM != HC_PLATFORM_GDK
 /// <summary>
-/// Saves push notification template for title
-/// </summary>
-/// <param name="stateHandle">PFStateHandle returned from PFInitialize call.</param>
-/// <param name="request">Populated request object.</param>
-/// <param name="async">XAsyncBlock for the async operation.</param>
-/// <returns>Result code for this API operation.</returns>
-/// <remarks>
-/// If successful, call <see cref="PFAccountManagementServerSavePushNotificationTemplateGetResult"/>
-/// to get the result.
-/// </remarks>
-HRESULT PFAccountManagementServerSavePushNotificationTemplateAsync(
-    _In_ PFStateHandle stateHandle,
-    _In_ const PFAccountManagementSavePushNotificationTemplateRequest* request,
-    _Inout_ XAsyncBlock* async
-) noexcept;
-
-/// <summary>
-/// Get the size in bytes needed to store the result of a ServerSavePushNotificationTemplate call.
-/// </summary>
-/// <param name="async">XAsyncBlock for the async operation.</param>
-/// <param name="bufferSize">The buffer size in bytes required for the result.</param>
-/// <returns>Result code for this API operation.</returns>
-HRESULT PFAccountManagementServerSavePushNotificationTemplateGetResultSize(
-    _Inout_ XAsyncBlock* async,
-    _Out_ size_t* bufferSize
-) noexcept;
-
-/// <summary>
-/// Gets the result of a successful PFAccountManagementServerSavePushNotificationTemplateAsync call.
-/// </summary>
-/// <param name="async">XAsyncBlock for the async operation.</param>
-/// <param name="bufferSize">The size of the buffer for the result object.</param>
-/// <param name="buffer">Byte buffer used for the result value and its fields.</param>
-/// <param name="result">Pointer to the result object.</param>
-/// <param name="bufferUsed">The number of bytes in the provided buffer that were used.</param>
-/// <returns>Result code for this API operation.</returns>
-/// <remarks>
-/// result is a pointer within buffer and does not need to be freed separately.
-/// </remarks>
-HRESULT PFAccountManagementServerSavePushNotificationTemplateGetResult(
-    _Inout_ XAsyncBlock* async,
-    _In_ size_t bufferSize,
-    _Out_writes_bytes_to_(bufferSize, *bufferUsed) void* buffer,
-    _Outptr_ PFAccountManagementSavePushNotificationTemplateResult** result,
-    _Out_opt_ size_t* bufferUsed
-) noexcept;
-#endif
-
-#if HC_PLATFORM != HC_PLATFORM_GDK
-/// <summary>
 /// Forces an email to be sent to the registered contact email address for the user's account based on
 /// an account recovery email template
 /// </summary>
@@ -3358,46 +3341,6 @@ HRESULT PFAccountManagementServerSendCustomAccountRecoveryEmailAsync(
 HRESULT PFAccountManagementServerSendEmailFromTemplateAsync(
     _In_ PFStateHandle stateHandle,
     _In_ const PFAccountManagementSendEmailFromTemplateRequest* request,
-    _Inout_ XAsyncBlock* async
-) noexcept;
-#endif
-
-#if HC_PLATFORM != HC_PLATFORM_GDK
-/// <summary>
-/// Sends an iOS/Android Push Notification to a specific user, if that user's device has been configured
-/// for Push Notifications in PlayFab. If a user has linked both Android and iOS devices, both will be
-/// notified.
-/// </summary>
-/// <param name="stateHandle">PFStateHandle returned from PFInitialize call.</param>
-/// <param name="request">Populated request object.</param>
-/// <param name="async">XAsyncBlock for the async operation.</param>
-/// <returns>Result code for this API operation.</returns>
-/// <remarks>
-/// Call <see cref="XAsyncGetStatus"/> to get the status of the operation.
-/// </remarks>
-HRESULT PFAccountManagementServerSendPushNotificationAsync(
-    _In_ PFStateHandle stateHandle,
-    _In_ const PFAccountManagementSendPushNotificationRequest* request,
-    _Inout_ XAsyncBlock* async
-) noexcept;
-#endif
-
-#if HC_PLATFORM != HC_PLATFORM_GDK
-/// <summary>
-/// Sends an iOS/Android Push Notification template to a specific user, if that user's device has been
-/// configured for Push Notifications in PlayFab. If a user has linked both Android and iOS devices, both
-/// will be notified.
-/// </summary>
-/// <param name="stateHandle">PFStateHandle returned from PFInitialize call.</param>
-/// <param name="request">Populated request object.</param>
-/// <param name="async">XAsyncBlock for the async operation.</param>
-/// <returns>Result code for this API operation.</returns>
-/// <remarks>
-/// Call <see cref="XAsyncGetStatus"/> to get the status of the operation.
-/// </remarks>
-HRESULT PFAccountManagementServerSendPushNotificationFromTemplateAsync(
-    _In_ PFStateHandle stateHandle,
-    _In_ const PFAccountManagementSendPushNotificationFromTemplateRequest* request,
     _Inout_ XAsyncBlock* async
 ) noexcept;
 #endif

@@ -11,7 +11,7 @@ namespace PlayFabUnit
 
 void AutoGenContentTests::LogDeleteContentRequest(PFContentDeleteContentRequest const* request, const char* testName)
 {
-    if( !TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    if (!TestApp::ShouldTrace(PFTestTraceLevel::Information))
     {
         return;
     }
@@ -24,13 +24,13 @@ void AutoGenContentTests::LogDeleteContentRequest(PFContentDeleteContentRequest 
 
     // PlayFabContentDeleteContentRequest struct:
     // request->key: const char*
-    if( request->key ) { ss << "  key " << request->key; Log(ss); } else { ss << "  key = nullptr"; Log(ss); } // Class: const char* 
+    if (request->key) { ss << "  key " << request->key; Log(ss); } else { ss << "  key = nullptr"; Log(ss); } // Class: const char* 
 
 }
 
 void AutoGenContentTests::LogGetContentListRequest(PFContentGetContentListRequest const* request, const char* testName)
 {
-    if( !TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    if (!TestApp::ShouldTrace(PFTestTraceLevel::Information))
     {
         return;
     }
@@ -43,13 +43,13 @@ void AutoGenContentTests::LogGetContentListRequest(PFContentGetContentListReques
 
     // PlayFabContentGetContentListRequest struct:
     // request->prefix: const char*
-    if( request->prefix ) { ss << "  prefix " << request->prefix; Log(ss); } else { ss << "  prefix = nullptr"; Log(ss); } // Class: const char* 
+    if (request->prefix) { ss << "  prefix " << request->prefix; Log(ss); } else { ss << "  prefix = nullptr"; Log(ss); } // Class: const char* 
 
 }
 
-HRESULT AutoGenContentTests::LogPFContentGetContentListResult(PFContentGetContentListResult const* result)
+HRESULT AutoGenContentTests::LogGetContentListResult(PFContentGetContentListResult const* result)
 {
-    if( !TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    if (!TestApp::ShouldTrace(PFTestTraceLevel::Information))
     {
         return S_OK;
     }
@@ -61,7 +61,7 @@ HRESULT AutoGenContentTests::LogPFContentGetContentListResult(PFContentGetConten
     ss << "  contentsCount " << result->contentsCount; Log(ss);
 
     // PFContentContentInfo
-    for( uint32_t i=0; i<result->contentsCount; i++ )
+    for (uint32_t i=0; i<result->contentsCount; i++)
     {
             ss << "  result->contents[" << i << "]:" << result->contents[i]; Log(ss); // PFContentContentInfo
     }     
@@ -72,7 +72,7 @@ HRESULT AutoGenContentTests::LogPFContentGetContentListResult(PFContentGetConten
 
 void AutoGenContentTests::LogGetContentUploadUrlRequest(PFContentGetContentUploadUrlRequest const* request, const char* testName)
 {
-    if( !TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    if (!TestApp::ShouldTrace(PFTestTraceLevel::Information))
     {
         return;
     }
@@ -85,14 +85,14 @@ void AutoGenContentTests::LogGetContentUploadUrlRequest(PFContentGetContentUploa
 
     // PlayFabContentGetContentUploadUrlRequest struct:
     // request->contentType: const char*
-    if( request->contentType ) { ss << "  contentType " << request->contentType; Log(ss); } else { ss << "  contentType = nullptr"; Log(ss); } // Class: const char* 
-    if( request->key ) { ss << "  key " << request->key; Log(ss); } else { ss << "  key = nullptr"; Log(ss); } // Class: const char* 
+    if (request->contentType) { ss << "  contentType " << request->contentType; Log(ss); } else { ss << "  contentType = nullptr"; Log(ss); } // Class: const char* 
+    if (request->key) { ss << "  key " << request->key; Log(ss); } else { ss << "  key = nullptr"; Log(ss); } // Class: const char* 
 
 }
 
-HRESULT AutoGenContentTests::LogPFContentGetContentUploadUrlResult(PFContentGetContentUploadUrlResult const* result)
+HRESULT AutoGenContentTests::LogGetContentUploadUrlResult(PFContentGetContentUploadUrlResult const* result)
 {
-    if( !TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    if (!TestApp::ShouldTrace(PFTestTraceLevel::Information))
     {
         return S_OK;
     }
@@ -101,13 +101,13 @@ HRESULT AutoGenContentTests::LogPFContentGetContentUploadUrlResult(PFContentGetC
     ss << "Response:"; Log(ss);
 
     // Found PlayFabContentGetContentUploadUrlResult    
-    if( result->URL ) { ss << "  URL " << result->URL; Log(ss); } else { ss << "  URL = nullptr"; Log(ss); } // Class: const char* 
+    if (result->URL) { ss << "  URL " << result->URL; Log(ss); } else { ss << "  URL = nullptr"; Log(ss); } // Class: const char* 
     return S_OK;
 }
 
 void AutoGenContentTests::LogGetContentDownloadUrlRequest(PFContentGetContentDownloadUrlRequest const* request, const char* testName)
 {
-    if( !TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    if (!TestApp::ShouldTrace(PFTestTraceLevel::Information))
     {
         return;
     }
@@ -120,15 +120,15 @@ void AutoGenContentTests::LogGetContentDownloadUrlRequest(PFContentGetContentDow
 
     // PlayFabContentGetContentDownloadUrlRequest struct:
     // request->httpMethod: const char*
-    if( request->httpMethod ) { ss << "  httpMethod " << request->httpMethod; Log(ss); } else { ss << "  httpMethod = nullptr"; Log(ss); } // Class: const char* 
-    if( request->key ) { ss << "  key " << request->key; Log(ss); } else { ss << "  key = nullptr"; Log(ss); } // Class: const char* 
+    if (request->httpMethod) { ss << "  httpMethod " << request->httpMethod; Log(ss); } else { ss << "  httpMethod = nullptr"; Log(ss); } // Class: const char* 
+    if (request->key) { ss << "  key " << request->key; Log(ss); } else { ss << "  key = nullptr"; Log(ss); } // Class: const char* 
     ss << "  thruCDN " << request->thruCDN; Log(ss); // Class: bool 
 
 }
 
-HRESULT AutoGenContentTests::LogPFContentGetContentDownloadUrlResult(PFContentGetContentDownloadUrlResult const* result)
+HRESULT AutoGenContentTests::LogGetContentDownloadUrlResult(PFContentGetContentDownloadUrlResult const* result)
 {
-    if( !TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    if (!TestApp::ShouldTrace(PFTestTraceLevel::Information))
     {
         return S_OK;
     }
@@ -137,7 +137,7 @@ HRESULT AutoGenContentTests::LogPFContentGetContentDownloadUrlResult(PFContentGe
     ss << "Response:"; Log(ss);
 
     // Found PlayFabContentGetContentDownloadUrlResult    
-    if( result->URL ) { ss << "  URL " << result->URL; Log(ss); } else { ss << "  URL = nullptr"; Log(ss); } // Class: const char* 
+    if (result->URL) { ss << "  URL " << result->URL; Log(ss); } else { ss << "  URL = nullptr"; Log(ss); } // Class: const char* 
     return S_OK;
 }
 

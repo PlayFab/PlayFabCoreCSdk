@@ -189,6 +189,16 @@
     <ClCompile Include="$(PlayFabTestDir)\TestApp\AutoGenTests\AutoGenEventsTestData.cpp" />
     <ClCompile Include="$(PlayFabTestDir)\TestApp\AutoGenTests\AutoGenEventsTestLog.cpp" />
     <ClCompile Include="$(PlayFabTestDir)\TestApp\AutoGenTests\AutoGenEventsTests.cpp" /> 
+    <ClInclude Include="$(PlayFabTestDir)\TestApp\AutoGenTests\AutoGenAccountManagementTests.h" />
+    <ClInclude Include="$(PlayFabTestDir)\TestApp\AutoGenTests\AutoGenAccountManagementResultHolders.h" />
+    <ClCompile Include="$(PlayFabTestDir)\TestApp\AutoGenTests\AutoGenAccountManagementTestData.cpp" />
+    <ClCompile Include="$(PlayFabTestDir)\TestApp\AutoGenTests\AutoGenAccountManagementTestLog.cpp" />
+    <ClCompile Include="$(PlayFabTestDir)\TestApp\AutoGenTests\AutoGenAccountManagementTests.cpp" /> 
+    <ClInclude Include="$(PlayFabTestDir)\TestApp\AutoGenTests\AutoGenPlayerDataManagementTests.h" />
+    <ClInclude Include="$(PlayFabTestDir)\TestApp\AutoGenTests\AutoGenPlayerDataManagementResultHolders.h" />
+    <ClCompile Include="$(PlayFabTestDir)\TestApp\AutoGenTests\AutoGenPlayerDataManagementTestData.cpp" />
+    <ClCompile Include="$(PlayFabTestDir)\TestApp\AutoGenTests\AutoGenPlayerDataManagementTestLog.cpp" />
+    <ClCompile Include="$(PlayFabTestDir)\TestApp\AutoGenTests\AutoGenPlayerDataManagementTests.cpp" /> 
     <ClInclude Include="$(PlayFabTestDir)\TestApp\AutoGenTests\AutoGenFriendsTests.h" />
     <ClInclude Include="$(PlayFabTestDir)\TestApp\AutoGenTests\AutoGenFriendsResultHolders.h" />
     <ClCompile Include="$(PlayFabTestDir)\TestApp\AutoGenTests\AutoGenFriendsTestData.cpp" />

@@ -1,9 +1,17 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
     <ProjectConfiguration Include="Debug|x64">
       <Configuration>Debug</Configuration>
       <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
     </ProjectConfiguration>
     <ProjectConfiguration Include="Release|x64">
       <Configuration>Release</Configuration>
@@ -23,7 +31,19 @@
     <PlatformToolset>v141</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <PlatformToolset>v141</PlatformToolset>
@@ -37,7 +57,13 @@
   <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="PropertySheets">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
   <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
   <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory), PlayFabCoreStaticLib.props))\PlayFabCoreStaticLib.props" />
@@ -46,7 +72,15 @@
     <LinkIncremental>true</LinkIncremental>
     <IncludePath>$(IncludePath)</IncludePath>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+    <IncludePath>$(IncludePath)</IncludePath>
+  </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <LinkIncremental>true</LinkIncremental>
+    <IncludePath>$(IncludePath)</IncludePath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>true</LinkIncremental>
     <IncludePath>$(IncludePath)</IncludePath>
   </PropertyGroup>
@@ -71,7 +105,48 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
   </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level4</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <PrecompiledHeaderFile>stdafx.h</PrecompiledHeaderFile>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <MinimalRebuild>false</MinimalRebuild>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <DisableSpecificWarnings>4251;4996</DisableSpecificWarnings>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <AdditionalOptions>/Zc:__cplusplus /bigobj %(AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level4</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <PrecompiledHeaderFile>stdafx.h</PrecompiledHeaderFile>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <MinimalRebuild>false</MinimalRebuild>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <DisableSpecificWarnings>4251;4996</DisableSpecificWarnings>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <AdditionalOptions>/Zc:__cplusplus /bigobj %(AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <WarningLevel>Level4</WarningLevel>
@@ -207,14 +282,14 @@
     <ClCompile Include="$(PlayFabSourceDir)\source\Authentication\Authentication.cpp" />
     <ClInclude Include="$(PlayFabSourceDir)\include\playfab\PFAuthentication.h" />
     <ClCompile Include="$(PlayFabSourceDir)\source\Authentication\PFAuthentication.cpp" />
-    <ClInclude Include="$(PlayFabSourceDir)\include\playfab\PFPlayerDataManagementDataModels.h" />
-    <ClInclude Include="$(PlayFabSourceDir)\include\playfab\cpp\PFPlayerDataManagementDataModelWrappers.h" />
-    <ClInclude Include="$(PlayFabSourceDir)\source\PlayerDataManagement\PlayerDataManagementDataModels.h" />
-    <ClCompile Include="$(PlayFabSourceDir)\source\PlayerDataManagement\PlayerDataManagementDataModels.cpp" />
-    <ClInclude Include="$(PlayFabSourceDir)\source\PlayerDataManagement\PlayerDataManagement.h" />
-    <ClCompile Include="$(PlayFabSourceDir)\source\PlayerDataManagement\PlayerDataManagement.cpp" />
-    <ClInclude Include="$(PlayFabSourceDir)\include\playfab\PFPlayerDataManagement.h" />
-    <ClCompile Include="$(PlayFabSourceDir)\source\PlayerDataManagement\PFPlayerDataManagement.cpp" />
+    <ClInclude Include="$(PlayFabSourceDir)\include\playfab\PFLeaderboardDataModels.h" />
+    <ClInclude Include="$(PlayFabSourceDir)\include\playfab\cpp\PFLeaderboardDataModelWrappers.h" />
+    <ClInclude Include="$(PlayFabSourceDir)\source\Leaderboard\LeaderboardDataModels.h" />
+    <ClCompile Include="$(PlayFabSourceDir)\source\Leaderboard\LeaderboardDataModels.cpp" />
+    <ClInclude Include="$(PlayFabSourceDir)\source\Leaderboard\Leaderboard.h" />
+    <ClCompile Include="$(PlayFabSourceDir)\source\Leaderboard\Leaderboard.cpp" />
+    <ClInclude Include="$(PlayFabSourceDir)\include\playfab\PFLeaderboard.h" />
+    <ClCompile Include="$(PlayFabSourceDir)\source\Leaderboard\PFLeaderboard.cpp" />
     <ClInclude Include="$(PlayFabSourceDir)\include\playfab\PFSegmentsDataModels.h" />
     <ClInclude Include="$(PlayFabSourceDir)\include\playfab\cpp\PFSegmentsDataModelWrappers.h" />
     <ClInclude Include="$(PlayFabSourceDir)\source\Segments\SegmentsDataModels.h" />
@@ -247,6 +322,14 @@
     <ClCompile Include="$(PlayFabSourceDir)\source\CloudScript\CloudScript.cpp" />
     <ClInclude Include="$(PlayFabSourceDir)\include\playfab\PFCloudScript.h" />
     <ClCompile Include="$(PlayFabSourceDir)\source\CloudScript\PFCloudScript.cpp" />
+    <ClInclude Include="$(PlayFabSourceDir)\include\playfab\PFPlayerDataManagementDataModels.h" />
+    <ClInclude Include="$(PlayFabSourceDir)\include\playfab\cpp\PFPlayerDataManagementDataModelWrappers.h" />
+    <ClInclude Include="$(PlayFabSourceDir)\source\PlayerDataManagement\PlayerDataManagementDataModels.h" />
+    <ClCompile Include="$(PlayFabSourceDir)\source\PlayerDataManagement\PlayerDataManagementDataModels.cpp" />
+    <ClInclude Include="$(PlayFabSourceDir)\source\PlayerDataManagement\PlayerDataManagement.h" />
+    <ClCompile Include="$(PlayFabSourceDir)\source\PlayerDataManagement\PlayerDataManagement.cpp" />
+    <ClInclude Include="$(PlayFabSourceDir)\include\playfab\PFPlayerDataManagement.h" />
+    <ClCompile Include="$(PlayFabSourceDir)\source\PlayerDataManagement\PFPlayerDataManagement.cpp" />
     <ClInclude Include="$(PlayFabSourceDir)\include\playfab\PFMatchmakingDataModels.h" />
     <ClInclude Include="$(PlayFabSourceDir)\include\playfab\cpp\PFMatchmakingDataModelWrappers.h" />
     <ClInclude Include="$(PlayFabSourceDir)\source\Matchmaking\MatchmakingDataModels.h" />
@@ -255,6 +338,14 @@
     <ClCompile Include="$(PlayFabSourceDir)\source\Matchmaking\Matchmaking.cpp" />
     <ClInclude Include="$(PlayFabSourceDir)\include\playfab\PFMatchmaking.h" />
     <ClCompile Include="$(PlayFabSourceDir)\source\Matchmaking\PFMatchmaking.cpp" />
+    <ClInclude Include="$(PlayFabSourceDir)\include\playfab\PFEconomyDataModels.h" />
+    <ClInclude Include="$(PlayFabSourceDir)\include\playfab\cpp\PFEconomyDataModelWrappers.h" />
+    <ClInclude Include="$(PlayFabSourceDir)\source\Economy\EconomyDataModels.h" />
+    <ClCompile Include="$(PlayFabSourceDir)\source\Economy\EconomyDataModels.cpp" />
+    <ClInclude Include="$(PlayFabSourceDir)\source\Economy\Economy.h" />
+    <ClCompile Include="$(PlayFabSourceDir)\source\Economy\Economy.cpp" />
+    <ClInclude Include="$(PlayFabSourceDir)\include\playfab\PFEconomy.h" />
+    <ClCompile Include="$(PlayFabSourceDir)\source\Economy\PFEconomy.cpp" />
     <ClInclude Include="$(PlayFabSourceDir)\include\playfab\PFCharacterDataModels.h" />
     <ClInclude Include="$(PlayFabSourceDir)\include\playfab\cpp\PFCharacterDataModelWrappers.h" />
     <ClInclude Include="$(PlayFabSourceDir)\source\Character\CharacterDataModels.h" />
@@ -311,6 +402,14 @@
     <ClCompile Include="$(PlayFabSourceDir)\source\Analytics\Analytics.cpp" />
     <ClInclude Include="$(PlayFabSourceDir)\include\playfab\PFAnalytics.h" />
     <ClCompile Include="$(PlayFabSourceDir)\source\Analytics\PFAnalytics.cpp" />
+    <ClInclude Include="$(PlayFabSourceDir)\include\playfab\PFPushNotificationsDataModels.h" />
+    <ClInclude Include="$(PlayFabSourceDir)\include\playfab\cpp\PFPushNotificationsDataModelWrappers.h" />
+    <ClInclude Include="$(PlayFabSourceDir)\source\PushNotifications\PushNotificationsDataModels.h" />
+    <ClCompile Include="$(PlayFabSourceDir)\source\PushNotifications\PushNotificationsDataModels.cpp" />
+    <ClInclude Include="$(PlayFabSourceDir)\source\PushNotifications\PushNotifications.h" />
+    <ClCompile Include="$(PlayFabSourceDir)\source\PushNotifications\PushNotifications.cpp" />
+    <ClInclude Include="$(PlayFabSourceDir)\include\playfab\PFPushNotifications.h" />
+    <ClCompile Include="$(PlayFabSourceDir)\source\PushNotifications\PFPushNotifications.cpp" />
     <ClInclude Include="$(PlayFabSourceDir)\include\playfab\PFDataDataModels.h" />
     <ClInclude Include="$(PlayFabSourceDir)\include\playfab\cpp\PFDataDataModelWrappers.h" />
     <ClInclude Include="$(PlayFabSourceDir)\source\Data\DataDataModels.h" />

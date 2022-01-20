@@ -21,7 +21,7 @@ void AutoGenPlayStreamTests::Log(std::stringstream& ss)
 
 HRESULT AutoGenPlayStreamTests::LogHR(HRESULT hr)
 {
-    if( TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    if (TestApp::ShouldTrace(PFTestTraceLevel::Information))
     {
         TestApp::Log("Result: 0x%0.8x", hr);
     }
@@ -61,7 +61,7 @@ void AutoGenPlayStreamTests::AddTests()
 
 void AutoGenPlayStreamTests::ClassSetUp()
 {
-    HRESULT hr = PFAdminInitialize(testTitleData.titleId.data(), testTitleData.developerSecretKey.data(), nullptr, &stateHandle);
+    HRESULT hr = PFAdminInitialize(testTitleData.titleId.data(), testTitleData.developerSecretKey.data(), testTitleData.connectionString.data(), nullptr, &stateHandle);
     assert(SUCCEEDED(hr));
     if (SUCCEEDED(hr))
     {
@@ -179,13 +179,13 @@ void AutoGenPlayStreamTests::TestPlayStreamAdminGetAllSegments(TestContext& test
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFPlayStreamAdminGetAllSegmentsGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
             
-            LogPFPlayStreamGetAllSegmentsResult(result);
+            LogGetAllSegmentsResult(result);
             return S_OK;
         }
 
         HRESULT Validate() override
         {
-            return ValidatePFPlayStreamGetAllSegmentsResult(result);
+            return ValidateAdminGetAllSegmentsResponse(result);
         }
     };
     auto async = std::make_unique<XAsyncHelper<AdminGetAllSegmentsResultHolderStruct>>(testContext);
@@ -217,19 +217,19 @@ void AutoGenPlayStreamTests::TestPlayStreamAdminGetPlayerSegments(TestContext& t
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFPlayStreamAdminGetPlayerSegmentsGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
             
-            LogPFPlayStreamGetPlayerSegmentsResult(result);
+            LogGetPlayerSegmentsResult(result);
             return S_OK;
         }
 
         HRESULT Validate() override
         {
-            return ValidatePFPlayStreamGetPlayerSegmentsResult(result);
+            return ValidateAdminGetPlayerSegmentsResponse(result);
         }
     };
     auto async = std::make_unique<XAsyncHelper<AdminGetPlayerSegmentsResultHolderStruct>>(testContext);
 
     PFPlayStreamGetPlayersSegmentsRequestWrapper<> request;
-    FillGetPlayersSegmentsRequest(request);
+    FillAdminGetPlayerSegmentsRequest(request);
     LogGetPlayersSegmentsRequest(&request.Model(), "TestPlayStreamAdminGetPlayerSegments");
     HRESULT hr = PFPlayStreamAdminGetPlayerSegmentsAsync(stateHandle, &request.Model(), &async->asyncBlock);
     if (FAILED(hr))
@@ -258,19 +258,19 @@ void AutoGenPlayStreamTests::TestPlayStreamAdminGetPlayersInSegment(TestContext&
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFPlayStreamAdminGetPlayersInSegmentGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
             
-            LogPFPlayStreamGetPlayersInSegmentResult(result);
+            LogGetPlayersInSegmentResult(result);
             return S_OK;
         }
 
         HRESULT Validate() override
         {
-            return ValidatePFPlayStreamGetPlayersInSegmentResult(result);
+            return ValidateAdminGetPlayersInSegmentResponse(result);
         }
     };
     auto async = std::make_unique<XAsyncHelper<AdminGetPlayersInSegmentResultHolderStruct>>(testContext);
 
     PFPlayStreamGetPlayersInSegmentRequestWrapper<> request;
-    FillGetPlayersInSegmentRequest(request);
+    FillAdminGetPlayersInSegmentRequest(request);
     LogGetPlayersInSegmentRequest(&request.Model(), "TestPlayStreamAdminGetPlayersInSegment");
     HRESULT hr = PFPlayStreamAdminGetPlayersInSegmentAsync(stateHandle, &request.Model(), &async->asyncBlock);
     if (FAILED(hr))
@@ -298,13 +298,13 @@ void AutoGenPlayStreamTests::TestPlayStreamClientGetPlayerSegments(TestContext& 
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFPlayStreamClientGetPlayerSegmentsGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
             
-            LogPFPlayStreamGetPlayerSegmentsResult(result);
+            LogGetPlayerSegmentsResult(result);
             return S_OK;
         }
 
         HRESULT Validate() override
         {
-            return ValidatePFPlayStreamGetPlayerSegmentsResult(result);
+            return ValidateClientGetPlayerSegmentsResponse(result);
         }
     };
     auto async = std::make_unique<XAsyncHelper<ClientGetPlayerSegmentsResultHolderStruct>>(testContext);
@@ -335,13 +335,13 @@ void AutoGenPlayStreamTests::TestPlayStreamServerGetAllSegments(TestContext& tes
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFPlayStreamServerGetAllSegmentsGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
             
-            LogPFPlayStreamGetAllSegmentsResult(result);
+            LogGetAllSegmentsResult(result);
             return S_OK;
         }
 
         HRESULT Validate() override
         {
-            return ValidatePFPlayStreamGetAllSegmentsResult(result);
+            return ValidateServerGetAllSegmentsResponse(result);
         }
     };
     auto async = std::make_unique<XAsyncHelper<ServerGetAllSegmentsResultHolderStruct>>(testContext);
@@ -373,19 +373,19 @@ void AutoGenPlayStreamTests::TestPlayStreamServerGetPlayerSegments(TestContext& 
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFPlayStreamServerGetPlayerSegmentsGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
             
-            LogPFPlayStreamGetPlayerSegmentsResult(result);
+            LogGetPlayerSegmentsResult(result);
             return S_OK;
         }
 
         HRESULT Validate() override
         {
-            return ValidatePFPlayStreamGetPlayerSegmentsResult(result);
+            return ValidateServerGetPlayerSegmentsResponse(result);
         }
     };
     auto async = std::make_unique<XAsyncHelper<ServerGetPlayerSegmentsResultHolderStruct>>(testContext);
 
     PFPlayStreamGetPlayersSegmentsRequestWrapper<> request;
-    FillGetPlayersSegmentsRequest(request);
+    FillServerGetPlayerSegmentsRequest(request);
     LogGetPlayersSegmentsRequest(&request.Model(), "TestPlayStreamServerGetPlayerSegments");
     HRESULT hr = PFPlayStreamServerGetPlayerSegmentsAsync(stateHandle, &request.Model(), &async->asyncBlock);
     if (FAILED(hr))
@@ -414,19 +414,19 @@ void AutoGenPlayStreamTests::TestPlayStreamServerGetPlayersInSegment(TestContext
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFPlayStreamServerGetPlayersInSegmentGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
             
-            LogPFPlayStreamGetPlayersInSegmentResult(result);
+            LogGetPlayersInSegmentResult(result);
             return S_OK;
         }
 
         HRESULT Validate() override
         {
-            return ValidatePFPlayStreamGetPlayersInSegmentResult(result);
+            return ValidateServerGetPlayersInSegmentResponse(result);
         }
     };
     auto async = std::make_unique<XAsyncHelper<ServerGetPlayersInSegmentResultHolderStruct>>(testContext);
 
     PFPlayStreamGetPlayersInSegmentRequestWrapper<> request;
-    FillGetPlayersInSegmentRequest(request);
+    FillServerGetPlayersInSegmentRequest(request);
     LogGetPlayersInSegmentRequest(&request.Model(), "TestPlayStreamServerGetPlayersInSegment");
     HRESULT hr = PFPlayStreamServerGetPlayersInSegmentAsync(stateHandle, &request.Model(), &async->asyncBlock);
     if (FAILED(hr))

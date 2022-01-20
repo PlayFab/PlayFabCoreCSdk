@@ -11,7 +11,7 @@ namespace PlayFabUnit
 
 void AutoGenScheduledTaskTests::LogAbortTaskInstanceRequest(PFScheduledTaskAbortTaskInstanceRequest const* request, const char* testName)
 {
-    if( !TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    if (!TestApp::ShouldTrace(PFTestTraceLevel::Information))
     {
         return;
     }
@@ -28,18 +28,18 @@ void AutoGenScheduledTaskTests::LogAbortTaskInstanceRequest(PFScheduledTaskAbort
     ss << "  customTagsCount " << request->customTagsCount; Log(ss);
 
     // PFStringDictionaryEntry
-    for( uint32_t i=0; i<request->customTagsCount; i++ )
+    for (uint32_t i=0; i<request->customTagsCount; i++)
     {
             ss << "  request->customTags[" << i << "]:" << request->customTags[i].key << "=" << request->customTags[i].value; Log(ss);
             
     } 
-    if( request->taskInstanceId ) { ss << "  taskInstanceId " << request->taskInstanceId; Log(ss); } else { ss << "  taskInstanceId = nullptr"; Log(ss); } // Class: const char* 
+    if (request->taskInstanceId) { ss << "  taskInstanceId " << request->taskInstanceId; Log(ss); } else { ss << "  taskInstanceId = nullptr"; Log(ss); } // Class: const char* 
 
 }
 
 void AutoGenScheduledTaskTests::LogCreateActionsOnPlayerSegmentTaskRequest(PFScheduledTaskCreateActionsOnPlayerSegmentTaskRequest const* request, const char* testName)
 {
-    if( !TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    if (!TestApp::ShouldTrace(PFTestTraceLevel::Information))
     {
         return;
     }
@@ -56,22 +56,22 @@ void AutoGenScheduledTaskTests::LogCreateActionsOnPlayerSegmentTaskRequest(PFSch
     ss << "  customTagsCount " << request->customTagsCount; Log(ss);
 
     // PFStringDictionaryEntry
-    for( uint32_t i=0; i<request->customTagsCount; i++ )
+    for (uint32_t i=0; i<request->customTagsCount; i++)
     {
             ss << "  request->customTags[" << i << "]:" << request->customTags[i].key << "=" << request->customTags[i].value; Log(ss);
             
     } 
-    if( request->description ) { ss << "  description " << request->description; Log(ss); } else { ss << "  description = nullptr"; Log(ss); } // Class: const char* 
+    if (request->description) { ss << "  description " << request->description; Log(ss); } else { ss << "  description = nullptr"; Log(ss); } // Class: const char* 
     ss << "  isActive " << request->isActive; Log(ss); // Class: bool 
-    if( request->name ) { ss << "  name " << request->name; Log(ss); } else { ss << "  name = nullptr"; Log(ss); } // Class: const char* 
+    if (request->name) { ss << "  name " << request->name; Log(ss); } else { ss << "  name = nullptr"; Log(ss); } // Class: const char* 
     ss << "  parameter " << request->parameter; Log(ss); // Class: PFScheduledTaskActionsOnPlayersInSegmentTaskParameter 
-    if( request->schedule ) { ss << "  schedule " << request->schedule; Log(ss); } else { ss << "  schedule = nullptr"; Log(ss); } // Class: const char* 
+    if (request->schedule) { ss << "  schedule " << request->schedule; Log(ss); } else { ss << "  schedule = nullptr"; Log(ss); } // Class: const char* 
 
 }
 
-HRESULT AutoGenScheduledTaskTests::LogPFScheduledTaskCreateTaskResult(PFScheduledTaskCreateTaskResult const* result)
+HRESULT AutoGenScheduledTaskTests::LogCreateTaskResult(PFScheduledTaskCreateTaskResult const* result)
 {
-    if( !TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    if (!TestApp::ShouldTrace(PFTestTraceLevel::Information))
     {
         return S_OK;
     }
@@ -80,13 +80,13 @@ HRESULT AutoGenScheduledTaskTests::LogPFScheduledTaskCreateTaskResult(PFSchedule
     ss << "Response:"; Log(ss);
 
     // Found PlayFabScheduledTaskCreateTaskResult    
-    if( result->taskId ) { ss << "  taskId " << result->taskId; Log(ss); } else { ss << "  taskId = nullptr"; Log(ss); } // Class: const char* 
+    if (result->taskId) { ss << "  taskId " << result->taskId; Log(ss); } else { ss << "  taskId = nullptr"; Log(ss); } // Class: const char* 
     return S_OK;
 }
 
 void AutoGenScheduledTaskTests::LogCreateCloudScriptTaskRequest(PFScheduledTaskCreateCloudScriptTaskRequest const* request, const char* testName)
 {
-    if( !TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    if (!TestApp::ShouldTrace(PFTestTraceLevel::Information))
     {
         return;
     }
@@ -103,22 +103,22 @@ void AutoGenScheduledTaskTests::LogCreateCloudScriptTaskRequest(PFScheduledTaskC
     ss << "  customTagsCount " << request->customTagsCount; Log(ss);
 
     // PFStringDictionaryEntry
-    for( uint32_t i=0; i<request->customTagsCount; i++ )
+    for (uint32_t i=0; i<request->customTagsCount; i++)
     {
             ss << "  request->customTags[" << i << "]:" << request->customTags[i].key << "=" << request->customTags[i].value; Log(ss);
             
     } 
-    if( request->description ) { ss << "  description " << request->description; Log(ss); } else { ss << "  description = nullptr"; Log(ss); } // Class: const char* 
+    if (request->description) { ss << "  description " << request->description; Log(ss); } else { ss << "  description = nullptr"; Log(ss); } // Class: const char* 
     ss << "  isActive " << request->isActive; Log(ss); // Class: bool 
-    if( request->name ) { ss << "  name " << request->name; Log(ss); } else { ss << "  name = nullptr"; Log(ss); } // Class: const char* 
+    if (request->name) { ss << "  name " << request->name; Log(ss); } else { ss << "  name = nullptr"; Log(ss); } // Class: const char* 
     ss << "  parameter " << request->parameter; Log(ss); // Class: PFScheduledTaskCloudScriptTaskParameter 
-    if( request->schedule ) { ss << "  schedule " << request->schedule; Log(ss); } else { ss << "  schedule = nullptr"; Log(ss); } // Class: const char* 
+    if (request->schedule) { ss << "  schedule " << request->schedule; Log(ss); } else { ss << "  schedule = nullptr"; Log(ss); } // Class: const char* 
 
 }
 
 void AutoGenScheduledTaskTests::LogCreateInsightsScheduledScalingTaskRequest(PFScheduledTaskCreateInsightsScheduledScalingTaskRequest const* request, const char* testName)
 {
-    if( !TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    if (!TestApp::ShouldTrace(PFTestTraceLevel::Information))
     {
         return;
     }
@@ -135,22 +135,22 @@ void AutoGenScheduledTaskTests::LogCreateInsightsScheduledScalingTaskRequest(PFS
     ss << "  customTagsCount " << request->customTagsCount; Log(ss);
 
     // PFStringDictionaryEntry
-    for( uint32_t i=0; i<request->customTagsCount; i++ )
+    for (uint32_t i=0; i<request->customTagsCount; i++)
     {
             ss << "  request->customTags[" << i << "]:" << request->customTags[i].key << "=" << request->customTags[i].value; Log(ss);
             
     } 
-    if( request->description ) { ss << "  description " << request->description; Log(ss); } else { ss << "  description = nullptr"; Log(ss); } // Class: const char* 
+    if (request->description) { ss << "  description " << request->description; Log(ss); } else { ss << "  description = nullptr"; Log(ss); } // Class: const char* 
     ss << "  isActive " << request->isActive; Log(ss); // Class: bool 
-    if( request->name ) { ss << "  name " << request->name; Log(ss); } else { ss << "  name = nullptr"; Log(ss); } // Class: const char* 
+    if (request->name) { ss << "  name " << request->name; Log(ss); } else { ss << "  name = nullptr"; Log(ss); } // Class: const char* 
     ss << "  parameter " << request->parameter; Log(ss); // Class: PFScheduledTaskInsightsScalingTaskParameter 
-    if( request->schedule ) { ss << "  schedule " << request->schedule; Log(ss); } else { ss << "  schedule = nullptr"; Log(ss); } // Class: const char* 
+    if (request->schedule) { ss << "  schedule " << request->schedule; Log(ss); } else { ss << "  schedule = nullptr"; Log(ss); } // Class: const char* 
 
 }
 
 void AutoGenScheduledTaskTests::LogDeleteTaskRequest(PFScheduledTaskDeleteTaskRequest const* request, const char* testName)
 {
-    if( !TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    if (!TestApp::ShouldTrace(PFTestTraceLevel::Information))
     {
         return;
     }
@@ -169,7 +169,7 @@ void AutoGenScheduledTaskTests::LogDeleteTaskRequest(PFScheduledTaskDeleteTaskRe
 
 void AutoGenScheduledTaskTests::LogGetTaskInstanceRequest(PFScheduledTaskGetTaskInstanceRequest const* request, const char* testName)
 {
-    if( !TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    if (!TestApp::ShouldTrace(PFTestTraceLevel::Information))
     {
         return;
     }
@@ -182,13 +182,13 @@ void AutoGenScheduledTaskTests::LogGetTaskInstanceRequest(PFScheduledTaskGetTask
 
     // PlayFabScheduledTaskGetTaskInstanceRequest struct:
     // request->taskInstanceId: const char*
-    if( request->taskInstanceId ) { ss << "  taskInstanceId " << request->taskInstanceId; Log(ss); } else { ss << "  taskInstanceId = nullptr"; Log(ss); } // Class: const char* 
+    if (request->taskInstanceId) { ss << "  taskInstanceId " << request->taskInstanceId; Log(ss); } else { ss << "  taskInstanceId = nullptr"; Log(ss); } // Class: const char* 
 
 }
 
-HRESULT AutoGenScheduledTaskTests::LogPFScheduledTaskGetActionsOnPlayersInSegmentTaskInstanceResult(PFScheduledTaskGetActionsOnPlayersInSegmentTaskInstanceResult const* result)
+HRESULT AutoGenScheduledTaskTests::LogGetActionsOnPlayersInSegmentTaskInstanceResult(PFScheduledTaskGetActionsOnPlayersInSegmentTaskInstanceResult const* result)
 {
-    if( !TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    if (!TestApp::ShouldTrace(PFTestTraceLevel::Information))
     {
         return S_OK;
     }
@@ -202,9 +202,9 @@ HRESULT AutoGenScheduledTaskTests::LogPFScheduledTaskGetActionsOnPlayersInSegmen
     return S_OK;
 }
 
-HRESULT AutoGenScheduledTaskTests::LogPFScheduledTaskGetCloudScriptTaskInstanceResult(PFScheduledTaskGetCloudScriptTaskInstanceResult const* result)
+HRESULT AutoGenScheduledTaskTests::LogGetCloudScriptTaskInstanceResult(PFScheduledTaskGetCloudScriptTaskInstanceResult const* result)
 {
-    if( !TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    if (!TestApp::ShouldTrace(PFTestTraceLevel::Information))
     {
         return S_OK;
     }
@@ -220,7 +220,7 @@ HRESULT AutoGenScheduledTaskTests::LogPFScheduledTaskGetCloudScriptTaskInstanceR
 
 void AutoGenScheduledTaskTests::LogGetTaskInstancesRequest(PFScheduledTaskGetTaskInstancesRequest const* request, const char* testName)
 {
-    if( !TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    if (!TestApp::ShouldTrace(PFTestTraceLevel::Information))
     {
         return;
     }
@@ -240,9 +240,9 @@ void AutoGenScheduledTaskTests::LogGetTaskInstancesRequest(PFScheduledTaskGetTas
 
 }
 
-HRESULT AutoGenScheduledTaskTests::LogPFScheduledTaskGetTaskInstancesResult(PFScheduledTaskGetTaskInstancesResult const* result)
+HRESULT AutoGenScheduledTaskTests::LogGetTaskInstancesResult(PFScheduledTaskGetTaskInstancesResult const* result)
 {
-    if( !TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    if (!TestApp::ShouldTrace(PFTestTraceLevel::Information))
     {
         return S_OK;
     }
@@ -254,7 +254,7 @@ HRESULT AutoGenScheduledTaskTests::LogPFScheduledTaskGetTaskInstancesResult(PFSc
     ss << "  summariesCount " << result->summariesCount; Log(ss);
 
     // PFScheduledTaskTaskInstanceBasicSummary
-    for( uint32_t i=0; i<result->summariesCount; i++ )
+    for (uint32_t i=0; i<result->summariesCount; i++)
     {
             ss << "  result->summaries[" << i << "]:" << result->summaries[i]; Log(ss); // PFScheduledTaskTaskInstanceBasicSummary
     } 
@@ -263,7 +263,7 @@ HRESULT AutoGenScheduledTaskTests::LogPFScheduledTaskGetTaskInstancesResult(PFSc
 
 void AutoGenScheduledTaskTests::LogGetTasksRequest(PFScheduledTaskGetTasksRequest const* request, const char* testName)
 {
-    if( !TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    if (!TestApp::ShouldTrace(PFTestTraceLevel::Information))
     {
         return;
     }
@@ -280,9 +280,9 @@ void AutoGenScheduledTaskTests::LogGetTasksRequest(PFScheduledTaskGetTasksReques
 
 }
 
-HRESULT AutoGenScheduledTaskTests::LogPFScheduledTaskGetTasksResult(PFScheduledTaskGetTasksResult const* result)
+HRESULT AutoGenScheduledTaskTests::LogGetTasksResult(PFScheduledTaskGetTasksResult const* result)
 {
-    if( !TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    if (!TestApp::ShouldTrace(PFTestTraceLevel::Information))
     {
         return S_OK;
     }
@@ -294,7 +294,7 @@ HRESULT AutoGenScheduledTaskTests::LogPFScheduledTaskGetTasksResult(PFScheduledT
     ss << "  tasksCount " << result->tasksCount; Log(ss);
 
     // PFScheduledTaskScheduledTask
-    for( uint32_t i=0; i<result->tasksCount; i++ )
+    for (uint32_t i=0; i<result->tasksCount; i++)
     {
             ss << "  result->tasks[" << i << "]:" << result->tasks[i]; Log(ss); // PFScheduledTaskScheduledTask
     } 
@@ -303,7 +303,7 @@ HRESULT AutoGenScheduledTaskTests::LogPFScheduledTaskGetTasksResult(PFScheduledT
 
 void AutoGenScheduledTaskTests::LogRunTaskRequest(PFScheduledTaskRunTaskRequest const* request, const char* testName)
 {
-    if( !TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    if (!TestApp::ShouldTrace(PFTestTraceLevel::Information))
     {
         return;
     }
@@ -320,7 +320,7 @@ void AutoGenScheduledTaskTests::LogRunTaskRequest(PFScheduledTaskRunTaskRequest 
     ss << "  customTagsCount " << request->customTagsCount; Log(ss);
 
     // PFStringDictionaryEntry
-    for( uint32_t i=0; i<request->customTagsCount; i++ )
+    for (uint32_t i=0; i<request->customTagsCount; i++)
     {
             ss << "  request->customTags[" << i << "]:" << request->customTags[i].key << "=" << request->customTags[i].value; Log(ss);
             
@@ -329,9 +329,9 @@ void AutoGenScheduledTaskTests::LogRunTaskRequest(PFScheduledTaskRunTaskRequest 
 
 }
 
-HRESULT AutoGenScheduledTaskTests::LogPFScheduledTaskRunTaskResult(PFScheduledTaskRunTaskResult const* result)
+HRESULT AutoGenScheduledTaskTests::LogRunTaskResult(PFScheduledTaskRunTaskResult const* result)
 {
-    if( !TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    if (!TestApp::ShouldTrace(PFTestTraceLevel::Information))
     {
         return S_OK;
     }
@@ -340,13 +340,13 @@ HRESULT AutoGenScheduledTaskTests::LogPFScheduledTaskRunTaskResult(PFScheduledTa
     ss << "Response:"; Log(ss);
 
     // Found PlayFabScheduledTaskRunTaskResult    
-    if( result->taskInstanceId ) { ss << "  taskInstanceId " << result->taskInstanceId; Log(ss); } else { ss << "  taskInstanceId = nullptr"; Log(ss); } // Class: const char* 
+    if (result->taskInstanceId) { ss << "  taskInstanceId " << result->taskInstanceId; Log(ss); } else { ss << "  taskInstanceId = nullptr"; Log(ss); } // Class: const char* 
     return S_OK;
 }
 
 void AutoGenScheduledTaskTests::LogUpdateTaskRequest(PFScheduledTaskUpdateTaskRequest const* request, const char* testName)
 {
-    if( !TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    if (!TestApp::ShouldTrace(PFTestTraceLevel::Information))
     {
         return;
     }
@@ -363,18 +363,18 @@ void AutoGenScheduledTaskTests::LogUpdateTaskRequest(PFScheduledTaskUpdateTaskRe
     ss << "  customTagsCount " << request->customTagsCount; Log(ss);
 
     // PFStringDictionaryEntry
-    for( uint32_t i=0; i<request->customTagsCount; i++ )
+    for (uint32_t i=0; i<request->customTagsCount; i++)
     {
             ss << "  request->customTags[" << i << "]:" << request->customTags[i].key << "=" << request->customTags[i].value; Log(ss);
             
     } 
-    if( request->description ) { ss << "  description " << request->description; Log(ss); } else { ss << "  description = nullptr"; Log(ss); } // Class: const char* 
+    if (request->description) { ss << "  description " << request->description; Log(ss); } else { ss << "  description = nullptr"; Log(ss); } // Class: const char* 
     ss << "  identifier " << request->identifier; Log(ss); // Class: PFNameIdentifier 
     ss << "  isActive " << request->isActive; Log(ss); // Class: bool 
-    if( request->name ) { ss << "  name " << request->name; Log(ss); } else { ss << "  name = nullptr"; Log(ss); } // Class: const char* 
-    if( request->parameter.stringValue ) { ss << "  parameter " << request->parameter.stringValue; Log(ss); } else { ss << "  parameter = nullptr"; Log(ss); } // Class: PFJsonObject 
-    if( request->schedule ) { ss << "  schedule " << request->schedule; Log(ss); } else { ss << "  schedule = nullptr"; Log(ss); } // Class: const char* 
-    ss << "  type " << request->type; Log(ss); // Class: PFScheduledTaskScheduledTaskType 
+    if (request->name) { ss << "  name " << request->name; Log(ss); } else { ss << "  name = nullptr"; Log(ss); } // Class: const char* 
+    if (request->parameter.stringValue) { ss << "  parameter " << request->parameter.stringValue; Log(ss); } else { ss << "  parameter = nullptr"; Log(ss); } // Class: PFJsonObject 
+    if (request->schedule) { ss << "  schedule " << request->schedule; Log(ss); } else { ss << "  schedule = nullptr"; Log(ss); } // Class: const char* 
+    ss << "  type " << static_cast<uint32_t>(request->type); Log(ss); // Class: PFScheduledTaskScheduledTaskType 
 
 }
 

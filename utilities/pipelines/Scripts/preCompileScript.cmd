@@ -45,14 +45,18 @@ set SDK_RELEASE_NAME=%SDK_RELEASE_YEAR:~2,2%%SDK_RELEASE_MONTH%
 set LONG_SDK_RELEASE_NAME=%SDK_RELEASE_NAME%-%SDK_POINT_NAME_YEAR%%SDK_POINT_NAME_MONTH%%SDK_POINT_NAME_DAY%-%SDK_RELEASE_QFE%
 set SDK_VERSION_NUMBER=%SDK_RELEASE_YEAR%.%SDK_RELEASE_MONTH%.%SDK_POINT_NAME_YEAR%%SDK_POINT_NAME_MONTH%%SDK_POINT_NAME_DAY%.%SDK_RELEASE_QFE%
 
-set BUILD_VERSION_FILE=%BUILD_SOURCESDIRECTORY%\code\source\build_version.h
-
+set BUILD_VERSION_FILE=%BUILD_SOURCESDIRECTORY%\code\source\Common\SdkVersion.h
 del %BUILD_VERSION_FILE%
-echo // Copyright (c) Microsoft Corporation > %BUILD_VERSION_FILE%
-echo // Licensed under the MIT license. See LICENSE file in the project root for full license information.>> %BUILD_VERSION_FILE%
-echo #pragma once>> %BUILD_VERSION_FILE%
-echo. >> %BUILD_VERSION_FILE%
-echo #define PF_SDK_API_VERSION_STRING "%SDK_VERSION_NUMBER%" >> %BUILD_VERSION_FILE%
+
+echo #pragma once> %BUILD_VERSION_FILE%
+echo.>> %BUILD_VERSION_FILE%
+echo namespace PlayFab>> %BUILD_VERSION_FILE%
+echo {>> %BUILD_VERSION_FILE%
+echo constexpr char sdkVersion[] = "%SDK_VERSION_NUMBER%";>> %BUILD_VERSION_FILE%
+echo constexpr char buildIdentifier[] = "default_manual_build";>> %BUILD_VERSION_FILE%
+echo constexpr char versionString[] = "XPlatCSdk-%SDK_VERSION_NUMBER%";>> %BUILD_VERSION_FILE%
+echo }>> %BUILD_VERSION_FILE%
+
 type %BUILD_VERSION_FILE%
 
 :done

@@ -9,9 +9,9 @@ uint32_t g_PlayStreamTestIndex = 1;
 namespace PlayFabUnit
 {
 
-HRESULT AutoGenPlayStreamTests::LogPFPlayStreamGetAllSegmentsResult(PFPlayStreamGetAllSegmentsResult const* result)
+HRESULT AutoGenPlayStreamTests::LogGetAllSegmentsResult(PFPlayStreamGetAllSegmentsResult const* result)
 {
-    if( !TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    if (!TestApp::ShouldTrace(PFTestTraceLevel::Information))
     {
         return S_OK;
     }
@@ -23,7 +23,7 @@ HRESULT AutoGenPlayStreamTests::LogPFPlayStreamGetAllSegmentsResult(PFPlayStream
     ss << "  segmentsCount " << result->segmentsCount; Log(ss);
 
     // PFPlayStreamGetSegmentResult
-    for( uint32_t i=0; i<result->segmentsCount; i++ )
+    for (uint32_t i=0; i<result->segmentsCount; i++)
     {
             ss << "  result->segments[" << i << "]:" << result->segments[i]; Log(ss); // PFPlayStreamGetSegmentResult
     } 
@@ -32,7 +32,7 @@ HRESULT AutoGenPlayStreamTests::LogPFPlayStreamGetAllSegmentsResult(PFPlayStream
 
 void AutoGenPlayStreamTests::LogGetPlayersSegmentsRequest(PFPlayStreamGetPlayersSegmentsRequest const* request, const char* testName)
 {
-    if( !TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    if (!TestApp::ShouldTrace(PFTestTraceLevel::Information))
     {
         return;
     }
@@ -49,18 +49,18 @@ void AutoGenPlayStreamTests::LogGetPlayersSegmentsRequest(PFPlayStreamGetPlayers
     ss << "  customTagsCount " << request->customTagsCount; Log(ss);
 
     // PFStringDictionaryEntry
-    for( uint32_t i=0; i<request->customTagsCount; i++ )
+    for (uint32_t i=0; i<request->customTagsCount; i++)
     {
             ss << "  request->customTags[" << i << "]:" << request->customTags[i].key << "=" << request->customTags[i].value; Log(ss);
             
     } 
-    if( request->playFabId ) { ss << "  playFabId " << request->playFabId; Log(ss); } else { ss << "  playFabId = nullptr"; Log(ss); } // Class: const char* 
+    if (request->playFabId) { ss << "  playFabId " << request->playFabId; Log(ss); } else { ss << "  playFabId = nullptr"; Log(ss); } // Class: const char* 
 
 }
 
-HRESULT AutoGenPlayStreamTests::LogPFPlayStreamGetPlayerSegmentsResult(PFPlayStreamGetPlayerSegmentsResult const* result)
+HRESULT AutoGenPlayStreamTests::LogGetPlayerSegmentsResult(PFPlayStreamGetPlayerSegmentsResult const* result)
 {
-    if( !TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    if (!TestApp::ShouldTrace(PFTestTraceLevel::Information))
     {
         return S_OK;
     }
@@ -72,7 +72,7 @@ HRESULT AutoGenPlayStreamTests::LogPFPlayStreamGetPlayerSegmentsResult(PFPlayStr
     ss << "  segmentsCount " << result->segmentsCount; Log(ss);
 
     // PFPlayStreamGetSegmentResult
-    for( uint32_t i=0; i<result->segmentsCount; i++ )
+    for (uint32_t i=0; i<result->segmentsCount; i++)
     {
             ss << "  result->segments[" << i << "]:" << result->segments[i]; Log(ss); // PFPlayStreamGetSegmentResult
     } 
@@ -81,7 +81,7 @@ HRESULT AutoGenPlayStreamTests::LogPFPlayStreamGetPlayerSegmentsResult(PFPlayStr
 
 void AutoGenPlayStreamTests::LogGetPlayersInSegmentRequest(PFPlayStreamGetPlayersInSegmentRequest const* request, const char* testName)
 {
-    if( !TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    if (!TestApp::ShouldTrace(PFTestTraceLevel::Information))
     {
         return;
     }
@@ -94,24 +94,24 @@ void AutoGenPlayStreamTests::LogGetPlayersInSegmentRequest(PFPlayStreamGetPlayer
 
     // PlayFabPlayStreamGetPlayersInSegmentRequest struct:
     // request->continuationToken: const char*
-    if( request->continuationToken ) { ss << "  continuationToken " << request->continuationToken; Log(ss); } else { ss << "  continuationToken = nullptr"; Log(ss); } // Class: const char*     
+    if (request->continuationToken) { ss << "  continuationToken " << request->continuationToken; Log(ss); } else { ss << "  continuationToken = nullptr"; Log(ss); } // Class: const char*     
     ss << "  customTagsCount " << request->customTagsCount; Log(ss);
 
     // PFStringDictionaryEntry
-    for( uint32_t i=0; i<request->customTagsCount; i++ )
+    for (uint32_t i=0; i<request->customTagsCount; i++)
     {
             ss << "  request->customTags[" << i << "]:" << request->customTags[i].key << "=" << request->customTags[i].value; Log(ss);
             
     } 
     ss << "  maxBatchSize " << request->maxBatchSize; Log(ss); // Class: uint32_t 
     ss << "  secondsToLive " << request->secondsToLive; Log(ss); // Class: uint32_t 
-    if( request->segmentId ) { ss << "  segmentId " << request->segmentId; Log(ss); } else { ss << "  segmentId = nullptr"; Log(ss); } // Class: const char* 
+    if (request->segmentId) { ss << "  segmentId " << request->segmentId; Log(ss); } else { ss << "  segmentId = nullptr"; Log(ss); } // Class: const char* 
 
 }
 
-HRESULT AutoGenPlayStreamTests::LogPFPlayStreamGetPlayersInSegmentResult(PFPlayStreamGetPlayersInSegmentResult const* result)
+HRESULT AutoGenPlayStreamTests::LogGetPlayersInSegmentResult(PFPlayStreamGetPlayersInSegmentResult const* result)
 {
-    if( !TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    if (!TestApp::ShouldTrace(PFTestTraceLevel::Information))
     {
         return S_OK;
     }
@@ -120,11 +120,11 @@ HRESULT AutoGenPlayStreamTests::LogPFPlayStreamGetPlayersInSegmentResult(PFPlayS
     ss << "Response:"; Log(ss);
 
     // Found PlayFabPlayStreamGetPlayersInSegmentResult    
-    if( result->continuationToken ) { ss << "  continuationToken " << result->continuationToken; Log(ss); } else { ss << "  continuationToken = nullptr"; Log(ss); } // Class: const char*         
+    if (result->continuationToken) { ss << "  continuationToken " << result->continuationToken; Log(ss); } else { ss << "  continuationToken = nullptr"; Log(ss); } // Class: const char*         
     ss << "  playerProfilesCount " << result->playerProfilesCount; Log(ss);
 
     // PFPlayStreamPlayerProfile
-    for( uint32_t i=0; i<result->playerProfilesCount; i++ )
+    for (uint32_t i=0; i<result->playerProfilesCount; i++)
     {
             ss << "  result->playerProfiles[" << i << "]:" << result->playerProfiles[i]; Log(ss); // PFPlayStreamPlayerProfile
     }     

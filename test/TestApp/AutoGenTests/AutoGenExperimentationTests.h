@@ -72,56 +72,57 @@ protected:
     void AddTests();
 
     static void LogCreateExclusionGroupRequest(PFExperimentationCreateExclusionGroupRequest const* request, const char* testName);
-    static void FillCreateExclusionGroupRequest(PlayFab::Wrappers::PFExperimentationCreateExclusionGroupRequestWrapper<>& request);
-    static HRESULT LogPFExperimentationCreateExclusionGroupResult(PFExperimentationCreateExclusionGroupResult const* result);
-    static HRESULT ValidatePFExperimentationCreateExclusionGroupResult(PFExperimentationCreateExclusionGroupResult* result);
-
+    static HRESULT LogCreateExclusionGroupResult(PFExperimentationCreateExclusionGroupResult const* result);
     static void LogCreateExperimentRequest(PFExperimentationCreateExperimentRequest const* request, const char* testName);
-    static void FillCreateExperimentRequest(PlayFab::Wrappers::PFExperimentationCreateExperimentRequestWrapper<>& request);
-    static HRESULT LogPFExperimentationCreateExperimentResult(PFExperimentationCreateExperimentResult const* result);
-    static HRESULT ValidatePFExperimentationCreateExperimentResult(PFExperimentationCreateExperimentResult* result);
-
+    static HRESULT LogCreateExperimentResult(PFExperimentationCreateExperimentResult const* result);
     static void LogDeleteExclusionGroupRequest(PFExperimentationDeleteExclusionGroupRequest const* request, const char* testName);
+    static void LogDeleteExperimentRequest(PFExperimentationDeleteExperimentRequest const* request, const char* testName);
+    static void LogGetExclusionGroupsRequest(PFExperimentationGetExclusionGroupsRequest const* request, const char* testName);
+    static HRESULT LogGetExclusionGroupsResult(PFExperimentationGetExclusionGroupsResult const* result);
+    static void LogGetExclusionGroupTrafficRequest(PFExperimentationGetExclusionGroupTrafficRequest const* request, const char* testName);
+    static HRESULT LogGetExclusionGroupTrafficResult(PFExperimentationGetExclusionGroupTrafficResult const* result);
+    static void LogGetExperimentsRequest(PFExperimentationGetExperimentsRequest const* request, const char* testName);
+    static HRESULT LogGetExperimentsResult(PFExperimentationGetExperimentsResult const* result);
+    static void LogGetLatestScorecardRequest(PFExperimentationGetLatestScorecardRequest const* request, const char* testName);
+    static HRESULT LogGetLatestScorecardResult(PFExperimentationGetLatestScorecardResult const* result);
+    static void LogGetTreatmentAssignmentRequest(PFExperimentationGetTreatmentAssignmentRequest const* request, const char* testName);
+    static HRESULT LogGetTreatmentAssignmentResult(PFExperimentationGetTreatmentAssignmentResult const* result);
+    static void LogStartExperimentRequest(PFExperimentationStartExperimentRequest const* request, const char* testName);
+    static void LogStopExperimentRequest(PFExperimentationStopExperimentRequest const* request, const char* testName);
+    static void LogUpdateExclusionGroupRequest(PFExperimentationUpdateExclusionGroupRequest const* request, const char* testName);
+    static void LogUpdateExperimentRequest(PFExperimentationUpdateExperimentRequest const* request, const char* testName);
+
+    static void FillCreateExclusionGroupRequest(PlayFab::Wrappers::PFExperimentationCreateExclusionGroupRequestWrapper<>& request);
+    static HRESULT ValidateCreateExclusionGroupResponse(PFExperimentationCreateExclusionGroupResult* result);
+
+    static void FillCreateExperimentRequest(PlayFab::Wrappers::PFExperimentationCreateExperimentRequestWrapper<>& request);
+    static HRESULT ValidateCreateExperimentResponse(PFExperimentationCreateExperimentResult* result);
+
     static void FillDeleteExclusionGroupRequest(PlayFab::Wrappers::PFExperimentationDeleteExclusionGroupRequestWrapper<>& request);
 
-    static void LogDeleteExperimentRequest(PFExperimentationDeleteExperimentRequest const* request, const char* testName);
     static void FillDeleteExperimentRequest(PlayFab::Wrappers::PFExperimentationDeleteExperimentRequestWrapper<>& request);
 
-    static void LogGetExclusionGroupsRequest(PFExperimentationGetExclusionGroupsRequest const* request, const char* testName);
     static void FillGetExclusionGroupsRequest(PlayFab::Wrappers::PFExperimentationGetExclusionGroupsRequestWrapper<>& request);
-    static HRESULT LogPFExperimentationGetExclusionGroupsResult(PFExperimentationGetExclusionGroupsResult const* result);
-    static HRESULT ValidatePFExperimentationGetExclusionGroupsResult(PFExperimentationGetExclusionGroupsResult* result);
+    static HRESULT ValidateGetExclusionGroupsResponse(PFExperimentationGetExclusionGroupsResult* result);
 
-    static void LogGetExclusionGroupTrafficRequest(PFExperimentationGetExclusionGroupTrafficRequest const* request, const char* testName);
     static void FillGetExclusionGroupTrafficRequest(PlayFab::Wrappers::PFExperimentationGetExclusionGroupTrafficRequestWrapper<>& request);
-    static HRESULT LogPFExperimentationGetExclusionGroupTrafficResult(PFExperimentationGetExclusionGroupTrafficResult const* result);
-    static HRESULT ValidatePFExperimentationGetExclusionGroupTrafficResult(PFExperimentationGetExclusionGroupTrafficResult* result);
+    static HRESULT ValidateGetExclusionGroupTrafficResponse(PFExperimentationGetExclusionGroupTrafficResult* result);
 
-    static void LogGetExperimentsRequest(PFExperimentationGetExperimentsRequest const* request, const char* testName);
     static void FillGetExperimentsRequest(PlayFab::Wrappers::PFExperimentationGetExperimentsRequestWrapper<>& request);
-    static HRESULT LogPFExperimentationGetExperimentsResult(PFExperimentationGetExperimentsResult const* result);
-    static HRESULT ValidatePFExperimentationGetExperimentsResult(PFExperimentationGetExperimentsResult* result);
+    static HRESULT ValidateGetExperimentsResponse(PFExperimentationGetExperimentsResult* result);
 
-    static void LogGetLatestScorecardRequest(PFExperimentationGetLatestScorecardRequest const* request, const char* testName);
     static void FillGetLatestScorecardRequest(PlayFab::Wrappers::PFExperimentationGetLatestScorecardRequestWrapper<>& request);
-    static HRESULT LogPFExperimentationGetLatestScorecardResult(PFExperimentationGetLatestScorecardResult const* result);
-    static HRESULT ValidatePFExperimentationGetLatestScorecardResult(PFExperimentationGetLatestScorecardResult* result);
+    static HRESULT ValidateGetLatestScorecardResponse(PFExperimentationGetLatestScorecardResult* result);
 
-    static void LogGetTreatmentAssignmentRequest(PFExperimentationGetTreatmentAssignmentRequest const* request, const char* testName);
     static void FillGetTreatmentAssignmentRequest(PlayFab::Wrappers::PFExperimentationGetTreatmentAssignmentRequestWrapper<>& request);
-    static HRESULT LogPFExperimentationGetTreatmentAssignmentResult(PFExperimentationGetTreatmentAssignmentResult const* result);
-    static HRESULT ValidatePFExperimentationGetTreatmentAssignmentResult(PFExperimentationGetTreatmentAssignmentResult* result);
+    static HRESULT ValidateGetTreatmentAssignmentResponse(PFExperimentationGetTreatmentAssignmentResult* result);
 
-    static void LogStartExperimentRequest(PFExperimentationStartExperimentRequest const* request, const char* testName);
     static void FillStartExperimentRequest(PlayFab::Wrappers::PFExperimentationStartExperimentRequestWrapper<>& request);
 
-    static void LogStopExperimentRequest(PFExperimentationStopExperimentRequest const* request, const char* testName);
     static void FillStopExperimentRequest(PlayFab::Wrappers::PFExperimentationStopExperimentRequestWrapper<>& request);
 
-    static void LogUpdateExclusionGroupRequest(PFExperimentationUpdateExclusionGroupRequest const* request, const char* testName);
     static void FillUpdateExclusionGroupRequest(PlayFab::Wrappers::PFExperimentationUpdateExclusionGroupRequestWrapper<>& request);
 
-    static void LogUpdateExperimentRequest(PFExperimentationUpdateExperimentRequest const* request, const char* testName);
     static void FillUpdateExperimentRequest(PlayFab::Wrappers::PFExperimentationUpdateExperimentRequestWrapper<>& request);
 
     struct ExperimentationTestData

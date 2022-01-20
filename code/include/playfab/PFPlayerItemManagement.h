@@ -109,8 +109,9 @@ HRESULT PFPlayerItemManagementAdminCheckLimitedEditionItemAvailabilityGetResult(
 /// <remarks>
 /// All items currently in the user inventory will be returned, irrespective of how they were acquired
 /// (via purchasing, grants, coupons, etc.). Items that are expired, fully consumed, or are no longer
-/// valid are not considered to be in the user's current inventory, and so will not be not included. See
-/// also AdminGetUserAccountInfoAsync.
+/// valid are not considered to be in the user's current inventory, and so will not be not included. There
+/// can be a delay of up to a half a second for inventory changes to be reflected in the GetUserInventory
+/// API response. See also AdminGetUserAccountInfoAsync.
 ///
 /// If successful, call <see cref="PFPlayerItemManagementAdminGetUserInventoryGetResult"/> to get the
 /// result.

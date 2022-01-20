@@ -11,7 +11,7 @@ namespace PlayFabUnit
 
 void AutoGenAnalyticsTests::LogDeviceInfoRequest(PFAnalyticsDeviceInfoRequest const* request, const char* testName)
 {
-    if( !TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    if (!TestApp::ShouldTrace(PFTestTraceLevel::Information))
     {
         return;
     }
@@ -24,13 +24,13 @@ void AutoGenAnalyticsTests::LogDeviceInfoRequest(PFAnalyticsDeviceInfoRequest co
 
     // PlayFabAnalyticsDeviceInfoRequest struct:
     // request->info: PFJsonObject
-    if( request->info.stringValue ) { ss << "  info " << request->info.stringValue; Log(ss); } else { ss << "  info = nullptr"; Log(ss); } // Class: PFJsonObject 
+    if (request->info.stringValue) { ss << "  info " << request->info.stringValue; Log(ss); } else { ss << "  info = nullptr"; Log(ss); } // Class: PFJsonObject 
 
 }
 
 void AutoGenAnalyticsTests::LogInsightsEmptyRequest(PFAnalyticsInsightsEmptyRequest const* request, const char* testName)
 {
-    if( !TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    if (!TestApp::ShouldTrace(PFTestTraceLevel::Information))
     {
         return;
     }
@@ -47,7 +47,7 @@ void AutoGenAnalyticsTests::LogInsightsEmptyRequest(PFAnalyticsInsightsEmptyRequ
     ss << "  customTagsCount " << request->customTagsCount; Log(ss);
 
     // PFStringDictionaryEntry
-    for( uint32_t i=0; i<request->customTagsCount; i++ )
+    for (uint32_t i=0; i<request->customTagsCount; i++)
     {
             ss << "  request->customTags[" << i << "]:" << request->customTags[i].key << "=" << request->customTags[i].value; Log(ss);
             
@@ -55,9 +55,9 @@ void AutoGenAnalyticsTests::LogInsightsEmptyRequest(PFAnalyticsInsightsEmptyRequ
 
 }
 
-HRESULT AutoGenAnalyticsTests::LogPFAnalyticsInsightsGetDetailsResponse(PFAnalyticsInsightsGetDetailsResponse const* result)
+HRESULT AutoGenAnalyticsTests::LogInsightsGetDetailsResponse(PFAnalyticsInsightsGetDetailsResponse const* result)
 {
-    if( !TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    if (!TestApp::ShouldTrace(PFTestTraceLevel::Information))
     {
         return S_OK;
     }
@@ -67,12 +67,12 @@ HRESULT AutoGenAnalyticsTests::LogPFAnalyticsInsightsGetDetailsResponse(PFAnalyt
 
     // Found PlayFabAnalyticsInsightsGetDetailsResponse    
     ss << "  dataUsageMb " << result->dataUsageMb; Log(ss); // Class: uint32_t     
-    if( result->errorMessage ) { ss << "  errorMessage " << result->errorMessage; Log(ss); } else { ss << "  errorMessage = nullptr"; Log(ss); } // Class: const char*     
+    if (result->errorMessage) { ss << "  errorMessage " << result->errorMessage; Log(ss); } else { ss << "  errorMessage = nullptr"; Log(ss); } // Class: const char*     
     ss << "  limits " << result->limits; Log(ss); // Class: PFAnalyticsInsightsGetLimitsResponse         
     ss << "  pendingOperationsCount " << result->pendingOperationsCount; Log(ss);
 
     // PFAnalyticsInsightsGetOperationStatusResponse
-    for( uint32_t i=0; i<result->pendingOperationsCount; i++ )
+    for (uint32_t i=0; i<result->pendingOperationsCount; i++)
     {
             ss << "  result->pendingOperations[" << i << "]:" << result->pendingOperations[i]; Log(ss); // PFAnalyticsInsightsGetOperationStatusResponse
     }     
@@ -81,9 +81,9 @@ HRESULT AutoGenAnalyticsTests::LogPFAnalyticsInsightsGetDetailsResponse(PFAnalyt
     return S_OK;
 }
 
-HRESULT AutoGenAnalyticsTests::LogPFAnalyticsInsightsGetLimitsResponse(PFAnalyticsInsightsGetLimitsResponse const* result)
+HRESULT AutoGenAnalyticsTests::LogInsightsGetLimitsResponse(PFAnalyticsInsightsGetLimitsResponse const* result)
 {
-    if( !TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    if (!TestApp::ShouldTrace(PFTestTraceLevel::Information))
     {
         return S_OK;
     }
@@ -99,7 +99,7 @@ HRESULT AutoGenAnalyticsTests::LogPFAnalyticsInsightsGetLimitsResponse(PFAnalyti
     ss << "  subMetersCount " << result->subMetersCount; Log(ss);
 
     // PFAnalyticsInsightsPerformanceLevel
-    for( uint32_t i=0; i<result->subMetersCount; i++ )
+    for (uint32_t i=0; i<result->subMetersCount; i++)
     {
             ss << "  result->subMeters[" << i << "]:" << result->subMeters[i]; Log(ss); // PFAnalyticsInsightsPerformanceLevel
     } 
@@ -108,7 +108,7 @@ HRESULT AutoGenAnalyticsTests::LogPFAnalyticsInsightsGetLimitsResponse(PFAnalyti
 
 void AutoGenAnalyticsTests::LogInsightsGetOperationStatusRequest(PFAnalyticsInsightsGetOperationStatusRequest const* request, const char* testName)
 {
-    if( !TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    if (!TestApp::ShouldTrace(PFTestTraceLevel::Information))
     {
         return;
     }
@@ -125,18 +125,18 @@ void AutoGenAnalyticsTests::LogInsightsGetOperationStatusRequest(PFAnalyticsInsi
     ss << "  customTagsCount " << request->customTagsCount; Log(ss);
 
     // PFStringDictionaryEntry
-    for( uint32_t i=0; i<request->customTagsCount; i++ )
+    for (uint32_t i=0; i<request->customTagsCount; i++)
     {
             ss << "  request->customTags[" << i << "]:" << request->customTags[i].key << "=" << request->customTags[i].value; Log(ss);
             
     } 
-    if( request->operationId ) { ss << "  operationId " << request->operationId; Log(ss); } else { ss << "  operationId = nullptr"; Log(ss); } // Class: const char* 
+    if (request->operationId) { ss << "  operationId " << request->operationId; Log(ss); } else { ss << "  operationId = nullptr"; Log(ss); } // Class: const char* 
 
 }
 
-HRESULT AutoGenAnalyticsTests::LogPFAnalyticsInsightsGetOperationStatusResponse(PFAnalyticsInsightsGetOperationStatusResponse const* result)
+HRESULT AutoGenAnalyticsTests::LogInsightsGetOperationStatusResponse(PFAnalyticsInsightsGetOperationStatusResponse const* result)
 {
-    if( !TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    if (!TestApp::ShouldTrace(PFTestTraceLevel::Information))
     {
         return S_OK;
     }
@@ -145,20 +145,20 @@ HRESULT AutoGenAnalyticsTests::LogPFAnalyticsInsightsGetOperationStatusResponse(
     ss << "Response:"; Log(ss);
 
     // Found PlayFabAnalyticsInsightsGetOperationStatusResponse    
-    if( result->message ) { ss << "  message " << result->message; Log(ss); } else { ss << "  message = nullptr"; Log(ss); } // Class: const char*     
+    if (result->message) { ss << "  message " << result->message; Log(ss); } else { ss << "  message = nullptr"; Log(ss); } // Class: const char*     
     ss << "  operationCompletedTime " << result->operationCompletedTime; Log(ss); // Class: time_t     
-    if( result->operationId ) { ss << "  operationId " << result->operationId; Log(ss); } else { ss << "  operationId = nullptr"; Log(ss); } // Class: const char*     
+    if (result->operationId) { ss << "  operationId " << result->operationId; Log(ss); } else { ss << "  operationId = nullptr"; Log(ss); } // Class: const char*     
     ss << "  operationLastUpdated " << result->operationLastUpdated; Log(ss); // Class: time_t     
     ss << "  operationStartedTime " << result->operationStartedTime; Log(ss); // Class: time_t     
-    if( result->operationType ) { ss << "  operationType " << result->operationType; Log(ss); } else { ss << "  operationType = nullptr"; Log(ss); } // Class: const char*     
+    if (result->operationType) { ss << "  operationType " << result->operationType; Log(ss); } else { ss << "  operationType = nullptr"; Log(ss); } // Class: const char*     
     ss << "  operationValue " << result->operationValue; Log(ss); // Class: int32_t     
-    if( result->status ) { ss << "  status " << result->status; Log(ss); } else { ss << "  status = nullptr"; Log(ss); } // Class: const char* 
+    if (result->status) { ss << "  status " << result->status; Log(ss); } else { ss << "  status = nullptr"; Log(ss); } // Class: const char* 
     return S_OK;
 }
 
 void AutoGenAnalyticsTests::LogInsightsGetPendingOperationsRequest(PFAnalyticsInsightsGetPendingOperationsRequest const* request, const char* testName)
 {
-    if( !TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    if (!TestApp::ShouldTrace(PFTestTraceLevel::Information))
     {
         return;
     }
@@ -175,18 +175,18 @@ void AutoGenAnalyticsTests::LogInsightsGetPendingOperationsRequest(PFAnalyticsIn
     ss << "  customTagsCount " << request->customTagsCount; Log(ss);
 
     // PFStringDictionaryEntry
-    for( uint32_t i=0; i<request->customTagsCount; i++ )
+    for (uint32_t i=0; i<request->customTagsCount; i++)
     {
             ss << "  request->customTags[" << i << "]:" << request->customTags[i].key << "=" << request->customTags[i].value; Log(ss);
             
     } 
-    if( request->operationType ) { ss << "  operationType " << request->operationType; Log(ss); } else { ss << "  operationType = nullptr"; Log(ss); } // Class: const char* 
+    if (request->operationType) { ss << "  operationType " << request->operationType; Log(ss); } else { ss << "  operationType = nullptr"; Log(ss); } // Class: const char* 
 
 }
 
-HRESULT AutoGenAnalyticsTests::LogPFAnalyticsInsightsGetPendingOperationsResponse(PFAnalyticsInsightsGetPendingOperationsResponse const* result)
+HRESULT AutoGenAnalyticsTests::LogInsightsGetPendingOperationsResponse(PFAnalyticsInsightsGetPendingOperationsResponse const* result)
 {
-    if( !TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    if (!TestApp::ShouldTrace(PFTestTraceLevel::Information))
     {
         return S_OK;
     }
@@ -198,7 +198,7 @@ HRESULT AutoGenAnalyticsTests::LogPFAnalyticsInsightsGetPendingOperationsRespons
     ss << "  pendingOperationsCount " << result->pendingOperationsCount; Log(ss);
 
     // PFAnalyticsInsightsGetOperationStatusResponse
-    for( uint32_t i=0; i<result->pendingOperationsCount; i++ )
+    for (uint32_t i=0; i<result->pendingOperationsCount; i++)
     {
             ss << "  result->pendingOperations[" << i << "]:" << result->pendingOperations[i]; Log(ss); // PFAnalyticsInsightsGetOperationStatusResponse
     } 
@@ -207,7 +207,7 @@ HRESULT AutoGenAnalyticsTests::LogPFAnalyticsInsightsGetPendingOperationsRespons
 
 void AutoGenAnalyticsTests::LogInsightsSetPerformanceRequest(PFAnalyticsInsightsSetPerformanceRequest const* request, const char* testName)
 {
-    if( !TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    if (!TestApp::ShouldTrace(PFTestTraceLevel::Information))
     {
         return;
     }
@@ -224,7 +224,7 @@ void AutoGenAnalyticsTests::LogInsightsSetPerformanceRequest(PFAnalyticsInsights
     ss << "  customTagsCount " << request->customTagsCount; Log(ss);
 
     // PFStringDictionaryEntry
-    for( uint32_t i=0; i<request->customTagsCount; i++ )
+    for (uint32_t i=0; i<request->customTagsCount; i++)
     {
             ss << "  request->customTags[" << i << "]:" << request->customTags[i].key << "=" << request->customTags[i].value; Log(ss);
             
@@ -233,9 +233,9 @@ void AutoGenAnalyticsTests::LogInsightsSetPerformanceRequest(PFAnalyticsInsights
 
 }
 
-HRESULT AutoGenAnalyticsTests::LogPFAnalyticsInsightsOperationResponse(PFAnalyticsInsightsOperationResponse const* result)
+HRESULT AutoGenAnalyticsTests::LogInsightsOperationResponse(PFAnalyticsInsightsOperationResponse const* result)
 {
-    if( !TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    if (!TestApp::ShouldTrace(PFTestTraceLevel::Information))
     {
         return S_OK;
     }
@@ -244,15 +244,15 @@ HRESULT AutoGenAnalyticsTests::LogPFAnalyticsInsightsOperationResponse(PFAnalyti
     ss << "Response:"; Log(ss);
 
     // Found PlayFabAnalyticsInsightsOperationResponse    
-    if( result->message ) { ss << "  message " << result->message; Log(ss); } else { ss << "  message = nullptr"; Log(ss); } // Class: const char*     
-    if( result->operationId ) { ss << "  operationId " << result->operationId; Log(ss); } else { ss << "  operationId = nullptr"; Log(ss); } // Class: const char*     
-    if( result->operationType ) { ss << "  operationType " << result->operationType; Log(ss); } else { ss << "  operationType = nullptr"; Log(ss); } // Class: const char* 
+    if (result->message) { ss << "  message " << result->message; Log(ss); } else { ss << "  message = nullptr"; Log(ss); } // Class: const char*     
+    if (result->operationId) { ss << "  operationId " << result->operationId; Log(ss); } else { ss << "  operationId = nullptr"; Log(ss); } // Class: const char*     
+    if (result->operationType) { ss << "  operationType " << result->operationType; Log(ss); } else { ss << "  operationType = nullptr"; Log(ss); } // Class: const char* 
     return S_OK;
 }
 
 void AutoGenAnalyticsTests::LogInsightsSetStorageRetentionRequest(PFAnalyticsInsightsSetStorageRetentionRequest const* request, const char* testName)
 {
-    if( !TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    if (!TestApp::ShouldTrace(PFTestTraceLevel::Information))
     {
         return;
     }
@@ -269,7 +269,7 @@ void AutoGenAnalyticsTests::LogInsightsSetStorageRetentionRequest(PFAnalyticsIns
     ss << "  customTagsCount " << request->customTagsCount; Log(ss);
 
     // PFStringDictionaryEntry
-    for( uint32_t i=0; i<request->customTagsCount; i++ )
+    for (uint32_t i=0; i<request->customTagsCount; i++)
     {
             ss << "  request->customTags[" << i << "]:" << request->customTags[i].key << "=" << request->customTags[i].value; Log(ss);
             

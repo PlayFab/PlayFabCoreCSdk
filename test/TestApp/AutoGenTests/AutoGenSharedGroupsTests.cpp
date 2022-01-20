@@ -21,7 +21,7 @@ void AutoGenSharedGroupsTests::Log(std::stringstream& ss)
 
 HRESULT AutoGenSharedGroupsTests::LogHR(HRESULT hr)
 {
-    if( TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    if (TestApp::ShouldTrace(PFTestTraceLevel::Information))
     {
         TestApp::Log("Result: 0x%0.8x", hr);
     }
@@ -76,7 +76,7 @@ void AutoGenSharedGroupsTests::AddTests()
 
 void AutoGenSharedGroupsTests::ClassSetUp()
 {
-    HRESULT hr = PFAdminInitialize(testTitleData.titleId.data(), testTitleData.developerSecretKey.data(), nullptr, &stateHandle);
+    HRESULT hr = PFAdminInitialize(testTitleData.titleId.data(), testTitleData.developerSecretKey.data(), testTitleData.connectionString.data(), nullptr, &stateHandle);
     assert(SUCCEEDED(hr));
     if (SUCCEEDED(hr))
     {
@@ -192,16 +192,13 @@ void AutoGenSharedGroupsTests::TestSharedGroupsClientAddSharedGroupMembersPrereq
 
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFSharedGroupsClientCreateSharedGroupGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
-            
-            LogPFSharedGroupsCreateSharedGroupResult(result);
-            return StoreClientAddSharedGroupMembersPrerequisitePFSharedGroupsCreateSharedGroupResult(shared_from_this());
+            return StoreClientAddSharedGroupMembersPrerequisiteClientCreateSharedGroupResponse(shared_from_this());
         }
     };
     auto async = std::make_unique<XAsyncHelper<ClientCreateSharedGroupResultHolderStruct>>(testContext);
 
     PFSharedGroupsCreateSharedGroupRequestWrapper<> request;
-    FillClientAddSharedGroupMembersPrerequisiteCreateSharedGroupRequest(request);
-    LogCreateSharedGroupRequest(&request.Model(), "TestSharedGroupsServerUpdateSharedGroupData");
+    FillClientAddSharedGroupMembersPrerequisiteClientCreateSharedGroupRequest(request);
     HRESULT hr = PFSharedGroupsClientCreateSharedGroupAsync(titlePlayerHandle, &request.Model(), &async->asyncBlock);
     if (FAILED(hr))
     {
@@ -215,7 +212,7 @@ void AutoGenSharedGroupsTests::TestSharedGroupsClientAddSharedGroupMembers(TestC
     auto async = std::make_unique<XAsyncHelper<XAsyncResult>>(testContext);
 
     PFSharedGroupsAddSharedGroupMembersRequestWrapper<> request;
-    FillAddSharedGroupMembersRequest(request);
+    FillClientAddSharedGroupMembersRequest(request);
     LogAddSharedGroupMembersRequest(&request.Model(), "TestSharedGroupsClientAddSharedGroupMembers");
     HRESULT hr = PFSharedGroupsClientAddSharedGroupMembersAsync(titlePlayerHandle, &request.Model(), &async->asyncBlock);
     if (FAILED(hr))
@@ -230,8 +227,7 @@ void AutoGenSharedGroupsTests::TestSharedGroupsClientAddSharedGroupMembersCleanu
     auto async = std::make_unique<XAsyncHelper<XAsyncResult>>(testContext);
 
     PFSharedGroupsRemoveSharedGroupMembersRequestWrapper<> request;
-    FillClientAddSharedGroupMembersCleanupRemoveSharedGroupMembersRequest(request);
-    LogRemoveSharedGroupMembersRequest(&request.Model(), "TestSharedGroupsClientAddSharedGroupMembersCleanupClientRemoveSharedGroupMembers");
+    FillClientAddSharedGroupMembersCleanupClientRemoveSharedGroupMembersRequest(request);
     HRESULT hr = PFSharedGroupsClientRemoveSharedGroupMembersAsync(titlePlayerHandle, &request.Model(), &async->asyncBlock);
     if (FAILED(hr))
     {
@@ -257,19 +253,19 @@ void AutoGenSharedGroupsTests::TestSharedGroupsClientCreateSharedGroup(TestConte
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFSharedGroupsClientCreateSharedGroupGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
             
-            LogPFSharedGroupsCreateSharedGroupResult(result);
+            LogCreateSharedGroupResult(result);
             return S_OK;
         }
 
         HRESULT Validate() override
         {
-            return ValidatePFSharedGroupsCreateSharedGroupResult(result);
+            return ValidateClientCreateSharedGroupResponse(result);
         }
     };
     auto async = std::make_unique<XAsyncHelper<ClientCreateSharedGroupResultHolderStruct>>(testContext);
 
     PFSharedGroupsCreateSharedGroupRequestWrapper<> request;
-    FillCreateSharedGroupRequest(request);
+    FillClientCreateSharedGroupRequest(request);
     LogCreateSharedGroupRequest(&request.Model(), "TestSharedGroupsClientCreateSharedGroup");
     HRESULT hr = PFSharedGroupsClientCreateSharedGroupAsync(titlePlayerHandle, &request.Model(), &async->asyncBlock);
     if (FAILED(hr))
@@ -295,16 +291,13 @@ void AutoGenSharedGroupsTests::TestSharedGroupsClientGetSharedGroupDataPrerequis
 
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFSharedGroupsClientCreateSharedGroupGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
-            
-            LogPFSharedGroupsCreateSharedGroupResult(result);
-            return StoreClientGetSharedGroupDataPrerequisitePFSharedGroupsCreateSharedGroupResult(shared_from_this());
+            return StoreClientGetSharedGroupDataPrerequisiteClientCreateSharedGroupResponse(shared_from_this());
         }
     };
     auto async = std::make_unique<XAsyncHelper<ClientCreateSharedGroupResultHolderStruct>>(testContext);
 
     PFSharedGroupsCreateSharedGroupRequestWrapper<> request;
-    FillClientGetSharedGroupDataPrerequisiteCreateSharedGroupRequest(request);
-    LogCreateSharedGroupRequest(&request.Model(), "TestSharedGroupsClientCreateSharedGroup");
+    FillClientGetSharedGroupDataPrerequisiteClientCreateSharedGroupRequest(request);
     HRESULT hr = PFSharedGroupsClientCreateSharedGroupAsync(titlePlayerHandle, &request.Model(), &async->asyncBlock);
     if (FAILED(hr))
     {
@@ -318,8 +311,7 @@ void AutoGenSharedGroupsTests::TestSharedGroupsClientGetSharedGroupDataPrerequis
     auto async = std::make_unique<XAsyncHelper<XAsyncResult>>(testContext);
 
     PFSharedGroupsUpdateSharedGroupDataRequestWrapper<> request;
-    FillClientGetSharedGroupDataPrerequisiteUpdateSharedGroupDataRequest(request);
-    LogUpdateSharedGroupDataRequest(&request.Model(), "TestSharedGroupsClientCreateSharedGroup");
+    FillClientGetSharedGroupDataPrerequisiteClientUpdateSharedGroupDataRequest(request);
     HRESULT hr = PFSharedGroupsClientUpdateSharedGroupDataAsync(titlePlayerHandle, &request.Model(), &async->asyncBlock);
     if (FAILED(hr))
     {
@@ -340,19 +332,19 @@ void AutoGenSharedGroupsTests::TestSharedGroupsClientGetSharedGroupData(TestCont
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFSharedGroupsClientGetSharedGroupDataGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
             
-            LogPFSharedGroupsGetSharedGroupDataResult(result);
+            LogGetSharedGroupDataResult(result);
             return S_OK;
         }
 
         HRESULT Validate() override
         {
-            return ValidatePFSharedGroupsGetSharedGroupDataResult(result);
+            return ValidateClientGetSharedGroupDataResponse(result);
         }
     };
     auto async = std::make_unique<XAsyncHelper<ClientGetSharedGroupDataResultHolderStruct>>(testContext);
 
     PFSharedGroupsGetSharedGroupDataRequestWrapper<> request;
-    FillGetSharedGroupDataRequest(request);
+    FillClientGetSharedGroupDataRequest(request);
     LogGetSharedGroupDataRequest(&request.Model(), "TestSharedGroupsClientGetSharedGroupData");
     HRESULT hr = PFSharedGroupsClientGetSharedGroupDataAsync(titlePlayerHandle, &request.Model(), &async->asyncBlock);
     if (FAILED(hr))
@@ -378,16 +370,13 @@ void AutoGenSharedGroupsTests::TestSharedGroupsClientRemoveSharedGroupMembersPre
 
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFSharedGroupsClientCreateSharedGroupGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
-            
-            LogPFSharedGroupsCreateSharedGroupResult(result);
-            return StoreClientRemoveSharedGroupMembersPrerequisitePFSharedGroupsCreateSharedGroupResult(shared_from_this());
+            return StoreClientRemoveSharedGroupMembersPrerequisiteClientCreateSharedGroupResponse(shared_from_this());
         }
     };
     auto async = std::make_unique<XAsyncHelper<ClientCreateSharedGroupResultHolderStruct>>(testContext);
 
     PFSharedGroupsCreateSharedGroupRequestWrapper<> request;
-    FillClientRemoveSharedGroupMembersPrerequisiteCreateSharedGroupRequest(request);
-    LogCreateSharedGroupRequest(&request.Model(), "TestSharedGroupsClientGetSharedGroupData");
+    FillClientRemoveSharedGroupMembersPrerequisiteClientCreateSharedGroupRequest(request);
     HRESULT hr = PFSharedGroupsClientCreateSharedGroupAsync(titlePlayerHandle, &request.Model(), &async->asyncBlock);
     if (FAILED(hr))
     {
@@ -401,8 +390,7 @@ void AutoGenSharedGroupsTests::TestSharedGroupsClientRemoveSharedGroupMembersPre
     auto async = std::make_unique<XAsyncHelper<XAsyncResult>>(testContext);
 
     PFSharedGroupsAddSharedGroupMembersRequestWrapper<> request;
-    FillClientRemoveSharedGroupMembersPrerequisiteAddSharedGroupMembersRequest(request);
-    LogAddSharedGroupMembersRequest(&request.Model(), "TestSharedGroupsClientGetSharedGroupData");
+    FillClientRemoveSharedGroupMembersPrerequisiteClientAddSharedGroupMembersRequest(request);
     HRESULT hr = PFSharedGroupsClientAddSharedGroupMembersAsync(titlePlayerHandle, &request.Model(), &async->asyncBlock);
     if (FAILED(hr))
     {
@@ -416,7 +404,7 @@ void AutoGenSharedGroupsTests::TestSharedGroupsClientRemoveSharedGroupMembers(Te
     auto async = std::make_unique<XAsyncHelper<XAsyncResult>>(testContext);
 
     PFSharedGroupsRemoveSharedGroupMembersRequestWrapper<> request;
-    FillRemoveSharedGroupMembersRequest(request);
+    FillClientRemoveSharedGroupMembersRequest(request);
     LogRemoveSharedGroupMembersRequest(&request.Model(), "TestSharedGroupsClientRemoveSharedGroupMembers");
     HRESULT hr = PFSharedGroupsClientRemoveSharedGroupMembersAsync(titlePlayerHandle, &request.Model(), &async->asyncBlock);
     if (FAILED(hr))
@@ -442,16 +430,13 @@ void AutoGenSharedGroupsTests::TestSharedGroupsClientUpdateSharedGroupDataPrereq
 
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFSharedGroupsClientCreateSharedGroupGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
-            
-            LogPFSharedGroupsCreateSharedGroupResult(result);
-            return StoreClientUpdateSharedGroupDataPrerequisitePFSharedGroupsCreateSharedGroupResult(shared_from_this());
+            return StoreClientUpdateSharedGroupDataPrerequisiteClientCreateSharedGroupResponse(shared_from_this());
         }
     };
     auto async = std::make_unique<XAsyncHelper<ClientCreateSharedGroupResultHolderStruct>>(testContext);
 
     PFSharedGroupsCreateSharedGroupRequestWrapper<> request;
-    FillClientUpdateSharedGroupDataPrerequisiteCreateSharedGroupRequest(request);
-    LogCreateSharedGroupRequest(&request.Model(), "TestSharedGroupsClientRemoveSharedGroupMembers");
+    FillClientUpdateSharedGroupDataPrerequisiteClientCreateSharedGroupRequest(request);
     HRESULT hr = PFSharedGroupsClientCreateSharedGroupAsync(titlePlayerHandle, &request.Model(), &async->asyncBlock);
     if (FAILED(hr))
     {
@@ -465,7 +450,7 @@ void AutoGenSharedGroupsTests::TestSharedGroupsClientUpdateSharedGroupData(TestC
     auto async = std::make_unique<XAsyncHelper<XAsyncResult>>(testContext);
 
     PFSharedGroupsUpdateSharedGroupDataRequestWrapper<> request;
-    FillUpdateSharedGroupDataRequest(request);
+    FillClientUpdateSharedGroupDataRequest(request);
     LogUpdateSharedGroupDataRequest(&request.Model(), "TestSharedGroupsClientUpdateSharedGroupData");
     HRESULT hr = PFSharedGroupsClientUpdateSharedGroupDataAsync(titlePlayerHandle, &request.Model(), &async->asyncBlock);
     if (FAILED(hr))
@@ -486,7 +471,7 @@ void AutoGenSharedGroupsTests::TestSharedGroupsServerAddSharedGroupMembers(TestC
     auto async = std::make_unique<XAsyncHelper<XAsyncResult>>(testContext);
 
     PFSharedGroupsAddSharedGroupMembersRequestWrapper<> request;
-    FillAddSharedGroupMembersRequest(request);
+    FillServerAddSharedGroupMembersRequest(request);
     LogAddSharedGroupMembersRequest(&request.Model(), "TestSharedGroupsServerAddSharedGroupMembers");
     HRESULT hr = PFSharedGroupsServerAddSharedGroupMembersAsync(stateHandle, &request.Model(), &async->asyncBlock);
     if (FAILED(hr))
@@ -515,19 +500,19 @@ void AutoGenSharedGroupsTests::TestSharedGroupsServerCreateSharedGroup(TestConte
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFSharedGroupsServerCreateSharedGroupGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
             
-            LogPFSharedGroupsCreateSharedGroupResult(result);
+            LogCreateSharedGroupResult(result);
             return S_OK;
         }
 
         HRESULT Validate() override
         {
-            return ValidatePFSharedGroupsCreateSharedGroupResult(result);
+            return ValidateServerCreateSharedGroupResponse(result);
         }
     };
     auto async = std::make_unique<XAsyncHelper<ServerCreateSharedGroupResultHolderStruct>>(testContext);
 
     PFSharedGroupsCreateSharedGroupRequestWrapper<> request;
-    FillCreateSharedGroupRequest(request);
+    FillServerCreateSharedGroupRequest(request);
     LogCreateSharedGroupRequest(&request.Model(), "TestSharedGroupsServerCreateSharedGroup");
     HRESULT hr = PFSharedGroupsServerCreateSharedGroupAsync(stateHandle, &request.Model(), &async->asyncBlock);
     if (FAILED(hr))
@@ -549,7 +534,7 @@ void AutoGenSharedGroupsTests::TestSharedGroupsServerDeleteSharedGroup(TestConte
     auto async = std::make_unique<XAsyncHelper<XAsyncResult>>(testContext);
 
     PFSharedGroupsDeleteSharedGroupRequestWrapper<> request;
-    FillDeleteSharedGroupRequest(request);
+    FillServerDeleteSharedGroupRequest(request);
     LogDeleteSharedGroupRequest(&request.Model(), "TestSharedGroupsServerDeleteSharedGroup");
     HRESULT hr = PFSharedGroupsServerDeleteSharedGroupAsync(stateHandle, &request.Model(), &async->asyncBlock);
     if (FAILED(hr))
@@ -578,19 +563,19 @@ void AutoGenSharedGroupsTests::TestSharedGroupsServerGetSharedGroupData(TestCont
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFSharedGroupsServerGetSharedGroupDataGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
             
-            LogPFSharedGroupsGetSharedGroupDataResult(result);
+            LogGetSharedGroupDataResult(result);
             return S_OK;
         }
 
         HRESULT Validate() override
         {
-            return ValidatePFSharedGroupsGetSharedGroupDataResult(result);
+            return ValidateServerGetSharedGroupDataResponse(result);
         }
     };
     auto async = std::make_unique<XAsyncHelper<ServerGetSharedGroupDataResultHolderStruct>>(testContext);
 
     PFSharedGroupsGetSharedGroupDataRequestWrapper<> request;
-    FillGetSharedGroupDataRequest(request);
+    FillServerGetSharedGroupDataRequest(request);
     LogGetSharedGroupDataRequest(&request.Model(), "TestSharedGroupsServerGetSharedGroupData");
     HRESULT hr = PFSharedGroupsServerGetSharedGroupDataAsync(stateHandle, &request.Model(), &async->asyncBlock);
     if (FAILED(hr))
@@ -612,7 +597,7 @@ void AutoGenSharedGroupsTests::TestSharedGroupsServerRemoveSharedGroupMembers(Te
     auto async = std::make_unique<XAsyncHelper<XAsyncResult>>(testContext);
 
     PFSharedGroupsRemoveSharedGroupMembersRequestWrapper<> request;
-    FillRemoveSharedGroupMembersRequest(request);
+    FillServerRemoveSharedGroupMembersRequest(request);
     LogRemoveSharedGroupMembersRequest(&request.Model(), "TestSharedGroupsServerRemoveSharedGroupMembers");
     HRESULT hr = PFSharedGroupsServerRemoveSharedGroupMembersAsync(stateHandle, &request.Model(), &async->asyncBlock);
     if (FAILED(hr))
@@ -634,7 +619,7 @@ void AutoGenSharedGroupsTests::TestSharedGroupsServerUpdateSharedGroupData(TestC
     auto async = std::make_unique<XAsyncHelper<XAsyncResult>>(testContext);
 
     PFSharedGroupsUpdateSharedGroupDataRequestWrapper<> request;
-    FillUpdateSharedGroupDataRequest(request);
+    FillServerUpdateSharedGroupDataRequest(request);
     LogUpdateSharedGroupDataRequest(&request.Model(), "TestSharedGroupsServerUpdateSharedGroupData");
     HRESULT hr = PFSharedGroupsServerUpdateSharedGroupDataAsync(stateHandle, &request.Model(), &async->asyncBlock);
     if (FAILED(hr))

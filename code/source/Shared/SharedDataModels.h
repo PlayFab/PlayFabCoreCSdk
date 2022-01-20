@@ -848,39 +848,6 @@ public:
     static HRESULT Copy(const PFGetPlayerCombinedInfoResultPayload& input, PFGetPlayerCombinedInfoResultPayload& output, ModelBuffer& buffer);
 };
 
-class GetPlayerCombinedInfoRequest : public Wrappers::PFGetPlayerCombinedInfoRequestWrapper<Allocator>, public InputModel
-{
-public:
-    using ModelWrapperType = typename Wrappers::PFGetPlayerCombinedInfoRequestWrapper<Allocator>;
-    using ModelWrapperType::ModelType;
-
-    // Constructors
-    using ModelWrapperType::ModelWrapperType;
-
-    // InputModel
-    JsonValue ToJson() const override;
-    static JsonValue ToJson(const PFGetPlayerCombinedInfoRequest& input);
-
-};
-
-class GetPlayerCombinedInfoResult : public Wrappers::PFGetPlayerCombinedInfoResultWrapper<Allocator>, public OutputModel<PFGetPlayerCombinedInfoResult>
-{
-public:
-    using ModelWrapperType = typename Wrappers::PFGetPlayerCombinedInfoResultWrapper<Allocator>;
-    using ModelWrapperType::ModelType;
-
-    // Constructors
-    using ModelWrapperType::ModelWrapperType;
-
-    // OutputModel
-    void FromJson(const JsonValue& input) override;
-    size_t RequiredBufferSize() const override;
-    Result<PFGetPlayerCombinedInfoResult const*> Copy(ModelBuffer& buffer) const override;
-
-    static size_t RequiredBufferSize(const PFGetPlayerCombinedInfoResult& model);
-    static HRESULT Copy(const PFGetPlayerCombinedInfoResult& input, PFGetPlayerCombinedInfoResult& output, ModelBuffer& buffer);
-};
-
 class ResultTableNode : public Wrappers::PFResultTableNodeWrapper<Allocator>, public InputModel, public OutputModel<PFResultTableNode>
 {
 public:

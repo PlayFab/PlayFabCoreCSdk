@@ -21,7 +21,7 @@ void AutoGenMatchmakingTests::Log(std::stringstream& ss)
 
 HRESULT AutoGenMatchmakingTests::LogHR(HRESULT hr)
 {
-    if( TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    if (TestApp::ShouldTrace(PFTestTraceLevel::Information))
     {
         TestApp::Log("Result: 0x%0.8x", hr);
     }
@@ -171,7 +171,7 @@ void AutoGenMatchmakingTests::AddTests()
 
 void AutoGenMatchmakingTests::ClassSetUp()
 {
-    HRESULT hr = PFAdminInitialize(testTitleData.titleId.data(), testTitleData.developerSecretKey.data(), nullptr, &stateHandle);
+    HRESULT hr = PFAdminInitialize(testTitleData.titleId.data(), testTitleData.developerSecretKey.data(), testTitleData.connectionString.data(), nullptr, &stateHandle);
     assert(SUCCEEDED(hr));
     if (SUCCEEDED(hr))
     {
@@ -289,19 +289,19 @@ void AutoGenMatchmakingTests::TestMatchmakingAdminGetMatchmakerGameInfo(TestCont
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFMatchmakingAdminGetMatchmakerGameInfoGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
             
-            LogPFMatchmakingGetMatchmakerGameInfoResult(result);
+            LogGetMatchmakerGameInfoResult(result);
             return S_OK;
         }
 
         HRESULT Validate() override
         {
-            return ValidatePFMatchmakingGetMatchmakerGameInfoResult(result);
+            return ValidateAdminGetMatchmakerGameInfoResponse(result);
         }
     };
     auto async = std::make_unique<XAsyncHelper<AdminGetMatchmakerGameInfoResultHolderStruct>>(testContext);
 
     PFMatchmakingGetMatchmakerGameInfoRequestWrapper<> request;
-    FillGetMatchmakerGameInfoRequest(request);
+    FillAdminGetMatchmakerGameInfoRequest(request);
     LogGetMatchmakerGameInfoRequest(&request.Model(), "TestMatchmakingAdminGetMatchmakerGameInfo");
     HRESULT hr = PFMatchmakingAdminGetMatchmakerGameInfoAsync(stateHandle, &request.Model(), &async->asyncBlock);
     if (FAILED(hr))
@@ -330,19 +330,19 @@ void AutoGenMatchmakingTests::TestMatchmakingAdminGetMatchmakerGameModes(TestCon
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFMatchmakingAdminGetMatchmakerGameModesGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
             
-            LogPFMatchmakingGetMatchmakerGameModesResult(result);
+            LogGetMatchmakerGameModesResult(result);
             return S_OK;
         }
 
         HRESULT Validate() override
         {
-            return ValidatePFMatchmakingGetMatchmakerGameModesResult(result);
+            return ValidateAdminGetMatchmakerGameModesResponse(result);
         }
     };
     auto async = std::make_unique<XAsyncHelper<AdminGetMatchmakerGameModesResultHolderStruct>>(testContext);
 
     PFMatchmakingGetMatchmakerGameModesRequestWrapper<> request;
-    FillGetMatchmakerGameModesRequest(request);
+    FillAdminGetMatchmakerGameModesRequest(request);
     LogGetMatchmakerGameModesRequest(&request.Model(), "TestMatchmakingAdminGetMatchmakerGameModes");
     HRESULT hr = PFMatchmakingAdminGetMatchmakerGameModesAsync(stateHandle, &request.Model(), &async->asyncBlock);
     if (FAILED(hr))
@@ -364,7 +364,7 @@ void AutoGenMatchmakingTests::TestMatchmakingAdminModifyMatchmakerGameModes(Test
     auto async = std::make_unique<XAsyncHelper<XAsyncResult>>(testContext);
 
     PFMatchmakingModifyMatchmakerGameModesRequestWrapper<> request;
-    FillModifyMatchmakerGameModesRequest(request);
+    FillAdminModifyMatchmakerGameModesRequest(request);
     LogModifyMatchmakerGameModesRequest(&request.Model(), "TestMatchmakingAdminModifyMatchmakerGameModes");
     HRESULT hr = PFMatchmakingAdminModifyMatchmakerGameModesAsync(stateHandle, &request.Model(), &async->asyncBlock);
     if (FAILED(hr))
@@ -393,19 +393,19 @@ void AutoGenMatchmakingTests::TestMatchmakingClientGetCurrentGames(TestContext& 
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFMatchmakingClientGetCurrentGamesGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
             
-            LogPFMatchmakingCurrentGamesResult(result);
+            LogCurrentGamesResult(result);
             return S_OK;
         }
 
         HRESULT Validate() override
         {
-            return ValidatePFMatchmakingCurrentGamesResult(result);
+            return ValidateClientGetCurrentGamesResponse(result);
         }
     };
     auto async = std::make_unique<XAsyncHelper<ClientGetCurrentGamesResultHolderStruct>>(testContext);
 
     PFMatchmakingCurrentGamesRequestWrapper<> request;
-    FillCurrentGamesRequest(request);
+    FillClientGetCurrentGamesRequest(request);
     LogCurrentGamesRequest(&request.Model(), "TestMatchmakingClientGetCurrentGames");
     HRESULT hr = PFMatchmakingClientGetCurrentGamesAsync(titlePlayerHandle, &request.Model(), &async->asyncBlock);
     if (FAILED(hr))
@@ -434,19 +434,19 @@ void AutoGenMatchmakingTests::TestMatchmakingClientGetGameServerRegions(TestCont
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFMatchmakingClientGetGameServerRegionsGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
             
-            LogPFMatchmakingGameServerRegionsResult(result);
+            LogGameServerRegionsResult(result);
             return S_OK;
         }
 
         HRESULT Validate() override
         {
-            return ValidatePFMatchmakingGameServerRegionsResult(result);
+            return ValidateClientGetGameServerRegionsResponse(result);
         }
     };
     auto async = std::make_unique<XAsyncHelper<ClientGetGameServerRegionsResultHolderStruct>>(testContext);
 
     PFMatchmakingGameServerRegionsRequestWrapper<> request;
-    FillGameServerRegionsRequest(request);
+    FillClientGetGameServerRegionsRequest(request);
     LogGameServerRegionsRequest(&request.Model(), "TestMatchmakingClientGetGameServerRegions");
     HRESULT hr = PFMatchmakingClientGetGameServerRegionsAsync(titlePlayerHandle, &request.Model(), &async->asyncBlock);
     if (FAILED(hr))
@@ -475,19 +475,19 @@ void AutoGenMatchmakingTests::TestMatchmakingClientMatchmake(TestContext& testCo
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFMatchmakingClientMatchmakeGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
             
-            LogPFMatchmakingMatchmakeResult(result);
+            LogMatchmakeResult(result);
             return S_OK;
         }
 
         HRESULT Validate() override
         {
-            return ValidatePFMatchmakingMatchmakeResult(result);
+            return ValidateClientMatchmakeResponse(result);
         }
     };
     auto async = std::make_unique<XAsyncHelper<ClientMatchmakeResultHolderStruct>>(testContext);
 
     PFMatchmakingMatchmakeRequestWrapper<> request;
-    FillMatchmakeRequest(request);
+    FillClientMatchmakeRequest(request);
     LogMatchmakeRequest(&request.Model(), "TestMatchmakingClientMatchmake");
     HRESULT hr = PFMatchmakingClientMatchmakeAsync(titlePlayerHandle, &request.Model(), &async->asyncBlock);
     if (FAILED(hr))
@@ -516,13 +516,13 @@ void AutoGenMatchmakingTests::TestMatchmakingClientStartGame(TestContext& testCo
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFMatchmakingClientStartGameGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
             
-            LogPFMatchmakingStartGameResult(result);
+            LogStartGameResult(result);
             return S_OK;
         }
 
         HRESULT Validate() override
         {
-            return ValidatePFMatchmakingStartGameResult(result);
+            return ValidateClientStartGameResponse(result);
         }
     };
     auto async = std::make_unique<XAsyncHelper<ClientStartGameResultHolderStruct>>(testContext);
@@ -557,13 +557,13 @@ void AutoGenMatchmakingTests::TestMatchmakingAuthUser(TestContext& testContext)
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFMatchmakingAuthUserGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
             
-            LogPFMatchmakingAuthUserResponse(result);
+            LogAuthUserResponse(result);
             return S_OK;
         }
 
         HRESULT Validate() override
         {
-            return ValidatePFMatchmakingAuthUserResponse(result);
+            return ValidateAuthUserResponse(result);
         }
     };
     auto async = std::make_unique<XAsyncHelper<AuthUserResultHolderStruct>>(testContext);
@@ -642,19 +642,19 @@ void AutoGenMatchmakingTests::TestMatchmakingStartGame(TestContext& testContext)
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFMatchmakingStartGameGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
             
-            LogPFMatchmakingStartGameResponse(result);
+            LogStartGameResponse(result);
             return S_OK;
         }
 
         HRESULT Validate() override
         {
-            return ValidatePFMatchmakingStartGameResponse(result);
+            return ValidateStartGameResponse(result);
         }
     };
     auto async = std::make_unique<XAsyncHelper<StartGameResultHolderStruct>>(testContext);
 
     PFMatchmakingMatchmakerStartGameRequestWrapper<> request;
-    FillMatchmakerStartGameRequest(request);
+    FillStartGameRequest(request);
     LogMatchmakerStartGameRequest(&request.Model(), "TestMatchmakingStartGame");
     HRESULT hr = PFMatchmakingStartGameAsync(stateHandle, &request.Model(), &async->asyncBlock);
     if (FAILED(hr))
@@ -683,13 +683,13 @@ void AutoGenMatchmakingTests::TestMatchmakingUserInfo(TestContext& testContext)
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFMatchmakingUserInfoGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
             
-            LogPFMatchmakingUserInfoResponse(result);
+            LogUserInfoResponse(result);
             return S_OK;
         }
 
         HRESULT Validate() override
         {
-            return ValidatePFMatchmakingUserInfoResponse(result);
+            return ValidateUserInfoResponse(result);
         }
     };
     auto async = std::make_unique<XAsyncHelper<UserInfoResultHolderStruct>>(testContext);
@@ -717,7 +717,7 @@ void AutoGenMatchmakingTests::TestMatchmakingServerDeregisterGame(TestContext& t
     auto async = std::make_unique<XAsyncHelper<XAsyncResult>>(testContext);
 
     PFMatchmakingDeregisterGameRequestWrapper<> request;
-    FillDeregisterGameRequest(request);
+    FillServerDeregisterGameRequest(request);
     LogDeregisterGameRequest(&request.Model(), "TestMatchmakingServerDeregisterGame");
     HRESULT hr = PFMatchmakingServerDeregisterGameAsync(stateHandle, &request.Model(), &async->asyncBlock);
     if (FAILED(hr))
@@ -746,19 +746,19 @@ void AutoGenMatchmakingTests::TestMatchmakingServerNotifyMatchmakerPlayerLeft(Te
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFMatchmakingServerNotifyMatchmakerPlayerLeftGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
             
-            LogPFMatchmakingNotifyMatchmakerPlayerLeftResult(result);
+            LogNotifyMatchmakerPlayerLeftResult(result);
             return S_OK;
         }
 
         HRESULT Validate() override
         {
-            return ValidatePFMatchmakingNotifyMatchmakerPlayerLeftResult(result);
+            return ValidateServerNotifyMatchmakerPlayerLeftResponse(result);
         }
     };
     auto async = std::make_unique<XAsyncHelper<ServerNotifyMatchmakerPlayerLeftResultHolderStruct>>(testContext);
 
     PFMatchmakingNotifyMatchmakerPlayerLeftRequestWrapper<> request;
-    FillNotifyMatchmakerPlayerLeftRequest(request);
+    FillServerNotifyMatchmakerPlayerLeftRequest(request);
     LogNotifyMatchmakerPlayerLeftRequest(&request.Model(), "TestMatchmakingServerNotifyMatchmakerPlayerLeft");
     HRESULT hr = PFMatchmakingServerNotifyMatchmakerPlayerLeftAsync(stateHandle, &request.Model(), &async->asyncBlock);
     if (FAILED(hr))
@@ -787,19 +787,19 @@ void AutoGenMatchmakingTests::TestMatchmakingServerRedeemMatchmakerTicket(TestCo
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFMatchmakingServerRedeemMatchmakerTicketGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
             
-            LogPFMatchmakingRedeemMatchmakerTicketResult(result);
+            LogRedeemMatchmakerTicketResult(result);
             return S_OK;
         }
 
         HRESULT Validate() override
         {
-            return ValidatePFMatchmakingRedeemMatchmakerTicketResult(result);
+            return ValidateServerRedeemMatchmakerTicketResponse(result);
         }
     };
     auto async = std::make_unique<XAsyncHelper<ServerRedeemMatchmakerTicketResultHolderStruct>>(testContext);
 
     PFMatchmakingRedeemMatchmakerTicketRequestWrapper<> request;
-    FillRedeemMatchmakerTicketRequest(request);
+    FillServerRedeemMatchmakerTicketRequest(request);
     LogRedeemMatchmakerTicketRequest(&request.Model(), "TestMatchmakingServerRedeemMatchmakerTicket");
     HRESULT hr = PFMatchmakingServerRedeemMatchmakerTicketAsync(stateHandle, &request.Model(), &async->asyncBlock);
     if (FAILED(hr))
@@ -821,7 +821,7 @@ void AutoGenMatchmakingTests::TestMatchmakingServerRefreshGameServerInstanceHear
     auto async = std::make_unique<XAsyncHelper<XAsyncResult>>(testContext);
 
     PFMatchmakingRefreshGameServerInstanceHeartbeatRequestWrapper<> request;
-    FillRefreshGameServerInstanceHeartbeatRequest(request);
+    FillServerRefreshGameServerInstanceHeartbeatRequest(request);
     LogRefreshGameServerInstanceHeartbeatRequest(&request.Model(), "TestMatchmakingServerRefreshGameServerInstanceHeartbeat");
     HRESULT hr = PFMatchmakingServerRefreshGameServerInstanceHeartbeatAsync(stateHandle, &request.Model(), &async->asyncBlock);
     if (FAILED(hr))
@@ -850,19 +850,19 @@ void AutoGenMatchmakingTests::TestMatchmakingServerRegisterGame(TestContext& tes
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFMatchmakingServerRegisterGameGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
             
-            LogPFMatchmakingRegisterGameResponse(result);
+            LogRegisterGameResponse(result);
             return S_OK;
         }
 
         HRESULT Validate() override
         {
-            return ValidatePFMatchmakingRegisterGameResponse(result);
+            return ValidateServerRegisterGameResponse(result);
         }
     };
     auto async = std::make_unique<XAsyncHelper<ServerRegisterGameResultHolderStruct>>(testContext);
 
     PFMatchmakingRegisterGameRequestWrapper<> request;
-    FillRegisterGameRequest(request);
+    FillServerRegisterGameRequest(request);
     LogRegisterGameRequest(&request.Model(), "TestMatchmakingServerRegisterGame");
     HRESULT hr = PFMatchmakingServerRegisterGameAsync(stateHandle, &request.Model(), &async->asyncBlock);
     if (FAILED(hr))
@@ -884,7 +884,7 @@ void AutoGenMatchmakingTests::TestMatchmakingServerSetGameServerInstanceData(Tes
     auto async = std::make_unique<XAsyncHelper<XAsyncResult>>(testContext);
 
     PFMatchmakingSetGameServerInstanceDataRequestWrapper<> request;
-    FillSetGameServerInstanceDataRequest(request);
+    FillServerSetGameServerInstanceDataRequest(request);
     LogSetGameServerInstanceDataRequest(&request.Model(), "TestMatchmakingServerSetGameServerInstanceData");
     HRESULT hr = PFMatchmakingServerSetGameServerInstanceDataAsync(stateHandle, &request.Model(), &async->asyncBlock);
     if (FAILED(hr))
@@ -906,7 +906,7 @@ void AutoGenMatchmakingTests::TestMatchmakingServerSetGameServerInstanceState(Te
     auto async = std::make_unique<XAsyncHelper<XAsyncResult>>(testContext);
 
     PFMatchmakingSetGameServerInstanceStateRequestWrapper<> request;
-    FillSetGameServerInstanceStateRequest(request);
+    FillServerSetGameServerInstanceStateRequest(request);
     LogSetGameServerInstanceStateRequest(&request.Model(), "TestMatchmakingServerSetGameServerInstanceState");
     HRESULT hr = PFMatchmakingServerSetGameServerInstanceStateAsync(stateHandle, &request.Model(), &async->asyncBlock);
     if (FAILED(hr))
@@ -928,7 +928,7 @@ void AutoGenMatchmakingTests::TestMatchmakingServerSetGameServerInstanceTags(Tes
     auto async = std::make_unique<XAsyncHelper<XAsyncResult>>(testContext);
 
     PFMatchmakingSetGameServerInstanceTagsRequestWrapper<> request;
-    FillSetGameServerInstanceTagsRequest(request);
+    FillServerSetGameServerInstanceTagsRequest(request);
     LogSetGameServerInstanceTagsRequest(&request.Model(), "TestMatchmakingServerSetGameServerInstanceTags");
     HRESULT hr = PFMatchmakingServerSetGameServerInstanceTagsAsync(stateHandle, &request.Model(), &async->asyncBlock);
     if (FAILED(hr))
@@ -1045,13 +1045,13 @@ void AutoGenMatchmakingTests::TestMatchmakingCreateMatchmakingTicket(TestContext
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFMatchmakingCreateMatchmakingTicketGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
             
-            LogPFMatchmakingCreateMatchmakingTicketResult(result);
+            LogCreateMatchmakingTicketResult(result);
             return S_OK;
         }
 
         HRESULT Validate() override
         {
-            return ValidatePFMatchmakingCreateMatchmakingTicketResult(result);
+            return ValidateCreateMatchmakingTicketResponse(result);
         }
     };
     auto async = std::make_unique<XAsyncHelper<CreateMatchmakingTicketResultHolderStruct>>(testContext);
@@ -1086,13 +1086,13 @@ void AutoGenMatchmakingTests::TestMatchmakingCreateServerBackfillTicket(TestCont
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFMatchmakingCreateServerBackfillTicketGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
             
-            LogPFMatchmakingCreateServerBackfillTicketResult(result);
+            LogCreateServerBackfillTicketResult(result);
             return S_OK;
         }
 
         HRESULT Validate() override
         {
-            return ValidatePFMatchmakingCreateServerBackfillTicketResult(result);
+            return ValidateCreateServerBackfillTicketResponse(result);
         }
     };
     auto async = std::make_unique<XAsyncHelper<CreateServerBackfillTicketResultHolderStruct>>(testContext);
@@ -1127,13 +1127,13 @@ void AutoGenMatchmakingTests::TestMatchmakingCreateServerMatchmakingTicket(TestC
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFMatchmakingCreateServerMatchmakingTicketGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
             
-            LogPFMatchmakingCreateMatchmakingTicketResult(result);
+            LogCreateMatchmakingTicketResult(result);
             return S_OK;
         }
 
         HRESULT Validate() override
         {
-            return ValidatePFMatchmakingCreateMatchmakingTicketResult(result);
+            return ValidateCreateServerMatchmakingTicketResponse(result);
         }
     };
     auto async = std::make_unique<XAsyncHelper<CreateServerMatchmakingTicketResultHolderStruct>>(testContext);
@@ -1168,13 +1168,13 @@ void AutoGenMatchmakingTests::TestMatchmakingGetMatch(TestContext& testContext)
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFMatchmakingGetMatchGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
             
-            LogPFMatchmakingGetMatchResult(result);
+            LogGetMatchResult(result);
             return S_OK;
         }
 
         HRESULT Validate() override
         {
-            return ValidatePFMatchmakingGetMatchResult(result);
+            return ValidateGetMatchResponse(result);
         }
     };
     auto async = std::make_unique<XAsyncHelper<GetMatchResultHolderStruct>>(testContext);
@@ -1209,13 +1209,13 @@ void AutoGenMatchmakingTests::TestMatchmakingGetMatchmakingTicket(TestContext& t
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFMatchmakingGetMatchmakingTicketGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
             
-            LogPFMatchmakingGetMatchmakingTicketResult(result);
+            LogGetMatchmakingTicketResult(result);
             return S_OK;
         }
 
         HRESULT Validate() override
         {
-            return ValidatePFMatchmakingGetMatchmakingTicketResult(result);
+            return ValidateGetMatchmakingTicketResponse(result);
         }
     };
     auto async = std::make_unique<XAsyncHelper<GetMatchmakingTicketResultHolderStruct>>(testContext);
@@ -1250,13 +1250,13 @@ void AutoGenMatchmakingTests::TestMatchmakingGetQueueStatistics(TestContext& tes
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFMatchmakingGetQueueStatisticsGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
             
-            LogPFMatchmakingGetQueueStatisticsResult(result);
+            LogGetQueueStatisticsResult(result);
             return S_OK;
         }
 
         HRESULT Validate() override
         {
-            return ValidatePFMatchmakingGetQueueStatisticsResult(result);
+            return ValidateGetQueueStatisticsResponse(result);
         }
     };
     auto async = std::make_unique<XAsyncHelper<GetQueueStatisticsResultHolderStruct>>(testContext);
@@ -1291,13 +1291,13 @@ void AutoGenMatchmakingTests::TestMatchmakingGetServerBackfillTicket(TestContext
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFMatchmakingGetServerBackfillTicketGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
             
-            LogPFMatchmakingGetServerBackfillTicketResult(result);
+            LogGetServerBackfillTicketResult(result);
             return S_OK;
         }
 
         HRESULT Validate() override
         {
-            return ValidatePFMatchmakingGetServerBackfillTicketResult(result);
+            return ValidateGetServerBackfillTicketResponse(result);
         }
     };
     auto async = std::make_unique<XAsyncHelper<GetServerBackfillTicketResultHolderStruct>>(testContext);
@@ -1354,13 +1354,13 @@ void AutoGenMatchmakingTests::TestMatchmakingListMatchmakingTicketsForPlayer(Tes
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFMatchmakingListMatchmakingTicketsForPlayerGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
             
-            LogPFMatchmakingListMatchmakingTicketsForPlayerResult(result);
+            LogListMatchmakingTicketsForPlayerResult(result);
             return S_OK;
         }
 
         HRESULT Validate() override
         {
-            return ValidatePFMatchmakingListMatchmakingTicketsForPlayerResult(result);
+            return ValidateListMatchmakingTicketsForPlayerResponse(result);
         }
     };
     auto async = std::make_unique<XAsyncHelper<ListMatchmakingTicketsForPlayerResultHolderStruct>>(testContext);
@@ -1395,13 +1395,13 @@ void AutoGenMatchmakingTests::TestMatchmakingListServerBackfillTicketsForPlayer(
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFMatchmakingListServerBackfillTicketsForPlayerGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
             
-            LogPFMatchmakingListServerBackfillTicketsForPlayerResult(result);
+            LogListServerBackfillTicketsForPlayerResult(result);
             return S_OK;
         }
 
         HRESULT Validate() override
         {
-            return ValidatePFMatchmakingListServerBackfillTicketsForPlayerResult(result);
+            return ValidateListServerBackfillTicketsForPlayerResponse(result);
         }
     };
     auto async = std::make_unique<XAsyncHelper<ListServerBackfillTicketsForPlayerResultHolderStruct>>(testContext);

@@ -21,7 +21,7 @@ void AutoGenExperimentationTests::Log(std::stringstream& ss)
 
 HRESULT AutoGenExperimentationTests::LogHR(HRESULT hr)
 {
-    if( TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    if (TestApp::ShouldTrace(PFTestTraceLevel::Information))
     {
         TestApp::Log("Result: 0x%0.8x", hr);
     }
@@ -87,7 +87,7 @@ void AutoGenExperimentationTests::AddTests()
 
 void AutoGenExperimentationTests::ClassSetUp()
 {
-    HRESULT hr = PFAdminInitialize(testTitleData.titleId.data(), testTitleData.developerSecretKey.data(), nullptr, &stateHandle);
+    HRESULT hr = PFAdminInitialize(testTitleData.titleId.data(), testTitleData.developerSecretKey.data(), testTitleData.connectionString.data(), nullptr, &stateHandle);
     assert(SUCCEEDED(hr));
     if (SUCCEEDED(hr))
     {
@@ -205,13 +205,13 @@ void AutoGenExperimentationTests::TestExperimentationCreateExclusionGroup(TestCo
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFExperimentationCreateExclusionGroupGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
             
-            LogPFExperimentationCreateExclusionGroupResult(result);
+            LogCreateExclusionGroupResult(result);
             return S_OK;
         }
 
         HRESULT Validate() override
         {
-            return ValidatePFExperimentationCreateExclusionGroupResult(result);
+            return ValidateCreateExclusionGroupResponse(result);
         }
     };
     auto async = std::make_unique<XAsyncHelper<CreateExclusionGroupResultHolderStruct>>(testContext);
@@ -246,13 +246,13 @@ void AutoGenExperimentationTests::TestExperimentationCreateExperiment(TestContex
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFExperimentationCreateExperimentGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
             
-            LogPFExperimentationCreateExperimentResult(result);
+            LogCreateExperimentResult(result);
             return S_OK;
         }
 
         HRESULT Validate() override
         {
-            return ValidatePFExperimentationCreateExperimentResult(result);
+            return ValidateCreateExperimentResponse(result);
         }
     };
     auto async = std::make_unique<XAsyncHelper<CreateExperimentResultHolderStruct>>(testContext);
@@ -331,13 +331,13 @@ void AutoGenExperimentationTests::TestExperimentationGetExclusionGroups(TestCont
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFExperimentationGetExclusionGroupsGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
             
-            LogPFExperimentationGetExclusionGroupsResult(result);
+            LogGetExclusionGroupsResult(result);
             return S_OK;
         }
 
         HRESULT Validate() override
         {
-            return ValidatePFExperimentationGetExclusionGroupsResult(result);
+            return ValidateGetExclusionGroupsResponse(result);
         }
     };
     auto async = std::make_unique<XAsyncHelper<GetExclusionGroupsResultHolderStruct>>(testContext);
@@ -372,13 +372,13 @@ void AutoGenExperimentationTests::TestExperimentationGetExclusionGroupTraffic(Te
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFExperimentationGetExclusionGroupTrafficGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
             
-            LogPFExperimentationGetExclusionGroupTrafficResult(result);
+            LogGetExclusionGroupTrafficResult(result);
             return S_OK;
         }
 
         HRESULT Validate() override
         {
-            return ValidatePFExperimentationGetExclusionGroupTrafficResult(result);
+            return ValidateGetExclusionGroupTrafficResponse(result);
         }
     };
     auto async = std::make_unique<XAsyncHelper<GetExclusionGroupTrafficResultHolderStruct>>(testContext);
@@ -413,13 +413,13 @@ void AutoGenExperimentationTests::TestExperimentationGetExperiments(TestContext&
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFExperimentationGetExperimentsGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
             
-            LogPFExperimentationGetExperimentsResult(result);
+            LogGetExperimentsResult(result);
             return S_OK;
         }
 
         HRESULT Validate() override
         {
-            return ValidatePFExperimentationGetExperimentsResult(result);
+            return ValidateGetExperimentsResponse(result);
         }
     };
     auto async = std::make_unique<XAsyncHelper<GetExperimentsResultHolderStruct>>(testContext);
@@ -454,13 +454,13 @@ void AutoGenExperimentationTests::TestExperimentationGetLatestScorecard(TestCont
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFExperimentationGetLatestScorecardGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
             
-            LogPFExperimentationGetLatestScorecardResult(result);
+            LogGetLatestScorecardResult(result);
             return S_OK;
         }
 
         HRESULT Validate() override
         {
-            return ValidatePFExperimentationGetLatestScorecardResult(result);
+            return ValidateGetLatestScorecardResponse(result);
         }
     };
     auto async = std::make_unique<XAsyncHelper<GetLatestScorecardResultHolderStruct>>(testContext);
@@ -495,13 +495,13 @@ void AutoGenExperimentationTests::TestExperimentationGetTreatmentAssignment(Test
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFExperimentationGetTreatmentAssignmentGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
             
-            LogPFExperimentationGetTreatmentAssignmentResult(result);
+            LogGetTreatmentAssignmentResult(result);
             return S_OK;
         }
 
         HRESULT Validate() override
         {
-            return ValidatePFExperimentationGetTreatmentAssignmentResult(result);
+            return ValidateGetTreatmentAssignmentResponse(result);
         }
     };
     auto async = std::make_unique<XAsyncHelper<GetTreatmentAssignmentResultHolderStruct>>(testContext);

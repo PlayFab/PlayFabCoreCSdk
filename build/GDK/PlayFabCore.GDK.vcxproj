@@ -21,6 +21,7 @@
     <MinimumVisualStudioVersion>15.0</MinimumVisualStudioVersion>
     <TargetRuntime>Native</TargetRuntime>
   </PropertyGroup>
+  <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory), PlayFab.gdk.bwoi.props))\PlayFab.gdk.bwoi.props" />
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Gaming.Desktop.x64'" Label="Configuration">
     <ConfigurationType>StaticLibrary</ConfigurationType>
@@ -244,14 +245,14 @@
     <ClCompile Include="$(PlayFabSourceDir)\source\Authentication\Authentication.cpp" />
     <ClInclude Include="$(PlayFabSourceDir)\include\playfab\PFAuthentication.h" />
     <ClCompile Include="$(PlayFabSourceDir)\source\Authentication\PFAuthentication.cpp" />
-    <ClInclude Include="$(PlayFabSourceDir)\include\playfab\PFPlayerDataManagementDataModels.h" />
-    <ClInclude Include="$(PlayFabSourceDir)\include\playfab\cpp\PFPlayerDataManagementDataModelWrappers.h" />
-    <ClInclude Include="$(PlayFabSourceDir)\source\PlayerDataManagement\PlayerDataManagementDataModels.h" />
-    <ClCompile Include="$(PlayFabSourceDir)\source\PlayerDataManagement\PlayerDataManagementDataModels.cpp" />
-    <ClInclude Include="$(PlayFabSourceDir)\source\PlayerDataManagement\PlayerDataManagement.h" />
-    <ClCompile Include="$(PlayFabSourceDir)\source\PlayerDataManagement\PlayerDataManagement.cpp" />
-    <ClInclude Include="$(PlayFabSourceDir)\include\playfab\PFPlayerDataManagement.h" />
-    <ClCompile Include="$(PlayFabSourceDir)\source\PlayerDataManagement\PFPlayerDataManagement.cpp" />
+    <ClInclude Include="$(PlayFabSourceDir)\include\playfab\PFLeaderboardDataModels.h" />
+    <ClInclude Include="$(PlayFabSourceDir)\include\playfab\cpp\PFLeaderboardDataModelWrappers.h" />
+    <ClInclude Include="$(PlayFabSourceDir)\source\Leaderboard\LeaderboardDataModels.h" />
+    <ClCompile Include="$(PlayFabSourceDir)\source\Leaderboard\LeaderboardDataModels.cpp" />
+    <ClInclude Include="$(PlayFabSourceDir)\source\Leaderboard\Leaderboard.h" />
+    <ClCompile Include="$(PlayFabSourceDir)\source\Leaderboard\Leaderboard.cpp" />
+    <ClInclude Include="$(PlayFabSourceDir)\include\playfab\PFLeaderboard.h" />
+    <ClCompile Include="$(PlayFabSourceDir)\source\Leaderboard\PFLeaderboard.cpp" />
     <ClInclude Include="$(PlayFabSourceDir)\include\playfab\PFSegmentsDataModels.h" />
     <ClInclude Include="$(PlayFabSourceDir)\include\playfab\cpp\PFSegmentsDataModelWrappers.h" />
     <ClInclude Include="$(PlayFabSourceDir)\source\Segments\SegmentsDataModels.h" />
@@ -284,6 +285,14 @@
     <ClCompile Include="$(PlayFabSourceDir)\source\CloudScript\CloudScript.cpp" />
     <ClInclude Include="$(PlayFabSourceDir)\include\playfab\PFCloudScript.h" />
     <ClCompile Include="$(PlayFabSourceDir)\source\CloudScript\PFCloudScript.cpp" />
+    <ClInclude Include="$(PlayFabSourceDir)\include\playfab\PFPlayerDataManagementDataModels.h" />
+    <ClInclude Include="$(PlayFabSourceDir)\include\playfab\cpp\PFPlayerDataManagementDataModelWrappers.h" />
+    <ClInclude Include="$(PlayFabSourceDir)\source\PlayerDataManagement\PlayerDataManagementDataModels.h" />
+    <ClCompile Include="$(PlayFabSourceDir)\source\PlayerDataManagement\PlayerDataManagementDataModels.cpp" />
+    <ClInclude Include="$(PlayFabSourceDir)\source\PlayerDataManagement\PlayerDataManagement.h" />
+    <ClCompile Include="$(PlayFabSourceDir)\source\PlayerDataManagement\PlayerDataManagement.cpp" />
+    <ClInclude Include="$(PlayFabSourceDir)\include\playfab\PFPlayerDataManagement.h" />
+    <ClCompile Include="$(PlayFabSourceDir)\source\PlayerDataManagement\PFPlayerDataManagement.cpp" />
     <ClInclude Include="$(PlayFabSourceDir)\include\playfab\PFMatchmakingDataModels.h" />
     <ClInclude Include="$(PlayFabSourceDir)\include\playfab\cpp\PFMatchmakingDataModelWrappers.h" />
     <ClInclude Include="$(PlayFabSourceDir)\source\Matchmaking\MatchmakingDataModels.h" />
@@ -292,6 +301,14 @@
     <ClCompile Include="$(PlayFabSourceDir)\source\Matchmaking\Matchmaking.cpp" />
     <ClInclude Include="$(PlayFabSourceDir)\include\playfab\PFMatchmaking.h" />
     <ClCompile Include="$(PlayFabSourceDir)\source\Matchmaking\PFMatchmaking.cpp" />
+    <ClInclude Include="$(PlayFabSourceDir)\include\playfab\PFEconomyDataModels.h" />
+    <ClInclude Include="$(PlayFabSourceDir)\include\playfab\cpp\PFEconomyDataModelWrappers.h" />
+    <ClInclude Include="$(PlayFabSourceDir)\source\Economy\EconomyDataModels.h" />
+    <ClCompile Include="$(PlayFabSourceDir)\source\Economy\EconomyDataModels.cpp" />
+    <ClInclude Include="$(PlayFabSourceDir)\source\Economy\Economy.h" />
+    <ClCompile Include="$(PlayFabSourceDir)\source\Economy\Economy.cpp" />
+    <ClInclude Include="$(PlayFabSourceDir)\include\playfab\PFEconomy.h" />
+    <ClCompile Include="$(PlayFabSourceDir)\source\Economy\PFEconomy.cpp" />
     <ClInclude Include="$(PlayFabSourceDir)\include\playfab\PFCharacterDataModels.h" />
     <ClInclude Include="$(PlayFabSourceDir)\include\playfab\cpp\PFCharacterDataModelWrappers.h" />
     <ClInclude Include="$(PlayFabSourceDir)\source\Character\CharacterDataModels.h" />
@@ -348,6 +365,14 @@
     <ClCompile Include="$(PlayFabSourceDir)\source\Analytics\Analytics.cpp" />
     <ClInclude Include="$(PlayFabSourceDir)\include\playfab\PFAnalytics.h" />
     <ClCompile Include="$(PlayFabSourceDir)\source\Analytics\PFAnalytics.cpp" />
+    <ClInclude Include="$(PlayFabSourceDir)\include\playfab\PFPushNotificationsDataModels.h" />
+    <ClInclude Include="$(PlayFabSourceDir)\include\playfab\cpp\PFPushNotificationsDataModelWrappers.h" />
+    <ClInclude Include="$(PlayFabSourceDir)\source\PushNotifications\PushNotificationsDataModels.h" />
+    <ClCompile Include="$(PlayFabSourceDir)\source\PushNotifications\PushNotificationsDataModels.cpp" />
+    <ClInclude Include="$(PlayFabSourceDir)\source\PushNotifications\PushNotifications.h" />
+    <ClCompile Include="$(PlayFabSourceDir)\source\PushNotifications\PushNotifications.cpp" />
+    <ClInclude Include="$(PlayFabSourceDir)\include\playfab\PFPushNotifications.h" />
+    <ClCompile Include="$(PlayFabSourceDir)\source\PushNotifications\PFPushNotifications.cpp" />
     <ClInclude Include="$(PlayFabSourceDir)\include\playfab\PFDataDataModels.h" />
     <ClInclude Include="$(PlayFabSourceDir)\include\playfab\cpp\PFDataDataModelWrappers.h" />
     <ClInclude Include="$(PlayFabSourceDir)\source\Data\DataDataModels.h" />
