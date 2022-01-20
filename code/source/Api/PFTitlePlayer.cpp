@@ -63,7 +63,11 @@ HRESULT PFTitlePlayerGetPlayFabId(
         return E_INVALIDARG;
     }
 
+#if HC_PLATFORM_IS_MICROSOFT
+    strcpy_s(playFabIdBuffer, playFabIdSize, playFabId.data());
+#else
     std::strcpy(playFabIdBuffer, playFabId.data());
+#endif
     if (playFabIdUsed)
     {
         *playFabIdUsed = playFabId.size() + 1;
@@ -94,7 +98,7 @@ HRESULT PFTitlePlayerGetCachedSessionTicketSize(
 HRESULT PFTitlePlayerGetCachedSessionTicket(
     _In_ PFTitlePlayerHandle titlePlayerHandle,
     _In_ size_t sessionTicketBufferSize,
-    _Out_writes_bytes_to_opt_(sessionTicketSize, *bufferUsed) char* sessionTicketBuffer,
+    _Out_writes_bytes_to_opt_(sessionTicketBufferSize, *bufferUsed) char* sessionTicketBuffer,
     _Out_opt_ size_t* bufferUsed
 ) noexcept
 {
@@ -113,7 +117,11 @@ HRESULT PFTitlePlayerGetCachedSessionTicket(
         return E_INVALIDARG;
     }
 
+#if HC_PLATFORM_IS_MICROSOFT
+    strcpy_s(sessionTicketBuffer, sessionTicketBufferSize, sessionTicket->data());
+#else
     std::strcpy(sessionTicketBuffer, sessionTicket->data());
+#endif
     if (bufferUsed)
     {
         *bufferUsed = sessionTicket->size() + 1;

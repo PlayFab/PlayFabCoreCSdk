@@ -56,10 +56,6 @@ void BanInfo::FromJson(const JsonValue& input)
     JsonUtils::ObjectGetMember(input, "IPAddress", IPAddress);
     this->SetIPAddress(std::move(IPAddress));
 
-    String MACAddress{};
-    JsonUtils::ObjectGetMember(input, "MACAddress", MACAddress);
-    this->SetMACAddress(std::move(MACAddress));
-
     String playFabId{};
     JsonUtils::ObjectGetMember(input, "PlayFabId", playFabId);
     this->SetPlayFabId(std::move(playFabId));
@@ -98,10 +94,6 @@ size_t BanInfo::RequiredBufferSize(const PFAccountManagementBanInfo& model)
     {
         requiredSize += (std::strlen(model.IPAddress) + 1);
     }
-    if (model.MACAddress)
-    {
-        requiredSize += (std::strlen(model.MACAddress) + 1);
-    }
     if (model.playFabId)
     {
         requiredSize += (std::strlen(model.playFabId) + 1);
@@ -135,11 +127,6 @@ HRESULT BanInfo::Copy(const PFAccountManagementBanInfo& input, PFAccountManageme
         auto propCopyResult = buffer.CopyTo(input.IPAddress); 
         RETURN_IF_FAILED(propCopyResult.hr);
         output.IPAddress = propCopyResult.ExtractPayload();
-    }
-    {
-        auto propCopyResult = buffer.CopyTo(input.MACAddress); 
-        RETURN_IF_FAILED(propCopyResult.hr);
-        output.MACAddress = propCopyResult.ExtractPayload();
     }
     {
         auto propCopyResult = buffer.CopyTo(input.playFabId); 
@@ -1059,6 +1046,74 @@ HRESULT GetAccountInfoResult::Copy(const PFAccountManagementGetAccountInfoResult
         auto propCopyResult = buffer.CopyTo<UserAccountInfo>(input.accountInfo); 
         RETURN_IF_FAILED(propCopyResult.hr);
         output.accountInfo = propCopyResult.ExtractPayload();
+    }
+    return S_OK;
+}
+
+JsonValue GetPlayerCombinedInfoRequest::ToJson() const
+{
+    return GetPlayerCombinedInfoRequest::ToJson(this->Model());
+}
+
+JsonValue GetPlayerCombinedInfoRequest::ToJson(const PFAccountManagementGetPlayerCombinedInfoRequest& input)
+{
+    JsonValue output{ rapidjson::kObjectType };
+    JsonUtils::ObjectAddMemberDictionary(output, "CustomTags", input.customTags, input.customTagsCount);
+    JsonUtils::ObjectAddMember<GetPlayerCombinedInfoRequestParams>(output, "InfoRequestParameters", input.infoRequestParameters);
+    JsonUtils::ObjectAddMember(output, "PlayFabId", input.playFabId);
+    return output;
+}
+
+void GetPlayerCombinedInfoResult::FromJson(const JsonValue& input)
+{
+    StdExtra::optional<GetPlayerCombinedInfoResultPayload> infoResultPayload{};
+    JsonUtils::ObjectGetMember(input, "InfoResultPayload", infoResultPayload);
+    if (infoResultPayload)
+    {
+        this->SetInfoResultPayload(std::move(*infoResultPayload));
+    }
+
+    String playFabId{};
+    JsonUtils::ObjectGetMember(input, "PlayFabId", playFabId);
+    this->SetPlayFabId(std::move(playFabId));
+}
+
+size_t GetPlayerCombinedInfoResult::RequiredBufferSize() const
+{
+    return RequiredBufferSize(this->Model());
+}
+
+Result<PFAccountManagementGetPlayerCombinedInfoResult const*> GetPlayerCombinedInfoResult::Copy(ModelBuffer& buffer) const
+{
+    return buffer.CopyTo<GetPlayerCombinedInfoResult>(&this->Model());
+}
+
+size_t GetPlayerCombinedInfoResult::RequiredBufferSize(const PFAccountManagementGetPlayerCombinedInfoResult& model)
+{
+    size_t requiredSize{ alignof(ModelType) + sizeof(ModelType) };
+    if (model.infoResultPayload)
+    {
+        requiredSize += GetPlayerCombinedInfoResultPayload::RequiredBufferSize(*model.infoResultPayload);
+    }
+    if (model.playFabId)
+    {
+        requiredSize += (std::strlen(model.playFabId) + 1);
+    }
+    return requiredSize;
+}
+
+HRESULT GetPlayerCombinedInfoResult::Copy(const PFAccountManagementGetPlayerCombinedInfoResult& input, PFAccountManagementGetPlayerCombinedInfoResult& output, ModelBuffer& buffer)
+{
+    output = input;
+    {
+        auto propCopyResult = buffer.CopyTo<GetPlayerCombinedInfoResultPayload>(input.infoResultPayload); 
+        RETURN_IF_FAILED(propCopyResult.hr);
+        output.infoResultPayload = propCopyResult.ExtractPayload();
+    }
+    {
+        auto propCopyResult = buffer.CopyTo(input.playFabId); 
+        RETURN_IF_FAILED(propCopyResult.hr);
+        output.playFabId = propCopyResult.ExtractPayload();
     }
     return S_OK;
 }
@@ -2744,18 +2799,6 @@ JsonValue ServerAddGenericIDRequest::ToJson(const PFAccountManagementServerAddGe
     return output;
 }
 
-JsonValue DeletePushNotificationTemplateRequest::ToJson() const
-{
-    return DeletePushNotificationTemplateRequest::ToJson(this->Model());
-}
-
-JsonValue DeletePushNotificationTemplateRequest::ToJson(const PFAccountManagementDeletePushNotificationTemplateRequest& input)
-{
-    JsonValue output{ rapidjson::kObjectType };
-    JsonUtils::ObjectAddMember(output, "PushNotificationTemplateId", input.pushNotificationTemplateId);
-    return output;
-}
-
 JsonValue GetServerCustomIDsFromPlayFabIDsRequest::ToJson() const
 {
     return GetServerCustomIDsFromPlayFabIDsRequest::ToJson(this->Model());
@@ -2971,73 +3014,6 @@ JsonValue ServerRemoveGenericIDRequest::ToJson(const PFAccountManagementServerRe
     return output;
 }
 
-JsonValue LocalizedPushNotificationProperties::ToJson() const
-{
-    return LocalizedPushNotificationProperties::ToJson(this->Model());
-}
-
-JsonValue LocalizedPushNotificationProperties::ToJson(const PFAccountManagementLocalizedPushNotificationProperties& input)
-{
-    JsonValue output{ rapidjson::kObjectType };
-    JsonUtils::ObjectAddMember(output, "Message", input.message);
-    JsonUtils::ObjectAddMember(output, "Subject", input.subject);
-    return output;
-}
-
-JsonValue SavePushNotificationTemplateRequest::ToJson() const
-{
-    return SavePushNotificationTemplateRequest::ToJson(this->Model());
-}
-
-JsonValue SavePushNotificationTemplateRequest::ToJson(const PFAccountManagementSavePushNotificationTemplateRequest& input)
-{
-    JsonValue output{ rapidjson::kObjectType };
-    JsonUtils::ObjectAddMember(output, "AndroidPayload", input.androidPayload);
-    JsonUtils::ObjectAddMember(output, "Id", input.id);
-    JsonUtils::ObjectAddMember(output, "IOSPayload", input.iOSPayload);
-    JsonUtils::ObjectAddMemberDictionary<LocalizedPushNotificationProperties>(output, "LocalizedPushNotificationTemplates", input.localizedPushNotificationTemplates, input.localizedPushNotificationTemplatesCount);
-    JsonUtils::ObjectAddMember(output, "Name", input.name);
-    return output;
-}
-
-void SavePushNotificationTemplateResult::FromJson(const JsonValue& input)
-{
-    String pushNotificationTemplateId{};
-    JsonUtils::ObjectGetMember(input, "PushNotificationTemplateId", pushNotificationTemplateId);
-    this->SetPushNotificationTemplateId(std::move(pushNotificationTemplateId));
-}
-
-size_t SavePushNotificationTemplateResult::RequiredBufferSize() const
-{
-    return RequiredBufferSize(this->Model());
-}
-
-Result<PFAccountManagementSavePushNotificationTemplateResult const*> SavePushNotificationTemplateResult::Copy(ModelBuffer& buffer) const
-{
-    return buffer.CopyTo<SavePushNotificationTemplateResult>(&this->Model());
-}
-
-size_t SavePushNotificationTemplateResult::RequiredBufferSize(const PFAccountManagementSavePushNotificationTemplateResult& model)
-{
-    size_t requiredSize{ alignof(ModelType) + sizeof(ModelType) };
-    if (model.pushNotificationTemplateId)
-    {
-        requiredSize += (std::strlen(model.pushNotificationTemplateId) + 1);
-    }
-    return requiredSize;
-}
-
-HRESULT SavePushNotificationTemplateResult::Copy(const PFAccountManagementSavePushNotificationTemplateResult& input, PFAccountManagementSavePushNotificationTemplateResult& output, ModelBuffer& buffer)
-{
-    output = input;
-    {
-        auto propCopyResult = buffer.CopyTo(input.pushNotificationTemplateId); 
-        RETURN_IF_FAILED(propCopyResult.hr);
-        output.pushNotificationTemplateId = propCopyResult.ExtractPayload();
-    }
-    return S_OK;
-}
-
 JsonValue SendCustomAccountRecoveryEmailRequest::ToJson() const
 {
     return SendCustomAccountRecoveryEmailRequest::ToJson(this->Model());
@@ -3064,69 +3040,6 @@ JsonValue SendEmailFromTemplateRequest::ToJson(const PFAccountManagementSendEmai
     JsonUtils::ObjectAddMemberDictionary(output, "CustomTags", input.customTags, input.customTagsCount);
     JsonUtils::ObjectAddMember(output, "EmailTemplateId", input.emailTemplateId);
     JsonUtils::ObjectAddMember(output, "PlayFabId", input.playFabId);
-    return output;
-}
-
-JsonValue AdvancedPushPlatformMsg::ToJson() const
-{
-    return AdvancedPushPlatformMsg::ToJson(this->Model());
-}
-
-JsonValue AdvancedPushPlatformMsg::ToJson(const PFAccountManagementAdvancedPushPlatformMsg& input)
-{
-    JsonValue output{ rapidjson::kObjectType };
-    JsonUtils::ObjectAddMember(output, "GCMDataOnly", input.gCMDataOnly);
-    JsonUtils::ObjectAddMember(output, "Json", input.json);
-    JsonUtils::ObjectAddMember(output, "Platform", input.platform);
-    return output;
-}
-
-JsonValue PushNotificationPackage::ToJson() const
-{
-    return PushNotificationPackage::ToJson(this->Model());
-}
-
-JsonValue PushNotificationPackage::ToJson(const PFAccountManagementPushNotificationPackage& input)
-{
-    JsonValue output{ rapidjson::kObjectType };
-    JsonUtils::ObjectAddMember(output, "Badge", input.badge);
-    JsonUtils::ObjectAddMember(output, "CustomData", input.customData);
-    JsonUtils::ObjectAddMember(output, "Icon", input.icon);
-    JsonUtils::ObjectAddMember(output, "Message", input.message);
-    JsonUtils::ObjectAddMember(output, "Sound", input.sound);
-    JsonUtils::ObjectAddMember(output, "Title", input.title);
-    return output;
-}
-
-JsonValue SendPushNotificationRequest::ToJson() const
-{
-    return SendPushNotificationRequest::ToJson(this->Model());
-}
-
-JsonValue SendPushNotificationRequest::ToJson(const PFAccountManagementSendPushNotificationRequest& input)
-{
-    JsonValue output{ rapidjson::kObjectType };
-    JsonUtils::ObjectAddMemberArray<AdvancedPushPlatformMsg>(output, "AdvancedPlatformDelivery", input.advancedPlatformDelivery, input.advancedPlatformDeliveryCount);
-    JsonUtils::ObjectAddMemberDictionary(output, "CustomTags", input.customTags, input.customTagsCount);
-    JsonUtils::ObjectAddMember(output, "Message", input.message);
-    JsonUtils::ObjectAddMember<PushNotificationPackage>(output, "Package", input.package);
-    JsonUtils::ObjectAddMember(output, "Recipient", input.recipient);
-    JsonUtils::ObjectAddMember(output, "Subject", input.subject);
-    JsonUtils::ObjectAddMemberArray(output, "TargetPlatforms", input.targetPlatforms, input.targetPlatformsCount);
-    return output;
-}
-
-JsonValue SendPushNotificationFromTemplateRequest::ToJson() const
-{
-    return SendPushNotificationFromTemplateRequest::ToJson(this->Model());
-}
-
-JsonValue SendPushNotificationFromTemplateRequest::ToJson(const PFAccountManagementSendPushNotificationFromTemplateRequest& input)
-{
-    JsonValue output{ rapidjson::kObjectType };
-    JsonUtils::ObjectAddMemberDictionary(output, "CustomTags", input.customTags, input.customTagsCount);
-    JsonUtils::ObjectAddMember(output, "PushNotificationTemplateId", input.pushNotificationTemplateId);
-    JsonUtils::ObjectAddMember(output, "Recipient", input.recipient);
     return output;
 }
 

@@ -21,7 +21,7 @@ void AutoGenMultiplayerServerTests::Log(std::stringstream& ss)
 
 HRESULT AutoGenMultiplayerServerTests::LogHR(HRESULT hr)
 {
-    if( TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    if (TestApp::ShouldTrace(PFTestTraceLevel::Information))
     {
         TestApp::Log("Result: 0x%0.8x", hr);
     }
@@ -213,7 +213,7 @@ void AutoGenMultiplayerServerTests::AddTests()
 
 void AutoGenMultiplayerServerTests::ClassSetUp()
 {
-    HRESULT hr = PFAdminInitialize(testTitleData.titleId.data(), testTitleData.developerSecretKey.data(), nullptr, &stateHandle);
+    HRESULT hr = PFAdminInitialize(testTitleData.titleId.data(), testTitleData.developerSecretKey.data(), testTitleData.connectionString.data(), nullptr, &stateHandle);
     assert(SUCCEEDED(hr));
     if (SUCCEEDED(hr))
     {
@@ -331,13 +331,13 @@ void AutoGenMultiplayerServerTests::TestMultiplayerServerCreateBuildAlias(TestCo
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFMultiplayerServerCreateBuildAliasGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
             
-            LogPFMultiplayerServerBuildAliasDetailsResponse(result);
+            LogBuildAliasDetailsResponse(result);
             return S_OK;
         }
 
         HRESULT Validate() override
         {
-            return ValidatePFMultiplayerServerBuildAliasDetailsResponse(result);
+            return ValidateCreateBuildAliasResponse(result);
         }
     };
     auto async = std::make_unique<XAsyncHelper<CreateBuildAliasResultHolderStruct>>(testContext);
@@ -372,13 +372,13 @@ void AutoGenMultiplayerServerTests::TestMultiplayerServerCreateBuildWithCustomCo
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFMultiplayerServerCreateBuildWithCustomContainerGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
             
-            LogPFMultiplayerServerCreateBuildWithCustomContainerResponse(result);
+            LogCreateBuildWithCustomContainerResponse(result);
             return S_OK;
         }
 
         HRESULT Validate() override
         {
-            return ValidatePFMultiplayerServerCreateBuildWithCustomContainerResponse(result);
+            return ValidateCreateBuildWithCustomContainerResponse(result);
         }
     };
     auto async = std::make_unique<XAsyncHelper<CreateBuildWithCustomContainerResultHolderStruct>>(testContext);
@@ -413,13 +413,13 @@ void AutoGenMultiplayerServerTests::TestMultiplayerServerCreateBuildWithManagedC
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFMultiplayerServerCreateBuildWithManagedContainerGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
             
-            LogPFMultiplayerServerCreateBuildWithManagedContainerResponse(result);
+            LogCreateBuildWithManagedContainerResponse(result);
             return S_OK;
         }
 
         HRESULT Validate() override
         {
-            return ValidatePFMultiplayerServerCreateBuildWithManagedContainerResponse(result);
+            return ValidateCreateBuildWithManagedContainerResponse(result);
         }
     };
     auto async = std::make_unique<XAsyncHelper<CreateBuildWithManagedContainerResultHolderStruct>>(testContext);
@@ -454,13 +454,13 @@ void AutoGenMultiplayerServerTests::TestMultiplayerServerCreateBuildWithProcessB
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFMultiplayerServerCreateBuildWithProcessBasedServerGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
             
-            LogPFMultiplayerServerCreateBuildWithProcessBasedServerResponse(result);
+            LogCreateBuildWithProcessBasedServerResponse(result);
             return S_OK;
         }
 
         HRESULT Validate() override
         {
-            return ValidatePFMultiplayerServerCreateBuildWithProcessBasedServerResponse(result);
+            return ValidateCreateBuildWithProcessBasedServerResponse(result);
         }
     };
     auto async = std::make_unique<XAsyncHelper<CreateBuildWithProcessBasedServerResultHolderStruct>>(testContext);
@@ -495,13 +495,13 @@ void AutoGenMultiplayerServerTests::TestMultiplayerServerCreateRemoteUser(TestCo
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFMultiplayerServerCreateRemoteUserGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
             
-            LogPFMultiplayerServerCreateRemoteUserResponse(result);
+            LogCreateRemoteUserResponse(result);
             return S_OK;
         }
 
         HRESULT Validate() override
         {
-            return ValidatePFMultiplayerServerCreateRemoteUserResponse(result);
+            return ValidateCreateRemoteUserResponse(result);
         }
     };
     auto async = std::make_unique<XAsyncHelper<CreateRemoteUserResultHolderStruct>>(testContext);
@@ -536,13 +536,13 @@ void AutoGenMultiplayerServerTests::TestMultiplayerServerCreateTitleMultiplayerS
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFMultiplayerServerCreateTitleMultiplayerServersQuotaChangeGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
             
-            LogPFMultiplayerServerCreateTitleMultiplayerServersQuotaChangeResponse(result);
+            LogCreateTitleMultiplayerServersQuotaChangeResponse(result);
             return S_OK;
         }
 
         HRESULT Validate() override
         {
-            return ValidatePFMultiplayerServerCreateTitleMultiplayerServersQuotaChangeResponse(result);
+            return ValidateCreateTitleMultiplayerServersQuotaChangeResponse(result);
         }
     };
     auto async = std::make_unique<XAsyncHelper<CreateTitleMultiplayerServersQuotaChangeResultHolderStruct>>(testContext);
@@ -680,7 +680,7 @@ void AutoGenMultiplayerServerTests::TestMultiplayerServerDeleteContainerImageRep
     auto async = std::make_unique<XAsyncHelper<XAsyncResult>>(testContext);
 
     PFMultiplayerServerDeleteContainerImageRequestWrapper<> request;
-    FillDeleteContainerImageRequest(request);
+    FillDeleteContainerImageRepositoryRequest(request);
     LogDeleteContainerImageRequest(&request.Model(), "TestMultiplayerServerDeleteContainerImageRepository");
     HRESULT hr = PFMultiplayerServerDeleteContainerImageRepositoryAsync(entityHandle, &request.Model(), &async->asyncBlock);
     if (FAILED(hr))
@@ -731,13 +731,13 @@ void AutoGenMultiplayerServerTests::TestMultiplayerServerEnableMultiplayerServer
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFMultiplayerServerEnableMultiplayerServersForTitleGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
             
-            LogPFMultiplayerServerEnableMultiplayerServersForTitleResponse(result);
+            LogEnableMultiplayerServersForTitleResponse(result);
             return S_OK;
         }
 
         HRESULT Validate() override
         {
-            return ValidatePFMultiplayerServerEnableMultiplayerServersForTitleResponse(result);
+            return ValidateEnableMultiplayerServersForTitleResponse(result);
         }
     };
     auto async = std::make_unique<XAsyncHelper<EnableMultiplayerServersForTitleResultHolderStruct>>(testContext);
@@ -771,13 +771,13 @@ void AutoGenMultiplayerServerTests::TestMultiplayerServerGetAssetDownloadUrl(Tes
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFMultiplayerServerGetAssetDownloadUrlGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
             
-            LogPFMultiplayerServerGetAssetDownloadUrlResponse(result);
+            LogGetAssetDownloadUrlResponse(result);
             return S_OK;
         }
 
         HRESULT Validate() override
         {
-            return ValidatePFMultiplayerServerGetAssetDownloadUrlResponse(result);
+            return ValidateGetAssetDownloadUrlResponse(result);
         }
     };
     auto async = std::make_unique<XAsyncHelper<GetAssetDownloadUrlResultHolderStruct>>(testContext);
@@ -811,13 +811,13 @@ void AutoGenMultiplayerServerTests::TestMultiplayerServerGetAssetUploadUrl(TestC
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFMultiplayerServerGetAssetUploadUrlGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
             
-            LogPFMultiplayerServerGetAssetUploadUrlResponse(result);
+            LogGetAssetUploadUrlResponse(result);
             return S_OK;
         }
 
         HRESULT Validate() override
         {
-            return ValidatePFMultiplayerServerGetAssetUploadUrlResponse(result);
+            return ValidateGetAssetUploadUrlResponse(result);
         }
     };
     auto async = std::make_unique<XAsyncHelper<GetAssetUploadUrlResultHolderStruct>>(testContext);
@@ -852,13 +852,13 @@ void AutoGenMultiplayerServerTests::TestMultiplayerServerGetBuild(TestContext& t
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFMultiplayerServerGetBuildGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
             
-            LogPFMultiplayerServerGetBuildResponse(result);
+            LogGetBuildResponse(result);
             return S_OK;
         }
 
         HRESULT Validate() override
         {
-            return ValidatePFMultiplayerServerGetBuildResponse(result);
+            return ValidateGetBuildResponse(result);
         }
     };
     auto async = std::make_unique<XAsyncHelper<GetBuildResultHolderStruct>>(testContext);
@@ -893,13 +893,13 @@ void AutoGenMultiplayerServerTests::TestMultiplayerServerGetBuildAlias(TestConte
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFMultiplayerServerGetBuildAliasGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
             
-            LogPFMultiplayerServerBuildAliasDetailsResponse(result);
+            LogBuildAliasDetailsResponse(result);
             return S_OK;
         }
 
         HRESULT Validate() override
         {
-            return ValidatePFMultiplayerServerBuildAliasDetailsResponse(result);
+            return ValidateGetBuildAliasResponse(result);
         }
     };
     auto async = std::make_unique<XAsyncHelper<GetBuildAliasResultHolderStruct>>(testContext);
@@ -934,13 +934,13 @@ void AutoGenMultiplayerServerTests::TestMultiplayerServerGetContainerRegistryCre
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFMultiplayerServerGetContainerRegistryCredentialsGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
             
-            LogPFMultiplayerServerGetContainerRegistryCredentialsResponse(result);
+            LogGetContainerRegistryCredentialsResponse(result);
             return S_OK;
         }
 
         HRESULT Validate() override
         {
-            return ValidatePFMultiplayerServerGetContainerRegistryCredentialsResponse(result);
+            return ValidateGetContainerRegistryCredentialsResponse(result);
         }
     };
     auto async = std::make_unique<XAsyncHelper<GetContainerRegistryCredentialsResultHolderStruct>>(testContext);
@@ -975,13 +975,13 @@ void AutoGenMultiplayerServerTests::TestMultiplayerServerGetMultiplayerServerDet
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFMultiplayerServerGetMultiplayerServerDetailsGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
             
-            LogPFMultiplayerServerGetMultiplayerServerDetailsResponse(result);
+            LogGetMultiplayerServerDetailsResponse(result);
             return S_OK;
         }
 
         HRESULT Validate() override
         {
-            return ValidatePFMultiplayerServerGetMultiplayerServerDetailsResponse(result);
+            return ValidateGetMultiplayerServerDetailsResponse(result);
         }
     };
     auto async = std::make_unique<XAsyncHelper<GetMultiplayerServerDetailsResultHolderStruct>>(testContext);
@@ -1016,13 +1016,13 @@ void AutoGenMultiplayerServerTests::TestMultiplayerServerGetMultiplayerServerLog
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFMultiplayerServerGetMultiplayerServerLogsGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
             
-            LogPFMultiplayerServerGetMultiplayerServerLogsResponse(result);
+            LogGetMultiplayerServerLogsResponse(result);
             return S_OK;
         }
 
         HRESULT Validate() override
         {
-            return ValidatePFMultiplayerServerGetMultiplayerServerLogsResponse(result);
+            return ValidateGetMultiplayerServerLogsResponse(result);
         }
     };
     auto async = std::make_unique<XAsyncHelper<GetMultiplayerServerLogsResultHolderStruct>>(testContext);
@@ -1057,13 +1057,13 @@ void AutoGenMultiplayerServerTests::TestMultiplayerServerGetMultiplayerSessionLo
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFMultiplayerServerGetMultiplayerSessionLogsBySessionIdGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
             
-            LogPFMultiplayerServerGetMultiplayerServerLogsResponse(result);
+            LogGetMultiplayerServerLogsResponse(result);
             return S_OK;
         }
 
         HRESULT Validate() override
         {
-            return ValidatePFMultiplayerServerGetMultiplayerServerLogsResponse(result);
+            return ValidateGetMultiplayerSessionLogsBySessionIdResponse(result);
         }
     };
     auto async = std::make_unique<XAsyncHelper<GetMultiplayerSessionLogsBySessionIdResultHolderStruct>>(testContext);
@@ -1098,13 +1098,13 @@ void AutoGenMultiplayerServerTests::TestMultiplayerServerGetRemoteLoginEndpoint(
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFMultiplayerServerGetRemoteLoginEndpointGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
             
-            LogPFMultiplayerServerGetRemoteLoginEndpointResponse(result);
+            LogGetRemoteLoginEndpointResponse(result);
             return S_OK;
         }
 
         HRESULT Validate() override
         {
-            return ValidatePFMultiplayerServerGetRemoteLoginEndpointResponse(result);
+            return ValidateGetRemoteLoginEndpointResponse(result);
         }
     };
     auto async = std::make_unique<XAsyncHelper<GetRemoteLoginEndpointResultHolderStruct>>(testContext);
@@ -1139,13 +1139,13 @@ void AutoGenMultiplayerServerTests::TestMultiplayerServerGetTitleEnabledForMulti
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFMultiplayerServerGetTitleEnabledForMultiplayerServersStatusGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
             
-            LogPFMultiplayerServerGetTitleEnabledForMultiplayerServersStatusResponse(result);
+            LogGetTitleEnabledForMultiplayerServersStatusResponse(result);
             return S_OK;
         }
 
         HRESULT Validate() override
         {
-            return ValidatePFMultiplayerServerGetTitleEnabledForMultiplayerServersStatusResponse(result);
+            return ValidateGetTitleEnabledForMultiplayerServersStatusResponse(result);
         }
     };
     auto async = std::make_unique<XAsyncHelper<GetTitleEnabledForMultiplayerServersStatusResultHolderStruct>>(testContext);
@@ -1180,13 +1180,13 @@ void AutoGenMultiplayerServerTests::TestMultiplayerServerGetTitleMultiplayerServ
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFMultiplayerServerGetTitleMultiplayerServersQuotaChangeGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
             
-            LogPFMultiplayerServerGetTitleMultiplayerServersQuotaChangeResponse(result);
+            LogGetTitleMultiplayerServersQuotaChangeResponse(result);
             return S_OK;
         }
 
         HRESULT Validate() override
         {
-            return ValidatePFMultiplayerServerGetTitleMultiplayerServersQuotaChangeResponse(result);
+            return ValidateGetTitleMultiplayerServersQuotaChangeResponse(result);
         }
     };
     auto async = std::make_unique<XAsyncHelper<GetTitleMultiplayerServersQuotaChangeResultHolderStruct>>(testContext);
@@ -1221,13 +1221,13 @@ void AutoGenMultiplayerServerTests::TestMultiplayerServerGetTitleMultiplayerServ
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFMultiplayerServerGetTitleMultiplayerServersQuotasGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
             
-            LogPFMultiplayerServerGetTitleMultiplayerServersQuotasResponse(result);
+            LogGetTitleMultiplayerServersQuotasResponse(result);
             return S_OK;
         }
 
         HRESULT Validate() override
         {
-            return ValidatePFMultiplayerServerGetTitleMultiplayerServersQuotasResponse(result);
+            return ValidateGetTitleMultiplayerServersQuotasResponse(result);
         }
     };
     auto async = std::make_unique<XAsyncHelper<GetTitleMultiplayerServersQuotasResultHolderStruct>>(testContext);
@@ -1262,19 +1262,19 @@ void AutoGenMultiplayerServerTests::TestMultiplayerServerListArchivedMultiplayer
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFMultiplayerServerListArchivedMultiplayerServersGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
             
-            LogPFMultiplayerServerListMultiplayerServersResponse(result);
+            LogListMultiplayerServersResponse(result);
             return S_OK;
         }
 
         HRESULT Validate() override
         {
-            return ValidatePFMultiplayerServerListMultiplayerServersResponse(result);
+            return ValidateListArchivedMultiplayerServersResponse(result);
         }
     };
     auto async = std::make_unique<XAsyncHelper<ListArchivedMultiplayerServersResultHolderStruct>>(testContext);
 
     PFMultiplayerServerListMultiplayerServersRequestWrapper<> request;
-    FillListMultiplayerServersRequest(request);
+    FillListArchivedMultiplayerServersRequest(request);
     LogListMultiplayerServersRequest(&request.Model(), "TestMultiplayerServerListArchivedMultiplayerServers");
     HRESULT hr = PFMultiplayerServerListArchivedMultiplayerServersAsync(entityHandle, &request.Model(), &async->asyncBlock);
     if (FAILED(hr))
@@ -1303,13 +1303,13 @@ void AutoGenMultiplayerServerTests::TestMultiplayerServerListAssetSummaries(Test
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFMultiplayerServerListAssetSummariesGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
             
-            LogPFMultiplayerServerListAssetSummariesResponse(result);
+            LogListAssetSummariesResponse(result);
             return S_OK;
         }
 
         HRESULT Validate() override
         {
-            return ValidatePFMultiplayerServerListAssetSummariesResponse(result);
+            return ValidateListAssetSummariesResponse(result);
         }
     };
     auto async = std::make_unique<XAsyncHelper<ListAssetSummariesResultHolderStruct>>(testContext);
@@ -1344,13 +1344,13 @@ void AutoGenMultiplayerServerTests::TestMultiplayerServerListBuildAliases(TestCo
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFMultiplayerServerListBuildAliasesGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
             
-            LogPFMultiplayerServerListBuildAliasesResponse(result);
+            LogListBuildAliasesResponse(result);
             return S_OK;
         }
 
         HRESULT Validate() override
         {
-            return ValidatePFMultiplayerServerListBuildAliasesResponse(result);
+            return ValidateListBuildAliasesResponse(result);
         }
     };
     auto async = std::make_unique<XAsyncHelper<ListBuildAliasesResultHolderStruct>>(testContext);
@@ -1385,19 +1385,19 @@ void AutoGenMultiplayerServerTests::TestMultiplayerServerListBuildSummariesV2(Te
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFMultiplayerServerListBuildSummariesV2GetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
             
-            LogPFMultiplayerServerListBuildSummariesResponse(result);
+            LogListBuildSummariesResponse(result);
             return S_OK;
         }
 
         HRESULT Validate() override
         {
-            return ValidatePFMultiplayerServerListBuildSummariesResponse(result);
+            return ValidateListBuildSummariesV2Response(result);
         }
     };
     auto async = std::make_unique<XAsyncHelper<ListBuildSummariesV2ResultHolderStruct>>(testContext);
 
     PFMultiplayerServerListBuildSummariesRequestWrapper<> request;
-    FillListBuildSummariesRequest(request);
+    FillListBuildSummariesV2Request(request);
     LogListBuildSummariesRequest(&request.Model(), "TestMultiplayerServerListBuildSummariesV2");
     HRESULT hr = PFMultiplayerServerListBuildSummariesV2Async(entityHandle, &request.Model(), &async->asyncBlock);
     if (FAILED(hr))
@@ -1426,13 +1426,13 @@ void AutoGenMultiplayerServerTests::TestMultiplayerServerListCertificateSummarie
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFMultiplayerServerListCertificateSummariesGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
             
-            LogPFMultiplayerServerListCertificateSummariesResponse(result);
+            LogListCertificateSummariesResponse(result);
             return S_OK;
         }
 
         HRESULT Validate() override
         {
-            return ValidatePFMultiplayerServerListCertificateSummariesResponse(result);
+            return ValidateListCertificateSummariesResponse(result);
         }
     };
     auto async = std::make_unique<XAsyncHelper<ListCertificateSummariesResultHolderStruct>>(testContext);
@@ -1467,13 +1467,13 @@ void AutoGenMultiplayerServerTests::TestMultiplayerServerListContainerImages(Tes
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFMultiplayerServerListContainerImagesGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
             
-            LogPFMultiplayerServerListContainerImagesResponse(result);
+            LogListContainerImagesResponse(result);
             return S_OK;
         }
 
         HRESULT Validate() override
         {
-            return ValidatePFMultiplayerServerListContainerImagesResponse(result);
+            return ValidateListContainerImagesResponse(result);
         }
     };
     auto async = std::make_unique<XAsyncHelper<ListContainerImagesResultHolderStruct>>(testContext);
@@ -1508,13 +1508,13 @@ void AutoGenMultiplayerServerTests::TestMultiplayerServerListContainerImageTags(
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFMultiplayerServerListContainerImageTagsGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
             
-            LogPFMultiplayerServerListContainerImageTagsResponse(result);
+            LogListContainerImageTagsResponse(result);
             return S_OK;
         }
 
         HRESULT Validate() override
         {
-            return ValidatePFMultiplayerServerListContainerImageTagsResponse(result);
+            return ValidateListContainerImageTagsResponse(result);
         }
     };
     auto async = std::make_unique<XAsyncHelper<ListContainerImageTagsResultHolderStruct>>(testContext);
@@ -1549,13 +1549,13 @@ void AutoGenMultiplayerServerTests::TestMultiplayerServerListMultiplayerServers(
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFMultiplayerServerListMultiplayerServersGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
             
-            LogPFMultiplayerServerListMultiplayerServersResponse(result);
+            LogListMultiplayerServersResponse(result);
             return S_OK;
         }
 
         HRESULT Validate() override
         {
-            return ValidatePFMultiplayerServerListMultiplayerServersResponse(result);
+            return ValidateListMultiplayerServersResponse(result);
         }
     };
     auto async = std::make_unique<XAsyncHelper<ListMultiplayerServersResultHolderStruct>>(testContext);
@@ -1589,13 +1589,13 @@ void AutoGenMultiplayerServerTests::TestMultiplayerServerListPartyQosServers(Tes
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFMultiplayerServerListPartyQosServersGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
             
-            LogPFMultiplayerServerListPartyQosServersResponse(result);
+            LogListPartyQosServersResponse(result);
             return S_OK;
         }
 
         HRESULT Validate() override
         {
-            return ValidatePFMultiplayerServerListPartyQosServersResponse(result);
+            return ValidateListPartyQosServersResponse(result);
         }
     };
     auto async = std::make_unique<XAsyncHelper<ListPartyQosServersResultHolderStruct>>(testContext);
@@ -1628,13 +1628,13 @@ void AutoGenMultiplayerServerTests::TestMultiplayerServerListQosServersForTitle(
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFMultiplayerServerListQosServersForTitleGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
             
-            LogPFMultiplayerServerListQosServersForTitleResponse(result);
+            LogListQosServersForTitleResponse(result);
             return S_OK;
         }
 
         HRESULT Validate() override
         {
-            return ValidatePFMultiplayerServerListQosServersForTitleResponse(result);
+            return ValidateListQosServersForTitleResponse(result);
         }
     };
     auto async = std::make_unique<XAsyncHelper<ListQosServersForTitleResultHolderStruct>>(testContext);
@@ -1668,13 +1668,13 @@ void AutoGenMultiplayerServerTests::TestMultiplayerServerListTitleMultiplayerSer
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFMultiplayerServerListTitleMultiplayerServersQuotaChangesGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
             
-            LogPFMultiplayerServerListTitleMultiplayerServersQuotaChangesResponse(result);
+            LogListTitleMultiplayerServersQuotaChangesResponse(result);
             return S_OK;
         }
 
         HRESULT Validate() override
         {
-            return ValidatePFMultiplayerServerListTitleMultiplayerServersQuotaChangesResponse(result);
+            return ValidateListTitleMultiplayerServersQuotaChangesResponse(result);
         }
     };
     auto async = std::make_unique<XAsyncHelper<ListTitleMultiplayerServersQuotaChangesResultHolderStruct>>(testContext);
@@ -1709,13 +1709,13 @@ void AutoGenMultiplayerServerTests::TestMultiplayerServerListVirtualMachineSumma
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFMultiplayerServerListVirtualMachineSummariesGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
             
-            LogPFMultiplayerServerListVirtualMachineSummariesResponse(result);
+            LogListVirtualMachineSummariesResponse(result);
             return S_OK;
         }
 
         HRESULT Validate() override
         {
-            return ValidatePFMultiplayerServerListVirtualMachineSummariesResponse(result);
+            return ValidateListVirtualMachineSummariesResponse(result);
         }
     };
     auto async = std::make_unique<XAsyncHelper<ListVirtualMachineSummariesResultHolderStruct>>(testContext);
@@ -1749,13 +1749,13 @@ void AutoGenMultiplayerServerTests::TestMultiplayerServerRequestMultiplayerServe
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFMultiplayerServerRequestMultiplayerServerGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
             
-            LogPFMultiplayerServerRequestMultiplayerServerResponse(result);
+            LogRequestMultiplayerServerResponse(result);
             return S_OK;
         }
 
         HRESULT Validate() override
         {
-            return ValidatePFMultiplayerServerRequestMultiplayerServerResponse(result);
+            return ValidateRequestMultiplayerServerResponse(result);
         }
     };
     auto async = std::make_unique<XAsyncHelper<RequestMultiplayerServerResultHolderStruct>>(testContext);
@@ -1789,13 +1789,13 @@ void AutoGenMultiplayerServerTests::TestMultiplayerServerRolloverContainerRegist
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFMultiplayerServerRolloverContainerRegistryCredentialsGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
             
-            LogPFMultiplayerServerRolloverContainerRegistryCredentialsResponse(result);
+            LogRolloverContainerRegistryCredentialsResponse(result);
             return S_OK;
         }
 
         HRESULT Validate() override
         {
-            return ValidatePFMultiplayerServerRolloverContainerRegistryCredentialsResponse(result);
+            return ValidateRolloverContainerRegistryCredentialsResponse(result);
         }
     };
     auto async = std::make_unique<XAsyncHelper<RolloverContainerRegistryCredentialsResultHolderStruct>>(testContext);
@@ -1872,13 +1872,13 @@ void AutoGenMultiplayerServerTests::TestMultiplayerServerUpdateBuildAlias(TestCo
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFMultiplayerServerUpdateBuildAliasGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
             
-            LogPFMultiplayerServerBuildAliasDetailsResponse(result);
+            LogBuildAliasDetailsResponse(result);
             return S_OK;
         }
 
         HRESULT Validate() override
         {
-            return ValidatePFMultiplayerServerBuildAliasDetailsResponse(result);
+            return ValidateUpdateBuildAliasResponse(result);
         }
     };
     auto async = std::make_unique<XAsyncHelper<UpdateBuildAliasResultHolderStruct>>(testContext);

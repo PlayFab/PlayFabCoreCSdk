@@ -11,7 +11,7 @@ namespace PlayFabUnit
 
 void AutoGenExperimentationTests::LogCreateExclusionGroupRequest(PFExperimentationCreateExclusionGroupRequest const* request, const char* testName)
 {
-    if( !TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    if (!TestApp::ShouldTrace(PFTestTraceLevel::Information))
     {
         return;
     }
@@ -28,19 +28,19 @@ void AutoGenExperimentationTests::LogCreateExclusionGroupRequest(PFExperimentati
     ss << "  customTagsCount " << request->customTagsCount; Log(ss);
 
     // PFStringDictionaryEntry
-    for( uint32_t i=0; i<request->customTagsCount; i++ )
+    for (uint32_t i=0; i<request->customTagsCount; i++)
     {
             ss << "  request->customTags[" << i << "]:" << request->customTags[i].key << "=" << request->customTags[i].value; Log(ss);
             
     } 
-    if( request->description ) { ss << "  description " << request->description; Log(ss); } else { ss << "  description = nullptr"; Log(ss); } // Class: const char* 
-    if( request->name ) { ss << "  name " << request->name; Log(ss); } else { ss << "  name = nullptr"; Log(ss); } // Class: const char* 
+    if (request->description) { ss << "  description " << request->description; Log(ss); } else { ss << "  description = nullptr"; Log(ss); } // Class: const char* 
+    if (request->name) { ss << "  name " << request->name; Log(ss); } else { ss << "  name = nullptr"; Log(ss); } // Class: const char* 
 
 }
 
-HRESULT AutoGenExperimentationTests::LogPFExperimentationCreateExclusionGroupResult(PFExperimentationCreateExclusionGroupResult const* result)
+HRESULT AutoGenExperimentationTests::LogCreateExclusionGroupResult(PFExperimentationCreateExclusionGroupResult const* result)
 {
-    if( !TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    if (!TestApp::ShouldTrace(PFTestTraceLevel::Information))
     {
         return S_OK;
     }
@@ -49,13 +49,13 @@ HRESULT AutoGenExperimentationTests::LogPFExperimentationCreateExclusionGroupRes
     ss << "Response:"; Log(ss);
 
     // Found PlayFabExperimentationCreateExclusionGroupResult    
-    if( result->exclusionGroupId ) { ss << "  exclusionGroupId " << result->exclusionGroupId; Log(ss); } else { ss << "  exclusionGroupId = nullptr"; Log(ss); } // Class: const char* 
+    if (result->exclusionGroupId) { ss << "  exclusionGroupId " << result->exclusionGroupId; Log(ss); } else { ss << "  exclusionGroupId = nullptr"; Log(ss); } // Class: const char* 
     return S_OK;
 }
 
 void AutoGenExperimentationTests::LogCreateExperimentRequest(PFExperimentationCreateExperimentRequest const* request, const char* testName)
 {
-    if( !TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    if (!TestApp::ShouldTrace(PFTestTraceLevel::Information))
     {
         return;
     }
@@ -72,39 +72,39 @@ void AutoGenExperimentationTests::LogCreateExperimentRequest(PFExperimentationCr
     ss << "  customTagsCount " << request->customTagsCount; Log(ss);
 
     // PFStringDictionaryEntry
-    for( uint32_t i=0; i<request->customTagsCount; i++ )
+    for (uint32_t i=0; i<request->customTagsCount; i++)
     {
             ss << "  request->customTags[" << i << "]:" << request->customTags[i].key << "=" << request->customTags[i].value; Log(ss);
             
     } 
-    if( request->description ) { ss << "  description " << request->description; Log(ss); } else { ss << "  description = nullptr"; Log(ss); } // Class: const char* 
+    if (request->description) { ss << "  description " << request->description; Log(ss); } else { ss << "  description = nullptr"; Log(ss); } // Class: const char* 
     ss << "  endDate " << request->endDate; Log(ss); // Class: time_t 
-    if( request->exclusionGroupId ) { ss << "  exclusionGroupId " << request->exclusionGroupId; Log(ss); } else { ss << "  exclusionGroupId = nullptr"; Log(ss); } // Class: const char* 
+    if (request->exclusionGroupId) { ss << "  exclusionGroupId " << request->exclusionGroupId; Log(ss); } else { ss << "  exclusionGroupId = nullptr"; Log(ss); } // Class: const char* 
     ss << "  exclusionGroupTrafficAllocation " << request->exclusionGroupTrafficAllocation; Log(ss); // Class: uint32_t 
     ss << "  experimentType " << request->experimentType; Log(ss); // Class: PFExperimentationExperimentType 
-    if( request->name ) { ss << "  name " << request->name; Log(ss); } else { ss << "  name = nullptr"; Log(ss); } // Class: const char* 
-    if( request->segmentId ) { ss << "  segmentId " << request->segmentId; Log(ss); } else { ss << "  segmentId = nullptr"; Log(ss); } // Class: const char* 
+    if (request->name) { ss << "  name " << request->name; Log(ss); } else { ss << "  name = nullptr"; Log(ss); } // Class: const char* 
+    if (request->segmentId) { ss << "  segmentId " << request->segmentId; Log(ss); } else { ss << "  segmentId = nullptr"; Log(ss); } // Class: const char* 
     ss << "  startDate " << request->startDate; Log(ss); // Class: time_t     
     ss << "  titlePlayerAccountTestIdsCount " << request->titlePlayerAccountTestIdsCount; Log(ss);
 
     // const char*
-    for( uint32_t i=0; i<request->titlePlayerAccountTestIdsCount; i++ )
+    for (uint32_t i=0; i<request->titlePlayerAccountTestIdsCount; i++)
     {
             ss << "  request->titlePlayerAccountTestIds[" << i << "]:" << request->titlePlayerAccountTestIds[i]; Log(ss); // const char*
     }     
     ss << "  variantsCount " << request->variantsCount; Log(ss);
 
     // PFExperimentationVariant
-    for( uint32_t i=0; i<request->variantsCount; i++ )
+    for (uint32_t i=0; i<request->variantsCount; i++)
     {
             ss << "  request->variants[" << i << "]:" << request->variants[i]; Log(ss); // PFExperimentationVariant
     } 
 
 }
 
-HRESULT AutoGenExperimentationTests::LogPFExperimentationCreateExperimentResult(PFExperimentationCreateExperimentResult const* result)
+HRESULT AutoGenExperimentationTests::LogCreateExperimentResult(PFExperimentationCreateExperimentResult const* result)
 {
-    if( !TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    if (!TestApp::ShouldTrace(PFTestTraceLevel::Information))
     {
         return S_OK;
     }
@@ -113,13 +113,13 @@ HRESULT AutoGenExperimentationTests::LogPFExperimentationCreateExperimentResult(
     ss << "Response:"; Log(ss);
 
     // Found PlayFabExperimentationCreateExperimentResult    
-    if( result->experimentId ) { ss << "  experimentId " << result->experimentId; Log(ss); } else { ss << "  experimentId = nullptr"; Log(ss); } // Class: const char* 
+    if (result->experimentId) { ss << "  experimentId " << result->experimentId; Log(ss); } else { ss << "  experimentId = nullptr"; Log(ss); } // Class: const char* 
     return S_OK;
 }
 
 void AutoGenExperimentationTests::LogDeleteExclusionGroupRequest(PFExperimentationDeleteExclusionGroupRequest const* request, const char* testName)
 {
-    if( !TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    if (!TestApp::ShouldTrace(PFTestTraceLevel::Information))
     {
         return;
     }
@@ -136,18 +136,18 @@ void AutoGenExperimentationTests::LogDeleteExclusionGroupRequest(PFExperimentati
     ss << "  customTagsCount " << request->customTagsCount; Log(ss);
 
     // PFStringDictionaryEntry
-    for( uint32_t i=0; i<request->customTagsCount; i++ )
+    for (uint32_t i=0; i<request->customTagsCount; i++)
     {
             ss << "  request->customTags[" << i << "]:" << request->customTags[i].key << "=" << request->customTags[i].value; Log(ss);
             
     } 
-    if( request->exclusionGroupId ) { ss << "  exclusionGroupId " << request->exclusionGroupId; Log(ss); } else { ss << "  exclusionGroupId = nullptr"; Log(ss); } // Class: const char* 
+    if (request->exclusionGroupId) { ss << "  exclusionGroupId " << request->exclusionGroupId; Log(ss); } else { ss << "  exclusionGroupId = nullptr"; Log(ss); } // Class: const char* 
 
 }
 
 void AutoGenExperimentationTests::LogDeleteExperimentRequest(PFExperimentationDeleteExperimentRequest const* request, const char* testName)
 {
-    if( !TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    if (!TestApp::ShouldTrace(PFTestTraceLevel::Information))
     {
         return;
     }
@@ -164,18 +164,18 @@ void AutoGenExperimentationTests::LogDeleteExperimentRequest(PFExperimentationDe
     ss << "  customTagsCount " << request->customTagsCount; Log(ss);
 
     // PFStringDictionaryEntry
-    for( uint32_t i=0; i<request->customTagsCount; i++ )
+    for (uint32_t i=0; i<request->customTagsCount; i++)
     {
             ss << "  request->customTags[" << i << "]:" << request->customTags[i].key << "=" << request->customTags[i].value; Log(ss);
             
     } 
-    if( request->experimentId ) { ss << "  experimentId " << request->experimentId; Log(ss); } else { ss << "  experimentId = nullptr"; Log(ss); } // Class: const char* 
+    if (request->experimentId) { ss << "  experimentId " << request->experimentId; Log(ss); } else { ss << "  experimentId = nullptr"; Log(ss); } // Class: const char* 
 
 }
 
 void AutoGenExperimentationTests::LogGetExclusionGroupsRequest(PFExperimentationGetExclusionGroupsRequest const* request, const char* testName)
 {
-    if( !TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    if (!TestApp::ShouldTrace(PFTestTraceLevel::Information))
     {
         return;
     }
@@ -192,7 +192,7 @@ void AutoGenExperimentationTests::LogGetExclusionGroupsRequest(PFExperimentation
     ss << "  customTagsCount " << request->customTagsCount; Log(ss);
 
     // PFStringDictionaryEntry
-    for( uint32_t i=0; i<request->customTagsCount; i++ )
+    for (uint32_t i=0; i<request->customTagsCount; i++)
     {
             ss << "  request->customTags[" << i << "]:" << request->customTags[i].key << "=" << request->customTags[i].value; Log(ss);
             
@@ -200,9 +200,9 @@ void AutoGenExperimentationTests::LogGetExclusionGroupsRequest(PFExperimentation
 
 }
 
-HRESULT AutoGenExperimentationTests::LogPFExperimentationGetExclusionGroupsResult(PFExperimentationGetExclusionGroupsResult const* result)
+HRESULT AutoGenExperimentationTests::LogGetExclusionGroupsResult(PFExperimentationGetExclusionGroupsResult const* result)
 {
-    if( !TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    if (!TestApp::ShouldTrace(PFTestTraceLevel::Information))
     {
         return S_OK;
     }
@@ -214,7 +214,7 @@ HRESULT AutoGenExperimentationTests::LogPFExperimentationGetExclusionGroupsResul
     ss << "  exclusionGroupsCount " << result->exclusionGroupsCount; Log(ss);
 
     // PFExperimentationExperimentExclusionGroup
-    for( uint32_t i=0; i<result->exclusionGroupsCount; i++ )
+    for (uint32_t i=0; i<result->exclusionGroupsCount; i++)
     {
             ss << "  result->exclusionGroups[" << i << "]:" << result->exclusionGroups[i]; Log(ss); // PFExperimentationExperimentExclusionGroup
     } 
@@ -223,7 +223,7 @@ HRESULT AutoGenExperimentationTests::LogPFExperimentationGetExclusionGroupsResul
 
 void AutoGenExperimentationTests::LogGetExclusionGroupTrafficRequest(PFExperimentationGetExclusionGroupTrafficRequest const* request, const char* testName)
 {
-    if( !TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    if (!TestApp::ShouldTrace(PFTestTraceLevel::Information))
     {
         return;
     }
@@ -240,18 +240,18 @@ void AutoGenExperimentationTests::LogGetExclusionGroupTrafficRequest(PFExperimen
     ss << "  customTagsCount " << request->customTagsCount; Log(ss);
 
     // PFStringDictionaryEntry
-    for( uint32_t i=0; i<request->customTagsCount; i++ )
+    for (uint32_t i=0; i<request->customTagsCount; i++)
     {
             ss << "  request->customTags[" << i << "]:" << request->customTags[i].key << "=" << request->customTags[i].value; Log(ss);
             
     } 
-    if( request->exclusionGroupId ) { ss << "  exclusionGroupId " << request->exclusionGroupId; Log(ss); } else { ss << "  exclusionGroupId = nullptr"; Log(ss); } // Class: const char* 
+    if (request->exclusionGroupId) { ss << "  exclusionGroupId " << request->exclusionGroupId; Log(ss); } else { ss << "  exclusionGroupId = nullptr"; Log(ss); } // Class: const char* 
 
 }
 
-HRESULT AutoGenExperimentationTests::LogPFExperimentationGetExclusionGroupTrafficResult(PFExperimentationGetExclusionGroupTrafficResult const* result)
+HRESULT AutoGenExperimentationTests::LogGetExclusionGroupTrafficResult(PFExperimentationGetExclusionGroupTrafficResult const* result)
 {
-    if( !TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    if (!TestApp::ShouldTrace(PFTestTraceLevel::Information))
     {
         return S_OK;
     }
@@ -263,7 +263,7 @@ HRESULT AutoGenExperimentationTests::LogPFExperimentationGetExclusionGroupTraffi
     ss << "  trafficAllocationsCount " << result->trafficAllocationsCount; Log(ss);
 
     // PFExperimentationExclusionGroupTrafficAllocation
-    for( uint32_t i=0; i<result->trafficAllocationsCount; i++ )
+    for (uint32_t i=0; i<result->trafficAllocationsCount; i++)
     {
             ss << "  result->trafficAllocations[" << i << "]:" << result->trafficAllocations[i]; Log(ss); // PFExperimentationExclusionGroupTrafficAllocation
     } 
@@ -272,7 +272,7 @@ HRESULT AutoGenExperimentationTests::LogPFExperimentationGetExclusionGroupTraffi
 
 void AutoGenExperimentationTests::LogGetExperimentsRequest(PFExperimentationGetExperimentsRequest const* request, const char* testName)
 {
-    if( !TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    if (!TestApp::ShouldTrace(PFTestTraceLevel::Information))
     {
         return;
     }
@@ -289,7 +289,7 @@ void AutoGenExperimentationTests::LogGetExperimentsRequest(PFExperimentationGetE
     ss << "  customTagsCount " << request->customTagsCount; Log(ss);
 
     // PFStringDictionaryEntry
-    for( uint32_t i=0; i<request->customTagsCount; i++ )
+    for (uint32_t i=0; i<request->customTagsCount; i++)
     {
             ss << "  request->customTags[" << i << "]:" << request->customTags[i].key << "=" << request->customTags[i].value; Log(ss);
             
@@ -297,9 +297,9 @@ void AutoGenExperimentationTests::LogGetExperimentsRequest(PFExperimentationGetE
 
 }
 
-HRESULT AutoGenExperimentationTests::LogPFExperimentationGetExperimentsResult(PFExperimentationGetExperimentsResult const* result)
+HRESULT AutoGenExperimentationTests::LogGetExperimentsResult(PFExperimentationGetExperimentsResult const* result)
 {
-    if( !TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    if (!TestApp::ShouldTrace(PFTestTraceLevel::Information))
     {
         return S_OK;
     }
@@ -311,7 +311,7 @@ HRESULT AutoGenExperimentationTests::LogPFExperimentationGetExperimentsResult(PF
     ss << "  experimentsCount " << result->experimentsCount; Log(ss);
 
     // PFExperimentationExperiment
-    for( uint32_t i=0; i<result->experimentsCount; i++ )
+    for (uint32_t i=0; i<result->experimentsCount; i++)
     {
             ss << "  result->experiments[" << i << "]:" << result->experiments[i]; Log(ss); // PFExperimentationExperiment
     } 
@@ -320,7 +320,7 @@ HRESULT AutoGenExperimentationTests::LogPFExperimentationGetExperimentsResult(PF
 
 void AutoGenExperimentationTests::LogGetLatestScorecardRequest(PFExperimentationGetLatestScorecardRequest const* request, const char* testName)
 {
-    if( !TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    if (!TestApp::ShouldTrace(PFTestTraceLevel::Information))
     {
         return;
     }
@@ -337,18 +337,18 @@ void AutoGenExperimentationTests::LogGetLatestScorecardRequest(PFExperimentation
     ss << "  customTagsCount " << request->customTagsCount; Log(ss);
 
     // PFStringDictionaryEntry
-    for( uint32_t i=0; i<request->customTagsCount; i++ )
+    for (uint32_t i=0; i<request->customTagsCount; i++)
     {
             ss << "  request->customTags[" << i << "]:" << request->customTags[i].key << "=" << request->customTags[i].value; Log(ss);
             
     } 
-    if( request->experimentId ) { ss << "  experimentId " << request->experimentId; Log(ss); } else { ss << "  experimentId = nullptr"; Log(ss); } // Class: const char* 
+    if (request->experimentId) { ss << "  experimentId " << request->experimentId; Log(ss); } else { ss << "  experimentId = nullptr"; Log(ss); } // Class: const char* 
 
 }
 
-HRESULT AutoGenExperimentationTests::LogPFExperimentationGetLatestScorecardResult(PFExperimentationGetLatestScorecardResult const* result)
+HRESULT AutoGenExperimentationTests::LogGetLatestScorecardResult(PFExperimentationGetLatestScorecardResult const* result)
 {
-    if( !TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    if (!TestApp::ShouldTrace(PFTestTraceLevel::Information))
     {
         return S_OK;
     }
@@ -363,7 +363,7 @@ HRESULT AutoGenExperimentationTests::LogPFExperimentationGetLatestScorecardResul
 
 void AutoGenExperimentationTests::LogGetTreatmentAssignmentRequest(PFExperimentationGetTreatmentAssignmentRequest const* request, const char* testName)
 {
-    if( !TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    if (!TestApp::ShouldTrace(PFTestTraceLevel::Information))
     {
         return;
     }
@@ -380,7 +380,7 @@ void AutoGenExperimentationTests::LogGetTreatmentAssignmentRequest(PFExperimenta
     ss << "  customTagsCount " << request->customTagsCount; Log(ss);
 
     // PFStringDictionaryEntry
-    for( uint32_t i=0; i<request->customTagsCount; i++ )
+    for (uint32_t i=0; i<request->customTagsCount; i++)
     {
             ss << "  request->customTags[" << i << "]:" << request->customTags[i].key << "=" << request->customTags[i].value; Log(ss);
             
@@ -389,9 +389,9 @@ void AutoGenExperimentationTests::LogGetTreatmentAssignmentRequest(PFExperimenta
 
 }
 
-HRESULT AutoGenExperimentationTests::LogPFExperimentationGetTreatmentAssignmentResult(PFExperimentationGetTreatmentAssignmentResult const* result)
+HRESULT AutoGenExperimentationTests::LogGetTreatmentAssignmentResult(PFExperimentationGetTreatmentAssignmentResult const* result)
 {
-    if( !TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    if (!TestApp::ShouldTrace(PFTestTraceLevel::Information))
     {
         return S_OK;
     }
@@ -406,7 +406,7 @@ HRESULT AutoGenExperimentationTests::LogPFExperimentationGetTreatmentAssignmentR
 
 void AutoGenExperimentationTests::LogStartExperimentRequest(PFExperimentationStartExperimentRequest const* request, const char* testName)
 {
-    if( !TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    if (!TestApp::ShouldTrace(PFTestTraceLevel::Information))
     {
         return;
     }
@@ -423,18 +423,18 @@ void AutoGenExperimentationTests::LogStartExperimentRequest(PFExperimentationSta
     ss << "  customTagsCount " << request->customTagsCount; Log(ss);
 
     // PFStringDictionaryEntry
-    for( uint32_t i=0; i<request->customTagsCount; i++ )
+    for (uint32_t i=0; i<request->customTagsCount; i++)
     {
             ss << "  request->customTags[" << i << "]:" << request->customTags[i].key << "=" << request->customTags[i].value; Log(ss);
             
     } 
-    if( request->experimentId ) { ss << "  experimentId " << request->experimentId; Log(ss); } else { ss << "  experimentId = nullptr"; Log(ss); } // Class: const char* 
+    if (request->experimentId) { ss << "  experimentId " << request->experimentId; Log(ss); } else { ss << "  experimentId = nullptr"; Log(ss); } // Class: const char* 
 
 }
 
 void AutoGenExperimentationTests::LogStopExperimentRequest(PFExperimentationStopExperimentRequest const* request, const char* testName)
 {
-    if( !TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    if (!TestApp::ShouldTrace(PFTestTraceLevel::Information))
     {
         return;
     }
@@ -451,18 +451,18 @@ void AutoGenExperimentationTests::LogStopExperimentRequest(PFExperimentationStop
     ss << "  customTagsCount " << request->customTagsCount; Log(ss);
 
     // PFStringDictionaryEntry
-    for( uint32_t i=0; i<request->customTagsCount; i++ )
+    for (uint32_t i=0; i<request->customTagsCount; i++)
     {
             ss << "  request->customTags[" << i << "]:" << request->customTags[i].key << "=" << request->customTags[i].value; Log(ss);
             
     } 
-    if( request->experimentId ) { ss << "  experimentId " << request->experimentId; Log(ss); } else { ss << "  experimentId = nullptr"; Log(ss); } // Class: const char* 
+    if (request->experimentId) { ss << "  experimentId " << request->experimentId; Log(ss); } else { ss << "  experimentId = nullptr"; Log(ss); } // Class: const char* 
 
 }
 
 void AutoGenExperimentationTests::LogUpdateExclusionGroupRequest(PFExperimentationUpdateExclusionGroupRequest const* request, const char* testName)
 {
-    if( !TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    if (!TestApp::ShouldTrace(PFTestTraceLevel::Information))
     {
         return;
     }
@@ -479,20 +479,20 @@ void AutoGenExperimentationTests::LogUpdateExclusionGroupRequest(PFExperimentati
     ss << "  customTagsCount " << request->customTagsCount; Log(ss);
 
     // PFStringDictionaryEntry
-    for( uint32_t i=0; i<request->customTagsCount; i++ )
+    for (uint32_t i=0; i<request->customTagsCount; i++)
     {
             ss << "  request->customTags[" << i << "]:" << request->customTags[i].key << "=" << request->customTags[i].value; Log(ss);
             
     } 
-    if( request->description ) { ss << "  description " << request->description; Log(ss); } else { ss << "  description = nullptr"; Log(ss); } // Class: const char* 
-    if( request->exclusionGroupId ) { ss << "  exclusionGroupId " << request->exclusionGroupId; Log(ss); } else { ss << "  exclusionGroupId = nullptr"; Log(ss); } // Class: const char* 
-    if( request->name ) { ss << "  name " << request->name; Log(ss); } else { ss << "  name = nullptr"; Log(ss); } // Class: const char* 
+    if (request->description) { ss << "  description " << request->description; Log(ss); } else { ss << "  description = nullptr"; Log(ss); } // Class: const char* 
+    if (request->exclusionGroupId) { ss << "  exclusionGroupId " << request->exclusionGroupId; Log(ss); } else { ss << "  exclusionGroupId = nullptr"; Log(ss); } // Class: const char* 
+    if (request->name) { ss << "  name " << request->name; Log(ss); } else { ss << "  name = nullptr"; Log(ss); } // Class: const char* 
 
 }
 
 void AutoGenExperimentationTests::LogUpdateExperimentRequest(PFExperimentationUpdateExperimentRequest const* request, const char* testName)
 {
-    if( !TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    if (!TestApp::ShouldTrace(PFTestTraceLevel::Information))
     {
         return;
     }
@@ -509,31 +509,31 @@ void AutoGenExperimentationTests::LogUpdateExperimentRequest(PFExperimentationUp
     ss << "  customTagsCount " << request->customTagsCount; Log(ss);
 
     // PFStringDictionaryEntry
-    for( uint32_t i=0; i<request->customTagsCount; i++ )
+    for (uint32_t i=0; i<request->customTagsCount; i++)
     {
             ss << "  request->customTags[" << i << "]:" << request->customTags[i].key << "=" << request->customTags[i].value; Log(ss);
             
     } 
-    if( request->description ) { ss << "  description " << request->description; Log(ss); } else { ss << "  description = nullptr"; Log(ss); } // Class: const char* 
+    if (request->description) { ss << "  description " << request->description; Log(ss); } else { ss << "  description = nullptr"; Log(ss); } // Class: const char* 
     ss << "  endDate " << request->endDate; Log(ss); // Class: time_t 
-    if( request->exclusionGroupId ) { ss << "  exclusionGroupId " << request->exclusionGroupId; Log(ss); } else { ss << "  exclusionGroupId = nullptr"; Log(ss); } // Class: const char* 
+    if (request->exclusionGroupId) { ss << "  exclusionGroupId " << request->exclusionGroupId; Log(ss); } else { ss << "  exclusionGroupId = nullptr"; Log(ss); } // Class: const char* 
     ss << "  exclusionGroupTrafficAllocation " << request->exclusionGroupTrafficAllocation; Log(ss); // Class: uint32_t 
     ss << "  experimentType " << request->experimentType; Log(ss); // Class: PFExperimentationExperimentType 
-    if( request->id ) { ss << "  id " << request->id; Log(ss); } else { ss << "  id = nullptr"; Log(ss); } // Class: const char* 
-    if( request->name ) { ss << "  name " << request->name; Log(ss); } else { ss << "  name = nullptr"; Log(ss); } // Class: const char* 
-    if( request->segmentId ) { ss << "  segmentId " << request->segmentId; Log(ss); } else { ss << "  segmentId = nullptr"; Log(ss); } // Class: const char* 
+    if (request->id) { ss << "  id " << request->id; Log(ss); } else { ss << "  id = nullptr"; Log(ss); } // Class: const char* 
+    if (request->name) { ss << "  name " << request->name; Log(ss); } else { ss << "  name = nullptr"; Log(ss); } // Class: const char* 
+    if (request->segmentId) { ss << "  segmentId " << request->segmentId; Log(ss); } else { ss << "  segmentId = nullptr"; Log(ss); } // Class: const char* 
     ss << "  startDate " << request->startDate; Log(ss); // Class: time_t     
     ss << "  titlePlayerAccountTestIdsCount " << request->titlePlayerAccountTestIdsCount; Log(ss);
 
     // const char*
-    for( uint32_t i=0; i<request->titlePlayerAccountTestIdsCount; i++ )
+    for (uint32_t i=0; i<request->titlePlayerAccountTestIdsCount; i++)
     {
             ss << "  request->titlePlayerAccountTestIds[" << i << "]:" << request->titlePlayerAccountTestIds[i]; Log(ss); // const char*
     }     
     ss << "  variantsCount " << request->variantsCount; Log(ss);
 
     // PFExperimentationVariant
-    for( uint32_t i=0; i<request->variantsCount; i++ )
+    for (uint32_t i=0; i<request->variantsCount; i++)
     {
             ss << "  request->variants[" << i << "]:" << request->variants[i]; Log(ss); // PFExperimentationVariant
     } 

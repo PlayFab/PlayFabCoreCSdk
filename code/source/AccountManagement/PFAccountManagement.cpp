@@ -630,7 +630,7 @@ HRESULT PFAccountManagementClientGetAccountInfoGetResult(
 
 HRESULT PFAccountManagementClientGetPlayerCombinedInfoAsync(
     _In_ PFTitlePlayerHandle contextHandle,
-    _In_ const PFGetPlayerCombinedInfoRequest* request,
+    _In_ const PFAccountManagementGetPlayerCombinedInfoRequest* request,
     _In_ XAsyncBlock* async
 ) noexcept
 {
@@ -653,14 +653,14 @@ HRESULT PFAccountManagementClientGetPlayerCombinedInfoGetResult(
     _In_ XAsyncBlock* async,
     _In_ size_t bufferSize,
     _Out_writes_bytes_to_(bufferSize, *bufferUsed) void* buffer,
-    _Outptr_ PFGetPlayerCombinedInfoResult** result,
+    _Outptr_ PFAccountManagementGetPlayerCombinedInfoResult** result,
     _Out_opt_ size_t* bufferUsed
 ) noexcept
 {
     RETURN_HR_INVALIDARG_IF_NULL(result);
 
     RETURN_IF_FAILED(XAsyncGetResult(async, nullptr, bufferSize, buffer, bufferUsed));
-    *result = static_cast<PFGetPlayerCombinedInfoResult*>(buffer);
+    *result = static_cast<PFAccountManagementGetPlayerCombinedInfoResult*>(buffer);
 
     return S_OK;
 }
@@ -1698,17 +1698,41 @@ HRESULT PFAccountManagementServerDeletePlayerAsync(
     return Provider::Run(UniquePtr<Provider>(provider.release()));
 }
 
-HRESULT PFAccountManagementServerDeletePushNotificationTemplateAsync(
+HRESULT PFAccountManagementServerGetPlayerCombinedInfoAsync(
     _In_ PFStateHandle contextHandle,
-    _In_ const PFAccountManagementDeletePushNotificationTemplateRequest* request,
+    _In_ const PFAccountManagementGetPlayerCombinedInfoRequest* request,
     _In_ XAsyncBlock* async
 ) noexcept
 {
     RETURN_HR_INVALIDARG_IF_NULL(contextHandle);
     RETURN_HR_INVALIDARG_IF_NULL(request);
 
-    auto provider = MakeProvider(async, __FUNCTION__, std::bind(&AccountManagementAPI::ServerDeletePushNotificationTemplate, contextHandle->state, *request, std::placeholders::_1));
+    auto provider = MakeProvider(async, __FUNCTION__, std::bind(&AccountManagementAPI::ServerGetPlayerCombinedInfo, contextHandle->state, *request, std::placeholders::_1));
     return Provider::Run(UniquePtr<Provider>(provider.release()));
+}
+
+HRESULT PFAccountManagementServerGetPlayerCombinedInfoGetResultSize(
+    _In_ XAsyncBlock* async,
+    _Out_ size_t* bufferSize
+) noexcept
+{
+    return XAsyncGetResultSize(async, bufferSize);
+}
+
+HRESULT PFAccountManagementServerGetPlayerCombinedInfoGetResult(
+    _In_ XAsyncBlock* async,
+    _In_ size_t bufferSize,
+    _Out_writes_bytes_to_(bufferSize, *bufferUsed) void* buffer,
+    _Outptr_ PFAccountManagementGetPlayerCombinedInfoResult** result,
+    _Out_opt_ size_t* bufferUsed
+) noexcept
+{
+    RETURN_HR_INVALIDARG_IF_NULL(result);
+
+    RETURN_IF_FAILED(XAsyncGetResult(async, nullptr, bufferSize, buffer, bufferUsed));
+    *result = static_cast<PFAccountManagementGetPlayerCombinedInfoResult*>(buffer);
+
+    return S_OK;
 }
 
 HRESULT PFAccountManagementServerGetPlayerProfileAsync(
@@ -2244,43 +2268,6 @@ HRESULT PFAccountManagementServerRevokeBansGetResult(
     return S_OK;
 }
 
-HRESULT PFAccountManagementServerSavePushNotificationTemplateAsync(
-    _In_ PFStateHandle contextHandle,
-    _In_ const PFAccountManagementSavePushNotificationTemplateRequest* request,
-    _In_ XAsyncBlock* async
-) noexcept
-{
-    RETURN_HR_INVALIDARG_IF_NULL(contextHandle);
-    RETURN_HR_INVALIDARG_IF_NULL(request);
-
-    auto provider = MakeProvider(async, __FUNCTION__, std::bind(&AccountManagementAPI::ServerSavePushNotificationTemplate, contextHandle->state, *request, std::placeholders::_1));
-    return Provider::Run(UniquePtr<Provider>(provider.release()));
-}
-
-HRESULT PFAccountManagementServerSavePushNotificationTemplateGetResultSize(
-    _In_ XAsyncBlock* async,
-    _Out_ size_t* bufferSize
-) noexcept
-{
-    return XAsyncGetResultSize(async, bufferSize);
-}
-
-HRESULT PFAccountManagementServerSavePushNotificationTemplateGetResult(
-    _In_ XAsyncBlock* async,
-    _In_ size_t bufferSize,
-    _Out_writes_bytes_to_(bufferSize, *bufferUsed) void* buffer,
-    _Outptr_ PFAccountManagementSavePushNotificationTemplateResult** result,
-    _Out_opt_ size_t* bufferUsed
-) noexcept
-{
-    RETURN_HR_INVALIDARG_IF_NULL(result);
-
-    RETURN_IF_FAILED(XAsyncGetResult(async, nullptr, bufferSize, buffer, bufferUsed));
-    *result = static_cast<PFAccountManagementSavePushNotificationTemplateResult*>(buffer);
-
-    return S_OK;
-}
-
 HRESULT PFAccountManagementServerSendCustomAccountRecoveryEmailAsync(
     _In_ PFStateHandle contextHandle,
     _In_ const PFAccountManagementSendCustomAccountRecoveryEmailRequest* request,
@@ -2304,32 +2291,6 @@ HRESULT PFAccountManagementServerSendEmailFromTemplateAsync(
     RETURN_HR_INVALIDARG_IF_NULL(request);
 
     auto provider = MakeProvider(async, __FUNCTION__, std::bind(&AccountManagementAPI::ServerSendEmailFromTemplate, contextHandle->state, *request, std::placeholders::_1));
-    return Provider::Run(UniquePtr<Provider>(provider.release()));
-}
-
-HRESULT PFAccountManagementServerSendPushNotificationAsync(
-    _In_ PFStateHandle contextHandle,
-    _In_ const PFAccountManagementSendPushNotificationRequest* request,
-    _In_ XAsyncBlock* async
-) noexcept
-{
-    RETURN_HR_INVALIDARG_IF_NULL(contextHandle);
-    RETURN_HR_INVALIDARG_IF_NULL(request);
-
-    auto provider = MakeProvider(async, __FUNCTION__, std::bind(&AccountManagementAPI::ServerSendPushNotification, contextHandle->state, *request, std::placeholders::_1));
-    return Provider::Run(UniquePtr<Provider>(provider.release()));
-}
-
-HRESULT PFAccountManagementServerSendPushNotificationFromTemplateAsync(
-    _In_ PFStateHandle contextHandle,
-    _In_ const PFAccountManagementSendPushNotificationFromTemplateRequest* request,
-    _In_ XAsyncBlock* async
-) noexcept
-{
-    RETURN_HR_INVALIDARG_IF_NULL(contextHandle);
-    RETURN_HR_INVALIDARG_IF_NULL(request);
-
-    auto provider = MakeProvider(async, __FUNCTION__, std::bind(&AccountManagementAPI::ServerSendPushNotificationFromTemplate, contextHandle->state, *request, std::placeholders::_1));
     return Provider::Run(UniquePtr<Provider>(provider.release()));
 }
 

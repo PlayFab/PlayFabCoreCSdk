@@ -22,9 +22,10 @@ protected:
     void AddTests();
 
     static void LogGetLanguageListRequest(PFLocalizationGetLanguageListRequest const* request, const char* testName);
+    static HRESULT LogGetLanguageListResponse(PFLocalizationGetLanguageListResponse const* result);
+
     static void FillGetLanguageListRequest(PlayFab::Wrappers::PFLocalizationGetLanguageListRequestWrapper<>& request);
-    static HRESULT LogPFLocalizationGetLanguageListResponse(PFLocalizationGetLanguageListResponse const* result);
-    static HRESULT ValidatePFLocalizationGetLanguageListResponse(PFLocalizationGetLanguageListResponse* result);
+    static HRESULT ValidateGetLanguageListResponse(PFLocalizationGetLanguageListResponse* result);
 
     struct LocalizationTestData
     {

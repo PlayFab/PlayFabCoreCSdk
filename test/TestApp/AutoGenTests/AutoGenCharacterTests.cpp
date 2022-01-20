@@ -21,7 +21,7 @@ void AutoGenCharacterTests::Log(std::stringstream& ss)
 
 HRESULT AutoGenCharacterTests::LogHR(HRESULT hr)
 {
-    if( TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    if (TestApp::ShouldTrace(PFTestTraceLevel::Information))
     {
         TestApp::Log("Result: 0x%0.8x", hr);
     }
@@ -115,7 +115,7 @@ void AutoGenCharacterTests::AddTests()
 
 void AutoGenCharacterTests::ClassSetUp()
 {
-    HRESULT hr = PFAdminInitialize(testTitleData.titleId.data(), testTitleData.developerSecretKey.data(), nullptr, &stateHandle);
+    HRESULT hr = PFAdminInitialize(testTitleData.titleId.data(), testTitleData.developerSecretKey.data(), testTitleData.connectionString.data(), nullptr, &stateHandle);
     assert(SUCCEEDED(hr));
     if (SUCCEEDED(hr))
     {
@@ -226,7 +226,7 @@ void AutoGenCharacterTests::TestCharacterAdminResetCharacterStatistics(TestConte
     auto async = std::make_unique<XAsyncHelper<XAsyncResult>>(testContext);
 
     PFCharacterResetCharacterStatisticsRequestWrapper<> request;
-    FillResetCharacterStatisticsRequest(request);
+    FillAdminResetCharacterStatisticsRequest(request);
     LogResetCharacterStatisticsRequest(&request.Model(), "TestCharacterAdminResetCharacterStatistics");
     HRESULT hr = PFCharacterAdminResetCharacterStatisticsAsync(stateHandle, &request.Model(), &async->asyncBlock);
     if (FAILED(hr))
@@ -254,19 +254,19 @@ void AutoGenCharacterTests::TestCharacterClientGetAllUsersCharacters(TestContext
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFCharacterClientGetAllUsersCharactersGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
             
-            LogPFCharacterListUsersCharactersResult(result);
+            LogListUsersCharactersResult(result);
             return S_OK;
         }
 
         HRESULT Validate() override
         {
-            return ValidatePFCharacterListUsersCharactersResult(result);
+            return ValidateClientGetAllUsersCharactersResponse(result);
         }
     };
     auto async = std::make_unique<XAsyncHelper<ClientGetAllUsersCharactersResultHolderStruct>>(testContext);
 
     PFCharacterListUsersCharactersRequestWrapper<> request;
-    FillListUsersCharactersRequest(request);
+    FillClientGetAllUsersCharactersRequest(request);
     LogListUsersCharactersRequest(&request.Model(), "TestCharacterClientGetAllUsersCharacters");
     HRESULT hr = PFCharacterClientGetAllUsersCharactersAsync(titlePlayerHandle, &request.Model(), &async->asyncBlock);
     if (FAILED(hr))
@@ -293,19 +293,19 @@ void AutoGenCharacterTests::TestCharacterClientGetCharacterData(TestContext& tes
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFCharacterClientGetCharacterDataGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
             
-            LogPFCharacterClientGetCharacterDataResult(result);
+            LogClientGetCharacterDataResult(result);
             return S_OK;
         }
 
         HRESULT Validate() override
         {
-            return ValidatePFCharacterClientGetCharacterDataResult(result);
+            return ValidateClientGetCharacterDataResponse(result);
         }
     };
     auto async = std::make_unique<XAsyncHelper<ClientGetCharacterDataResultHolderStruct>>(testContext);
 
     PFCharacterGetCharacterDataRequestWrapper<> request;
-    FillGetCharacterDataRequest(request);
+    FillClientGetCharacterDataRequest(request);
     LogGetCharacterDataRequest(&request.Model(), "TestCharacterClientGetCharacterData");
     HRESULT hr = PFCharacterClientGetCharacterDataAsync(titlePlayerHandle, &request.Model(), &async->asyncBlock);
     if (FAILED(hr))
@@ -332,19 +332,19 @@ void AutoGenCharacterTests::TestCharacterClientGetCharacterLeaderboard(TestConte
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFCharacterClientGetCharacterLeaderboardGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
             
-            LogPFCharacterGetCharacterLeaderboardResult(result);
+            LogGetCharacterLeaderboardResult(result);
             return S_OK;
         }
 
         HRESULT Validate() override
         {
-            return ValidatePFCharacterGetCharacterLeaderboardResult(result);
+            return ValidateClientGetCharacterLeaderboardResponse(result);
         }
     };
     auto async = std::make_unique<XAsyncHelper<ClientGetCharacterLeaderboardResultHolderStruct>>(testContext);
 
     PFCharacterGetCharacterLeaderboardRequestWrapper<> request;
-    FillGetCharacterLeaderboardRequest(request);
+    FillClientGetCharacterLeaderboardRequest(request);
     LogGetCharacterLeaderboardRequest(&request.Model(), "TestCharacterClientGetCharacterLeaderboard");
     HRESULT hr = PFCharacterClientGetCharacterLeaderboardAsync(titlePlayerHandle, &request.Model(), &async->asyncBlock);
     if (FAILED(hr))
@@ -371,19 +371,19 @@ void AutoGenCharacterTests::TestCharacterClientGetCharacterReadOnlyData(TestCont
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFCharacterClientGetCharacterReadOnlyDataGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
             
-            LogPFCharacterClientGetCharacterDataResult(result);
+            LogClientGetCharacterDataResult(result);
             return S_OK;
         }
 
         HRESULT Validate() override
         {
-            return ValidatePFCharacterClientGetCharacterDataResult(result);
+            return ValidateClientGetCharacterReadOnlyDataResponse(result);
         }
     };
     auto async = std::make_unique<XAsyncHelper<ClientGetCharacterReadOnlyDataResultHolderStruct>>(testContext);
 
     PFCharacterGetCharacterDataRequestWrapper<> request;
-    FillGetCharacterDataRequest(request);
+    FillClientGetCharacterReadOnlyDataRequest(request);
     LogGetCharacterDataRequest(&request.Model(), "TestCharacterClientGetCharacterReadOnlyData");
     HRESULT hr = PFCharacterClientGetCharacterReadOnlyDataAsync(titlePlayerHandle, &request.Model(), &async->asyncBlock);
     if (FAILED(hr))
@@ -410,13 +410,13 @@ void AutoGenCharacterTests::TestCharacterClientGetCharacterStatistics(TestContex
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFCharacterClientGetCharacterStatisticsGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
             
-            LogPFCharacterClientGetCharacterStatisticsResult(result);
+            LogClientGetCharacterStatisticsResult(result);
             return S_OK;
         }
 
         HRESULT Validate() override
         {
-            return ValidatePFCharacterClientGetCharacterStatisticsResult(result);
+            return ValidateClientGetCharacterStatisticsResponse(result);
         }
     };
     auto async = std::make_unique<XAsyncHelper<ClientGetCharacterStatisticsResultHolderStruct>>(testContext);
@@ -449,13 +449,13 @@ void AutoGenCharacterTests::TestCharacterClientGetLeaderboardAroundCharacter(Tes
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFCharacterClientGetLeaderboardAroundCharacterGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
             
-            LogPFCharacterGetLeaderboardAroundCharacterResult(result);
+            LogGetLeaderboardAroundCharacterResult(result);
             return S_OK;
         }
 
         HRESULT Validate() override
         {
-            return ValidatePFCharacterGetLeaderboardAroundCharacterResult(result);
+            return ValidateClientGetLeaderboardAroundCharacterResponse(result);
         }
     };
     auto async = std::make_unique<XAsyncHelper<ClientGetLeaderboardAroundCharacterResultHolderStruct>>(testContext);
@@ -488,19 +488,19 @@ void AutoGenCharacterTests::TestCharacterClientGetLeaderboardForUserCharacters(T
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFCharacterClientGetLeaderboardForUserCharactersGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
             
-            LogPFCharacterGetLeaderboardForUsersCharactersResult(result);
+            LogGetLeaderboardForUsersCharactersResult(result);
             return S_OK;
         }
 
         HRESULT Validate() override
         {
-            return ValidatePFCharacterGetLeaderboardForUsersCharactersResult(result);
+            return ValidateClientGetLeaderboardForUserCharactersResponse(result);
         }
     };
     auto async = std::make_unique<XAsyncHelper<ClientGetLeaderboardForUserCharactersResultHolderStruct>>(testContext);
 
     PFCharacterClientGetLeaderboardForUsersCharactersRequestWrapper<> request;
-    FillClientGetLeaderboardForUsersCharactersRequest(request);
+    FillClientGetLeaderboardForUserCharactersRequest(request);
     LogClientGetLeaderboardForUsersCharactersRequest(&request.Model(), "TestCharacterClientGetLeaderboardForUserCharacters");
     HRESULT hr = PFCharacterClientGetLeaderboardForUserCharactersAsync(titlePlayerHandle, &request.Model(), &async->asyncBlock);
     if (FAILED(hr))
@@ -527,13 +527,13 @@ void AutoGenCharacterTests::TestCharacterClientGrantCharacterToUser(TestContext&
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFCharacterClientGrantCharacterToUserGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
             
-            LogPFCharacterClientGrantCharacterToUserResult(result);
+            LogClientGrantCharacterToUserResult(result);
             return S_OK;
         }
 
         HRESULT Validate() override
         {
-            return ValidatePFCharacterClientGrantCharacterToUserResult(result);
+            return ValidateClientGrantCharacterToUserResponse(result);
         }
     };
     auto async = std::make_unique<XAsyncHelper<ClientGrantCharacterToUserResultHolderStruct>>(testContext);
@@ -561,13 +561,13 @@ void AutoGenCharacterTests::TestCharacterClientUpdateCharacterData(TestContext& 
         HRESULT Get(XAsyncBlock* async) override
         {
             RETURN_IF_FAILED(LogHR(PFCharacterClientUpdateCharacterDataGetResult(async, &result)));
-            LogPFCharacterUpdateCharacterDataResult(&result);
+            LogUpdateCharacterDataResult(&result);
             return S_OK;
         }
 
         HRESULT Validate() override
         {
-            return ValidatePFCharacterUpdateCharacterDataResult(&result);
+            return ValidateClientUpdateCharacterDataResponse(&result);
         }
     };
     auto async = std::make_unique<XAsyncHelper<ClientUpdateCharacterDataResultHolderStruct>>(testContext);
@@ -614,7 +614,7 @@ void AutoGenCharacterTests::TestCharacterServerDeleteCharacterFromUser(TestConte
     auto async = std::make_unique<XAsyncHelper<XAsyncResult>>(testContext);
 
     PFCharacterDeleteCharacterFromUserRequestWrapper<> request;
-    FillDeleteCharacterFromUserRequest(request);
+    FillServerDeleteCharacterFromUserRequest(request);
     LogDeleteCharacterFromUserRequest(&request.Model(), "TestCharacterServerDeleteCharacterFromUser");
     HRESULT hr = PFCharacterServerDeleteCharacterFromUserAsync(stateHandle, &request.Model(), &async->asyncBlock);
     if (FAILED(hr))
@@ -643,19 +643,19 @@ void AutoGenCharacterTests::TestCharacterServerGetAllUsersCharacters(TestContext
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFCharacterServerGetAllUsersCharactersGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
             
-            LogPFCharacterListUsersCharactersResult(result);
+            LogListUsersCharactersResult(result);
             return S_OK;
         }
 
         HRESULT Validate() override
         {
-            return ValidatePFCharacterListUsersCharactersResult(result);
+            return ValidateServerGetAllUsersCharactersResponse(result);
         }
     };
     auto async = std::make_unique<XAsyncHelper<ServerGetAllUsersCharactersResultHolderStruct>>(testContext);
 
     PFCharacterListUsersCharactersRequestWrapper<> request;
-    FillListUsersCharactersRequest(request);
+    FillServerGetAllUsersCharactersRequest(request);
     LogListUsersCharactersRequest(&request.Model(), "TestCharacterServerGetAllUsersCharacters");
     HRESULT hr = PFCharacterServerGetAllUsersCharactersAsync(stateHandle, &request.Model(), &async->asyncBlock);
     if (FAILED(hr))
@@ -684,19 +684,19 @@ void AutoGenCharacterTests::TestCharacterServerGetCharacterData(TestContext& tes
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFCharacterServerGetCharacterDataGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
             
-            LogPFCharacterServerGetCharacterDataResult(result);
+            LogServerGetCharacterDataResult(result);
             return S_OK;
         }
 
         HRESULT Validate() override
         {
-            return ValidatePFCharacterServerGetCharacterDataResult(result);
+            return ValidateServerGetCharacterDataResponse(result);
         }
     };
     auto async = std::make_unique<XAsyncHelper<ServerGetCharacterDataResultHolderStruct>>(testContext);
 
     PFCharacterGetCharacterDataRequestWrapper<> request;
-    FillGetCharacterDataRequest(request);
+    FillServerGetCharacterDataRequest(request);
     LogGetCharacterDataRequest(&request.Model(), "TestCharacterServerGetCharacterData");
     HRESULT hr = PFCharacterServerGetCharacterDataAsync(stateHandle, &request.Model(), &async->asyncBlock);
     if (FAILED(hr))
@@ -725,19 +725,19 @@ void AutoGenCharacterTests::TestCharacterServerGetCharacterInternalData(TestCont
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFCharacterServerGetCharacterInternalDataGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
             
-            LogPFCharacterServerGetCharacterDataResult(result);
+            LogServerGetCharacterDataResult(result);
             return S_OK;
         }
 
         HRESULT Validate() override
         {
-            return ValidatePFCharacterServerGetCharacterDataResult(result);
+            return ValidateServerGetCharacterInternalDataResponse(result);
         }
     };
     auto async = std::make_unique<XAsyncHelper<ServerGetCharacterInternalDataResultHolderStruct>>(testContext);
 
     PFCharacterGetCharacterDataRequestWrapper<> request;
-    FillGetCharacterDataRequest(request);
+    FillServerGetCharacterInternalDataRequest(request);
     LogGetCharacterDataRequest(&request.Model(), "TestCharacterServerGetCharacterInternalData");
     HRESULT hr = PFCharacterServerGetCharacterInternalDataAsync(stateHandle, &request.Model(), &async->asyncBlock);
     if (FAILED(hr))
@@ -766,19 +766,19 @@ void AutoGenCharacterTests::TestCharacterServerGetCharacterLeaderboard(TestConte
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFCharacterServerGetCharacterLeaderboardGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
             
-            LogPFCharacterGetCharacterLeaderboardResult(result);
+            LogGetCharacterLeaderboardResult(result);
             return S_OK;
         }
 
         HRESULT Validate() override
         {
-            return ValidatePFCharacterGetCharacterLeaderboardResult(result);
+            return ValidateServerGetCharacterLeaderboardResponse(result);
         }
     };
     auto async = std::make_unique<XAsyncHelper<ServerGetCharacterLeaderboardResultHolderStruct>>(testContext);
 
     PFCharacterGetCharacterLeaderboardRequestWrapper<> request;
-    FillGetCharacterLeaderboardRequest(request);
+    FillServerGetCharacterLeaderboardRequest(request);
     LogGetCharacterLeaderboardRequest(&request.Model(), "TestCharacterServerGetCharacterLeaderboard");
     HRESULT hr = PFCharacterServerGetCharacterLeaderboardAsync(stateHandle, &request.Model(), &async->asyncBlock);
     if (FAILED(hr))
@@ -807,19 +807,19 @@ void AutoGenCharacterTests::TestCharacterServerGetCharacterReadOnlyData(TestCont
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFCharacterServerGetCharacterReadOnlyDataGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
             
-            LogPFCharacterServerGetCharacterDataResult(result);
+            LogServerGetCharacterDataResult(result);
             return S_OK;
         }
 
         HRESULT Validate() override
         {
-            return ValidatePFCharacterServerGetCharacterDataResult(result);
+            return ValidateServerGetCharacterReadOnlyDataResponse(result);
         }
     };
     auto async = std::make_unique<XAsyncHelper<ServerGetCharacterReadOnlyDataResultHolderStruct>>(testContext);
 
     PFCharacterGetCharacterDataRequestWrapper<> request;
-    FillGetCharacterDataRequest(request);
+    FillServerGetCharacterReadOnlyDataRequest(request);
     LogGetCharacterDataRequest(&request.Model(), "TestCharacterServerGetCharacterReadOnlyData");
     HRESULT hr = PFCharacterServerGetCharacterReadOnlyDataAsync(stateHandle, &request.Model(), &async->asyncBlock);
     if (FAILED(hr))
@@ -848,13 +848,13 @@ void AutoGenCharacterTests::TestCharacterServerGetCharacterStatistics(TestContex
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFCharacterServerGetCharacterStatisticsGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
             
-            LogPFCharacterServerGetCharacterStatisticsResult(result);
+            LogServerGetCharacterStatisticsResult(result);
             return S_OK;
         }
 
         HRESULT Validate() override
         {
-            return ValidatePFCharacterServerGetCharacterStatisticsResult(result);
+            return ValidateServerGetCharacterStatisticsResponse(result);
         }
     };
     auto async = std::make_unique<XAsyncHelper<ServerGetCharacterStatisticsResultHolderStruct>>(testContext);
@@ -889,13 +889,13 @@ void AutoGenCharacterTests::TestCharacterServerGetLeaderboardAroundCharacter(Tes
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFCharacterServerGetLeaderboardAroundCharacterGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
             
-            LogPFCharacterGetLeaderboardAroundCharacterResult(result);
+            LogGetLeaderboardAroundCharacterResult(result);
             return S_OK;
         }
 
         HRESULT Validate() override
         {
-            return ValidatePFCharacterGetLeaderboardAroundCharacterResult(result);
+            return ValidateServerGetLeaderboardAroundCharacterResponse(result);
         }
     };
     auto async = std::make_unique<XAsyncHelper<ServerGetLeaderboardAroundCharacterResultHolderStruct>>(testContext);
@@ -930,19 +930,19 @@ void AutoGenCharacterTests::TestCharacterServerGetLeaderboardForUserCharacters(T
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFCharacterServerGetLeaderboardForUserCharactersGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
             
-            LogPFCharacterGetLeaderboardForUsersCharactersResult(result);
+            LogGetLeaderboardForUsersCharactersResult(result);
             return S_OK;
         }
 
         HRESULT Validate() override
         {
-            return ValidatePFCharacterGetLeaderboardForUsersCharactersResult(result);
+            return ValidateServerGetLeaderboardForUserCharactersResponse(result);
         }
     };
     auto async = std::make_unique<XAsyncHelper<ServerGetLeaderboardForUserCharactersResultHolderStruct>>(testContext);
 
     PFCharacterServerGetLeaderboardForUsersCharactersRequestWrapper<> request;
-    FillServerGetLeaderboardForUsersCharactersRequest(request);
+    FillServerGetLeaderboardForUserCharactersRequest(request);
     LogServerGetLeaderboardForUsersCharactersRequest(&request.Model(), "TestCharacterServerGetLeaderboardForUserCharacters");
     HRESULT hr = PFCharacterServerGetLeaderboardForUserCharactersAsync(stateHandle, &request.Model(), &async->asyncBlock);
     if (FAILED(hr))
@@ -971,13 +971,13 @@ void AutoGenCharacterTests::TestCharacterServerGrantCharacterToUser(TestContext&
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFCharacterServerGrantCharacterToUserGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
             
-            LogPFCharacterServerGrantCharacterToUserResult(result);
+            LogServerGrantCharacterToUserResult(result);
             return S_OK;
         }
 
         HRESULT Validate() override
         {
-            return ValidatePFCharacterServerGrantCharacterToUserResult(result);
+            return ValidateServerGrantCharacterToUserResponse(result);
         }
     };
     auto async = std::make_unique<XAsyncHelper<ServerGrantCharacterToUserResultHolderStruct>>(testContext);
@@ -1007,13 +1007,13 @@ void AutoGenCharacterTests::TestCharacterServerUpdateCharacterData(TestContext& 
         HRESULT Get(XAsyncBlock* async) override
         {
             RETURN_IF_FAILED(LogHR(PFCharacterServerUpdateCharacterDataGetResult(async, &result)));
-            LogPFCharacterUpdateCharacterDataResult(&result);
+            LogUpdateCharacterDataResult(&result);
             return S_OK;
         }
 
         HRESULT Validate() override
         {
-            return ValidatePFCharacterUpdateCharacterDataResult(&result);
+            return ValidateServerUpdateCharacterDataResponse(&result);
         }
     };
     auto async = std::make_unique<XAsyncHelper<ServerUpdateCharacterDataResultHolderStruct>>(testContext);
@@ -1043,19 +1043,19 @@ void AutoGenCharacterTests::TestCharacterServerUpdateCharacterInternalData(TestC
         HRESULT Get(XAsyncBlock* async) override
         {
             RETURN_IF_FAILED(LogHR(PFCharacterServerUpdateCharacterInternalDataGetResult(async, &result)));
-            LogPFCharacterUpdateCharacterDataResult(&result);
+            LogUpdateCharacterDataResult(&result);
             return S_OK;
         }
 
         HRESULT Validate() override
         {
-            return ValidatePFCharacterUpdateCharacterDataResult(&result);
+            return ValidateServerUpdateCharacterInternalDataResponse(&result);
         }
     };
     auto async = std::make_unique<XAsyncHelper<ServerUpdateCharacterInternalDataResultHolderStruct>>(testContext);
 
     PFCharacterServerUpdateCharacterDataRequestWrapper<> request;
-    FillServerUpdateCharacterDataRequest(request);
+    FillServerUpdateCharacterInternalDataRequest(request);
     LogServerUpdateCharacterDataRequest(&request.Model(), "TestCharacterServerUpdateCharacterInternalData");
     HRESULT hr = PFCharacterServerUpdateCharacterInternalDataAsync(stateHandle, &request.Model(), &async->asyncBlock);
     if (FAILED(hr))
@@ -1079,19 +1079,19 @@ void AutoGenCharacterTests::TestCharacterServerUpdateCharacterReadOnlyData(TestC
         HRESULT Get(XAsyncBlock* async) override
         {
             RETURN_IF_FAILED(LogHR(PFCharacterServerUpdateCharacterReadOnlyDataGetResult(async, &result)));
-            LogPFCharacterUpdateCharacterDataResult(&result);
+            LogUpdateCharacterDataResult(&result);
             return S_OK;
         }
 
         HRESULT Validate() override
         {
-            return ValidatePFCharacterUpdateCharacterDataResult(&result);
+            return ValidateServerUpdateCharacterReadOnlyDataResponse(&result);
         }
     };
     auto async = std::make_unique<XAsyncHelper<ServerUpdateCharacterReadOnlyDataResultHolderStruct>>(testContext);
 
     PFCharacterServerUpdateCharacterDataRequestWrapper<> request;
-    FillServerUpdateCharacterDataRequest(request);
+    FillServerUpdateCharacterReadOnlyDataRequest(request);
     LogServerUpdateCharacterDataRequest(&request.Model(), "TestCharacterServerUpdateCharacterReadOnlyData");
     HRESULT hr = PFCharacterServerUpdateCharacterReadOnlyDataAsync(stateHandle, &request.Model(), &async->asyncBlock);
     if (FAILED(hr))

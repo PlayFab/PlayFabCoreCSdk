@@ -94,7 +94,7 @@ public:
     static AsyncOp<void> ServerAddGenericID(SharedPtr<GlobalState const> state, const ServerAddGenericIDRequest& request, const TaskQueue& queue);
     static AsyncOp<BanUsersResult> ServerBanUsers(SharedPtr<GlobalState const> state, const BanUsersRequest& request, const TaskQueue& queue);
     static AsyncOp<void> ServerDeletePlayer(SharedPtr<GlobalState const> state, const DeletePlayerRequest& request, const TaskQueue& queue);
-    static AsyncOp<void> ServerDeletePushNotificationTemplate(SharedPtr<GlobalState const> state, const DeletePushNotificationTemplateRequest& request, const TaskQueue& queue);
+    static AsyncOp<GetPlayerCombinedInfoResult> ServerGetPlayerCombinedInfo(SharedPtr<GlobalState const> state, const GetPlayerCombinedInfoRequest& request, const TaskQueue& queue);
     static AsyncOp<GetPlayerProfileResult> ServerGetPlayerProfile(SharedPtr<GlobalState const> state, const GetPlayerProfileRequest& request, const TaskQueue& queue);
     static AsyncOp<GetPlayFabIDsFromFacebookIDsResult> ServerGetPlayFabIDsFromFacebookIDs(SharedPtr<GlobalState const> state, const GetPlayFabIDsFromFacebookIDsRequest& request, const TaskQueue& queue);
     static AsyncOp<GetPlayFabIDsFromFacebookInstantGamesIdsResult> ServerGetPlayFabIDsFromFacebookInstantGamesIds(SharedPtr<GlobalState const> state, const GetPlayFabIDsFromFacebookInstantGamesIdsRequest& request, const TaskQueue& queue);
@@ -112,11 +112,8 @@ public:
     static AsyncOp<void> ServerRemoveGenericID(SharedPtr<GlobalState const> state, const ServerRemoveGenericIDRequest& request, const TaskQueue& queue);
     static AsyncOp<RevokeAllBansForUserResult> ServerRevokeAllBansForUser(SharedPtr<GlobalState const> state, const RevokeAllBansForUserRequest& request, const TaskQueue& queue);
     static AsyncOp<RevokeBansResult> ServerRevokeBans(SharedPtr<GlobalState const> state, const RevokeBansRequest& request, const TaskQueue& queue);
-    static AsyncOp<SavePushNotificationTemplateResult> ServerSavePushNotificationTemplate(SharedPtr<GlobalState const> state, const SavePushNotificationTemplateRequest& request, const TaskQueue& queue);
     static AsyncOp<void> ServerSendCustomAccountRecoveryEmail(SharedPtr<GlobalState const> state, const SendCustomAccountRecoveryEmailRequest& request, const TaskQueue& queue);
     static AsyncOp<void> ServerSendEmailFromTemplate(SharedPtr<GlobalState const> state, const SendEmailFromTemplateRequest& request, const TaskQueue& queue);
-    static AsyncOp<void> ServerSendPushNotification(SharedPtr<GlobalState const> state, const SendPushNotificationRequest& request, const TaskQueue& queue);
-    static AsyncOp<void> ServerSendPushNotificationFromTemplate(SharedPtr<GlobalState const> state, const SendPushNotificationFromTemplateRequest& request, const TaskQueue& queue);
     static AsyncOp<void> ServerUnlinkPSNAccount(SharedPtr<GlobalState const> state, const ServerUnlinkPSNAccountRequest& request, const TaskQueue& queue);
     static AsyncOp<void> ServerUnlinkServerCustomId(SharedPtr<GlobalState const> state, const UnlinkServerCustomIdRequest& request, const TaskQueue& queue);
     static AsyncOp<void> ServerUnlinkXboxAccount(SharedPtr<GlobalState const> state, const ServerUnlinkXboxAccountRequest& request, const TaskQueue& queue);

@@ -45,22 +45,29 @@ private:
 protected:
     void AddTests();
 
-    static HRESULT LogPFPlayStreamGetAllSegmentsResult(PFPlayStreamGetAllSegmentsResult const* result);
-    static HRESULT ValidatePFPlayStreamGetAllSegmentsResult(PFPlayStreamGetAllSegmentsResult* result);
-
+    static HRESULT LogGetAllSegmentsResult(PFPlayStreamGetAllSegmentsResult const* result);
     static void LogGetPlayersSegmentsRequest(PFPlayStreamGetPlayersSegmentsRequest const* request, const char* testName);
-    static void FillGetPlayersSegmentsRequest(PlayFab::Wrappers::PFPlayStreamGetPlayersSegmentsRequestWrapper<>& request);
-    static HRESULT LogPFPlayStreamGetPlayerSegmentsResult(PFPlayStreamGetPlayerSegmentsResult const* result);
-    static HRESULT ValidatePFPlayStreamGetPlayerSegmentsResult(PFPlayStreamGetPlayerSegmentsResult* result);
-
+    static HRESULT LogGetPlayerSegmentsResult(PFPlayStreamGetPlayerSegmentsResult const* result);
     static void LogGetPlayersInSegmentRequest(PFPlayStreamGetPlayersInSegmentRequest const* request, const char* testName);
-    static void FillGetPlayersInSegmentRequest(PlayFab::Wrappers::PFPlayStreamGetPlayersInSegmentRequestWrapper<>& request);
-    static HRESULT LogPFPlayStreamGetPlayersInSegmentResult(PFPlayStreamGetPlayersInSegmentResult const* result);
-    static HRESULT ValidatePFPlayStreamGetPlayersInSegmentResult(PFPlayStreamGetPlayersInSegmentResult* result);
+    static HRESULT LogGetPlayersInSegmentResult(PFPlayStreamGetPlayersInSegmentResult const* result);
 
+    static HRESULT ValidateAdminGetAllSegmentsResponse(PFPlayStreamGetAllSegmentsResult* result);
 
+    static void FillAdminGetPlayerSegmentsRequest(PlayFab::Wrappers::PFPlayStreamGetPlayersSegmentsRequestWrapper<>& request);
+    static HRESULT ValidateAdminGetPlayerSegmentsResponse(PFPlayStreamGetPlayerSegmentsResult* result);
 
+    static void FillAdminGetPlayersInSegmentRequest(PlayFab::Wrappers::PFPlayStreamGetPlayersInSegmentRequestWrapper<>& request);
+    static HRESULT ValidateAdminGetPlayersInSegmentResponse(PFPlayStreamGetPlayersInSegmentResult* result);
 
+    static HRESULT ValidateClientGetPlayerSegmentsResponse(PFPlayStreamGetPlayerSegmentsResult* result);
+
+    static HRESULT ValidateServerGetAllSegmentsResponse(PFPlayStreamGetAllSegmentsResult* result);
+
+    static void FillServerGetPlayerSegmentsRequest(PlayFab::Wrappers::PFPlayStreamGetPlayersSegmentsRequestWrapper<>& request);
+    static HRESULT ValidateServerGetPlayerSegmentsResponse(PFPlayStreamGetPlayerSegmentsResult* result);
+
+    static void FillServerGetPlayersInSegmentRequest(PlayFab::Wrappers::PFPlayStreamGetPlayersInSegmentRequestWrapper<>& request);
+    static HRESULT ValidateServerGetPlayersInSegmentResponse(PFPlayStreamGetPlayersInSegmentResult* result);
 
     struct PlayStreamTestData
     {

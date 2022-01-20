@@ -16,12 +16,14 @@
     <Filter Include="Source\PlayerItemManagement" />
     <Filter Include="Source\AccountManagement" />
     <Filter Include="Source\Authentication" />
-    <Filter Include="Source\PlayerDataManagement" />
+    <Filter Include="Source\Leaderboard" />
     <Filter Include="Source\Segments" />
     <Filter Include="Source\Content" />
     <Filter Include="Source\PlayStream" />
     <Filter Include="Source\CloudScript" />
+    <Filter Include="Source\PlayerDataManagement" />
     <Filter Include="Source\Matchmaking" />
+    <Filter Include="Source\Economy" />
     <Filter Include="Source\Character" />
     <Filter Include="Source\Trading" />
     <Filter Include="Source\Friends" />
@@ -29,6 +31,7 @@
     <Filter Include="Source\PlatformSpecific" />
     <Filter Include="Source\Advertising" />
     <Filter Include="Source\Analytics" />
+    <Filter Include="Source\PushNotifications" />
     <Filter Include="Source\Data" />
     <Filter Include="Source\Catalog" />
     <Filter Include="Source\Experimentation" />
@@ -383,29 +386,29 @@
     <ClCompile Include="$(PlayFabSourceDir)\source\Authentication\PFAuthentication.cpp">
       <Filter>Source\Authentication</Filter>
     </ClCompile>
-    <ClInclude Include="$(PlayFabSourceDir)\include\playfab\PFPlayerDataManagementDataModels.h">
+    <ClInclude Include="$(PlayFabSourceDir)\include\playfab\PFLeaderboardDataModels.h">
       <Filter>C Public Includes\playfab</Filter>
     </ClInclude>
-    <ClInclude Include="$(PlayFabSourceDir)\include\playfab\cpp\PFPlayerDataManagementDataModelWrappers.h">
+    <ClInclude Include="$(PlayFabSourceDir)\include\playfab\cpp\PFLeaderboardDataModelWrappers.h">
       <Filter>C Public Includes\playfab\cpp</Filter>
     </ClInclude>
-    <ClInclude Include="$(PlayFabSourceDir)\source\PlayerDataManagement\PlayerDataManagementDataModels.h">
-      <Filter>Source\PlayerDataManagement</Filter>
+    <ClInclude Include="$(PlayFabSourceDir)\source\Leaderboard\LeaderboardDataModels.h">
+      <Filter>Source\Leaderboard</Filter>
     </ClInclude>
-    <ClCompile Include="$(PlayFabSourceDir)\source\PlayerDataManagement\PlayerDataManagementDataModels.cpp">
-      <Filter>Source\PlayerDataManagement</Filter>
+    <ClCompile Include="$(PlayFabSourceDir)\source\Leaderboard\LeaderboardDataModels.cpp">
+      <Filter>Source\Leaderboard</Filter>
     </ClCompile>
-    <ClInclude Include="$(PlayFabSourceDir)\source\PlayerDataManagement\PlayerDataManagement.h">
-      <Filter>Source\PlayerDataManagement</Filter>
+    <ClInclude Include="$(PlayFabSourceDir)\source\Leaderboard\Leaderboard.h">
+      <Filter>Source\Leaderboard</Filter>
     </ClInclude>
-    <ClCompile Include="$(PlayFabSourceDir)\source\PlayerDataManagement\PlayerDataManagement.cpp">
-      <Filter>Source\PlayerDataManagement</Filter>
+    <ClCompile Include="$(PlayFabSourceDir)\source\Leaderboard\Leaderboard.cpp">
+      <Filter>Source\Leaderboard</Filter>
     </ClCompile>
-    <ClInclude Include="$(PlayFabSourceDir)\include\playfab\PFPlayerDataManagement.h">
+    <ClInclude Include="$(PlayFabSourceDir)\include\playfab\PFLeaderboard.h">
       <Filter>C Public Includes\playfab</Filter>
     </ClInclude>
-    <ClCompile Include="$(PlayFabSourceDir)\source\PlayerDataManagement\PFPlayerDataManagement.cpp">
-      <Filter>Source\PlayerDataManagement</Filter>
+    <ClCompile Include="$(PlayFabSourceDir)\source\Leaderboard\PFLeaderboard.cpp">
+      <Filter>Source\Leaderboard</Filter>
     </ClCompile>
     <ClInclude Include="$(PlayFabSourceDir)\include\playfab\PFSegmentsDataModels.h">
       <Filter>C Public Includes\playfab</Filter>
@@ -503,6 +506,30 @@
     <ClCompile Include="$(PlayFabSourceDir)\source\CloudScript\PFCloudScript.cpp">
       <Filter>Source\CloudScript</Filter>
     </ClCompile>
+    <ClInclude Include="$(PlayFabSourceDir)\include\playfab\PFPlayerDataManagementDataModels.h">
+      <Filter>C Public Includes\playfab</Filter>
+    </ClInclude>
+    <ClInclude Include="$(PlayFabSourceDir)\include\playfab\cpp\PFPlayerDataManagementDataModelWrappers.h">
+      <Filter>C Public Includes\playfab\cpp</Filter>
+    </ClInclude>
+    <ClInclude Include="$(PlayFabSourceDir)\source\PlayerDataManagement\PlayerDataManagementDataModels.h">
+      <Filter>Source\PlayerDataManagement</Filter>
+    </ClInclude>
+    <ClCompile Include="$(PlayFabSourceDir)\source\PlayerDataManagement\PlayerDataManagementDataModels.cpp">
+      <Filter>Source\PlayerDataManagement</Filter>
+    </ClCompile>
+    <ClInclude Include="$(PlayFabSourceDir)\source\PlayerDataManagement\PlayerDataManagement.h">
+      <Filter>Source\PlayerDataManagement</Filter>
+    </ClInclude>
+    <ClCompile Include="$(PlayFabSourceDir)\source\PlayerDataManagement\PlayerDataManagement.cpp">
+      <Filter>Source\PlayerDataManagement</Filter>
+    </ClCompile>
+    <ClInclude Include="$(PlayFabSourceDir)\include\playfab\PFPlayerDataManagement.h">
+      <Filter>C Public Includes\playfab</Filter>
+    </ClInclude>
+    <ClCompile Include="$(PlayFabSourceDir)\source\PlayerDataManagement\PFPlayerDataManagement.cpp">
+      <Filter>Source\PlayerDataManagement</Filter>
+    </ClCompile>
     <ClInclude Include="$(PlayFabSourceDir)\include\playfab\PFMatchmakingDataModels.h">
       <Filter>C Public Includes\playfab</Filter>
     </ClInclude>
@@ -526,6 +553,30 @@
     </ClInclude>
     <ClCompile Include="$(PlayFabSourceDir)\source\Matchmaking\PFMatchmaking.cpp">
       <Filter>Source\Matchmaking</Filter>
+    </ClCompile>
+    <ClInclude Include="$(PlayFabSourceDir)\include\playfab\PFEconomyDataModels.h">
+      <Filter>C Public Includes\playfab</Filter>
+    </ClInclude>
+    <ClInclude Include="$(PlayFabSourceDir)\include\playfab\cpp\PFEconomyDataModelWrappers.h">
+      <Filter>C Public Includes\playfab\cpp</Filter>
+    </ClInclude>
+    <ClInclude Include="$(PlayFabSourceDir)\source\Economy\EconomyDataModels.h">
+      <Filter>Source\Economy</Filter>
+    </ClInclude>
+    <ClCompile Include="$(PlayFabSourceDir)\source\Economy\EconomyDataModels.cpp">
+      <Filter>Source\Economy</Filter>
+    </ClCompile>
+    <ClInclude Include="$(PlayFabSourceDir)\source\Economy\Economy.h">
+      <Filter>Source\Economy</Filter>
+    </ClInclude>
+    <ClCompile Include="$(PlayFabSourceDir)\source\Economy\Economy.cpp">
+      <Filter>Source\Economy</Filter>
+    </ClCompile>
+    <ClInclude Include="$(PlayFabSourceDir)\include\playfab\PFEconomy.h">
+      <Filter>C Public Includes\playfab</Filter>
+    </ClInclude>
+    <ClCompile Include="$(PlayFabSourceDir)\source\Economy\PFEconomy.cpp">
+      <Filter>Source\Economy</Filter>
     </ClCompile>
     <ClInclude Include="$(PlayFabSourceDir)\include\playfab\PFCharacterDataModels.h">
       <Filter>C Public Includes\playfab</Filter>
@@ -694,6 +745,30 @@
     </ClInclude>
     <ClCompile Include="$(PlayFabSourceDir)\source\Analytics\PFAnalytics.cpp">
       <Filter>Source\Analytics</Filter>
+    </ClCompile>
+    <ClInclude Include="$(PlayFabSourceDir)\include\playfab\PFPushNotificationsDataModels.h">
+      <Filter>C Public Includes\playfab</Filter>
+    </ClInclude>
+    <ClInclude Include="$(PlayFabSourceDir)\include\playfab\cpp\PFPushNotificationsDataModelWrappers.h">
+      <Filter>C Public Includes\playfab\cpp</Filter>
+    </ClInclude>
+    <ClInclude Include="$(PlayFabSourceDir)\source\PushNotifications\PushNotificationsDataModels.h">
+      <Filter>Source\PushNotifications</Filter>
+    </ClInclude>
+    <ClCompile Include="$(PlayFabSourceDir)\source\PushNotifications\PushNotificationsDataModels.cpp">
+      <Filter>Source\PushNotifications</Filter>
+    </ClCompile>
+    <ClInclude Include="$(PlayFabSourceDir)\source\PushNotifications\PushNotifications.h">
+      <Filter>Source\PushNotifications</Filter>
+    </ClInclude>
+    <ClCompile Include="$(PlayFabSourceDir)\source\PushNotifications\PushNotifications.cpp">
+      <Filter>Source\PushNotifications</Filter>
+    </ClCompile>
+    <ClInclude Include="$(PlayFabSourceDir)\include\playfab\PFPushNotifications.h">
+      <Filter>C Public Includes\playfab</Filter>
+    </ClInclude>
+    <ClCompile Include="$(PlayFabSourceDir)\source\PushNotifications\PFPushNotifications.cpp">
+      <Filter>Source\PushNotifications</Filter>
     </ClCompile>
     <ClInclude Include="$(PlayFabSourceDir)\include\playfab\PFDataDataModels.h">
       <Filter>C Public Includes\playfab</Filter>

@@ -36,24 +36,25 @@ protected:
     void AddTests();
 
     static void LogCreateSegmentRequest(PFSegmentsCreateSegmentRequest const* request, const char* testName);
-    static void FillCreateSegmentRequest(PlayFab::Wrappers::PFSegmentsCreateSegmentRequestWrapper<>& request);
-    static HRESULT LogPFSegmentsCreateSegmentResponse(PFSegmentsCreateSegmentResponse const* result);
-    static HRESULT ValidatePFSegmentsCreateSegmentResponse(PFSegmentsCreateSegmentResponse* result);
-
+    static HRESULT LogCreateSegmentResponse(PFSegmentsCreateSegmentResponse const* result);
     static void LogDeleteSegmentRequest(PFSegmentsDeleteSegmentRequest const* request, const char* testName);
-    static void FillDeleteSegmentRequest(PlayFab::Wrappers::PFSegmentsDeleteSegmentRequestWrapper<>& request);
-    static HRESULT LogPFSegmentsDeleteSegmentsResponse(PFSegmentsDeleteSegmentsResponse const* result);
-    static HRESULT ValidatePFSegmentsDeleteSegmentsResponse(PFSegmentsDeleteSegmentsResponse* result);
-
+    static HRESULT LogDeleteSegmentsResponse(PFSegmentsDeleteSegmentsResponse const* result);
     static void LogGetSegmentsRequest(PFSegmentsGetSegmentsRequest const* request, const char* testName);
-    static void FillGetSegmentsRequest(PlayFab::Wrappers::PFSegmentsGetSegmentsRequestWrapper<>& request);
-    static HRESULT LogPFSegmentsGetSegmentsResponse(PFSegmentsGetSegmentsResponse const* result);
-    static HRESULT ValidatePFSegmentsGetSegmentsResponse(PFSegmentsGetSegmentsResponse* result);
-
+    static HRESULT LogGetSegmentsResponse(PFSegmentsGetSegmentsResponse const* result);
     static void LogUpdateSegmentRequest(PFSegmentsUpdateSegmentRequest const* request, const char* testName);
-    static void FillUpdateSegmentRequest(PlayFab::Wrappers::PFSegmentsUpdateSegmentRequestWrapper<>& request);
-    static HRESULT LogPFSegmentsUpdateSegmentResponse(PFSegmentsUpdateSegmentResponse const* result);
-    static HRESULT ValidatePFSegmentsUpdateSegmentResponse(PFSegmentsUpdateSegmentResponse* result);
+    static HRESULT LogUpdateSegmentResponse(PFSegmentsUpdateSegmentResponse const* result);
+
+    static void FillAdminCreateSegmentRequest(PlayFab::Wrappers::PFSegmentsCreateSegmentRequestWrapper<>& request);
+    static HRESULT ValidateAdminCreateSegmentResponse(PFSegmentsCreateSegmentResponse* result);
+
+    static void FillAdminDeleteSegmentRequest(PlayFab::Wrappers::PFSegmentsDeleteSegmentRequestWrapper<>& request);
+    static HRESULT ValidateAdminDeleteSegmentResponse(PFSegmentsDeleteSegmentsResponse* result);
+
+    static void FillAdminGetSegmentsRequest(PlayFab::Wrappers::PFSegmentsGetSegmentsRequestWrapper<>& request);
+    static HRESULT ValidateAdminGetSegmentsResponse(PFSegmentsGetSegmentsResponse* result);
+
+    static void FillAdminUpdateSegmentRequest(PlayFab::Wrappers::PFSegmentsUpdateSegmentRequestWrapper<>& request);
+    static HRESULT ValidateAdminUpdateSegmentResponse(PFSegmentsUpdateSegmentResponse* result);
 
     struct SegmentsTestData
     {

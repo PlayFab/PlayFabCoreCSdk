@@ -46,33 +46,36 @@ protected:
     void AddTests();
 
     static void LogDeviceInfoRequest(PFAnalyticsDeviceInfoRequest const* request, const char* testName);
-    static void FillDeviceInfoRequest(PlayFab::Wrappers::PFAnalyticsDeviceInfoRequestWrapper<>& request);
-
     static void LogInsightsEmptyRequest(PFAnalyticsInsightsEmptyRequest const* request, const char* testName);
-    static void FillInsightsEmptyRequest(PlayFab::Wrappers::PFAnalyticsInsightsEmptyRequestWrapper<>& request);
-    static HRESULT LogPFAnalyticsInsightsGetDetailsResponse(PFAnalyticsInsightsGetDetailsResponse const* result);
-    static HRESULT ValidatePFAnalyticsInsightsGetDetailsResponse(PFAnalyticsInsightsGetDetailsResponse* result);
-
-    static HRESULT LogPFAnalyticsInsightsGetLimitsResponse(PFAnalyticsInsightsGetLimitsResponse const* result);
-    static HRESULT ValidatePFAnalyticsInsightsGetLimitsResponse(PFAnalyticsInsightsGetLimitsResponse* result);
-
+    static HRESULT LogInsightsGetDetailsResponse(PFAnalyticsInsightsGetDetailsResponse const* result);
+    static HRESULT LogInsightsGetLimitsResponse(PFAnalyticsInsightsGetLimitsResponse const* result);
     static void LogInsightsGetOperationStatusRequest(PFAnalyticsInsightsGetOperationStatusRequest const* request, const char* testName);
-    static void FillInsightsGetOperationStatusRequest(PlayFab::Wrappers::PFAnalyticsInsightsGetOperationStatusRequestWrapper<>& request);
-    static HRESULT LogPFAnalyticsInsightsGetOperationStatusResponse(PFAnalyticsInsightsGetOperationStatusResponse const* result);
-    static HRESULT ValidatePFAnalyticsInsightsGetOperationStatusResponse(PFAnalyticsInsightsGetOperationStatusResponse* result);
-
+    static HRESULT LogInsightsGetOperationStatusResponse(PFAnalyticsInsightsGetOperationStatusResponse const* result);
     static void LogInsightsGetPendingOperationsRequest(PFAnalyticsInsightsGetPendingOperationsRequest const* request, const char* testName);
-    static void FillInsightsGetPendingOperationsRequest(PlayFab::Wrappers::PFAnalyticsInsightsGetPendingOperationsRequestWrapper<>& request);
-    static HRESULT LogPFAnalyticsInsightsGetPendingOperationsResponse(PFAnalyticsInsightsGetPendingOperationsResponse const* result);
-    static HRESULT ValidatePFAnalyticsInsightsGetPendingOperationsResponse(PFAnalyticsInsightsGetPendingOperationsResponse* result);
-
+    static HRESULT LogInsightsGetPendingOperationsResponse(PFAnalyticsInsightsGetPendingOperationsResponse const* result);
     static void LogInsightsSetPerformanceRequest(PFAnalyticsInsightsSetPerformanceRequest const* request, const char* testName);
-    static void FillInsightsSetPerformanceRequest(PlayFab::Wrappers::PFAnalyticsInsightsSetPerformanceRequestWrapper<>& request);
-    static HRESULT LogPFAnalyticsInsightsOperationResponse(PFAnalyticsInsightsOperationResponse const* result);
-    static HRESULT ValidatePFAnalyticsInsightsOperationResponse(PFAnalyticsInsightsOperationResponse* result);
-
+    static HRESULT LogInsightsOperationResponse(PFAnalyticsInsightsOperationResponse const* result);
     static void LogInsightsSetStorageRetentionRequest(PFAnalyticsInsightsSetStorageRetentionRequest const* request, const char* testName);
-    static void FillInsightsSetStorageRetentionRequest(PlayFab::Wrappers::PFAnalyticsInsightsSetStorageRetentionRequestWrapper<>& request);
+
+    static void FillClientReportDeviceInfoRequest(PlayFab::Wrappers::PFAnalyticsDeviceInfoRequestWrapper<>& request);
+
+    static void FillGetDetailsRequest(PlayFab::Wrappers::PFAnalyticsInsightsEmptyRequestWrapper<>& request);
+    static HRESULT ValidateGetDetailsResponse(PFAnalyticsInsightsGetDetailsResponse* result);
+
+    static void FillGetLimitsRequest(PlayFab::Wrappers::PFAnalyticsInsightsEmptyRequestWrapper<>& request);
+    static HRESULT ValidateGetLimitsResponse(PFAnalyticsInsightsGetLimitsResponse* result);
+
+    static void FillGetOperationStatusRequest(PlayFab::Wrappers::PFAnalyticsInsightsGetOperationStatusRequestWrapper<>& request);
+    static HRESULT ValidateGetOperationStatusResponse(PFAnalyticsInsightsGetOperationStatusResponse* result);
+
+    static void FillGetPendingOperationsRequest(PlayFab::Wrappers::PFAnalyticsInsightsGetPendingOperationsRequestWrapper<>& request);
+    static HRESULT ValidateGetPendingOperationsResponse(PFAnalyticsInsightsGetPendingOperationsResponse* result);
+
+    static void FillSetPerformanceRequest(PlayFab::Wrappers::PFAnalyticsInsightsSetPerformanceRequestWrapper<>& request);
+    static HRESULT ValidateSetPerformanceResponse(PFAnalyticsInsightsOperationResponse* result);
+
+    static void FillSetStorageRetentionRequest(PlayFab::Wrappers::PFAnalyticsInsightsSetStorageRetentionRequestWrapper<>& request);
+    static HRESULT ValidateSetStorageRetentionResponse(PFAnalyticsInsightsOperationResponse* result);
 
     struct AnalyticsTestData
     {

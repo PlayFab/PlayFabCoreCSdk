@@ -521,7 +521,6 @@ enum class ServiceErrorCode
     ApiNotEnabledForTitle = 1520,
     DuplicateTitleNameForPublisher = 1521,
     AzureTitleCreationInProgress = 1522,
-    DuplicateAzureResourceId = 1523,
     TitleConstraintsPublisherDeletion = 1524,
     InvalidPlayerAccountPoolId = 1525,
     PlayerAccountPoolNotFound = 1526,
@@ -557,7 +556,7 @@ enum class ServiceErrorCode
     MatchmakingBadRequest = 2059,
     PubSubFeatureNotEnabledForTitle = 2500,
     PubSubTooManyRequests = 2501,
-    PubSubConnectionHandleAccessDenied = 2502,
+    PubSubConnectionNotFoundForEntity = 2502,
     PubSubConnectionHandleInvalid = 2503,
     PubSubSubscriptionLimitExceeded = 2504,
     TitleConfigNotFound = 3001,
@@ -682,6 +681,8 @@ enum class ServiceErrorCode
     EventSinkConnectionUnauthorized = 15001,
     EventSinkRegionInvalid = 15002,
     OperationCanceled = 16000,
+    InvalidDisplayNameRandomSuffixLength = 17000,
+    AllowNonUniquePlayerDisplayNamesDisableNotAllowed = 17001,
 };
 
 HRESULT ServiceErrorToHR(ServiceErrorCode errorCode);

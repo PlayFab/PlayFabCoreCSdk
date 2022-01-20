@@ -11,7 +11,7 @@ namespace PlayFabUnit
 
 void AutoGenGroupsTests::LogAcceptGroupApplicationRequest(PFGroupsAcceptGroupApplicationRequest const* request, const char* testName)
 {
-    if( !TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    if (!TestApp::ShouldTrace(PFTestTraceLevel::Information))
     {
         return;
     }
@@ -28,7 +28,7 @@ void AutoGenGroupsTests::LogAcceptGroupApplicationRequest(PFGroupsAcceptGroupApp
     ss << "  customTagsCount " << request->customTagsCount; Log(ss);
 
     // PFStringDictionaryEntry
-    for( uint32_t i=0; i<request->customTagsCount; i++ )
+    for (uint32_t i=0; i<request->customTagsCount; i++)
     {
             ss << "  request->customTags[" << i << "]:" << request->customTags[i].key << "=" << request->customTags[i].value; Log(ss);
             
@@ -40,7 +40,7 @@ void AutoGenGroupsTests::LogAcceptGroupApplicationRequest(PFGroupsAcceptGroupApp
 
 void AutoGenGroupsTests::LogAcceptGroupInvitationRequest(PFGroupsAcceptGroupInvitationRequest const* request, const char* testName)
 {
-    if( !TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    if (!TestApp::ShouldTrace(PFTestTraceLevel::Information))
     {
         return;
     }
@@ -57,7 +57,7 @@ void AutoGenGroupsTests::LogAcceptGroupInvitationRequest(PFGroupsAcceptGroupInvi
     ss << "  customTagsCount " << request->customTagsCount; Log(ss);
 
     // PFStringDictionaryEntry
-    for( uint32_t i=0; i<request->customTagsCount; i++ )
+    for (uint32_t i=0; i<request->customTagsCount; i++)
     {
             ss << "  request->customTags[" << i << "]:" << request->customTags[i].key << "=" << request->customTags[i].value; Log(ss);
             
@@ -69,7 +69,7 @@ void AutoGenGroupsTests::LogAcceptGroupInvitationRequest(PFGroupsAcceptGroupInvi
 
 void AutoGenGroupsTests::LogAddMembersRequest(PFGroupsAddMembersRequest const* request, const char* testName)
 {
-    if( !TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    if (!TestApp::ShouldTrace(PFTestTraceLevel::Information))
     {
         return;
     }
@@ -86,7 +86,7 @@ void AutoGenGroupsTests::LogAddMembersRequest(PFGroupsAddMembersRequest const* r
     ss << "  customTagsCount " << request->customTagsCount; Log(ss);
 
     // PFStringDictionaryEntry
-    for( uint32_t i=0; i<request->customTagsCount; i++ )
+    for (uint32_t i=0; i<request->customTagsCount; i++)
     {
             ss << "  request->customTags[" << i << "]:" << request->customTags[i].key << "=" << request->customTags[i].value; Log(ss);
             
@@ -95,17 +95,17 @@ void AutoGenGroupsTests::LogAddMembersRequest(PFGroupsAddMembersRequest const* r
     ss << "  membersCount " << request->membersCount; Log(ss);
 
     // PFEntityKey
-    for( uint32_t i=0; i<request->membersCount; i++ )
+    for (uint32_t i=0; i<request->membersCount; i++)
     {
             ss << "  request->members[" << i << "]:" << request->members[i]; Log(ss); // PFEntityKey
     } 
-    if( request->roleId ) { ss << "  roleId " << request->roleId; Log(ss); } else { ss << "  roleId = nullptr"; Log(ss); } // Class: const char* 
+    if (request->roleId) { ss << "  roleId " << request->roleId; Log(ss); } else { ss << "  roleId = nullptr"; Log(ss); } // Class: const char* 
 
 }
 
 void AutoGenGroupsTests::LogApplyToGroupRequest(PFGroupsApplyToGroupRequest const* request, const char* testName)
 {
-    if( !TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    if (!TestApp::ShouldTrace(PFTestTraceLevel::Information))
     {
         return;
     }
@@ -122,7 +122,7 @@ void AutoGenGroupsTests::LogApplyToGroupRequest(PFGroupsApplyToGroupRequest cons
     ss << "  customTagsCount " << request->customTagsCount; Log(ss);
 
     // PFStringDictionaryEntry
-    for( uint32_t i=0; i<request->customTagsCount; i++ )
+    for (uint32_t i=0; i<request->customTagsCount; i++)
     {
             ss << "  request->customTags[" << i << "]:" << request->customTags[i].key << "=" << request->customTags[i].value; Log(ss);
             
@@ -132,9 +132,9 @@ void AutoGenGroupsTests::LogApplyToGroupRequest(PFGroupsApplyToGroupRequest cons
 
 }
 
-HRESULT AutoGenGroupsTests::LogPFGroupsApplyToGroupResponse(PFGroupsApplyToGroupResponse const* result)
+HRESULT AutoGenGroupsTests::LogApplyToGroupResponse(PFGroupsApplyToGroupResponse const* result)
 {
-    if( !TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    if (!TestApp::ShouldTrace(PFTestTraceLevel::Information))
     {
         return S_OK;
     }
@@ -151,7 +151,7 @@ HRESULT AutoGenGroupsTests::LogPFGroupsApplyToGroupResponse(PFGroupsApplyToGroup
 
 void AutoGenGroupsTests::LogBlockEntityRequest(PFGroupsBlockEntityRequest const* request, const char* testName)
 {
-    if( !TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    if (!TestApp::ShouldTrace(PFTestTraceLevel::Information))
     {
         return;
     }
@@ -168,7 +168,7 @@ void AutoGenGroupsTests::LogBlockEntityRequest(PFGroupsBlockEntityRequest const*
     ss << "  customTagsCount " << request->customTagsCount; Log(ss);
 
     // PFStringDictionaryEntry
-    for( uint32_t i=0; i<request->customTagsCount; i++ )
+    for (uint32_t i=0; i<request->customTagsCount; i++)
     {
             ss << "  request->customTags[" << i << "]:" << request->customTags[i].key << "=" << request->customTags[i].value; Log(ss);
             
@@ -180,7 +180,7 @@ void AutoGenGroupsTests::LogBlockEntityRequest(PFGroupsBlockEntityRequest const*
 
 void AutoGenGroupsTests::LogChangeMemberRoleRequest(PFGroupsChangeMemberRoleRequest const* request, const char* testName)
 {
-    if( !TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    if (!TestApp::ShouldTrace(PFTestTraceLevel::Information))
     {
         return;
     }
@@ -197,27 +197,27 @@ void AutoGenGroupsTests::LogChangeMemberRoleRequest(PFGroupsChangeMemberRoleRequ
     ss << "  customTagsCount " << request->customTagsCount; Log(ss);
 
     // PFStringDictionaryEntry
-    for( uint32_t i=0; i<request->customTagsCount; i++ )
+    for (uint32_t i=0; i<request->customTagsCount; i++)
     {
             ss << "  request->customTags[" << i << "]:" << request->customTags[i].key << "=" << request->customTags[i].value; Log(ss);
             
     } 
-    if( request->destinationRoleId ) { ss << "  destinationRoleId " << request->destinationRoleId; Log(ss); } else { ss << "  destinationRoleId = nullptr"; Log(ss); } // Class: const char* 
+    if (request->destinationRoleId) { ss << "  destinationRoleId " << request->destinationRoleId; Log(ss); } else { ss << "  destinationRoleId = nullptr"; Log(ss); } // Class: const char* 
     ss << "  group " << request->group; Log(ss); // Class: PFEntityKey     
     ss << "  membersCount " << request->membersCount; Log(ss);
 
     // PFEntityKey
-    for( uint32_t i=0; i<request->membersCount; i++ )
+    for (uint32_t i=0; i<request->membersCount; i++)
     {
             ss << "  request->members[" << i << "]:" << request->members[i]; Log(ss); // PFEntityKey
     } 
-    if( request->originRoleId ) { ss << "  originRoleId " << request->originRoleId; Log(ss); } else { ss << "  originRoleId = nullptr"; Log(ss); } // Class: const char* 
+    if (request->originRoleId) { ss << "  originRoleId " << request->originRoleId; Log(ss); } else { ss << "  originRoleId = nullptr"; Log(ss); } // Class: const char* 
 
 }
 
 void AutoGenGroupsTests::LogCreateGroupRequest(PFGroupsCreateGroupRequest const* request, const char* testName)
 {
-    if( !TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    if (!TestApp::ShouldTrace(PFTestTraceLevel::Information))
     {
         return;
     }
@@ -234,19 +234,19 @@ void AutoGenGroupsTests::LogCreateGroupRequest(PFGroupsCreateGroupRequest const*
     ss << "  customTagsCount " << request->customTagsCount; Log(ss);
 
     // PFStringDictionaryEntry
-    for( uint32_t i=0; i<request->customTagsCount; i++ )
+    for (uint32_t i=0; i<request->customTagsCount; i++)
     {
             ss << "  request->customTags[" << i << "]:" << request->customTags[i].key << "=" << request->customTags[i].value; Log(ss);
             
     } 
     ss << "  entity " << request->entity; Log(ss); // Class: PFEntityKey 
-    if( request->groupName ) { ss << "  groupName " << request->groupName; Log(ss); } else { ss << "  groupName = nullptr"; Log(ss); } // Class: const char* 
+    if (request->groupName) { ss << "  groupName " << request->groupName; Log(ss); } else { ss << "  groupName = nullptr"; Log(ss); } // Class: const char* 
 
 }
 
-HRESULT AutoGenGroupsTests::LogPFGroupsCreateGroupResponse(PFGroupsCreateGroupResponse const* result)
+HRESULT AutoGenGroupsTests::LogCreateGroupResponse(PFGroupsCreateGroupResponse const* result)
 {
-    if( !TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    if (!TestApp::ShouldTrace(PFTestTraceLevel::Information))
     {
         return S_OK;
     }
@@ -255,16 +255,16 @@ HRESULT AutoGenGroupsTests::LogPFGroupsCreateGroupResponse(PFGroupsCreateGroupRe
     ss << "Response:"; Log(ss);
 
     // Found PlayFabGroupsCreateGroupResponse    
-    if( result->adminRoleId ) { ss << "  adminRoleId " << result->adminRoleId; Log(ss); } else { ss << "  adminRoleId = nullptr"; Log(ss); } // Class: const char*     
+    if (result->adminRoleId) { ss << "  adminRoleId " << result->adminRoleId; Log(ss); } else { ss << "  adminRoleId = nullptr"; Log(ss); } // Class: const char*     
     ss << "  created " << result->created; Log(ss); // Class: time_t     
     ss << "  group " << result->group; Log(ss); // Class: PFEntityKey     
-    if( result->groupName ) { ss << "  groupName " << result->groupName; Log(ss); } else { ss << "  groupName = nullptr"; Log(ss); } // Class: const char*     
-    if( result->memberRoleId ) { ss << "  memberRoleId " << result->memberRoleId; Log(ss); } else { ss << "  memberRoleId = nullptr"; Log(ss); } // Class: const char*     
+    if (result->groupName) { ss << "  groupName " << result->groupName; Log(ss); } else { ss << "  groupName = nullptr"; Log(ss); } // Class: const char*     
+    if (result->memberRoleId) { ss << "  memberRoleId " << result->memberRoleId; Log(ss); } else { ss << "  memberRoleId = nullptr"; Log(ss); } // Class: const char*     
     ss << "  profileVersion " << result->profileVersion; Log(ss); // Class: int32_t         
     ss << "  rolesCount " << result->rolesCount; Log(ss);
 
     // PFStringDictionaryEntry
-    for( uint32_t i=0; i<result->rolesCount; i++ )
+    for (uint32_t i=0; i<result->rolesCount; i++)
     {
             ss << "  result->roles[" << i << "]:" << result->roles[i].key << "=" << result->roles[i].value; Log(ss);
             
@@ -274,7 +274,7 @@ HRESULT AutoGenGroupsTests::LogPFGroupsCreateGroupResponse(PFGroupsCreateGroupRe
 
 void AutoGenGroupsTests::LogCreateGroupRoleRequest(PFGroupsCreateGroupRoleRequest const* request, const char* testName)
 {
-    if( !TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    if (!TestApp::ShouldTrace(PFTestTraceLevel::Information))
     {
         return;
     }
@@ -291,20 +291,20 @@ void AutoGenGroupsTests::LogCreateGroupRoleRequest(PFGroupsCreateGroupRoleReques
     ss << "  customTagsCount " << request->customTagsCount; Log(ss);
 
     // PFStringDictionaryEntry
-    for( uint32_t i=0; i<request->customTagsCount; i++ )
+    for (uint32_t i=0; i<request->customTagsCount; i++)
     {
             ss << "  request->customTags[" << i << "]:" << request->customTags[i].key << "=" << request->customTags[i].value; Log(ss);
             
     } 
     ss << "  group " << request->group; Log(ss); // Class: PFEntityKey 
-    if( request->roleId ) { ss << "  roleId " << request->roleId; Log(ss); } else { ss << "  roleId = nullptr"; Log(ss); } // Class: const char* 
-    if( request->roleName ) { ss << "  roleName " << request->roleName; Log(ss); } else { ss << "  roleName = nullptr"; Log(ss); } // Class: const char* 
+    if (request->roleId) { ss << "  roleId " << request->roleId; Log(ss); } else { ss << "  roleId = nullptr"; Log(ss); } // Class: const char* 
+    if (request->roleName) { ss << "  roleName " << request->roleName; Log(ss); } else { ss << "  roleName = nullptr"; Log(ss); } // Class: const char* 
 
 }
 
-HRESULT AutoGenGroupsTests::LogPFGroupsCreateGroupRoleResponse(PFGroupsCreateGroupRoleResponse const* result)
+HRESULT AutoGenGroupsTests::LogCreateGroupRoleResponse(PFGroupsCreateGroupRoleResponse const* result)
 {
-    if( !TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    if (!TestApp::ShouldTrace(PFTestTraceLevel::Information))
     {
         return S_OK;
     }
@@ -314,14 +314,14 @@ HRESULT AutoGenGroupsTests::LogPFGroupsCreateGroupRoleResponse(PFGroupsCreateGro
 
     // Found PlayFabGroupsCreateGroupRoleResponse    
     ss << "  profileVersion " << result->profileVersion; Log(ss); // Class: int32_t     
-    if( result->roleId ) { ss << "  roleId " << result->roleId; Log(ss); } else { ss << "  roleId = nullptr"; Log(ss); } // Class: const char*     
-    if( result->roleName ) { ss << "  roleName " << result->roleName; Log(ss); } else { ss << "  roleName = nullptr"; Log(ss); } // Class: const char* 
+    if (result->roleId) { ss << "  roleId " << result->roleId; Log(ss); } else { ss << "  roleId = nullptr"; Log(ss); } // Class: const char*     
+    if (result->roleName) { ss << "  roleName " << result->roleName; Log(ss); } else { ss << "  roleName = nullptr"; Log(ss); } // Class: const char* 
     return S_OK;
 }
 
 void AutoGenGroupsTests::LogDeleteGroupRequest(PFGroupsDeleteGroupRequest const* request, const char* testName)
 {
-    if( !TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    if (!TestApp::ShouldTrace(PFTestTraceLevel::Information))
     {
         return;
     }
@@ -338,7 +338,7 @@ void AutoGenGroupsTests::LogDeleteGroupRequest(PFGroupsDeleteGroupRequest const*
     ss << "  customTagsCount " << request->customTagsCount; Log(ss);
 
     // PFStringDictionaryEntry
-    for( uint32_t i=0; i<request->customTagsCount; i++ )
+    for (uint32_t i=0; i<request->customTagsCount; i++)
     {
             ss << "  request->customTags[" << i << "]:" << request->customTags[i].key << "=" << request->customTags[i].value; Log(ss);
             
@@ -349,7 +349,7 @@ void AutoGenGroupsTests::LogDeleteGroupRequest(PFGroupsDeleteGroupRequest const*
 
 void AutoGenGroupsTests::LogDeleteRoleRequest(PFGroupsDeleteRoleRequest const* request, const char* testName)
 {
-    if( !TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    if (!TestApp::ShouldTrace(PFTestTraceLevel::Information))
     {
         return;
     }
@@ -366,19 +366,19 @@ void AutoGenGroupsTests::LogDeleteRoleRequest(PFGroupsDeleteRoleRequest const* r
     ss << "  customTagsCount " << request->customTagsCount; Log(ss);
 
     // PFStringDictionaryEntry
-    for( uint32_t i=0; i<request->customTagsCount; i++ )
+    for (uint32_t i=0; i<request->customTagsCount; i++)
     {
             ss << "  request->customTags[" << i << "]:" << request->customTags[i].key << "=" << request->customTags[i].value; Log(ss);
             
     } 
     ss << "  group " << request->group; Log(ss); // Class: PFEntityKey 
-    if( request->roleId ) { ss << "  roleId " << request->roleId; Log(ss); } else { ss << "  roleId = nullptr"; Log(ss); } // Class: const char* 
+    if (request->roleId) { ss << "  roleId " << request->roleId; Log(ss); } else { ss << "  roleId = nullptr"; Log(ss); } // Class: const char* 
 
 }
 
 void AutoGenGroupsTests::LogGetGroupRequest(PFGroupsGetGroupRequest const* request, const char* testName)
 {
-    if( !TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    if (!TestApp::ShouldTrace(PFTestTraceLevel::Information))
     {
         return;
     }
@@ -395,19 +395,19 @@ void AutoGenGroupsTests::LogGetGroupRequest(PFGroupsGetGroupRequest const* reque
     ss << "  customTagsCount " << request->customTagsCount; Log(ss);
 
     // PFStringDictionaryEntry
-    for( uint32_t i=0; i<request->customTagsCount; i++ )
+    for (uint32_t i=0; i<request->customTagsCount; i++)
     {
             ss << "  request->customTags[" << i << "]:" << request->customTags[i].key << "=" << request->customTags[i].value; Log(ss);
             
     } 
     ss << "  group " << request->group; Log(ss); // Class: PFEntityKey 
-    if( request->groupName ) { ss << "  groupName " << request->groupName; Log(ss); } else { ss << "  groupName = nullptr"; Log(ss); } // Class: const char* 
+    if (request->groupName) { ss << "  groupName " << request->groupName; Log(ss); } else { ss << "  groupName = nullptr"; Log(ss); } // Class: const char* 
 
 }
 
-HRESULT AutoGenGroupsTests::LogPFGroupsGetGroupResponse(PFGroupsGetGroupResponse const* result)
+HRESULT AutoGenGroupsTests::LogGetGroupResponse(PFGroupsGetGroupResponse const* result)
 {
-    if( !TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    if (!TestApp::ShouldTrace(PFTestTraceLevel::Information))
     {
         return S_OK;
     }
@@ -416,16 +416,16 @@ HRESULT AutoGenGroupsTests::LogPFGroupsGetGroupResponse(PFGroupsGetGroupResponse
     ss << "Response:"; Log(ss);
 
     // Found PlayFabGroupsGetGroupResponse    
-    if( result->adminRoleId ) { ss << "  adminRoleId " << result->adminRoleId; Log(ss); } else { ss << "  adminRoleId = nullptr"; Log(ss); } // Class: const char*     
+    if (result->adminRoleId) { ss << "  adminRoleId " << result->adminRoleId; Log(ss); } else { ss << "  adminRoleId = nullptr"; Log(ss); } // Class: const char*     
     ss << "  created " << result->created; Log(ss); // Class: time_t     
     ss << "  group " << result->group; Log(ss); // Class: PFEntityKey     
-    if( result->groupName ) { ss << "  groupName " << result->groupName; Log(ss); } else { ss << "  groupName = nullptr"; Log(ss); } // Class: const char*     
-    if( result->memberRoleId ) { ss << "  memberRoleId " << result->memberRoleId; Log(ss); } else { ss << "  memberRoleId = nullptr"; Log(ss); } // Class: const char*     
+    if (result->groupName) { ss << "  groupName " << result->groupName; Log(ss); } else { ss << "  groupName = nullptr"; Log(ss); } // Class: const char*     
+    if (result->memberRoleId) { ss << "  memberRoleId " << result->memberRoleId; Log(ss); } else { ss << "  memberRoleId = nullptr"; Log(ss); } // Class: const char*     
     ss << "  profileVersion " << result->profileVersion; Log(ss); // Class: int32_t         
     ss << "  rolesCount " << result->rolesCount; Log(ss);
 
     // PFStringDictionaryEntry
-    for( uint32_t i=0; i<result->rolesCount; i++ )
+    for (uint32_t i=0; i<result->rolesCount; i++)
     {
             ss << "  result->roles[" << i << "]:" << result->roles[i].key << "=" << result->roles[i].value; Log(ss);
             
@@ -435,7 +435,7 @@ HRESULT AutoGenGroupsTests::LogPFGroupsGetGroupResponse(PFGroupsGetGroupResponse
 
 void AutoGenGroupsTests::LogInviteToGroupRequest(PFGroupsInviteToGroupRequest const* request, const char* testName)
 {
-    if( !TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    if (!TestApp::ShouldTrace(PFTestTraceLevel::Information))
     {
         return;
     }
@@ -452,20 +452,20 @@ void AutoGenGroupsTests::LogInviteToGroupRequest(PFGroupsInviteToGroupRequest co
     ss << "  customTagsCount " << request->customTagsCount; Log(ss);
 
     // PFStringDictionaryEntry
-    for( uint32_t i=0; i<request->customTagsCount; i++ )
+    for (uint32_t i=0; i<request->customTagsCount; i++)
     {
             ss << "  request->customTags[" << i << "]:" << request->customTags[i].key << "=" << request->customTags[i].value; Log(ss);
             
     } 
     ss << "  entity " << request->entity; Log(ss); // Class: PFEntityKey 
     ss << "  group " << request->group; Log(ss); // Class: PFEntityKey 
-    if( request->roleId ) { ss << "  roleId " << request->roleId; Log(ss); } else { ss << "  roleId = nullptr"; Log(ss); } // Class: const char* 
+    if (request->roleId) { ss << "  roleId " << request->roleId; Log(ss); } else { ss << "  roleId = nullptr"; Log(ss); } // Class: const char* 
 
 }
 
-HRESULT AutoGenGroupsTests::LogPFGroupsInviteToGroupResponse(PFGroupsInviteToGroupResponse const* result)
+HRESULT AutoGenGroupsTests::LogInviteToGroupResponse(PFGroupsInviteToGroupResponse const* result)
 {
-    if( !TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    if (!TestApp::ShouldTrace(PFTestTraceLevel::Information))
     {
         return S_OK;
     }
@@ -478,13 +478,13 @@ HRESULT AutoGenGroupsTests::LogPFGroupsInviteToGroupResponse(PFGroupsInviteToGro
     ss << "  group " << result->group; Log(ss); // Class: PFEntityKey     
     ss << "  invitedByEntity " << result->invitedByEntity; Log(ss); // Class: PFGroupsEntityWithLineage     
     ss << "  invitedEntity " << result->invitedEntity; Log(ss); // Class: PFGroupsEntityWithLineage     
-    if( result->roleId ) { ss << "  roleId " << result->roleId; Log(ss); } else { ss << "  roleId = nullptr"; Log(ss); } // Class: const char* 
+    if (result->roleId) { ss << "  roleId " << result->roleId; Log(ss); } else { ss << "  roleId = nullptr"; Log(ss); } // Class: const char* 
     return S_OK;
 }
 
 void AutoGenGroupsTests::LogIsMemberRequest(PFGroupsIsMemberRequest const* request, const char* testName)
 {
-    if( !TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    if (!TestApp::ShouldTrace(PFTestTraceLevel::Information))
     {
         return;
     }
@@ -501,20 +501,20 @@ void AutoGenGroupsTests::LogIsMemberRequest(PFGroupsIsMemberRequest const* reque
     ss << "  customTagsCount " << request->customTagsCount; Log(ss);
 
     // PFStringDictionaryEntry
-    for( uint32_t i=0; i<request->customTagsCount; i++ )
+    for (uint32_t i=0; i<request->customTagsCount; i++)
     {
             ss << "  request->customTags[" << i << "]:" << request->customTags[i].key << "=" << request->customTags[i].value; Log(ss);
             
     } 
     ss << "  entity " << request->entity; Log(ss); // Class: PFEntityKey 
     ss << "  group " << request->group; Log(ss); // Class: PFEntityKey 
-    if( request->roleId ) { ss << "  roleId " << request->roleId; Log(ss); } else { ss << "  roleId = nullptr"; Log(ss); } // Class: const char* 
+    if (request->roleId) { ss << "  roleId " << request->roleId; Log(ss); } else { ss << "  roleId = nullptr"; Log(ss); } // Class: const char* 
 
 }
 
-HRESULT AutoGenGroupsTests::LogPFGroupsIsMemberResponse(PFGroupsIsMemberResponse const* result)
+HRESULT AutoGenGroupsTests::LogIsMemberResponse(PFGroupsIsMemberResponse const* result)
 {
-    if( !TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    if (!TestApp::ShouldTrace(PFTestTraceLevel::Information))
     {
         return S_OK;
     }
@@ -529,7 +529,7 @@ HRESULT AutoGenGroupsTests::LogPFGroupsIsMemberResponse(PFGroupsIsMemberResponse
 
 void AutoGenGroupsTests::LogListGroupApplicationsRequest(PFGroupsListGroupApplicationsRequest const* request, const char* testName)
 {
-    if( !TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    if (!TestApp::ShouldTrace(PFTestTraceLevel::Information))
     {
         return;
     }
@@ -546,7 +546,7 @@ void AutoGenGroupsTests::LogListGroupApplicationsRequest(PFGroupsListGroupApplic
     ss << "  customTagsCount " << request->customTagsCount; Log(ss);
 
     // PFStringDictionaryEntry
-    for( uint32_t i=0; i<request->customTagsCount; i++ )
+    for (uint32_t i=0; i<request->customTagsCount; i++)
     {
             ss << "  request->customTags[" << i << "]:" << request->customTags[i].key << "=" << request->customTags[i].value; Log(ss);
             
@@ -555,9 +555,9 @@ void AutoGenGroupsTests::LogListGroupApplicationsRequest(PFGroupsListGroupApplic
 
 }
 
-HRESULT AutoGenGroupsTests::LogPFGroupsListGroupApplicationsResponse(PFGroupsListGroupApplicationsResponse const* result)
+HRESULT AutoGenGroupsTests::LogListGroupApplicationsResponse(PFGroupsListGroupApplicationsResponse const* result)
 {
-    if( !TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    if (!TestApp::ShouldTrace(PFTestTraceLevel::Information))
     {
         return S_OK;
     }
@@ -569,7 +569,7 @@ HRESULT AutoGenGroupsTests::LogPFGroupsListGroupApplicationsResponse(PFGroupsLis
     ss << "  applicationsCount " << result->applicationsCount; Log(ss);
 
     // PFGroupsGroupApplication
-    for( uint32_t i=0; i<result->applicationsCount; i++ )
+    for (uint32_t i=0; i<result->applicationsCount; i++)
     {
             ss << "  result->applications[" << i << "]:" << result->applications[i]; Log(ss); // PFGroupsGroupApplication
     } 
@@ -578,7 +578,7 @@ HRESULT AutoGenGroupsTests::LogPFGroupsListGroupApplicationsResponse(PFGroupsLis
 
 void AutoGenGroupsTests::LogListGroupBlocksRequest(PFGroupsListGroupBlocksRequest const* request, const char* testName)
 {
-    if( !TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    if (!TestApp::ShouldTrace(PFTestTraceLevel::Information))
     {
         return;
     }
@@ -595,7 +595,7 @@ void AutoGenGroupsTests::LogListGroupBlocksRequest(PFGroupsListGroupBlocksReques
     ss << "  customTagsCount " << request->customTagsCount; Log(ss);
 
     // PFStringDictionaryEntry
-    for( uint32_t i=0; i<request->customTagsCount; i++ )
+    for (uint32_t i=0; i<request->customTagsCount; i++)
     {
             ss << "  request->customTags[" << i << "]:" << request->customTags[i].key << "=" << request->customTags[i].value; Log(ss);
             
@@ -604,9 +604,9 @@ void AutoGenGroupsTests::LogListGroupBlocksRequest(PFGroupsListGroupBlocksReques
 
 }
 
-HRESULT AutoGenGroupsTests::LogPFGroupsListGroupBlocksResponse(PFGroupsListGroupBlocksResponse const* result)
+HRESULT AutoGenGroupsTests::LogListGroupBlocksResponse(PFGroupsListGroupBlocksResponse const* result)
 {
-    if( !TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    if (!TestApp::ShouldTrace(PFTestTraceLevel::Information))
     {
         return S_OK;
     }
@@ -618,7 +618,7 @@ HRESULT AutoGenGroupsTests::LogPFGroupsListGroupBlocksResponse(PFGroupsListGroup
     ss << "  blockedEntitiesCount " << result->blockedEntitiesCount; Log(ss);
 
     // PFGroupsGroupBlock
-    for( uint32_t i=0; i<result->blockedEntitiesCount; i++ )
+    for (uint32_t i=0; i<result->blockedEntitiesCount; i++)
     {
             ss << "  result->blockedEntities[" << i << "]:" << result->blockedEntities[i]; Log(ss); // PFGroupsGroupBlock
     } 
@@ -627,7 +627,7 @@ HRESULT AutoGenGroupsTests::LogPFGroupsListGroupBlocksResponse(PFGroupsListGroup
 
 void AutoGenGroupsTests::LogListGroupInvitationsRequest(PFGroupsListGroupInvitationsRequest const* request, const char* testName)
 {
-    if( !TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    if (!TestApp::ShouldTrace(PFTestTraceLevel::Information))
     {
         return;
     }
@@ -644,7 +644,7 @@ void AutoGenGroupsTests::LogListGroupInvitationsRequest(PFGroupsListGroupInvitat
     ss << "  customTagsCount " << request->customTagsCount; Log(ss);
 
     // PFStringDictionaryEntry
-    for( uint32_t i=0; i<request->customTagsCount; i++ )
+    for (uint32_t i=0; i<request->customTagsCount; i++)
     {
             ss << "  request->customTags[" << i << "]:" << request->customTags[i].key << "=" << request->customTags[i].value; Log(ss);
             
@@ -653,9 +653,9 @@ void AutoGenGroupsTests::LogListGroupInvitationsRequest(PFGroupsListGroupInvitat
 
 }
 
-HRESULT AutoGenGroupsTests::LogPFGroupsListGroupInvitationsResponse(PFGroupsListGroupInvitationsResponse const* result)
+HRESULT AutoGenGroupsTests::LogListGroupInvitationsResponse(PFGroupsListGroupInvitationsResponse const* result)
 {
-    if( !TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    if (!TestApp::ShouldTrace(PFTestTraceLevel::Information))
     {
         return S_OK;
     }
@@ -667,7 +667,7 @@ HRESULT AutoGenGroupsTests::LogPFGroupsListGroupInvitationsResponse(PFGroupsList
     ss << "  invitationsCount " << result->invitationsCount; Log(ss);
 
     // PFGroupsGroupInvitation
-    for( uint32_t i=0; i<result->invitationsCount; i++ )
+    for (uint32_t i=0; i<result->invitationsCount; i++)
     {
             ss << "  result->invitations[" << i << "]:" << result->invitations[i]; Log(ss); // PFGroupsGroupInvitation
     } 
@@ -676,7 +676,7 @@ HRESULT AutoGenGroupsTests::LogPFGroupsListGroupInvitationsResponse(PFGroupsList
 
 void AutoGenGroupsTests::LogListGroupMembersRequest(PFGroupsListGroupMembersRequest const* request, const char* testName)
 {
-    if( !TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    if (!TestApp::ShouldTrace(PFTestTraceLevel::Information))
     {
         return;
     }
@@ -693,7 +693,7 @@ void AutoGenGroupsTests::LogListGroupMembersRequest(PFGroupsListGroupMembersRequ
     ss << "  customTagsCount " << request->customTagsCount; Log(ss);
 
     // PFStringDictionaryEntry
-    for( uint32_t i=0; i<request->customTagsCount; i++ )
+    for (uint32_t i=0; i<request->customTagsCount; i++)
     {
             ss << "  request->customTags[" << i << "]:" << request->customTags[i].key << "=" << request->customTags[i].value; Log(ss);
             
@@ -702,9 +702,9 @@ void AutoGenGroupsTests::LogListGroupMembersRequest(PFGroupsListGroupMembersRequ
 
 }
 
-HRESULT AutoGenGroupsTests::LogPFGroupsListGroupMembersResponse(PFGroupsListGroupMembersResponse const* result)
+HRESULT AutoGenGroupsTests::LogListGroupMembersResponse(PFGroupsListGroupMembersResponse const* result)
 {
-    if( !TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    if (!TestApp::ShouldTrace(PFTestTraceLevel::Information))
     {
         return S_OK;
     }
@@ -716,7 +716,7 @@ HRESULT AutoGenGroupsTests::LogPFGroupsListGroupMembersResponse(PFGroupsListGrou
     ss << "  membersCount " << result->membersCount; Log(ss);
 
     // PFGroupsEntityMemberRole
-    for( uint32_t i=0; i<result->membersCount; i++ )
+    for (uint32_t i=0; i<result->membersCount; i++)
     {
             ss << "  result->members[" << i << "]:" << result->members[i]; Log(ss); // PFGroupsEntityMemberRole
     } 
@@ -725,7 +725,7 @@ HRESULT AutoGenGroupsTests::LogPFGroupsListGroupMembersResponse(PFGroupsListGrou
 
 void AutoGenGroupsTests::LogListMembershipRequest(PFGroupsListMembershipRequest const* request, const char* testName)
 {
-    if( !TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    if (!TestApp::ShouldTrace(PFTestTraceLevel::Information))
     {
         return;
     }
@@ -742,7 +742,7 @@ void AutoGenGroupsTests::LogListMembershipRequest(PFGroupsListMembershipRequest 
     ss << "  customTagsCount " << request->customTagsCount; Log(ss);
 
     // PFStringDictionaryEntry
-    for( uint32_t i=0; i<request->customTagsCount; i++ )
+    for (uint32_t i=0; i<request->customTagsCount; i++)
     {
             ss << "  request->customTags[" << i << "]:" << request->customTags[i].key << "=" << request->customTags[i].value; Log(ss);
             
@@ -751,9 +751,9 @@ void AutoGenGroupsTests::LogListMembershipRequest(PFGroupsListMembershipRequest 
 
 }
 
-HRESULT AutoGenGroupsTests::LogPFGroupsListMembershipResponse(PFGroupsListMembershipResponse const* result)
+HRESULT AutoGenGroupsTests::LogListMembershipResponse(PFGroupsListMembershipResponse const* result)
 {
-    if( !TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    if (!TestApp::ShouldTrace(PFTestTraceLevel::Information))
     {
         return S_OK;
     }
@@ -765,7 +765,7 @@ HRESULT AutoGenGroupsTests::LogPFGroupsListMembershipResponse(PFGroupsListMember
     ss << "  groupsCount " << result->groupsCount; Log(ss);
 
     // PFGroupsGroupWithRoles
-    for( uint32_t i=0; i<result->groupsCount; i++ )
+    for (uint32_t i=0; i<result->groupsCount; i++)
     {
             ss << "  result->groups[" << i << "]:" << result->groups[i]; Log(ss); // PFGroupsGroupWithRoles
     } 
@@ -774,7 +774,7 @@ HRESULT AutoGenGroupsTests::LogPFGroupsListMembershipResponse(PFGroupsListMember
 
 void AutoGenGroupsTests::LogListMembershipOpportunitiesRequest(PFGroupsListMembershipOpportunitiesRequest const* request, const char* testName)
 {
-    if( !TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    if (!TestApp::ShouldTrace(PFTestTraceLevel::Information))
     {
         return;
     }
@@ -791,7 +791,7 @@ void AutoGenGroupsTests::LogListMembershipOpportunitiesRequest(PFGroupsListMembe
     ss << "  customTagsCount " << request->customTagsCount; Log(ss);
 
     // PFStringDictionaryEntry
-    for( uint32_t i=0; i<request->customTagsCount; i++ )
+    for (uint32_t i=0; i<request->customTagsCount; i++)
     {
             ss << "  request->customTags[" << i << "]:" << request->customTags[i].key << "=" << request->customTags[i].value; Log(ss);
             
@@ -800,9 +800,9 @@ void AutoGenGroupsTests::LogListMembershipOpportunitiesRequest(PFGroupsListMembe
 
 }
 
-HRESULT AutoGenGroupsTests::LogPFGroupsListMembershipOpportunitiesResponse(PFGroupsListMembershipOpportunitiesResponse const* result)
+HRESULT AutoGenGroupsTests::LogListMembershipOpportunitiesResponse(PFGroupsListMembershipOpportunitiesResponse const* result)
 {
-    if( !TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    if (!TestApp::ShouldTrace(PFTestTraceLevel::Information))
     {
         return S_OK;
     }
@@ -814,14 +814,14 @@ HRESULT AutoGenGroupsTests::LogPFGroupsListMembershipOpportunitiesResponse(PFGro
     ss << "  applicationsCount " << result->applicationsCount; Log(ss);
 
     // PFGroupsGroupApplication
-    for( uint32_t i=0; i<result->applicationsCount; i++ )
+    for (uint32_t i=0; i<result->applicationsCount; i++)
     {
             ss << "  result->applications[" << i << "]:" << result->applications[i]; Log(ss); // PFGroupsGroupApplication
     }         
     ss << "  invitationsCount " << result->invitationsCount; Log(ss);
 
     // PFGroupsGroupInvitation
-    for( uint32_t i=0; i<result->invitationsCount; i++ )
+    for (uint32_t i=0; i<result->invitationsCount; i++)
     {
             ss << "  result->invitations[" << i << "]:" << result->invitations[i]; Log(ss); // PFGroupsGroupInvitation
     } 
@@ -830,7 +830,7 @@ HRESULT AutoGenGroupsTests::LogPFGroupsListMembershipOpportunitiesResponse(PFGro
 
 void AutoGenGroupsTests::LogRemoveGroupApplicationRequest(PFGroupsRemoveGroupApplicationRequest const* request, const char* testName)
 {
-    if( !TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    if (!TestApp::ShouldTrace(PFTestTraceLevel::Information))
     {
         return;
     }
@@ -847,7 +847,7 @@ void AutoGenGroupsTests::LogRemoveGroupApplicationRequest(PFGroupsRemoveGroupApp
     ss << "  customTagsCount " << request->customTagsCount; Log(ss);
 
     // PFStringDictionaryEntry
-    for( uint32_t i=0; i<request->customTagsCount; i++ )
+    for (uint32_t i=0; i<request->customTagsCount; i++)
     {
             ss << "  request->customTags[" << i << "]:" << request->customTags[i].key << "=" << request->customTags[i].value; Log(ss);
             
@@ -859,7 +859,7 @@ void AutoGenGroupsTests::LogRemoveGroupApplicationRequest(PFGroupsRemoveGroupApp
 
 void AutoGenGroupsTests::LogRemoveGroupInvitationRequest(PFGroupsRemoveGroupInvitationRequest const* request, const char* testName)
 {
-    if( !TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    if (!TestApp::ShouldTrace(PFTestTraceLevel::Information))
     {
         return;
     }
@@ -876,7 +876,7 @@ void AutoGenGroupsTests::LogRemoveGroupInvitationRequest(PFGroupsRemoveGroupInvi
     ss << "  customTagsCount " << request->customTagsCount; Log(ss);
 
     // PFStringDictionaryEntry
-    for( uint32_t i=0; i<request->customTagsCount; i++ )
+    for (uint32_t i=0; i<request->customTagsCount; i++)
     {
             ss << "  request->customTags[" << i << "]:" << request->customTags[i].key << "=" << request->customTags[i].value; Log(ss);
             
@@ -888,7 +888,7 @@ void AutoGenGroupsTests::LogRemoveGroupInvitationRequest(PFGroupsRemoveGroupInvi
 
 void AutoGenGroupsTests::LogRemoveMembersRequest(PFGroupsRemoveMembersRequest const* request, const char* testName)
 {
-    if( !TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    if (!TestApp::ShouldTrace(PFTestTraceLevel::Information))
     {
         return;
     }
@@ -905,7 +905,7 @@ void AutoGenGroupsTests::LogRemoveMembersRequest(PFGroupsRemoveMembersRequest co
     ss << "  customTagsCount " << request->customTagsCount; Log(ss);
 
     // PFStringDictionaryEntry
-    for( uint32_t i=0; i<request->customTagsCount; i++ )
+    for (uint32_t i=0; i<request->customTagsCount; i++)
     {
             ss << "  request->customTags[" << i << "]:" << request->customTags[i].key << "=" << request->customTags[i].value; Log(ss);
             
@@ -914,17 +914,17 @@ void AutoGenGroupsTests::LogRemoveMembersRequest(PFGroupsRemoveMembersRequest co
     ss << "  membersCount " << request->membersCount; Log(ss);
 
     // PFEntityKey
-    for( uint32_t i=0; i<request->membersCount; i++ )
+    for (uint32_t i=0; i<request->membersCount; i++)
     {
             ss << "  request->members[" << i << "]:" << request->members[i]; Log(ss); // PFEntityKey
     } 
-    if( request->roleId ) { ss << "  roleId " << request->roleId; Log(ss); } else { ss << "  roleId = nullptr"; Log(ss); } // Class: const char* 
+    if (request->roleId) { ss << "  roleId " << request->roleId; Log(ss); } else { ss << "  roleId = nullptr"; Log(ss); } // Class: const char* 
 
 }
 
 void AutoGenGroupsTests::LogUnblockEntityRequest(PFGroupsUnblockEntityRequest const* request, const char* testName)
 {
-    if( !TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    if (!TestApp::ShouldTrace(PFTestTraceLevel::Information))
     {
         return;
     }
@@ -941,7 +941,7 @@ void AutoGenGroupsTests::LogUnblockEntityRequest(PFGroupsUnblockEntityRequest co
     ss << "  customTagsCount " << request->customTagsCount; Log(ss);
 
     // PFStringDictionaryEntry
-    for( uint32_t i=0; i<request->customTagsCount; i++ )
+    for (uint32_t i=0; i<request->customTagsCount; i++)
     {
             ss << "  request->customTags[" << i << "]:" << request->customTags[i].key << "=" << request->customTags[i].value; Log(ss);
             
@@ -953,7 +953,7 @@ void AutoGenGroupsTests::LogUnblockEntityRequest(PFGroupsUnblockEntityRequest co
 
 void AutoGenGroupsTests::LogUpdateGroupRequest(PFGroupsUpdateGroupRequest const* request, const char* testName)
 {
-    if( !TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    if (!TestApp::ShouldTrace(PFTestTraceLevel::Information))
     {
         return;
     }
@@ -966,25 +966,25 @@ void AutoGenGroupsTests::LogUpdateGroupRequest(PFGroupsUpdateGroupRequest const*
 
     // PlayFabGroupsUpdateGroupRequest struct:
     // request->adminRoleId: const char*
-    if( request->adminRoleId ) { ss << "  adminRoleId " << request->adminRoleId; Log(ss); } else { ss << "  adminRoleId = nullptr"; Log(ss); } // Class: const char*     
+    if (request->adminRoleId) { ss << "  adminRoleId " << request->adminRoleId; Log(ss); } else { ss << "  adminRoleId = nullptr"; Log(ss); } // Class: const char*     
     ss << "  customTagsCount " << request->customTagsCount; Log(ss);
 
     // PFStringDictionaryEntry
-    for( uint32_t i=0; i<request->customTagsCount; i++ )
+    for (uint32_t i=0; i<request->customTagsCount; i++)
     {
             ss << "  request->customTags[" << i << "]:" << request->customTags[i].key << "=" << request->customTags[i].value; Log(ss);
             
     } 
     ss << "  expectedProfileVersion " << request->expectedProfileVersion; Log(ss); // Class: int32_t 
     ss << "  group " << request->group; Log(ss); // Class: PFEntityKey 
-    if( request->groupName ) { ss << "  groupName " << request->groupName; Log(ss); } else { ss << "  groupName = nullptr"; Log(ss); } // Class: const char* 
-    if( request->memberRoleId ) { ss << "  memberRoleId " << request->memberRoleId; Log(ss); } else { ss << "  memberRoleId = nullptr"; Log(ss); } // Class: const char* 
+    if (request->groupName) { ss << "  groupName " << request->groupName; Log(ss); } else { ss << "  groupName = nullptr"; Log(ss); } // Class: const char* 
+    if (request->memberRoleId) { ss << "  memberRoleId " << request->memberRoleId; Log(ss); } else { ss << "  memberRoleId = nullptr"; Log(ss); } // Class: const char* 
 
 }
 
-HRESULT AutoGenGroupsTests::LogPFGroupsUpdateGroupResponse(PFGroupsUpdateGroupResponse const* result)
+HRESULT AutoGenGroupsTests::LogUpdateGroupResponse(PFGroupsUpdateGroupResponse const* result)
 {
-    if( !TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    if (!TestApp::ShouldTrace(PFTestTraceLevel::Information))
     {
         return S_OK;
     }
@@ -993,7 +993,7 @@ HRESULT AutoGenGroupsTests::LogPFGroupsUpdateGroupResponse(PFGroupsUpdateGroupRe
     ss << "Response:"; Log(ss);
 
     // Found PlayFabGroupsUpdateGroupResponse    
-    if( result->operationReason ) { ss << "  operationReason " << result->operationReason; Log(ss); } else { ss << "  operationReason = nullptr"; Log(ss); } // Class: const char*     
+    if (result->operationReason) { ss << "  operationReason " << result->operationReason; Log(ss); } else { ss << "  operationReason = nullptr"; Log(ss); } // Class: const char*     
     ss << "  profileVersion " << result->profileVersion; Log(ss); // Class: int32_t     
     ss << "  setResult " << result->setResult; Log(ss); // Class: PFOperationTypes 
     return S_OK;
@@ -1001,7 +1001,7 @@ HRESULT AutoGenGroupsTests::LogPFGroupsUpdateGroupResponse(PFGroupsUpdateGroupRe
 
 void AutoGenGroupsTests::LogUpdateGroupRoleRequest(PFGroupsUpdateGroupRoleRequest const* request, const char* testName)
 {
-    if( !TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    if (!TestApp::ShouldTrace(PFTestTraceLevel::Information))
     {
         return;
     }
@@ -1018,21 +1018,21 @@ void AutoGenGroupsTests::LogUpdateGroupRoleRequest(PFGroupsUpdateGroupRoleReques
     ss << "  customTagsCount " << request->customTagsCount; Log(ss);
 
     // PFStringDictionaryEntry
-    for( uint32_t i=0; i<request->customTagsCount; i++ )
+    for (uint32_t i=0; i<request->customTagsCount; i++)
     {
             ss << "  request->customTags[" << i << "]:" << request->customTags[i].key << "=" << request->customTags[i].value; Log(ss);
             
     } 
     ss << "  expectedProfileVersion " << request->expectedProfileVersion; Log(ss); // Class: int32_t 
     ss << "  group " << request->group; Log(ss); // Class: PFEntityKey 
-    if( request->roleId ) { ss << "  roleId " << request->roleId; Log(ss); } else { ss << "  roleId = nullptr"; Log(ss); } // Class: const char* 
-    if( request->roleName ) { ss << "  roleName " << request->roleName; Log(ss); } else { ss << "  roleName = nullptr"; Log(ss); } // Class: const char* 
+    if (request->roleId) { ss << "  roleId " << request->roleId; Log(ss); } else { ss << "  roleId = nullptr"; Log(ss); } // Class: const char* 
+    if (request->roleName) { ss << "  roleName " << request->roleName; Log(ss); } else { ss << "  roleName = nullptr"; Log(ss); } // Class: const char* 
 
 }
 
-HRESULT AutoGenGroupsTests::LogPFGroupsUpdateGroupRoleResponse(PFGroupsUpdateGroupRoleResponse const* result)
+HRESULT AutoGenGroupsTests::LogUpdateGroupRoleResponse(PFGroupsUpdateGroupRoleResponse const* result)
 {
-    if( !TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    if (!TestApp::ShouldTrace(PFTestTraceLevel::Information))
     {
         return S_OK;
     }
@@ -1041,7 +1041,7 @@ HRESULT AutoGenGroupsTests::LogPFGroupsUpdateGroupRoleResponse(PFGroupsUpdateGro
     ss << "Response:"; Log(ss);
 
     // Found PlayFabGroupsUpdateGroupRoleResponse    
-    if( result->operationReason ) { ss << "  operationReason " << result->operationReason; Log(ss); } else { ss << "  operationReason = nullptr"; Log(ss); } // Class: const char*     
+    if (result->operationReason) { ss << "  operationReason " << result->operationReason; Log(ss); } else { ss << "  operationReason = nullptr"; Log(ss); } // Class: const char*     
     ss << "  profileVersion " << result->profileVersion; Log(ss); // Class: int32_t     
     ss << "  setResult " << result->setResult; Log(ss); // Class: PFOperationTypes 
     return S_OK;

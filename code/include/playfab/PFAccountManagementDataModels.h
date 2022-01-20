@@ -117,11 +117,6 @@ typedef struct PFAccountManagementBanInfo
     _Maybenull_ _Null_terminated_ const char* IPAddress;
 
     /// <summary>
-    /// (Optional) The MAC address on which the ban was applied. May affect multiple players.
-    /// </summary>
-    _Maybenull_ _Null_terminated_ const char* MACAddress;
-
-    /// <summary>
     /// (Optional) Unique PlayFab assigned ID of the user on whom the operation will be performed.
     /// </summary>
     _Maybenull_ _Null_terminated_ const char* playFabId;
@@ -904,6 +899,55 @@ typedef struct PFAccountManagementGetAccountInfoResult
     _Maybenull_ PFUserAccountInfo const* accountInfo;
 
 } PFAccountManagementGetAccountInfoResult;
+
+/// <summary>
+/// PFAccountManagementGetPlayerCombinedInfoRequest data model.
+/// </summary>
+typedef struct PFAccountManagementGetPlayerCombinedInfoRequest
+{
+    /// <summary>
+    /// (Optional) The optional custom tags associated with the request (e.g. build number, external
+    /// trace identifiers, etc.).
+    /// </summary>
+    _Maybenull_ _Field_size_(customTagsCount) struct PFStringDictionaryEntry const* customTags;
+
+    /// <summary>
+    /// Count of customTags
+    /// </summary>
+    uint32_t customTagsCount;
+
+    /// <summary>
+    /// Flags for which pieces of info to return for the user.
+    /// </summary>
+    PFGetPlayerCombinedInfoRequestParams const* infoRequestParameters;
+
+    /// <summary>
+    /// PlayFabId of the user whose data will be returned. If not filled included, we return the data
+    /// for the calling player. .
+    /// </summary>
+    _Null_terminated_ const char* playFabId;
+
+} PFAccountManagementGetPlayerCombinedInfoRequest;
+
+/// <summary>
+/// PFAccountManagementGetPlayerCombinedInfoResult data model. Returns whatever info is requested in
+/// the response for the user. If no user is explicitly requested this defaults to the authenticated user.
+/// If the user is the same as the requester, PII (like email address, facebook id) is returned if available.
+/// Otherwise, only public information is returned. All parameters default to false.
+/// </summary>
+typedef struct PFAccountManagementGetPlayerCombinedInfoResult
+{
+    /// <summary>
+    /// (Optional) Results for requested info.
+    /// </summary>
+    _Maybenull_ PFGetPlayerCombinedInfoResultPayload const* infoResultPayload;
+
+    /// <summary>
+    /// (Optional) Unique PlayFab assigned ID of the user on whom the operation will be performed.
+    /// </summary>
+    _Maybenull_ _Null_terminated_ const char* playFabId;
+
+} PFAccountManagementGetPlayerCombinedInfoResult;
 
 /// <summary>
 /// PFAccountManagementGetPlayFabIDsFromFacebookIDsRequest data model.
@@ -2539,19 +2583,6 @@ typedef struct PFAccountManagementServerAddGenericIDRequest
 } PFAccountManagementServerAddGenericIDRequest;
 
 /// <summary>
-/// PFAccountManagementDeletePushNotificationTemplateRequest data model. Represents the request to delete
-/// a push notification template.
-/// </summary>
-typedef struct PFAccountManagementDeletePushNotificationTemplateRequest
-{
-    /// <summary>
-    /// Id of the push notification template to be deleted.
-    /// </summary>
-    _Null_terminated_ const char* pushNotificationTemplateId;
-
-} PFAccountManagementDeletePushNotificationTemplateRequest;
-
-/// <summary>
 /// PFAccountManagementGetServerCustomIDsFromPlayFabIDsRequest data model.
 /// </summary>
 typedef struct PFAccountManagementGetServerCustomIDsFromPlayFabIDsRequest
@@ -2761,75 +2792,6 @@ typedef struct PFAccountManagementServerRemoveGenericIDRequest
 } PFAccountManagementServerRemoveGenericIDRequest;
 
 /// <summary>
-/// PFAccountManagementLocalizedPushNotificationProperties data model. Contains the localized push notification
-/// content.
-/// </summary>
-typedef struct PFAccountManagementLocalizedPushNotificationProperties
-{
-    /// <summary>
-    /// (Optional) Message of the localized push notification template.
-    /// </summary>
-    _Maybenull_ _Null_terminated_ const char* message;
-
-    /// <summary>
-    /// (Optional) Subject of the localized push notification template.
-    /// </summary>
-    _Maybenull_ _Null_terminated_ const char* subject;
-
-} PFAccountManagementLocalizedPushNotificationProperties;
-
-/// <summary>
-/// PFAccountManagementSavePushNotificationTemplateRequest data model. Represents the save push notification
-/// template request.
-/// </summary>
-typedef struct PFAccountManagementSavePushNotificationTemplateRequest
-{
-    /// <summary>
-    /// (Optional) Android JSON for the notification template.
-    /// </summary>
-    _Maybenull_ _Null_terminated_ const char* androidPayload;
-
-    /// <summary>
-    /// (Optional) Id of the push notification template.
-    /// </summary>
-    _Maybenull_ _Null_terminated_ const char* id;
-
-    /// <summary>
-    /// (Optional) IOS JSON for the notification template.
-    /// </summary>
-    _Maybenull_ _Null_terminated_ const char* iOSPayload;
-
-    /// <summary>
-    /// (Optional) Dictionary of localized push notification templates with the language as the key.
-    /// </summary>
-    _Maybenull_ _Field_size_(localizedPushNotificationTemplatesCount) struct PFAccountManagementLocalizedPushNotificationPropertiesDictionaryEntry const* localizedPushNotificationTemplates;
-
-    /// <summary>
-    /// Count of localizedPushNotificationTemplates
-    /// </summary>
-    uint32_t localizedPushNotificationTemplatesCount;
-
-    /// <summary>
-    /// Name of the push notification template.
-    /// </summary>
-    _Null_terminated_ const char* name;
-
-} PFAccountManagementSavePushNotificationTemplateRequest;
-
-/// <summary>
-/// PFAccountManagementSavePushNotificationTemplateResult data model. Represents the save push notification
-/// template result.
-/// </summary>
-typedef struct PFAccountManagementSavePushNotificationTemplateResult
-{
-    /// <summary>
-    /// (Optional) Id of the push notification template that was saved.
-    /// </summary>
-    _Maybenull_ _Null_terminated_ const char* pushNotificationTemplateId;
-
-} PFAccountManagementSavePushNotificationTemplateResult;
-
-/// <summary>
 /// PFAccountManagementSendCustomAccountRecoveryEmailRequest data model. PlayFab accounts which have
 /// valid email address or username will be able to receive a password reset email using this API.The
 /// email sent must be an account recovery email template. The username or email can be passed in to send
@@ -2894,158 +2856,6 @@ typedef struct PFAccountManagementSendEmailFromTemplateRequest
     _Null_terminated_ const char* playFabId;
 
 } PFAccountManagementSendEmailFromTemplateRequest;
-
-/// <summary>
-/// PFAccountManagementAdvancedPushPlatformMsg data model.
-/// </summary>
-typedef struct PFAccountManagementAdvancedPushPlatformMsg
-{
-    /// <summary>
-    /// (Optional) Stops GoogleCloudMessaging notifications from including both notification and data
-    /// properties and instead only sends the data property.
-    /// </summary>
-    _Maybenull_ bool const* gCMDataOnly;
-
-    /// <summary>
-    /// The Json the platform should receive.
-    /// </summary>
-    _Null_terminated_ const char* json;
-
-    /// <summary>
-    /// The platform that should receive the Json.
-    /// </summary>
-    PFPushNotificationPlatform platform;
-
-} PFAccountManagementAdvancedPushPlatformMsg;
-
-/// <summary>
-/// PFAccountManagementPushNotificationPackage data model.
-/// </summary>
-typedef struct PFAccountManagementPushNotificationPackage
-{
-    /// <summary>
-    /// Numerical badge to display on App icon (iOS only).
-    /// </summary>
-    int32_t badge;
-
-    /// <summary>
-    /// (Optional) This must be a JSON formatted object. For use with developer-created custom Push Notification
-    /// plugins.
-    /// </summary>
-    _Maybenull_ _Null_terminated_ const char* customData;
-
-    /// <summary>
-    /// (Optional) Icon file to display with the message (Not supported for iOS).
-    /// </summary>
-    _Maybenull_ _Null_terminated_ const char* icon;
-
-    /// <summary>
-    /// Content of the message (all platforms).
-    /// </summary>
-    _Null_terminated_ const char* message;
-
-    /// <summary>
-    /// (Optional) Sound file to play with the message (all platforms).
-    /// </summary>
-    _Maybenull_ _Null_terminated_ const char* sound;
-
-    /// <summary>
-    /// Title/Subject of the message. Not supported for iOS.
-    /// </summary>
-    _Null_terminated_ const char* title;
-
-} PFAccountManagementPushNotificationPackage;
-
-/// <summary>
-/// PFAccountManagementSendPushNotificationRequest data model.
-/// </summary>
-typedef struct PFAccountManagementSendPushNotificationRequest
-{
-    /// <summary>
-    /// (Optional) Allows you to provide precisely formatted json to target devices. This is an advanced
-    /// feature, allowing you to deliver to custom plugin logic, fields, or functionality not natively
-    /// supported by PlayFab.
-    /// </summary>
-    _Maybenull_ _Field_size_(advancedPlatformDeliveryCount) PFAccountManagementAdvancedPushPlatformMsg const* const* advancedPlatformDelivery;
-
-    /// <summary>
-    /// Count of advancedPlatformDelivery
-    /// </summary>
-    uint32_t advancedPlatformDeliveryCount;
-
-    /// <summary>
-    /// (Optional) The optional custom tags associated with the request (e.g. build number, external
-    /// trace identifiers, etc.).
-    /// </summary>
-    _Maybenull_ _Field_size_(customTagsCount) struct PFStringDictionaryEntry const* customTags;
-
-    /// <summary>
-    /// Count of customTags
-    /// </summary>
-    uint32_t customTagsCount;
-
-    /// <summary>
-    /// (Optional) Text of message to send.
-    /// </summary>
-    _Maybenull_ _Null_terminated_ const char* message;
-
-    /// <summary>
-    /// (Optional) Defines all possible push attributes like message, title, icon, etc. Some parameters
-    /// are device specific - please see the PushNotificationPackage documentation for details.
-    /// </summary>
-    _Maybenull_ PFAccountManagementPushNotificationPackage const* package;
-
-    /// <summary>
-    /// PlayFabId of the recipient of the push notification.
-    /// </summary>
-    _Null_terminated_ const char* recipient;
-
-    /// <summary>
-    /// (Optional) Subject of message to send (may not be displayed in all platforms).
-    /// </summary>
-    _Maybenull_ _Null_terminated_ const char* subject;
-
-    /// <summary>
-    /// (Optional) Target Platforms that should receive the Message or Package. If omitted, we will send
-    /// to all available platforms.
-    /// </summary>
-    _Maybenull_ _Field_size_(targetPlatformsCount) PFPushNotificationPlatform const* targetPlatforms;
-
-    /// <summary>
-    /// Count of targetPlatforms
-    /// </summary>
-    uint32_t targetPlatformsCount;
-
-} PFAccountManagementSendPushNotificationRequest;
-
-/// <summary>
-/// PFAccountManagementSendPushNotificationFromTemplateRequest data model. Represents the request for
-/// sending a push notification template to a recipient.
-/// </summary>
-typedef struct PFAccountManagementSendPushNotificationFromTemplateRequest
-{
-    /// <summary>
-    /// (Optional) The optional custom tags associated with the request (e.g. build number, external
-    /// trace identifiers, etc.).
-    /// </summary>
-    _Maybenull_ _Field_size_(customTagsCount) struct PFStringDictionaryEntry const* customTags;
-
-    /// <summary>
-    /// Count of customTags
-    /// </summary>
-    uint32_t customTagsCount;
-
-    /// <summary>
-    /// Id of the push notification template.
-    /// </summary>
-    _Null_terminated_ const char* pushNotificationTemplateId;
-
-    /// <summary>
-    /// PlayFabId of the push notification recipient.
-    /// </summary>
-    _Null_terminated_ const char* recipient;
-
-} PFAccountManagementSendPushNotificationFromTemplateRequest;
 
 /// <summary>
 /// PFAccountManagementServerUnlinkPSNAccountRequest data model.
@@ -3138,15 +2948,6 @@ typedef struct PFAccountManagementServerUpdateAvatarUrlRequest
     _Null_terminated_ const char* playFabId;
 
 } PFAccountManagementServerUpdateAvatarUrlRequest;
-
-/// <summary>
-/// Dictionary entry for an associative array with PFAccountManagementLocalizedPushNotificationProperties values.
-/// </summary>
-typedef struct PFAccountManagementLocalizedPushNotificationPropertiesDictionaryEntry
-{
-    _Null_terminated_ const char* key;
-    PFAccountManagementLocalizedPushNotificationProperties const* value;
-} PFAccountManagementLocalizedPushNotificationPropertiesDictionaryEntry;
 
 #pragma pop_macro("IN")
 

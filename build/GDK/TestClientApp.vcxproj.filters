@@ -186,19 +186,19 @@
     <ClCompile Include="$(PlayFabTestDir)\TestApp\AutoGenTests\AutoGenAuthenticationTests.cpp">
       <Filter>Source\AutoGen Tests</Filter>
     </ClCompile>
-    <ClInclude Include="$(PlayFabTestDir)\TestApp\AutoGenTests\AutoGenPlayerDataManagementTests.h">
+    <ClInclude Include="$(PlayFabTestDir)\TestApp\AutoGenTests\AutoGenLeaderboardTests.h">
       <Filter>Source\AutoGen Tests</Filter>
     </ClInclude>
-    <ClInclude Include="$(PlayFabTestDir)\TestApp\AutoGenTests\AutoGenPlayerDataManagementResultHolders.h">
+    <ClInclude Include="$(PlayFabTestDir)\TestApp\AutoGenTests\AutoGenLeaderboardResultHolders.h">
       <Filter>Source\AutoGen Tests</Filter>
     </ClInclude>
-    <ClCompile Include="$(PlayFabTestDir)\TestApp\AutoGenTests\AutoGenPlayerDataManagementTestData.cpp">
+    <ClCompile Include="$(PlayFabTestDir)\TestApp\AutoGenTests\AutoGenLeaderboardTestData.cpp">
       <Filter>Source\AutoGen Tests</Filter>
     </ClCompile>
-    <ClCompile Include="$(PlayFabTestDir)\TestApp\AutoGenTests\AutoGenPlayerDataManagementTestLog.cpp">
+    <ClCompile Include="$(PlayFabTestDir)\TestApp\AutoGenTests\AutoGenLeaderboardTestLog.cpp">
       <Filter>Source\AutoGen Tests</Filter>
     </ClCompile>
-    <ClCompile Include="$(PlayFabTestDir)\TestApp\AutoGenTests\AutoGenPlayerDataManagementTests.cpp">
+    <ClCompile Include="$(PlayFabTestDir)\TestApp\AutoGenTests\AutoGenLeaderboardTests.cpp">
       <Filter>Source\AutoGen Tests</Filter>
     </ClCompile>
     <ClInclude Include="$(PlayFabTestDir)\TestApp\AutoGenTests\AutoGenSegmentsTests.h">
@@ -261,6 +261,21 @@
     <ClCompile Include="$(PlayFabTestDir)\TestApp\AutoGenTests\AutoGenCloudScriptTests.cpp">
       <Filter>Source\AutoGen Tests</Filter>
     </ClCompile>
+    <ClInclude Include="$(PlayFabTestDir)\TestApp\AutoGenTests\AutoGenPlayerDataManagementTests.h">
+      <Filter>Source\AutoGen Tests</Filter>
+    </ClInclude>
+    <ClInclude Include="$(PlayFabTestDir)\TestApp\AutoGenTests\AutoGenPlayerDataManagementResultHolders.h">
+      <Filter>Source\AutoGen Tests</Filter>
+    </ClInclude>
+    <ClCompile Include="$(PlayFabTestDir)\TestApp\AutoGenTests\AutoGenPlayerDataManagementTestData.cpp">
+      <Filter>Source\AutoGen Tests</Filter>
+    </ClCompile>
+    <ClCompile Include="$(PlayFabTestDir)\TestApp\AutoGenTests\AutoGenPlayerDataManagementTestLog.cpp">
+      <Filter>Source\AutoGen Tests</Filter>
+    </ClCompile>
+    <ClCompile Include="$(PlayFabTestDir)\TestApp\AutoGenTests\AutoGenPlayerDataManagementTests.cpp">
+      <Filter>Source\AutoGen Tests</Filter>
+    </ClCompile>
     <ClInclude Include="$(PlayFabTestDir)\TestApp\AutoGenTests\AutoGenMatchmakingTests.h">
       <Filter>Source\AutoGen Tests</Filter>
     </ClInclude>
@@ -274,6 +289,21 @@
       <Filter>Source\AutoGen Tests</Filter>
     </ClCompile>
     <ClCompile Include="$(PlayFabTestDir)\TestApp\AutoGenTests\AutoGenMatchmakingTests.cpp">
+      <Filter>Source\AutoGen Tests</Filter>
+    </ClCompile>
+    <ClInclude Include="$(PlayFabTestDir)\TestApp\AutoGenTests\AutoGenEconomyTests.h">
+      <Filter>Source\AutoGen Tests</Filter>
+    </ClInclude>
+    <ClInclude Include="$(PlayFabTestDir)\TestApp\AutoGenTests\AutoGenEconomyResultHolders.h">
+      <Filter>Source\AutoGen Tests</Filter>
+    </ClInclude>
+    <ClCompile Include="$(PlayFabTestDir)\TestApp\AutoGenTests\AutoGenEconomyTestData.cpp">
+      <Filter>Source\AutoGen Tests</Filter>
+    </ClCompile>
+    <ClCompile Include="$(PlayFabTestDir)\TestApp\AutoGenTests\AutoGenEconomyTestLog.cpp">
+      <Filter>Source\AutoGen Tests</Filter>
+    </ClCompile>
+    <ClCompile Include="$(PlayFabTestDir)\TestApp\AutoGenTests\AutoGenEconomyTests.cpp">
       <Filter>Source\AutoGen Tests</Filter>
     </ClCompile>
     <ClInclude Include="$(PlayFabTestDir)\TestApp\AutoGenTests\AutoGenCharacterTests.h">
@@ -379,6 +409,21 @@
       <Filter>Source\AutoGen Tests</Filter>
     </ClCompile>
     <ClCompile Include="$(PlayFabTestDir)\TestApp\AutoGenTests\AutoGenAnalyticsTests.cpp">
+      <Filter>Source\AutoGen Tests</Filter>
+    </ClCompile>
+    <ClInclude Include="$(PlayFabTestDir)\TestApp\AutoGenTests\AutoGenPushNotificationsTests.h">
+      <Filter>Source\AutoGen Tests</Filter>
+    </ClInclude>
+    <ClInclude Include="$(PlayFabTestDir)\TestApp\AutoGenTests\AutoGenPushNotificationsResultHolders.h">
+      <Filter>Source\AutoGen Tests</Filter>
+    </ClInclude>
+    <ClCompile Include="$(PlayFabTestDir)\TestApp\AutoGenTests\AutoGenPushNotificationsTestData.cpp">
+      <Filter>Source\AutoGen Tests</Filter>
+    </ClCompile>
+    <ClCompile Include="$(PlayFabTestDir)\TestApp\AutoGenTests\AutoGenPushNotificationsTestLog.cpp">
+      <Filter>Source\AutoGen Tests</Filter>
+    </ClCompile>
+    <ClCompile Include="$(PlayFabTestDir)\TestApp\AutoGenTests\AutoGenPushNotificationsTests.cpp">
       <Filter>Source\AutoGen Tests</Filter>
     </ClCompile>
     <ClInclude Include="$(PlayFabTestDir)\TestApp\AutoGenTests\AutoGenDataTests.h">

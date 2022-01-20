@@ -68,43 +68,58 @@ protected:
     void AddTests();
 
     static void LogAddPlayerTagRequest(PFEventsAddPlayerTagRequest const* request, const char* testName);
-    static void FillAddPlayerTagRequest(PlayFab::Wrappers::PFEventsAddPlayerTagRequestWrapper<>& request);
-
     static void LogGetPlayerTagsRequest(PFEventsGetPlayerTagsRequest const* request, const char* testName);
-    static void FillGetPlayerTagsRequest(PlayFab::Wrappers::PFEventsGetPlayerTagsRequestWrapper<>& request);
-    static HRESULT LogPFEventsGetPlayerTagsResult(PFEventsGetPlayerTagsResult const* result);
-    static HRESULT ValidatePFEventsGetPlayerTagsResult(PFEventsGetPlayerTagsResult* result);
-
+    static HRESULT LogGetPlayerTagsResult(PFEventsGetPlayerTagsResult const* result);
     static void LogRemovePlayerTagRequest(PFEventsRemovePlayerTagRequest const* request, const char* testName);
-    static void FillRemovePlayerTagRequest(PlayFab::Wrappers::PFEventsRemovePlayerTagRequestWrapper<>& request);
-
-
     static void LogWriteClientCharacterEventRequest(PFEventsWriteClientCharacterEventRequest const* request, const char* testName);
-    static void FillWriteClientCharacterEventRequest(PlayFab::Wrappers::PFEventsWriteClientCharacterEventRequestWrapper<>& request);
-    static HRESULT LogPFEventsWriteEventResponse(PFEventsWriteEventResponse const* result);
-    static HRESULT ValidatePFEventsWriteEventResponse(PFEventsWriteEventResponse* result);
-
+    static HRESULT LogWriteEventResponse(PFEventsWriteEventResponse const* result);
     static void LogWriteClientPlayerEventRequest(PFEventsWriteClientPlayerEventRequest const* request, const char* testName);
-    static void FillWriteClientPlayerEventRequest(PlayFab::Wrappers::PFEventsWriteClientPlayerEventRequestWrapper<>& request);
-
     static void LogWriteTitleEventRequest(PFEventsWriteTitleEventRequest const* request, const char* testName);
-    static void FillWriteTitleEventRequest(PlayFab::Wrappers::PFEventsWriteTitleEventRequestWrapper<>& request);
-
-
-
-
     static void LogWriteServerCharacterEventRequest(PFEventsWriteServerCharacterEventRequest const* request, const char* testName);
-    static void FillWriteServerCharacterEventRequest(PlayFab::Wrappers::PFEventsWriteServerCharacterEventRequestWrapper<>& request);
-
     static void LogWriteServerPlayerEventRequest(PFEventsWriteServerPlayerEventRequest const* request, const char* testName);
-    static void FillWriteServerPlayerEventRequest(PlayFab::Wrappers::PFEventsWriteServerPlayerEventRequestWrapper<>& request);
-
-
     static void LogWriteEventsRequest(PFEventsWriteEventsRequest const* request, const char* testName);
-    static void FillWriteEventsRequest(PlayFab::Wrappers::PFEventsWriteEventsRequestWrapper<>& request);
-    static HRESULT LogPFEventsWriteEventsResponse(PFEventsWriteEventsResponse const* result);
-    static HRESULT ValidatePFEventsWriteEventsResponse(PFEventsWriteEventsResponse* result);
+    static HRESULT LogWriteEventsResponse(PFEventsWriteEventsResponse const* result);
 
+    static void FillAdminAddPlayerTagRequest(PlayFab::Wrappers::PFEventsAddPlayerTagRequestWrapper<>& request);
+
+    static void FillAdminGetPlayerTagsRequest(PlayFab::Wrappers::PFEventsGetPlayerTagsRequestWrapper<>& request);
+    static HRESULT ValidateAdminGetPlayerTagsResponse(PFEventsGetPlayerTagsResult* result);
+
+    static void FillAdminRemovePlayerTagRequest(PlayFab::Wrappers::PFEventsRemovePlayerTagRequestWrapper<>& request);
+
+    static void FillClientGetPlayerTagsRequest(PlayFab::Wrappers::PFEventsGetPlayerTagsRequestWrapper<>& request);
+    static HRESULT ValidateClientGetPlayerTagsResponse(PFEventsGetPlayerTagsResult* result);
+
+    static void FillClientWriteCharacterEventRequest(PlayFab::Wrappers::PFEventsWriteClientCharacterEventRequestWrapper<>& request);
+    static HRESULT ValidateClientWriteCharacterEventResponse(PFEventsWriteEventResponse* result);
+
+    static void FillClientWritePlayerEventRequest(PlayFab::Wrappers::PFEventsWriteClientPlayerEventRequestWrapper<>& request);
+    static HRESULT ValidateClientWritePlayerEventResponse(PFEventsWriteEventResponse* result);
+
+    static void FillClientWriteTitleEventRequest(PlayFab::Wrappers::PFEventsWriteTitleEventRequestWrapper<>& request);
+    static HRESULT ValidateClientWriteTitleEventResponse(PFEventsWriteEventResponse* result);
+
+    static void FillServerAddPlayerTagRequest(PlayFab::Wrappers::PFEventsAddPlayerTagRequestWrapper<>& request);
+
+    static void FillServerGetPlayerTagsRequest(PlayFab::Wrappers::PFEventsGetPlayerTagsRequestWrapper<>& request);
+    static HRESULT ValidateServerGetPlayerTagsResponse(PFEventsGetPlayerTagsResult* result);
+
+    static void FillServerRemovePlayerTagRequest(PlayFab::Wrappers::PFEventsRemovePlayerTagRequestWrapper<>& request);
+
+    static void FillServerWriteCharacterEventRequest(PlayFab::Wrappers::PFEventsWriteServerCharacterEventRequestWrapper<>& request);
+    static HRESULT ValidateServerWriteCharacterEventResponse(PFEventsWriteEventResponse* result);
+
+    static void FillServerWritePlayerEventRequest(PlayFab::Wrappers::PFEventsWriteServerPlayerEventRequestWrapper<>& request);
+    static HRESULT ValidateServerWritePlayerEventResponse(PFEventsWriteEventResponse* result);
+
+    static void FillServerWriteTitleEventRequest(PlayFab::Wrappers::PFEventsWriteTitleEventRequestWrapper<>& request);
+    static HRESULT ValidateServerWriteTitleEventResponse(PFEventsWriteEventResponse* result);
+
+    static void FillWriteEventsRequest(PlayFab::Wrappers::PFEventsWriteEventsRequestWrapper<>& request);
+    static HRESULT ValidateWriteEventsResponse(PFEventsWriteEventsResponse* result);
+
+    static void FillWriteTelemetryEventsRequest(PlayFab::Wrappers::PFEventsWriteEventsRequestWrapper<>& request);
+    static HRESULT ValidateWriteTelemetryEventsResponse(PFEventsWriteEventsResponse* result);
 
     struct EventsTestData
     {

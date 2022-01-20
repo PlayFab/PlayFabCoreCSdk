@@ -1834,6 +1834,81 @@ private:
 };
 
 template<template<typename AllocT> class Alloc = std::allocator>
+class PFMultiplayerServerWindowsCrashDumpConfigurationWrapper : public ModelWrapper<PFMultiplayerServerWindowsCrashDumpConfiguration, Alloc>
+{
+public:
+    using ModelType = typename PFMultiplayerServerWindowsCrashDumpConfiguration;
+    using String = typename std::basic_string<char, std::char_traits<char>, Alloc<char>>;
+    template<typename T> using Vector = typename std::vector<T, Alloc<T>>;
+
+    PFMultiplayerServerWindowsCrashDumpConfigurationWrapper() = default;
+
+    PFMultiplayerServerWindowsCrashDumpConfigurationWrapper(const PFMultiplayerServerWindowsCrashDumpConfiguration& model) :
+        ModelWrapper<PFMultiplayerServerWindowsCrashDumpConfiguration, Alloc>{ model },
+        m_customDumpFlags{ model.customDumpFlags ? StdExtra::optional<int32_t>{ *model.customDumpFlags } : StdExtra::nullopt },
+        m_dumpType{ model.dumpType ? StdExtra::optional<int32_t>{ *model.dumpType } : StdExtra::nullopt }
+    {
+        SetModelPointers();
+    }
+
+    PFMultiplayerServerWindowsCrashDumpConfigurationWrapper(const PFMultiplayerServerWindowsCrashDumpConfigurationWrapper& src) :
+        PFMultiplayerServerWindowsCrashDumpConfigurationWrapper{ src.Model() }
+    {
+    }
+
+    PFMultiplayerServerWindowsCrashDumpConfigurationWrapper(PFMultiplayerServerWindowsCrashDumpConfigurationWrapper&& src) :
+        PFMultiplayerServerWindowsCrashDumpConfigurationWrapper{}
+    {
+        swap(*this, src);
+    }
+
+    PFMultiplayerServerWindowsCrashDumpConfigurationWrapper& operator=(PFMultiplayerServerWindowsCrashDumpConfigurationWrapper src) 
+    {
+        swap(*this, src);
+        return *this;
+    }
+
+    virtual ~PFMultiplayerServerWindowsCrashDumpConfigurationWrapper() = default;
+
+    friend void swap(PFMultiplayerServerWindowsCrashDumpConfigurationWrapper& lhs, PFMultiplayerServerWindowsCrashDumpConfigurationWrapper& rhs)
+    {
+        using std::swap;
+        swap(lhs.m_model, rhs.m_model);
+        swap(lhs.m_customDumpFlags, rhs.m_customDumpFlags);
+        swap(lhs.m_dumpType, rhs.m_dumpType);
+        lhs.SetModelPointers();
+        rhs.SetModelPointers();
+    }
+
+    void SetCustomDumpFlags(StdExtra::optional<int32_t> value)
+    {
+        m_customDumpFlags = std::move(value);
+        this->m_model.customDumpFlags = m_customDumpFlags ? m_customDumpFlags.operator->() : nullptr;
+    }
+
+    void SetDumpType(StdExtra::optional<int32_t> value)
+    {
+        m_dumpType = std::move(value);
+        this->m_model.dumpType = m_dumpType ? m_dumpType.operator->() : nullptr;
+    }
+
+    void SetIsEnabled(bool value)
+    {
+        this->m_model.isEnabled = value;
+    }
+
+private:
+    void SetModelPointers()
+    {
+        this->m_model.customDumpFlags = m_customDumpFlags ? m_customDumpFlags.operator->() : nullptr;
+        this->m_model.dumpType = m_dumpType ? m_dumpType.operator->() : nullptr;
+    }
+
+    StdExtra::optional<int32_t> m_customDumpFlags;
+    StdExtra::optional<int32_t> m_dumpType;
+};
+
+template<template<typename AllocT> class Alloc = std::allocator>
 class PFMultiplayerServerCreateBuildWithManagedContainerRequestWrapper : public ModelWrapper<PFMultiplayerServerCreateBuildWithManagedContainerRequest, Alloc>
 {
 public:
@@ -1859,7 +1934,8 @@ public:
         m_regionConfigurations{ model.regionConfigurations, model.regionConfigurations + model.regionConfigurationsCount },
         m_startMultiplayerServerCommand{ SafeString(model.startMultiplayerServerCommand) },
         m_useStreamingForAssetDownloads{ model.useStreamingForAssetDownloads ? StdExtra::optional<bool>{ *model.useStreamingForAssetDownloads } : StdExtra::nullopt },
-        m_vmSize{ model.vmSize ? StdExtra::optional<PFMultiplayerServerAzureVmSize>{ *model.vmSize } : StdExtra::nullopt }
+        m_vmSize{ model.vmSize ? StdExtra::optional<PFMultiplayerServerAzureVmSize>{ *model.vmSize } : StdExtra::nullopt },
+        m_windowsCrashDumpConfiguration{ model.windowsCrashDumpConfiguration ? StdExtra::optional<PFMultiplayerServerWindowsCrashDumpConfigurationWrapper<Alloc>>{ *model.windowsCrashDumpConfiguration } : StdExtra::nullopt }
     {
         SetModelPointers();
     }
@@ -1902,6 +1978,7 @@ public:
         swap(lhs.m_startMultiplayerServerCommand, rhs.m_startMultiplayerServerCommand);
         swap(lhs.m_useStreamingForAssetDownloads, rhs.m_useStreamingForAssetDownloads);
         swap(lhs.m_vmSize, rhs.m_vmSize);
+        swap(lhs.m_windowsCrashDumpConfiguration, rhs.m_windowsCrashDumpConfiguration);
         lhs.SetModelPointers();
         rhs.SetModelPointers();
     }
@@ -2007,6 +2084,12 @@ public:
         this->m_model.vmSize = m_vmSize ? m_vmSize.operator->() : nullptr;
     }
 
+    void SetWindowsCrashDumpConfiguration(StdExtra::optional<PFMultiplayerServerWindowsCrashDumpConfigurationWrapper<Alloc>> value)
+    {
+        m_windowsCrashDumpConfiguration = std::move(value);
+        this->m_model.windowsCrashDumpConfiguration = m_windowsCrashDumpConfiguration ? &m_windowsCrashDumpConfiguration->Model() : nullptr;
+    }
+
 private:
     void SetModelPointers()
     {
@@ -2025,6 +2108,7 @@ private:
         this->m_model.startMultiplayerServerCommand = m_startMultiplayerServerCommand.empty() ? nullptr : m_startMultiplayerServerCommand.data();
         this->m_model.useStreamingForAssetDownloads = m_useStreamingForAssetDownloads ? m_useStreamingForAssetDownloads.operator->() : nullptr;
         this->m_model.vmSize = m_vmSize ? m_vmSize.operator->() : nullptr;
+        this->m_model.windowsCrashDumpConfiguration = m_windowsCrashDumpConfiguration ?  &m_windowsCrashDumpConfiguration->Model() : nullptr;
     }
 
     StdExtra::optional<bool> m_areAssetsReadonly;
@@ -2042,6 +2126,7 @@ private:
     String m_startMultiplayerServerCommand;
     StdExtra::optional<bool> m_useStreamingForAssetDownloads;
     StdExtra::optional<PFMultiplayerServerAzureVmSize> m_vmSize;
+    StdExtra::optional<PFMultiplayerServerWindowsCrashDumpConfigurationWrapper<Alloc>> m_windowsCrashDumpConfiguration;
 };
 
 template<template<typename AllocT> class Alloc = std::allocator>

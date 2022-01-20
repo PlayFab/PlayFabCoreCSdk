@@ -11,7 +11,7 @@ namespace PlayFabUnit
 
 void AutoGenLocalizationTests::LogGetLanguageListRequest(PFLocalizationGetLanguageListRequest const* request, const char* testName)
 {
-    if( !TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    if (!TestApp::ShouldTrace(PFTestTraceLevel::Information))
     {
         return;
     }
@@ -28,7 +28,7 @@ void AutoGenLocalizationTests::LogGetLanguageListRequest(PFLocalizationGetLangua
     ss << "  customTagsCount " << request->customTagsCount; Log(ss);
 
     // PFStringDictionaryEntry
-    for( uint32_t i=0; i<request->customTagsCount; i++ )
+    for (uint32_t i=0; i<request->customTagsCount; i++)
     {
             ss << "  request->customTags[" << i << "]:" << request->customTags[i].key << "=" << request->customTags[i].value; Log(ss);
             
@@ -36,9 +36,9 @@ void AutoGenLocalizationTests::LogGetLanguageListRequest(PFLocalizationGetLangua
 
 }
 
-HRESULT AutoGenLocalizationTests::LogPFLocalizationGetLanguageListResponse(PFLocalizationGetLanguageListResponse const* result)
+HRESULT AutoGenLocalizationTests::LogGetLanguageListResponse(PFLocalizationGetLanguageListResponse const* result)
 {
-    if( !TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    if (!TestApp::ShouldTrace(PFTestTraceLevel::Information))
     {
         return S_OK;
     }
@@ -50,7 +50,7 @@ HRESULT AutoGenLocalizationTests::LogPFLocalizationGetLanguageListResponse(PFLoc
     ss << "  languageListCount " << result->languageListCount; Log(ss);
 
     // const char*
-    for( uint32_t i=0; i<result->languageListCount; i++ )
+    for (uint32_t i=0; i<result->languageListCount; i++)
     {
             ss << "  result->languageList[" << i << "]:" << result->languageList[i]; Log(ss); // const char*
     } 

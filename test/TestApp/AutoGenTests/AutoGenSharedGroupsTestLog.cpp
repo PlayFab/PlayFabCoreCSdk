@@ -11,7 +11,7 @@ namespace PlayFabUnit
 
 void AutoGenSharedGroupsTests::LogAddSharedGroupMembersRequest(PFSharedGroupsAddSharedGroupMembersRequest const* request, const char* testName)
 {
-    if( !TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    if (!TestApp::ShouldTrace(PFTestTraceLevel::Information))
     {
         return;
     }
@@ -28,17 +28,17 @@ void AutoGenSharedGroupsTests::LogAddSharedGroupMembersRequest(PFSharedGroupsAdd
     ss << "  playFabIdsCount " << request->playFabIdsCount; Log(ss);
 
     // const char*
-    for( uint32_t i=0; i<request->playFabIdsCount; i++ )
+    for (uint32_t i=0; i<request->playFabIdsCount; i++)
     {
             ss << "  request->playFabIds[" << i << "]:" << request->playFabIds[i]; Log(ss); // const char*
     } 
-    if( request->sharedGroupId ) { ss << "  sharedGroupId " << request->sharedGroupId; Log(ss); } else { ss << "  sharedGroupId = nullptr"; Log(ss); } // Class: const char* 
+    if (request->sharedGroupId) { ss << "  sharedGroupId " << request->sharedGroupId; Log(ss); } else { ss << "  sharedGroupId = nullptr"; Log(ss); } // Class: const char* 
 
 }
 
 void AutoGenSharedGroupsTests::LogCreateSharedGroupRequest(PFSharedGroupsCreateSharedGroupRequest const* request, const char* testName)
 {
-    if( !TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    if (!TestApp::ShouldTrace(PFTestTraceLevel::Information))
     {
         return;
     }
@@ -51,13 +51,13 @@ void AutoGenSharedGroupsTests::LogCreateSharedGroupRequest(PFSharedGroupsCreateS
 
     // PlayFabSharedGroupsCreateSharedGroupRequest struct:
     // request->sharedGroupId: const char*
-    if( request->sharedGroupId ) { ss << "  sharedGroupId " << request->sharedGroupId; Log(ss); } else { ss << "  sharedGroupId = nullptr"; Log(ss); } // Class: const char* 
+    if (request->sharedGroupId) { ss << "  sharedGroupId " << request->sharedGroupId; Log(ss); } else { ss << "  sharedGroupId = nullptr"; Log(ss); } // Class: const char* 
 
 }
 
-HRESULT AutoGenSharedGroupsTests::LogPFSharedGroupsCreateSharedGroupResult(PFSharedGroupsCreateSharedGroupResult const* result)
+HRESULT AutoGenSharedGroupsTests::LogCreateSharedGroupResult(PFSharedGroupsCreateSharedGroupResult const* result)
 {
-    if( !TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    if (!TestApp::ShouldTrace(PFTestTraceLevel::Information))
     {
         return S_OK;
     }
@@ -66,13 +66,13 @@ HRESULT AutoGenSharedGroupsTests::LogPFSharedGroupsCreateSharedGroupResult(PFSha
     ss << "Response:"; Log(ss);
 
     // Found PlayFabSharedGroupsCreateSharedGroupResult    
-    if( result->sharedGroupId ) { ss << "  sharedGroupId " << result->sharedGroupId; Log(ss); } else { ss << "  sharedGroupId = nullptr"; Log(ss); } // Class: const char* 
+    if (result->sharedGroupId) { ss << "  sharedGroupId " << result->sharedGroupId; Log(ss); } else { ss << "  sharedGroupId = nullptr"; Log(ss); } // Class: const char* 
     return S_OK;
 }
 
 void AutoGenSharedGroupsTests::LogGetSharedGroupDataRequest(PFSharedGroupsGetSharedGroupDataRequest const* request, const char* testName)
 {
-    if( !TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    if (!TestApp::ShouldTrace(PFTestTraceLevel::Information))
     {
         return;
     }
@@ -89,17 +89,17 @@ void AutoGenSharedGroupsTests::LogGetSharedGroupDataRequest(PFSharedGroupsGetSha
     ss << "  keysCount " << request->keysCount; Log(ss);
 
     // const char*
-    for( uint32_t i=0; i<request->keysCount; i++ )
+    for (uint32_t i=0; i<request->keysCount; i++)
     {
             ss << "  request->keys[" << i << "]:" << request->keys[i]; Log(ss); // const char*
     } 
-    if( request->sharedGroupId ) { ss << "  sharedGroupId " << request->sharedGroupId; Log(ss); } else { ss << "  sharedGroupId = nullptr"; Log(ss); } // Class: const char* 
+    if (request->sharedGroupId) { ss << "  sharedGroupId " << request->sharedGroupId; Log(ss); } else { ss << "  sharedGroupId = nullptr"; Log(ss); } // Class: const char* 
 
 }
 
-HRESULT AutoGenSharedGroupsTests::LogPFSharedGroupsGetSharedGroupDataResult(PFSharedGroupsGetSharedGroupDataResult const* result)
+HRESULT AutoGenSharedGroupsTests::LogGetSharedGroupDataResult(PFSharedGroupsGetSharedGroupDataResult const* result)
 {
-    if( !TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    if (!TestApp::ShouldTrace(PFTestTraceLevel::Information))
     {
         return S_OK;
     }
@@ -111,7 +111,7 @@ HRESULT AutoGenSharedGroupsTests::LogPFSharedGroupsGetSharedGroupDataResult(PFSh
     ss << "  dataCount " << result->dataCount; Log(ss);
 
     // PFSharedGroupsSharedGroupDataRecordDictionaryEntry
-    for( uint32_t i=0; i<result->dataCount; i++ )
+    for (uint32_t i=0; i<result->dataCount; i++)
     {
             ss << "  result->data[" << i << "]:" << result->data[i].key << "=" << result->data[i].value; Log(ss);
             
@@ -119,7 +119,7 @@ HRESULT AutoGenSharedGroupsTests::LogPFSharedGroupsGetSharedGroupDataResult(PFSh
     ss << "  membersCount " << result->membersCount; Log(ss);
 
     // const char*
-    for( uint32_t i=0; i<result->membersCount; i++ )
+    for (uint32_t i=0; i<result->membersCount; i++)
     {
             ss << "  result->members[" << i << "]:" << result->members[i]; Log(ss); // const char*
     } 
@@ -128,7 +128,7 @@ HRESULT AutoGenSharedGroupsTests::LogPFSharedGroupsGetSharedGroupDataResult(PFSh
 
 void AutoGenSharedGroupsTests::LogRemoveSharedGroupMembersRequest(PFSharedGroupsRemoveSharedGroupMembersRequest const* request, const char* testName)
 {
-    if( !TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    if (!TestApp::ShouldTrace(PFTestTraceLevel::Information))
     {
         return;
     }
@@ -145,17 +145,17 @@ void AutoGenSharedGroupsTests::LogRemoveSharedGroupMembersRequest(PFSharedGroups
     ss << "  playFabIdsCount " << request->playFabIdsCount; Log(ss);
 
     // const char*
-    for( uint32_t i=0; i<request->playFabIdsCount; i++ )
+    for (uint32_t i=0; i<request->playFabIdsCount; i++)
     {
             ss << "  request->playFabIds[" << i << "]:" << request->playFabIds[i]; Log(ss); // const char*
     } 
-    if( request->sharedGroupId ) { ss << "  sharedGroupId " << request->sharedGroupId; Log(ss); } else { ss << "  sharedGroupId = nullptr"; Log(ss); } // Class: const char* 
+    if (request->sharedGroupId) { ss << "  sharedGroupId " << request->sharedGroupId; Log(ss); } else { ss << "  sharedGroupId = nullptr"; Log(ss); } // Class: const char* 
 
 }
 
 void AutoGenSharedGroupsTests::LogUpdateSharedGroupDataRequest(PFSharedGroupsUpdateSharedGroupDataRequest const* request, const char* testName)
 {
-    if( !TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    if (!TestApp::ShouldTrace(PFTestTraceLevel::Information))
     {
         return;
     }
@@ -172,7 +172,7 @@ void AutoGenSharedGroupsTests::LogUpdateSharedGroupDataRequest(PFSharedGroupsUpd
     ss << "  customTagsCount " << request->customTagsCount; Log(ss);
 
     // PFStringDictionaryEntry
-    for( uint32_t i=0; i<request->customTagsCount; i++ )
+    for (uint32_t i=0; i<request->customTagsCount; i++)
     {
             ss << "  request->customTags[" << i << "]:" << request->customTags[i].key << "=" << request->customTags[i].value; Log(ss);
             
@@ -180,7 +180,7 @@ void AutoGenSharedGroupsTests::LogUpdateSharedGroupDataRequest(PFSharedGroupsUpd
     ss << "  dataCount " << request->dataCount; Log(ss);
 
     // PFStringDictionaryEntry
-    for( uint32_t i=0; i<request->dataCount; i++ )
+    for (uint32_t i=0; i<request->dataCount; i++)
     {
             ss << "  request->data[" << i << "]:" << request->data[i].key << "=" << request->data[i].value; Log(ss);
             
@@ -188,18 +188,18 @@ void AutoGenSharedGroupsTests::LogUpdateSharedGroupDataRequest(PFSharedGroupsUpd
     ss << "  keysToRemoveCount " << request->keysToRemoveCount; Log(ss);
 
     // const char*
-    for( uint32_t i=0; i<request->keysToRemoveCount; i++ )
+    for (uint32_t i=0; i<request->keysToRemoveCount; i++)
     {
             ss << "  request->keysToRemove[" << i << "]:" << request->keysToRemove[i]; Log(ss); // const char*
     } 
     ss << "  permission " << request->permission; Log(ss); // Class: PFUserDataPermission 
-    if( request->sharedGroupId ) { ss << "  sharedGroupId " << request->sharedGroupId; Log(ss); } else { ss << "  sharedGroupId = nullptr"; Log(ss); } // Class: const char* 
+    if (request->sharedGroupId) { ss << "  sharedGroupId " << request->sharedGroupId; Log(ss); } else { ss << "  sharedGroupId = nullptr"; Log(ss); } // Class: const char* 
 
 }
 
 void AutoGenSharedGroupsTests::LogDeleteSharedGroupRequest(PFSharedGroupsDeleteSharedGroupRequest const* request, const char* testName)
 {
-    if( !TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    if (!TestApp::ShouldTrace(PFTestTraceLevel::Information))
     {
         return;
     }
@@ -212,7 +212,7 @@ void AutoGenSharedGroupsTests::LogDeleteSharedGroupRequest(PFSharedGroupsDeleteS
 
     // PlayFabSharedGroupsDeleteSharedGroupRequest struct:
     // request->sharedGroupId: const char*
-    if( request->sharedGroupId ) { ss << "  sharedGroupId " << request->sharedGroupId; Log(ss); } else { ss << "  sharedGroupId = nullptr"; Log(ss); } // Class: const char* 
+    if (request->sharedGroupId) { ss << "  sharedGroupId " << request->sharedGroupId; Log(ss); } else { ss << "  sharedGroupId = nullptr"; Log(ss); } // Class: const char* 
 
 }
 

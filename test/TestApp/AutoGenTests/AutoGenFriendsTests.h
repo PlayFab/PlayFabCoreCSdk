@@ -46,34 +46,36 @@ protected:
     void AddTests();
 
     static void LogClientAddFriendRequest(PFFriendsClientAddFriendRequest const* request, const char* testName);
+    static HRESULT LogAddFriendResult(PFFriendsAddFriendResult const* result);
+    static void LogClientGetFriendsListRequest(PFFriendsClientGetFriendsListRequest const* request, const char* testName);
+    static HRESULT LogGetFriendsListResult(PFFriendsGetFriendsListResult const* result);
+    static void LogClientRemoveFriendRequest(PFFriendsClientRemoveFriendRequest const* request, const char* testName);
+    static void LogClientSetFriendTagsRequest(PFFriendsClientSetFriendTagsRequest const* request, const char* testName);
+    static void LogServerAddFriendRequest(PFFriendsServerAddFriendRequest const* request, const char* testName);
+    static void LogServerGetFriendsListRequest(PFFriendsServerGetFriendsListRequest const* request, const char* testName);
+    static void LogServerRemoveFriendRequest(PFFriendsServerRemoveFriendRequest const* request, const char* testName);
+    static void LogServerSetFriendTagsRequest(PFFriendsServerSetFriendTagsRequest const* request, const char* testName);
+
     static void FillClientAddFriendRequest(PlayFab::Wrappers::PFFriendsClientAddFriendRequestWrapper<>& request);
-    static HRESULT LogPFFriendsAddFriendResult(PFFriendsAddFriendResult const* result);
-    static HRESULT ValidatePFFriendsAddFriendResult(PFFriendsAddFriendResult* result);
+    static HRESULT ValidateClientAddFriendResponse(PFFriendsAddFriendResult* result);
     static void FillClientAddFriendCleanupClientRemoveFriendRequest(PlayFab::Wrappers::PFFriendsClientRemoveFriendRequestWrapper<>& request);
 
-    static void LogClientGetFriendsListRequest(PFFriendsClientGetFriendsListRequest const* request, const char* testName);
     static void FillClientGetFriendsListRequest(PlayFab::Wrappers::PFFriendsClientGetFriendsListRequestWrapper<>& request);
-    static HRESULT LogPFFriendsGetFriendsListResult(PFFriendsGetFriendsListResult const* result);
-    static HRESULT ValidatePFFriendsGetFriendsListResult(PFFriendsGetFriendsListResult* result);
+    static HRESULT ValidateClientGetFriendsListResponse(PFFriendsGetFriendsListResult* result);
 
     static void FillClientRemoveFriendPrerequisiteClientAddFriendRequest(PlayFab::Wrappers::PFFriendsClientAddFriendRequestWrapper<>& request);
-    static HRESULT StoreClientRemoveFriendPrerequisitePFFriendsAddFriendResult(std::shared_ptr<AddFriendResultHolder> result);
-    static void LogClientRemoveFriendRequest(PFFriendsClientRemoveFriendRequest const* request, const char* testName);
+    static HRESULT StoreClientRemoveFriendPrerequisiteClientAddFriendResponse(std::shared_ptr<AddFriendResultHolder> result);
     static void FillClientRemoveFriendRequest(PlayFab::Wrappers::PFFriendsClientRemoveFriendRequestWrapper<>& request);
 
-    static void LogClientSetFriendTagsRequest(PFFriendsClientSetFriendTagsRequest const* request, const char* testName);
     static void FillClientSetFriendTagsRequest(PlayFab::Wrappers::PFFriendsClientSetFriendTagsRequestWrapper<>& request);
 
-    static void LogServerAddFriendRequest(PFFriendsServerAddFriendRequest const* request, const char* testName);
     static void FillServerAddFriendRequest(PlayFab::Wrappers::PFFriendsServerAddFriendRequestWrapper<>& request);
 
-    static void LogServerGetFriendsListRequest(PFFriendsServerGetFriendsListRequest const* request, const char* testName);
     static void FillServerGetFriendsListRequest(PlayFab::Wrappers::PFFriendsServerGetFriendsListRequestWrapper<>& request);
+    static HRESULT ValidateServerGetFriendsListResponse(PFFriendsGetFriendsListResult* result);
 
-    static void LogServerRemoveFriendRequest(PFFriendsServerRemoveFriendRequest const* request, const char* testName);
     static void FillServerRemoveFriendRequest(PlayFab::Wrappers::PFFriendsServerRemoveFriendRequestWrapper<>& request);
 
-    static void LogServerSetFriendTagsRequest(PFFriendsServerSetFriendTagsRequest const* request, const char* testName);
     static void FillServerSetFriendTagsRequest(PlayFab::Wrappers::PFFriendsServerSetFriendTagsRequestWrapper<>& request);
 
     struct FriendsTestData

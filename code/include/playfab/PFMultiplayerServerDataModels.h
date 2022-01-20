@@ -888,6 +888,30 @@ typedef struct PFMultiplayerServerInstrumentationConfiguration
 } PFMultiplayerServerInstrumentationConfiguration;
 
 /// <summary>
+/// PFMultiplayerServerWindowsCrashDumpConfiguration data model.
+/// </summary>
+typedef struct PFMultiplayerServerWindowsCrashDumpConfiguration
+{
+    /// <summary>
+    /// (Optional) See https://docs.microsoft.com/en-us/windows/win32/wer/collecting-user-mode-dumps
+    /// for valid values.
+    /// </summary>
+    _Maybenull_ int32_t const* customDumpFlags;
+
+    /// <summary>
+    /// (Optional) See https://docs.microsoft.com/en-us/windows/win32/wer/collecting-user-mode-dumps
+    /// for valid values.
+    /// </summary>
+    _Maybenull_ int32_t const* dumpType;
+
+    /// <summary>
+    /// Designates whether automatic crash dump capturing will be enabled for this Build.
+    /// </summary>
+    bool isEnabled;
+
+} PFMultiplayerServerWindowsCrashDumpConfiguration;
+
+/// <summary>
 /// PFMultiplayerServerCreateBuildWithManagedContainerRequest data model. Creates a multiplayer server
 /// build with a managed container and returns information about the build creation request.
 /// </summary>
@@ -1009,6 +1033,11 @@ typedef struct PFMultiplayerServerCreateBuildWithManagedContainerRequest
     /// (Optional) The VM size to create the build on.
     /// </summary>
     _Maybenull_ PFMultiplayerServerAzureVmSize const* vmSize;
+
+    /// <summary>
+    /// (Optional) The crash dump configuration for the build.
+    /// </summary>
+    _Maybenull_ PFMultiplayerServerWindowsCrashDumpConfiguration const* windowsCrashDumpConfiguration;
 
 } PFMultiplayerServerCreateBuildWithManagedContainerRequest;
 

@@ -21,7 +21,7 @@ void AutoGenProfilesTests::Log(std::stringstream& ss)
 
 HRESULT AutoGenProfilesTests::LogHR(HRESULT hr)
 {
-    if( TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    if (TestApp::ShouldTrace(PFTestTraceLevel::Information))
     {
         TestApp::Log("Result: 0x%0.8x", hr);
     }
@@ -53,7 +53,7 @@ void AutoGenProfilesTests::AddTests()
 
 void AutoGenProfilesTests::ClassSetUp()
 {
-    HRESULT hr = PFAdminInitialize(testTitleData.titleId.data(), testTitleData.developerSecretKey.data(), nullptr, &stateHandle);
+    HRESULT hr = PFAdminInitialize(testTitleData.titleId.data(), testTitleData.developerSecretKey.data(), testTitleData.connectionString.data(), nullptr, &stateHandle);
     assert(SUCCEEDED(hr));
     if (SUCCEEDED(hr))
     {
@@ -171,13 +171,13 @@ void AutoGenProfilesTests::TestProfilesGetGlobalPolicy(TestContext& testContext)
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFProfilesGetGlobalPolicyGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
             
-            LogPFProfilesGetGlobalPolicyResponse(result);
+            LogGetGlobalPolicyResponse(result);
             return S_OK;
         }
 
         HRESULT Validate() override
         {
-            return ValidatePFProfilesGetGlobalPolicyResponse(result);
+            return ValidateGetGlobalPolicyResponse(result);
         }
     };
     auto async = std::make_unique<XAsyncHelper<GetGlobalPolicyResultHolderStruct>>(testContext);
@@ -211,19 +211,19 @@ void AutoGenProfilesTests::TestProfilesGetProfile(TestContext& testContext)
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFProfilesGetProfileGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
             
-            LogPFProfilesGetEntityProfileResponse(result);
+            LogGetEntityProfileResponse(result);
             return S_OK;
         }
 
         HRESULT Validate() override
         {
-            return ValidatePFProfilesGetEntityProfileResponse(result);
+            return ValidateGetProfileResponse(result);
         }
     };
     auto async = std::make_unique<XAsyncHelper<GetProfileResultHolderStruct>>(testContext);
 
     PFProfilesGetEntityProfileRequestWrapper<> request;
-    FillGetEntityProfileRequest(request);
+    FillGetProfileRequest(request);
     LogGetEntityProfileRequest(&request.Model(), "TestProfilesGetProfile");
     HRESULT hr = PFProfilesGetProfileAsync(entityHandle, &request.Model(), &async->asyncBlock);
     if (FAILED(hr))
@@ -250,19 +250,19 @@ void AutoGenProfilesTests::TestProfilesGetProfiles(TestContext& testContext)
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFProfilesGetProfilesGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
             
-            LogPFProfilesGetEntityProfilesResponse(result);
+            LogGetEntityProfilesResponse(result);
             return S_OK;
         }
 
         HRESULT Validate() override
         {
-            return ValidatePFProfilesGetEntityProfilesResponse(result);
+            return ValidateGetProfilesResponse(result);
         }
     };
     auto async = std::make_unique<XAsyncHelper<GetProfilesResultHolderStruct>>(testContext);
 
     PFProfilesGetEntityProfilesRequestWrapper<> request;
-    FillGetEntityProfilesRequest(request);
+    FillGetProfilesRequest(request);
     LogGetEntityProfilesRequest(&request.Model(), "TestProfilesGetProfiles");
     HRESULT hr = PFProfilesGetProfilesAsync(entityHandle, &request.Model(), &async->asyncBlock);
     if (FAILED(hr))
@@ -289,13 +289,13 @@ void AutoGenProfilesTests::TestProfilesGetTitlePlayersFromMasterPlayerAccountIds
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFProfilesGetTitlePlayersFromMasterPlayerAccountIdsGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
             
-            LogPFProfilesGetTitlePlayersFromMasterPlayerAccountIdsResponse(result);
+            LogGetTitlePlayersFromMasterPlayerAccountIdsResponse(result);
             return S_OK;
         }
 
         HRESULT Validate() override
         {
-            return ValidatePFProfilesGetTitlePlayersFromMasterPlayerAccountIdsResponse(result);
+            return ValidateGetTitlePlayersFromMasterPlayerAccountIdsResponse(result);
         }
     };
     auto async = std::make_unique<XAsyncHelper<GetTitlePlayersFromMasterPlayerAccountIdsResultHolderStruct>>(testContext);
@@ -350,13 +350,13 @@ void AutoGenProfilesTests::TestProfilesSetProfileLanguage(TestContext& testConte
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFProfilesSetProfileLanguageGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
             
-            LogPFProfilesSetProfileLanguageResponse(result);
+            LogSetProfileLanguageResponse(result);
             return S_OK;
         }
 
         HRESULT Validate() override
         {
-            return ValidatePFProfilesSetProfileLanguageResponse(result);
+            return ValidateSetProfileLanguageResponse(result);
         }
     };
     auto async = std::make_unique<XAsyncHelper<SetProfileLanguageResultHolderStruct>>(testContext);
@@ -389,19 +389,19 @@ void AutoGenProfilesTests::TestProfilesSetProfilePolicy(TestContext& testContext
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFProfilesSetProfilePolicyGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
             
-            LogPFProfilesSetEntityProfilePolicyResponse(result);
+            LogSetEntityProfilePolicyResponse(result);
             return S_OK;
         }
 
         HRESULT Validate() override
         {
-            return ValidatePFProfilesSetEntityProfilePolicyResponse(result);
+            return ValidateSetProfilePolicyResponse(result);
         }
     };
     auto async = std::make_unique<XAsyncHelper<SetProfilePolicyResultHolderStruct>>(testContext);
 
     PFProfilesSetEntityProfilePolicyRequestWrapper<> request;
-    FillSetEntityProfilePolicyRequest(request);
+    FillSetProfilePolicyRequest(request);
     LogSetEntityProfilePolicyRequest(&request.Model(), "TestProfilesSetProfilePolicy");
     HRESULT hr = PFProfilesSetProfilePolicyAsync(entityHandle, &request.Model(), &async->asyncBlock);
     if (FAILED(hr))

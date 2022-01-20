@@ -60,43 +60,51 @@ private:
 protected:
     void AddTests();
 
-    static void FillClientAddSharedGroupMembersPrerequisiteCreateSharedGroupRequest(PlayFab::Wrappers::PFSharedGroupsCreateSharedGroupRequestWrapper<>& request);
-    static HRESULT StoreClientAddSharedGroupMembersPrerequisitePFSharedGroupsCreateSharedGroupResult(std::shared_ptr<CreateSharedGroupResultHolder> result);
     static void LogAddSharedGroupMembersRequest(PFSharedGroupsAddSharedGroupMembersRequest const* request, const char* testName);
-    static void FillAddSharedGroupMembersRequest(PlayFab::Wrappers::PFSharedGroupsAddSharedGroupMembersRequestWrapper<>& request);
-    static void FillClientAddSharedGroupMembersCleanupRemoveSharedGroupMembersRequest(PlayFab::Wrappers::PFSharedGroupsRemoveSharedGroupMembersRequestWrapper<>& request);
-
     static void LogCreateSharedGroupRequest(PFSharedGroupsCreateSharedGroupRequest const* request, const char* testName);
-    static void FillCreateSharedGroupRequest(PlayFab::Wrappers::PFSharedGroupsCreateSharedGroupRequestWrapper<>& request);
-    static HRESULT LogPFSharedGroupsCreateSharedGroupResult(PFSharedGroupsCreateSharedGroupResult const* result);
-    static HRESULT ValidatePFSharedGroupsCreateSharedGroupResult(PFSharedGroupsCreateSharedGroupResult* result);
-
-    static void FillClientGetSharedGroupDataPrerequisiteCreateSharedGroupRequest(PlayFab::Wrappers::PFSharedGroupsCreateSharedGroupRequestWrapper<>& request);
-    static HRESULT StoreClientGetSharedGroupDataPrerequisitePFSharedGroupsCreateSharedGroupResult(std::shared_ptr<CreateSharedGroupResultHolder> result);
-    static void FillClientGetSharedGroupDataPrerequisiteUpdateSharedGroupDataRequest(PlayFab::Wrappers::PFSharedGroupsUpdateSharedGroupDataRequestWrapper<>& request);
+    static HRESULT LogCreateSharedGroupResult(PFSharedGroupsCreateSharedGroupResult const* result);
     static void LogGetSharedGroupDataRequest(PFSharedGroupsGetSharedGroupDataRequest const* request, const char* testName);
-    static void FillGetSharedGroupDataRequest(PlayFab::Wrappers::PFSharedGroupsGetSharedGroupDataRequestWrapper<>& request);
-    static HRESULT LogPFSharedGroupsGetSharedGroupDataResult(PFSharedGroupsGetSharedGroupDataResult const* result);
-    static HRESULT ValidatePFSharedGroupsGetSharedGroupDataResult(PFSharedGroupsGetSharedGroupDataResult* result);
-
-    static void FillClientRemoveSharedGroupMembersPrerequisiteCreateSharedGroupRequest(PlayFab::Wrappers::PFSharedGroupsCreateSharedGroupRequestWrapper<>& request);
-    static HRESULT StoreClientRemoveSharedGroupMembersPrerequisitePFSharedGroupsCreateSharedGroupResult(std::shared_ptr<CreateSharedGroupResultHolder> result);
-    static void FillClientRemoveSharedGroupMembersPrerequisiteAddSharedGroupMembersRequest(PlayFab::Wrappers::PFSharedGroupsAddSharedGroupMembersRequestWrapper<>& request);
+    static HRESULT LogGetSharedGroupDataResult(PFSharedGroupsGetSharedGroupDataResult const* result);
     static void LogRemoveSharedGroupMembersRequest(PFSharedGroupsRemoveSharedGroupMembersRequest const* request, const char* testName);
-    static void FillRemoveSharedGroupMembersRequest(PlayFab::Wrappers::PFSharedGroupsRemoveSharedGroupMembersRequestWrapper<>& request);
-
-    static void FillClientUpdateSharedGroupDataPrerequisiteCreateSharedGroupRequest(PlayFab::Wrappers::PFSharedGroupsCreateSharedGroupRequestWrapper<>& request);
-    static HRESULT StoreClientUpdateSharedGroupDataPrerequisitePFSharedGroupsCreateSharedGroupResult(std::shared_ptr<CreateSharedGroupResultHolder> result);
     static void LogUpdateSharedGroupDataRequest(PFSharedGroupsUpdateSharedGroupDataRequest const* request, const char* testName);
-    static void FillUpdateSharedGroupDataRequest(PlayFab::Wrappers::PFSharedGroupsUpdateSharedGroupDataRequestWrapper<>& request);
-
-
-
     static void LogDeleteSharedGroupRequest(PFSharedGroupsDeleteSharedGroupRequest const* request, const char* testName);
-    static void FillDeleteSharedGroupRequest(PlayFab::Wrappers::PFSharedGroupsDeleteSharedGroupRequestWrapper<>& request);
 
+    static void FillClientAddSharedGroupMembersPrerequisiteClientCreateSharedGroupRequest(PlayFab::Wrappers::PFSharedGroupsCreateSharedGroupRequestWrapper<>& request);
+    static HRESULT StoreClientAddSharedGroupMembersPrerequisiteClientCreateSharedGroupResponse(std::shared_ptr<CreateSharedGroupResultHolder> result);
+    static void FillClientAddSharedGroupMembersRequest(PlayFab::Wrappers::PFSharedGroupsAddSharedGroupMembersRequestWrapper<>& request);
+    static void FillClientAddSharedGroupMembersCleanupClientRemoveSharedGroupMembersRequest(PlayFab::Wrappers::PFSharedGroupsRemoveSharedGroupMembersRequestWrapper<>& request);
 
+    static void FillClientCreateSharedGroupRequest(PlayFab::Wrappers::PFSharedGroupsCreateSharedGroupRequestWrapper<>& request);
+    static HRESULT ValidateClientCreateSharedGroupResponse(PFSharedGroupsCreateSharedGroupResult* result);
 
+    static void FillClientGetSharedGroupDataPrerequisiteClientCreateSharedGroupRequest(PlayFab::Wrappers::PFSharedGroupsCreateSharedGroupRequestWrapper<>& request);
+    static HRESULT StoreClientGetSharedGroupDataPrerequisiteClientCreateSharedGroupResponse(std::shared_ptr<CreateSharedGroupResultHolder> result);
+    static void FillClientGetSharedGroupDataPrerequisiteClientUpdateSharedGroupDataRequest(PlayFab::Wrappers::PFSharedGroupsUpdateSharedGroupDataRequestWrapper<>& request);
+    static void FillClientGetSharedGroupDataRequest(PlayFab::Wrappers::PFSharedGroupsGetSharedGroupDataRequestWrapper<>& request);
+    static HRESULT ValidateClientGetSharedGroupDataResponse(PFSharedGroupsGetSharedGroupDataResult* result);
+
+    static void FillClientRemoveSharedGroupMembersPrerequisiteClientCreateSharedGroupRequest(PlayFab::Wrappers::PFSharedGroupsCreateSharedGroupRequestWrapper<>& request);
+    static HRESULT StoreClientRemoveSharedGroupMembersPrerequisiteClientCreateSharedGroupResponse(std::shared_ptr<CreateSharedGroupResultHolder> result);
+    static void FillClientRemoveSharedGroupMembersPrerequisiteClientAddSharedGroupMembersRequest(PlayFab::Wrappers::PFSharedGroupsAddSharedGroupMembersRequestWrapper<>& request);
+    static void FillClientRemoveSharedGroupMembersRequest(PlayFab::Wrappers::PFSharedGroupsRemoveSharedGroupMembersRequestWrapper<>& request);
+
+    static void FillClientUpdateSharedGroupDataPrerequisiteClientCreateSharedGroupRequest(PlayFab::Wrappers::PFSharedGroupsCreateSharedGroupRequestWrapper<>& request);
+    static HRESULT StoreClientUpdateSharedGroupDataPrerequisiteClientCreateSharedGroupResponse(std::shared_ptr<CreateSharedGroupResultHolder> result);
+    static void FillClientUpdateSharedGroupDataRequest(PlayFab::Wrappers::PFSharedGroupsUpdateSharedGroupDataRequestWrapper<>& request);
+
+    static void FillServerAddSharedGroupMembersRequest(PlayFab::Wrappers::PFSharedGroupsAddSharedGroupMembersRequestWrapper<>& request);
+
+    static void FillServerCreateSharedGroupRequest(PlayFab::Wrappers::PFSharedGroupsCreateSharedGroupRequestWrapper<>& request);
+    static HRESULT ValidateServerCreateSharedGroupResponse(PFSharedGroupsCreateSharedGroupResult* result);
+
+    static void FillServerDeleteSharedGroupRequest(PlayFab::Wrappers::PFSharedGroupsDeleteSharedGroupRequestWrapper<>& request);
+
+    static void FillServerGetSharedGroupDataRequest(PlayFab::Wrappers::PFSharedGroupsGetSharedGroupDataRequestWrapper<>& request);
+    static HRESULT ValidateServerGetSharedGroupDataResponse(PFSharedGroupsGetSharedGroupDataResult* result);
+
+    static void FillServerRemoveSharedGroupMembersRequest(PlayFab::Wrappers::PFSharedGroupsRemoveSharedGroupMembersRequestWrapper<>& request);
+
+    static void FillServerUpdateSharedGroupDataRequest(PlayFab::Wrappers::PFSharedGroupsUpdateSharedGroupDataRequestWrapper<>& request);
 
     struct SharedGroupsTestData
     {

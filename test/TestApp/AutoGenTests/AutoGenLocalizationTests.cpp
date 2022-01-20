@@ -21,7 +21,7 @@ void AutoGenLocalizationTests::Log(std::stringstream& ss)
 
 HRESULT AutoGenLocalizationTests::LogHR(HRESULT hr)
 {
-    if( TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    if (TestApp::ShouldTrace(PFTestTraceLevel::Information))
     {
         TestApp::Log("Result: 0x%0.8x", hr);
     }
@@ -37,7 +37,7 @@ void AutoGenLocalizationTests::AddTests()
 
 void AutoGenLocalizationTests::ClassSetUp()
 {
-    HRESULT hr = PFAdminInitialize(testTitleData.titleId.data(), testTitleData.developerSecretKey.data(), nullptr, &stateHandle);
+    HRESULT hr = PFAdminInitialize(testTitleData.titleId.data(), testTitleData.developerSecretKey.data(), testTitleData.connectionString.data(), nullptr, &stateHandle);
     assert(SUCCEEDED(hr));
     if (SUCCEEDED(hr))
     {
@@ -154,13 +154,13 @@ void AutoGenLocalizationTests::TestLocalizationGetLanguageList(TestContext& test
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFLocalizationGetLanguageListGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
             
-            LogPFLocalizationGetLanguageListResponse(result);
+            LogGetLanguageListResponse(result);
             return S_OK;
         }
 
         HRESULT Validate() override
         {
-            return ValidatePFLocalizationGetLanguageListResponse(result);
+            return ValidateGetLanguageListResponse(result);
         }
     };
     auto async = std::make_unique<XAsyncHelper<GetLanguageListResultHolderStruct>>(testContext);

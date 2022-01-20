@@ -11,7 +11,7 @@ namespace PlayFabUnit
 
 void AutoGenTradingTests::LogAcceptTradeRequest(PFTradingAcceptTradeRequest const* request, const char* testName)
 {
-    if( !TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    if (!TestApp::ShouldTrace(PFTestTraceLevel::Information))
     {
         return;
     }
@@ -28,18 +28,18 @@ void AutoGenTradingTests::LogAcceptTradeRequest(PFTradingAcceptTradeRequest cons
     ss << "  acceptedInventoryInstanceIdsCount " << request->acceptedInventoryInstanceIdsCount; Log(ss);
 
     // const char*
-    for( uint32_t i=0; i<request->acceptedInventoryInstanceIdsCount; i++ )
+    for (uint32_t i=0; i<request->acceptedInventoryInstanceIdsCount; i++)
     {
             ss << "  request->acceptedInventoryInstanceIds[" << i << "]:" << request->acceptedInventoryInstanceIds[i]; Log(ss); // const char*
     } 
-    if( request->offeringPlayerId ) { ss << "  offeringPlayerId " << request->offeringPlayerId; Log(ss); } else { ss << "  offeringPlayerId = nullptr"; Log(ss); } // Class: const char* 
-    if( request->tradeId ) { ss << "  tradeId " << request->tradeId; Log(ss); } else { ss << "  tradeId = nullptr"; Log(ss); } // Class: const char* 
+    if (request->offeringPlayerId) { ss << "  offeringPlayerId " << request->offeringPlayerId; Log(ss); } else { ss << "  offeringPlayerId = nullptr"; Log(ss); } // Class: const char* 
+    if (request->tradeId) { ss << "  tradeId " << request->tradeId; Log(ss); } else { ss << "  tradeId = nullptr"; Log(ss); } // Class: const char* 
 
 }
 
-HRESULT AutoGenTradingTests::LogPFTradingAcceptTradeResponse(PFTradingAcceptTradeResponse const* result)
+HRESULT AutoGenTradingTests::LogAcceptTradeResponse(PFTradingAcceptTradeResponse const* result)
 {
-    if( !TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    if (!TestApp::ShouldTrace(PFTestTraceLevel::Information))
     {
         return S_OK;
     }
@@ -54,7 +54,7 @@ HRESULT AutoGenTradingTests::LogPFTradingAcceptTradeResponse(PFTradingAcceptTrad
 
 void AutoGenTradingTests::LogCancelTradeRequest(PFTradingCancelTradeRequest const* request, const char* testName)
 {
-    if( !TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    if (!TestApp::ShouldTrace(PFTestTraceLevel::Information))
     {
         return;
     }
@@ -67,13 +67,13 @@ void AutoGenTradingTests::LogCancelTradeRequest(PFTradingCancelTradeRequest cons
 
     // PlayFabTradingCancelTradeRequest struct:
     // request->tradeId: const char*
-    if( request->tradeId ) { ss << "  tradeId " << request->tradeId; Log(ss); } else { ss << "  tradeId = nullptr"; Log(ss); } // Class: const char* 
+    if (request->tradeId) { ss << "  tradeId " << request->tradeId; Log(ss); } else { ss << "  tradeId = nullptr"; Log(ss); } // Class: const char* 
 
 }
 
-HRESULT AutoGenTradingTests::LogPFTradingCancelTradeResponse(PFTradingCancelTradeResponse const* result)
+HRESULT AutoGenTradingTests::LogCancelTradeResponse(PFTradingCancelTradeResponse const* result)
 {
-    if( !TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    if (!TestApp::ShouldTrace(PFTestTraceLevel::Information))
     {
         return S_OK;
     }
@@ -88,7 +88,7 @@ HRESULT AutoGenTradingTests::LogPFTradingCancelTradeResponse(PFTradingCancelTrad
 
 void AutoGenTradingTests::LogGetPlayerTradesRequest(PFTradingGetPlayerTradesRequest const* request, const char* testName)
 {
-    if( !TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    if (!TestApp::ShouldTrace(PFTestTraceLevel::Information))
     {
         return;
     }
@@ -105,9 +105,9 @@ void AutoGenTradingTests::LogGetPlayerTradesRequest(PFTradingGetPlayerTradesRequ
 
 }
 
-HRESULT AutoGenTradingTests::LogPFTradingGetPlayerTradesResponse(PFTradingGetPlayerTradesResponse const* result)
+HRESULT AutoGenTradingTests::LogGetPlayerTradesResponse(PFTradingGetPlayerTradesResponse const* result)
 {
-    if( !TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    if (!TestApp::ShouldTrace(PFTestTraceLevel::Information))
     {
         return S_OK;
     }
@@ -119,14 +119,14 @@ HRESULT AutoGenTradingTests::LogPFTradingGetPlayerTradesResponse(PFTradingGetPla
     ss << "  acceptedTradesCount " << result->acceptedTradesCount; Log(ss);
 
     // PFTradingTradeInfo
-    for( uint32_t i=0; i<result->acceptedTradesCount; i++ )
+    for (uint32_t i=0; i<result->acceptedTradesCount; i++)
     {
             ss << "  result->acceptedTrades[" << i << "]:" << result->acceptedTrades[i]; Log(ss); // PFTradingTradeInfo
     }         
     ss << "  openedTradesCount " << result->openedTradesCount; Log(ss);
 
     // PFTradingTradeInfo
-    for( uint32_t i=0; i<result->openedTradesCount; i++ )
+    for (uint32_t i=0; i<result->openedTradesCount; i++)
     {
             ss << "  result->openedTrades[" << i << "]:" << result->openedTrades[i]; Log(ss); // PFTradingTradeInfo
     } 
@@ -135,7 +135,7 @@ HRESULT AutoGenTradingTests::LogPFTradingGetPlayerTradesResponse(PFTradingGetPla
 
 void AutoGenTradingTests::LogGetTradeStatusRequest(PFTradingGetTradeStatusRequest const* request, const char* testName)
 {
-    if( !TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    if (!TestApp::ShouldTrace(PFTestTraceLevel::Information))
     {
         return;
     }
@@ -148,14 +148,14 @@ void AutoGenTradingTests::LogGetTradeStatusRequest(PFTradingGetTradeStatusReques
 
     // PlayFabTradingGetTradeStatusRequest struct:
     // request->offeringPlayerId: const char*
-    if( request->offeringPlayerId ) { ss << "  offeringPlayerId " << request->offeringPlayerId; Log(ss); } else { ss << "  offeringPlayerId = nullptr"; Log(ss); } // Class: const char* 
-    if( request->tradeId ) { ss << "  tradeId " << request->tradeId; Log(ss); } else { ss << "  tradeId = nullptr"; Log(ss); } // Class: const char* 
+    if (request->offeringPlayerId) { ss << "  offeringPlayerId " << request->offeringPlayerId; Log(ss); } else { ss << "  offeringPlayerId = nullptr"; Log(ss); } // Class: const char* 
+    if (request->tradeId) { ss << "  tradeId " << request->tradeId; Log(ss); } else { ss << "  tradeId = nullptr"; Log(ss); } // Class: const char* 
 
 }
 
-HRESULT AutoGenTradingTests::LogPFTradingGetTradeStatusResponse(PFTradingGetTradeStatusResponse const* result)
+HRESULT AutoGenTradingTests::LogGetTradeStatusResponse(PFTradingGetTradeStatusResponse const* result)
 {
-    if( !TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    if (!TestApp::ShouldTrace(PFTestTraceLevel::Information))
     {
         return S_OK;
     }
@@ -170,7 +170,7 @@ HRESULT AutoGenTradingTests::LogPFTradingGetTradeStatusResponse(PFTradingGetTrad
 
 void AutoGenTradingTests::LogOpenTradeRequest(PFTradingOpenTradeRequest const* request, const char* testName)
 {
-    if( !TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    if (!TestApp::ShouldTrace(PFTestTraceLevel::Information))
     {
         return;
     }
@@ -187,30 +187,30 @@ void AutoGenTradingTests::LogOpenTradeRequest(PFTradingOpenTradeRequest const* r
     ss << "  allowedPlayerIdsCount " << request->allowedPlayerIdsCount; Log(ss);
 
     // const char*
-    for( uint32_t i=0; i<request->allowedPlayerIdsCount; i++ )
+    for (uint32_t i=0; i<request->allowedPlayerIdsCount; i++)
     {
             ss << "  request->allowedPlayerIds[" << i << "]:" << request->allowedPlayerIds[i]; Log(ss); // const char*
     }     
     ss << "  offeredInventoryInstanceIdsCount " << request->offeredInventoryInstanceIdsCount; Log(ss);
 
     // const char*
-    for( uint32_t i=0; i<request->offeredInventoryInstanceIdsCount; i++ )
+    for (uint32_t i=0; i<request->offeredInventoryInstanceIdsCount; i++)
     {
             ss << "  request->offeredInventoryInstanceIds[" << i << "]:" << request->offeredInventoryInstanceIds[i]; Log(ss); // const char*
     }     
     ss << "  requestedCatalogItemIdsCount " << request->requestedCatalogItemIdsCount; Log(ss);
 
     // const char*
-    for( uint32_t i=0; i<request->requestedCatalogItemIdsCount; i++ )
+    for (uint32_t i=0; i<request->requestedCatalogItemIdsCount; i++)
     {
             ss << "  request->requestedCatalogItemIds[" << i << "]:" << request->requestedCatalogItemIds[i]; Log(ss); // const char*
     } 
 
 }
 
-HRESULT AutoGenTradingTests::LogPFTradingOpenTradeResponse(PFTradingOpenTradeResponse const* result)
+HRESULT AutoGenTradingTests::LogOpenTradeResponse(PFTradingOpenTradeResponse const* result)
 {
-    if( !TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    if (!TestApp::ShouldTrace(PFTestTraceLevel::Information))
     {
         return S_OK;
     }

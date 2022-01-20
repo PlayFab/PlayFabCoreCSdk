@@ -11,7 +11,7 @@ namespace PlayFabUnit
 
 void AutoGenCloudScriptTests::LogGetCloudScriptRevisionRequest(PFCloudScriptGetCloudScriptRevisionRequest const* request, const char* testName)
 {
-    if( !TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    if (!TestApp::ShouldTrace(PFTestTraceLevel::Information))
     {
         return;
     }
@@ -29,9 +29,9 @@ void AutoGenCloudScriptTests::LogGetCloudScriptRevisionRequest(PFCloudScriptGetC
 
 }
 
-HRESULT AutoGenCloudScriptTests::LogPFCloudScriptGetCloudScriptRevisionResult(PFCloudScriptGetCloudScriptRevisionResult const* result)
+HRESULT AutoGenCloudScriptTests::LogGetCloudScriptRevisionResult(PFCloudScriptGetCloudScriptRevisionResult const* result)
 {
-    if( !TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    if (!TestApp::ShouldTrace(PFTestTraceLevel::Information))
     {
         return S_OK;
     }
@@ -44,7 +44,7 @@ HRESULT AutoGenCloudScriptTests::LogPFCloudScriptGetCloudScriptRevisionResult(PF
     ss << "  filesCount " << result->filesCount; Log(ss);
 
     // PFCloudScriptCloudScriptFile
-    for( uint32_t i=0; i<result->filesCount; i++ )
+    for (uint32_t i=0; i<result->filesCount; i++)
     {
             ss << "  result->files[" << i << "]:" << result->files[i]; Log(ss); // PFCloudScriptCloudScriptFile
     }     
@@ -54,9 +54,9 @@ HRESULT AutoGenCloudScriptTests::LogPFCloudScriptGetCloudScriptRevisionResult(PF
     return S_OK;
 }
 
-HRESULT AutoGenCloudScriptTests::LogPFCloudScriptGetCloudScriptVersionsResult(PFCloudScriptGetCloudScriptVersionsResult const* result)
+HRESULT AutoGenCloudScriptTests::LogGetCloudScriptVersionsResult(PFCloudScriptGetCloudScriptVersionsResult const* result)
 {
-    if( !TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    if (!TestApp::ShouldTrace(PFTestTraceLevel::Information))
     {
         return S_OK;
     }
@@ -68,7 +68,7 @@ HRESULT AutoGenCloudScriptTests::LogPFCloudScriptGetCloudScriptVersionsResult(PF
     ss << "  versionsCount " << result->versionsCount; Log(ss);
 
     // PFCloudScriptCloudScriptVersionStatus
-    for( uint32_t i=0; i<result->versionsCount; i++ )
+    for (uint32_t i=0; i<result->versionsCount; i++)
     {
             ss << "  result->versions[" << i << "]:" << result->versions[i]; Log(ss); // PFCloudScriptCloudScriptVersionStatus
     } 
@@ -77,7 +77,7 @@ HRESULT AutoGenCloudScriptTests::LogPFCloudScriptGetCloudScriptVersionsResult(PF
 
 void AutoGenCloudScriptTests::LogSetPublishedRevisionRequest(PFCloudScriptSetPublishedRevisionRequest const* request, const char* testName)
 {
-    if( !TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    if (!TestApp::ShouldTrace(PFTestTraceLevel::Information))
     {
         return;
     }
@@ -94,7 +94,7 @@ void AutoGenCloudScriptTests::LogSetPublishedRevisionRequest(PFCloudScriptSetPub
     ss << "  customTagsCount " << request->customTagsCount; Log(ss);
 
     // PFStringDictionaryEntry
-    for( uint32_t i=0; i<request->customTagsCount; i++ )
+    for (uint32_t i=0; i<request->customTagsCount; i++)
     {
             ss << "  request->customTags[" << i << "]:" << request->customTags[i].key << "=" << request->customTags[i].value; Log(ss);
             
@@ -106,7 +106,7 @@ void AutoGenCloudScriptTests::LogSetPublishedRevisionRequest(PFCloudScriptSetPub
 
 void AutoGenCloudScriptTests::LogUpdateCloudScriptRequest(PFCloudScriptUpdateCloudScriptRequest const* request, const char* testName)
 {
-    if( !TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    if (!TestApp::ShouldTrace(PFTestTraceLevel::Information))
     {
         return;
     }
@@ -123,16 +123,16 @@ void AutoGenCloudScriptTests::LogUpdateCloudScriptRequest(PFCloudScriptUpdateClo
     ss << "  customTagsCount " << request->customTagsCount; Log(ss);
 
     // PFStringDictionaryEntry
-    for( uint32_t i=0; i<request->customTagsCount; i++ )
+    for (uint32_t i=0; i<request->customTagsCount; i++)
     {
             ss << "  request->customTags[" << i << "]:" << request->customTags[i].key << "=" << request->customTags[i].value; Log(ss);
             
     } 
-    if( request->developerPlayFabId ) { ss << "  developerPlayFabId " << request->developerPlayFabId; Log(ss); } else { ss << "  developerPlayFabId = nullptr"; Log(ss); } // Class: const char*     
+    if (request->developerPlayFabId) { ss << "  developerPlayFabId " << request->developerPlayFabId; Log(ss); } else { ss << "  developerPlayFabId = nullptr"; Log(ss); } // Class: const char*     
     ss << "  filesCount " << request->filesCount; Log(ss);
 
     // PFCloudScriptCloudScriptFile
-    for( uint32_t i=0; i<request->filesCount; i++ )
+    for (uint32_t i=0; i<request->filesCount; i++)
     {
             ss << "  request->files[" << i << "]:" << request->files[i]; Log(ss); // PFCloudScriptCloudScriptFile
     } 
@@ -140,9 +140,9 @@ void AutoGenCloudScriptTests::LogUpdateCloudScriptRequest(PFCloudScriptUpdateClo
 
 }
 
-HRESULT AutoGenCloudScriptTests::LogPFCloudScriptUpdateCloudScriptResult(PFCloudScriptUpdateCloudScriptResult const* result)
+HRESULT AutoGenCloudScriptTests::LogUpdateCloudScriptResult(PFCloudScriptUpdateCloudScriptResult const* result)
 {
-    if( !TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    if (!TestApp::ShouldTrace(PFTestTraceLevel::Information))
     {
         return S_OK;
     }
@@ -158,7 +158,7 @@ HRESULT AutoGenCloudScriptTests::LogPFCloudScriptUpdateCloudScriptResult(PFCloud
 
 void AutoGenCloudScriptTests::LogExecuteCloudScriptRequest(PFCloudScriptExecuteCloudScriptRequest const* request, const char* testName)
 {
-    if( !TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    if (!TestApp::ShouldTrace(PFTestTraceLevel::Information))
     {
         return;
     }
@@ -175,22 +175,22 @@ void AutoGenCloudScriptTests::LogExecuteCloudScriptRequest(PFCloudScriptExecuteC
     ss << "  customTagsCount " << request->customTagsCount; Log(ss);
 
     // PFStringDictionaryEntry
-    for( uint32_t i=0; i<request->customTagsCount; i++ )
+    for (uint32_t i=0; i<request->customTagsCount; i++)
     {
             ss << "  request->customTags[" << i << "]:" << request->customTags[i].key << "=" << request->customTags[i].value; Log(ss);
             
     } 
-    if( request->functionName ) { ss << "  functionName " << request->functionName; Log(ss); } else { ss << "  functionName = nullptr"; Log(ss); } // Class: const char* 
-    if( request->functionParameter.stringValue ) { ss << "  functionParameter " << request->functionParameter.stringValue; Log(ss); } else { ss << "  functionParameter = nullptr"; Log(ss); } // Class: PFJsonObject 
+    if (request->functionName) { ss << "  functionName " << request->functionName; Log(ss); } else { ss << "  functionName = nullptr"; Log(ss); } // Class: const char* 
+    if (request->functionParameter.stringValue) { ss << "  functionParameter " << request->functionParameter.stringValue; Log(ss); } else { ss << "  functionParameter = nullptr"; Log(ss); } // Class: PFJsonObject 
     ss << "  generatePlayStreamEvent " << request->generatePlayStreamEvent; Log(ss); // Class: bool 
     ss << "  revisionSelection " << request->revisionSelection; Log(ss); // Class: PFCloudScriptCloudScriptRevisionOption 
     ss << "  specificRevision " << request->specificRevision; Log(ss); // Class: int32_t 
 
 }
 
-HRESULT AutoGenCloudScriptTests::LogPFExecuteCloudScriptResult(PFExecuteCloudScriptResult const* result)
+HRESULT AutoGenCloudScriptTests::LogExecuteCloudScriptResult(PFExecuteCloudScriptResult const* result)
 {
-    if( !TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    if (!TestApp::ShouldTrace(PFTestTraceLevel::Information))
     {
         return S_OK;
     }
@@ -202,14 +202,14 @@ HRESULT AutoGenCloudScriptTests::LogPFExecuteCloudScriptResult(PFExecuteCloudScr
     ss << "  aPIRequestsIssued " << result->aPIRequestsIssued; Log(ss); // Class: int32_t     
     ss << "  error " << result->error; Log(ss); // Class: PFScriptExecutionError     
     ss << "  executionTimeSeconds " << result->executionTimeSeconds; Log(ss); // Class: double     
-    if( result->functionName ) { ss << "  functionName " << result->functionName; Log(ss); } else { ss << "  functionName = nullptr"; Log(ss); } // Class: const char*     
-    if( result->functionResult.stringValue ) { ss << "  functionResult " << result->functionResult.stringValue; Log(ss); } else { ss << "  functionResult = nullptr"; Log(ss); } // Class: PFJsonObject     
+    if (result->functionName) { ss << "  functionName " << result->functionName; Log(ss); } else { ss << "  functionName = nullptr"; Log(ss); } // Class: const char*     
+    if (result->functionResult.stringValue) { ss << "  functionResult " << result->functionResult.stringValue; Log(ss); } else { ss << "  functionResult = nullptr"; Log(ss); } // Class: PFJsonObject     
     ss << "  functionResultTooLarge " << result->functionResultTooLarge; Log(ss); // Class: bool     
     ss << "  httpRequestsIssued " << result->httpRequestsIssued; Log(ss); // Class: int32_t         
     ss << "  logsCount " << result->logsCount; Log(ss);
 
     // PFLogStatement
-    for( uint32_t i=0; i<result->logsCount; i++ )
+    for (uint32_t i=0; i<result->logsCount; i++)
     {
             ss << "  result->logs[" << i << "]:" << result->logs[i]; Log(ss); // PFLogStatement
     }     
@@ -222,7 +222,7 @@ HRESULT AutoGenCloudScriptTests::LogPFExecuteCloudScriptResult(PFExecuteCloudScr
 
 void AutoGenCloudScriptTests::LogExecuteCloudScriptServerRequest(PFCloudScriptExecuteCloudScriptServerRequest const* request, const char* testName)
 {
-    if( !TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    if (!TestApp::ShouldTrace(PFTestTraceLevel::Information))
     {
         return;
     }
@@ -239,15 +239,15 @@ void AutoGenCloudScriptTests::LogExecuteCloudScriptServerRequest(PFCloudScriptEx
     ss << "  customTagsCount " << request->customTagsCount; Log(ss);
 
     // PFStringDictionaryEntry
-    for( uint32_t i=0; i<request->customTagsCount; i++ )
+    for (uint32_t i=0; i<request->customTagsCount; i++)
     {
             ss << "  request->customTags[" << i << "]:" << request->customTags[i].key << "=" << request->customTags[i].value; Log(ss);
             
     } 
-    if( request->functionName ) { ss << "  functionName " << request->functionName; Log(ss); } else { ss << "  functionName = nullptr"; Log(ss); } // Class: const char* 
-    if( request->functionParameter.stringValue ) { ss << "  functionParameter " << request->functionParameter.stringValue; Log(ss); } else { ss << "  functionParameter = nullptr"; Log(ss); } // Class: PFJsonObject 
+    if (request->functionName) { ss << "  functionName " << request->functionName; Log(ss); } else { ss << "  functionName = nullptr"; Log(ss); } // Class: const char* 
+    if (request->functionParameter.stringValue) { ss << "  functionParameter " << request->functionParameter.stringValue; Log(ss); } else { ss << "  functionParameter = nullptr"; Log(ss); } // Class: PFJsonObject 
     ss << "  generatePlayStreamEvent " << request->generatePlayStreamEvent; Log(ss); // Class: bool 
-    if( request->playFabId ) { ss << "  playFabId " << request->playFabId; Log(ss); } else { ss << "  playFabId = nullptr"; Log(ss); } // Class: const char* 
+    if (request->playFabId) { ss << "  playFabId " << request->playFabId; Log(ss); } else { ss << "  playFabId = nullptr"; Log(ss); } // Class: const char* 
     ss << "  revisionSelection " << request->revisionSelection; Log(ss); // Class: PFCloudScriptCloudScriptRevisionOption 
     ss << "  specificRevision " << request->specificRevision; Log(ss); // Class: int32_t 
 
@@ -255,7 +255,7 @@ void AutoGenCloudScriptTests::LogExecuteCloudScriptServerRequest(PFCloudScriptEx
 
 void AutoGenCloudScriptTests::LogExecuteEntityCloudScriptRequest(PFCloudScriptExecuteEntityCloudScriptRequest const* request, const char* testName)
 {
-    if( !TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    if (!TestApp::ShouldTrace(PFTestTraceLevel::Information))
     {
         return;
     }
@@ -272,14 +272,14 @@ void AutoGenCloudScriptTests::LogExecuteEntityCloudScriptRequest(PFCloudScriptEx
     ss << "  customTagsCount " << request->customTagsCount; Log(ss);
 
     // PFStringDictionaryEntry
-    for( uint32_t i=0; i<request->customTagsCount; i++ )
+    for (uint32_t i=0; i<request->customTagsCount; i++)
     {
             ss << "  request->customTags[" << i << "]:" << request->customTags[i].key << "=" << request->customTags[i].value; Log(ss);
             
     } 
     ss << "  entity " << request->entity; Log(ss); // Class: PFEntityKey 
-    if( request->functionName ) { ss << "  functionName " << request->functionName; Log(ss); } else { ss << "  functionName = nullptr"; Log(ss); } // Class: const char* 
-    if( request->functionParameter.stringValue ) { ss << "  functionParameter " << request->functionParameter.stringValue; Log(ss); } else { ss << "  functionParameter = nullptr"; Log(ss); } // Class: PFJsonObject 
+    if (request->functionName) { ss << "  functionName " << request->functionName; Log(ss); } else { ss << "  functionName = nullptr"; Log(ss); } // Class: const char* 
+    if (request->functionParameter.stringValue) { ss << "  functionParameter " << request->functionParameter.stringValue; Log(ss); } else { ss << "  functionParameter = nullptr"; Log(ss); } // Class: PFJsonObject 
     ss << "  generatePlayStreamEvent " << request->generatePlayStreamEvent; Log(ss); // Class: bool 
     ss << "  revisionSelection " << request->revisionSelection; Log(ss); // Class: PFCloudScriptCloudScriptRevisionOption 
     ss << "  specificRevision " << request->specificRevision; Log(ss); // Class: int32_t 
@@ -288,7 +288,7 @@ void AutoGenCloudScriptTests::LogExecuteEntityCloudScriptRequest(PFCloudScriptEx
 
 void AutoGenCloudScriptTests::LogExecuteFunctionRequest(PFCloudScriptExecuteFunctionRequest const* request, const char* testName)
 {
-    if( !TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    if (!TestApp::ShouldTrace(PFTestTraceLevel::Information))
     {
         return;
     }
@@ -305,21 +305,21 @@ void AutoGenCloudScriptTests::LogExecuteFunctionRequest(PFCloudScriptExecuteFunc
     ss << "  customTagsCount " << request->customTagsCount; Log(ss);
 
     // PFStringDictionaryEntry
-    for( uint32_t i=0; i<request->customTagsCount; i++ )
+    for (uint32_t i=0; i<request->customTagsCount; i++)
     {
             ss << "  request->customTags[" << i << "]:" << request->customTags[i].key << "=" << request->customTags[i].value; Log(ss);
             
     } 
     ss << "  entity " << request->entity; Log(ss); // Class: PFEntityKey 
-    if( request->functionName ) { ss << "  functionName " << request->functionName; Log(ss); } else { ss << "  functionName = nullptr"; Log(ss); } // Class: const char* 
-    if( request->functionParameter.stringValue ) { ss << "  functionParameter " << request->functionParameter.stringValue; Log(ss); } else { ss << "  functionParameter = nullptr"; Log(ss); } // Class: PFJsonObject 
+    if (request->functionName) { ss << "  functionName " << request->functionName; Log(ss); } else { ss << "  functionName = nullptr"; Log(ss); } // Class: const char* 
+    if (request->functionParameter.stringValue) { ss << "  functionParameter " << request->functionParameter.stringValue; Log(ss); } else { ss << "  functionParameter = nullptr"; Log(ss); } // Class: PFJsonObject 
     ss << "  generatePlayStreamEvent " << request->generatePlayStreamEvent; Log(ss); // Class: bool 
 
 }
 
-HRESULT AutoGenCloudScriptTests::LogPFCloudScriptExecuteFunctionResult(PFCloudScriptExecuteFunctionResult const* result)
+HRESULT AutoGenCloudScriptTests::LogExecuteFunctionResult(PFCloudScriptExecuteFunctionResult const* result)
 {
-    if( !TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    if (!TestApp::ShouldTrace(PFTestTraceLevel::Information))
     {
         return S_OK;
     }
@@ -330,15 +330,15 @@ HRESULT AutoGenCloudScriptTests::LogPFCloudScriptExecuteFunctionResult(PFCloudSc
     // Found PlayFabCloudScriptExecuteFunctionResult    
     ss << "  error " << result->error; Log(ss); // Class: PFCloudScriptFunctionExecutionError     
     ss << "  executionTimeMilliseconds " << result->executionTimeMilliseconds; Log(ss); // Class: int32_t     
-    if( result->functionName ) { ss << "  functionName " << result->functionName; Log(ss); } else { ss << "  functionName = nullptr"; Log(ss); } // Class: const char*     
-    if( result->functionResult.stringValue ) { ss << "  functionResult " << result->functionResult.stringValue; Log(ss); } else { ss << "  functionResult = nullptr"; Log(ss); } // Class: PFJsonObject     
+    if (result->functionName) { ss << "  functionName " << result->functionName; Log(ss); } else { ss << "  functionName = nullptr"; Log(ss); } // Class: const char*     
+    if (result->functionResult.stringValue) { ss << "  functionResult " << result->functionResult.stringValue; Log(ss); } else { ss << "  functionResult = nullptr"; Log(ss); } // Class: PFJsonObject     
     ss << "  functionResultTooLarge " << result->functionResultTooLarge; Log(ss); // Class: bool 
     return S_OK;
 }
 
 void AutoGenCloudScriptTests::LogGetFunctionRequest(PFCloudScriptGetFunctionRequest const* request, const char* testName)
 {
-    if( !TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    if (!TestApp::ShouldTrace(PFTestTraceLevel::Information))
     {
         return;
     }
@@ -355,19 +355,19 @@ void AutoGenCloudScriptTests::LogGetFunctionRequest(PFCloudScriptGetFunctionRequ
     ss << "  customTagsCount " << request->customTagsCount; Log(ss);
 
     // PFStringDictionaryEntry
-    for( uint32_t i=0; i<request->customTagsCount; i++ )
+    for (uint32_t i=0; i<request->customTagsCount; i++)
     {
             ss << "  request->customTags[" << i << "]:" << request->customTags[i].key << "=" << request->customTags[i].value; Log(ss);
             
     } 
-    if( request->functionName ) { ss << "  functionName " << request->functionName; Log(ss); } else { ss << "  functionName = nullptr"; Log(ss); } // Class: const char* 
-    if( request->titleId ) { ss << "  titleId " << request->titleId; Log(ss); } else { ss << "  titleId = nullptr"; Log(ss); } // Class: const char* 
+    if (request->functionName) { ss << "  functionName " << request->functionName; Log(ss); } else { ss << "  functionName = nullptr"; Log(ss); } // Class: const char* 
+    if (request->titleId) { ss << "  titleId " << request->titleId; Log(ss); } else { ss << "  titleId = nullptr"; Log(ss); } // Class: const char* 
 
 }
 
-HRESULT AutoGenCloudScriptTests::LogPFCloudScriptGetFunctionResult(PFCloudScriptGetFunctionResult const* result)
+HRESULT AutoGenCloudScriptTests::LogGetFunctionResult(PFCloudScriptGetFunctionResult const* result)
 {
-    if( !TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    if (!TestApp::ShouldTrace(PFTestTraceLevel::Information))
     {
         return S_OK;
     }
@@ -376,17 +376,17 @@ HRESULT AutoGenCloudScriptTests::LogPFCloudScriptGetFunctionResult(PFCloudScript
     ss << "Response:"; Log(ss);
 
     // Found PlayFabCloudScriptGetFunctionResult    
-    if( result->connectionString ) { ss << "  connectionString " << result->connectionString; Log(ss); } else { ss << "  connectionString = nullptr"; Log(ss); } // Class: const char*     
-    if( result->functionUrl ) { ss << "  functionUrl " << result->functionUrl; Log(ss); } else { ss << "  functionUrl = nullptr"; Log(ss); } // Class: const char*     
-    if( result->queueName ) { ss << "  queueName " << result->queueName; Log(ss); } else { ss << "  queueName = nullptr"; Log(ss); } // Class: const char*     
+    if (result->connectionString) { ss << "  connectionString " << result->connectionString; Log(ss); } else { ss << "  connectionString = nullptr"; Log(ss); } // Class: const char*     
+    if (result->functionUrl) { ss << "  functionUrl " << result->functionUrl; Log(ss); } else { ss << "  functionUrl = nullptr"; Log(ss); } // Class: const char*     
+    if (result->queueName) { ss << "  queueName " << result->queueName; Log(ss); } else { ss << "  queueName = nullptr"; Log(ss); } // Class: const char*     
     ss << "  systemData " << result->systemData; Log(ss); // Class: PFAzureResourceSystemData     
-    if( result->triggerType ) { ss << "  triggerType " << result->triggerType; Log(ss); } else { ss << "  triggerType = nullptr"; Log(ss); } // Class: const char* 
+    if (result->triggerType) { ss << "  triggerType " << result->triggerType; Log(ss); } else { ss << "  triggerType = nullptr"; Log(ss); } // Class: const char* 
     return S_OK;
 }
 
 void AutoGenCloudScriptTests::LogListFunctionsRequest(PFCloudScriptListFunctionsRequest const* request, const char* testName)
 {
-    if( !TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    if (!TestApp::ShouldTrace(PFTestTraceLevel::Information))
     {
         return;
     }
@@ -403,18 +403,18 @@ void AutoGenCloudScriptTests::LogListFunctionsRequest(PFCloudScriptListFunctions
     ss << "  customTagsCount " << request->customTagsCount; Log(ss);
 
     // PFStringDictionaryEntry
-    for( uint32_t i=0; i<request->customTagsCount; i++ )
+    for (uint32_t i=0; i<request->customTagsCount; i++)
     {
             ss << "  request->customTags[" << i << "]:" << request->customTags[i].key << "=" << request->customTags[i].value; Log(ss);
             
     } 
-    if( request->titleId ) { ss << "  titleId " << request->titleId; Log(ss); } else { ss << "  titleId = nullptr"; Log(ss); } // Class: const char* 
+    if (request->titleId) { ss << "  titleId " << request->titleId; Log(ss); } else { ss << "  titleId = nullptr"; Log(ss); } // Class: const char* 
 
 }
 
-HRESULT AutoGenCloudScriptTests::LogPFCloudScriptListFunctionsResult(PFCloudScriptListFunctionsResult const* result)
+HRESULT AutoGenCloudScriptTests::LogListFunctionsResult(PFCloudScriptListFunctionsResult const* result)
 {
-    if( !TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    if (!TestApp::ShouldTrace(PFTestTraceLevel::Information))
     {
         return S_OK;
     }
@@ -426,16 +426,16 @@ HRESULT AutoGenCloudScriptTests::LogPFCloudScriptListFunctionsResult(PFCloudScri
     ss << "  functionsCount " << result->functionsCount; Log(ss);
 
     // PFCloudScriptFunctionModel
-    for( uint32_t i=0; i<result->functionsCount; i++ )
+    for (uint32_t i=0; i<result->functionsCount; i++)
     {
             ss << "  result->functions[" << i << "]:" << result->functions[i]; Log(ss); // PFCloudScriptFunctionModel
     } 
     return S_OK;
 }
 
-HRESULT AutoGenCloudScriptTests::LogPFCloudScriptListHttpFunctionsResult(PFCloudScriptListHttpFunctionsResult const* result)
+HRESULT AutoGenCloudScriptTests::LogListHttpFunctionsResult(PFCloudScriptListHttpFunctionsResult const* result)
 {
-    if( !TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    if (!TestApp::ShouldTrace(PFTestTraceLevel::Information))
     {
         return S_OK;
     }
@@ -447,16 +447,16 @@ HRESULT AutoGenCloudScriptTests::LogPFCloudScriptListHttpFunctionsResult(PFCloud
     ss << "  functionsCount " << result->functionsCount; Log(ss);
 
     // PFCloudScriptHttpFunctionModel
-    for( uint32_t i=0; i<result->functionsCount; i++ )
+    for (uint32_t i=0; i<result->functionsCount; i++)
     {
             ss << "  result->functions[" << i << "]:" << result->functions[i]; Log(ss); // PFCloudScriptHttpFunctionModel
     } 
     return S_OK;
 }
 
-HRESULT AutoGenCloudScriptTests::LogPFCloudScriptListQueuedFunctionsResult(PFCloudScriptListQueuedFunctionsResult const* result)
+HRESULT AutoGenCloudScriptTests::LogListQueuedFunctionsResult(PFCloudScriptListQueuedFunctionsResult const* result)
 {
-    if( !TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    if (!TestApp::ShouldTrace(PFTestTraceLevel::Information))
     {
         return S_OK;
     }
@@ -468,7 +468,7 @@ HRESULT AutoGenCloudScriptTests::LogPFCloudScriptListQueuedFunctionsResult(PFClo
     ss << "  functionsCount " << result->functionsCount; Log(ss);
 
     // PFCloudScriptQueuedFunctionModel
-    for( uint32_t i=0; i<result->functionsCount; i++ )
+    for (uint32_t i=0; i<result->functionsCount; i++)
     {
             ss << "  result->functions[" << i << "]:" << result->functions[i]; Log(ss); // PFCloudScriptQueuedFunctionModel
     } 
@@ -477,7 +477,7 @@ HRESULT AutoGenCloudScriptTests::LogPFCloudScriptListQueuedFunctionsResult(PFClo
 
 void AutoGenCloudScriptTests::LogPostFunctionResultForEntityTriggeredActionRequest(PFCloudScriptPostFunctionResultForEntityTriggeredActionRequest const* request, const char* testName)
 {
-    if( !TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    if (!TestApp::ShouldTrace(PFTestTraceLevel::Information))
     {
         return;
     }
@@ -494,7 +494,7 @@ void AutoGenCloudScriptTests::LogPostFunctionResultForEntityTriggeredActionReque
     ss << "  customTagsCount " << request->customTagsCount; Log(ss);
 
     // PFStringDictionaryEntry
-    for( uint32_t i=0; i<request->customTagsCount; i++ )
+    for (uint32_t i=0; i<request->customTagsCount; i++)
     {
             ss << "  request->customTags[" << i << "]:" << request->customTags[i].key << "=" << request->customTags[i].value; Log(ss);
             
@@ -506,7 +506,7 @@ void AutoGenCloudScriptTests::LogPostFunctionResultForEntityTriggeredActionReque
 
 void AutoGenCloudScriptTests::LogPostFunctionResultForFunctionExecutionRequest(PFCloudScriptPostFunctionResultForFunctionExecutionRequest const* request, const char* testName)
 {
-    if( !TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    if (!TestApp::ShouldTrace(PFTestTraceLevel::Information))
     {
         return;
     }
@@ -523,7 +523,7 @@ void AutoGenCloudScriptTests::LogPostFunctionResultForFunctionExecutionRequest(P
     ss << "  customTagsCount " << request->customTagsCount; Log(ss);
 
     // PFStringDictionaryEntry
-    for( uint32_t i=0; i<request->customTagsCount; i++ )
+    for (uint32_t i=0; i<request->customTagsCount; i++)
     {
             ss << "  request->customTags[" << i << "]:" << request->customTags[i].key << "=" << request->customTags[i].value; Log(ss);
             
@@ -535,7 +535,7 @@ void AutoGenCloudScriptTests::LogPostFunctionResultForFunctionExecutionRequest(P
 
 void AutoGenCloudScriptTests::LogPostFunctionResultForPlayerTriggeredActionRequest(PFCloudScriptPostFunctionResultForPlayerTriggeredActionRequest const* request, const char* testName)
 {
-    if( !TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    if (!TestApp::ShouldTrace(PFTestTraceLevel::Information))
     {
         return;
     }
@@ -552,7 +552,7 @@ void AutoGenCloudScriptTests::LogPostFunctionResultForPlayerTriggeredActionReque
     ss << "  customTagsCount " << request->customTagsCount; Log(ss);
 
     // PFStringDictionaryEntry
-    for( uint32_t i=0; i<request->customTagsCount; i++ )
+    for (uint32_t i=0; i<request->customTagsCount; i++)
     {
             ss << "  request->customTags[" << i << "]:" << request->customTags[i].key << "=" << request->customTags[i].value; Log(ss);
             
@@ -566,7 +566,7 @@ void AutoGenCloudScriptTests::LogPostFunctionResultForPlayerTriggeredActionReque
 
 void AutoGenCloudScriptTests::LogPostFunctionResultForScheduledTaskRequest(PFCloudScriptPostFunctionResultForScheduledTaskRequest const* request, const char* testName)
 {
-    if( !TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    if (!TestApp::ShouldTrace(PFTestTraceLevel::Information))
     {
         return;
     }
@@ -583,7 +583,7 @@ void AutoGenCloudScriptTests::LogPostFunctionResultForScheduledTaskRequest(PFClo
     ss << "  customTagsCount " << request->customTagsCount; Log(ss);
 
     // PFStringDictionaryEntry
-    for( uint32_t i=0; i<request->customTagsCount; i++ )
+    for (uint32_t i=0; i<request->customTagsCount; i++)
     {
             ss << "  request->customTags[" << i << "]:" << request->customTags[i].key << "=" << request->customTags[i].value; Log(ss);
             
@@ -596,7 +596,7 @@ void AutoGenCloudScriptTests::LogPostFunctionResultForScheduledTaskRequest(PFClo
 
 void AutoGenCloudScriptTests::LogRegisterHttpFunctionRequest(PFCloudScriptRegisterHttpFunctionRequest const* request, const char* testName)
 {
-    if( !TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    if (!TestApp::ShouldTrace(PFTestTraceLevel::Information))
     {
         return;
     }
@@ -609,25 +609,25 @@ void AutoGenCloudScriptTests::LogRegisterHttpFunctionRequest(PFCloudScriptRegist
 
     // PlayFabCloudScriptRegisterHttpFunctionRequest struct:
     // request->azureResourceId: const char*
-    if( request->azureResourceId ) { ss << "  azureResourceId " << request->azureResourceId; Log(ss); } else { ss << "  azureResourceId = nullptr"; Log(ss); } // Class: const char*     
+    if (request->azureResourceId) { ss << "  azureResourceId " << request->azureResourceId; Log(ss); } else { ss << "  azureResourceId = nullptr"; Log(ss); } // Class: const char*     
     ss << "  customTagsCount " << request->customTagsCount; Log(ss);
 
     // PFStringDictionaryEntry
-    for( uint32_t i=0; i<request->customTagsCount; i++ )
+    for (uint32_t i=0; i<request->customTagsCount; i++)
     {
             ss << "  request->customTags[" << i << "]:" << request->customTags[i].key << "=" << request->customTags[i].value; Log(ss);
             
     } 
-    if( request->functionName ) { ss << "  functionName " << request->functionName; Log(ss); } else { ss << "  functionName = nullptr"; Log(ss); } // Class: const char* 
-    if( request->functionUrl ) { ss << "  functionUrl " << request->functionUrl; Log(ss); } else { ss << "  functionUrl = nullptr"; Log(ss); } // Class: const char* 
+    if (request->functionName) { ss << "  functionName " << request->functionName; Log(ss); } else { ss << "  functionName = nullptr"; Log(ss); } // Class: const char* 
+    if (request->functionUrl) { ss << "  functionUrl " << request->functionUrl; Log(ss); } else { ss << "  functionUrl = nullptr"; Log(ss); } // Class: const char* 
     ss << "  systemData " << request->systemData; Log(ss); // Class: PFAzureResourceSystemData 
-    if( request->titleId ) { ss << "  titleId " << request->titleId; Log(ss); } else { ss << "  titleId = nullptr"; Log(ss); } // Class: const char* 
+    if (request->titleId) { ss << "  titleId " << request->titleId; Log(ss); } else { ss << "  titleId = nullptr"; Log(ss); } // Class: const char* 
 
 }
 
 void AutoGenCloudScriptTests::LogRegisterQueuedFunctionRequest(PFCloudScriptRegisterQueuedFunctionRequest const* request, const char* testName)
 {
-    if( !TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    if (!TestApp::ShouldTrace(PFTestTraceLevel::Information))
     {
         return;
     }
@@ -640,26 +640,26 @@ void AutoGenCloudScriptTests::LogRegisterQueuedFunctionRequest(PFCloudScriptRegi
 
     // PlayFabCloudScriptRegisterQueuedFunctionRequest struct:
     // request->azureResourceId: const char*
-    if( request->azureResourceId ) { ss << "  azureResourceId " << request->azureResourceId; Log(ss); } else { ss << "  azureResourceId = nullptr"; Log(ss); } // Class: const char* 
-    if( request->connectionString ) { ss << "  connectionString " << request->connectionString; Log(ss); } else { ss << "  connectionString = nullptr"; Log(ss); } // Class: const char*     
+    if (request->azureResourceId) { ss << "  azureResourceId " << request->azureResourceId; Log(ss); } else { ss << "  azureResourceId = nullptr"; Log(ss); } // Class: const char* 
+    if (request->connectionString) { ss << "  connectionString " << request->connectionString; Log(ss); } else { ss << "  connectionString = nullptr"; Log(ss); } // Class: const char*     
     ss << "  customTagsCount " << request->customTagsCount; Log(ss);
 
     // PFStringDictionaryEntry
-    for( uint32_t i=0; i<request->customTagsCount; i++ )
+    for (uint32_t i=0; i<request->customTagsCount; i++)
     {
             ss << "  request->customTags[" << i << "]:" << request->customTags[i].key << "=" << request->customTags[i].value; Log(ss);
             
     } 
-    if( request->functionName ) { ss << "  functionName " << request->functionName; Log(ss); } else { ss << "  functionName = nullptr"; Log(ss); } // Class: const char* 
-    if( request->queueName ) { ss << "  queueName " << request->queueName; Log(ss); } else { ss << "  queueName = nullptr"; Log(ss); } // Class: const char* 
+    if (request->functionName) { ss << "  functionName " << request->functionName; Log(ss); } else { ss << "  functionName = nullptr"; Log(ss); } // Class: const char* 
+    if (request->queueName) { ss << "  queueName " << request->queueName; Log(ss); } else { ss << "  queueName = nullptr"; Log(ss); } // Class: const char* 
     ss << "  systemData " << request->systemData; Log(ss); // Class: PFAzureResourceSystemData 
-    if( request->titleId ) { ss << "  titleId " << request->titleId; Log(ss); } else { ss << "  titleId = nullptr"; Log(ss); } // Class: const char* 
+    if (request->titleId) { ss << "  titleId " << request->titleId; Log(ss); } else { ss << "  titleId = nullptr"; Log(ss); } // Class: const char* 
 
 }
 
 void AutoGenCloudScriptTests::LogUnregisterFunctionRequest(PFCloudScriptUnregisterFunctionRequest const* request, const char* testName)
 {
-    if( !TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    if (!TestApp::ShouldTrace(PFTestTraceLevel::Information))
     {
         return;
     }
@@ -676,13 +676,13 @@ void AutoGenCloudScriptTests::LogUnregisterFunctionRequest(PFCloudScriptUnregist
     ss << "  customTagsCount " << request->customTagsCount; Log(ss);
 
     // PFStringDictionaryEntry
-    for( uint32_t i=0; i<request->customTagsCount; i++ )
+    for (uint32_t i=0; i<request->customTagsCount; i++)
     {
             ss << "  request->customTags[" << i << "]:" << request->customTags[i].key << "=" << request->customTags[i].value; Log(ss);
             
     } 
-    if( request->functionName ) { ss << "  functionName " << request->functionName; Log(ss); } else { ss << "  functionName = nullptr"; Log(ss); } // Class: const char* 
-    if( request->titleId ) { ss << "  titleId " << request->titleId; Log(ss); } else { ss << "  titleId = nullptr"; Log(ss); } // Class: const char* 
+    if (request->functionName) { ss << "  functionName " << request->functionName; Log(ss); } else { ss << "  functionName = nullptr"; Log(ss); } // Class: const char* 
+    if (request->titleId) { ss << "  titleId " << request->titleId; Log(ss); } else { ss << "  titleId = nullptr"; Log(ss); } // Class: const char* 
 
 }
 

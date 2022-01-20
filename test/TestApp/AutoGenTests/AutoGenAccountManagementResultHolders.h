@@ -174,6 +174,18 @@ struct GetAccountInfoResultHolder : public XAsyncResult, public std::enable_shar
     PFAccountManagementGetAccountInfoResult* result{ nullptr };
 };
 
+struct GetPlayerCombinedInfoResultHolder : public XAsyncResult, public std::enable_shared_from_this<GetPlayerCombinedInfoResultHolder>
+{
+    GetPlayerCombinedInfoResultHolder() = default;
+    GetPlayerCombinedInfoResultHolder(const GetPlayerCombinedInfoResultHolder&) = delete;
+    GetPlayerCombinedInfoResultHolder(GetPlayerCombinedInfoResultHolder&&) = default;
+    GetPlayerCombinedInfoResultHolder& operator=(const GetPlayerCombinedInfoResultHolder&) = delete;
+    GetPlayerCombinedInfoResultHolder& operator=(GetPlayerCombinedInfoResultHolder&&) = default;
+    ~GetPlayerCombinedInfoResultHolder() = default;
+
+    PFAccountManagementGetPlayerCombinedInfoResult* result{ nullptr };
+};
+
 struct GetPlayFabIDsFromFacebookIDsResultHolder : public XAsyncResult, public std::enable_shared_from_this<GetPlayFabIDsFromFacebookIDsResultHolder>
 {
     GetPlayFabIDsFromFacebookIDsResultHolder() = default;
@@ -340,18 +352,6 @@ struct GetUserAccountInfoResultHolder : public XAsyncResult, public std::enable_
     ~GetUserAccountInfoResultHolder() = default;
 
     PFAccountManagementGetUserAccountInfoResult* result{ nullptr };
-};
-
-struct SavePushNotificationTemplateResultHolder : public XAsyncResult, public std::enable_shared_from_this<SavePushNotificationTemplateResultHolder>
-{
-    SavePushNotificationTemplateResultHolder() = default;
-    SavePushNotificationTemplateResultHolder(const SavePushNotificationTemplateResultHolder&) = delete;
-    SavePushNotificationTemplateResultHolder(SavePushNotificationTemplateResultHolder&&) = default;
-    SavePushNotificationTemplateResultHolder& operator=(const SavePushNotificationTemplateResultHolder&) = delete;
-    SavePushNotificationTemplateResultHolder& operator=(SavePushNotificationTemplateResultHolder&&) = default;
-    ~SavePushNotificationTemplateResultHolder() = default;
-
-    PFAccountManagementSavePushNotificationTemplateResult* result{ nullptr };
 };
 
 

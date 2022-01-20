@@ -11,7 +11,7 @@ namespace PlayFabUnit
 
 void AutoGenMatchmakingTests::LogGetMatchmakerGameInfoRequest(PFMatchmakingGetMatchmakerGameInfoRequest const* request, const char* testName)
 {
-    if( !TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    if (!TestApp::ShouldTrace(PFTestTraceLevel::Information))
     {
         return;
     }
@@ -24,13 +24,13 @@ void AutoGenMatchmakingTests::LogGetMatchmakerGameInfoRequest(PFMatchmakingGetMa
 
     // PlayFabMatchmakingGetMatchmakerGameInfoRequest struct:
     // request->lobbyId: const char*
-    if( request->lobbyId ) { ss << "  lobbyId " << request->lobbyId; Log(ss); } else { ss << "  lobbyId = nullptr"; Log(ss); } // Class: const char* 
+    if (request->lobbyId) { ss << "  lobbyId " << request->lobbyId; Log(ss); } else { ss << "  lobbyId = nullptr"; Log(ss); } // Class: const char* 
 
 }
 
-HRESULT AutoGenMatchmakingTests::LogPFMatchmakingGetMatchmakerGameInfoResult(PFMatchmakingGetMatchmakerGameInfoResult const* result)
+HRESULT AutoGenMatchmakingTests::LogGetMatchmakerGameInfoResult(PFMatchmakingGetMatchmakerGameInfoResult const* result)
 {
-    if( !TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    if (!TestApp::ShouldTrace(PFTestTraceLevel::Information))
     {
         return S_OK;
     }
@@ -39,30 +39,30 @@ HRESULT AutoGenMatchmakingTests::LogPFMatchmakingGetMatchmakerGameInfoResult(PFM
     ss << "Response:"; Log(ss);
 
     // Found PlayFabMatchmakingGetMatchmakerGameInfoResult    
-    if( result->buildVersion ) { ss << "  buildVersion " << result->buildVersion; Log(ss); } else { ss << "  buildVersion = nullptr"; Log(ss); } // Class: const char*     
+    if (result->buildVersion) { ss << "  buildVersion " << result->buildVersion; Log(ss); } else { ss << "  buildVersion = nullptr"; Log(ss); } // Class: const char*     
     ss << "  endTime " << result->endTime; Log(ss); // Class: time_t     
-    if( result->lobbyId ) { ss << "  lobbyId " << result->lobbyId; Log(ss); } else { ss << "  lobbyId = nullptr"; Log(ss); } // Class: const char*     
-    if( result->mode ) { ss << "  mode " << result->mode; Log(ss); } else { ss << "  mode = nullptr"; Log(ss); } // Class: const char*         
+    if (result->lobbyId) { ss << "  lobbyId " << result->lobbyId; Log(ss); } else { ss << "  lobbyId = nullptr"; Log(ss); } // Class: const char*     
+    if (result->mode) { ss << "  mode " << result->mode; Log(ss); } else { ss << "  mode = nullptr"; Log(ss); } // Class: const char*         
     ss << "  playersCount " << result->playersCount; Log(ss);
 
     // const char*
-    for( uint32_t i=0; i<result->playersCount; i++ )
+    for (uint32_t i=0; i<result->playersCount; i++)
     {
             ss << "  result->players[" << i << "]:" << result->players[i]; Log(ss); // const char*
     }     
     ss << "  region " << result->region; Log(ss); // Class: PFRegion     
-    if( result->serverIPV4Address ) { ss << "  serverIPV4Address " << result->serverIPV4Address; Log(ss); } else { ss << "  serverIPV4Address = nullptr"; Log(ss); } // Class: const char*     
-    if( result->serverIPV6Address ) { ss << "  serverIPV6Address " << result->serverIPV6Address; Log(ss); } else { ss << "  serverIPV6Address = nullptr"; Log(ss); } // Class: const char*     
+    if (result->serverIPV4Address) { ss << "  serverIPV4Address " << result->serverIPV4Address; Log(ss); } else { ss << "  serverIPV4Address = nullptr"; Log(ss); } // Class: const char*     
+    if (result->serverIPV6Address) { ss << "  serverIPV6Address " << result->serverIPV6Address; Log(ss); } else { ss << "  serverIPV6Address = nullptr"; Log(ss); } // Class: const char*     
     ss << "  serverPort " << result->serverPort; Log(ss); // Class: uint32_t     
-    if( result->serverPublicDNSName ) { ss << "  serverPublicDNSName " << result->serverPublicDNSName; Log(ss); } else { ss << "  serverPublicDNSName = nullptr"; Log(ss); } // Class: const char*     
+    if (result->serverPublicDNSName) { ss << "  serverPublicDNSName " << result->serverPublicDNSName; Log(ss); } else { ss << "  serverPublicDNSName = nullptr"; Log(ss); } // Class: const char*     
     ss << "  startTime " << result->startTime; Log(ss); // Class: time_t     
-    if( result->titleId ) { ss << "  titleId " << result->titleId; Log(ss); } else { ss << "  titleId = nullptr"; Log(ss); } // Class: const char* 
+    if (result->titleId) { ss << "  titleId " << result->titleId; Log(ss); } else { ss << "  titleId = nullptr"; Log(ss); } // Class: const char* 
     return S_OK;
 }
 
 void AutoGenMatchmakingTests::LogGetMatchmakerGameModesRequest(PFMatchmakingGetMatchmakerGameModesRequest const* request, const char* testName)
 {
-    if( !TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    if (!TestApp::ShouldTrace(PFTestTraceLevel::Information))
     {
         return;
     }
@@ -75,13 +75,13 @@ void AutoGenMatchmakingTests::LogGetMatchmakerGameModesRequest(PFMatchmakingGetM
 
     // PlayFabMatchmakingGetMatchmakerGameModesRequest struct:
     // request->buildVersion: const char*
-    if( request->buildVersion ) { ss << "  buildVersion " << request->buildVersion; Log(ss); } else { ss << "  buildVersion = nullptr"; Log(ss); } // Class: const char* 
+    if (request->buildVersion) { ss << "  buildVersion " << request->buildVersion; Log(ss); } else { ss << "  buildVersion = nullptr"; Log(ss); } // Class: const char* 
 
 }
 
-HRESULT AutoGenMatchmakingTests::LogPFMatchmakingGetMatchmakerGameModesResult(PFMatchmakingGetMatchmakerGameModesResult const* result)
+HRESULT AutoGenMatchmakingTests::LogGetMatchmakerGameModesResult(PFMatchmakingGetMatchmakerGameModesResult const* result)
 {
-    if( !TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    if (!TestApp::ShouldTrace(PFTestTraceLevel::Information))
     {
         return S_OK;
     }
@@ -93,7 +93,7 @@ HRESULT AutoGenMatchmakingTests::LogPFMatchmakingGetMatchmakerGameModesResult(PF
     ss << "  gameModesCount " << result->gameModesCount; Log(ss);
 
     // PFMatchmakingGameModeInfo
-    for( uint32_t i=0; i<result->gameModesCount; i++ )
+    for (uint32_t i=0; i<result->gameModesCount; i++)
     {
             ss << "  result->gameModes[" << i << "]:" << result->gameModes[i]; Log(ss); // PFMatchmakingGameModeInfo
     } 
@@ -102,7 +102,7 @@ HRESULT AutoGenMatchmakingTests::LogPFMatchmakingGetMatchmakerGameModesResult(PF
 
 void AutoGenMatchmakingTests::LogModifyMatchmakerGameModesRequest(PFMatchmakingModifyMatchmakerGameModesRequest const* request, const char* testName)
 {
-    if( !TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    if (!TestApp::ShouldTrace(PFTestTraceLevel::Information))
     {
         return;
     }
@@ -115,11 +115,11 @@ void AutoGenMatchmakingTests::LogModifyMatchmakerGameModesRequest(PFMatchmakingM
 
     // PlayFabMatchmakingModifyMatchmakerGameModesRequest struct:
     // request->buildVersion: const char*
-    if( request->buildVersion ) { ss << "  buildVersion " << request->buildVersion; Log(ss); } else { ss << "  buildVersion = nullptr"; Log(ss); } // Class: const char*     
+    if (request->buildVersion) { ss << "  buildVersion " << request->buildVersion; Log(ss); } else { ss << "  buildVersion = nullptr"; Log(ss); } // Class: const char*     
     ss << "  gameModesCount " << request->gameModesCount; Log(ss);
 
     // PFMatchmakingGameModeInfo
-    for( uint32_t i=0; i<request->gameModesCount; i++ )
+    for (uint32_t i=0; i<request->gameModesCount; i++)
     {
             ss << "  request->gameModes[" << i << "]:" << request->gameModes[i]; Log(ss); // PFMatchmakingGameModeInfo
     } 
@@ -128,7 +128,7 @@ void AutoGenMatchmakingTests::LogModifyMatchmakerGameModesRequest(PFMatchmakingM
 
 void AutoGenMatchmakingTests::LogCurrentGamesRequest(PFMatchmakingCurrentGamesRequest const* request, const char* testName)
 {
-    if( !TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    if (!TestApp::ShouldTrace(PFTestTraceLevel::Information))
     {
         return;
     }
@@ -141,17 +141,17 @@ void AutoGenMatchmakingTests::LogCurrentGamesRequest(PFMatchmakingCurrentGamesRe
 
     // PlayFabMatchmakingCurrentGamesRequest struct:
     // request->buildVersion: const char*
-    if( request->buildVersion ) { ss << "  buildVersion " << request->buildVersion; Log(ss); } else { ss << "  buildVersion = nullptr"; Log(ss); } // Class: const char* 
-    if( request->gameMode ) { ss << "  gameMode " << request->gameMode; Log(ss); } else { ss << "  gameMode = nullptr"; Log(ss); } // Class: const char* 
+    if (request->buildVersion) { ss << "  buildVersion " << request->buildVersion; Log(ss); } else { ss << "  buildVersion = nullptr"; Log(ss); } // Class: const char* 
+    if (request->gameMode) { ss << "  gameMode " << request->gameMode; Log(ss); } else { ss << "  gameMode = nullptr"; Log(ss); } // Class: const char* 
     ss << "  region " << request->region; Log(ss); // Class: PFRegion 
-    if( request->statisticName ) { ss << "  statisticName " << request->statisticName; Log(ss); } else { ss << "  statisticName = nullptr"; Log(ss); } // Class: const char* 
+    if (request->statisticName) { ss << "  statisticName " << request->statisticName; Log(ss); } else { ss << "  statisticName = nullptr"; Log(ss); } // Class: const char* 
     ss << "  tagFilter " << request->tagFilter; Log(ss); // Class: PFMatchmakingCollectionFilter 
 
 }
 
-HRESULT AutoGenMatchmakingTests::LogPFMatchmakingCurrentGamesResult(PFMatchmakingCurrentGamesResult const* result)
+HRESULT AutoGenMatchmakingTests::LogCurrentGamesResult(PFMatchmakingCurrentGamesResult const* result)
 {
-    if( !TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    if (!TestApp::ShouldTrace(PFTestTraceLevel::Information))
     {
         return S_OK;
     }
@@ -164,7 +164,7 @@ HRESULT AutoGenMatchmakingTests::LogPFMatchmakingCurrentGamesResult(PFMatchmakin
     ss << "  gamesCount " << result->gamesCount; Log(ss);
 
     // PFMatchmakingGameInfo
-    for( uint32_t i=0; i<result->gamesCount; i++ )
+    for (uint32_t i=0; i<result->gamesCount; i++)
     {
             ss << "  result->games[" << i << "]:" << result->games[i]; Log(ss); // PFMatchmakingGameInfo
     }     
@@ -174,7 +174,7 @@ HRESULT AutoGenMatchmakingTests::LogPFMatchmakingCurrentGamesResult(PFMatchmakin
 
 void AutoGenMatchmakingTests::LogGameServerRegionsRequest(PFMatchmakingGameServerRegionsRequest const* request, const char* testName)
 {
-    if( !TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    if (!TestApp::ShouldTrace(PFTestTraceLevel::Information))
     {
         return;
     }
@@ -187,14 +187,14 @@ void AutoGenMatchmakingTests::LogGameServerRegionsRequest(PFMatchmakingGameServe
 
     // PlayFabMatchmakingGameServerRegionsRequest struct:
     // request->buildVersion: const char*
-    if( request->buildVersion ) { ss << "  buildVersion " << request->buildVersion; Log(ss); } else { ss << "  buildVersion = nullptr"; Log(ss); } // Class: const char* 
-    if( request->titleId ) { ss << "  titleId " << request->titleId; Log(ss); } else { ss << "  titleId = nullptr"; Log(ss); } // Class: const char* 
+    if (request->buildVersion) { ss << "  buildVersion " << request->buildVersion; Log(ss); } else { ss << "  buildVersion = nullptr"; Log(ss); } // Class: const char* 
+    if (request->titleId) { ss << "  titleId " << request->titleId; Log(ss); } else { ss << "  titleId = nullptr"; Log(ss); } // Class: const char* 
 
 }
 
-HRESULT AutoGenMatchmakingTests::LogPFMatchmakingGameServerRegionsResult(PFMatchmakingGameServerRegionsResult const* result)
+HRESULT AutoGenMatchmakingTests::LogGameServerRegionsResult(PFMatchmakingGameServerRegionsResult const* result)
 {
-    if( !TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    if (!TestApp::ShouldTrace(PFTestTraceLevel::Information))
     {
         return S_OK;
     }
@@ -206,7 +206,7 @@ HRESULT AutoGenMatchmakingTests::LogPFMatchmakingGameServerRegionsResult(PFMatch
     ss << "  regionsCount " << result->regionsCount; Log(ss);
 
     // PFMatchmakingRegionInfo
-    for( uint32_t i=0; i<result->regionsCount; i++ )
+    for (uint32_t i=0; i<result->regionsCount; i++)
     {
             ss << "  result->regions[" << i << "]:" << result->regions[i]; Log(ss); // PFMatchmakingRegionInfo
     } 
@@ -215,7 +215,7 @@ HRESULT AutoGenMatchmakingTests::LogPFMatchmakingGameServerRegionsResult(PFMatch
 
 void AutoGenMatchmakingTests::LogMatchmakeRequest(PFMatchmakingMatchmakeRequest const* request, const char* testName)
 {
-    if( !TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    if (!TestApp::ShouldTrace(PFTestTraceLevel::Information))
     {
         return;
     }
@@ -228,28 +228,28 @@ void AutoGenMatchmakingTests::LogMatchmakeRequest(PFMatchmakingMatchmakeRequest 
 
     // PlayFabMatchmakingMatchmakeRequest struct:
     // request->buildVersion: const char*
-    if( request->buildVersion ) { ss << "  buildVersion " << request->buildVersion; Log(ss); } else { ss << "  buildVersion = nullptr"; Log(ss); } // Class: const char* 
-    if( request->characterId ) { ss << "  characterId " << request->characterId; Log(ss); } else { ss << "  characterId = nullptr"; Log(ss); } // Class: const char*     
+    if (request->buildVersion) { ss << "  buildVersion " << request->buildVersion; Log(ss); } else { ss << "  buildVersion = nullptr"; Log(ss); } // Class: const char* 
+    if (request->characterId) { ss << "  characterId " << request->characterId; Log(ss); } else { ss << "  characterId = nullptr"; Log(ss); } // Class: const char*     
     ss << "  customTagsCount " << request->customTagsCount; Log(ss);
 
     // PFStringDictionaryEntry
-    for( uint32_t i=0; i<request->customTagsCount; i++ )
+    for (uint32_t i=0; i<request->customTagsCount; i++)
     {
             ss << "  request->customTags[" << i << "]:" << request->customTags[i].key << "=" << request->customTags[i].value; Log(ss);
             
     } 
-    if( request->gameMode ) { ss << "  gameMode " << request->gameMode; Log(ss); } else { ss << "  gameMode = nullptr"; Log(ss); } // Class: const char* 
-    if( request->lobbyId ) { ss << "  lobbyId " << request->lobbyId; Log(ss); } else { ss << "  lobbyId = nullptr"; Log(ss); } // Class: const char* 
+    if (request->gameMode) { ss << "  gameMode " << request->gameMode; Log(ss); } else { ss << "  gameMode = nullptr"; Log(ss); } // Class: const char* 
+    if (request->lobbyId) { ss << "  lobbyId " << request->lobbyId; Log(ss); } else { ss << "  lobbyId = nullptr"; Log(ss); } // Class: const char* 
     ss << "  region " << request->region; Log(ss); // Class: PFRegion 
     ss << "  startNewIfNoneFound " << request->startNewIfNoneFound; Log(ss); // Class: bool 
-    if( request->statisticName ) { ss << "  statisticName " << request->statisticName; Log(ss); } else { ss << "  statisticName = nullptr"; Log(ss); } // Class: const char* 
+    if (request->statisticName) { ss << "  statisticName " << request->statisticName; Log(ss); } else { ss << "  statisticName = nullptr"; Log(ss); } // Class: const char* 
     ss << "  tagFilter " << request->tagFilter; Log(ss); // Class: PFMatchmakingCollectionFilter 
 
 }
 
-HRESULT AutoGenMatchmakingTests::LogPFMatchmakingMatchmakeResult(PFMatchmakingMatchmakeResult const* result)
+HRESULT AutoGenMatchmakingTests::LogMatchmakeResult(PFMatchmakingMatchmakeResult const* result)
 {
-    if( !TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    if (!TestApp::ShouldTrace(PFTestTraceLevel::Information))
     {
         return S_OK;
     }
@@ -258,21 +258,21 @@ HRESULT AutoGenMatchmakingTests::LogPFMatchmakingMatchmakeResult(PFMatchmakingMa
     ss << "Response:"; Log(ss);
 
     // Found PlayFabMatchmakingMatchmakeResult    
-    if( result->expires ) { ss << "  expires " << result->expires; Log(ss); } else { ss << "  expires = nullptr"; Log(ss); } // Class: const char*     
-    if( result->lobbyID ) { ss << "  lobbyID " << result->lobbyID; Log(ss); } else { ss << "  lobbyID = nullptr"; Log(ss); } // Class: const char*     
+    if (result->expires) { ss << "  expires " << result->expires; Log(ss); } else { ss << "  expires = nullptr"; Log(ss); } // Class: const char*     
+    if (result->lobbyID) { ss << "  lobbyID " << result->lobbyID; Log(ss); } else { ss << "  lobbyID = nullptr"; Log(ss); } // Class: const char*     
     ss << "  pollWaitTimeMS " << result->pollWaitTimeMS; Log(ss); // Class: int32_t     
-    if( result->serverIPV4Address ) { ss << "  serverIPV4Address " << result->serverIPV4Address; Log(ss); } else { ss << "  serverIPV4Address = nullptr"; Log(ss); } // Class: const char*     
-    if( result->serverIPV6Address ) { ss << "  serverIPV6Address " << result->serverIPV6Address; Log(ss); } else { ss << "  serverIPV6Address = nullptr"; Log(ss); } // Class: const char*     
+    if (result->serverIPV4Address) { ss << "  serverIPV4Address " << result->serverIPV4Address; Log(ss); } else { ss << "  serverIPV4Address = nullptr"; Log(ss); } // Class: const char*     
+    if (result->serverIPV6Address) { ss << "  serverIPV6Address " << result->serverIPV6Address; Log(ss); } else { ss << "  serverIPV6Address = nullptr"; Log(ss); } // Class: const char*     
     ss << "  serverPort " << result->serverPort; Log(ss); // Class: int32_t     
-    if( result->serverPublicDNSName ) { ss << "  serverPublicDNSName " << result->serverPublicDNSName; Log(ss); } else { ss << "  serverPublicDNSName = nullptr"; Log(ss); } // Class: const char*     
+    if (result->serverPublicDNSName) { ss << "  serverPublicDNSName " << result->serverPublicDNSName; Log(ss); } else { ss << "  serverPublicDNSName = nullptr"; Log(ss); } // Class: const char*     
     ss << "  status " << result->status; Log(ss); // Class: PFMatchmakingMatchmakeStatus     
-    if( result->ticket ) { ss << "  ticket " << result->ticket; Log(ss); } else { ss << "  ticket = nullptr"; Log(ss); } // Class: const char* 
+    if (result->ticket) { ss << "  ticket " << result->ticket; Log(ss); } else { ss << "  ticket = nullptr"; Log(ss); } // Class: const char* 
     return S_OK;
 }
 
 void AutoGenMatchmakingTests::LogClientStartGameRequest(PFMatchmakingClientStartGameRequest const* request, const char* testName)
 {
-    if( !TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    if (!TestApp::ShouldTrace(PFTestTraceLevel::Information))
     {
         return;
     }
@@ -285,26 +285,26 @@ void AutoGenMatchmakingTests::LogClientStartGameRequest(PFMatchmakingClientStart
 
     // PlayFabMatchmakingStartGameRequest struct:
     // request->buildVersion: const char*
-    if( request->buildVersion ) { ss << "  buildVersion " << request->buildVersion; Log(ss); } else { ss << "  buildVersion = nullptr"; Log(ss); } // Class: const char* 
-    if( request->characterId ) { ss << "  characterId " << request->characterId; Log(ss); } else { ss << "  characterId = nullptr"; Log(ss); } // Class: const char* 
-    if( request->customCommandLineData ) { ss << "  customCommandLineData " << request->customCommandLineData; Log(ss); } else { ss << "  customCommandLineData = nullptr"; Log(ss); } // Class: const char*     
+    if (request->buildVersion) { ss << "  buildVersion " << request->buildVersion; Log(ss); } else { ss << "  buildVersion = nullptr"; Log(ss); } // Class: const char* 
+    if (request->characterId) { ss << "  characterId " << request->characterId; Log(ss); } else { ss << "  characterId = nullptr"; Log(ss); } // Class: const char* 
+    if (request->customCommandLineData) { ss << "  customCommandLineData " << request->customCommandLineData; Log(ss); } else { ss << "  customCommandLineData = nullptr"; Log(ss); } // Class: const char*     
     ss << "  customTagsCount " << request->customTagsCount; Log(ss);
 
     // PFStringDictionaryEntry
-    for( uint32_t i=0; i<request->customTagsCount; i++ )
+    for (uint32_t i=0; i<request->customTagsCount; i++)
     {
             ss << "  request->customTags[" << i << "]:" << request->customTags[i].key << "=" << request->customTags[i].value; Log(ss);
             
     } 
-    if( request->gameMode ) { ss << "  gameMode " << request->gameMode; Log(ss); } else { ss << "  gameMode = nullptr"; Log(ss); } // Class: const char* 
-    ss << "  region " << request->region; Log(ss); // Class: PFRegion 
-    if( request->statisticName ) { ss << "  statisticName " << request->statisticName; Log(ss); } else { ss << "  statisticName = nullptr"; Log(ss); } // Class: const char* 
+    if (request->gameMode) { ss << "  gameMode " << request->gameMode; Log(ss); } else { ss << "  gameMode = nullptr"; Log(ss); } // Class: const char* 
+    ss << "  region " << static_cast<uint32_t>(request->region); Log(ss); // Class: PFRegion 
+    if (request->statisticName) { ss << "  statisticName " << request->statisticName; Log(ss); } else { ss << "  statisticName = nullptr"; Log(ss); } // Class: const char* 
 
 }
 
-HRESULT AutoGenMatchmakingTests::LogPFMatchmakingStartGameResult(PFMatchmakingStartGameResult const* result)
+HRESULT AutoGenMatchmakingTests::LogStartGameResult(PFMatchmakingStartGameResult const* result)
 {
-    if( !TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    if (!TestApp::ShouldTrace(PFTestTraceLevel::Information))
     {
         return S_OK;
     }
@@ -313,20 +313,20 @@ HRESULT AutoGenMatchmakingTests::LogPFMatchmakingStartGameResult(PFMatchmakingSt
     ss << "Response:"; Log(ss);
 
     // Found PlayFabMatchmakingStartGameResult    
-    if( result->expires ) { ss << "  expires " << result->expires; Log(ss); } else { ss << "  expires = nullptr"; Log(ss); } // Class: const char*     
-    if( result->lobbyID ) { ss << "  lobbyID " << result->lobbyID; Log(ss); } else { ss << "  lobbyID = nullptr"; Log(ss); } // Class: const char*     
-    if( result->password ) { ss << "  password " << result->password; Log(ss); } else { ss << "  password = nullptr"; Log(ss); } // Class: const char*     
-    if( result->serverIPV4Address ) { ss << "  serverIPV4Address " << result->serverIPV4Address; Log(ss); } else { ss << "  serverIPV4Address = nullptr"; Log(ss); } // Class: const char*     
-    if( result->serverIPV6Address ) { ss << "  serverIPV6Address " << result->serverIPV6Address; Log(ss); } else { ss << "  serverIPV6Address = nullptr"; Log(ss); } // Class: const char*     
+    if (result->expires) { ss << "  expires " << result->expires; Log(ss); } else { ss << "  expires = nullptr"; Log(ss); } // Class: const char*     
+    if (result->lobbyID) { ss << "  lobbyID " << result->lobbyID; Log(ss); } else { ss << "  lobbyID = nullptr"; Log(ss); } // Class: const char*     
+    if (result->password) { ss << "  password " << result->password; Log(ss); } else { ss << "  password = nullptr"; Log(ss); } // Class: const char*     
+    if (result->serverIPV4Address) { ss << "  serverIPV4Address " << result->serverIPV4Address; Log(ss); } else { ss << "  serverIPV4Address = nullptr"; Log(ss); } // Class: const char*     
+    if (result->serverIPV6Address) { ss << "  serverIPV6Address " << result->serverIPV6Address; Log(ss); } else { ss << "  serverIPV6Address = nullptr"; Log(ss); } // Class: const char*     
     ss << "  serverPort " << result->serverPort; Log(ss); // Class: int32_t     
-    if( result->serverPublicDNSName ) { ss << "  serverPublicDNSName " << result->serverPublicDNSName; Log(ss); } else { ss << "  serverPublicDNSName = nullptr"; Log(ss); } // Class: const char*     
-    if( result->ticket ) { ss << "  ticket " << result->ticket; Log(ss); } else { ss << "  ticket = nullptr"; Log(ss); } // Class: const char* 
+    if (result->serverPublicDNSName) { ss << "  serverPublicDNSName " << result->serverPublicDNSName; Log(ss); } else { ss << "  serverPublicDNSName = nullptr"; Log(ss); } // Class: const char*     
+    if (result->ticket) { ss << "  ticket " << result->ticket; Log(ss); } else { ss << "  ticket = nullptr"; Log(ss); } // Class: const char* 
     return S_OK;
 }
 
 void AutoGenMatchmakingTests::LogAuthUserRequest(PFMatchmakingAuthUserRequest const* request, const char* testName)
 {
-    if( !TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    if (!TestApp::ShouldTrace(PFTestTraceLevel::Information))
     {
         return;
     }
@@ -339,13 +339,13 @@ void AutoGenMatchmakingTests::LogAuthUserRequest(PFMatchmakingAuthUserRequest co
 
     // PlayFabMatchmakingAuthUserRequest struct:
     // request->authorizationTicket: const char*
-    if( request->authorizationTicket ) { ss << "  authorizationTicket " << request->authorizationTicket; Log(ss); } else { ss << "  authorizationTicket = nullptr"; Log(ss); } // Class: const char* 
+    if (request->authorizationTicket) { ss << "  authorizationTicket " << request->authorizationTicket; Log(ss); } else { ss << "  authorizationTicket = nullptr"; Log(ss); } // Class: const char* 
 
 }
 
-HRESULT AutoGenMatchmakingTests::LogPFMatchmakingAuthUserResponse(PFMatchmakingAuthUserResponse const* result)
+HRESULT AutoGenMatchmakingTests::LogAuthUserResponse(PFMatchmakingAuthUserResponse const* result)
 {
-    if( !TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    if (!TestApp::ShouldTrace(PFTestTraceLevel::Information))
     {
         return S_OK;
     }
@@ -355,13 +355,13 @@ HRESULT AutoGenMatchmakingTests::LogPFMatchmakingAuthUserResponse(PFMatchmakingA
 
     // Found PlayFabMatchmakingAuthUserResponse    
     ss << "  authorized " << result->authorized; Log(ss); // Class: bool     
-    if( result->playFabId ) { ss << "  playFabId " << result->playFabId; Log(ss); } else { ss << "  playFabId = nullptr"; Log(ss); } // Class: const char* 
+    if (result->playFabId) { ss << "  playFabId " << result->playFabId; Log(ss); } else { ss << "  playFabId = nullptr"; Log(ss); } // Class: const char* 
     return S_OK;
 }
 
 void AutoGenMatchmakingTests::LogPlayerJoinedRequest(PFMatchmakingPlayerJoinedRequest const* request, const char* testName)
 {
-    if( !TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    if (!TestApp::ShouldTrace(PFTestTraceLevel::Information))
     {
         return;
     }
@@ -378,19 +378,19 @@ void AutoGenMatchmakingTests::LogPlayerJoinedRequest(PFMatchmakingPlayerJoinedRe
     ss << "  customTagsCount " << request->customTagsCount; Log(ss);
 
     // PFStringDictionaryEntry
-    for( uint32_t i=0; i<request->customTagsCount; i++ )
+    for (uint32_t i=0; i<request->customTagsCount; i++)
     {
             ss << "  request->customTags[" << i << "]:" << request->customTags[i].key << "=" << request->customTags[i].value; Log(ss);
             
     } 
-    if( request->lobbyId ) { ss << "  lobbyId " << request->lobbyId; Log(ss); } else { ss << "  lobbyId = nullptr"; Log(ss); } // Class: const char* 
-    if( request->playFabId ) { ss << "  playFabId " << request->playFabId; Log(ss); } else { ss << "  playFabId = nullptr"; Log(ss); } // Class: const char* 
+    if (request->lobbyId) { ss << "  lobbyId " << request->lobbyId; Log(ss); } else { ss << "  lobbyId = nullptr"; Log(ss); } // Class: const char* 
+    if (request->playFabId) { ss << "  playFabId " << request->playFabId; Log(ss); } else { ss << "  playFabId = nullptr"; Log(ss); } // Class: const char* 
 
 }
 
 void AutoGenMatchmakingTests::LogPlayerLeftRequest(PFMatchmakingPlayerLeftRequest const* request, const char* testName)
 {
-    if( !TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    if (!TestApp::ShouldTrace(PFTestTraceLevel::Information))
     {
         return;
     }
@@ -407,19 +407,19 @@ void AutoGenMatchmakingTests::LogPlayerLeftRequest(PFMatchmakingPlayerLeftReques
     ss << "  customTagsCount " << request->customTagsCount; Log(ss);
 
     // PFStringDictionaryEntry
-    for( uint32_t i=0; i<request->customTagsCount; i++ )
+    for (uint32_t i=0; i<request->customTagsCount; i++)
     {
             ss << "  request->customTags[" << i << "]:" << request->customTags[i].key << "=" << request->customTags[i].value; Log(ss);
             
     } 
-    if( request->lobbyId ) { ss << "  lobbyId " << request->lobbyId; Log(ss); } else { ss << "  lobbyId = nullptr"; Log(ss); } // Class: const char* 
-    if( request->playFabId ) { ss << "  playFabId " << request->playFabId; Log(ss); } else { ss << "  playFabId = nullptr"; Log(ss); } // Class: const char* 
+    if (request->lobbyId) { ss << "  lobbyId " << request->lobbyId; Log(ss); } else { ss << "  lobbyId = nullptr"; Log(ss); } // Class: const char* 
+    if (request->playFabId) { ss << "  playFabId " << request->playFabId; Log(ss); } else { ss << "  playFabId = nullptr"; Log(ss); } // Class: const char* 
 
 }
 
 void AutoGenMatchmakingTests::LogMatchmakerStartGameRequest(PFMatchmakingMatchmakerStartGameRequest const* request, const char* testName)
 {
-    if( !TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    if (!TestApp::ShouldTrace(PFTestTraceLevel::Information))
     {
         return;
     }
@@ -432,25 +432,25 @@ void AutoGenMatchmakingTests::LogMatchmakerStartGameRequest(PFMatchmakingMatchma
 
     // PlayFabMatchmakingStartGameRequest struct:
     // request->build: const char*
-    if( request->build ) { ss << "  build " << request->build; Log(ss); } else { ss << "  build = nullptr"; Log(ss); } // Class: const char* 
-    if( request->customCommandLineData ) { ss << "  customCommandLineData " << request->customCommandLineData; Log(ss); } else { ss << "  customCommandLineData = nullptr"; Log(ss); } // Class: const char*     
+    if (request->build) { ss << "  build " << request->build; Log(ss); } else { ss << "  build = nullptr"; Log(ss); } // Class: const char* 
+    if (request->customCommandLineData) { ss << "  customCommandLineData " << request->customCommandLineData; Log(ss); } else { ss << "  customCommandLineData = nullptr"; Log(ss); } // Class: const char*     
     ss << "  customTagsCount " << request->customTagsCount; Log(ss);
 
     // PFStringDictionaryEntry
-    for( uint32_t i=0; i<request->customTagsCount; i++ )
+    for (uint32_t i=0; i<request->customTagsCount; i++)
     {
             ss << "  request->customTags[" << i << "]:" << request->customTags[i].key << "=" << request->customTags[i].value; Log(ss);
             
     } 
-    if( request->externalMatchmakerEventEndpoint ) { ss << "  externalMatchmakerEventEndpoint " << request->externalMatchmakerEventEndpoint; Log(ss); } else { ss << "  externalMatchmakerEventEndpoint = nullptr"; Log(ss); } // Class: const char* 
-    if( request->gameMode ) { ss << "  gameMode " << request->gameMode; Log(ss); } else { ss << "  gameMode = nullptr"; Log(ss); } // Class: const char* 
-    ss << "  region " << request->region; Log(ss); // Class: PFRegion 
+    if (request->externalMatchmakerEventEndpoint) { ss << "  externalMatchmakerEventEndpoint " << request->externalMatchmakerEventEndpoint; Log(ss); } else { ss << "  externalMatchmakerEventEndpoint = nullptr"; Log(ss); } // Class: const char* 
+    if (request->gameMode) { ss << "  gameMode " << request->gameMode; Log(ss); } else { ss << "  gameMode = nullptr"; Log(ss); } // Class: const char* 
+    ss << "  region " << static_cast<uint32_t>(request->region); Log(ss); // Class: PFRegion 
 
 }
 
-HRESULT AutoGenMatchmakingTests::LogPFMatchmakingStartGameResponse(PFMatchmakingStartGameResponse const* result)
+HRESULT AutoGenMatchmakingTests::LogStartGameResponse(PFMatchmakingStartGameResponse const* result)
 {
-    if( !TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    if (!TestApp::ShouldTrace(PFTestTraceLevel::Information))
     {
         return S_OK;
     }
@@ -459,17 +459,17 @@ HRESULT AutoGenMatchmakingTests::LogPFMatchmakingStartGameResponse(PFMatchmaking
     ss << "Response:"; Log(ss);
 
     // Found PlayFabMatchmakingStartGameResponse    
-    if( result->gameID ) { ss << "  gameID " << result->gameID; Log(ss); } else { ss << "  gameID = nullptr"; Log(ss); } // Class: const char*     
-    if( result->serverIPV4Address ) { ss << "  serverIPV4Address " << result->serverIPV4Address; Log(ss); } else { ss << "  serverIPV4Address = nullptr"; Log(ss); } // Class: const char*     
-    if( result->serverIPV6Address ) { ss << "  serverIPV6Address " << result->serverIPV6Address; Log(ss); } else { ss << "  serverIPV6Address = nullptr"; Log(ss); } // Class: const char*     
+    if (result->gameID) { ss << "  gameID " << result->gameID; Log(ss); } else { ss << "  gameID = nullptr"; Log(ss); } // Class: const char*     
+    if (result->serverIPV4Address) { ss << "  serverIPV4Address " << result->serverIPV4Address; Log(ss); } else { ss << "  serverIPV4Address = nullptr"; Log(ss); } // Class: const char*     
+    if (result->serverIPV6Address) { ss << "  serverIPV6Address " << result->serverIPV6Address; Log(ss); } else { ss << "  serverIPV6Address = nullptr"; Log(ss); } // Class: const char*     
     ss << "  serverPort " << result->serverPort; Log(ss); // Class: uint32_t     
-    if( result->serverPublicDNSName ) { ss << "  serverPublicDNSName " << result->serverPublicDNSName; Log(ss); } else { ss << "  serverPublicDNSName = nullptr"; Log(ss); } // Class: const char* 
+    if (result->serverPublicDNSName) { ss << "  serverPublicDNSName " << result->serverPublicDNSName; Log(ss); } else { ss << "  serverPublicDNSName = nullptr"; Log(ss); } // Class: const char* 
     return S_OK;
 }
 
 void AutoGenMatchmakingTests::LogUserInfoRequest(PFMatchmakingUserInfoRequest const* request, const char* testName)
 {
-    if( !TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    if (!TestApp::ShouldTrace(PFTestTraceLevel::Information))
     {
         return;
     }
@@ -486,19 +486,19 @@ void AutoGenMatchmakingTests::LogUserInfoRequest(PFMatchmakingUserInfoRequest co
     ss << "  customTagsCount " << request->customTagsCount; Log(ss);
 
     // PFStringDictionaryEntry
-    for( uint32_t i=0; i<request->customTagsCount; i++ )
+    for (uint32_t i=0; i<request->customTagsCount; i++)
     {
             ss << "  request->customTags[" << i << "]:" << request->customTags[i].key << "=" << request->customTags[i].value; Log(ss);
             
     } 
     ss << "  minCatalogVersion " << request->minCatalogVersion; Log(ss); // Class: int32_t 
-    if( request->playFabId ) { ss << "  playFabId " << request->playFabId; Log(ss); } else { ss << "  playFabId = nullptr"; Log(ss); } // Class: const char* 
+    if (request->playFabId) { ss << "  playFabId " << request->playFabId; Log(ss); } else { ss << "  playFabId = nullptr"; Log(ss); } // Class: const char* 
 
 }
 
-HRESULT AutoGenMatchmakingTests::LogPFMatchmakingUserInfoResponse(PFMatchmakingUserInfoResponse const* result)
+HRESULT AutoGenMatchmakingTests::LogUserInfoResponse(PFMatchmakingUserInfoResponse const* result)
 {
-    if( !TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    if (!TestApp::ShouldTrace(PFTestTraceLevel::Information))
     {
         return S_OK;
     }
@@ -510,19 +510,19 @@ HRESULT AutoGenMatchmakingTests::LogPFMatchmakingUserInfoResponse(PFMatchmakingU
     ss << "  inventoryCount " << result->inventoryCount; Log(ss);
 
     // PFItemInstance
-    for( uint32_t i=0; i<result->inventoryCount; i++ )
+    for (uint32_t i=0; i<result->inventoryCount; i++)
     {
             ss << "  result->inventory[" << i << "]:" << result->inventory[i]; Log(ss); // PFItemInstance
     }     
     ss << "  isDeveloper " << result->isDeveloper; Log(ss); // Class: bool     
-    if( result->playFabId ) { ss << "  playFabId " << result->playFabId; Log(ss); } else { ss << "  playFabId = nullptr"; Log(ss); } // Class: const char*     
-    if( result->steamId ) { ss << "  steamId " << result->steamId; Log(ss); } else { ss << "  steamId = nullptr"; Log(ss); } // Class: const char*     
-    if( result->titleDisplayName ) { ss << "  titleDisplayName " << result->titleDisplayName; Log(ss); } else { ss << "  titleDisplayName = nullptr"; Log(ss); } // Class: const char*     
-    if( result->username ) { ss << "  username " << result->username; Log(ss); } else { ss << "  username = nullptr"; Log(ss); } // Class: const char*         
+    if (result->playFabId) { ss << "  playFabId " << result->playFabId; Log(ss); } else { ss << "  playFabId = nullptr"; Log(ss); } // Class: const char*     
+    if (result->steamId) { ss << "  steamId " << result->steamId; Log(ss); } else { ss << "  steamId = nullptr"; Log(ss); } // Class: const char*     
+    if (result->titleDisplayName) { ss << "  titleDisplayName " << result->titleDisplayName; Log(ss); } else { ss << "  titleDisplayName = nullptr"; Log(ss); } // Class: const char*     
+    if (result->username) { ss << "  username " << result->username; Log(ss); } else { ss << "  username = nullptr"; Log(ss); } // Class: const char*         
     ss << "  virtualCurrencyCount " << result->virtualCurrencyCount; Log(ss);
 
     // PFInt32DictionaryEntry
-    for( uint32_t i=0; i<result->virtualCurrencyCount; i++ )
+    for (uint32_t i=0; i<result->virtualCurrencyCount; i++)
     {
             ss << "  result->virtualCurrency[" << i << "]:" << result->virtualCurrency[i].key << "=" << result->virtualCurrency[i].value; Log(ss);
             
@@ -530,7 +530,7 @@ HRESULT AutoGenMatchmakingTests::LogPFMatchmakingUserInfoResponse(PFMatchmakingU
     ss << "  virtualCurrencyRechargeTimesCount " << result->virtualCurrencyRechargeTimesCount; Log(ss);
 
     // PFVirtualCurrencyRechargeTimeDictionaryEntry
-    for( uint32_t i=0; i<result->virtualCurrencyRechargeTimesCount; i++ )
+    for (uint32_t i=0; i<result->virtualCurrencyRechargeTimesCount; i++)
     {
             ss << "  result->virtualCurrencyRechargeTimes[" << i << "]:" << result->virtualCurrencyRechargeTimes[i].key << "=" << result->virtualCurrencyRechargeTimes[i].value; Log(ss);
             
@@ -540,7 +540,7 @@ HRESULT AutoGenMatchmakingTests::LogPFMatchmakingUserInfoResponse(PFMatchmakingU
 
 void AutoGenMatchmakingTests::LogDeregisterGameRequest(PFMatchmakingDeregisterGameRequest const* request, const char* testName)
 {
-    if( !TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    if (!TestApp::ShouldTrace(PFTestTraceLevel::Information))
     {
         return;
     }
@@ -557,18 +557,18 @@ void AutoGenMatchmakingTests::LogDeregisterGameRequest(PFMatchmakingDeregisterGa
     ss << "  customTagsCount " << request->customTagsCount; Log(ss);
 
     // PFStringDictionaryEntry
-    for( uint32_t i=0; i<request->customTagsCount; i++ )
+    for (uint32_t i=0; i<request->customTagsCount; i++)
     {
             ss << "  request->customTags[" << i << "]:" << request->customTags[i].key << "=" << request->customTags[i].value; Log(ss);
             
     } 
-    if( request->lobbyId ) { ss << "  lobbyId " << request->lobbyId; Log(ss); } else { ss << "  lobbyId = nullptr"; Log(ss); } // Class: const char* 
+    if (request->lobbyId) { ss << "  lobbyId " << request->lobbyId; Log(ss); } else { ss << "  lobbyId = nullptr"; Log(ss); } // Class: const char* 
 
 }
 
 void AutoGenMatchmakingTests::LogNotifyMatchmakerPlayerLeftRequest(PFMatchmakingNotifyMatchmakerPlayerLeftRequest const* request, const char* testName)
 {
-    if( !TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    if (!TestApp::ShouldTrace(PFTestTraceLevel::Information))
     {
         return;
     }
@@ -585,19 +585,19 @@ void AutoGenMatchmakingTests::LogNotifyMatchmakerPlayerLeftRequest(PFMatchmaking
     ss << "  customTagsCount " << request->customTagsCount; Log(ss);
 
     // PFStringDictionaryEntry
-    for( uint32_t i=0; i<request->customTagsCount; i++ )
+    for (uint32_t i=0; i<request->customTagsCount; i++)
     {
             ss << "  request->customTags[" << i << "]:" << request->customTags[i].key << "=" << request->customTags[i].value; Log(ss);
             
     } 
-    if( request->lobbyId ) { ss << "  lobbyId " << request->lobbyId; Log(ss); } else { ss << "  lobbyId = nullptr"; Log(ss); } // Class: const char* 
-    if( request->playFabId ) { ss << "  playFabId " << request->playFabId; Log(ss); } else { ss << "  playFabId = nullptr"; Log(ss); } // Class: const char* 
+    if (request->lobbyId) { ss << "  lobbyId " << request->lobbyId; Log(ss); } else { ss << "  lobbyId = nullptr"; Log(ss); } // Class: const char* 
+    if (request->playFabId) { ss << "  playFabId " << request->playFabId; Log(ss); } else { ss << "  playFabId = nullptr"; Log(ss); } // Class: const char* 
 
 }
 
-HRESULT AutoGenMatchmakingTests::LogPFMatchmakingNotifyMatchmakerPlayerLeftResult(PFMatchmakingNotifyMatchmakerPlayerLeftResult const* result)
+HRESULT AutoGenMatchmakingTests::LogNotifyMatchmakerPlayerLeftResult(PFMatchmakingNotifyMatchmakerPlayerLeftResult const* result)
 {
-    if( !TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    if (!TestApp::ShouldTrace(PFTestTraceLevel::Information))
     {
         return S_OK;
     }
@@ -612,7 +612,7 @@ HRESULT AutoGenMatchmakingTests::LogPFMatchmakingNotifyMatchmakerPlayerLeftResul
 
 void AutoGenMatchmakingTests::LogRedeemMatchmakerTicketRequest(PFMatchmakingRedeemMatchmakerTicketRequest const* request, const char* testName)
 {
-    if( !TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    if (!TestApp::ShouldTrace(PFTestTraceLevel::Information))
     {
         return;
     }
@@ -629,19 +629,19 @@ void AutoGenMatchmakingTests::LogRedeemMatchmakerTicketRequest(PFMatchmakingRede
     ss << "  customTagsCount " << request->customTagsCount; Log(ss);
 
     // PFStringDictionaryEntry
-    for( uint32_t i=0; i<request->customTagsCount; i++ )
+    for (uint32_t i=0; i<request->customTagsCount; i++)
     {
             ss << "  request->customTags[" << i << "]:" << request->customTags[i].key << "=" << request->customTags[i].value; Log(ss);
             
     } 
-    if( request->lobbyId ) { ss << "  lobbyId " << request->lobbyId; Log(ss); } else { ss << "  lobbyId = nullptr"; Log(ss); } // Class: const char* 
-    if( request->ticket ) { ss << "  ticket " << request->ticket; Log(ss); } else { ss << "  ticket = nullptr"; Log(ss); } // Class: const char* 
+    if (request->lobbyId) { ss << "  lobbyId " << request->lobbyId; Log(ss); } else { ss << "  lobbyId = nullptr"; Log(ss); } // Class: const char* 
+    if (request->ticket) { ss << "  ticket " << request->ticket; Log(ss); } else { ss << "  ticket = nullptr"; Log(ss); } // Class: const char* 
 
 }
 
-HRESULT AutoGenMatchmakingTests::LogPFMatchmakingRedeemMatchmakerTicketResult(PFMatchmakingRedeemMatchmakerTicketResult const* result)
+HRESULT AutoGenMatchmakingTests::LogRedeemMatchmakerTicketResult(PFMatchmakingRedeemMatchmakerTicketResult const* result)
 {
-    if( !TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    if (!TestApp::ShouldTrace(PFTestTraceLevel::Information))
     {
         return S_OK;
     }
@@ -650,7 +650,7 @@ HRESULT AutoGenMatchmakingTests::LogPFMatchmakingRedeemMatchmakerTicketResult(PF
     ss << "Response:"; Log(ss);
 
     // Found PlayFabMatchmakingRedeemMatchmakerTicketResult    
-    if( result->error ) { ss << "  error " << result->error; Log(ss); } else { ss << "  error = nullptr"; Log(ss); } // Class: const char*     
+    if (result->error) { ss << "  error " << result->error; Log(ss); } else { ss << "  error = nullptr"; Log(ss); } // Class: const char*     
     ss << "  ticketIsValid " << result->ticketIsValid; Log(ss); // Class: bool     
     ss << "  userInfo " << result->userInfo; Log(ss); // Class: PFUserAccountInfo 
     return S_OK;
@@ -658,7 +658,7 @@ HRESULT AutoGenMatchmakingTests::LogPFMatchmakingRedeemMatchmakerTicketResult(PF
 
 void AutoGenMatchmakingTests::LogRefreshGameServerInstanceHeartbeatRequest(PFMatchmakingRefreshGameServerInstanceHeartbeatRequest const* request, const char* testName)
 {
-    if( !TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    if (!TestApp::ShouldTrace(PFTestTraceLevel::Information))
     {
         return;
     }
@@ -671,13 +671,13 @@ void AutoGenMatchmakingTests::LogRefreshGameServerInstanceHeartbeatRequest(PFMat
 
     // PlayFabMatchmakingRefreshGameServerInstanceHeartbeatRequest struct:
     // request->lobbyId: const char*
-    if( request->lobbyId ) { ss << "  lobbyId " << request->lobbyId; Log(ss); } else { ss << "  lobbyId = nullptr"; Log(ss); } // Class: const char* 
+    if (request->lobbyId) { ss << "  lobbyId " << request->lobbyId; Log(ss); } else { ss << "  lobbyId = nullptr"; Log(ss); } // Class: const char* 
 
 }
 
 void AutoGenMatchmakingTests::LogRegisterGameRequest(PFMatchmakingRegisterGameRequest const* request, const char* testName)
 {
-    if( !TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    if (!TestApp::ShouldTrace(PFTestTraceLevel::Information))
     {
         return;
     }
@@ -690,26 +690,26 @@ void AutoGenMatchmakingTests::LogRegisterGameRequest(PFMatchmakingRegisterGameRe
 
     // PlayFabMatchmakingRegisterGameRequest struct:
     // request->build: const char*
-    if( request->build ) { ss << "  build " << request->build; Log(ss); } else { ss << "  build = nullptr"; Log(ss); } // Class: const char*     
+    if (request->build) { ss << "  build " << request->build; Log(ss); } else { ss << "  build = nullptr"; Log(ss); } // Class: const char*     
     ss << "  customTagsCount " << request->customTagsCount; Log(ss);
 
     // PFStringDictionaryEntry
-    for( uint32_t i=0; i<request->customTagsCount; i++ )
+    for (uint32_t i=0; i<request->customTagsCount; i++)
     {
             ss << "  request->customTags[" << i << "]:" << request->customTags[i].key << "=" << request->customTags[i].value; Log(ss);
             
     } 
-    if( request->gameMode ) { ss << "  gameMode " << request->gameMode; Log(ss); } else { ss << "  gameMode = nullptr"; Log(ss); } // Class: const char* 
-    if( request->lobbyId ) { ss << "  lobbyId " << request->lobbyId; Log(ss); } else { ss << "  lobbyId = nullptr"; Log(ss); } // Class: const char* 
-    ss << "  region " << request->region; Log(ss); // Class: PFRegion 
-    if( request->serverIPV4Address ) { ss << "  serverIPV4Address " << request->serverIPV4Address; Log(ss); } else { ss << "  serverIPV4Address = nullptr"; Log(ss); } // Class: const char* 
-    if( request->serverIPV6Address ) { ss << "  serverIPV6Address " << request->serverIPV6Address; Log(ss); } else { ss << "  serverIPV6Address = nullptr"; Log(ss); } // Class: const char* 
-    if( request->serverPort ) { ss << "  serverPort " << request->serverPort; Log(ss); } else { ss << "  serverPort = nullptr"; Log(ss); } // Class: const char* 
-    if( request->serverPublicDNSName ) { ss << "  serverPublicDNSName " << request->serverPublicDNSName; Log(ss); } else { ss << "  serverPublicDNSName = nullptr"; Log(ss); } // Class: const char*     
+    if (request->gameMode) { ss << "  gameMode " << request->gameMode; Log(ss); } else { ss << "  gameMode = nullptr"; Log(ss); } // Class: const char* 
+    if (request->lobbyId) { ss << "  lobbyId " << request->lobbyId; Log(ss); } else { ss << "  lobbyId = nullptr"; Log(ss); } // Class: const char* 
+    ss << "  region " << static_cast<uint32_t>(request->region); Log(ss); // Class: PFRegion 
+    if (request->serverIPV4Address) { ss << "  serverIPV4Address " << request->serverIPV4Address; Log(ss); } else { ss << "  serverIPV4Address = nullptr"; Log(ss); } // Class: const char* 
+    if (request->serverIPV6Address) { ss << "  serverIPV6Address " << request->serverIPV6Address; Log(ss); } else { ss << "  serverIPV6Address = nullptr"; Log(ss); } // Class: const char* 
+    if (request->serverPort) { ss << "  serverPort " << request->serverPort; Log(ss); } else { ss << "  serverPort = nullptr"; Log(ss); } // Class: const char* 
+    if (request->serverPublicDNSName) { ss << "  serverPublicDNSName " << request->serverPublicDNSName; Log(ss); } else { ss << "  serverPublicDNSName = nullptr"; Log(ss); } // Class: const char*     
     ss << "  tagsCount " << request->tagsCount; Log(ss);
 
     // PFStringDictionaryEntry
-    for( uint32_t i=0; i<request->tagsCount; i++ )
+    for (uint32_t i=0; i<request->tagsCount; i++)
     {
             ss << "  request->tags[" << i << "]:" << request->tags[i].key << "=" << request->tags[i].value; Log(ss);
             
@@ -717,9 +717,9 @@ void AutoGenMatchmakingTests::LogRegisterGameRequest(PFMatchmakingRegisterGameRe
 
 }
 
-HRESULT AutoGenMatchmakingTests::LogPFMatchmakingRegisterGameResponse(PFMatchmakingRegisterGameResponse const* result)
+HRESULT AutoGenMatchmakingTests::LogRegisterGameResponse(PFMatchmakingRegisterGameResponse const* result)
 {
-    if( !TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    if (!TestApp::ShouldTrace(PFTestTraceLevel::Information))
     {
         return S_OK;
     }
@@ -728,13 +728,13 @@ HRESULT AutoGenMatchmakingTests::LogPFMatchmakingRegisterGameResponse(PFMatchmak
     ss << "Response:"; Log(ss);
 
     // Found PlayFabMatchmakingRegisterGameResponse    
-    if( result->lobbyId ) { ss << "  lobbyId " << result->lobbyId; Log(ss); } else { ss << "  lobbyId = nullptr"; Log(ss); } // Class: const char* 
+    if (result->lobbyId) { ss << "  lobbyId " << result->lobbyId; Log(ss); } else { ss << "  lobbyId = nullptr"; Log(ss); } // Class: const char* 
     return S_OK;
 }
 
 void AutoGenMatchmakingTests::LogSetGameServerInstanceDataRequest(PFMatchmakingSetGameServerInstanceDataRequest const* request, const char* testName)
 {
-    if( !TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    if (!TestApp::ShouldTrace(PFTestTraceLevel::Information))
     {
         return;
     }
@@ -747,14 +747,14 @@ void AutoGenMatchmakingTests::LogSetGameServerInstanceDataRequest(PFMatchmakingS
 
     // PlayFabMatchmakingSetGameServerInstanceDataRequest struct:
     // request->gameServerData: const char*
-    if( request->gameServerData ) { ss << "  gameServerData " << request->gameServerData; Log(ss); } else { ss << "  gameServerData = nullptr"; Log(ss); } // Class: const char* 
-    if( request->lobbyId ) { ss << "  lobbyId " << request->lobbyId; Log(ss); } else { ss << "  lobbyId = nullptr"; Log(ss); } // Class: const char* 
+    if (request->gameServerData) { ss << "  gameServerData " << request->gameServerData; Log(ss); } else { ss << "  gameServerData = nullptr"; Log(ss); } // Class: const char* 
+    if (request->lobbyId) { ss << "  lobbyId " << request->lobbyId; Log(ss); } else { ss << "  lobbyId = nullptr"; Log(ss); } // Class: const char* 
 
 }
 
 void AutoGenMatchmakingTests::LogSetGameServerInstanceStateRequest(PFMatchmakingSetGameServerInstanceStateRequest const* request, const char* testName)
 {
-    if( !TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    if (!TestApp::ShouldTrace(PFTestTraceLevel::Information))
     {
         return;
     }
@@ -767,14 +767,14 @@ void AutoGenMatchmakingTests::LogSetGameServerInstanceStateRequest(PFMatchmaking
 
     // PlayFabMatchmakingSetGameServerInstanceStateRequest struct:
     // request->lobbyId: const char*
-    if( request->lobbyId ) { ss << "  lobbyId " << request->lobbyId; Log(ss); } else { ss << "  lobbyId = nullptr"; Log(ss); } // Class: const char* 
-    ss << "  state " << request->state; Log(ss); // Class: PFMatchmakingGameInstanceState 
+    if (request->lobbyId) { ss << "  lobbyId " << request->lobbyId; Log(ss); } else { ss << "  lobbyId = nullptr"; Log(ss); } // Class: const char* 
+    ss << "  state " << static_cast<uint32_t>(request->state); Log(ss); // Class: PFMatchmakingGameInstanceState 
 
 }
 
 void AutoGenMatchmakingTests::LogSetGameServerInstanceTagsRequest(PFMatchmakingSetGameServerInstanceTagsRequest const* request, const char* testName)
 {
-    if( !TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    if (!TestApp::ShouldTrace(PFTestTraceLevel::Information))
     {
         return;
     }
@@ -787,11 +787,11 @@ void AutoGenMatchmakingTests::LogSetGameServerInstanceTagsRequest(PFMatchmakingS
 
     // PlayFabMatchmakingSetGameServerInstanceTagsRequest struct:
     // request->lobbyId: const char*
-    if( request->lobbyId ) { ss << "  lobbyId " << request->lobbyId; Log(ss); } else { ss << "  lobbyId = nullptr"; Log(ss); } // Class: const char*     
+    if (request->lobbyId) { ss << "  lobbyId " << request->lobbyId; Log(ss); } else { ss << "  lobbyId = nullptr"; Log(ss); } // Class: const char*     
     ss << "  tagsCount " << request->tagsCount; Log(ss);
 
     // PFStringDictionaryEntry
-    for( uint32_t i=0; i<request->tagsCount; i++ )
+    for (uint32_t i=0; i<request->tagsCount; i++)
     {
             ss << "  request->tags[" << i << "]:" << request->tags[i].key << "=" << request->tags[i].value; Log(ss);
             
@@ -801,7 +801,7 @@ void AutoGenMatchmakingTests::LogSetGameServerInstanceTagsRequest(PFMatchmakingS
 
 void AutoGenMatchmakingTests::LogCancelAllMatchmakingTicketsForPlayerRequest(PFMatchmakingCancelAllMatchmakingTicketsForPlayerRequest const* request, const char* testName)
 {
-    if( !TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    if (!TestApp::ShouldTrace(PFTestTraceLevel::Information))
     {
         return;
     }
@@ -818,19 +818,19 @@ void AutoGenMatchmakingTests::LogCancelAllMatchmakingTicketsForPlayerRequest(PFM
     ss << "  customTagsCount " << request->customTagsCount; Log(ss);
 
     // PFStringDictionaryEntry
-    for( uint32_t i=0; i<request->customTagsCount; i++ )
+    for (uint32_t i=0; i<request->customTagsCount; i++)
     {
             ss << "  request->customTags[" << i << "]:" << request->customTags[i].key << "=" << request->customTags[i].value; Log(ss);
             
     } 
     ss << "  entity " << request->entity; Log(ss); // Class: PFEntityKey 
-    if( request->queueName ) { ss << "  queueName " << request->queueName; Log(ss); } else { ss << "  queueName = nullptr"; Log(ss); } // Class: const char* 
+    if (request->queueName) { ss << "  queueName " << request->queueName; Log(ss); } else { ss << "  queueName = nullptr"; Log(ss); } // Class: const char* 
 
 }
 
 void AutoGenMatchmakingTests::LogCancelAllServerBackfillTicketsForPlayerRequest(PFMatchmakingCancelAllServerBackfillTicketsForPlayerRequest const* request, const char* testName)
 {
-    if( !TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    if (!TestApp::ShouldTrace(PFTestTraceLevel::Information))
     {
         return;
     }
@@ -847,19 +847,19 @@ void AutoGenMatchmakingTests::LogCancelAllServerBackfillTicketsForPlayerRequest(
     ss << "  customTagsCount " << request->customTagsCount; Log(ss);
 
     // PFStringDictionaryEntry
-    for( uint32_t i=0; i<request->customTagsCount; i++ )
+    for (uint32_t i=0; i<request->customTagsCount; i++)
     {
             ss << "  request->customTags[" << i << "]:" << request->customTags[i].key << "=" << request->customTags[i].value; Log(ss);
             
     } 
     ss << "  entity " << request->entity; Log(ss); // Class: PFEntityKey 
-    if( request->queueName ) { ss << "  queueName " << request->queueName; Log(ss); } else { ss << "  queueName = nullptr"; Log(ss); } // Class: const char* 
+    if (request->queueName) { ss << "  queueName " << request->queueName; Log(ss); } else { ss << "  queueName = nullptr"; Log(ss); } // Class: const char* 
 
 }
 
 void AutoGenMatchmakingTests::LogCancelMatchmakingTicketRequest(PFMatchmakingCancelMatchmakingTicketRequest const* request, const char* testName)
 {
-    if( !TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    if (!TestApp::ShouldTrace(PFTestTraceLevel::Information))
     {
         return;
     }
@@ -876,19 +876,19 @@ void AutoGenMatchmakingTests::LogCancelMatchmakingTicketRequest(PFMatchmakingCan
     ss << "  customTagsCount " << request->customTagsCount; Log(ss);
 
     // PFStringDictionaryEntry
-    for( uint32_t i=0; i<request->customTagsCount; i++ )
+    for (uint32_t i=0; i<request->customTagsCount; i++)
     {
             ss << "  request->customTags[" << i << "]:" << request->customTags[i].key << "=" << request->customTags[i].value; Log(ss);
             
     } 
-    if( request->queueName ) { ss << "  queueName " << request->queueName; Log(ss); } else { ss << "  queueName = nullptr"; Log(ss); } // Class: const char* 
-    if( request->ticketId ) { ss << "  ticketId " << request->ticketId; Log(ss); } else { ss << "  ticketId = nullptr"; Log(ss); } // Class: const char* 
+    if (request->queueName) { ss << "  queueName " << request->queueName; Log(ss); } else { ss << "  queueName = nullptr"; Log(ss); } // Class: const char* 
+    if (request->ticketId) { ss << "  ticketId " << request->ticketId; Log(ss); } else { ss << "  ticketId = nullptr"; Log(ss); } // Class: const char* 
 
 }
 
 void AutoGenMatchmakingTests::LogCancelServerBackfillTicketRequest(PFMatchmakingCancelServerBackfillTicketRequest const* request, const char* testName)
 {
-    if( !TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    if (!TestApp::ShouldTrace(PFTestTraceLevel::Information))
     {
         return;
     }
@@ -905,19 +905,19 @@ void AutoGenMatchmakingTests::LogCancelServerBackfillTicketRequest(PFMatchmaking
     ss << "  customTagsCount " << request->customTagsCount; Log(ss);
 
     // PFStringDictionaryEntry
-    for( uint32_t i=0; i<request->customTagsCount; i++ )
+    for (uint32_t i=0; i<request->customTagsCount; i++)
     {
             ss << "  request->customTags[" << i << "]:" << request->customTags[i].key << "=" << request->customTags[i].value; Log(ss);
             
     } 
-    if( request->queueName ) { ss << "  queueName " << request->queueName; Log(ss); } else { ss << "  queueName = nullptr"; Log(ss); } // Class: const char* 
-    if( request->ticketId ) { ss << "  ticketId " << request->ticketId; Log(ss); } else { ss << "  ticketId = nullptr"; Log(ss); } // Class: const char* 
+    if (request->queueName) { ss << "  queueName " << request->queueName; Log(ss); } else { ss << "  queueName = nullptr"; Log(ss); } // Class: const char* 
+    if (request->ticketId) { ss << "  ticketId " << request->ticketId; Log(ss); } else { ss << "  ticketId = nullptr"; Log(ss); } // Class: const char* 
 
 }
 
 void AutoGenMatchmakingTests::LogCreateMatchmakingTicketRequest(PFMatchmakingCreateMatchmakingTicketRequest const* request, const char* testName)
 {
-    if( !TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    if (!TestApp::ShouldTrace(PFTestTraceLevel::Information))
     {
         return;
     }
@@ -934,7 +934,7 @@ void AutoGenMatchmakingTests::LogCreateMatchmakingTicketRequest(PFMatchmakingCre
     ss << "  customTagsCount " << request->customTagsCount; Log(ss);
 
     // PFStringDictionaryEntry
-    for( uint32_t i=0; i<request->customTagsCount; i++ )
+    for (uint32_t i=0; i<request->customTagsCount; i++)
     {
             ss << "  request->customTags[" << i << "]:" << request->customTags[i].key << "=" << request->customTags[i].value; Log(ss);
             
@@ -943,17 +943,17 @@ void AutoGenMatchmakingTests::LogCreateMatchmakingTicketRequest(PFMatchmakingCre
     ss << "  membersToMatchWithCount " << request->membersToMatchWithCount; Log(ss);
 
     // PFEntityKey
-    for( uint32_t i=0; i<request->membersToMatchWithCount; i++ )
+    for (uint32_t i=0; i<request->membersToMatchWithCount; i++)
     {
             ss << "  request->membersToMatchWith[" << i << "]:" << request->membersToMatchWith[i]; Log(ss); // PFEntityKey
     } 
-    if( request->queueName ) { ss << "  queueName " << request->queueName; Log(ss); } else { ss << "  queueName = nullptr"; Log(ss); } // Class: const char* 
+    if (request->queueName) { ss << "  queueName " << request->queueName; Log(ss); } else { ss << "  queueName = nullptr"; Log(ss); } // Class: const char* 
 
 }
 
-HRESULT AutoGenMatchmakingTests::LogPFMatchmakingCreateMatchmakingTicketResult(PFMatchmakingCreateMatchmakingTicketResult const* result)
+HRESULT AutoGenMatchmakingTests::LogCreateMatchmakingTicketResult(PFMatchmakingCreateMatchmakingTicketResult const* result)
 {
-    if( !TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    if (!TestApp::ShouldTrace(PFTestTraceLevel::Information))
     {
         return S_OK;
     }
@@ -962,13 +962,13 @@ HRESULT AutoGenMatchmakingTests::LogPFMatchmakingCreateMatchmakingTicketResult(P
     ss << "Response:"; Log(ss);
 
     // Found PlayFabMatchmakingCreateMatchmakingTicketResult    
-    if( result->ticketId ) { ss << "  ticketId " << result->ticketId; Log(ss); } else { ss << "  ticketId = nullptr"; Log(ss); } // Class: const char* 
+    if (result->ticketId) { ss << "  ticketId " << result->ticketId; Log(ss); } else { ss << "  ticketId = nullptr"; Log(ss); } // Class: const char* 
     return S_OK;
 }
 
 void AutoGenMatchmakingTests::LogCreateServerBackfillTicketRequest(PFMatchmakingCreateServerBackfillTicketRequest const* request, const char* testName)
 {
-    if( !TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    if (!TestApp::ShouldTrace(PFTestTraceLevel::Information))
     {
         return;
     }
@@ -985,7 +985,7 @@ void AutoGenMatchmakingTests::LogCreateServerBackfillTicketRequest(PFMatchmaking
     ss << "  customTagsCount " << request->customTagsCount; Log(ss);
 
     // PFStringDictionaryEntry
-    for( uint32_t i=0; i<request->customTagsCount; i++ )
+    for (uint32_t i=0; i<request->customTagsCount; i++)
     {
             ss << "  request->customTags[" << i << "]:" << request->customTags[i].key << "=" << request->customTags[i].value; Log(ss);
             
@@ -994,18 +994,18 @@ void AutoGenMatchmakingTests::LogCreateServerBackfillTicketRequest(PFMatchmaking
     ss << "  membersCount " << request->membersCount; Log(ss);
 
     // PFMatchmakingMatchmakingPlayerWithTeamAssignment
-    for( uint32_t i=0; i<request->membersCount; i++ )
+    for (uint32_t i=0; i<request->membersCount; i++)
     {
             ss << "  request->members[" << i << "]:" << request->members[i]; Log(ss); // PFMatchmakingMatchmakingPlayerWithTeamAssignment
     } 
-    if( request->queueName ) { ss << "  queueName " << request->queueName; Log(ss); } else { ss << "  queueName = nullptr"; Log(ss); } // Class: const char* 
+    if (request->queueName) { ss << "  queueName " << request->queueName; Log(ss); } else { ss << "  queueName = nullptr"; Log(ss); } // Class: const char* 
     ss << "  serverDetails " << request->serverDetails; Log(ss); // Class: PFMatchmakingServerDetails 
 
 }
 
-HRESULT AutoGenMatchmakingTests::LogPFMatchmakingCreateServerBackfillTicketResult(PFMatchmakingCreateServerBackfillTicketResult const* result)
+HRESULT AutoGenMatchmakingTests::LogCreateServerBackfillTicketResult(PFMatchmakingCreateServerBackfillTicketResult const* result)
 {
-    if( !TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    if (!TestApp::ShouldTrace(PFTestTraceLevel::Information))
     {
         return S_OK;
     }
@@ -1014,13 +1014,13 @@ HRESULT AutoGenMatchmakingTests::LogPFMatchmakingCreateServerBackfillTicketResul
     ss << "Response:"; Log(ss);
 
     // Found PlayFabMatchmakingCreateServerBackfillTicketResult    
-    if( result->ticketId ) { ss << "  ticketId " << result->ticketId; Log(ss); } else { ss << "  ticketId = nullptr"; Log(ss); } // Class: const char* 
+    if (result->ticketId) { ss << "  ticketId " << result->ticketId; Log(ss); } else { ss << "  ticketId = nullptr"; Log(ss); } // Class: const char* 
     return S_OK;
 }
 
 void AutoGenMatchmakingTests::LogCreateServerMatchmakingTicketRequest(PFMatchmakingCreateServerMatchmakingTicketRequest const* request, const char* testName)
 {
-    if( !TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    if (!TestApp::ShouldTrace(PFTestTraceLevel::Information))
     {
         return;
     }
@@ -1037,7 +1037,7 @@ void AutoGenMatchmakingTests::LogCreateServerMatchmakingTicketRequest(PFMatchmak
     ss << "  customTagsCount " << request->customTagsCount; Log(ss);
 
     // PFStringDictionaryEntry
-    for( uint32_t i=0; i<request->customTagsCount; i++ )
+    for (uint32_t i=0; i<request->customTagsCount; i++)
     {
             ss << "  request->customTags[" << i << "]:" << request->customTags[i].key << "=" << request->customTags[i].value; Log(ss);
             
@@ -1046,17 +1046,17 @@ void AutoGenMatchmakingTests::LogCreateServerMatchmakingTicketRequest(PFMatchmak
     ss << "  membersCount " << request->membersCount; Log(ss);
 
     // PFMatchmakingMatchmakingPlayer
-    for( uint32_t i=0; i<request->membersCount; i++ )
+    for (uint32_t i=0; i<request->membersCount; i++)
     {
             ss << "  request->members[" << i << "]:" << request->members[i]; Log(ss); // PFMatchmakingMatchmakingPlayer
     } 
-    if( request->queueName ) { ss << "  queueName " << request->queueName; Log(ss); } else { ss << "  queueName = nullptr"; Log(ss); } // Class: const char* 
+    if (request->queueName) { ss << "  queueName " << request->queueName; Log(ss); } else { ss << "  queueName = nullptr"; Log(ss); } // Class: const char* 
 
 }
 
 void AutoGenMatchmakingTests::LogGetMatchRequest(PFMatchmakingGetMatchRequest const* request, const char* testName)
 {
-    if( !TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    if (!TestApp::ShouldTrace(PFTestTraceLevel::Information))
     {
         return;
     }
@@ -1073,21 +1073,21 @@ void AutoGenMatchmakingTests::LogGetMatchRequest(PFMatchmakingGetMatchRequest co
     ss << "  customTagsCount " << request->customTagsCount; Log(ss);
 
     // PFStringDictionaryEntry
-    for( uint32_t i=0; i<request->customTagsCount; i++ )
+    for (uint32_t i=0; i<request->customTagsCount; i++)
     {
             ss << "  request->customTags[" << i << "]:" << request->customTags[i].key << "=" << request->customTags[i].value; Log(ss);
             
     } 
     ss << "  escapeObject " << request->escapeObject; Log(ss); // Class: bool 
-    if( request->matchId ) { ss << "  matchId " << request->matchId; Log(ss); } else { ss << "  matchId = nullptr"; Log(ss); } // Class: const char* 
-    if( request->queueName ) { ss << "  queueName " << request->queueName; Log(ss); } else { ss << "  queueName = nullptr"; Log(ss); } // Class: const char* 
+    if (request->matchId) { ss << "  matchId " << request->matchId; Log(ss); } else { ss << "  matchId = nullptr"; Log(ss); } // Class: const char* 
+    if (request->queueName) { ss << "  queueName " << request->queueName; Log(ss); } else { ss << "  queueName = nullptr"; Log(ss); } // Class: const char* 
     ss << "  returnMemberAttributes " << request->returnMemberAttributes; Log(ss); // Class: bool 
 
 }
 
-HRESULT AutoGenMatchmakingTests::LogPFMatchmakingGetMatchResult(PFMatchmakingGetMatchResult const* result)
+HRESULT AutoGenMatchmakingTests::LogGetMatchResult(PFMatchmakingGetMatchResult const* result)
 {
-    if( !TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    if (!TestApp::ShouldTrace(PFTestTraceLevel::Information))
     {
         return S_OK;
     }
@@ -1096,18 +1096,18 @@ HRESULT AutoGenMatchmakingTests::LogPFMatchmakingGetMatchResult(PFMatchmakingGet
     ss << "Response:"; Log(ss);
 
     // Found PlayFabMatchmakingGetMatchResult    
-    if( result->matchId ) { ss << "  matchId " << result->matchId; Log(ss); } else { ss << "  matchId = nullptr"; Log(ss); } // Class: const char*         
+    if (result->matchId) { ss << "  matchId " << result->matchId; Log(ss); } else { ss << "  matchId = nullptr"; Log(ss); } // Class: const char*         
     ss << "  membersCount " << result->membersCount; Log(ss);
 
     // PFMatchmakingMatchmakingPlayerWithTeamAssignment
-    for( uint32_t i=0; i<result->membersCount; i++ )
+    for (uint32_t i=0; i<result->membersCount; i++)
     {
             ss << "  result->members[" << i << "]:" << result->members[i]; Log(ss); // PFMatchmakingMatchmakingPlayerWithTeamAssignment
     }         
     ss << "  regionPreferencesCount " << result->regionPreferencesCount; Log(ss);
 
     // const char*
-    for( uint32_t i=0; i<result->regionPreferencesCount; i++ )
+    for (uint32_t i=0; i<result->regionPreferencesCount; i++)
     {
             ss << "  result->regionPreferences[" << i << "]:" << result->regionPreferences[i]; Log(ss); // const char*
     }     
@@ -1117,7 +1117,7 @@ HRESULT AutoGenMatchmakingTests::LogPFMatchmakingGetMatchResult(PFMatchmakingGet
 
 void AutoGenMatchmakingTests::LogGetMatchmakingTicketRequest(PFMatchmakingGetMatchmakingTicketRequest const* request, const char* testName)
 {
-    if( !TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    if (!TestApp::ShouldTrace(PFTestTraceLevel::Information))
     {
         return;
     }
@@ -1134,20 +1134,20 @@ void AutoGenMatchmakingTests::LogGetMatchmakingTicketRequest(PFMatchmakingGetMat
     ss << "  customTagsCount " << request->customTagsCount; Log(ss);
 
     // PFStringDictionaryEntry
-    for( uint32_t i=0; i<request->customTagsCount; i++ )
+    for (uint32_t i=0; i<request->customTagsCount; i++)
     {
             ss << "  request->customTags[" << i << "]:" << request->customTags[i].key << "=" << request->customTags[i].value; Log(ss);
             
     } 
     ss << "  escapeObject " << request->escapeObject; Log(ss); // Class: bool 
-    if( request->queueName ) { ss << "  queueName " << request->queueName; Log(ss); } else { ss << "  queueName = nullptr"; Log(ss); } // Class: const char* 
-    if( request->ticketId ) { ss << "  ticketId " << request->ticketId; Log(ss); } else { ss << "  ticketId = nullptr"; Log(ss); } // Class: const char* 
+    if (request->queueName) { ss << "  queueName " << request->queueName; Log(ss); } else { ss << "  queueName = nullptr"; Log(ss); } // Class: const char* 
+    if (request->ticketId) { ss << "  ticketId " << request->ticketId; Log(ss); } else { ss << "  ticketId = nullptr"; Log(ss); } // Class: const char* 
 
 }
 
-HRESULT AutoGenMatchmakingTests::LogPFMatchmakingGetMatchmakingTicketResult(PFMatchmakingGetMatchmakingTicketResult const* result)
+HRESULT AutoGenMatchmakingTests::LogGetMatchmakingTicketResult(PFMatchmakingGetMatchmakingTicketResult const* result)
 {
-    if( !TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    if (!TestApp::ShouldTrace(PFTestTraceLevel::Information))
     {
         return S_OK;
     }
@@ -1156,34 +1156,34 @@ HRESULT AutoGenMatchmakingTests::LogPFMatchmakingGetMatchmakingTicketResult(PFMa
     ss << "Response:"; Log(ss);
 
     // Found PlayFabMatchmakingGetMatchmakingTicketResult    
-    if( result->cancellationReasonString ) { ss << "  cancellationReasonString " << result->cancellationReasonString; Log(ss); } else { ss << "  cancellationReasonString = nullptr"; Log(ss); } // Class: const char*     
+    if (result->cancellationReasonString) { ss << "  cancellationReasonString " << result->cancellationReasonString; Log(ss); } else { ss << "  cancellationReasonString = nullptr"; Log(ss); } // Class: const char*     
     ss << "  created " << result->created; Log(ss); // Class: time_t     
     ss << "  creator " << result->creator; Log(ss); // Class: PFEntityKey     
     ss << "  giveUpAfterSeconds " << result->giveUpAfterSeconds; Log(ss); // Class: int32_t     
-    if( result->matchId ) { ss << "  matchId " << result->matchId; Log(ss); } else { ss << "  matchId = nullptr"; Log(ss); } // Class: const char*         
+    if (result->matchId) { ss << "  matchId " << result->matchId; Log(ss); } else { ss << "  matchId = nullptr"; Log(ss); } // Class: const char*         
     ss << "  membersCount " << result->membersCount; Log(ss);
 
     // PFMatchmakingMatchmakingPlayer
-    for( uint32_t i=0; i<result->membersCount; i++ )
+    for (uint32_t i=0; i<result->membersCount; i++)
     {
             ss << "  result->members[" << i << "]:" << result->members[i]; Log(ss); // PFMatchmakingMatchmakingPlayer
     }         
     ss << "  membersToMatchWithCount " << result->membersToMatchWithCount; Log(ss);
 
     // PFEntityKey
-    for( uint32_t i=0; i<result->membersToMatchWithCount; i++ )
+    for (uint32_t i=0; i<result->membersToMatchWithCount; i++)
     {
             ss << "  result->membersToMatchWith[" << i << "]:" << result->membersToMatchWith[i]; Log(ss); // PFEntityKey
     }     
-    if( result->queueName ) { ss << "  queueName " << result->queueName; Log(ss); } else { ss << "  queueName = nullptr"; Log(ss); } // Class: const char*     
-    if( result->status ) { ss << "  status " << result->status; Log(ss); } else { ss << "  status = nullptr"; Log(ss); } // Class: const char*     
-    if( result->ticketId ) { ss << "  ticketId " << result->ticketId; Log(ss); } else { ss << "  ticketId = nullptr"; Log(ss); } // Class: const char* 
+    if (result->queueName) { ss << "  queueName " << result->queueName; Log(ss); } else { ss << "  queueName = nullptr"; Log(ss); } // Class: const char*     
+    if (result->status) { ss << "  status " << result->status; Log(ss); } else { ss << "  status = nullptr"; Log(ss); } // Class: const char*     
+    if (result->ticketId) { ss << "  ticketId " << result->ticketId; Log(ss); } else { ss << "  ticketId = nullptr"; Log(ss); } // Class: const char* 
     return S_OK;
 }
 
 void AutoGenMatchmakingTests::LogGetQueueStatisticsRequest(PFMatchmakingGetQueueStatisticsRequest const* request, const char* testName)
 {
-    if( !TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    if (!TestApp::ShouldTrace(PFTestTraceLevel::Information))
     {
         return;
     }
@@ -1200,18 +1200,18 @@ void AutoGenMatchmakingTests::LogGetQueueStatisticsRequest(PFMatchmakingGetQueue
     ss << "  customTagsCount " << request->customTagsCount; Log(ss);
 
     // PFStringDictionaryEntry
-    for( uint32_t i=0; i<request->customTagsCount; i++ )
+    for (uint32_t i=0; i<request->customTagsCount; i++)
     {
             ss << "  request->customTags[" << i << "]:" << request->customTags[i].key << "=" << request->customTags[i].value; Log(ss);
             
     } 
-    if( request->queueName ) { ss << "  queueName " << request->queueName; Log(ss); } else { ss << "  queueName = nullptr"; Log(ss); } // Class: const char* 
+    if (request->queueName) { ss << "  queueName " << request->queueName; Log(ss); } else { ss << "  queueName = nullptr"; Log(ss); } // Class: const char* 
 
 }
 
-HRESULT AutoGenMatchmakingTests::LogPFMatchmakingGetQueueStatisticsResult(PFMatchmakingGetQueueStatisticsResult const* result)
+HRESULT AutoGenMatchmakingTests::LogGetQueueStatisticsResult(PFMatchmakingGetQueueStatisticsResult const* result)
 {
-    if( !TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    if (!TestApp::ShouldTrace(PFTestTraceLevel::Information))
     {
         return S_OK;
     }
@@ -1227,7 +1227,7 @@ HRESULT AutoGenMatchmakingTests::LogPFMatchmakingGetQueueStatisticsResult(PFMatc
 
 void AutoGenMatchmakingTests::LogGetServerBackfillTicketRequest(PFMatchmakingGetServerBackfillTicketRequest const* request, const char* testName)
 {
-    if( !TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    if (!TestApp::ShouldTrace(PFTestTraceLevel::Information))
     {
         return;
     }
@@ -1244,20 +1244,20 @@ void AutoGenMatchmakingTests::LogGetServerBackfillTicketRequest(PFMatchmakingGet
     ss << "  customTagsCount " << request->customTagsCount; Log(ss);
 
     // PFStringDictionaryEntry
-    for( uint32_t i=0; i<request->customTagsCount; i++ )
+    for (uint32_t i=0; i<request->customTagsCount; i++)
     {
             ss << "  request->customTags[" << i << "]:" << request->customTags[i].key << "=" << request->customTags[i].value; Log(ss);
             
     } 
     ss << "  escapeObject " << request->escapeObject; Log(ss); // Class: bool 
-    if( request->queueName ) { ss << "  queueName " << request->queueName; Log(ss); } else { ss << "  queueName = nullptr"; Log(ss); } // Class: const char* 
-    if( request->ticketId ) { ss << "  ticketId " << request->ticketId; Log(ss); } else { ss << "  ticketId = nullptr"; Log(ss); } // Class: const char* 
+    if (request->queueName) { ss << "  queueName " << request->queueName; Log(ss); } else { ss << "  queueName = nullptr"; Log(ss); } // Class: const char* 
+    if (request->ticketId) { ss << "  ticketId " << request->ticketId; Log(ss); } else { ss << "  ticketId = nullptr"; Log(ss); } // Class: const char* 
 
 }
 
-HRESULT AutoGenMatchmakingTests::LogPFMatchmakingGetServerBackfillTicketResult(PFMatchmakingGetServerBackfillTicketResult const* result)
+HRESULT AutoGenMatchmakingTests::LogGetServerBackfillTicketResult(PFMatchmakingGetServerBackfillTicketResult const* result)
 {
-    if( !TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    if (!TestApp::ShouldTrace(PFTestTraceLevel::Information))
     {
         return S_OK;
     }
@@ -1266,27 +1266,27 @@ HRESULT AutoGenMatchmakingTests::LogPFMatchmakingGetServerBackfillTicketResult(P
     ss << "Response:"; Log(ss);
 
     // Found PlayFabMatchmakingGetServerBackfillTicketResult    
-    if( result->cancellationReasonString ) { ss << "  cancellationReasonString " << result->cancellationReasonString; Log(ss); } else { ss << "  cancellationReasonString = nullptr"; Log(ss); } // Class: const char*     
+    if (result->cancellationReasonString) { ss << "  cancellationReasonString " << result->cancellationReasonString; Log(ss); } else { ss << "  cancellationReasonString = nullptr"; Log(ss); } // Class: const char*     
     ss << "  created " << result->created; Log(ss); // Class: time_t     
     ss << "  giveUpAfterSeconds " << result->giveUpAfterSeconds; Log(ss); // Class: int32_t     
-    if( result->matchId ) { ss << "  matchId " << result->matchId; Log(ss); } else { ss << "  matchId = nullptr"; Log(ss); } // Class: const char*         
+    if (result->matchId) { ss << "  matchId " << result->matchId; Log(ss); } else { ss << "  matchId = nullptr"; Log(ss); } // Class: const char*         
     ss << "  membersCount " << result->membersCount; Log(ss);
 
     // PFMatchmakingMatchmakingPlayerWithTeamAssignment
-    for( uint32_t i=0; i<result->membersCount; i++ )
+    for (uint32_t i=0; i<result->membersCount; i++)
     {
             ss << "  result->members[" << i << "]:" << result->members[i]; Log(ss); // PFMatchmakingMatchmakingPlayerWithTeamAssignment
     }     
-    if( result->queueName ) { ss << "  queueName " << result->queueName; Log(ss); } else { ss << "  queueName = nullptr"; Log(ss); } // Class: const char*     
+    if (result->queueName) { ss << "  queueName " << result->queueName; Log(ss); } else { ss << "  queueName = nullptr"; Log(ss); } // Class: const char*     
     ss << "  serverDetails " << result->serverDetails; Log(ss); // Class: PFMatchmakingServerDetails     
-    if( result->status ) { ss << "  status " << result->status; Log(ss); } else { ss << "  status = nullptr"; Log(ss); } // Class: const char*     
-    if( result->ticketId ) { ss << "  ticketId " << result->ticketId; Log(ss); } else { ss << "  ticketId = nullptr"; Log(ss); } // Class: const char* 
+    if (result->status) { ss << "  status " << result->status; Log(ss); } else { ss << "  status = nullptr"; Log(ss); } // Class: const char*     
+    if (result->ticketId) { ss << "  ticketId " << result->ticketId; Log(ss); } else { ss << "  ticketId = nullptr"; Log(ss); } // Class: const char* 
     return S_OK;
 }
 
 void AutoGenMatchmakingTests::LogJoinMatchmakingTicketRequest(PFMatchmakingJoinMatchmakingTicketRequest const* request, const char* testName)
 {
-    if( !TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    if (!TestApp::ShouldTrace(PFTestTraceLevel::Information))
     {
         return;
     }
@@ -1303,20 +1303,20 @@ void AutoGenMatchmakingTests::LogJoinMatchmakingTicketRequest(PFMatchmakingJoinM
     ss << "  customTagsCount " << request->customTagsCount; Log(ss);
 
     // PFStringDictionaryEntry
-    for( uint32_t i=0; i<request->customTagsCount; i++ )
+    for (uint32_t i=0; i<request->customTagsCount; i++)
     {
             ss << "  request->customTags[" << i << "]:" << request->customTags[i].key << "=" << request->customTags[i].value; Log(ss);
             
     } 
     ss << "  member " << request->member; Log(ss); // Class: PFMatchmakingMatchmakingPlayer 
-    if( request->queueName ) { ss << "  queueName " << request->queueName; Log(ss); } else { ss << "  queueName = nullptr"; Log(ss); } // Class: const char* 
-    if( request->ticketId ) { ss << "  ticketId " << request->ticketId; Log(ss); } else { ss << "  ticketId = nullptr"; Log(ss); } // Class: const char* 
+    if (request->queueName) { ss << "  queueName " << request->queueName; Log(ss); } else { ss << "  queueName = nullptr"; Log(ss); } // Class: const char* 
+    if (request->ticketId) { ss << "  ticketId " << request->ticketId; Log(ss); } else { ss << "  ticketId = nullptr"; Log(ss); } // Class: const char* 
 
 }
 
 void AutoGenMatchmakingTests::LogListMatchmakingTicketsForPlayerRequest(PFMatchmakingListMatchmakingTicketsForPlayerRequest const* request, const char* testName)
 {
-    if( !TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    if (!TestApp::ShouldTrace(PFTestTraceLevel::Information))
     {
         return;
     }
@@ -1333,19 +1333,19 @@ void AutoGenMatchmakingTests::LogListMatchmakingTicketsForPlayerRequest(PFMatchm
     ss << "  customTagsCount " << request->customTagsCount; Log(ss);
 
     // PFStringDictionaryEntry
-    for( uint32_t i=0; i<request->customTagsCount; i++ )
+    for (uint32_t i=0; i<request->customTagsCount; i++)
     {
             ss << "  request->customTags[" << i << "]:" << request->customTags[i].key << "=" << request->customTags[i].value; Log(ss);
             
     } 
     ss << "  entity " << request->entity; Log(ss); // Class: PFEntityKey 
-    if( request->queueName ) { ss << "  queueName " << request->queueName; Log(ss); } else { ss << "  queueName = nullptr"; Log(ss); } // Class: const char* 
+    if (request->queueName) { ss << "  queueName " << request->queueName; Log(ss); } else { ss << "  queueName = nullptr"; Log(ss); } // Class: const char* 
 
 }
 
-HRESULT AutoGenMatchmakingTests::LogPFMatchmakingListMatchmakingTicketsForPlayerResult(PFMatchmakingListMatchmakingTicketsForPlayerResult const* result)
+HRESULT AutoGenMatchmakingTests::LogListMatchmakingTicketsForPlayerResult(PFMatchmakingListMatchmakingTicketsForPlayerResult const* result)
 {
-    if( !TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    if (!TestApp::ShouldTrace(PFTestTraceLevel::Information))
     {
         return S_OK;
     }
@@ -1357,7 +1357,7 @@ HRESULT AutoGenMatchmakingTests::LogPFMatchmakingListMatchmakingTicketsForPlayer
     ss << "  ticketIdsCount " << result->ticketIdsCount; Log(ss);
 
     // const char*
-    for( uint32_t i=0; i<result->ticketIdsCount; i++ )
+    for (uint32_t i=0; i<result->ticketIdsCount; i++)
     {
             ss << "  result->ticketIds[" << i << "]:" << result->ticketIds[i]; Log(ss); // const char*
     } 
@@ -1366,7 +1366,7 @@ HRESULT AutoGenMatchmakingTests::LogPFMatchmakingListMatchmakingTicketsForPlayer
 
 void AutoGenMatchmakingTests::LogListServerBackfillTicketsForPlayerRequest(PFMatchmakingListServerBackfillTicketsForPlayerRequest const* request, const char* testName)
 {
-    if( !TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    if (!TestApp::ShouldTrace(PFTestTraceLevel::Information))
     {
         return;
     }
@@ -1383,19 +1383,19 @@ void AutoGenMatchmakingTests::LogListServerBackfillTicketsForPlayerRequest(PFMat
     ss << "  customTagsCount " << request->customTagsCount; Log(ss);
 
     // PFStringDictionaryEntry
-    for( uint32_t i=0; i<request->customTagsCount; i++ )
+    for (uint32_t i=0; i<request->customTagsCount; i++)
     {
             ss << "  request->customTags[" << i << "]:" << request->customTags[i].key << "=" << request->customTags[i].value; Log(ss);
             
     } 
     ss << "  entity " << request->entity; Log(ss); // Class: PFEntityKey 
-    if( request->queueName ) { ss << "  queueName " << request->queueName; Log(ss); } else { ss << "  queueName = nullptr"; Log(ss); } // Class: const char* 
+    if (request->queueName) { ss << "  queueName " << request->queueName; Log(ss); } else { ss << "  queueName = nullptr"; Log(ss); } // Class: const char* 
 
 }
 
-HRESULT AutoGenMatchmakingTests::LogPFMatchmakingListServerBackfillTicketsForPlayerResult(PFMatchmakingListServerBackfillTicketsForPlayerResult const* result)
+HRESULT AutoGenMatchmakingTests::LogListServerBackfillTicketsForPlayerResult(PFMatchmakingListServerBackfillTicketsForPlayerResult const* result)
 {
-    if( !TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    if (!TestApp::ShouldTrace(PFTestTraceLevel::Information))
     {
         return S_OK;
     }
@@ -1407,7 +1407,7 @@ HRESULT AutoGenMatchmakingTests::LogPFMatchmakingListServerBackfillTicketsForPla
     ss << "  ticketIdsCount " << result->ticketIdsCount; Log(ss);
 
     // const char*
-    for( uint32_t i=0; i<result->ticketIdsCount; i++ )
+    for (uint32_t i=0; i<result->ticketIdsCount; i++)
     {
             ss << "  result->ticketIds[" << i << "]:" << result->ticketIds[i]; Log(ss); // const char*
     } 

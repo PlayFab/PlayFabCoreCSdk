@@ -47,22 +47,24 @@ STDAPI PFMemGetFunctions(
 
 HRESULT PFInitialize(
     _In_z_ const char* titleId,
+    _In_opt_z_ const char* connectionString,
     _In_opt_ XTaskQueueHandle backgroundQueue,
     _Outptr_ PFStateHandle* stateHandle
 ) noexcept
 {
-    return PFGlobalState::Create(titleId, nullptr, backgroundQueue, stateHandle);
+    return PFGlobalState::Create(titleId, nullptr, connectionString, backgroundQueue, stateHandle);
 }
 
 HRESULT PFAdminInitialize(
     _In_z_ const char* titleId,
     _In_z_ const char* secretKey,
+    _In_opt_z_ const char* connectionString,
     _In_opt_ XTaskQueueHandle backgroundQueue,
     _Outptr_ PFStateHandle* stateHandle
 ) noexcept
 {
     RETURN_HR_INVALIDARG_IF_NULL(secretKey);
-    return PFGlobalState::Create(titleId, secretKey, backgroundQueue, stateHandle);
+    return PFGlobalState::Create(titleId, secretKey, connectionString, backgroundQueue, stateHandle);
 }
 
 HRESULT PFUninitializeAsync(

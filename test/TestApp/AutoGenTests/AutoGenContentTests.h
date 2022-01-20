@@ -40,23 +40,26 @@ protected:
     void AddTests();
 
     static void LogDeleteContentRequest(PFContentDeleteContentRequest const* request, const char* testName);
-    static void FillDeleteContentRequest(PlayFab::Wrappers::PFContentDeleteContentRequestWrapper<>& request);
-
     static void LogGetContentListRequest(PFContentGetContentListRequest const* request, const char* testName);
-    static void FillGetContentListRequest(PlayFab::Wrappers::PFContentGetContentListRequestWrapper<>& request);
-    static HRESULT LogPFContentGetContentListResult(PFContentGetContentListResult const* result);
-    static HRESULT ValidatePFContentGetContentListResult(PFContentGetContentListResult* result);
-
+    static HRESULT LogGetContentListResult(PFContentGetContentListResult const* result);
     static void LogGetContentUploadUrlRequest(PFContentGetContentUploadUrlRequest const* request, const char* testName);
-    static void FillGetContentUploadUrlRequest(PlayFab::Wrappers::PFContentGetContentUploadUrlRequestWrapper<>& request);
-    static HRESULT LogPFContentGetContentUploadUrlResult(PFContentGetContentUploadUrlResult const* result);
-    static HRESULT ValidatePFContentGetContentUploadUrlResult(PFContentGetContentUploadUrlResult* result);
-
+    static HRESULT LogGetContentUploadUrlResult(PFContentGetContentUploadUrlResult const* result);
     static void LogGetContentDownloadUrlRequest(PFContentGetContentDownloadUrlRequest const* request, const char* testName);
-    static void FillGetContentDownloadUrlRequest(PlayFab::Wrappers::PFContentGetContentDownloadUrlRequestWrapper<>& request);
-    static HRESULT LogPFContentGetContentDownloadUrlResult(PFContentGetContentDownloadUrlResult const* result);
-    static HRESULT ValidatePFContentGetContentDownloadUrlResult(PFContentGetContentDownloadUrlResult* result);
+    static HRESULT LogGetContentDownloadUrlResult(PFContentGetContentDownloadUrlResult const* result);
 
+    static void FillAdminDeleteContentRequest(PlayFab::Wrappers::PFContentDeleteContentRequestWrapper<>& request);
+
+    static void FillAdminGetContentListRequest(PlayFab::Wrappers::PFContentGetContentListRequestWrapper<>& request);
+    static HRESULT ValidateAdminGetContentListResponse(PFContentGetContentListResult* result);
+
+    static void FillAdminGetContentUploadUrlRequest(PlayFab::Wrappers::PFContentGetContentUploadUrlRequestWrapper<>& request);
+    static HRESULT ValidateAdminGetContentUploadUrlResponse(PFContentGetContentUploadUrlResult* result);
+
+    static void FillClientGetContentDownloadUrlRequest(PlayFab::Wrappers::PFContentGetContentDownloadUrlRequestWrapper<>& request);
+    static HRESULT ValidateClientGetContentDownloadUrlResponse(PFContentGetContentDownloadUrlResult* result);
+
+    static void FillServerGetContentDownloadUrlRequest(PlayFab::Wrappers::PFContentGetContentDownloadUrlRequestWrapper<>& request);
+    static HRESULT ValidateServerGetContentDownloadUrlResponse(PFContentGetContentDownloadUrlResult* result);
 
     struct ContentTestData
     {

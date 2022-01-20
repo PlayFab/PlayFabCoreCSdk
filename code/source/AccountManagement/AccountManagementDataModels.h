@@ -647,6 +647,39 @@ public:
     static HRESULT Copy(const PFAccountManagementGetAccountInfoResult& input, PFAccountManagementGetAccountInfoResult& output, ModelBuffer& buffer);
 };
 
+class GetPlayerCombinedInfoRequest : public Wrappers::PFAccountManagementGetPlayerCombinedInfoRequestWrapper<Allocator>, public InputModel
+{
+public:
+    using ModelWrapperType = typename Wrappers::PFAccountManagementGetPlayerCombinedInfoRequestWrapper<Allocator>;
+    using ModelWrapperType::ModelType;
+
+    // Constructors
+    using ModelWrapperType::ModelWrapperType;
+
+    // InputModel
+    JsonValue ToJson() const override;
+    static JsonValue ToJson(const PFAccountManagementGetPlayerCombinedInfoRequest& input);
+
+};
+
+class GetPlayerCombinedInfoResult : public Wrappers::PFAccountManagementGetPlayerCombinedInfoResultWrapper<Allocator>, public OutputModel<PFAccountManagementGetPlayerCombinedInfoResult>
+{
+public:
+    using ModelWrapperType = typename Wrappers::PFAccountManagementGetPlayerCombinedInfoResultWrapper<Allocator>;
+    using ModelWrapperType::ModelType;
+
+    // Constructors
+    using ModelWrapperType::ModelWrapperType;
+
+    // OutputModel
+    void FromJson(const JsonValue& input) override;
+    size_t RequiredBufferSize() const override;
+    Result<PFAccountManagementGetPlayerCombinedInfoResult const*> Copy(ModelBuffer& buffer) const override;
+
+    static size_t RequiredBufferSize(const PFAccountManagementGetPlayerCombinedInfoResult& model);
+    static HRESULT Copy(const PFAccountManagementGetPlayerCombinedInfoResult& input, PFAccountManagementGetPlayerCombinedInfoResult& output, ModelBuffer& buffer);
+};
+
 class GetPlayFabIDsFromFacebookIDsRequest : public Wrappers::PFAccountManagementGetPlayFabIDsFromFacebookIDsRequestWrapper<Allocator>, public InputModel
 {
 public:
@@ -1811,21 +1844,6 @@ public:
 
 };
 
-class DeletePushNotificationTemplateRequest : public Wrappers::PFAccountManagementDeletePushNotificationTemplateRequestWrapper<Allocator>, public InputModel
-{
-public:
-    using ModelWrapperType = typename Wrappers::PFAccountManagementDeletePushNotificationTemplateRequestWrapper<Allocator>;
-    using ModelWrapperType::ModelType;
-
-    // Constructors
-    using ModelWrapperType::ModelWrapperType;
-
-    // InputModel
-    JsonValue ToJson() const override;
-    static JsonValue ToJson(const PFAccountManagementDeletePushNotificationTemplateRequest& input);
-
-};
-
 class GetServerCustomIDsFromPlayFabIDsRequest : public Wrappers::PFAccountManagementGetServerCustomIDsFromPlayFabIDsRequestWrapper<Allocator>, public InputModel
 {
 public:
@@ -1970,55 +1988,6 @@ public:
 
 };
 
-class LocalizedPushNotificationProperties : public Wrappers::PFAccountManagementLocalizedPushNotificationPropertiesWrapper<Allocator>, public InputModel
-{
-public:
-    using ModelWrapperType = typename Wrappers::PFAccountManagementLocalizedPushNotificationPropertiesWrapper<Allocator>;
-    using ModelWrapperType::ModelType;
-    using DictionaryEntryType = ModelWrapperType::DictionaryEntryType;
-
-    // Constructors
-    using ModelWrapperType::ModelWrapperType;
-
-    // InputModel
-    JsonValue ToJson() const override;
-    static JsonValue ToJson(const PFAccountManagementLocalizedPushNotificationProperties& input);
-
-};
-
-class SavePushNotificationTemplateRequest : public Wrappers::PFAccountManagementSavePushNotificationTemplateRequestWrapper<Allocator>, public InputModel
-{
-public:
-    using ModelWrapperType = typename Wrappers::PFAccountManagementSavePushNotificationTemplateRequestWrapper<Allocator>;
-    using ModelWrapperType::ModelType;
-
-    // Constructors
-    using ModelWrapperType::ModelWrapperType;
-
-    // InputModel
-    JsonValue ToJson() const override;
-    static JsonValue ToJson(const PFAccountManagementSavePushNotificationTemplateRequest& input);
-
-};
-
-class SavePushNotificationTemplateResult : public Wrappers::PFAccountManagementSavePushNotificationTemplateResultWrapper<Allocator>, public OutputModel<PFAccountManagementSavePushNotificationTemplateResult>
-{
-public:
-    using ModelWrapperType = typename Wrappers::PFAccountManagementSavePushNotificationTemplateResultWrapper<Allocator>;
-    using ModelWrapperType::ModelType;
-
-    // Constructors
-    using ModelWrapperType::ModelWrapperType;
-
-    // OutputModel
-    void FromJson(const JsonValue& input) override;
-    size_t RequiredBufferSize() const override;
-    Result<PFAccountManagementSavePushNotificationTemplateResult const*> Copy(ModelBuffer& buffer) const override;
-
-    static size_t RequiredBufferSize(const PFAccountManagementSavePushNotificationTemplateResult& model);
-    static HRESULT Copy(const PFAccountManagementSavePushNotificationTemplateResult& input, PFAccountManagementSavePushNotificationTemplateResult& output, ModelBuffer& buffer);
-};
-
 class SendCustomAccountRecoveryEmailRequest : public Wrappers::PFAccountManagementSendCustomAccountRecoveryEmailRequestWrapper<Allocator>, public InputModel
 {
 public:
@@ -2046,66 +2015,6 @@ public:
     // InputModel
     JsonValue ToJson() const override;
     static JsonValue ToJson(const PFAccountManagementSendEmailFromTemplateRequest& input);
-
-};
-
-class AdvancedPushPlatformMsg : public Wrappers::PFAccountManagementAdvancedPushPlatformMsgWrapper<Allocator>, public InputModel
-{
-public:
-    using ModelWrapperType = typename Wrappers::PFAccountManagementAdvancedPushPlatformMsgWrapper<Allocator>;
-    using ModelWrapperType::ModelType;
-
-    // Constructors
-    using ModelWrapperType::ModelWrapperType;
-
-    // InputModel
-    JsonValue ToJson() const override;
-    static JsonValue ToJson(const PFAccountManagementAdvancedPushPlatformMsg& input);
-
-};
-
-class PushNotificationPackage : public Wrappers::PFAccountManagementPushNotificationPackageWrapper<Allocator>, public InputModel
-{
-public:
-    using ModelWrapperType = typename Wrappers::PFAccountManagementPushNotificationPackageWrapper<Allocator>;
-    using ModelWrapperType::ModelType;
-
-    // Constructors
-    using ModelWrapperType::ModelWrapperType;
-
-    // InputModel
-    JsonValue ToJson() const override;
-    static JsonValue ToJson(const PFAccountManagementPushNotificationPackage& input);
-
-};
-
-class SendPushNotificationRequest : public Wrappers::PFAccountManagementSendPushNotificationRequestWrapper<Allocator>, public InputModel
-{
-public:
-    using ModelWrapperType = typename Wrappers::PFAccountManagementSendPushNotificationRequestWrapper<Allocator>;
-    using ModelWrapperType::ModelType;
-
-    // Constructors
-    using ModelWrapperType::ModelWrapperType;
-
-    // InputModel
-    JsonValue ToJson() const override;
-    static JsonValue ToJson(const PFAccountManagementSendPushNotificationRequest& input);
-
-};
-
-class SendPushNotificationFromTemplateRequest : public Wrappers::PFAccountManagementSendPushNotificationFromTemplateRequestWrapper<Allocator>, public InputModel
-{
-public:
-    using ModelWrapperType = typename Wrappers::PFAccountManagementSendPushNotificationFromTemplateRequestWrapper<Allocator>;
-    using ModelWrapperType::ModelType;
-
-    // Constructors
-    using ModelWrapperType::ModelWrapperType;
-
-    // InputModel
-    JsonValue ToJson() const override;
-    static JsonValue ToJson(const PFAccountManagementSendPushNotificationFromTemplateRequest& input);
 
 };
 
