@@ -232,6 +232,7 @@ void AutoGenCatalogTests::LogGetDraftItemRequest(PFCatalogGetDraftItemRequest co
             
     } 
     ss << "  entity " << request->entity; Log(ss); // Class: PFEntityKey 
+    ss << "  expandScanningStatus " << request->expandScanningStatus; Log(ss); // Class: bool 
     if (request->id) { ss << "  id " << request->id; Log(ss); } else { ss << "  id = nullptr"; Log(ss); } // Class: const char* 
 
 }

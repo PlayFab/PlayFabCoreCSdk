@@ -1,332 +1,116 @@
 #include "stdafx.h"
 #include <playfab/PFTitlePlayer.h>
+#include "GlobalState.h"
 #include "TitlePlayer.h"
+#include "ApiHelpers.h"
+#include "ApiAsyncProviders.h"
 
 using namespace PlayFab;
 
-HRESULT PFTitlePlayerDuplicateHandle(
+PF_API PFTitlePlayerDuplicateHandle(
     _In_ PFTitlePlayerHandle titlePlayerHandle,
     _Out_ PFTitlePlayerHandle* duplicatedHandle
 ) noexcept
 {
-    RETURN_HR_INVALIDARG_IF_NULL(titlePlayerHandle);
-    RETURN_HR_INVALIDARG_IF_NULL(duplicatedHandle);
+    return ApiImpl(API_IDENTITY(PFTitlePlayerDuplicateHandle), [&](GlobalState& state)
+    {
+        RETURN_HR_INVALIDARG_IF_NULL(duplicatedHandle);
 
-    *duplicatedHandle = MakeUnique<PFTitlePlayer>(*titlePlayerHandle).release();
-    return S_OK;
+        SharedPtr<TitlePlayer> titlePlayer;
+        RETURN_IF_FAILED(state.TitlePlayers().FromHandle(titlePlayerHandle, titlePlayer));
+        return state.TitlePlayers().MakeHandle(std::move(titlePlayer), *duplicatedHandle);
+    });
 }
 
-void PFTitlePlayerCloseHandle(
+PF_API_(void) PFTitlePlayerCloseHandle(
     _In_ PFTitlePlayerHandle titlePlayerHandle
 ) noexcept
 {
-    UniquePtr<PFTitlePlayer>{ titlePlayerHandle };
+    ApiImpl(API_IDENTITY(PFTitlePlayerCloseHandle), [&](GlobalState& state)
+    {
+        state.TitlePlayers().CloseHandle(titlePlayerHandle);
+        return S_OK;
+    });
 }
 
-HRESULT PFTitlePlayerGetEntityHandle(
-    _In_ PFTitlePlayerHandle titlePlayerHandle,
-    _Out_ PFEntityHandle* entityHandle
-) noexcept
-{
-    RETURN_HR_INVALIDARG_IF_NULL(titlePlayerHandle);
-    RETURN_HR_INVALIDARG_IF_NULL(entityHandle);
-
-    *entityHandle = MakeUnique<PFEntity>(titlePlayerHandle->titlePlayer).release();
-    return S_OK;
-}
-
-HRESULT PFTitlePlayerGetPlayFabIdSize(
-    _In_ PFTitlePlayerHandle titlePlayerHandle,
-    _Out_ size_t* playFabIdSize
-) noexcept
-{
-    RETURN_HR_INVALIDARG_IF_NULL(titlePlayerHandle);
-    RETURN_HR_INVALIDARG_IF_NULL(playFabIdSize);
-
-    *playFabIdSize = titlePlayerHandle->titlePlayer->PlayFabId().size() + 1;
-    return S_OK;
-}
-
-HRESULT PFTitlePlayerGetPlayFabId(
-    _In_ PFTitlePlayerHandle titlePlayerHandle,
-    _In_ size_t playFabIdSize,
-    _Out_writes_bytes_to_opt_(playFabIdSize, playFabIdUsed) char* playFabIdBuffer,
-    _Out_opt_ size_t* playFabIdUsed
-) noexcept
-{
-    RETURN_HR_INVALIDARG_IF_NULL(titlePlayerHandle);
-    RETURN_HR_INVALIDARG_IF_NULL(playFabIdBuffer);
-
-    auto playFabId = titlePlayerHandle->titlePlayer->PlayFabId();
-    if (playFabId.size() + 1 > playFabIdSize)
-    {
-        return E_INVALIDARG;
-    }
-
-#if HC_PLATFORM_IS_MICROSOFT
-    strcpy_s(playFabIdBuffer, playFabIdSize, playFabId.data());
-#else
-    std::strcpy(playFabIdBuffer, playFabId.data());
-#endif
-    if (playFabIdUsed)
-    {
-        *playFabIdUsed = playFabId.size() + 1;
-    }
-
-    return S_OK;
-}
-
-HRESULT PFTitlePlayerGetCachedSessionTicketSize(
-    _In_ PFTitlePlayerHandle titlePlayerHandle,
-    _Out_ size_t* sessionTicketSize
-) noexcept
-{
-    RETURN_HR_INVALIDARG_IF_NULL(titlePlayerHandle);
-    RETURN_HR_INVALIDARG_IF_NULL(sessionTicketSize);
-
-    auto sessionTicket = titlePlayerHandle->titlePlayer->SessionTicket();
-    assert(sessionTicket);
-    if (!sessionTicket)
-    {
-        return E_UNEXPECTED;
-    }
-
-    *sessionTicketSize = sessionTicket->size() + 1;
-    return S_OK;
-}
-
-HRESULT PFTitlePlayerGetCachedSessionTicket(
-    _In_ PFTitlePlayerHandle titlePlayerHandle,
-    _In_ size_t sessionTicketBufferSize,
-    _Out_writes_bytes_to_opt_(sessionTicketBufferSize, *bufferUsed) char* sessionTicketBuffer,
-    _Out_opt_ size_t* bufferUsed
-) noexcept
-{
-    RETURN_HR_INVALIDARG_IF_NULL(titlePlayerHandle);
-    RETURN_HR_INVALIDARG_IF_NULL(sessionTicketBuffer);
-
-    auto sessionTicket = titlePlayerHandle->titlePlayer->SessionTicket();
-    assert(sessionTicket);
-    if (!sessionTicket)
-    {
-        return E_UNEXPECTED;
-    }
-
-    if (sessionTicket->size() + 1 > sessionTicketBufferSize)
-    {
-        return E_INVALIDARG;
-    }
-
-#if HC_PLATFORM_IS_MICROSOFT
-    strcpy_s(sessionTicketBuffer, sessionTicketBufferSize, sessionTicket->data());
-#else
-    std::strcpy(sessionTicketBuffer, sessionTicket->data());
-#endif
-    if (bufferUsed)
-    {
-        *bufferUsed = sessionTicket->size() + 1;
-    }
-   
-    return S_OK;
-}
-
-HRESULT PFTitlePlayerGetEntityKeySize(
+PF_API PFTitlePlayerGetEntityKeySize(
     _In_ PFTitlePlayerHandle titlePlayerHandle,
     _Out_ size_t* bufferSize
 ) noexcept
 {
-    RETURN_HR_INVALIDARG_IF_NULL(titlePlayerHandle);
-
-    PFEntity entity{ titlePlayerHandle->titlePlayer };
-    return PFEntityGetEntityKeySize(&entity, bufferSize);
+    return TitlePlayerApiImpl(API_IDENTITY(PFTitlePlayerGetEntityKeySize), titlePlayerHandle, [&](SharedPtr<TitlePlayer>& titlePlayer)
+    {
+        RETURN_HR_INVALIDARG_IF_NULL(bufferSize);
+        *bufferSize = titlePlayer->EntityKey().RequiredBufferSize();
+        return S_OK;
+    });
 }
 
-HRESULT PFTitlePlayerGetEntityKey(
+PF_API PFTitlePlayerGetEntityKey(
     _In_ PFTitlePlayerHandle titlePlayerHandle,
     _In_ size_t bufferSize,
     _Out_writes_bytes_to_(bufferSize, *bufferUsed) void* buffer,
-    _Outptr_ const PFEntityKey** entityKey,
+    _Outptr_ const PFEntityKey** result,
     _Out_opt_ size_t* bufferUsed
 ) noexcept
 {
-    RETURN_HR_INVALIDARG_IF_NULL(titlePlayerHandle);
+    return TitlePlayerApiImpl(API_IDENTITY(PFTitlePlayerGetEntityKey), titlePlayerHandle, [&](SharedPtr<TitlePlayer>& titlePlayer)
+    {
+        RETURN_HR_INVALIDARG_IF_NULL(buffer);
+        RETURN_HR_INVALIDARG_IF_NULL(result);
 
-    PFEntity entity{ titlePlayerHandle->titlePlayer };
-    return PFEntityGetEntityKey(&entity, bufferSize, buffer, entityKey, bufferUsed);
+        auto& entityKey = titlePlayer->EntityKey();
+        RETURN_HR_IF(E_INVALIDARG, bufferSize < entityKey.RequiredBufferSize());
+
+        ModelBuffer b{ buffer, bufferSize };
+        auto copyResult = entityKey.Copy(b);
+        if (SUCCEEDED(copyResult.hr))
+        {
+            *result = copyResult.Payload();
+            if (bufferUsed)
+            {
+                assert(bufferSize - b.RemainingSpace() == entityKey.RequiredBufferSize());
+                *bufferUsed = bufferSize - b.RemainingSpace();
+            }
+        }
+        return copyResult.hr;
+    });
 }
 
-HRESULT PFTitlePlayerGetCachedEntityTokenSize(
+PF_API PFTitlePlayerGetEntityTokenAsync(
     _In_ PFTitlePlayerHandle titlePlayerHandle,
+    _Inout_ XAsyncBlock* async
+) noexcept
+{
+    return TitlePlayerAsyncApiImpl(async, API_IDENTITY(PFTitlePlayerGetEntityTokenAsync), titlePlayerHandle, [&](SharedPtr<TitlePlayer> titlePlayer, RunContext&& rc)
+    {
+        auto provider = MakeProvider(std::move(rc), async, API_IDENTITY(PFTitlePlayerGetEntityTokenAsync), std::bind(&TitlePlayer::GetEntityToken, std::move(titlePlayer), false, std::placeholders::_1));
+        return Provider::Run(UniquePtr<Provider>(provider.release()));
+    });
+}
+
+PF_API PFTitlePlayerGetEntityTokenResultSize(
+    _Inout_ XAsyncBlock* async,
     _Out_ size_t* bufferSize
 ) noexcept
 {
-    RETURN_HR_INVALIDARG_IF_NULL(titlePlayerHandle);
-
-    PFEntity entity{ titlePlayerHandle->titlePlayer };
-    return PFEntityGetCachedEntityTokenSize(&entity, bufferSize);
+    return XAsyncGetResultSize(async, bufferSize);
 }
 
-HRESULT PFTitlePlayerGetCachedEntityToken(
-    _In_ PFTitlePlayerHandle titlePlayerHandle,
+PF_API PFTitlePlayerGetEntityTokenResult(
+    _Inout_ XAsyncBlock* async,
     _In_ size_t bufferSize,
     _Out_writes_bytes_to_(bufferSize, *bufferUsed) void* buffer,
     _Outptr_ const PFEntityToken** entityToken,
     _Out_opt_ size_t* bufferUsed
 ) noexcept
 {
-    RETURN_HR_INVALIDARG_IF_NULL(titlePlayerHandle);
+    RETURN_HR_INVALIDARG_IF_NULL(entityToken);
 
-    PFEntity entity{ titlePlayerHandle->titlePlayer };
-    return PFEntityGetCachedEntityToken(&entity, bufferSize, buffer, entityToken, bufferUsed);
-}
-
-HRESULT PFTitlePlayerGetPlayerCombinedInfoSize(
-    _In_ PFTitlePlayerHandle titlePlayerHandle,
-    _Out_ size_t* bufferSize
-) noexcept
-{
-    RETURN_HR_INVALIDARG_IF_NULL(titlePlayerHandle);
-    RETURN_HR_INVALIDARG_IF_NULL(bufferSize);
-
-    auto& playerCombinedInfo = titlePlayerHandle->titlePlayer->PlayerCombinedInfo();
-    if (playerCombinedInfo)
+    HRESULT hr =  XAsyncGetResult(async, API_IDENTITY(PFTitlePlayerGetEntityTokenAsync), bufferSize, buffer, bufferUsed);
+    if (SUCCEEDED(hr))
     {
-        *bufferSize = playerCombinedInfo->RequiredBufferSize();
+        *entityToken = static_cast<PFEntityToken*>(buffer);
     }
-    else
-    {
-        *bufferSize = 0;
-    }
-    return S_OK;
-}
-
-HRESULT PFTitlePlayerGetPlayerCombinedInfo(
-    _In_ PFTitlePlayerHandle titlePlayerHandle,
-    _In_ size_t bufferSize,
-    _Out_writes_bytes_to_(bufferSize, *bufferUsed) void* buffer,
-    _Outptr_ const PFGetPlayerCombinedInfoResultPayload** playerCombinedInfoPtr,
-    _Out_opt_ size_t* bufferUsed
-) noexcept
-{
-    RETURN_HR_INVALIDARG_IF_NULL(titlePlayerHandle);
-    RETURN_HR_INVALIDARG_IF_NULL(buffer);
-    RETURN_HR_INVALIDARG_IF_NULL(playerCombinedInfoPtr);
-
-    ModelBuffer b{ buffer, bufferSize };
-    auto& playerCombinedInfo = titlePlayerHandle->titlePlayer->PlayerCombinedInfo();
-    if (playerCombinedInfo)
-    {
-        auto copyResult = playerCombinedInfo->Copy(b);
-        RETURN_IF_FAILED(copyResult.hr);
-        *playerCombinedInfoPtr = copyResult.ExtractPayload();
-    }
-    else
-    {
-        TRACE_INFORMATION("PFGetPlayerCombinedInfoResultPayload not cached for this TitlePlayer");
-        *playerCombinedInfoPtr = nullptr;
-    }
-
-    if (bufferUsed)
-    {
-        *bufferUsed = bufferSize - b.RemainingSpace();
-    }
-
-    return S_OK;
-}
-
-HRESULT PFTitlePlayerGetLastLoginTime(
-    _In_ PFTitlePlayerHandle titlePlayerHandle,
-    _Out_ time_t* lastLoginTimePointer
-) noexcept
-{
-    RETURN_HR_INVALIDARG_IF_NULL(titlePlayerHandle);
-    RETURN_HR_INVALIDARG_IF_NULL(lastLoginTimePointer);
-
-    auto lastLoginTime = titlePlayerHandle->titlePlayer->LastLoginTime();
-    if (lastLoginTime)
-    {
-        *lastLoginTimePointer = *lastLoginTime;
-    }
-    else
-    {
-        // Set to default per header docs
-        *lastLoginTimePointer = time_t{ 0 };
-    }
-
-    return S_OK;
-}
-
-HRESULT PFTitlePlayerGetUserSettings(
-    _In_ PFTitlePlayerHandle titlePlayerHandle,
-    _Out_ PFAuthenticationUserSettings* userSettingsPtr
-) noexcept
-{
-    RETURN_HR_INVALIDARG_IF_NULL(titlePlayerHandle);
-    RETURN_HR_INVALIDARG_IF_NULL(userSettingsPtr);
-
-    auto& userSettings = titlePlayerHandle->titlePlayer->UserSettings();
-    if (userSettings)
-    {
-        *userSettingsPtr = titlePlayerHandle->titlePlayer->UserSettings()->Model();
-    }
-    else
-    {
-        TRACE_INFORMATION("PFAuthenticationUserSettings not cached for this TitlePlayer");
-        *userSettingsPtr = {};
-    }
-    return S_OK;
-}
-
-HRESULT PFTitlePlayerGetTreatmentAssignmentSize(
-    _In_ PFTitlePlayerHandle titlePlayerHandle,
-    _Out_ size_t* bufferSize
-) noexcept
-{
-    RETURN_HR_INVALIDARG_IF_NULL(titlePlayerHandle);
-    RETURN_HR_INVALIDARG_IF_NULL(bufferSize);
-
-    auto& treatmentAssignment = titlePlayerHandle->titlePlayer->TreatmentAssignment();
-    if (treatmentAssignment)
-    {
-        *bufferSize = treatmentAssignment->RequiredBufferSize();
-    }
-    else
-    {
-        *bufferSize = 0;
-    }
-    return S_OK;
-}
-
-HRESULT PFTitlePlayerGetTreatmentAssignment(
-    _In_ PFTitlePlayerHandle titlePlayerHandle,
-    _In_ size_t bufferSize,
-    _Out_writes_bytes_to_(bufferSize, *bufferUsed) void* buffer,
-    _Outptr_ const PFTreatmentAssignment** treatmentAssignmentPtr,
-    _Out_opt_ size_t* bufferUsed
-) noexcept 
-{
-    RETURN_HR_INVALIDARG_IF_NULL(titlePlayerHandle);
-    RETURN_HR_INVALIDARG_IF_NULL(buffer);
-    RETURN_HR_INVALIDARG_IF_NULL(treatmentAssignmentPtr);
-
-    ModelBuffer b{ buffer, bufferSize };
-    auto& treatmentAssignment = titlePlayerHandle->titlePlayer->TreatmentAssignment();
-    if (treatmentAssignment)
-    {
-        auto copyResult = treatmentAssignment->Copy(b);
-        RETURN_IF_FAILED(copyResult.hr);
-        *treatmentAssignmentPtr = copyResult.ExtractPayload();
-    }
-    else
-    {
-        TRACE_INFORMATION("PFTreatmentAssignment not cached for this TitlePlayer");
-        *treatmentAssignmentPtr = nullptr;
-    }
-
-    if (bufferUsed)
-    {
-        *bufferUsed = bufferSize - b.RemainingSpace();
-    }
-
-    return S_OK;
+    return hr;
 }

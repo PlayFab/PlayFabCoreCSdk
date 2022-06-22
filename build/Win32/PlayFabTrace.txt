@@ -1,0 +1,245 @@
+[8228][V][16:00:00.003][PlayFab] Provider[ID=PFAuthenticationAuthenticateWithCustomIdAsync] XAsyncOp::Begin
+[8228][I][16:00:00.004][HTTPCLIENT] HCHttpCallRequestSetUrl [ID 1]: method=POST url=https://65f7e17b.api.pfint.azureplayfabdev.com//PlayerIdentity/AuthenticateWithCustomId?sdk=XPlatCSdk-0.0.todaysDate
+[8228][I][16:00:00.004][HTTPCLIENT] HCHttpCallRequestSetHeader [ID 1]: Accept=application/json
+[8228][I][16:00:00.005][HTTPCLIENT] HCHttpCallRequestSetHeader [ID 1]: Content-Type=application/json; charset=utf-8
+[8228][I][16:00:00.005][HTTPCLIENT] HCHttpCallRequestSetHeader [ID 1]: X-PlayFabSDK=XPlatCSdk-0.0.todaysDate
+[8228][I][16:00:00.006][HTTPCLIENT] HCHttpCallRequestSetHeader [ID 1]: X-ReportErrorAsSuccess=true
+[8228][I][16:00:00.006][HTTPCLIENT] HCHttpCallDuplicateHandle [ID 1]
+[AEB8][V][16:00:00.007][HTTPCLIENT] HC_CALL::PerformSingleRequest [ID 1] Iteration 0
+[AEB8][V][16:00:00.007][HTTPCLIENT] HC_CALL::PerformSingleRequestAsyncProvider Begin [ID 1]
+[AEB8][V][16:00:00.066][HTTPCLIENT] WinHttpConnection [1] SendRequest
+[AEB8][V][16:00:00.087][HTTPCLIENT] WinHttpConnection WinHttp callback statusCode=1l
+[AEB8][V][16:00:00.088][HTTPCLIENT] WinHttpConnection WinHttp callback statusCode=2l
+[AEB8][V][16:00:00.089][HTTPCLIENT] WinHttpConnection WinHttp callback statusCode=4l
+[C0BC][V][16:00:00.090][HTTPCLIENT] WinHttpConnection WinHttp callback statusCode=8l
+[C0BC][V][16:00:00.427][HTTPCLIENT] WinHttpConnection WinHttp callback statusCode=16l
+[C0BC][V][16:00:00.427][HTTPCLIENT] WinHttpConnection WinHttp callback statusCode=32l
+[4168][I][16:00:00.427][HTTPCLIENT] HCHttpCallPerform [ID 1] [TID 16744l] WINHTTP_CALLBACK_STATUS_SENDREQUEST_COMPLETE
+[4168][V][16:00:00.428][HTTPCLIENT] WinHttpConnection WinHttp callback statusCode=16l
+[C0BC][V][16:00:00.428][HTTPCLIENT] WinHttpConnection WinHttp callback statusCode=32l
+[C0BC][I][16:00:00.428][HTTPCLIENT] HCHttpCallPerform [ID 1] [TID 49340l] WINHTTP_CALLBACK_STATUS_WRITE_COMPLETE bytesWritten=194
+[C0BC][V][16:00:00.428][HTTPCLIENT] WinHttpConnection WinHttp callback statusCode=64l
+[C0BC][V][16:00:00.588][HTTPCLIENT] WinHttpConnection WinHttp callback statusCode=128l
+[C0BC][I][16:00:00.589][HTTPCLIENT] WinHttpConnection [ID 1] [TID 49340l] WINHTTP_CALLBACK_STATUS_HEADERS_AVAILABLE
+[C0BC][I][16:00:00.589][HTTPCLIENT] HCHttpCallResponseSetStatusCode [ID 1]: statusCode=200
+[C0BC][I][16:00:00.589][HTTPCLIENT] HCHttpCallResponseSetResponseHeader [ID 1]: Date=Tue, 21 Jun 2022 17:46:38 GMT
+[C0BC][I][16:00:00.589][HTTPCLIENT] HCHttpCallResponseSetResponseHeader [ID 1]: Transfer-Encoding=chunked
+[C0BC][I][16:00:00.589][HTTPCLIENT] HCHttpCallResponseSetResponseHeader [ID 1]: Content-Type=application/json
+[C0BC][I][16:00:00.589][HTTPCLIENT] HCHttpCallResponseSetResponseHeader [ID 1]: Server=Kestrel
+[C0BC][I][16:00:00.590][HTTPCLIENT] HCHttpCallResponseSetResponseHeader [ID 1]: Vary=Accept-Encoding
+[C0BC][I][16:00:00.590][HTTPCLIENT] HCHttpCallResponseSetResponseHeader [ID 1]: Access-Control-Allow-Credentials=true
+[C0BC][I][16:00:00.590][HTTPCLIENT] HCHttpCallResponseSetResponseHeader [ID 1]: Access-Control-Allow-Headers=Content-Type, Content-Encoding, X-Authentication, X-Authorization, X-PlayFabSDK, X-ReportErrorAsSuccess, X-SecretKey, X-EntityToken, Authorization, x-ms-app, x-ms-client-request-id, x-ms-user-id, traceparent, tracestate, Request-Id
+[C0BC][I][16:00:00.590][HTTPCLIENT] HCHttpCallResponseSetResponseHeader [ID 1]: Access-Control-Allow-Methods=GET, POST
+[C0BC][I][16:00:00.590][HTTPCLIENT] HCHttpCallResponseSetResponseHeader [ID 1]: Access-Control-Allow-Origin=*
+[C0BC][I][16:00:00.590][HTTPCLIENT] HCHttpCallResponseSetResponseHeader [ID 1]: X-Requestid=a0f8356ad482489786ea01ce52a5e52a
+[C0BC][I][16:00:00.591][HTTPCLIENT] HCHttpCallResponseSetResponseHeader [ID 1]: X-Tracecontext-Traceid=992b3fb25d2db500d807868d18cf1ea3
+[C0BC][I][16:00:00.591][HTTPCLIENT] WinHttpConnection [ID 1] [TID 49340l] WINHTTP_CALLBACK_STATUS_DATA_AVAILABLE newBytesAvailable=1786
+[C0BC][I][16:00:00.591][HTTPCLIENT] WinHttpConnection [ID 1] [TID 49340l] WINHTTP_CALLBACK_STATUS_READ_COMPLETE bytesRead=1786
+[AEB8][I][16:00:00.591][HTTPCLIENT] WinHttpConnection [ID 1] [TID 44728l] WINHTTP_CALLBACK_STATUS_DATA_AVAILABLE newBytesAvailable=0
+[AEB8][I][16:00:00.591][HTTPCLIENT] HCHttpCallResponseSetErrorCode [ID 1]: errorCode=00000000 (00000000)
+[207C][V][16:00:00.591][HTTPCLIENT] HC_CALL::PerformSingleRequestComplete [ID 1] (hr=0x00000000)
+[AEB8][V][16:00:00.591][HTTPCLIENT] WinHttpConnection [ID 1] [TID 44728l] WINHTTP_CALLBACK_STATUS_HANDLE_CLOSING
+[AEB8][V][16:00:00.591][HTTPCLIENT] ~WinHttpCallbackContext
+[4168][V][16:00:00.592][HTTPCLIENT] HC_CALL::PerfomAsyncProvider Cleanup [ID 1]
+[AEB8][V][16:00:00.592][HTTPCLIENT] xbox::httpclient::WinHttpConnection::~WinHttpConnection
+[4168][I][16:00:00.592][HTTPCLIENT] HCHttpCallCloseHandle [ID 1]
+[207C][V][16:00:00.593][PlayFab] AuthCallProvider[ID=PFAuthenticationAuthenticateWithCustomIdAsync] Call suceeded (hr=0x00000000)
+[207C][I][16:00:00.593][HTTPCLIENT] HCHttpCallCloseHandle [ID 1]
+[4168][V][16:00:00.593][PlayFab] Provider[ID=PFAuthenticationAuthenticateWithCustomIdAsync] XAsyncOp::GetResult
+[207C][V][16:00:00.593][HTTPCLIENT] HC_CALL::~HC_CALL
+[4168][V][16:00:00.594][PlayFab] Provider[ID=PFAuthenticationAuthenticateWithCustomIdAsync] XAsyncOp::Cleanup
+[AEB8][I][16:00:00.594][HTTPCLIENT] HCHttpCallRequestSetUrl [ID 2]: method=POST url=https://65f7e17b.api.pfint.azureplayfabdev.com//TokenRefreshMockPath?sdk=XPlatCSdk-0.0.todaysDate
+[C0BC][I][16:00:00.594][HTTPCLIENT] HCHttpCallRequestSetUrl [ID 3]: method=POST url=https://65f7e17b.api.pfint.azureplayfabdev.com//TokenRefreshMockPath?sdk=XPlatCSdk-0.0.todaysDate
+[C0BC][I][16:00:00.594][HTTPCLIENT] HCHttpCallRequestSetHeader [ID 3]: Accept=application/json
+[AEB8][I][16:00:00.594][HTTPCLIENT] HCHttpCallRequestSetHeader [ID 2]: Accept=application/json
+[8228][V][16:00:00.594][PlayFab] RunContext[id=2] terminating with 3 child terminables
+[8228][V][16:00:00.594][PlayFab] TaskQueue[id=012D6E20] terminating
+[AEB8][I][16:00:00.594][HTTPCLIENT] HCHttpCallRequestSetHeader [ID 2]: Content-Type=application/json; charset=utf-8
+[C0BC][I][16:00:00.594][HTTPCLIENT] HCHttpCallRequestSetHeader [ID 3]: Content-Type=application/json; charset=utf-8
+[AEB8][I][16:00:00.595][HTTPCLIENT] HCHttpCallRequestSetHeader [ID 2]: X-PlayFabSDK=XPlatCSdk-0.0.todaysDate
+[8228][V][16:00:00.595][PlayFab] RunContext[id=5] terminating with 2 child terminables
+[8878][V][16:00:00.595][PlayFab] TaskQueue[id=012D6E20] terminated
+[C0BC][I][16:00:00.595][HTTPCLIENT] HCHttpCallRequestSetHeader [ID 3]: X-PlayFabSDK=XPlatCSdk-0.0.todaysDate
+[AEB8][I][16:00:00.595][HTTPCLIENT] HCHttpCallRequestSetHeader [ID 2]: X-ReportErrorAsSuccess=true
+[8228][V][16:00:00.595][PlayFab] TaskQueue[id=012EEC70] terminating
+[8878][V][16:00:00.595][PlayFab] RunContext[id=2] terminable terminated, 2 remaining
+[C0BC][I][16:00:00.595][HTTPCLIENT] HCHttpCallRequestSetHeader [ID 3]: X-ReportErrorAsSuccess=true
+[AEB8][I][16:00:00.595][HTTPCLIENT] HCHttpCallRequestSetHeader [ID 2]: X-EntityToken=NHxGaUwrb1ppV1hGMUwyMi9iUGtxRWgxZzcvTlpWczdZQmZBc1IzMmhJT3ZVPXx7ImkiOiIyMDIyLTA2LTIxVDE3OjQ2OjM5LjQ1OTk4NjZaIiwiaWRwIjoiQ3VzdG9tIiwiZSI6IjIwMjItMDYtMjJUMTc6NDY6MzkuNDU5OTg2NloiLCJ0aWQiOiIwMjViZDQ0YmMxZjY0MWMzYjBjNTEzOTQ3OGI3YjAyZCIsImlkaSI6IkN1c3RvbUlkIiwiaCI6IjEyODJEOUIyMjg5NTc4NzEiLCJlYyI6Im1hc3Rlcl9wbGF5ZXJfYWNjb3VudCFFQzBDNTE5OTQzNzAyMDJCLzhDOTlCRjZBMUIwMDc1NDcvIiwiZWkiOiI4Qzk5QkY2QTFCMDA3NTQ3IiwiZXQiOiJtYXN0ZXJfcGxheWVyX2FjY291bnQifQ==
+[8228][V][16:00:00.595][PlayFab] RunContext[id=9] terminating with 2 child terminables
+[C0BC][I][16:00:00.595][HTTPCLIENT] HCHttpCallRequestSetHeader [ID 3]: X-EntityToken=NHw3OFg2Q0NGODJ3NnBtRFUxQVQvL3lOV1hLVjY0ZUFSZHlROU9DdndtTVBJPXx7ImkiOiIyMDIyLTA2LTIxVDE3OjQ2OjM5LjQ1OTk4NjZaIiwiaWRwIjoiQ3VzdG9tIiwiZSI6IjIwMjItMDYtMjJUMTc6NDY6MzkuNDU5OTg2NloiLCJ0aWQiOiJhNGM3MzY1MThkZDk0MGU3YTVmMjA3OGUzODE3NDQ4YyIsImlkaSI6IkN1c3RvbUlkIiwiaCI6IkFERUE4MTFFODk1QTE5N0QiLCJlYyI6InRpdGxlX3BsYXllcl9hY2NvdW50IUVDMEM1MTk5NDM3MDIwMkIvNjVGN0UxN0IvOEM5OUJGNkExQjAwNzU0Ny9EMzlFMTY2QkMyREFDNDg4LyIsImVpIjoiRDM5RTE2NkJDMkRBQzQ4OCIsImV0IjoidGl0bGVfcGxheWVyX2FjY291bnQifQ==
+[4168][V][16:00:00.596][PlayFab] TaskQueue[id=012EEC70] terminated
+[8228][V][16:00:00.596][PlayFab] TaskQueue[id=012EF3A8] terminating
+[AEB8][I][16:00:00.596][HTTPCLIENT] HCHttpCallDuplicateHandle [ID 2]
+[4168][V][16:00:00.596][PlayFab] RunContext[id=5] terminable terminated, 1 remaining
+[C0BC][I][16:00:00.596][HTTPCLIENT] HCHttpCallDuplicateHandle [ID 3]
+[4168][V][16:00:00.596][PlayFab] TaskQueue[id=012EF3A8] terminated
+[8228][V][16:00:00.596][PlayFab] RunContext[id=14] terminating with 2 child terminables
+[207C][V][16:00:00.596][HTTPCLIENT] HC_CALL::PerformSingleRequest [ID 3] Iteration 0
+[4168][V][16:00:00.596][PlayFab] RunContext[id=9] terminable terminated, 1 remaining
+[8228][V][16:00:00.596][PlayFab] TaskQueue[id=012EEFF0] terminating
+[A328][V][16:00:00.596][HTTPCLIENT] HC_CALL::PerformSingleRequest [ID 2] Iteration 0
+[207C][V][16:00:00.597][HTTPCLIENT] HC_CALL::PerformSingleRequestAsyncProvider Begin [ID 3]
+[8228][V][16:00:00.597][PlayFab] RunContext[id=15] terminating with 1 child terminables
+[A328][V][16:00:00.597][HTTPCLIENT] HC_CALL::PerformSingleRequestAsyncProvider Begin [ID 2]
+[4168][V][16:00:00.597][PlayFab] TaskQueue[id=012EEFF0] terminated
+[8228][V][16:00:00.597][PlayFab] TaskQueue[id=03868898] terminating
+[4168][V][16:00:00.597][PlayFab] RunContext[id=14] terminable terminated, 1 remaining
+[8228][V][16:00:00.598][PlayFab] RunContext[id=6] terminating with 2 child terminables
+[8228][V][16:00:00.598][PlayFab] TaskQueue[id=012EED18] terminating
+[8228][V][16:00:00.598][PlayFab] RunContext[id=7] terminating with 2 child terminables
+[207C][V][16:00:00.598][HTTPCLIENT] WinHttpConnection [3] SendRequest
+[48F0][V][16:00:00.598][PlayFab] TaskQueue[id=012EED18] terminated
+[8228][V][16:00:00.598][PlayFab] TaskQueue[id=012EE9D0] terminating
+[48F0][V][16:00:00.598][PlayFab] RunContext[id=6] terminable terminated, 1 remaining
+[8878][V][16:00:00.598][PlayFab] TaskQueue[id=012EE9D0] terminated
+[8228][V][16:00:00.598][PlayFab] RunContext[id=8] terminating with 3 child terminables
+[8878][V][16:00:00.599][PlayFab] RunContext[id=7] terminable terminated, 1 remaining
+[AEB8][I][16:00:00.599][HTTPCLIENT] HCHttpCallRequestSetUrl [ID 4]: method=POST url=https://65f7e17b.api.pfint.azureplayfabdev.com//TokenRefreshMockPath?sdk=XPlatCSdk-0.0.todaysDate
+[8228][V][16:00:00.599][PlayFab] TaskQueue[id=012EE960] terminating
+[A328][V][16:00:00.599][HTTPCLIENT] WinHttpConnection [2] SendRequest
+[C0BC][V][16:00:00.599][HTTPCLIENT] WinHttpConnection WinHttp callback statusCode=16l
+[AEB8][I][16:00:00.599][HTTPCLIENT] HCHttpCallRequestSetHeader [ID 4]: Accept=application/json
+[48F0][V][16:00:00.599][PlayFab] TaskQueue[id=012EE960] terminated
+[8228][V][16:00:00.599][PlayFab] RunContext[id=12] terminating with 2 child terminables
+[48F0][V][16:00:00.599][PlayFab] RunContext[id=8] terminable terminated, 2 remaining
+[AEB8][I][16:00:00.599][HTTPCLIENT] HCHttpCallRequestSetHeader [ID 4]: Content-Type=application/json; charset=utf-8
+[8228][V][16:00:00.599][PlayFab] TaskQueue[id=012EF028] terminating
+[C0BC][V][16:00:00.599][HTTPCLIENT] WinHttpConnection WinHttp callback statusCode=32l
+[AEB8][I][16:00:00.600][HTTPCLIENT] HCHttpCallRequestSetHeader [ID 4]: X-PlayFabSDK=XPlatCSdk-0.0.todaysDate
+[8878][I][16:00:00.600][HTTPCLIENT] HCHttpCallPerform [ID 3] [TID 34936l] WINHTTP_CALLBACK_STATUS_SENDREQUEST_COMPLETE
+[4168][V][16:00:00.600][PlayFab] TaskQueue[id=012EF028] terminated
+[A328][V][16:00:00.600][HTTPCLIENT] WinHttpConnection WinHttp callback statusCode=1l
+[8228][V][16:00:00.600][PlayFab] RunContext[id=13] terminating with 1 child terminables
+[8878][V][16:00:00.600][HTTPCLIENT] WinHttpConnection WinHttp callback statusCode=16l
+[AEB8][I][16:00:00.600][HTTPCLIENT] HCHttpCallRequestSetHeader [ID 4]: X-ReportErrorAsSuccess=true
+[4168][V][16:00:00.600][PlayFab] RunContext[id=12] terminable terminated, 1 remaining
+[A328][V][16:00:00.600][HTTPCLIENT] WinHttpConnection WinHttp callback statusCode=2l
+[8228][V][16:00:00.600][PlayFab] TaskQueue[id=03864088] terminating
+[C0BC][V][16:00:00.600][HTTPCLIENT] WinHttpConnection WinHttp callback statusCode=32l
+[AEB8][I][16:00:00.600][HTTPCLIENT] HCHttpCallRequestSetHeader [ID 4]: X-EntityToken=NHxGaUwrb1ppV1hGMUwyMi9iUGtxRWgxZzcvTlpWczdZQmZBc1IzMmhJT3ZVPXx7ImkiOiIyMDIyLTA2LTIxVDE3OjQ2OjM5LjQ1OTk4NjZaIiwiaWRwIjoiQ3VzdG9tIiwiZSI6IjIwMjItMDYtMjJUMTc6NDY6MzkuNDU5OTg2NloiLCJ0aWQiOiIwMjViZDQ0YmMxZjY0MWMzYjBjNTEzOTQ3OGI3YjAyZCIsImlkaSI6IkN1c3RvbUlkIiwiaCI6IjEyODJEOUIyMjg5NTc4NzEiLCJlYyI6Im1hc3Rlcl9wbGF5ZXJfYWNjb3VudCFFQzBDNTE5OTQzNzAyMDJCLzhDOTlCRjZBMUIwMDc1NDcvIiwiZWkiOiI4Qzk5QkY2QTFCMDA3NTQ3IiwiZXQiOiJtYXN0ZXJfcGxheWVyX2FjY291bnQifQ==
+[8228][V][16:00:00.600][PlayFab] RunContext[id=19] terminating with 2 child terminables
+[C0BC][I][16:00:00.601][HTTPCLIENT] HCHttpCallPerform [ID 3] [TID 49340l] WINHTTP_CALLBACK_STATUS_WRITE_COMPLETE bytesWritten=4
+[8228][V][16:00:00.601][PlayFab] TaskQueue[id=0385B578] terminating
+[A328][V][16:00:00.601][HTTPCLIENT] WinHttpConnection WinHttp callback statusCode=4l
+[C0BC][V][16:00:00.601][HTTPCLIENT] WinHttpConnection WinHttp callback statusCode=64l
+[AEB8][I][16:00:00.601][HTTPCLIENT] HCHttpCallDuplicateHandle [ID 4]
+[8878][V][16:00:00.601][PlayFab] TaskQueue[id=0385B578] terminated
+[8228][V][16:00:00.601][PlayFab] RunContext[id=20] terminating with 1 child terminables
+[8878][V][16:00:00.601][PlayFab] RunContext[id=19] terminable terminated, 1 remaining
+[8228][V][16:00:00.601][PlayFab] TaskQueue[id=012EE810] terminating
+[C0BC][V][16:00:00.602][HTTPCLIENT] HC_CALL::PerformSingleRequest [ID 4] Iteration 0
+[207C][V][16:00:00.602][HTTPCLIENT] WinHttpConnection WinHttp callback statusCode=8l
+[C0BC][V][16:00:00.602][HTTPCLIENT] HC_CALL::PerformSingleRequestAsyncProvider Begin [ID 4]
+[C0BC][V][16:00:00.602][HTTPCLIENT] WinHttpConnection [4] SendRequest
+[207C][V][16:00:00.603][HTTPCLIENT] WinHttpConnection WinHttp callback statusCode=1l
+[207C][V][16:00:00.603][HTTPCLIENT] WinHttpConnection WinHttp callback statusCode=2l
+[207C][V][16:00:00.603][HTTPCLIENT] WinHttpConnection WinHttp callback statusCode=4l
+[AEB8][V][16:00:00.603][HTTPCLIENT] WinHttpConnection WinHttp callback statusCode=8l
+[4168][V][16:00:00.679][HTTPCLIENT] WinHttpConnection WinHttp callback statusCode=128l
+[4168][I][16:00:00.680][HTTPCLIENT] WinHttpConnection [ID 3] [TID 16744l] WINHTTP_CALLBACK_STATUS_HEADERS_AVAILABLE
+[4168][I][16:00:00.680][HTTPCLIENT] HCHttpCallResponseSetStatusCode [ID 3]: statusCode=404
+[4168][I][16:00:00.680][HTTPCLIENT] HCHttpCallResponseSetResponseHeader [ID 3]: Date=Tue, 21 Jun 2022 17:46:38 GMT
+[4168][I][16:00:00.680][HTTPCLIENT] HCHttpCallResponseSetResponseHeader [ID 3]: Content-Length=0
+[4168][I][16:00:00.681][HTTPCLIENT] HCHttpCallResponseSetResponseHeader [ID 3]: Server=Kestrel
+[4168][I][16:00:00.681][HTTPCLIENT] HCHttpCallResponseSetResponseHeader [ID 3]: Access-Control-Allow-Credentials=true
+[4168][I][16:00:00.681][HTTPCLIENT] HCHttpCallResponseSetResponseHeader [ID 3]: Access-Control-Allow-Headers=Content-Type, Content-Encoding, X-Authentication, X-Authorization, X-PlayFabSDK, X-ReportErrorAsSuccess, X-SecretKey, X-EntityToken, Authorization, x-ms-app, x-ms-client-request-id, x-ms-user-id, traceparent, tracestate, Request-Id
+[4168][I][16:00:00.681][HTTPCLIENT] HCHttpCallResponseSetResponseHeader [ID 3]: Access-Control-Allow-Methods=GET, POST
+[4168][I][16:00:00.681][HTTPCLIENT] HCHttpCallResponseSetResponseHeader [ID 3]: Access-Control-Allow-Origin=*
+[4168][I][16:00:00.681][HTTPCLIENT] HCHttpCallResponseSetResponseHeader [ID 3]: X-Requestid=564159aea2de452d9e0ac9dff7ab599e
+[4168][I][16:00:00.681][HTTPCLIENT] HCHttpCallResponseSetResponseHeader [ID 3]: X-Tracecontext-Traceid=0d99095b4ac6d367d77d7e8be5df1f6d
+[4168][I][16:00:00.682][HTTPCLIENT] WinHttpConnection [ID 3] [TID 16744l] WINHTTP_CALLBACK_STATUS_DATA_AVAILABLE newBytesAvailable=0
+[4168][I][16:00:00.682][HTTPCLIENT] HCHttpCallResponseSetErrorCode [ID 3]: errorCode=00000000 (00000000)
+[207C][V][16:00:00.682][HTTPCLIENT] HC_CALL::PerformSingleRequestComplete [ID 3] (hr=0x00000000)
+[4168][V][16:00:00.682][HTTPCLIENT] WinHttpConnection [ID 3] [TID 16744l] WINHTTP_CALLBACK_STATUS_HANDLE_CLOSING
+[4168][V][16:00:00.682][HTTPCLIENT] ~WinHttpCallbackContext
+[C0BC][V][16:00:00.682][HTTPCLIENT] HC_CALL::PerfomAsyncProvider Cleanup [ID 3]
+[8878][V][16:00:00.682][PlayFab] PlayFab::TokenExpiredHandler::SharedState::Invoke
+[4168][V][16:00:00.682][HTTPCLIENT] xbox::httpclient::WinHttpConnection::~WinHttpConnection
+[C0BC][I][16:00:00.683][HTTPCLIENT] HCHttpCallCloseHandle [ID 3]
+[8878][I][16:00:00.683][HTTPCLIENT] HCHttpCallCloseHandle [ID 3]
+[8878][V][16:00:00.683][HTTPCLIENT] HC_CALL::~HC_CALL
+[8878][V][16:00:00.683][PlayFab] RunContext[id=9] terminated while termination was already in progress
+[8878][V][16:00:00.683][PlayFab] RunContext[id=9] terminated while termination was already in progress
+[C0BC][V][16:00:00.683][PlayFab] TaskQueue[id=03868898] terminated
+[C0BC][V][16:00:00.683][PlayFab] RunContext[id=15] terminable terminated, 0 remaining
+[C0BC][V][16:00:00.684][PlayFab] RunContext[id=14] terminable terminated, 0 remaining
+[C0BC][V][16:00:00.684][PlayFab] RunContext[id=9] terminable terminated, 0 remaining
+[C0BC][V][16:00:00.684][PlayFab] RunContext[id=5] terminable terminated, 0 remaining
+[C0BC][V][16:00:00.684][PlayFab] RunContext[id=2] terminable terminated, 1 remaining
+[207C][V][16:00:00.821][HTTPCLIENT] WinHttpConnection WinHttp callback statusCode=16l
+[207C][V][16:00:00.821][HTTPCLIENT] WinHttpConnection WinHttp callback statusCode=32l
+[C0BC][I][16:00:00.821][HTTPCLIENT] HCHttpCallPerform [ID 2] [TID 49340l] WINHTTP_CALLBACK_STATUS_SENDREQUEST_COMPLETE
+[C0BC][V][16:00:00.822][HTTPCLIENT] WinHttpConnection WinHttp callback statusCode=16l
+[C0BC][V][16:00:00.822][HTTPCLIENT] WinHttpConnection WinHttp callback statusCode=32l
+[C0BC][I][16:00:00.822][HTTPCLIENT] HCHttpCallPerform [ID 2] [TID 49340l] WINHTTP_CALLBACK_STATUS_WRITE_COMPLETE bytesWritten=4
+[C0BC][V][16:00:00.822][HTTPCLIENT] WinHttpConnection WinHttp callback statusCode=64l
+[AEB8][V][16:00:00.837][HTTPCLIENT] WinHttpConnection WinHttp callback statusCode=16l
+[AEB8][V][16:00:00.837][HTTPCLIENT] WinHttpConnection WinHttp callback statusCode=32l
+[8878][I][16:00:00.838][HTTPCLIENT] HCHttpCallPerform [ID 4] [TID 34936l] WINHTTP_CALLBACK_STATUS_SENDREQUEST_COMPLETE
+[8878][V][16:00:00.838][HTTPCLIENT] WinHttpConnection WinHttp callback statusCode=16l
+[4168][V][16:00:00.838][HTTPCLIENT] WinHttpConnection WinHttp callback statusCode=32l
+[4168][I][16:00:00.839][HTTPCLIENT] HCHttpCallPerform [ID 4] [TID 16744l] WINHTTP_CALLBACK_STATUS_WRITE_COMPLETE bytesWritten=4
+[4168][V][16:00:00.839][HTTPCLIENT] WinHttpConnection WinHttp callback statusCode=64l
+[4168][V][16:00:00.896][HTTPCLIENT] WinHttpConnection WinHttp callback statusCode=128l
+[4168][I][16:00:00.896][HTTPCLIENT] WinHttpConnection [ID 2] [TID 16744l] WINHTTP_CALLBACK_STATUS_HEADERS_AVAILABLE
+[4168][I][16:00:00.897][HTTPCLIENT] HCHttpCallResponseSetStatusCode [ID 2]: statusCode=404
+[4168][I][16:00:00.897][HTTPCLIENT] HCHttpCallResponseSetResponseHeader [ID 2]: Date=Tue, 21 Jun 2022 17:46:39 GMT
+[4168][I][16:00:00.897][HTTPCLIENT] HCHttpCallResponseSetResponseHeader [ID 2]: Content-Length=0
+[4168][I][16:00:00.898][HTTPCLIENT] HCHttpCallResponseSetResponseHeader [ID 2]: Server=Kestrel
+[4168][I][16:00:00.898][HTTPCLIENT] HCHttpCallResponseSetResponseHeader [ID 2]: Access-Control-Allow-Credentials=true
+[4168][I][16:00:00.898][HTTPCLIENT] HCHttpCallResponseSetResponseHeader [ID 2]: Access-Control-Allow-Headers=Content-Type, Content-Encoding, X-Authentication, X-Authorization, X-PlayFabSDK, X-ReportErrorAsSuccess, X-SecretKey, X-EntityToken, Authorization, x-ms-app, x-ms-client-request-id, x-ms-user-id, traceparent, tracestate, Request-Id
+[4168][I][16:00:00.899][HTTPCLIENT] HCHttpCallResponseSetResponseHeader [ID 2]: Access-Control-Allow-Methods=GET, POST
+[4168][I][16:00:00.899][HTTPCLIENT] HCHttpCallResponseSetResponseHeader [ID 2]: Access-Control-Allow-Origin=*
+[4168][I][16:00:00.899][HTTPCLIENT] HCHttpCallResponseSetResponseHeader [ID 2]: X-Requestid=3aa1affee47e42e580351d11e136e25e
+[4168][I][16:00:00.900][HTTPCLIENT] HCHttpCallResponseSetResponseHeader [ID 2]: X-Tracecontext-Traceid=0c98545d1148d7bcd62f0152ac23eb94
+[4168][I][16:00:00.900][HTTPCLIENT] WinHttpConnection [ID 2] [TID 16744l] WINHTTP_CALLBACK_STATUS_DATA_AVAILABLE newBytesAvailable=0
+[4168][I][16:00:00.900][HTTPCLIENT] HCHttpCallResponseSetErrorCode [ID 2]: errorCode=00000000 (00000000)
+[AEB8][V][16:00:00.900][HTTPCLIENT] HC_CALL::PerformSingleRequestComplete [ID 2] (hr=0x00000000)
+[4168][V][16:00:00.900][HTTPCLIENT] WinHttpConnection [ID 2] [TID 16744l] WINHTTP_CALLBACK_STATUS_HANDLE_CLOSING
+[4168][V][16:00:00.900][HTTPCLIENT] ~WinHttpCallbackContext
+[AEB8][V][16:00:00.900][PlayFab] PlayFab::TokenExpiredHandler::SharedState::Invoke
+[8878][V][16:00:00.900][HTTPCLIENT] HC_CALL::PerfomAsyncProvider Cleanup [ID 2]
+[AEB8][I][16:00:00.901][HTTPCLIENT] HCHttpCallCloseHandle [ID 2]
+[4168][V][16:00:00.901][HTTPCLIENT] xbox::httpclient::WinHttpConnection::~WinHttpConnection
+[8878][I][16:00:00.901][HTTPCLIENT] HCHttpCallCloseHandle [ID 2]
+[8878][V][16:00:00.901][HTTPCLIENT] HC_CALL::~HC_CALL
+[4168][V][16:00:00.901][PlayFab] TaskQueue[id=03864088] terminated
+[4168][V][16:00:00.902][PlayFab] RunContext[id=13] terminable terminated, 0 remaining
+[4168][V][16:00:00.902][PlayFab] RunContext[id=12] terminable terminated, 0 remaining
+[4168][V][16:00:00.902][PlayFab] RunContext[id=8] terminable terminated, 1 remaining
+[4168][V][16:00:00.918][HTTPCLIENT] WinHttpConnection WinHttp callback statusCode=128l
+[4168][I][16:00:00.918][HTTPCLIENT] WinHttpConnection [ID 4] [TID 16744l] WINHTTP_CALLBACK_STATUS_HEADERS_AVAILABLE
+[4168][I][16:00:00.919][HTTPCLIENT] HCHttpCallResponseSetStatusCode [ID 4]: statusCode=404
+[4168][I][16:00:00.919][HTTPCLIENT] HCHttpCallResponseSetResponseHeader [ID 4]: Date=Tue, 21 Jun 2022 17:46:39 GMT
+[4168][I][16:00:00.920][HTTPCLIENT] HCHttpCallResponseSetResponseHeader [ID 4]: Content-Length=0
+[4168][I][16:00:00.920][HTTPCLIENT] HCHttpCallResponseSetResponseHeader [ID 4]: Server=Kestrel
+[4168][I][16:00:00.920][HTTPCLIENT] HCHttpCallResponseSetResponseHeader [ID 4]: Access-Control-Allow-Credentials=true
+[4168][I][16:00:00.920][HTTPCLIENT] HCHttpCallResponseSetResponseHeader [ID 4]: Access-Control-Allow-Headers=Content-Type, Content-Encoding, X-Authentication, X-Authorization, X-PlayFabSDK, X-ReportErrorAsSuccess, X-SecretKey, X-EntityToken, Authorization, x-ms-app, x-ms-client-request-id, x-ms-user-id, traceparent, tracestate, Request-Id
+[4168][I][16:00:00.921][HTTPCLIENT] HCHttpCallResponseSetResponseHeader [ID 4]: Access-Control-Allow-Methods=GET, POST
+[4168][I][16:00:00.921][HTTPCLIENT] HCHttpCallResponseSetResponseHeader [ID 4]: Access-Control-Allow-Origin=*
+[4168][I][16:00:00.921][HTTPCLIENT] HCHttpCallResponseSetResponseHeader [ID 4]: X-Requestid=925c64f115a345c5813975ec91255b46
+[4168][I][16:00:00.921][HTTPCLIENT] HCHttpCallResponseSetResponseHeader [ID 4]: X-Tracecontext-Traceid=042b103e86c282b64b78f394942fa782
+[4168][I][16:00:00.922][HTTPCLIENT] WinHttpConnection [ID 4] [TID 16744l] WINHTTP_CALLBACK_STATUS_DATA_AVAILABLE newBytesAvailable=0
+[4168][I][16:00:00.922][HTTPCLIENT] HCHttpCallResponseSetErrorCode [ID 4]: errorCode=00000000 (00000000)
+[207C][V][16:00:00.922][HTTPCLIENT] HC_CALL::PerformSingleRequestComplete [ID 4] (hr=0x00000000)
+[4168][V][16:00:00.922][HTTPCLIENT] WinHttpConnection [ID 4] [TID 16744l] WINHTTP_CALLBACK_STATUS_HANDLE_CLOSING
+[4168][V][16:00:00.922][HTTPCLIENT] ~WinHttpCallbackContext
+[C0BC][V][16:00:00.922][HTTPCLIENT] HC_CALL::PerfomAsyncProvider Cleanup [ID 4]
+[AEB8][V][16:00:00.922][PlayFab] PlayFab::TokenExpiredHandler::SharedState::Invoke
+[C0BC][I][16:00:00.923][HTTPCLIENT] HCHttpCallCloseHandle [ID 4]
+[4168][V][16:00:00.923][HTTPCLIENT] xbox::httpclient::WinHttpConnection::~WinHttpConnection
+[AEB8][I][16:00:00.923][HTTPCLIENT] HCHttpCallCloseHandle [ID 4]
+[AEB8][V][16:00:00.924][HTTPCLIENT] HC_CALL::~HC_CALL
+[AEB8][V][16:00:00.924][PlayFab] RunContext[id=8] terminated while termination was already in progress
+[AEB8][V][16:00:00.924][PlayFab] RunContext[id=8] terminated while termination was already in progress
+[AEB8][V][16:00:00.925][PlayFab] TaskQueue[id=012EE810] terminated
+[AEB8][V][16:00:00.925][PlayFab] RunContext[id=20] terminable terminated, 0 remaining
+[AEB8][V][16:00:00.925][PlayFab] RunContext[id=19] terminable terminated, 0 remaining
+[AEB8][V][16:00:00.925][PlayFab] RunContext[id=8] terminable terminated, 0 remaining
+[AEB8][V][16:00:00.926][PlayFab] RunContext[id=7] terminable terminated, 0 remaining
+[AEB8][V][16:00:00.926][PlayFab] RunContext[id=6] terminable terminated, 0 remaining
+[AEB8][V][16:00:00.926][PlayFab] RunContext[id=2] terminable terminated, 0 remaining
+[AEB8][V][16:00:00.927][PlayFab] PlayFab::GlobalState::OnTerminated
+[AEB8][V][16:00:00.927][PlayFab] PlayFab::GlobalState::~GlobalState
+[48F0][V][16:00:00.928][HTTPCLIENT] libHttpClient cleanup complete, returning to client
+[207C][V][16:00:00.928][PlayFab] PlayFab::HCCleanupComplete

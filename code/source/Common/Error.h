@@ -533,6 +533,8 @@ enum class ServiceErrorCode
     GoogleServiceAccountFailedAuth = 1533,
     GoogleAPIServiceUnavailable = 1534,
     GoogleAPIServiceUnknownError = 1535,
+    NoValidIdentityForAad = 1536,
+    PlayerIdentityLinkNotFound = 1537,
     MatchmakingEntityInvalid = 2001,
     MatchmakingPlayerAttributesInvalid = 2002,
     MatchmakingQueueNotFound = 2016,

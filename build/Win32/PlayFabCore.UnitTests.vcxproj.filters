@@ -1,44 +1,357 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="Source">
-      <UniqueIdentifier>{cf5de1f6-09f1-404f-a279-11b38ffaf098}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source\Tests">
-      <UniqueIdentifier>{d3e10f19-2822-4c4e-abd4-bfaddb2f55e9}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source\Support">
-      <UniqueIdentifier>{fbfb7603-d5ae-4fa8-99a6-5cc71b83d9af}</UniqueIdentifier>
-    </Filter>
+    <Filter Include="Source"/>
+    <Filter Include="Source\Tests"/>
+    <Filter Include="Source\Support"/>
+    <Filter Include="Source\Mocks"/>
+    <Filter Include="Source\Wrappers"/>
+    <Filter Include="Source\PlayFabCore"/>
+    <Filter Include="Source\PlayFabCore\C Public Includes" />
+    <Filter Include="Source\PlayFabCore\C Public Includes\playfab" />
+    <Filter Include="Source\PlayFabCore\C Public Includes\playfab\cpp" />
+    <Filter Include="Source\PlayFabCore\Source" />
+    <Filter Include="Source\PlayFabCore\Source\Api" />
+    <Filter Include="Source\PlayFabCore\Source\Common" />
+    <Filter Include="Source\PlayFabCore\Source\Platform" />
+    <Filter Include="Source\PlayFabCore\Source\Telemetry" />
+    <Filter Include="Source\PlayFabCore\Source\Shared" />
+    <Filter Include="Source\PlayFabCore\Source\Authentication" />
+    <Filter Include="Source\PlayFabCore\Source\Events" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\test\UnitTests\pch.cpp">
-      <Filter>Source</Filter>
+    <ClInclude Include="$(PlayFabCoreSourceDir)\include\playfab\PFCore.h">
+      <Filter>Source\PlayFabCore\C Public Includes\playfab</Filter>
+    </ClInclude>
+    <ClInclude Include="$(PlayFabCoreSourceDir)\include\playfab\PFEntity.h">
+      <Filter>Source\PlayFabCore\C Public Includes\playfab</Filter>
+    </ClInclude>
+    <ClInclude Include="$(PlayFabCoreSourceDir)\include\playfab\PFErrors.h">
+      <Filter>Source\PlayFabCore\C Public Includes\playfab</Filter>
+    </ClInclude>
+    <ClInclude Include="$(PlayFabCoreSourceDir)\include\playfab\PFGlobal.h">
+      <Filter>Source\PlayFabCore\C Public Includes\playfab</Filter>
+    </ClInclude>
+    <ClInclude Include="$(PlayFabCoreSourceDir)\include\playfab\PFPal.h">
+      <Filter>Source\PlayFabCore\C Public Includes\playfab</Filter>
+    </ClInclude>
+    <ClInclude Include="$(PlayFabCoreSourceDir)\include\playfab\PFPlatform.h">
+      <Filter>Source\PlayFabCore\C Public Includes\playfab</Filter>
+    </ClInclude>
+    <ClInclude Include="$(PlayFabCoreSourceDir)\include\playfab\PFServiceConfig.h">
+      <Filter>Source\PlayFabCore\C Public Includes\playfab</Filter>
+    </ClInclude>
+    <ClInclude Include="$(PlayFabCoreSourceDir)\include\playfab\PFTelemetry.h">
+      <Filter>Source\PlayFabCore\C Public Includes\playfab</Filter>
+    </ClInclude>
+    <ClInclude Include="$(PlayFabCoreSourceDir)\include\playfab\PFTitlePlayer.h">
+      <Filter>Source\PlayFabCore\C Public Includes\playfab</Filter>
+    </ClInclude>
+    <ClInclude Include="$(PlayFabCoreSourceDir)\include\playfab\cpp\PFModelWrapperHelpers.h">
+      <Filter>Source\PlayFabCore\C Public Includes\playfab\cpp</Filter>
+    </ClInclude>
+    <ClInclude Include="$(PlayFabCoreSourceDir)\include\playfab\cpp\StdOptional.h">
+      <Filter>Source\PlayFabCore\C Public Includes\playfab\cpp</Filter>
+    </ClInclude>
+    <ClInclude Include="$(PlayFabCoreSourceDir)\source\Common\ApiAsyncProviders.h" >
+      <Filter>Source\PlayFabCore\Source\Common</Filter>
+    </ClInclude>
+    <ClCompile Include="$(PlayFabCoreSourceDir)\source\Common\ApiHelpers.cpp" >
+      <Filter>Source\PlayFabCore\Source\Common</Filter>
+    </ClCompile>
+    <ClInclude Include="$(PlayFabCoreSourceDir)\source\Common\ApiHelpers.h" >
+      <Filter>Source\PlayFabCore\Source\Common</Filter>
+    </ClInclude>
+    <ClInclude Include="$(PlayFabCoreSourceDir)\source\Common\AsyncOp.h" >
+      <Filter>Source\PlayFabCore\Source\Common</Filter>
+    </ClInclude>
+    <ClCompile Include="$(PlayFabCoreSourceDir)\source\Common\AsyncProvider.cpp" >
+      <Filter>Source\PlayFabCore\Source\Common</Filter>
+    </ClCompile>
+    <ClInclude Include="$(PlayFabCoreSourceDir)\source\Common\AsyncProvider.h" >
+      <Filter>Source\PlayFabCore\Source\Common</Filter>
+    </ClInclude>
+    <ClInclude Include="$(PlayFabCoreSourceDir)\source\Common\BaseModel.h" >
+      <Filter>Source\PlayFabCore\Source\Common</Filter>
+    </ClInclude>
+    <ClCompile Include="$(PlayFabCoreSourceDir)\source\Common\CancellationToken.cpp" >
+      <Filter>Source\PlayFabCore\Source\Common</Filter>
+    </ClCompile>
+    <ClInclude Include="$(PlayFabCoreSourceDir)\source\Common\CancellationToken.h" >
+      <Filter>Source\PlayFabCore\Source\Common</Filter>
+    </ClInclude>
+    <ClCompile Include="$(PlayFabCoreSourceDir)\source\Common\Entity.cpp" >
+      <Filter>Source\PlayFabCore\Source\Common</Filter>
+    </ClCompile>
+    <ClInclude Include="$(PlayFabCoreSourceDir)\source\Common\Entity.h" >
+      <Filter>Source\PlayFabCore\Source\Common</Filter>
+    </ClInclude>
+    <ClInclude Include="$(PlayFabCoreSourceDir)\source\Common\EnumTraits.h" >
+      <Filter>Source\PlayFabCore\Source\Common</Filter>
+    </ClInclude>
+    <ClCompile Include="$(PlayFabCoreSourceDir)\source\Common\Error.cpp" >
+      <Filter>Source\PlayFabCore\Source\Common</Filter>
+    </ClCompile>
+    <ClInclude Include="$(PlayFabCoreSourceDir)\source\Common\Error.h" >
+      <Filter>Source\PlayFabCore\Source\Common</Filter>
+    </ClInclude>
+    <ClCompile Include="$(PlayFabCoreSourceDir)\source\Common\GlobalState.cpp" >
+      <Filter>Source\PlayFabCore\Source\Common</Filter>
+    </ClCompile>
+    <ClInclude Include="$(PlayFabCoreSourceDir)\source\Common\GlobalState.h" >
+      <Filter>Source\PlayFabCore\Source\Common</Filter>
+    </ClInclude>
+    <ClInclude Include="$(PlayFabCoreSourceDir)\source\Common\HandleTable.h" >
+      <Filter>Source\PlayFabCore\Source\Common</Filter>
+    </ClInclude>
+    <ClCompile Include="$(PlayFabCoreSourceDir)\source\Common\HttpClient.cpp" >
+      <Filter>Source\PlayFabCore\Source\Common</Filter>
+    </ClCompile>
+    <ClInclude Include="$(PlayFabCoreSourceDir)\source\Common\HttpClient.h" >
+      <Filter>Source\PlayFabCore\Source\Common</Filter>
+    </ClInclude>
+    <ClCompile Include="$(PlayFabCoreSourceDir)\source\Common\InternalMemory.cpp" >
+      <Filter>Source\PlayFabCore\Source\Common</Filter>
+    </ClCompile>
+    <ClInclude Include="$(PlayFabCoreSourceDir)\source\Common\InternalMemory.h" >
+      <Filter>Source\PlayFabCore\Source\Common</Filter>
+    </ClInclude>
+    <ClCompile Include="$(PlayFabCoreSourceDir)\source\Common\JsonUtils.cpp" >
+      <Filter>Source\PlayFabCore\Source\Common</Filter>
+    </ClCompile>
+    <ClInclude Include="$(PlayFabCoreSourceDir)\source\Common\JsonUtils.h" >
+      <Filter>Source\PlayFabCore\Source\Common</Filter>
+    </ClInclude>
+    <ClCompile Include="$(PlayFabCoreSourceDir)\source\Common\LocalStorageTraceOutput.cpp" >
+      <Filter>Source\PlayFabCore\Source\Common</Filter>
+    </ClCompile>
+    <ClInclude Include="$(PlayFabCoreSourceDir)\source\Common\LocalStorageTraceOutput.h" >
+      <Filter>Source\PlayFabCore\Source\Common</Filter>
+    </ClInclude>
+    <ClCompile Include="$(PlayFabCoreSourceDir)\source\Common\ModelBuffer.cpp" >
+      <Filter>Source\PlayFabCore\Source\Common</Filter>
+    </ClCompile>
+    <ClInclude Include="$(PlayFabCoreSourceDir)\source\Common\ModelBuffer.h" >
+      <Filter>Source\PlayFabCore\Source\Common</Filter>
+    </ClInclude>
+    <ClCompile Include="$(PlayFabCoreSourceDir)\source\Common\PlatformUser.cpp" >
+      <Filter>Source\PlayFabCore\Source\Common</Filter>
+    </ClCompile>
+    <ClInclude Include="$(PlayFabCoreSourceDir)\source\Common\PlatformUser.h" >
+      <Filter>Source\PlayFabCore\Source\Common</Filter>
+    </ClInclude>
+    <ClInclude Include="$(PlayFabCoreSourceDir)\source\Common\PlatformUtils.h" >
+      <Filter>Source\PlayFabCore\Source\Common</Filter>
+    </ClInclude>
+    <ClInclude Include="$(PlayFabCoreSourceDir)\source\Common\Result.h" >
+      <Filter>Source\PlayFabCore\Source\Common</Filter>
+    </ClInclude>
+    <ClInclude Include="$(PlayFabCoreSourceDir)\source\Common\ResultMacros.h" >
+      <Filter>Source\PlayFabCore\Source\Common</Filter>
+    </ClInclude>
+    <ClCompile Include="$(PlayFabCoreSourceDir)\source\Common\RunContext.cpp" >
+      <Filter>Source\PlayFabCore\Source\Common</Filter>
+    </ClCompile>
+    <ClInclude Include="$(PlayFabCoreSourceDir)\source\Common\RunContext.h" >
+      <Filter>Source\PlayFabCore\Source\Common</Filter>
+    </ClInclude>
+    <ClInclude Include="$(PlayFabCoreSourceDir)\source\Common\SdkVersion.h" >
+      <Filter>Source\PlayFabCore\Source\Common</Filter>
+    </ClInclude>
+    <ClCompile Include="$(PlayFabCoreSourceDir)\source\Common\ServiceConfig.cpp" >
+      <Filter>Source\PlayFabCore\Source\Common</Filter>
+    </ClCompile>
+    <ClInclude Include="$(PlayFabCoreSourceDir)\source\Common\ServiceConfig.h" >
+      <Filter>Source\PlayFabCore\Source\Common</Filter>
+    </ClInclude>
+    <ClCompile Include="$(PlayFabCoreSourceDir)\source\Common\TitlePlayer.cpp" >
+      <Filter>Source\PlayFabCore\Source\Common</Filter>
+    </ClCompile>
+    <ClInclude Include="$(PlayFabCoreSourceDir)\source\Common\TitlePlayer.h" >
+      <Filter>Source\PlayFabCore\Source\Common</Filter>
+    </ClInclude>
+    <ClCompile Include="$(PlayFabCoreSourceDir)\source\Common\TokenExpiredHandler.cpp" >
+      <Filter>Source\PlayFabCore\Source\Common</Filter>
+    </ClCompile>
+    <ClInclude Include="$(PlayFabCoreSourceDir)\source\Common\TokenExpiredHandler.h" >
+      <Filter>Source\PlayFabCore\Source\Common</Filter>
+    </ClInclude>
+    <ClCompile Include="$(PlayFabCoreSourceDir)\source\Common\Trace.cpp" >
+      <Filter>Source\PlayFabCore\Source\Common</Filter>
+    </ClCompile>
+    <ClInclude Include="$(PlayFabCoreSourceDir)\source\Common\Trace.h" >
+      <Filter>Source\PlayFabCore\Source\Common</Filter>
+    </ClInclude>
+    <ClInclude Include="$(PlayFabCoreSourceDir)\source\Common\Types.h" >
+      <Filter>Source\PlayFabCore\Source\Common</Filter>
+    </ClInclude>
+    <ClCompile Include="$(PlayFabCoreSourceDir)\source\Common\XAsyncOperation.cpp" >
+      <Filter>Source\PlayFabCore\Source\Common</Filter>
+    </ClCompile>
+    <ClInclude Include="$(PlayFabCoreSourceDir)\source\Common\XAsyncOperation.h" >
+      <Filter>Source\PlayFabCore\Source\Common</Filter>
+    </ClInclude>
+    <ClCompile Include="$(PlayFabCoreSourceDir)\source\Platform\LocalStorage.cpp" >
+      <Filter>Source\PlayFabCore\Source\Telemetry</Filter>
+    </ClCompile>
+    <ClInclude Include="$(PlayFabCoreSourceDir)\source\Platform\LocalStorage.h" >
+      <Filter>Source\PlayFabCore\Source\Telemetry</Filter>
+    </ClInclude>
+    <ClCompile Include="$(PlayFabCoreSourceDir)\source\Platform\LocalStorageHandlers.cpp" >
+      <Filter>Source\PlayFabCore\Source\Telemetry</Filter>
+    </ClCompile>
+    <ClInclude Include="$(PlayFabCoreSourceDir)\source\Platform\LocalStorageHandlers.h" >
+      <Filter>Source\PlayFabCore\Source\Telemetry</Filter>
+    </ClInclude>
+    <ClCompile Include="$(PlayFabCoreSourceDir)\source\Platform\Platform.cpp" >
+      <Filter>Source\PlayFabCore\Source\Telemetry</Filter>
+    </ClCompile>
+    <ClInclude Include="$(PlayFabCoreSourceDir)\source\Platform\Platform.h" >
+      <Filter>Source\PlayFabCore\Source\Telemetry</Filter>
+    </ClInclude>
+    <ClCompile Include="$(PlayFabCoreSourceDir)\source\Telemetry\PFTelemetry.cpp" >
+      <Filter>Source\PlayFabCore\Source\Telemetry</Filter>
+    </ClCompile>
+    <ClCompile Include="$(PlayFabCoreSourceDir)\source\Telemetry\TelemetryPipeline.cpp" >
+      <Filter>Source\PlayFabCore\Source\Telemetry</Filter>
+    </ClCompile>
+    <ClInclude Include="$(PlayFabCoreSourceDir)\source\Telemetry\TelemetryPipeline.h" >
+      <Filter>Source\PlayFabCore\Source\Telemetry</Filter>
+    </ClInclude>
+    <ClCompile Include="$(PlayFabCoreSourceDir)\source\Api\PFEntity.cpp" >
+      <Filter>Source\PlayFabCore\Source\Api</Filter>
+    </ClCompile>
+    <ClCompile Include="$(PlayFabCoreSourceDir)\source\Api\PFGlobal.cpp" >
+      <Filter>Source\PlayFabCore\Source\Api</Filter>
+    </ClCompile>
+    <ClCompile Include="$(PlayFabCoreSourceDir)\source\Api\PFPlatform.cpp" >
+      <Filter>Source\PlayFabCore\Source\Api</Filter>
+    </ClCompile>
+    <ClCompile Include="$(PlayFabCoreSourceDir)\source\Api\PFServiceConfig.cpp" >
+      <Filter>Source\PlayFabCore\Source\Api</Filter>
+    </ClCompile>
+    <ClCompile Include="$(PlayFabCoreSourceDir)\source\Api\PFTitlePlayer.cpp" >
+      <Filter>Source\PlayFabCore\Source\Api</Filter>
+    </ClCompile>
+    <ClInclude Include="$(PlayFabCoreSourceDir)\include\playfab\PFSharedDataModels.h">
+      <Filter>Source\PlayFabCore\C Public Includes\playfab</Filter>
+    </ClInclude>
+    <ClInclude Include="$(PlayFabCoreSourceDir)\include\playfab\cpp\PFSharedDataModelWrappers.h">
+      <Filter>Source\PlayFabCore\C Public Includes\playfab\cpp</Filter>
+    </ClInclude>
+    <ClInclude Include="$(PlayFabCoreSourceDir)\source\Shared\SharedDataModels.h">
+      <Filter>Source\PlayFabCore\Source\Shared</Filter>
+    </ClInclude>
+    <ClCompile Include="$(PlayFabCoreSourceDir)\source\Shared\SharedDataModels.cpp">
+      <Filter>Source\PlayFabCore\Source\Shared</Filter>
+    </ClCompile>
+    <ClInclude Include="$(PlayFabCoreSourceDir)\include\playfab\PFAuthenticationDataModels.h">
+      <Filter>Source\PlayFabCore\C Public Includes\playfab</Filter>
+    </ClInclude>
+    <ClInclude Include="$(PlayFabCoreSourceDir)\include\playfab\cpp\PFAuthenticationDataModelWrappers.h">
+      <Filter>Source\PlayFabCore\C Public Includes\playfab\cpp</Filter>
+    </ClInclude>
+    <ClInclude Include="$(PlayFabCoreSourceDir)\source\Authentication\AuthenticationDataModels.h">
+      <Filter>Source\PlayFabCore\Source\Authentication</Filter>
+    </ClInclude>
+    <ClCompile Include="$(PlayFabCoreSourceDir)\source\Authentication\AuthenticationDataModels.cpp">
+      <Filter>Source\PlayFabCore\Source\Authentication</Filter>
+    </ClCompile>
+    <ClInclude Include="$(PlayFabCoreSourceDir)\source\Authentication\Authentication.h">
+      <Filter>Source\PlayFabCore\Source\Authentication</Filter>
+    </ClInclude>
+    <ClCompile Include="$(PlayFabCoreSourceDir)\source\Authentication\Authentication.cpp">
+      <Filter>Source\PlayFabCore\Source\Authentication</Filter>
+    </ClCompile>
+    <ClInclude Include="$(PlayFabCoreSourceDir)\include\playfab\PFAuthentication.h">
+      <Filter>Source\PlayFabCore\C Public Includes\playfab</Filter>
+    </ClInclude>
+    <ClCompile Include="$(PlayFabCoreSourceDir)\source\Authentication\PFAuthentication.cpp">
+      <Filter>Source\PlayFabCore\Source\Authentication</Filter>
+    </ClCompile>
+    <ClInclude Include="$(PlayFabCoreSourceDir)\include\playfab\PFEventsDataModels.h">
+      <Filter>Source\PlayFabCore\C Public Includes\playfab</Filter>
+    </ClInclude>
+    <ClInclude Include="$(PlayFabCoreSourceDir)\include\playfab\cpp\PFEventsDataModelWrappers.h">
+      <Filter>Source\PlayFabCore\C Public Includes\playfab\cpp</Filter>
+    </ClInclude>
+    <ClInclude Include="$(PlayFabCoreSourceDir)\source\Events\EventsDataModels.h">
+      <Filter>Source\PlayFabCore\Source\Events</Filter>
+    </ClInclude>
+    <ClCompile Include="$(PlayFabCoreSourceDir)\source\Events\EventsDataModels.cpp">
+      <Filter>Source\PlayFabCore\Source\Events</Filter>
+    </ClCompile>
+    <ClInclude Include="$(PlayFabCoreSourceDir)\source\Events\Events.h">
+      <Filter>Source\PlayFabCore\Source\Events</Filter>
+    </ClInclude>
+    <ClCompile Include="$(PlayFabCoreSourceDir)\source\Events\Events.cpp">
+      <Filter>Source\PlayFabCore\Source\Events</Filter>
+    </ClCompile>
+    <ClInclude Include="$(PlayFabCoreSourceDir)\include\playfab\PFEvents.h">
+      <Filter>Source\PlayFabCore\C Public Includes\playfab</Filter>
+    </ClInclude>
+    <ClCompile Include="$(PlayFabCoreSourceDir)\source\Events\PFEvents.cpp">
+      <Filter>Source\PlayFabCore\Source\Events</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\test\UnitTests\Support\AsyncTestContext.cpp">
+      <Filter>Source\Support</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\test\UnitTests\Support\Event.cpp">
+      <Filter>Source\Support</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\test\UnitTests\Mocks\HttpMock.cpp">
+      <Filter>Source\Mocks</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\test\UnitTests\Tests\TokenRefreshTests.cpp">
+      <Filter>Source\Tests</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\test\UnitTests\Tests\TelemetryPipelineTests.cpp">
+      <Filter>Source\Tests</Filter>
     </ClCompile>
     <ClCompile Include="..\..\test\UnitTests\Tests\AsyncOpTests.cpp">
       <Filter>Source\Tests</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\test\UnitTests\Tests\JsonParsingTests.cpp">
+    <ClCompile Include="..\..\test\UnitTests\Tests\CancellationTokenTests.cpp">
       <Filter>Source\Tests</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\test\UnitTests\Tests\ModelTests.cpp">
+    <ClCompile Include="..\..\test\UnitTests\Tests\GlobalStateTests.cpp">
       <Filter>Source\Tests</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\test\UnitTests\TestContext.cpp">
-      <Filter>Source\Support</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\test\UnitTests\Event.cpp">
-      <Filter>Source\Support</Filter>
+    <ClCompile Include="..\..\test\UnitTests\Tests\RunContextTests.cpp">
+      <Filter>Source\Tests</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\test\UnitTests\pch.h">
-      <Filter>Source</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\test\UnitTests\TestContext.h">
+    <ClInclude Include="..\..\test\UnitTests\Support\AsyncTestContext.h">
       <Filter>Source\Support</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\test\UnitTests\Event.h">
+    <ClInclude Include="..\..\test\UnitTests\Support\Event.h">
+      <Filter>Source\Support</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\test\UnitTests\Support\TestMacros.h">
+      <Filter>Source\Support</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\test\UnitTests\Mocks\HttpMock.h">
+      <Filter>Source\Mocks</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\test\Wrappers\PlayFabSession.h">
+      <Filter>Source\Wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\test\Wrappers\ServiceConfig.h">
+      <Filter>Source\Wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\test\Wrappers\TitlePlayer.h">
+      <Filter>Source\Wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\test\Wrappers\TelemetryPipeline.h">
+      <Filter>Source\Wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\test\UnitTests\Mocks\MockResponses.h">
+      <Filter>Source\Mocks</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\test\UnitTests\Support\TestIncludes.h">
       <Filter>Source\Support</Filter>
     </ClInclude>
   </ItemGroup>

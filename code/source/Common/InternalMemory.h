@@ -53,6 +53,11 @@ bool operator!=(Allocator<T> const&, Allocator<T> const&);
 template<class T>
 struct Deleter
 {
+    constexpr Deleter() noexcept = default;
+
+    template<class T2, std::enable_if_t<std::is_convertible_v<T2*, T*>, int> = 0>
+    Deleter(const Deleter<T2>&) noexcept;
+
     void operator()(T* ptr) const noexcept;
 };
 
@@ -121,6 +126,11 @@ template<class T>
 bool operator!=(Allocator<T> const&, Allocator<T> const&)
 {
     return false;
+}
+
+template<class T> template<class T2, std::enable_if_t<std::is_convertible_v<T2*, T*>, int>>
+Deleter<T>::Deleter(const Deleter<T2>&) noexcept
+{
 }
 
 template<class T>

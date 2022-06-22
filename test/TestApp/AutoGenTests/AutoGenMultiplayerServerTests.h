@@ -16,43 +16,7 @@ private:
     static HRESULT LogHR(HRESULT hr);
 
 #if HC_PLATFORM != HC_PLATFORM_GDK
-    void TestMultiplayerServerCreateBuildAlias(TestContext& testContext);
-#endif
-
-#if HC_PLATFORM != HC_PLATFORM_GDK
-    void TestMultiplayerServerCreateBuildWithCustomContainer(TestContext& testContext);
-#endif
-
-#if HC_PLATFORM != HC_PLATFORM_GDK
-    void TestMultiplayerServerCreateBuildWithManagedContainer(TestContext& testContext);
-#endif
-
-#if HC_PLATFORM != HC_PLATFORM_GDK
-    void TestMultiplayerServerCreateBuildWithProcessBasedServer(TestContext& testContext);
-#endif
-
-#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestMultiplayerServerCreateRemoteUser(TestContext& testContext);
-#endif
-
-#if HC_PLATFORM != HC_PLATFORM_GDK
-    void TestMultiplayerServerCreateTitleMultiplayerServersQuotaChange(TestContext& testContext);
-#endif
-
-#if HC_PLATFORM != HC_PLATFORM_GDK
-    void TestMultiplayerServerDeleteAsset(TestContext& testContext);
-#endif
-
-#if HC_PLATFORM != HC_PLATFORM_GDK
-    void TestMultiplayerServerDeleteBuild(TestContext& testContext);
-#endif
-
-#if HC_PLATFORM != HC_PLATFORM_GDK
-    void TestMultiplayerServerDeleteBuildAlias(TestContext& testContext);
-#endif
-
-#if HC_PLATFORM != HC_PLATFORM_GDK
-    void TestMultiplayerServerDeleteBuildRegion(TestContext& testContext);
 #endif
 
 #if HC_PLATFORM != HC_PLATFORM_GDK
@@ -60,33 +24,7 @@ private:
 #endif
 
 #if HC_PLATFORM != HC_PLATFORM_GDK
-    void TestMultiplayerServerDeleteContainerImageRepository(TestContext& testContext);
-#endif
-
-#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestMultiplayerServerDeleteRemoteUser(TestContext& testContext);
-#endif
-
-#if HC_PLATFORM != HC_PLATFORM_GDK
-    void TestMultiplayerServerEnableMultiplayerServersForTitle(TestContext& testContext);
-#endif
-
-    void TestMultiplayerServerGetAssetDownloadUrl(TestContext& testContext);
-
-#if HC_PLATFORM != HC_PLATFORM_GDK
-    void TestMultiplayerServerGetAssetUploadUrl(TestContext& testContext);
-#endif
-
-#if HC_PLATFORM != HC_PLATFORM_GDK
-    void TestMultiplayerServerGetBuild(TestContext& testContext);
-#endif
-
-#if HC_PLATFORM != HC_PLATFORM_GDK
-    void TestMultiplayerServerGetBuildAlias(TestContext& testContext);
-#endif
-
-#if HC_PLATFORM != HC_PLATFORM_GDK
-    void TestMultiplayerServerGetContainerRegistryCredentials(TestContext& testContext);
 #endif
 
 #if HC_PLATFORM != HC_PLATFORM_GDK
@@ -106,23 +44,7 @@ private:
 #endif
 
 #if HC_PLATFORM != HC_PLATFORM_GDK
-    void TestMultiplayerServerGetTitleEnabledForMultiplayerServersStatus(TestContext& testContext);
-#endif
-
-#if HC_PLATFORM != HC_PLATFORM_GDK
-    void TestMultiplayerServerGetTitleMultiplayerServersQuotaChange(TestContext& testContext);
-#endif
-
-#if HC_PLATFORM != HC_PLATFORM_GDK
-    void TestMultiplayerServerGetTitleMultiplayerServersQuotas(TestContext& testContext);
-#endif
-
-#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestMultiplayerServerListArchivedMultiplayerServers(TestContext& testContext);
-#endif
-
-#if HC_PLATFORM != HC_PLATFORM_GDK
-    void TestMultiplayerServerListAssetSummaries(TestContext& testContext);
 #endif
 
 #if HC_PLATFORM != HC_PLATFORM_GDK
@@ -138,14 +60,6 @@ private:
 #endif
 
 #if HC_PLATFORM != HC_PLATFORM_GDK
-    void TestMultiplayerServerListContainerImages(TestContext& testContext);
-#endif
-
-#if HC_PLATFORM != HC_PLATFORM_GDK
-    void TestMultiplayerServerListContainerImageTags(TestContext& testContext);
-#endif
-
-#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestMultiplayerServerListMultiplayerServers(TestContext& testContext);
 #endif
 
@@ -154,40 +68,12 @@ private:
     void TestMultiplayerServerListQosServersForTitle(TestContext& testContext);
 
 #if HC_PLATFORM != HC_PLATFORM_GDK
-    void TestMultiplayerServerListTitleMultiplayerServersQuotaChanges(TestContext& testContext);
-#endif
-
-#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestMultiplayerServerListVirtualMachineSummaries(TestContext& testContext);
 #endif
 
     void TestMultiplayerServerRequestMultiplayerServer(TestContext& testContext);
 
-#if HC_PLATFORM != HC_PLATFORM_GDK
-    void TestMultiplayerServerRolloverContainerRegistryCredentials(TestContext& testContext);
-#endif
-
     void TestMultiplayerServerShutdownMultiplayerServer(TestContext& testContext);
-
-#if HC_PLATFORM != HC_PLATFORM_GDK
-    void TestMultiplayerServerUntagContainerImage(TestContext& testContext);
-#endif
-
-#if HC_PLATFORM != HC_PLATFORM_GDK
-    void TestMultiplayerServerUpdateBuildAlias(TestContext& testContext);
-#endif
-
-#if HC_PLATFORM != HC_PLATFORM_GDK
-    void TestMultiplayerServerUpdateBuildName(TestContext& testContext);
-#endif
-
-#if HC_PLATFORM != HC_PLATFORM_GDK
-    void TestMultiplayerServerUpdateBuildRegion(TestContext& testContext);
-#endif
-
-#if HC_PLATFORM != HC_PLATFORM_GDK
-    void TestMultiplayerServerUpdateBuildRegions(TestContext& testContext);
-#endif
 
 #if HC_PLATFORM != HC_PLATFORM_GDK
     void TestMultiplayerServerUploadCertificate(TestContext& testContext);
@@ -197,36 +83,10 @@ private:
 protected:
     void AddTests();
 
-    static void LogCreateBuildAliasRequest(PFMultiplayerServerCreateBuildAliasRequest const* request, const char* testName);
-    static HRESULT LogBuildAliasDetailsResponse(PFMultiplayerServerBuildAliasDetailsResponse const* result);
-    static void LogCreateBuildWithCustomContainerRequest(PFMultiplayerServerCreateBuildWithCustomContainerRequest const* request, const char* testName);
-    static HRESULT LogCreateBuildWithCustomContainerResponse(PFMultiplayerServerCreateBuildWithCustomContainerResponse const* result);
-    static void LogCreateBuildWithManagedContainerRequest(PFMultiplayerServerCreateBuildWithManagedContainerRequest const* request, const char* testName);
-    static HRESULT LogCreateBuildWithManagedContainerResponse(PFMultiplayerServerCreateBuildWithManagedContainerResponse const* result);
-    static void LogCreateBuildWithProcessBasedServerRequest(PFMultiplayerServerCreateBuildWithProcessBasedServerRequest const* request, const char* testName);
-    static HRESULT LogCreateBuildWithProcessBasedServerResponse(PFMultiplayerServerCreateBuildWithProcessBasedServerResponse const* result);
     static void LogCreateRemoteUserRequest(PFMultiplayerServerCreateRemoteUserRequest const* request, const char* testName);
     static HRESULT LogCreateRemoteUserResponse(PFMultiplayerServerCreateRemoteUserResponse const* result);
-    static void LogCreateTitleMultiplayerServersQuotaChangeRequest(PFMultiplayerServerCreateTitleMultiplayerServersQuotaChangeRequest const* request, const char* testName);
-    static HRESULT LogCreateTitleMultiplayerServersQuotaChangeResponse(PFMultiplayerServerCreateTitleMultiplayerServersQuotaChangeResponse const* result);
-    static void LogDeleteAssetRequest(PFMultiplayerServerDeleteAssetRequest const* request, const char* testName);
-    static void LogDeleteBuildRequest(PFMultiplayerServerDeleteBuildRequest const* request, const char* testName);
-    static void LogDeleteBuildAliasRequest(PFMultiplayerServerDeleteBuildAliasRequest const* request, const char* testName);
-    static void LogDeleteBuildRegionRequest(PFMultiplayerServerDeleteBuildRegionRequest const* request, const char* testName);
     static void LogDeleteCertificateRequest(PFMultiplayerServerDeleteCertificateRequest const* request, const char* testName);
-    static void LogDeleteContainerImageRequest(PFMultiplayerServerDeleteContainerImageRequest const* request, const char* testName);
     static void LogDeleteRemoteUserRequest(PFMultiplayerServerDeleteRemoteUserRequest const* request, const char* testName);
-    static void LogEnableMultiplayerServersForTitleRequest(PFMultiplayerServerEnableMultiplayerServersForTitleRequest const* request, const char* testName);
-    static HRESULT LogEnableMultiplayerServersForTitleResponse(PFMultiplayerServerEnableMultiplayerServersForTitleResponse const* result);
-    static void LogGetAssetDownloadUrlRequest(PFMultiplayerServerGetAssetDownloadUrlRequest const* request, const char* testName);
-    static HRESULT LogGetAssetDownloadUrlResponse(PFMultiplayerServerGetAssetDownloadUrlResponse const* result);
-    static void LogGetAssetUploadUrlRequest(PFMultiplayerServerGetAssetUploadUrlRequest const* request, const char* testName);
-    static HRESULT LogGetAssetUploadUrlResponse(PFMultiplayerServerGetAssetUploadUrlResponse const* result);
-    static void LogGetBuildRequest(PFMultiplayerServerGetBuildRequest const* request, const char* testName);
-    static HRESULT LogGetBuildResponse(PFMultiplayerServerGetBuildResponse const* result);
-    static void LogGetBuildAliasRequest(PFMultiplayerServerGetBuildAliasRequest const* request, const char* testName);
-    static void LogGetContainerRegistryCredentialsRequest(PFMultiplayerServerGetContainerRegistryCredentialsRequest const* request, const char* testName);
-    static HRESULT LogGetContainerRegistryCredentialsResponse(PFMultiplayerServerGetContainerRegistryCredentialsResponse const* result);
     static void LogGetMultiplayerServerDetailsRequest(PFMultiplayerServerGetMultiplayerServerDetailsRequest const* request, const char* testName);
     static HRESULT LogGetMultiplayerServerDetailsResponse(PFMultiplayerServerGetMultiplayerServerDetailsResponse const* result);
     static void LogGetMultiplayerServerLogsRequest(PFMultiplayerServerGetMultiplayerServerLogsRequest const* request, const char* testName);
@@ -234,95 +94,31 @@ protected:
     static void LogGetMultiplayerSessionLogsBySessionIdRequest(PFMultiplayerServerGetMultiplayerSessionLogsBySessionIdRequest const* request, const char* testName);
     static void LogGetRemoteLoginEndpointRequest(PFMultiplayerServerGetRemoteLoginEndpointRequest const* request, const char* testName);
     static HRESULT LogGetRemoteLoginEndpointResponse(PFMultiplayerServerGetRemoteLoginEndpointResponse const* result);
-    static void LogGetTitleEnabledForMultiplayerServersStatusRequest(PFMultiplayerServerGetTitleEnabledForMultiplayerServersStatusRequest const* request, const char* testName);
-    static HRESULT LogGetTitleEnabledForMultiplayerServersStatusResponse(PFMultiplayerServerGetTitleEnabledForMultiplayerServersStatusResponse const* result);
-    static void LogGetTitleMultiplayerServersQuotaChangeRequest(PFMultiplayerServerGetTitleMultiplayerServersQuotaChangeRequest const* request, const char* testName);
-    static HRESULT LogGetTitleMultiplayerServersQuotaChangeResponse(PFMultiplayerServerGetTitleMultiplayerServersQuotaChangeResponse const* result);
-    static void LogGetTitleMultiplayerServersQuotasRequest(PFMultiplayerServerGetTitleMultiplayerServersQuotasRequest const* request, const char* testName);
-    static HRESULT LogGetTitleMultiplayerServersQuotasResponse(PFMultiplayerServerGetTitleMultiplayerServersQuotasResponse const* result);
     static void LogListMultiplayerServersRequest(PFMultiplayerServerListMultiplayerServersRequest const* request, const char* testName);
     static HRESULT LogListMultiplayerServersResponse(PFMultiplayerServerListMultiplayerServersResponse const* result);
-    static void LogListAssetSummariesRequest(PFMultiplayerServerListAssetSummariesRequest const* request, const char* testName);
-    static HRESULT LogListAssetSummariesResponse(PFMultiplayerServerListAssetSummariesResponse const* result);
     static void LogListBuildAliasesRequest(PFMultiplayerServerListBuildAliasesRequest const* request, const char* testName);
     static HRESULT LogListBuildAliasesResponse(PFMultiplayerServerListBuildAliasesResponse const* result);
     static void LogListBuildSummariesRequest(PFMultiplayerServerListBuildSummariesRequest const* request, const char* testName);
     static HRESULT LogListBuildSummariesResponse(PFMultiplayerServerListBuildSummariesResponse const* result);
     static void LogListCertificateSummariesRequest(PFMultiplayerServerListCertificateSummariesRequest const* request, const char* testName);
     static HRESULT LogListCertificateSummariesResponse(PFMultiplayerServerListCertificateSummariesResponse const* result);
-    static void LogListContainerImagesRequest(PFMultiplayerServerListContainerImagesRequest const* request, const char* testName);
-    static HRESULT LogListContainerImagesResponse(PFMultiplayerServerListContainerImagesResponse const* result);
-    static void LogListContainerImageTagsRequest(PFMultiplayerServerListContainerImageTagsRequest const* request, const char* testName);
-    static HRESULT LogListContainerImageTagsResponse(PFMultiplayerServerListContainerImageTagsResponse const* result);
     static void LogListPartyQosServersRequest(PFMultiplayerServerListPartyQosServersRequest const* request, const char* testName);
     static HRESULT LogListPartyQosServersResponse(PFMultiplayerServerListPartyQosServersResponse const* result);
     static void LogListQosServersForTitleRequest(PFMultiplayerServerListQosServersForTitleRequest const* request, const char* testName);
     static HRESULT LogListQosServersForTitleResponse(PFMultiplayerServerListQosServersForTitleResponse const* result);
-    static void LogListTitleMultiplayerServersQuotaChangesRequest(PFMultiplayerServerListTitleMultiplayerServersQuotaChangesRequest const* request, const char* testName);
-    static HRESULT LogListTitleMultiplayerServersQuotaChangesResponse(PFMultiplayerServerListTitleMultiplayerServersQuotaChangesResponse const* result);
     static void LogListVirtualMachineSummariesRequest(PFMultiplayerServerListVirtualMachineSummariesRequest const* request, const char* testName);
     static HRESULT LogListVirtualMachineSummariesResponse(PFMultiplayerServerListVirtualMachineSummariesResponse const* result);
     static void LogRequestMultiplayerServerRequest(PFMultiplayerServerRequestMultiplayerServerRequest const* request, const char* testName);
     static HRESULT LogRequestMultiplayerServerResponse(PFMultiplayerServerRequestMultiplayerServerResponse const* result);
-    static void LogRolloverContainerRegistryCredentialsRequest(PFMultiplayerServerRolloverContainerRegistryCredentialsRequest const* request, const char* testName);
-    static HRESULT LogRolloverContainerRegistryCredentialsResponse(PFMultiplayerServerRolloverContainerRegistryCredentialsResponse const* result);
     static void LogShutdownMultiplayerServerRequest(PFMultiplayerServerShutdownMultiplayerServerRequest const* request, const char* testName);
-    static void LogUntagContainerImageRequest(PFMultiplayerServerUntagContainerImageRequest const* request, const char* testName);
-    static void LogUpdateBuildAliasRequest(PFMultiplayerServerUpdateBuildAliasRequest const* request, const char* testName);
-    static void LogUpdateBuildNameRequest(PFMultiplayerServerUpdateBuildNameRequest const* request, const char* testName);
-    static void LogUpdateBuildRegionRequest(PFMultiplayerServerUpdateBuildRegionRequest const* request, const char* testName);
-    static void LogUpdateBuildRegionsRequest(PFMultiplayerServerUpdateBuildRegionsRequest const* request, const char* testName);
     static void LogUploadCertificateRequest(PFMultiplayerServerUploadCertificateRequest const* request, const char* testName);
-
-    static void FillCreateBuildAliasRequest(PlayFab::Wrappers::PFMultiplayerServerCreateBuildAliasRequestWrapper<>& request);
-    static HRESULT ValidateCreateBuildAliasResponse(PFMultiplayerServerBuildAliasDetailsResponse* result);
-
-    static void FillCreateBuildWithCustomContainerRequest(PlayFab::Wrappers::PFMultiplayerServerCreateBuildWithCustomContainerRequestWrapper<>& request);
-    static HRESULT ValidateCreateBuildWithCustomContainerResponse(PFMultiplayerServerCreateBuildWithCustomContainerResponse* result);
-
-    static void FillCreateBuildWithManagedContainerRequest(PlayFab::Wrappers::PFMultiplayerServerCreateBuildWithManagedContainerRequestWrapper<>& request);
-    static HRESULT ValidateCreateBuildWithManagedContainerResponse(PFMultiplayerServerCreateBuildWithManagedContainerResponse* result);
-
-    static void FillCreateBuildWithProcessBasedServerRequest(PlayFab::Wrappers::PFMultiplayerServerCreateBuildWithProcessBasedServerRequestWrapper<>& request);
-    static HRESULT ValidateCreateBuildWithProcessBasedServerResponse(PFMultiplayerServerCreateBuildWithProcessBasedServerResponse* result);
 
     static void FillCreateRemoteUserRequest(PlayFab::Wrappers::PFMultiplayerServerCreateRemoteUserRequestWrapper<>& request);
     static HRESULT ValidateCreateRemoteUserResponse(PFMultiplayerServerCreateRemoteUserResponse* result);
 
-    static void FillCreateTitleMultiplayerServersQuotaChangeRequest(PlayFab::Wrappers::PFMultiplayerServerCreateTitleMultiplayerServersQuotaChangeRequestWrapper<>& request);
-    static HRESULT ValidateCreateTitleMultiplayerServersQuotaChangeResponse(PFMultiplayerServerCreateTitleMultiplayerServersQuotaChangeResponse* result);
-
-    static void FillDeleteAssetRequest(PlayFab::Wrappers::PFMultiplayerServerDeleteAssetRequestWrapper<>& request);
-
-    static void FillDeleteBuildRequest(PlayFab::Wrappers::PFMultiplayerServerDeleteBuildRequestWrapper<>& request);
-
-    static void FillDeleteBuildAliasRequest(PlayFab::Wrappers::PFMultiplayerServerDeleteBuildAliasRequestWrapper<>& request);
-
-    static void FillDeleteBuildRegionRequest(PlayFab::Wrappers::PFMultiplayerServerDeleteBuildRegionRequestWrapper<>& request);
-
     static void FillDeleteCertificateRequest(PlayFab::Wrappers::PFMultiplayerServerDeleteCertificateRequestWrapper<>& request);
 
-    static void FillDeleteContainerImageRepositoryRequest(PlayFab::Wrappers::PFMultiplayerServerDeleteContainerImageRequestWrapper<>& request);
-
     static void FillDeleteRemoteUserRequest(PlayFab::Wrappers::PFMultiplayerServerDeleteRemoteUserRequestWrapper<>& request);
-
-    static void FillEnableMultiplayerServersForTitleRequest(PlayFab::Wrappers::PFMultiplayerServerEnableMultiplayerServersForTitleRequestWrapper<>& request);
-    static HRESULT ValidateEnableMultiplayerServersForTitleResponse(PFMultiplayerServerEnableMultiplayerServersForTitleResponse* result);
-
-    static void FillGetAssetDownloadUrlRequest(PlayFab::Wrappers::PFMultiplayerServerGetAssetDownloadUrlRequestWrapper<>& request);
-    static HRESULT ValidateGetAssetDownloadUrlResponse(PFMultiplayerServerGetAssetDownloadUrlResponse* result);
-
-    static void FillGetAssetUploadUrlRequest(PlayFab::Wrappers::PFMultiplayerServerGetAssetUploadUrlRequestWrapper<>& request);
-    static HRESULT ValidateGetAssetUploadUrlResponse(PFMultiplayerServerGetAssetUploadUrlResponse* result);
-
-    static void FillGetBuildRequest(PlayFab::Wrappers::PFMultiplayerServerGetBuildRequestWrapper<>& request);
-    static HRESULT ValidateGetBuildResponse(PFMultiplayerServerGetBuildResponse* result);
-
-    static void FillGetBuildAliasRequest(PlayFab::Wrappers::PFMultiplayerServerGetBuildAliasRequestWrapper<>& request);
-    static HRESULT ValidateGetBuildAliasResponse(PFMultiplayerServerBuildAliasDetailsResponse* result);
-
-    static void FillGetContainerRegistryCredentialsRequest(PlayFab::Wrappers::PFMultiplayerServerGetContainerRegistryCredentialsRequestWrapper<>& request);
-    static HRESULT ValidateGetContainerRegistryCredentialsResponse(PFMultiplayerServerGetContainerRegistryCredentialsResponse* result);
 
     static void FillGetMultiplayerServerDetailsRequest(PlayFab::Wrappers::PFMultiplayerServerGetMultiplayerServerDetailsRequestWrapper<>& request);
     static HRESULT ValidateGetMultiplayerServerDetailsResponse(PFMultiplayerServerGetMultiplayerServerDetailsResponse* result);
@@ -336,20 +132,8 @@ protected:
     static void FillGetRemoteLoginEndpointRequest(PlayFab::Wrappers::PFMultiplayerServerGetRemoteLoginEndpointRequestWrapper<>& request);
     static HRESULT ValidateGetRemoteLoginEndpointResponse(PFMultiplayerServerGetRemoteLoginEndpointResponse* result);
 
-    static void FillGetTitleEnabledForMultiplayerServersStatusRequest(PlayFab::Wrappers::PFMultiplayerServerGetTitleEnabledForMultiplayerServersStatusRequestWrapper<>& request);
-    static HRESULT ValidateGetTitleEnabledForMultiplayerServersStatusResponse(PFMultiplayerServerGetTitleEnabledForMultiplayerServersStatusResponse* result);
-
-    static void FillGetTitleMultiplayerServersQuotaChangeRequest(PlayFab::Wrappers::PFMultiplayerServerGetTitleMultiplayerServersQuotaChangeRequestWrapper<>& request);
-    static HRESULT ValidateGetTitleMultiplayerServersQuotaChangeResponse(PFMultiplayerServerGetTitleMultiplayerServersQuotaChangeResponse* result);
-
-    static void FillGetTitleMultiplayerServersQuotasRequest(PlayFab::Wrappers::PFMultiplayerServerGetTitleMultiplayerServersQuotasRequestWrapper<>& request);
-    static HRESULT ValidateGetTitleMultiplayerServersQuotasResponse(PFMultiplayerServerGetTitleMultiplayerServersQuotasResponse* result);
-
     static void FillListArchivedMultiplayerServersRequest(PlayFab::Wrappers::PFMultiplayerServerListMultiplayerServersRequestWrapper<>& request);
     static HRESULT ValidateListArchivedMultiplayerServersResponse(PFMultiplayerServerListMultiplayerServersResponse* result);
-
-    static void FillListAssetSummariesRequest(PlayFab::Wrappers::PFMultiplayerServerListAssetSummariesRequestWrapper<>& request);
-    static HRESULT ValidateListAssetSummariesResponse(PFMultiplayerServerListAssetSummariesResponse* result);
 
     static void FillListBuildAliasesRequest(PlayFab::Wrappers::PFMultiplayerServerListBuildAliasesRequestWrapper<>& request);
     static HRESULT ValidateListBuildAliasesResponse(PFMultiplayerServerListBuildAliasesResponse* result);
@@ -360,12 +144,6 @@ protected:
     static void FillListCertificateSummariesRequest(PlayFab::Wrappers::PFMultiplayerServerListCertificateSummariesRequestWrapper<>& request);
     static HRESULT ValidateListCertificateSummariesResponse(PFMultiplayerServerListCertificateSummariesResponse* result);
 
-    static void FillListContainerImagesRequest(PlayFab::Wrappers::PFMultiplayerServerListContainerImagesRequestWrapper<>& request);
-    static HRESULT ValidateListContainerImagesResponse(PFMultiplayerServerListContainerImagesResponse* result);
-
-    static void FillListContainerImageTagsRequest(PlayFab::Wrappers::PFMultiplayerServerListContainerImageTagsRequestWrapper<>& request);
-    static HRESULT ValidateListContainerImageTagsResponse(PFMultiplayerServerListContainerImageTagsResponse* result);
-
     static void FillListMultiplayerServersRequest(PlayFab::Wrappers::PFMultiplayerServerListMultiplayerServersRequestWrapper<>& request);
     static HRESULT ValidateListMultiplayerServersResponse(PFMultiplayerServerListMultiplayerServersResponse* result);
 
@@ -375,30 +153,13 @@ protected:
     static void FillListQosServersForTitleRequest(PlayFab::Wrappers::PFMultiplayerServerListQosServersForTitleRequestWrapper<>& request);
     static HRESULT ValidateListQosServersForTitleResponse(PFMultiplayerServerListQosServersForTitleResponse* result);
 
-    static void FillListTitleMultiplayerServersQuotaChangesRequest(PlayFab::Wrappers::PFMultiplayerServerListTitleMultiplayerServersQuotaChangesRequestWrapper<>& request);
-    static HRESULT ValidateListTitleMultiplayerServersQuotaChangesResponse(PFMultiplayerServerListTitleMultiplayerServersQuotaChangesResponse* result);
-
     static void FillListVirtualMachineSummariesRequest(PlayFab::Wrappers::PFMultiplayerServerListVirtualMachineSummariesRequestWrapper<>& request);
     static HRESULT ValidateListVirtualMachineSummariesResponse(PFMultiplayerServerListVirtualMachineSummariesResponse* result);
 
     static void FillRequestMultiplayerServerRequest(PlayFab::Wrappers::PFMultiplayerServerRequestMultiplayerServerRequestWrapper<>& request);
     static HRESULT ValidateRequestMultiplayerServerResponse(PFMultiplayerServerRequestMultiplayerServerResponse* result);
 
-    static void FillRolloverContainerRegistryCredentialsRequest(PlayFab::Wrappers::PFMultiplayerServerRolloverContainerRegistryCredentialsRequestWrapper<>& request);
-    static HRESULT ValidateRolloverContainerRegistryCredentialsResponse(PFMultiplayerServerRolloverContainerRegistryCredentialsResponse* result);
-
     static void FillShutdownMultiplayerServerRequest(PlayFab::Wrappers::PFMultiplayerServerShutdownMultiplayerServerRequestWrapper<>& request);
-
-    static void FillUntagContainerImageRequest(PlayFab::Wrappers::PFMultiplayerServerUntagContainerImageRequestWrapper<>& request);
-
-    static void FillUpdateBuildAliasRequest(PlayFab::Wrappers::PFMultiplayerServerUpdateBuildAliasRequestWrapper<>& request);
-    static HRESULT ValidateUpdateBuildAliasResponse(PFMultiplayerServerBuildAliasDetailsResponse* result);
-
-    static void FillUpdateBuildNameRequest(PlayFab::Wrappers::PFMultiplayerServerUpdateBuildNameRequestWrapper<>& request);
-
-    static void FillUpdateBuildRegionRequest(PlayFab::Wrappers::PFMultiplayerServerUpdateBuildRegionRequestWrapper<>& request);
-
-    static void FillUpdateBuildRegionsRequest(PlayFab::Wrappers::PFMultiplayerServerUpdateBuildRegionsRequestWrapper<>& request);
 
     static void FillUploadCertificateRequest(PlayFab::Wrappers::PFMultiplayerServerUploadCertificateRequestWrapper<>& request);
 

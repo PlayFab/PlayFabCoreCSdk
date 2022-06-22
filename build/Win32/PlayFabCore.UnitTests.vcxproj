@@ -19,19 +19,118 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\test\UnitTests\Event.cpp" />
-    <ClCompile Include="..\..\test\UnitTests\pch.cpp">
+    <ClInclude Include="$(PlayFabCoreSourceDir)\include\playfab\PFCore.h" />
+    <ClInclude Include="$(PlayFabCoreSourceDir)\include\playfab\PFEntity.h" />
+    <ClInclude Include="$(PlayFabCoreSourceDir)\include\playfab\PFErrors.h" />
+    <ClInclude Include="$(PlayFabCoreSourceDir)\include\playfab\PFGlobal.h" />
+    <ClInclude Include="$(PlayFabCoreSourceDir)\include\playfab\PFPal.h" />
+    <ClInclude Include="$(PlayFabCoreSourceDir)\include\playfab\PFPlatform.h" />
+    <ClInclude Include="$(PlayFabCoreSourceDir)\include\playfab\PFServiceConfig.h" />
+    <ClInclude Include="$(PlayFabCoreSourceDir)\include\playfab\PFTelemetry.h" />
+    <ClInclude Include="$(PlayFabCoreSourceDir)\include\playfab\PFTitlePlayer.h" />
+    <ClInclude Include="$(PlayFabCoreSourceDir)\include\playfab\cpp\PFModelWrapperHelpers.h" />
+    <ClInclude Include="$(PlayFabCoreSourceDir)\include\playfab\cpp\StdOptional.h" />
+    <ClInclude Include="$(PlayFabCoreSourceDir)\source\Common\ApiAsyncProviders.h" />
+    <ClCompile Include="$(PlayFabCoreSourceDir)\source\Common\ApiHelpers.cpp" />
+    <ClInclude Include="$(PlayFabCoreSourceDir)\source\Common\ApiHelpers.h" />
+    <ClInclude Include="$(PlayFabCoreSourceDir)\source\Common\AsyncOp.h" />
+    <ClCompile Include="$(PlayFabCoreSourceDir)\source\Common\AsyncProvider.cpp" />
+    <ClInclude Include="$(PlayFabCoreSourceDir)\source\Common\AsyncProvider.h" />
+    <ClInclude Include="$(PlayFabCoreSourceDir)\source\Common\BaseModel.h" />
+    <ClCompile Include="$(PlayFabCoreSourceDir)\source\Common\CancellationToken.cpp" />
+    <ClInclude Include="$(PlayFabCoreSourceDir)\source\Common\CancellationToken.h" />
+    <ClCompile Include="$(PlayFabCoreSourceDir)\source\Common\Entity.cpp" />
+    <ClInclude Include="$(PlayFabCoreSourceDir)\source\Common\Entity.h" />
+    <ClInclude Include="$(PlayFabCoreSourceDir)\source\Common\EnumTraits.h" />
+    <ClCompile Include="$(PlayFabCoreSourceDir)\source\Common\Error.cpp" />
+    <ClInclude Include="$(PlayFabCoreSourceDir)\source\Common\Error.h" />
+    <ClCompile Include="$(PlayFabCoreSourceDir)\source\Common\GlobalState.cpp" />
+    <ClInclude Include="$(PlayFabCoreSourceDir)\source\Common\GlobalState.h" />
+    <ClInclude Include="$(PlayFabCoreSourceDir)\source\Common\HandleTable.h" />
+    <ClCompile Include="$(PlayFabCoreSourceDir)\source\Common\HttpClient.cpp" />
+    <ClInclude Include="$(PlayFabCoreSourceDir)\source\Common\HttpClient.h" />
+    <ClCompile Include="$(PlayFabCoreSourceDir)\source\Common\InternalMemory.cpp" />
+    <ClInclude Include="$(PlayFabCoreSourceDir)\source\Common\InternalMemory.h" />
+    <ClCompile Include="$(PlayFabCoreSourceDir)\source\Common\JsonUtils.cpp" />
+    <ClInclude Include="$(PlayFabCoreSourceDir)\source\Common\JsonUtils.h" />
+    <ClCompile Include="$(PlayFabCoreSourceDir)\source\Common\LocalStorageTraceOutput.cpp" />
+    <ClInclude Include="$(PlayFabCoreSourceDir)\source\Common\LocalStorageTraceOutput.h" />
+    <ClCompile Include="$(PlayFabCoreSourceDir)\source\Common\ModelBuffer.cpp" />
+    <ClInclude Include="$(PlayFabCoreSourceDir)\source\Common\ModelBuffer.h" />
+    <ClCompile Include="$(PlayFabCoreSourceDir)\source\Common\PlatformUser.cpp" />
+    <ClInclude Include="$(PlayFabCoreSourceDir)\source\Common\PlatformUser.h" />
+    <ClInclude Include="$(PlayFabCoreSourceDir)\source\Common\PlatformUtils.h" />
+    <ClInclude Include="$(PlayFabCoreSourceDir)\source\Common\Result.h" />
+    <ClInclude Include="$(PlayFabCoreSourceDir)\source\Common\ResultMacros.h" />
+    <ClCompile Include="$(PlayFabCoreSourceDir)\source\Common\RunContext.cpp" />
+    <ClInclude Include="$(PlayFabCoreSourceDir)\source\Common\RunContext.h" />
+    <ClInclude Include="$(PlayFabCoreSourceDir)\source\Common\SdkVersion.h" />
+    <ClCompile Include="$(PlayFabCoreSourceDir)\source\Common\ServiceConfig.cpp" />
+    <ClInclude Include="$(PlayFabCoreSourceDir)\source\Common\ServiceConfig.h" />
+    <ClCompile Include="$(PlayFabCoreSourceDir)\source\Common\TitlePlayer.cpp" />
+    <ClInclude Include="$(PlayFabCoreSourceDir)\source\Common\TitlePlayer.h" />
+    <ClCompile Include="$(PlayFabCoreSourceDir)\source\Common\TokenExpiredHandler.cpp" />
+    <ClInclude Include="$(PlayFabCoreSourceDir)\source\Common\TokenExpiredHandler.h" />
+    <ClCompile Include="$(PlayFabCoreSourceDir)\source\Common\Trace.cpp" />
+    <ClInclude Include="$(PlayFabCoreSourceDir)\source\Common\Trace.h" />
+    <ClInclude Include="$(PlayFabCoreSourceDir)\source\Common\Types.h" />
+    <ClCompile Include="$(PlayFabCoreSourceDir)\source\Common\XAsyncOperation.cpp" />
+    <ClInclude Include="$(PlayFabCoreSourceDir)\source\Common\XAsyncOperation.h" />
+    <ClCompile Include="$(PlayFabCoreSourceDir)\source\Platform\LocalStorage.cpp" />
+    <ClInclude Include="$(PlayFabCoreSourceDir)\source\Platform\LocalStorage.h" />
+    <ClCompile Include="$(PlayFabCoreSourceDir)\source\Platform\LocalStorageHandlers.cpp" />
+    <ClInclude Include="$(PlayFabCoreSourceDir)\source\Platform\LocalStorageHandlers.h" />
+    <ClCompile Include="$(PlayFabCoreSourceDir)\source\Platform\Platform.cpp" />
+    <ClInclude Include="$(PlayFabCoreSourceDir)\source\Platform\Platform.h" />
+    <ClCompile Include="$(PlayFabCoreSourceDir)\source\Telemetry\PFTelemetry.cpp" />
+    <ClCompile Include="$(PlayFabCoreSourceDir)\source\Telemetry\TelemetryPipeline.cpp" />
+    <ClInclude Include="$(PlayFabCoreSourceDir)\source\Telemetry\TelemetryPipeline.h" />
+    <ClCompile Include="$(PlayFabCoreSourceDir)\source\Api\PFEntity.cpp" />
+    <ClCompile Include="$(PlayFabCoreSourceDir)\source\Api\PFGlobal.cpp" />
+    <ClCompile Include="$(PlayFabCoreSourceDir)\source\Api\PFPlatform.cpp" />
+    <ClCompile Include="$(PlayFabCoreSourceDir)\source\Api\PFServiceConfig.cpp" />
+    <ClCompile Include="$(PlayFabCoreSourceDir)\source\Api\PFTitlePlayer.cpp" />
+    <ClInclude Include="$(PlayFabCoreSourceDir)\include\playfab\PFSharedDataModels.h" />
+    <ClInclude Include="$(PlayFabCoreSourceDir)\include\playfab\cpp\PFSharedDataModelWrappers.h" />
+    <ClInclude Include="$(PlayFabCoreSourceDir)\source\Shared\SharedDataModels.h" />
+    <ClCompile Include="$(PlayFabCoreSourceDir)\source\Shared\SharedDataModels.cpp" />
+    <ClInclude Include="$(PlayFabCoreSourceDir)\include\playfab\PFAuthenticationDataModels.h" />
+    <ClInclude Include="$(PlayFabCoreSourceDir)\include\playfab\cpp\PFAuthenticationDataModelWrappers.h" />
+    <ClInclude Include="$(PlayFabCoreSourceDir)\source\Authentication\AuthenticationDataModels.h" />
+    <ClCompile Include="$(PlayFabCoreSourceDir)\source\Authentication\AuthenticationDataModels.cpp" />
+    <ClInclude Include="$(PlayFabCoreSourceDir)\source\Authentication\Authentication.h" />
+    <ClCompile Include="$(PlayFabCoreSourceDir)\source\Authentication\Authentication.cpp" />
+    <ClInclude Include="$(PlayFabCoreSourceDir)\include\playfab\PFAuthentication.h" />
+    <ClCompile Include="$(PlayFabCoreSourceDir)\source\Authentication\PFAuthentication.cpp" />
+    <ClInclude Include="$(PlayFabCoreSourceDir)\source\Events\EventsDataModels.h" />
+    <ClCompile Include="$(PlayFabCoreSourceDir)\source\Events\EventsDataModels.cpp" />
+    <ClInclude Include="$(PlayFabCoreSourceDir)\source\Events\Events.h" />
+    <ClCompile Include="$(PlayFabCoreSourceDir)\source\Events\Events.cpp" />
+    <ClInclude Include="$(PlayFabCoreSourceDir)\source\stdafx.h" />
+    <ClCompile Include="$(PlayFabCoreSourceDir)\source\stdafx.cpp">
       <PrecompiledHeader>Create</PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="..\..\test\UnitTests\TestContext.cpp" />
-    <ClCompile Include="..\..\test\UnitTests\Tests\JsonParsingTests.cpp" />
-    <ClCompile Include="..\..\test\UnitTests\Tests\ModelTests.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\test\UnitTests\Event.h" />
-    <ClInclude Include="..\..\test\UnitTests\pch.h" />
-    <ClInclude Include="..\..\test\UnitTests\TestContext.h" />
+    <ClCompile Include="..\..\test\UnitTests\Mocks\HttpMock.cpp" />
+    <ClCompile Include="..\..\test\UnitTests\Support\AsyncTestContext.cpp" />
+    <ClCompile Include="..\..\test\UnitTests\Support\Event.cpp" />
     <ClCompile Include="..\..\test\UnitTests\Tests\AsyncOpTests.cpp" />
+    <ClCompile Include="..\..\test\UnitTests\Tests\CancellationTokenTests.cpp" />
+    <ClCompile Include="..\..\test\UnitTests\Tests\GlobalStateTests.cpp" />
+    <ClCompile Include="..\..\test\UnitTests\Tests\RunContextTests.cpp" />
+    <ClCompile Include="..\..\test\UnitTests\Tests\TelemetryPipelineTests.cpp" />
+    <ClCompile Include="..\..\test\UnitTests\Tests\TokenRefreshTests.cpp" />
+    <ClInclude Include="..\..\test\UnitTests\Mocks\HttpMock.h" />
+    <ClInclude Include="..\..\test\UnitTests\Mocks\MockResponses.h" />
+    <ClInclude Include="..\..\test\UnitTests\Support\AsyncTestContext.h" />
+    <ClInclude Include="..\..\test\UnitTests\Support\Event.h" />
+    <ClInclude Include="..\..\test\UnitTests\Support\TestIncludes.h" />
+    <ClInclude Include="..\..\test\UnitTests\Support\TestMacros.h" />
+    <ClInclude Include="..\..\test\Wrappers\PlayFabSession.h" />
+    <ClInclude Include="..\..\test\Wrappers\ServiceConfig.h" />
+    <ClInclude Include="..\..\test\Wrappers\TelemetryPipeline.h" />
+    <ClInclude Include="..\..\test\Wrappers\TitlePlayer.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
@@ -79,19 +178,19 @@
   </ImportGroup>
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
-    <Import Project="..\PlayFabCore.props" />
+    <Import Project="..\PlayFabCore.internal.props" />
   </ImportGroup>
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
-    <Import Project="..\PlayFabCore.props" />
+    <Import Project="..\PlayFabCore.internal.props" />
   </ImportGroup>
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
-    <Import Project="..\PlayFabCore.props" />
+    <Import Project="..\PlayFabCore.internal.props" />
   </ImportGroup>
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
-    <Import Project="..\PlayFabCore.props" />
+    <Import Project="..\PlayFabCore.internal.props" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -112,10 +211,10 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>$(VCInstallDir)UnitTest\include;$(PlayFabTestDir)\UnitTests;$(PlayFabSourceDir)\source;$(PlayFabSourceDir)\source\Common;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(VCInstallDir)UnitTest\include;$(PlayFabCoreTestDir)\UnitTests;$(PlayFabCoreTestDir)\UnitTests\Support;$(PlayFabCoreTestDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <UseFullPaths>true</UseFullPaths>
-      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderFile>stdafx.h</PrecompiledHeaderFile>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -128,10 +227,10 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>$(VCInstallDir)UnitTest\include;$(PlayFabTestDir)\UnitTests;$(PlayFabSourceDir)\source;$(PlayFabSourceDir)\source\Common;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(VCInstallDir)UnitTest\include;$(PlayFabCoreTestDir)\UnitTests;$(PlayFabCoreTestDir)\UnitTests\Support;$(PlayFabCoreTestDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <UseFullPaths>true</UseFullPaths>
-      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderFile>stdafx.h</PrecompiledHeaderFile>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -146,10 +245,10 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>$(VCInstallDir)UnitTest\include;$(PlayFabTestDir)\UnitTests;$(PlayFabSourceDir)\source;$(PlayFabSourceDir)\source\Common;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(VCInstallDir)UnitTest\include;$(PlayFabCoreTestDir)\UnitTests;$(PlayFabCoreTestDir)\UnitTests\Support;$(PlayFabCoreTestDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <UseFullPaths>true</UseFullPaths>
-      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderFile>stdafx.h</PrecompiledHeaderFile>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -166,10 +265,10 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>$(VCInstallDir)UnitTest\include;$(PlayFabTestDir)\UnitTests;$(PlayFabSourceDir)\source;$(PlayFabSourceDir)\source\Common;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(VCInstallDir)UnitTest\include;$(PlayFabCoreTestDir)\UnitTests;$(PlayFabCoreTestDir)\UnitTests\Support;$(PlayFabCoreTestDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <UseFullPaths>true</UseFullPaths>
-      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderFile>stdafx.h</PrecompiledHeaderFile>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>

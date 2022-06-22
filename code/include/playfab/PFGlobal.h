@@ -7,7 +7,7 @@
 
 #pragma once
 
-#include <httpClient/pal.h>
+#include <playfab/PFPal.h>
 #include <httpClient/async.h>
 
 extern "C"
@@ -56,7 +56,7 @@ typedef void STDAPIVCALLTYPE PFMemFreeFunction(
 /// <param name="memAllocFunc">A pointer to the custom allocation callback to use.</param>
 /// <param name="memFreeFunc">A pointer to the custom freeing callback to use.</param>
 /// <returns>HRESULT return code for this API operation.</returns>
-STDAPI PFMemSetFunctions(
+PF_API PFMemSetFunctions(
     _In_opt_ PFMemAllocFunction* memAllocFunc,
     _In_opt_ PFMemFreeFunction* memFreeFunc
 ) noexcept;
@@ -71,60 +71,36 @@ STDAPI PFMemSetFunctions(
 /// <param name="memFreeFunc">Set to the to the current memory free callback. Returns the default 
 /// routine if not previously set</param>
 /// <returns>HRESULT return code for this API operation.</returns>
-STDAPI PFMemGetFunctions(
+PF_API PFMemGetFunctions(
     _Out_ PFMemAllocFunction** memAllocFunc,
     _Out_ PFMemFreeFunction** memFreeFunc
 ) noexcept;
 
 /// <summary>
-/// Handle to global state created by PFInitialize. A PFStateHandle will be needed to call login methods.
-/// Cleaned up with PFCleanupAsync.
+/// Enables redirection of PlayFab tracing to a local file. Must be called before PFInitialize.
 /// </summary>
-typedef struct PFGlobalState* PFStateHandle;
+/// <param name="traceFileDirectory">Directory where trace file should be stored</param>
+/// <returns>HRESULT return code for this API operation.</returns>
+PF_API PFTraceEnableTraceToFile(
+    _In_z_ const char* traceFileDirectory
+) noexcept;
 
 /// <summary>
 /// Create PlayFab global state.
 /// </summary>
-/// <param name="playFabTitleId">PlayFab TitleId for the title. Found in the Game Manager for your title on the PlayFab Website.</param>
-/// <param name="connectionString">Optional connection string to directly access a title resource. Configured via Game Manager.</param>
 /// <param name="backgroundQueue">An XTaskQueue that should be used for background work. If no queue is a default (threadpool) queue will be used.</param>
-/// <param name="stateHandle">Pointer to PFStateHandle to write.</param>
 /// <returns>Result code for this API operation.</returns>
-HRESULT PFInitialize(
-    _In_z_ const char* playFabTitleId,
-    _In_opt_z_ const char* connectionString,
-    _In_opt_ XTaskQueueHandle backgroundQueue,
-    _Outptr_ PFStateHandle* stateHandle
+PF_API PFInitialize(
+    _In_opt_ XTaskQueueHandle backgroundQueue
 ) noexcept;
-
-#if defined(ENABLE_PLAYFABSERVER_API) || defined(ENABLE_PLAYFABADMIN_API)
-/// <summary>
-/// Create PlayFab global state. Should be only used when implementing admin or server code.
-/// </summary>
-/// <param name="playFabTitleId">PlayFab TitleId for the title. Found in the Game Manager for your title on the PlayFab Website.</param>
-/// <param name="secretKey">Key to be used for Authentication for Server and Admin APIs.</param>
-/// <param name="connectionString">Optional connection string to directly access a title resource. Configured via Game Manager.</param>
-/// <param name="backgroundQueue">An XTaskQueue that should be used for background work. If no queue is a default (threadpool) queue will be used.</param>
-/// <param name="stateHandle">Pointer to PFStateHandle to write.</param>
-/// <returns>Result code for this API operation.</returns>
-HRESULT PFAdminInitialize(
-    _In_z_ const char* playFabTitleId,
-    _In_z_ const char* secretKey,
-    _In_opt_z_ const char* connectionString,
-    _In_opt_ XTaskQueueHandle backgroundQueue,
-    _Outptr_ PFStateHandle* stateHandle
-) noexcept;
-#endif
 
 /// <summary>
 /// Cleanup PlayFab global state.
 /// </summary>
-/// <param name="stateHandle">Handle to the PlayFab state to cleanup.</param>
 /// <param name="async">XAsyncBlock for the async operation.</param>
 /// <returns>Result code for this API operation.</returns>
 /// <remarks>Asynchronous result returned via XAsyncGetStatus.</remarks>
-HRESULT PFUninitializeAsync(
-    _In_ PFStateHandle stateHandle,
+PF_API PFUninitializeAsync(
     _In_ XAsyncBlock* async
 ) noexcept;
 

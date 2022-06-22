@@ -1,4 +1,5 @@
 #include "stdafx.h"
+#include "GlobalState.h"
 
 namespace PlayFab
 {
@@ -26,22 +27,22 @@ MemoryHooks& GetMemoryHooks()
 
 HRESULT SetMemoryHooks(PFMemAllocFunction* memAllocFunc, PFMemFreeFunction* memFreeFunc)
 {
-    // Memhooks can't be null
-    RETURN_HR_INVALIDARG_IF_NULL(memAllocFunc);
-    RETURN_HR_INVALIDARG_IF_NULL(memFreeFunc);
-
     auto& hooks = GetMemoryHooks();
 
-    // Only allow hooks to be set once
-    if (hooks.alloc != DefaultAlloc || hooks.free != DefaultFree)
-    {
-        TRACE_ERROR("Memory Hooks can only be set once!");
-        return E_FAIL;
-    }
-    else
+    if (memAllocFunc && memFreeFunc)
     {
         hooks.alloc = memAllocFunc;
         hooks.free = memFreeFunc;
+    }
+    else if (!memAllocFunc && !memFreeFunc)
+    {
+        hooks.alloc = DefaultAlloc;
+        hooks.free = DefaultFree;
+    }
+    else
+    {
+        // Hooks must be set together
+        return E_INVALIDARG;
     }
 
     return S_OK;

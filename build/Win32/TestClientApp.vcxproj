@@ -24,8 +24,6 @@
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>TestApp</RootNamespace>
     <ProjectName>TestClientApp</ProjectName>
-    <OutputSubDir>TestClientApp</OutputSubDir>
-    <OutDir>$(SolutionDir)$(Platform)\$(Configuration)\$(OutputSubDir)\</OutDir>
     <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -75,23 +73,32 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>false</LinkIncremental>
     <IncludePath>$(IncludePath)</IncludePath>
-    <IntDir>$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+    <OutDir>$(PlayFabCoreBuiltDir)bins\$(Platform)\$(Configuration)\$(MSBuildProjectName)\</OutDir>
+    <IntDir>$(PlayFabCoreBuiltDir)obj\$(Platform)\$(Configuration)\$(MSBuildProjectName)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>false</LinkIncremental>
     <IncludePath>$(IncludePath)</IncludePath>
-    <IntDir>$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+    <OutDir>$(PlayFabCoreBuiltDir)bins\$(Platform)\$(Configuration)\$(MSBuildProjectName)\</OutDir>
+    <IntDir>$(PlayFabCoreBuiltDir)obj\$(Platform)\$(Configuration)\$(MSBuildProjectName)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
     <IncludePath>$(IncludePath)</IncludePath>
-    <IntDir>$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+    <OutDir>$(PlayFabCoreBuiltDir)bins\$(Platform)\$(Configuration)\$(MSBuildProjectName)\</OutDir>
+    <IntDir>$(PlayFabCoreBuiltDir)obj\$(Platform)\$(Configuration)\$(MSBuildProjectName)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
     <IncludePath>$(IncludePath)</IncludePath>
-    <IntDir>$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+    <OutDir>$(PlayFabCoreBuiltDir)bins\$(Platform)\$(Configuration)\$(MSBuildProjectName)\</OutDir>
+    <IntDir>$(PlayFabCoreBuiltDir)obj\$(Platform)\$(Configuration)\$(MSBuildProjectName)\</IntDir>
   </PropertyGroup>
+    <ItemDefinitionGroup>
+        <ClCompile>
+            <PreprocessorDefinitions>PF_TEST_TITLE_DATA_JSON=R"($(SolutionDir)..\..\testTitleData.json)";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+        </ClCompile>
+    </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
       <PrecompiledHeader>Use</PrecompiledHeader>
@@ -100,7 +107,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;WIN32;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);$(PlayFabTestDir)\TestApp;$(PlayFabTestDir)\TestApp\Tests;$(PlayFabSourceDir)\source;$(PlayFabSourceDir)\source\Common;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);$(PlayFabCoreTestDir)\TestApp;$(PlayFabCoreTestDir)\TestApp\Tests;$(PlayFabCoreSourceDir)\source;$(PlayFabCoreExternalDir)rapidjson\include;$(PlayFabCoreSourceDir)\source\Common</AdditionalIncludeDirectories>
       <PrecompiledHeaderFile>TestAppPch.h</PrecompiledHeaderFile>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <TreatWarningAsError>true</TreatWarningAsError>
@@ -123,7 +130,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;WIN32;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);$(PlayFabTestDir)\TestApp;$(PlayFabTestDir)\TestApp\Tests;$(PlayFabSourceDir)\source;$(PlayFabSourceDir)\source\Common;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);$(PlayFabCoreTestDir)\TestApp;$(PlayFabCoreTestDir)\TestApp\Tests;$(PlayFabCoreSourceDir)\source;$(PlayFabCoreExternalDir)rapidjson\include;$(PlayFabCoreSourceDir)\source\Common</AdditionalIncludeDirectories>
       <PrecompiledHeaderFile>TestAppPch.h</PrecompiledHeaderFile>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <TreatWarningAsError>true</TreatWarningAsError>
@@ -145,7 +152,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_CONSOLE;WIN32;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);$(PlayFabTestDir)\TestApp;$(PlayFabTestDir)\TestApp\Tests;$(PlayFabSourceDir)\source;$(PlayFabSourceDir)\source\Common;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);$(PlayFabCoreTestDir)\TestApp;$(PlayFabCoreTestDir)\TestApp\Tests;$(PlayFabCoreSourceDir)\source;$(PlayFabCoreExternalDir)rapidjson\include;$(PlayFabCoreSourceDir)\source\Common</AdditionalIncludeDirectories>
       <PrecompiledHeaderFile>TestAppPch.h</PrecompiledHeaderFile>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <TreatWarningAsError>true</TreatWarningAsError>
@@ -167,7 +174,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_CONSOLE;WIN32;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);$(PlayFabTestDir)\TestApp;$(PlayFabTestDir)\TestApp\Tests;$(PlayFabSourceDir)\source;$(PlayFabSourceDir)\source\Common;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);$(PlayFabCoreTestDir)\TestApp;$(PlayFabCoreTestDir)\TestApp\Tests;$(PlayFabCoreSourceDir)\source;$(PlayFabCoreExternalDir)rapidjson\include;$(PlayFabCoreSourceDir)\source\Common</AdditionalIncludeDirectories>
       <PrecompiledHeaderFile>TestAppPch.h</PrecompiledHeaderFile>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <TreatWarningAsError>true</TreatWarningAsError>
@@ -183,75 +190,31 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="$(PlayFabTestDir)\TestApp\Tests\ApiTests.cpp" />
-    <ClInclude Include="$(PlayFabTestDir)\TestApp\Tests\ApiTests.h" />
-    <ClCompile Include="$(PlayFabTestDir)\TestApp\Tests\EntityTests.cpp" />
-    <ClInclude Include="$(PlayFabTestDir)\TestApp\Tests\EntityTests.h" />
-    <ClCompile Include="$(PlayFabTestDir)\TestApp\TestApp.cpp" />
-    <ClInclude Include="$(PlayFabTestDir)\TestApp\TestApp.h" />
-    <ClInclude Include="$(PlayFabTestDir)\TestApp\TestCase.h" />
-    <ClCompile Include="$(PlayFabTestDir)\TestApp\TestContext.cpp" />
-    <ClInclude Include="$(PlayFabTestDir)\TestApp\TestContext.h" />
-    <ClInclude Include="$(PlayFabTestDir)\TestApp\TestDataTypes.h" />
-    <ClCompile Include="$(PlayFabTestDir)\TestApp\TestReport.cpp" />
-    <ClInclude Include="$(PlayFabTestDir)\TestApp\TestReport.h" />
-    <ClCompile Include="$(PlayFabTestDir)\TestApp\TestRunner.cpp" />
-    <ClInclude Include="$(PlayFabTestDir)\TestApp\TestRunner.h" />
-    <ClCompile Include="$(PlayFabTestDir)\TestApp\TestUtils.cpp" />
-    <ClInclude Include="$(PlayFabTestDir)\TestApp\TestUtils.h" />
-    <ClCompile Include="$(PlayFabTestDir)\TestApp\XAsyncDispatcher.cpp" />
-    <ClInclude Include="$(PlayFabTestDir)\TestApp\XAsyncDispatcher.h" />
-    <ClInclude Include="$(PlayFabTestDir)\TestApp\XAsyncHelper.h" />
+    <ClCompile Include="$(PlayFabCoreTestDir)\TestApp\Tests\ApiTests.cpp" />
+    <ClInclude Include="$(PlayFabCoreTestDir)\TestApp\Tests\ApiTests.h" />
+    <ClCompile Include="$(PlayFabCoreTestDir)\TestApp\TestApp.cpp" />
+    <ClInclude Include="$(PlayFabCoreTestDir)\TestApp\TestApp.h" />
+    <ClInclude Include="$(PlayFabCoreTestDir)\TestApp\TestCase.h" />
+    <ClCompile Include="$(PlayFabCoreTestDir)\TestApp\TestContext.cpp" />
+    <ClInclude Include="$(PlayFabCoreTestDir)\TestApp\TestContext.h" />
+    <ClInclude Include="$(PlayFabCoreTestDir)\TestApp\TestDataTypes.h" />
+    <ClCompile Include="$(PlayFabCoreTestDir)\TestApp\TestReport.cpp" />
+    <ClInclude Include="$(PlayFabCoreTestDir)\TestApp\TestReport.h" />
+    <ClCompile Include="$(PlayFabCoreTestDir)\TestApp\TestRunner.cpp" />
+    <ClInclude Include="$(PlayFabCoreTestDir)\TestApp\TestRunner.h" />
+    <ClCompile Include="$(PlayFabCoreTestDir)\TestApp\TestUtils.cpp" />
+    <ClInclude Include="$(PlayFabCoreTestDir)\TestApp\TestUtils.h" />
+    <ClCompile Include="$(PlayFabCoreTestDir)\TestApp\XAsyncDispatcher.cpp" />
+    <ClInclude Include="$(PlayFabCoreTestDir)\TestApp\XAsyncDispatcher.h" />
+    <ClInclude Include="$(PlayFabCoreTestDir)\TestApp\XAsyncHelper.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="$(PlayFabTestDir)\TestApp\TestAppPch.h" />
-    <ClCompile Include="$(PlayFabTestDir)\TestApp\TestAppPch.cpp">
+    <ClInclude Include="$(PlayFabCoreTestDir)\TestApp\TestAppPch.h" />
+    <ClCompile Include="$(PlayFabCoreTestDir)\TestApp\TestAppPch.cpp">
       <PrecompiledHeader>Create</PrecompiledHeader>
     </ClCompile>
-    <ClInclude Include="$(PlayFabTestDir)\TestApp\AutoGenTests\AutoGenEventsTests.h" />
-    <ClInclude Include="$(PlayFabTestDir)\TestApp\AutoGenTests\AutoGenEventsResultHolders.h" />
-    <ClCompile Include="$(PlayFabTestDir)\TestApp\AutoGenTests\AutoGenEventsTestData.cpp" />
-    <ClCompile Include="$(PlayFabTestDir)\TestApp\AutoGenTests\AutoGenEventsTestLog.cpp" />
-    <ClCompile Include="$(PlayFabTestDir)\TestApp\AutoGenTests\AutoGenEventsTests.cpp" /> 
-    <ClInclude Include="$(PlayFabTestDir)\TestApp\AutoGenTests\AutoGenAccountManagementTests.h" />
-    <ClInclude Include="$(PlayFabTestDir)\TestApp\AutoGenTests\AutoGenAccountManagementResultHolders.h" />
-    <ClCompile Include="$(PlayFabTestDir)\TestApp\AutoGenTests\AutoGenAccountManagementTestData.cpp" />
-    <ClCompile Include="$(PlayFabTestDir)\TestApp\AutoGenTests\AutoGenAccountManagementTestLog.cpp" />
-    <ClCompile Include="$(PlayFabTestDir)\TestApp\AutoGenTests\AutoGenAccountManagementTests.cpp" /> 
-    <ClInclude Include="$(PlayFabTestDir)\TestApp\AutoGenTests\AutoGenPlayerDataManagementTests.h" />
-    <ClInclude Include="$(PlayFabTestDir)\TestApp\AutoGenTests\AutoGenPlayerDataManagementResultHolders.h" />
-    <ClCompile Include="$(PlayFabTestDir)\TestApp\AutoGenTests\AutoGenPlayerDataManagementTestData.cpp" />
-    <ClCompile Include="$(PlayFabTestDir)\TestApp\AutoGenTests\AutoGenPlayerDataManagementTestLog.cpp" />
-    <ClCompile Include="$(PlayFabTestDir)\TestApp\AutoGenTests\AutoGenPlayerDataManagementTests.cpp" /> 
-    <ClInclude Include="$(PlayFabTestDir)\TestApp\AutoGenTests\AutoGenFriendsTests.h" />
-    <ClInclude Include="$(PlayFabTestDir)\TestApp\AutoGenTests\AutoGenFriendsResultHolders.h" />
-    <ClCompile Include="$(PlayFabTestDir)\TestApp\AutoGenTests\AutoGenFriendsTestData.cpp" />
-    <ClCompile Include="$(PlayFabTestDir)\TestApp\AutoGenTests\AutoGenFriendsTestLog.cpp" />
-    <ClCompile Include="$(PlayFabTestDir)\TestApp\AutoGenTests\AutoGenFriendsTests.cpp" /> 
-    <ClInclude Include="$(PlayFabTestDir)\TestApp\AutoGenTests\AutoGenSharedGroupsTests.h" />
-    <ClInclude Include="$(PlayFabTestDir)\TestApp\AutoGenTests\AutoGenSharedGroupsResultHolders.h" />
-    <ClCompile Include="$(PlayFabTestDir)\TestApp\AutoGenTests\AutoGenSharedGroupsTestData.cpp" />
-    <ClCompile Include="$(PlayFabTestDir)\TestApp\AutoGenTests\AutoGenSharedGroupsTestLog.cpp" />
-    <ClCompile Include="$(PlayFabTestDir)\TestApp\AutoGenTests\AutoGenSharedGroupsTests.cpp" /> 
-    <ClInclude Include="$(PlayFabTestDir)\TestApp\AutoGenTests\AutoGenDataTests.h" />
-    <ClInclude Include="$(PlayFabTestDir)\TestApp\AutoGenTests\AutoGenDataResultHolders.h" />
-    <ClCompile Include="$(PlayFabTestDir)\TestApp\AutoGenTests\AutoGenDataTestData.cpp" />
-    <ClCompile Include="$(PlayFabTestDir)\TestApp\AutoGenTests\AutoGenDataTestLog.cpp" />
-    <ClCompile Include="$(PlayFabTestDir)\TestApp\AutoGenTests\AutoGenDataTests.cpp" /> 
-    <ClInclude Include="$(PlayFabTestDir)\TestApp\AutoGenTests\AutoGenGroupsTests.h" />
-    <ClInclude Include="$(PlayFabTestDir)\TestApp\AutoGenTests\AutoGenGroupsResultHolders.h" />
-    <ClCompile Include="$(PlayFabTestDir)\TestApp\AutoGenTests\AutoGenGroupsTestData.cpp" />
-    <ClCompile Include="$(PlayFabTestDir)\TestApp\AutoGenTests\AutoGenGroupsTestLog.cpp" />
-    <ClCompile Include="$(PlayFabTestDir)\TestApp\AutoGenTests\AutoGenGroupsTests.cpp" /> 
-    <ClInclude Include="$(PlayFabTestDir)\TestApp\AutoGenTests\AutoGenProfilesTests.h" />
-    <ClInclude Include="$(PlayFabTestDir)\TestApp\AutoGenTests\AutoGenProfilesResultHolders.h" />
-    <ClCompile Include="$(PlayFabTestDir)\TestApp\AutoGenTests\AutoGenProfilesTestData.cpp" />
-    <ClCompile Include="$(PlayFabTestDir)\TestApp\AutoGenTests\AutoGenProfilesTestLog.cpp" />
-    <ClCompile Include="$(PlayFabTestDir)\TestApp\AutoGenTests\AutoGenProfilesTests.cpp" /> 
-    <ClCompile Include="$(PlayFabTestDir)\TestApp\Win32\MainWin32.cpp" />
-    <ClCompile Include="$(PlayFabTestDir)\TestApp\Win32\TestAppWin32.cpp" />
+    <ClCompile Include="$(PlayFabCoreTestDir)\TestApp\Win32\MainWin32.cpp" />
+    <ClCompile Include="$(PlayFabCoreTestDir)\TestApp\Win32\TestAppWin32.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
-  <ImportGroup Label="ExtensionTargets">
-  </ImportGroup>
 </Project>

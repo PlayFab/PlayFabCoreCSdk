@@ -1,10 +1,33 @@
 #pragma once
 
 #include <playfab/PFGlobal.h>
-#include "TaskQueue.h"
+#include "RunContext.h"
 
 namespace PlayFab
 {
+
+// TODO consider making these templated rather than just for TokenExpiredCallbacks
+
+class TokenExpiredCallback : public ICancellationListener
+{
+public:
+    TokenExpiredCallback(
+        RunContext&& rc,
+        void* context,
+        PFEntityTokenExpiredCallback* callback
+    ) noexcept;
+
+    void Invoke(const char* entityId) const noexcept;
+
+private:
+    void OnCancellation() noexcept override;
+
+    RunContext const m_rc;
+    void* const m_clientContext;
+    PFEntityTokenExpiredCallback* const m_clientCallback;
+};
+
+
 
 // Class to help registering, unregistering, and invoking client callbacks
 template<typename CallbackT>
@@ -16,7 +39,7 @@ public:
     CallbackManager& operator=(const CallbackManager&) = delete;
     ~CallbackManager() = default;
 
-    PFRegistrationToken Register(TaskQueue&& queue, CallbackT&& callback);
+    PFRegistrationToken Register(SharedPtr<ClientCallback<CallbackT>>&& callback);
     void Unregister(PFRegistrationToken token);
 
     template<typename... Args>
@@ -25,13 +48,7 @@ public:
 private:
     mutable std::recursive_mutex m_mutex; // recursive to allow unregistration within callback
 
-    struct CallbackContext
-    {
-        TaskQueue queue;
-        CallbackT callback;
-    };
-
-    Map<PFRegistrationToken, CallbackContext> m_callbacks;
+    Map<PFRegistrationToken, SharedPtr<ClientCallback<CallbackT>> m_callbacks;
     PFRegistrationToken m_nextToken;
 };
 
@@ -42,7 +59,7 @@ private:
 namespace Detail
 {
 // Arbitrary first token thats recognizable when debugging
-PFRegistrationToken const kFirstCallbackToken = 0xAAAA000000000000;
+PFRegistrationToken const kFirstCallbackToken = 0xBAC0000000000000;
 
 }
 
@@ -52,7 +69,7 @@ CallbackManager<CallbackT>::CallbackManager() : m_nextToken{ Detail::kFirstCallb
 }
 
 template<typename CallbackT>
-PFRegistrationToken CallbackManager<CallbackT>::Register(TaskQueue&& queue, CallbackT&& callback)
+PFRegistrationToken CallbackManager<CallbackT>::Register(SharedPtr<ClientCallback<CallbackT>>&& callback)
 {
     std::unique_lock<std::recursive_mutex> lock{ m_mutex };
 
