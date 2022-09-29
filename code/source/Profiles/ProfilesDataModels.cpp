@@ -16,6 +16,7 @@ JsonValue GetGlobalPolicyRequest::ToJson(const PFProfilesGetGlobalPolicyRequest&
 {
     JsonValue output{ rapidjson::kObjectType };
     JsonUtils::ObjectAddMemberDictionary(output, "CustomTags", input.customTags, input.customTagsCount);
+    JsonUtils::ObjectAddMember<EntityKey>(output, "Entity", input.entity);
     return output;
 }
 

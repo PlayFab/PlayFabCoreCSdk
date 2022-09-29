@@ -174,6 +174,18 @@ struct GetAccountInfoResultHolder : public XAsyncResult, public std::enable_shar
     PFAccountManagementGetAccountInfoResult* result{ nullptr };
 };
 
+struct GetPlayerCombinedInfoResultHolder : public XAsyncResult, public std::enable_shared_from_this<GetPlayerCombinedInfoResultHolder>
+{
+    GetPlayerCombinedInfoResultHolder() = default;
+    GetPlayerCombinedInfoResultHolder(const GetPlayerCombinedInfoResultHolder&) = delete;
+    GetPlayerCombinedInfoResultHolder(GetPlayerCombinedInfoResultHolder&&) = default;
+    GetPlayerCombinedInfoResultHolder& operator=(const GetPlayerCombinedInfoResultHolder&) = delete;
+    GetPlayerCombinedInfoResultHolder& operator=(GetPlayerCombinedInfoResultHolder&&) = default;
+    ~GetPlayerCombinedInfoResultHolder() = default;
+
+    PFAccountManagementGetPlayerCombinedInfoResult* result{ nullptr };
+};
+
 struct GetPlayFabIDsFromFacebookIDsResultHolder : public XAsyncResult, public std::enable_shared_from_this<GetPlayFabIDsFromFacebookIDsResultHolder>
 {
     GetPlayFabIDsFromFacebookIDsResultHolder() = default;
@@ -234,6 +246,18 @@ struct GetPlayFabIDsFromGoogleIDsResultHolder : public XAsyncResult, public std:
     PFAccountManagementGetPlayFabIDsFromGoogleIDsResult* result{ nullptr };
 };
 
+struct GetPlayFabIDsFromGooglePlayGamesPlayerIDsResultHolder : public XAsyncResult, public std::enable_shared_from_this<GetPlayFabIDsFromGooglePlayGamesPlayerIDsResultHolder>
+{
+    GetPlayFabIDsFromGooglePlayGamesPlayerIDsResultHolder() = default;
+    GetPlayFabIDsFromGooglePlayGamesPlayerIDsResultHolder(const GetPlayFabIDsFromGooglePlayGamesPlayerIDsResultHolder&) = delete;
+    GetPlayFabIDsFromGooglePlayGamesPlayerIDsResultHolder(GetPlayFabIDsFromGooglePlayGamesPlayerIDsResultHolder&&) = default;
+    GetPlayFabIDsFromGooglePlayGamesPlayerIDsResultHolder& operator=(const GetPlayFabIDsFromGooglePlayGamesPlayerIDsResultHolder&) = delete;
+    GetPlayFabIDsFromGooglePlayGamesPlayerIDsResultHolder& operator=(GetPlayFabIDsFromGooglePlayGamesPlayerIDsResultHolder&&) = default;
+    ~GetPlayFabIDsFromGooglePlayGamesPlayerIDsResultHolder() = default;
+
+    PFAccountManagementGetPlayFabIDsFromGooglePlayGamesPlayerIDsResult* result{ nullptr };
+};
+
 struct GetPlayFabIDsFromKongregateIDsResultHolder : public XAsyncResult, public std::enable_shared_from_this<GetPlayFabIDsFromKongregateIDsResultHolder>
 {
     GetPlayFabIDsFromKongregateIDsResultHolder() = default;
@@ -244,6 +268,18 @@ struct GetPlayFabIDsFromKongregateIDsResultHolder : public XAsyncResult, public 
     ~GetPlayFabIDsFromKongregateIDsResultHolder() = default;
 
     PFAccountManagementGetPlayFabIDsFromKongregateIDsResult* result{ nullptr };
+};
+
+struct GetPlayFabIDsFromNintendoServiceAccountIdsResultHolder : public XAsyncResult, public std::enable_shared_from_this<GetPlayFabIDsFromNintendoServiceAccountIdsResultHolder>
+{
+    GetPlayFabIDsFromNintendoServiceAccountIdsResultHolder() = default;
+    GetPlayFabIDsFromNintendoServiceAccountIdsResultHolder(const GetPlayFabIDsFromNintendoServiceAccountIdsResultHolder&) = delete;
+    GetPlayFabIDsFromNintendoServiceAccountIdsResultHolder(GetPlayFabIDsFromNintendoServiceAccountIdsResultHolder&&) = default;
+    GetPlayFabIDsFromNintendoServiceAccountIdsResultHolder& operator=(const GetPlayFabIDsFromNintendoServiceAccountIdsResultHolder&) = delete;
+    GetPlayFabIDsFromNintendoServiceAccountIdsResultHolder& operator=(GetPlayFabIDsFromNintendoServiceAccountIdsResultHolder&&) = default;
+    ~GetPlayFabIDsFromNintendoServiceAccountIdsResultHolder() = default;
+
+    PFAccountManagementGetPlayFabIDsFromNintendoServiceAccountIdsResult* result{ nullptr };
 };
 
 struct GetPlayFabIDsFromNintendoSwitchDeviceIdsResultHolder : public XAsyncResult, public std::enable_shared_from_this<GetPlayFabIDsFromNintendoSwitchDeviceIdsResultHolder>
@@ -340,18 +376,6 @@ struct GetUserAccountInfoResultHolder : public XAsyncResult, public std::enable_
     ~GetUserAccountInfoResultHolder() = default;
 
     PFAccountManagementGetUserAccountInfoResult* result{ nullptr };
-};
-
-struct SavePushNotificationTemplateResultHolder : public XAsyncResult, public std::enable_shared_from_this<SavePushNotificationTemplateResultHolder>
-{
-    SavePushNotificationTemplateResultHolder() = default;
-    SavePushNotificationTemplateResultHolder(const SavePushNotificationTemplateResultHolder&) = delete;
-    SavePushNotificationTemplateResultHolder(SavePushNotificationTemplateResultHolder&&) = default;
-    SavePushNotificationTemplateResultHolder& operator=(const SavePushNotificationTemplateResultHolder&) = delete;
-    SavePushNotificationTemplateResultHolder& operator=(SavePushNotificationTemplateResultHolder&&) = default;
-    ~SavePushNotificationTemplateResultHolder() = default;
-
-    PFAccountManagementSavePushNotificationTemplateResult* result{ nullptr };
 };
 
 

@@ -10,10 +10,10 @@ namespace PlayStream
 {
 
 // PlayStream Classes
-class AddPlayerTagRequest : public Wrappers::PFPlayStreamAddPlayerTagRequestWrapper<Allocator>, public InputModel
+class ExportPlayersInSegmentRequest : public Wrappers::PFPlayStreamExportPlayersInSegmentRequestWrapper<Allocator>, public InputModel
 {
 public:
-    using ModelWrapperType = typename Wrappers::PFPlayStreamAddPlayerTagRequestWrapper<Allocator>;
+    using ModelWrapperType = typename Wrappers::PFPlayStreamExportPlayersInSegmentRequestWrapper<Allocator>;
     using ModelWrapperType::ModelType;
 
     // Constructors
@@ -21,8 +21,26 @@ public:
 
     // InputModel
     JsonValue ToJson() const override;
-    static JsonValue ToJson(const PFPlayStreamAddPlayerTagRequest& input);
+    static JsonValue ToJson(const PFPlayStreamExportPlayersInSegmentRequest& input);
 
+};
+
+class ExportPlayersInSegmentResult : public Wrappers::PFPlayStreamExportPlayersInSegmentResultWrapper<Allocator>, public OutputModel<PFPlayStreamExportPlayersInSegmentResult>
+{
+public:
+    using ModelWrapperType = typename Wrappers::PFPlayStreamExportPlayersInSegmentResultWrapper<Allocator>;
+    using ModelWrapperType::ModelType;
+
+    // Constructors
+    using ModelWrapperType::ModelWrapperType;
+
+    // OutputModel
+    void FromJson(const JsonValue& input) override;
+    size_t RequiredBufferSize() const override;
+    Result<PFPlayStreamExportPlayersInSegmentResult const*> Copy(ModelBuffer& buffer) const override;
+
+    static size_t RequiredBufferSize(const PFPlayStreamExportPlayersInSegmentResult& model);
+    static HRESULT Copy(const PFPlayStreamExportPlayersInSegmentResult& input, PFPlayStreamExportPlayersInSegmentResult& output, ModelBuffer& buffer);
 };
 
 class GetSegmentResult : public Wrappers::PFPlayStreamGetSegmentResultWrapper<Allocator>, public OutputModel<PFPlayStreamGetSegmentResult>
@@ -254,10 +272,10 @@ public:
     static HRESULT Copy(const PFPlayStreamGetPlayersInSegmentResult& input, PFPlayStreamGetPlayersInSegmentResult& output, ModelBuffer& buffer);
 };
 
-class GetPlayerTagsRequest : public Wrappers::PFPlayStreamGetPlayerTagsRequestWrapper<Allocator>, public InputModel
+class GetPlayersInSegmentExportRequest : public Wrappers::PFPlayStreamGetPlayersInSegmentExportRequestWrapper<Allocator>, public InputModel
 {
 public:
-    using ModelWrapperType = typename Wrappers::PFPlayStreamGetPlayerTagsRequestWrapper<Allocator>;
+    using ModelWrapperType = typename Wrappers::PFPlayStreamGetPlayersInSegmentExportRequestWrapper<Allocator>;
     using ModelWrapperType::ModelType;
 
     // Constructors
@@ -265,14 +283,14 @@ public:
 
     // InputModel
     JsonValue ToJson() const override;
-    static JsonValue ToJson(const PFPlayStreamGetPlayerTagsRequest& input);
+    static JsonValue ToJson(const PFPlayStreamGetPlayersInSegmentExportRequest& input);
 
 };
 
-class GetPlayerTagsResult : public Wrappers::PFPlayStreamGetPlayerTagsResultWrapper<Allocator>, public OutputModel<PFPlayStreamGetPlayerTagsResult>
+class GetPlayersInSegmentExportResponse : public Wrappers::PFPlayStreamGetPlayersInSegmentExportResponseWrapper<Allocator>, public OutputModel<PFPlayStreamGetPlayersInSegmentExportResponse>
 {
 public:
-    using ModelWrapperType = typename Wrappers::PFPlayStreamGetPlayerTagsResultWrapper<Allocator>;
+    using ModelWrapperType = typename Wrappers::PFPlayStreamGetPlayersInSegmentExportResponseWrapper<Allocator>;
     using ModelWrapperType::ModelType;
 
     // Constructors
@@ -281,73 +299,10 @@ public:
     // OutputModel
     void FromJson(const JsonValue& input) override;
     size_t RequiredBufferSize() const override;
-    Result<PFPlayStreamGetPlayerTagsResult const*> Copy(ModelBuffer& buffer) const override;
+    Result<PFPlayStreamGetPlayersInSegmentExportResponse const*> Copy(ModelBuffer& buffer) const override;
 
-    static size_t RequiredBufferSize(const PFPlayStreamGetPlayerTagsResult& model);
-    static HRESULT Copy(const PFPlayStreamGetPlayerTagsResult& input, PFPlayStreamGetPlayerTagsResult& output, ModelBuffer& buffer);
-};
-
-class RemovePlayerTagRequest : public Wrappers::PFPlayStreamRemovePlayerTagRequestWrapper<Allocator>, public InputModel
-{
-public:
-    using ModelWrapperType = typename Wrappers::PFPlayStreamRemovePlayerTagRequestWrapper<Allocator>;
-    using ModelWrapperType::ModelType;
-
-    // Constructors
-    using ModelWrapperType::ModelWrapperType;
-
-    // InputModel
-    JsonValue ToJson() const override;
-    static JsonValue ToJson(const PFPlayStreamRemovePlayerTagRequest& input);
-
-};
-
-class EventContents : public Wrappers::PFPlayStreamEventContentsWrapper<Allocator>, public InputModel
-{
-public:
-    using ModelWrapperType = typename Wrappers::PFPlayStreamEventContentsWrapper<Allocator>;
-    using ModelWrapperType::ModelType;
-
-    // Constructors
-    using ModelWrapperType::ModelWrapperType;
-
-    // InputModel
-    JsonValue ToJson() const override;
-    static JsonValue ToJson(const PFPlayStreamEventContents& input);
-
-};
-
-class WriteEventsRequest : public Wrappers::PFPlayStreamWriteEventsRequestWrapper<Allocator>, public InputModel
-{
-public:
-    using ModelWrapperType = typename Wrappers::PFPlayStreamWriteEventsRequestWrapper<Allocator>;
-    using ModelWrapperType::ModelType;
-
-    // Constructors
-    using ModelWrapperType::ModelWrapperType;
-
-    // InputModel
-    JsonValue ToJson() const override;
-    static JsonValue ToJson(const PFPlayStreamWriteEventsRequest& input);
-
-};
-
-class WriteEventsResponse : public Wrappers::PFPlayStreamWriteEventsResponseWrapper<Allocator>, public OutputModel<PFPlayStreamWriteEventsResponse>
-{
-public:
-    using ModelWrapperType = typename Wrappers::PFPlayStreamWriteEventsResponseWrapper<Allocator>;
-    using ModelWrapperType::ModelType;
-
-    // Constructors
-    using ModelWrapperType::ModelWrapperType;
-
-    // OutputModel
-    void FromJson(const JsonValue& input) override;
-    size_t RequiredBufferSize() const override;
-    Result<PFPlayStreamWriteEventsResponse const*> Copy(ModelBuffer& buffer) const override;
-
-    static size_t RequiredBufferSize(const PFPlayStreamWriteEventsResponse& model);
-    static HRESULT Copy(const PFPlayStreamWriteEventsResponse& input, PFPlayStreamWriteEventsResponse& output, ModelBuffer& buffer);
+    static size_t RequiredBufferSize(const PFPlayStreamGetPlayersInSegmentExportResponse& model);
+    static HRESULT Copy(const PFPlayStreamGetPlayersInSegmentExportResponse& input, PFPlayStreamGetPlayersInSegmentExportResponse& output, ModelBuffer& buffer);
 };
 
 } // namespace PlayStream

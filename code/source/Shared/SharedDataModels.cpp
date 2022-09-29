@@ -1936,6 +1936,10 @@ void UserXboxInfo::FromJson(const JsonValue& input)
     String xboxUserId{};
     JsonUtils::ObjectGetMember(input, "XboxUserId", xboxUserId);
     this->SetXboxUserId(std::move(xboxUserId));
+
+    String xboxUserSandbox{};
+    JsonUtils::ObjectGetMember(input, "XboxUserSandbox", xboxUserSandbox);
+    this->SetXboxUserSandbox(std::move(xboxUserSandbox));
 }
 
 size_t UserXboxInfo::RequiredBufferSize() const
@@ -1955,6 +1959,10 @@ size_t UserXboxInfo::RequiredBufferSize(const PFUserXboxInfo& model)
     {
         requiredSize += (std::strlen(model.xboxUserId) + 1);
     }
+    if (model.xboxUserSandbox)
+    {
+        requiredSize += (std::strlen(model.xboxUserSandbox) + 1);
+    }
     return requiredSize;
 }
 
@@ -1965,6 +1973,11 @@ HRESULT UserXboxInfo::Copy(const PFUserXboxInfo& input, PFUserXboxInfo& output, 
         auto propCopyResult = buffer.CopyTo(input.xboxUserId); 
         RETURN_IF_FAILED(propCopyResult.hr);
         output.xboxUserId = propCopyResult.ExtractPayload();
+    }
+    {
+        auto propCopyResult = buffer.CopyTo(input.xboxUserSandbox); 
+        RETURN_IF_FAILED(propCopyResult.hr);
+        output.xboxUserSandbox = propCopyResult.ExtractPayload();
     }
     return S_OK;
 }
@@ -2435,6 +2448,70 @@ HRESULT UserGoogleInfo::Copy(const PFUserGoogleInfo& input, PFUserGoogleInfo& ou
         auto propCopyResult = buffer.CopyTo(input.googleName); 
         RETURN_IF_FAILED(propCopyResult.hr);
         output.googleName = propCopyResult.ExtractPayload();
+    }
+    return S_OK;
+}
+
+void UserGooglePlayGamesInfo::FromJson(const JsonValue& input)
+{
+    String googlePlayGamesPlayerAvatarImageUrl{};
+    JsonUtils::ObjectGetMember(input, "GooglePlayGamesPlayerAvatarImageUrl", googlePlayGamesPlayerAvatarImageUrl);
+    this->SetGooglePlayGamesPlayerAvatarImageUrl(std::move(googlePlayGamesPlayerAvatarImageUrl));
+
+    String googlePlayGamesPlayerDisplayName{};
+    JsonUtils::ObjectGetMember(input, "GooglePlayGamesPlayerDisplayName", googlePlayGamesPlayerDisplayName);
+    this->SetGooglePlayGamesPlayerDisplayName(std::move(googlePlayGamesPlayerDisplayName));
+
+    String googlePlayGamesPlayerId{};
+    JsonUtils::ObjectGetMember(input, "GooglePlayGamesPlayerId", googlePlayGamesPlayerId);
+    this->SetGooglePlayGamesPlayerId(std::move(googlePlayGamesPlayerId));
+}
+
+size_t UserGooglePlayGamesInfo::RequiredBufferSize() const
+{
+    return RequiredBufferSize(this->Model());
+}
+
+Result<PFUserGooglePlayGamesInfo const*> UserGooglePlayGamesInfo::Copy(ModelBuffer& buffer) const
+{
+    return buffer.CopyTo<UserGooglePlayGamesInfo>(&this->Model());
+}
+
+size_t UserGooglePlayGamesInfo::RequiredBufferSize(const PFUserGooglePlayGamesInfo& model)
+{
+    size_t requiredSize{ alignof(ModelType) + sizeof(ModelType) };
+    if (model.googlePlayGamesPlayerAvatarImageUrl)
+    {
+        requiredSize += (std::strlen(model.googlePlayGamesPlayerAvatarImageUrl) + 1);
+    }
+    if (model.googlePlayGamesPlayerDisplayName)
+    {
+        requiredSize += (std::strlen(model.googlePlayGamesPlayerDisplayName) + 1);
+    }
+    if (model.googlePlayGamesPlayerId)
+    {
+        requiredSize += (std::strlen(model.googlePlayGamesPlayerId) + 1);
+    }
+    return requiredSize;
+}
+
+HRESULT UserGooglePlayGamesInfo::Copy(const PFUserGooglePlayGamesInfo& input, PFUserGooglePlayGamesInfo& output, ModelBuffer& buffer)
+{
+    output = input;
+    {
+        auto propCopyResult = buffer.CopyTo(input.googlePlayGamesPlayerAvatarImageUrl); 
+        RETURN_IF_FAILED(propCopyResult.hr);
+        output.googlePlayGamesPlayerAvatarImageUrl = propCopyResult.ExtractPayload();
+    }
+    {
+        auto propCopyResult = buffer.CopyTo(input.googlePlayGamesPlayerDisplayName); 
+        RETURN_IF_FAILED(propCopyResult.hr);
+        output.googlePlayGamesPlayerDisplayName = propCopyResult.ExtractPayload();
+    }
+    {
+        auto propCopyResult = buffer.CopyTo(input.googlePlayGamesPlayerId); 
+        RETURN_IF_FAILED(propCopyResult.hr);
+        output.googlePlayGamesPlayerId = propCopyResult.ExtractPayload();
     }
     return S_OK;
 }
@@ -2931,6 +3008,13 @@ void UserAccountInfo::FromJson(const JsonValue& input)
         this->SetGoogleInfo(std::move(*googleInfo));
     }
 
+    StdExtra::optional<UserGooglePlayGamesInfo> googlePlayGamesInfo{};
+    JsonUtils::ObjectGetMember(input, "GooglePlayGamesInfo", googlePlayGamesInfo);
+    if (googlePlayGamesInfo)
+    {
+        this->SetGooglePlayGamesInfo(std::move(*googlePlayGamesInfo));
+    }
+
     StdExtra::optional<UserIosDeviceInfo> iosDeviceInfo{};
     JsonUtils::ObjectGetMember(input, "IosDeviceInfo", iosDeviceInfo);
     if (iosDeviceInfo)
@@ -3055,6 +3139,10 @@ size_t UserAccountInfo::RequiredBufferSize(const PFUserAccountInfo& model)
     {
         requiredSize += UserGoogleInfo::RequiredBufferSize(*model.googleInfo);
     }
+    if (model.googlePlayGamesInfo)
+    {
+        requiredSize += UserGooglePlayGamesInfo::RequiredBufferSize(*model.googlePlayGamesInfo);
+    }
     if (model.iosDeviceInfo)
     {
         requiredSize += UserIosDeviceInfo::RequiredBufferSize(*model.iosDeviceInfo);
@@ -3148,6 +3236,11 @@ HRESULT UserAccountInfo::Copy(const PFUserAccountInfo& input, PFUserAccountInfo&
         auto propCopyResult = buffer.CopyTo<UserGoogleInfo>(input.googleInfo); 
         RETURN_IF_FAILED(propCopyResult.hr);
         output.googleInfo = propCopyResult.ExtractPayload();
+    }
+    {
+        auto propCopyResult = buffer.CopyTo<UserGooglePlayGamesInfo>(input.googlePlayGamesInfo); 
+        RETURN_IF_FAILED(propCopyResult.hr);
+        output.googlePlayGamesInfo = propCopyResult.ExtractPayload();
     }
     {
         auto propCopyResult = buffer.CopyTo<UserIosDeviceInfo>(input.iosDeviceInfo); 
@@ -3456,74 +3549,6 @@ HRESULT GetPlayerCombinedInfoResultPayload::Copy(const PFGetPlayerCombinedInfoRe
         auto propCopyResult = buffer.CopyToDictionary<VirtualCurrencyRechargeTime>(input.userVirtualCurrencyRechargeTimes, input.userVirtualCurrencyRechargeTimesCount);
         RETURN_IF_FAILED(propCopyResult.hr);
         output.userVirtualCurrencyRechargeTimes = propCopyResult.ExtractPayload();
-    }
-    return S_OK;
-}
-
-JsonValue GetPlayerCombinedInfoRequest::ToJson() const
-{
-    return GetPlayerCombinedInfoRequest::ToJson(this->Model());
-}
-
-JsonValue GetPlayerCombinedInfoRequest::ToJson(const PFGetPlayerCombinedInfoRequest& input)
-{
-    JsonValue output{ rapidjson::kObjectType };
-    JsonUtils::ObjectAddMemberDictionary(output, "CustomTags", input.customTags, input.customTagsCount);
-    JsonUtils::ObjectAddMember<GetPlayerCombinedInfoRequestParams>(output, "InfoRequestParameters", input.infoRequestParameters);
-    JsonUtils::ObjectAddMember(output, "PlayFabId", input.playFabId);
-    return output;
-}
-
-void GetPlayerCombinedInfoResult::FromJson(const JsonValue& input)
-{
-    StdExtra::optional<GetPlayerCombinedInfoResultPayload> infoResultPayload{};
-    JsonUtils::ObjectGetMember(input, "InfoResultPayload", infoResultPayload);
-    if (infoResultPayload)
-    {
-        this->SetInfoResultPayload(std::move(*infoResultPayload));
-    }
-
-    String playFabId{};
-    JsonUtils::ObjectGetMember(input, "PlayFabId", playFabId);
-    this->SetPlayFabId(std::move(playFabId));
-}
-
-size_t GetPlayerCombinedInfoResult::RequiredBufferSize() const
-{
-    return RequiredBufferSize(this->Model());
-}
-
-Result<PFGetPlayerCombinedInfoResult const*> GetPlayerCombinedInfoResult::Copy(ModelBuffer& buffer) const
-{
-    return buffer.CopyTo<GetPlayerCombinedInfoResult>(&this->Model());
-}
-
-size_t GetPlayerCombinedInfoResult::RequiredBufferSize(const PFGetPlayerCombinedInfoResult& model)
-{
-    size_t requiredSize{ alignof(ModelType) + sizeof(ModelType) };
-    if (model.infoResultPayload)
-    {
-        requiredSize += GetPlayerCombinedInfoResultPayload::RequiredBufferSize(*model.infoResultPayload);
-    }
-    if (model.playFabId)
-    {
-        requiredSize += (std::strlen(model.playFabId) + 1);
-    }
-    return requiredSize;
-}
-
-HRESULT GetPlayerCombinedInfoResult::Copy(const PFGetPlayerCombinedInfoResult& input, PFGetPlayerCombinedInfoResult& output, ModelBuffer& buffer)
-{
-    output = input;
-    {
-        auto propCopyResult = buffer.CopyTo<GetPlayerCombinedInfoResultPayload>(input.infoResultPayload); 
-        RETURN_IF_FAILED(propCopyResult.hr);
-        output.infoResultPayload = propCopyResult.ExtractPayload();
-    }
-    {
-        auto propCopyResult = buffer.CopyTo(input.playFabId); 
-        RETURN_IF_FAILED(propCopyResult.hr);
-        output.playFabId = propCopyResult.ExtractPayload();
     }
     return S_OK;
 }

@@ -21,7 +21,7 @@ void AutoGenCatalogTests::Log(std::stringstream& ss)
 
 HRESULT AutoGenCatalogTests::LogHR(HRESULT hr)
 {
-    if( TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    if (TestApp::ShouldTrace(PFTestTraceLevel::Information))
     {
         TestApp::Log("Result: 0x%0.8x", hr);
     }
@@ -52,6 +52,8 @@ void AutoGenCatalogTests::AddTests()
 
     AddTest("TestCatalogGetItem", &AutoGenCatalogTests::TestCatalogGetItem);
 
+    AddTest("TestCatalogGetItemContainers", &AutoGenCatalogTests::TestCatalogGetItemContainers);
+
     AddTest("TestCatalogGetItemModerationState", &AutoGenCatalogTests::TestCatalogGetItemModerationState);
 
     AddTest("TestCatalogGetItemPublishStatus", &AutoGenCatalogTests::TestCatalogGetItemPublishStatus);
@@ -59,6 +61,8 @@ void AutoGenCatalogTests::AddTests()
     AddTest("TestCatalogGetItemReviews", &AutoGenCatalogTests::TestCatalogGetItemReviews);
 
     AddTest("TestCatalogGetItemReviewSummary", &AutoGenCatalogTests::TestCatalogGetItemReviewSummary);
+
+    AddTest("TestCatalogGetItems", &AutoGenCatalogTests::TestCatalogGetItems);
 
     AddTest("TestCatalogPublishDraftItem", &AutoGenCatalogTests::TestCatalogPublishDraftItem);
 
@@ -83,7 +87,7 @@ void AutoGenCatalogTests::AddTests()
 
 void AutoGenCatalogTests::ClassSetUp()
 {
-    HRESULT hr = PFAdminInitialize(testTitleData.titleId.data(), testTitleData.developerSecretKey.data(), nullptr, &stateHandle);
+    HRESULT hr = PFAdminInitialize(testTitleData.titleId.data(), testTitleData.developerSecretKey.data(), testTitleData.connectionString.data(), nullptr, &stateHandle);
     assert(SUCCEEDED(hr));
     if (SUCCEEDED(hr))
     {
@@ -190,7 +194,7 @@ void AutoGenCatalogTests::SetUp(TestContext& testContext)
 
 void AutoGenCatalogTests::TestCatalogCreateDraftItem(TestContext& testContext)
 {
-    struct CreateDraftItemResultHolder : public CreateDraftItemResponseHolder
+    struct CreateDraftItemResultHolderStruct : public CreateDraftItemResponseHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -200,16 +204,16 @@ void AutoGenCatalogTests::TestCatalogCreateDraftItem(TestContext& testContext)
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFCatalogCreateDraftItemGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
             
-            LogPFCatalogCreateDraftItemResponse(result);
+            LogCreateDraftItemResponse(result);
             return S_OK;
         }
 
         HRESULT Validate() override
         {
-            return ValidatePFCatalogCreateDraftItemResponse(result);
+            return ValidateCreateDraftItemResponse(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<CreateDraftItemResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<CreateDraftItemResultHolderStruct>>(testContext);
 
     PFCatalogCreateDraftItemRequestWrapper<> request;
     FillCreateDraftItemRequest(request);
@@ -229,7 +233,7 @@ void AutoGenCatalogTests::TestCatalogCreateDraftItem(TestContext& testContext)
 
 void AutoGenCatalogTests::TestCatalogCreateUploadUrls(TestContext& testContext)
 {
-    struct CreateUploadUrlsResultHolder : public CreateUploadUrlsResponseHolder
+    struct CreateUploadUrlsResultHolderStruct : public CreateUploadUrlsResponseHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -239,16 +243,16 @@ void AutoGenCatalogTests::TestCatalogCreateUploadUrls(TestContext& testContext)
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFCatalogCreateUploadUrlsGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
             
-            LogPFCatalogCreateUploadUrlsResponse(result);
+            LogCreateUploadUrlsResponse(result);
             return S_OK;
         }
 
         HRESULT Validate() override
         {
-            return ValidatePFCatalogCreateUploadUrlsResponse(result);
+            return ValidateCreateUploadUrlsResponse(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<CreateUploadUrlsResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<CreateUploadUrlsResultHolderStruct>>(testContext);
 
     PFCatalogCreateUploadUrlsRequestWrapper<> request;
     FillCreateUploadUrlsRequest(request);
@@ -308,7 +312,7 @@ void AutoGenCatalogTests::TestCatalogDeleteItem(TestContext& testContext)
 
 void AutoGenCatalogTests::TestCatalogGetCatalogConfig(TestContext& testContext)
 {
-    struct GetCatalogConfigResultHolder : public GetCatalogConfigResponseHolder
+    struct GetCatalogConfigResultHolderStruct : public GetCatalogConfigResponseHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -318,16 +322,16 @@ void AutoGenCatalogTests::TestCatalogGetCatalogConfig(TestContext& testContext)
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFCatalogGetCatalogConfigGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
             
-            LogPFCatalogGetCatalogConfigResponse(result);
+            LogGetCatalogConfigResponse(result);
             return S_OK;
         }
 
         HRESULT Validate() override
         {
-            return ValidatePFCatalogGetCatalogConfigResponse(result);
+            return ValidateGetCatalogConfigResponse(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<GetCatalogConfigResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<GetCatalogConfigResultHolderStruct>>(testContext);
 
     PFCatalogGetCatalogConfigRequestWrapper<> request;
     FillGetCatalogConfigRequest(request);
@@ -347,7 +351,7 @@ void AutoGenCatalogTests::TestCatalogGetCatalogConfig(TestContext& testContext)
 
 void AutoGenCatalogTests::TestCatalogGetDraftItem(TestContext& testContext)
 {
-    struct GetDraftItemResultHolder : public GetDraftItemResponseHolder
+    struct GetDraftItemResultHolderStruct : public GetDraftItemResponseHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -357,16 +361,16 @@ void AutoGenCatalogTests::TestCatalogGetDraftItem(TestContext& testContext)
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFCatalogGetDraftItemGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
             
-            LogPFCatalogGetDraftItemResponse(result);
+            LogGetDraftItemResponse(result);
             return S_OK;
         }
 
         HRESULT Validate() override
         {
-            return ValidatePFCatalogGetDraftItemResponse(result);
+            return ValidateGetDraftItemResponse(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<GetDraftItemResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<GetDraftItemResultHolderStruct>>(testContext);
 
     PFCatalogGetDraftItemRequestWrapper<> request;
     FillGetDraftItemRequest(request);
@@ -386,7 +390,7 @@ void AutoGenCatalogTests::TestCatalogGetDraftItem(TestContext& testContext)
 
 void AutoGenCatalogTests::TestCatalogGetDraftItems(TestContext& testContext)
 {
-    struct GetDraftItemsResultHolder : public GetDraftItemsResponseHolder
+    struct GetDraftItemsResultHolderStruct : public GetDraftItemsResponseHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -396,16 +400,16 @@ void AutoGenCatalogTests::TestCatalogGetDraftItems(TestContext& testContext)
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFCatalogGetDraftItemsGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
             
-            LogPFCatalogGetDraftItemsResponse(result);
+            LogGetDraftItemsResponse(result);
             return S_OK;
         }
 
         HRESULT Validate() override
         {
-            return ValidatePFCatalogGetDraftItemsResponse(result);
+            return ValidateGetDraftItemsResponse(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<GetDraftItemsResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<GetDraftItemsResultHolderStruct>>(testContext);
 
     PFCatalogGetDraftItemsRequestWrapper<> request;
     FillGetDraftItemsRequest(request);
@@ -425,7 +429,7 @@ void AutoGenCatalogTests::TestCatalogGetDraftItems(TestContext& testContext)
 
 void AutoGenCatalogTests::TestCatalogGetEntityDraftItems(TestContext& testContext)
 {
-    struct GetEntityDraftItemsResultHolder : public GetEntityDraftItemsResponseHolder
+    struct GetEntityDraftItemsResultHolderStruct : public GetEntityDraftItemsResponseHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -435,16 +439,16 @@ void AutoGenCatalogTests::TestCatalogGetEntityDraftItems(TestContext& testContex
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFCatalogGetEntityDraftItemsGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
             
-            LogPFCatalogGetEntityDraftItemsResponse(result);
+            LogGetEntityDraftItemsResponse(result);
             return S_OK;
         }
 
         HRESULT Validate() override
         {
-            return ValidatePFCatalogGetEntityDraftItemsResponse(result);
+            return ValidateGetEntityDraftItemsResponse(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<GetEntityDraftItemsResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<GetEntityDraftItemsResultHolderStruct>>(testContext);
 
     PFCatalogGetEntityDraftItemsRequestWrapper<> request;
     FillGetEntityDraftItemsRequest(request);
@@ -464,7 +468,7 @@ void AutoGenCatalogTests::TestCatalogGetEntityDraftItems(TestContext& testContex
 
 void AutoGenCatalogTests::TestCatalogGetEntityItemReview(TestContext& testContext)
 {
-    struct GetEntityItemReviewResultHolder : public GetEntityItemReviewResponseHolder
+    struct GetEntityItemReviewResultHolderStruct : public GetEntityItemReviewResponseHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -474,16 +478,16 @@ void AutoGenCatalogTests::TestCatalogGetEntityItemReview(TestContext& testContex
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFCatalogGetEntityItemReviewGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
             
-            LogPFCatalogGetEntityItemReviewResponse(result);
+            LogGetEntityItemReviewResponse(result);
             return S_OK;
         }
 
         HRESULT Validate() override
         {
-            return ValidatePFCatalogGetEntityItemReviewResponse(result);
+            return ValidateGetEntityItemReviewResponse(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<GetEntityItemReviewResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<GetEntityItemReviewResultHolderStruct>>(testContext);
 
     PFCatalogGetEntityItemReviewRequestWrapper<> request;
     FillGetEntityItemReviewRequest(request);
@@ -503,7 +507,7 @@ void AutoGenCatalogTests::TestCatalogGetEntityItemReview(TestContext& testContex
 
 void AutoGenCatalogTests::TestCatalogGetItem(TestContext& testContext)
 {
-    struct GetItemResultHolder : public GetItemResponseHolder
+    struct GetItemResultHolderStruct : public GetItemResponseHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -513,16 +517,16 @@ void AutoGenCatalogTests::TestCatalogGetItem(TestContext& testContext)
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFCatalogGetItemGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
             
-            LogPFCatalogGetItemResponse(result);
+            LogGetItemResponse(result);
             return S_OK;
         }
 
         HRESULT Validate() override
         {
-            return ValidatePFCatalogGetItemResponse(result);
+            return ValidateGetItemResponse(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<GetItemResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<GetItemResultHolderStruct>>(testContext);
 
     PFCatalogGetItemRequestWrapper<> request;
     FillGetItemRequest(request);
@@ -538,11 +542,50 @@ void AutoGenCatalogTests::TestCatalogGetItem(TestContext& testContext)
 
 #pragma endregion
 
+#pragma region GetItemContainers
+
+void AutoGenCatalogTests::TestCatalogGetItemContainers(TestContext& testContext)
+{
+    struct GetItemContainersResultHolderStruct : public GetItemContainersResponseHolder
+    {
+        HRESULT Get(XAsyncBlock* async) override
+        {
+            size_t requiredBufferSize;
+            RETURN_IF_FAILED(LogHR(PFCatalogGetItemContainersGetResultSize(async, &requiredBufferSize)));
+
+            resultBuffer.resize(requiredBufferSize);
+            RETURN_IF_FAILED(LogHR(PFCatalogGetItemContainersGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
+            
+            LogGetItemContainersResponse(result);
+            return S_OK;
+        }
+
+        HRESULT Validate() override
+        {
+            return ValidateGetItemContainersResponse(result);
+        }
+    };
+    auto async = std::make_unique<XAsyncHelper<GetItemContainersResultHolderStruct>>(testContext);
+
+    PFCatalogGetItemContainersRequestWrapper<> request;
+    FillGetItemContainersRequest(request);
+    LogGetItemContainersRequest(&request.Model(), "TestCatalogGetItemContainers");
+    HRESULT hr = PFCatalogGetItemContainersAsync(entityHandle, &request.Model(), &async->asyncBlock);
+    if (FAILED(hr))
+    {
+        testContext.Fail("PFCatalogCatalogGetItemContainersAsync", hr);
+        return;
+    }
+    async.release(); 
+}
+
+#pragma endregion
+
 #pragma region GetItemModerationState
 
 void AutoGenCatalogTests::TestCatalogGetItemModerationState(TestContext& testContext)
 {
-    struct GetItemModerationStateResultHolder : public GetItemModerationStateResponseHolder
+    struct GetItemModerationStateResultHolderStruct : public GetItemModerationStateResponseHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -552,16 +595,16 @@ void AutoGenCatalogTests::TestCatalogGetItemModerationState(TestContext& testCon
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFCatalogGetItemModerationStateGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
             
-            LogPFCatalogGetItemModerationStateResponse(result);
+            LogGetItemModerationStateResponse(result);
             return S_OK;
         }
 
         HRESULT Validate() override
         {
-            return ValidatePFCatalogGetItemModerationStateResponse(result);
+            return ValidateGetItemModerationStateResponse(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<GetItemModerationStateResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<GetItemModerationStateResultHolderStruct>>(testContext);
 
     PFCatalogGetItemModerationStateRequestWrapper<> request;
     FillGetItemModerationStateRequest(request);
@@ -581,7 +624,7 @@ void AutoGenCatalogTests::TestCatalogGetItemModerationState(TestContext& testCon
 
 void AutoGenCatalogTests::TestCatalogGetItemPublishStatus(TestContext& testContext)
 {
-    struct GetItemPublishStatusResultHolder : public GetItemPublishStatusResponseHolder
+    struct GetItemPublishStatusResultHolderStruct : public GetItemPublishStatusResponseHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -591,16 +634,16 @@ void AutoGenCatalogTests::TestCatalogGetItemPublishStatus(TestContext& testConte
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFCatalogGetItemPublishStatusGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
             
-            LogPFCatalogGetItemPublishStatusResponse(result);
+            LogGetItemPublishStatusResponse(result);
             return S_OK;
         }
 
         HRESULT Validate() override
         {
-            return ValidatePFCatalogGetItemPublishStatusResponse(result);
+            return ValidateGetItemPublishStatusResponse(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<GetItemPublishStatusResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<GetItemPublishStatusResultHolderStruct>>(testContext);
 
     PFCatalogGetItemPublishStatusRequestWrapper<> request;
     FillGetItemPublishStatusRequest(request);
@@ -620,7 +663,7 @@ void AutoGenCatalogTests::TestCatalogGetItemPublishStatus(TestContext& testConte
 
 void AutoGenCatalogTests::TestCatalogGetItemReviews(TestContext& testContext)
 {
-    struct GetItemReviewsResultHolder : public GetItemReviewsResponseHolder
+    struct GetItemReviewsResultHolderStruct : public GetItemReviewsResponseHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -630,16 +673,16 @@ void AutoGenCatalogTests::TestCatalogGetItemReviews(TestContext& testContext)
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFCatalogGetItemReviewsGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
             
-            LogPFCatalogGetItemReviewsResponse(result);
+            LogGetItemReviewsResponse(result);
             return S_OK;
         }
 
         HRESULT Validate() override
         {
-            return ValidatePFCatalogGetItemReviewsResponse(result);
+            return ValidateGetItemReviewsResponse(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<GetItemReviewsResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<GetItemReviewsResultHolderStruct>>(testContext);
 
     PFCatalogGetItemReviewsRequestWrapper<> request;
     FillGetItemReviewsRequest(request);
@@ -659,7 +702,7 @@ void AutoGenCatalogTests::TestCatalogGetItemReviews(TestContext& testContext)
 
 void AutoGenCatalogTests::TestCatalogGetItemReviewSummary(TestContext& testContext)
 {
-    struct GetItemReviewSummaryResultHolder : public GetItemReviewSummaryResponseHolder
+    struct GetItemReviewSummaryResultHolderStruct : public GetItemReviewSummaryResponseHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -669,16 +712,16 @@ void AutoGenCatalogTests::TestCatalogGetItemReviewSummary(TestContext& testConte
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFCatalogGetItemReviewSummaryGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
             
-            LogPFCatalogGetItemReviewSummaryResponse(result);
+            LogGetItemReviewSummaryResponse(result);
             return S_OK;
         }
 
         HRESULT Validate() override
         {
-            return ValidatePFCatalogGetItemReviewSummaryResponse(result);
+            return ValidateGetItemReviewSummaryResponse(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<GetItemReviewSummaryResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<GetItemReviewSummaryResultHolderStruct>>(testContext);
 
     PFCatalogGetItemReviewSummaryRequestWrapper<> request;
     FillGetItemReviewSummaryRequest(request);
@@ -687,6 +730,45 @@ void AutoGenCatalogTests::TestCatalogGetItemReviewSummary(TestContext& testConte
     if (FAILED(hr))
     {
         testContext.Fail("PFCatalogCatalogGetItemReviewSummaryAsync", hr);
+        return;
+    }
+    async.release(); 
+}
+
+#pragma endregion
+
+#pragma region GetItems
+
+void AutoGenCatalogTests::TestCatalogGetItems(TestContext& testContext)
+{
+    struct GetItemsResultHolderStruct : public GetItemsResponseHolder
+    {
+        HRESULT Get(XAsyncBlock* async) override
+        {
+            size_t requiredBufferSize;
+            RETURN_IF_FAILED(LogHR(PFCatalogGetItemsGetResultSize(async, &requiredBufferSize)));
+
+            resultBuffer.resize(requiredBufferSize);
+            RETURN_IF_FAILED(LogHR(PFCatalogGetItemsGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
+            
+            LogGetItemsResponse(result);
+            return S_OK;
+        }
+
+        HRESULT Validate() override
+        {
+            return ValidateGetItemsResponse(result);
+        }
+    };
+    auto async = std::make_unique<XAsyncHelper<GetItemsResultHolderStruct>>(testContext);
+
+    PFCatalogGetItemsRequestWrapper<> request;
+    FillGetItemsRequest(request);
+    LogGetItemsRequest(&request.Model(), "TestCatalogGetItems");
+    HRESULT hr = PFCatalogGetItemsAsync(entityHandle, &request.Model(), &async->asyncBlock);
+    if (FAILED(hr))
+    {
+        testContext.Fail("PFCatalogCatalogGetItemsAsync", hr);
         return;
     }
     async.release(); 
@@ -778,7 +860,7 @@ void AutoGenCatalogTests::TestCatalogReviewItem(TestContext& testContext)
 
 void AutoGenCatalogTests::TestCatalogSearchItems(TestContext& testContext)
 {
-    struct SearchItemsResultHolder : public SearchItemsResponseHolder
+    struct SearchItemsResultHolderStruct : public SearchItemsResponseHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -788,16 +870,16 @@ void AutoGenCatalogTests::TestCatalogSearchItems(TestContext& testContext)
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFCatalogSearchItemsGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
             
-            LogPFCatalogSearchItemsResponse(result);
+            LogSearchItemsResponse(result);
             return S_OK;
         }
 
         HRESULT Validate() override
         {
-            return ValidatePFCatalogSearchItemsResponse(result);
+            return ValidateSearchItemsResponse(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<SearchItemsResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<SearchItemsResultHolderStruct>>(testContext);
 
     PFCatalogSearchItemsRequestWrapper<> request;
     FillSearchItemsRequest(request);
@@ -897,7 +979,7 @@ void AutoGenCatalogTests::TestCatalogUpdateCatalogConfig(TestContext& testContex
 
 void AutoGenCatalogTests::TestCatalogUpdateDraftItem(TestContext& testContext)
 {
-    struct UpdateDraftItemResultHolder : public UpdateDraftItemResponseHolder
+    struct UpdateDraftItemResultHolderStruct : public UpdateDraftItemResponseHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -907,16 +989,16 @@ void AutoGenCatalogTests::TestCatalogUpdateDraftItem(TestContext& testContext)
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFCatalogUpdateDraftItemGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
             
-            LogPFCatalogUpdateDraftItemResponse(result);
+            LogUpdateDraftItemResponse(result);
             return S_OK;
         }
 
         HRESULT Validate() override
         {
-            return ValidatePFCatalogUpdateDraftItemResponse(result);
+            return ValidateUpdateDraftItemResponse(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<UpdateDraftItemResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<UpdateDraftItemResultHolderStruct>>(testContext);
 
     PFCatalogUpdateDraftItemRequestWrapper<> request;
     FillUpdateDraftItemRequest(request);

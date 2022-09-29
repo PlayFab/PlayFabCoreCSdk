@@ -14,7 +14,7 @@ class QoSAPI;
 class GlobalState
 {
 public:
-    GlobalState(String&& titleId, _In_opt_z_ const char* secretKey, _In_opt_ XTaskQueueHandle backgroundQueue);
+    GlobalState(String&& titleId, _In_opt_z_ const char* secretKey, _In_opt_z_ const char* connectionString, _In_opt_ XTaskQueueHandle backgroundQueue);
     virtual ~GlobalState() = default;
 
 public:
@@ -42,6 +42,7 @@ struct PFGlobalState
     static HRESULT Create(
         _In_z_ const char* titleId,
         _In_opt_z_ const char* secretKey,
+        _In_opt_z_ const char* connectionString,
         _In_opt_ XTaskQueueHandle backgroundQueue,
         _Outptr_ PFStateHandle* stateHandle
     );
@@ -49,5 +50,5 @@ struct PFGlobalState
     HRESULT CleanupAsync(XAsyncBlock* async);
 
 private:
-    PFGlobalState(_In_z_ const char* titleId, _In_opt_z_ const char* secretKey, _In_opt_ XTaskQueueHandle backgroundQueue);
+    PFGlobalState(_In_z_ const char* titleId, _In_opt_z_ const char* secretKey, _In_opt_z_ const char* connectionString, _In_opt_ XTaskQueueHandle backgroundQueue);
 };

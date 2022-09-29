@@ -558,9 +558,12 @@ HRESULT PFTitleDataManagementAdminRemoveVirtualCurrencyTypesAsync(
 /// <param name="async">XAsyncBlock for the async operation.</param>
 /// <returns>Result code for this API operation.</returns>
 /// <remarks>
-/// This operation is not additive. Using it will cause the indicated catalog version to be created from
-/// scratch. If there is an existing catalog with the version number in question, it will be deleted and
-/// replaced with only the items specified in this call. See also AdminGetCatalogItemsAsync, AdminUpdateCatalogItemsAsync.
+/// When used for SetCatalogItems, this operation is not additive. Using it will cause the indicated
+/// catalog version to be created from scratch. If there is an existing catalog with the version number
+/// in question, it will be deleted and replaced with only the items specified in this call. When used
+/// for UpdateCatalogItems, this operation is additive. Items with ItemId values not currently in the
+/// catalog will be added, while those with ItemId values matching items currently in the catalog will
+/// overwrite those items with the given values. See also AdminGetCatalogItemsAsync, AdminUpdateCatalogItemsAsync.
 ///
 /// Call <see cref="XAsyncGetStatus"/> to get the status of the operation.
 /// </remarks>
@@ -605,19 +608,21 @@ HRESULT PFTitleDataManagementAdminSetPublisherDataAsync(
 /// <param name="async">XAsyncBlock for the async operation.</param>
 /// <returns>Result code for this API operation.</returns>
 /// <remarks>
-/// This operation is not additive. Using it will cause the indicated virtual store to be created from
-/// scratch. If there is an existing store with the same storeId, it will be deleted and replaced with
-/// only the items specified in this call. A store contains an array of references to items defined inthe
-/// catalog, along with the prices for the item, in both real world and virtual currencies. These prices
-/// act as an override to any prices defined in the catalog. In this way, the base definitions of the
-/// items may be defined in the catalog, with all associated properties, while the pricing can be set
-/// for each store, as needed. This allows for subsets of goods to be defined for different purposes (in
-/// order to simplify showing some, but not all catalog items to users, based upon different characteristics),
-/// along with unique prices. Note that all prices defined in the catalog and store definitions for the
-/// item are considered valid, and that a compromised client can be made to send a request for an item
-/// based upon any of these definitions. If no price is specified in the store for an item, the price
-/// set in the catalog should be displayed to the user. See also AdminDeleteStoreAsync, AdminGetStoreItemsAsync,
-/// AdminUpdateStoreItemsAsync.
+/// When used for SetStoreItems, this operation is not additive. Using it will cause the indicated virtual
+/// store to be created from scratch. If there is an existing store with the same storeId, it will be
+/// deleted and replaced with only the items specified in this call. When used for UpdateStoreItems, this
+/// operation is additive. Items with ItemId values not currently in the store will be added, while those
+/// with ItemId values matching items currently in the catalog will overwrite those items with the given
+/// values. In both cases, a store contains an array of references to items defined in the catalog, along
+/// with the prices for the item, in both real world and virtual currencies. These prices act as an override
+/// to any prices defined in the catalog. In this way, the base definitions of the items may be defined
+/// in the catalog, with all associated properties, while the pricing can be set for each store, as needed.
+/// This allows for subsets of goods to be defined for different purposes (in order to simplify showing
+/// some, but not all catalog items to users, based upon different characteristics), along with unique
+/// prices. Note that all prices defined in the catalog and store definitions for the item are considered
+/// valid, and that a compromised client can be made to send a request for an item based upon any of these
+/// definitions. If no price is specified in the store for an item, the price set in the catalog should
+/// be displayed to the user. See also AdminDeleteStoreAsync, AdminGetStoreItemsAsync, AdminUpdateStoreItemsAsync.
 ///
 /// Call <see cref="XAsyncGetStatus"/> to get the status of the operation.
 /// </remarks>
@@ -644,43 +649,12 @@ HRESULT PFTitleDataManagementAdminSetStoreItemsAsync(
 /// current dataset, it will be added with the specified Value. If it already exists, the Value for that
 /// key will be overwritten with the new Value. See also AdminGetTitleDataAsync.
 ///
-/// If successful, call <see cref="PFTitleDataManagementAdminSetTitleDataGetResult"/> to get the result.
+/// Call <see cref="XAsyncGetStatus"/> to get the status of the operation.
 /// </remarks>
 HRESULT PFTitleDataManagementAdminSetTitleDataAsync(
     _In_ PFStateHandle stateHandle,
     _In_ const PFTitleDataManagementSetTitleDataRequest* request,
     _Inout_ XAsyncBlock* async
-) noexcept;
-
-/// <summary>
-/// Get the size in bytes needed to store the result of a AdminSetTitleData call.
-/// </summary>
-/// <param name="async">XAsyncBlock for the async operation.</param>
-/// <param name="bufferSize">The buffer size in bytes required for the result.</param>
-/// <returns>Result code for this API operation.</returns>
-HRESULT PFTitleDataManagementAdminSetTitleDataGetResultSize(
-    _Inout_ XAsyncBlock* async,
-    _Out_ size_t* bufferSize
-) noexcept;
-
-/// <summary>
-/// Gets the result of a successful PFTitleDataManagementAdminSetTitleDataAsync call.
-/// </summary>
-/// <param name="async">XAsyncBlock for the async operation.</param>
-/// <param name="bufferSize">The size of the buffer for the result object.</param>
-/// <param name="buffer">Byte buffer used for the result value and its fields.</param>
-/// <param name="result">Pointer to the result object.</param>
-/// <param name="bufferUsed">The number of bytes in the provided buffer that were used.</param>
-/// <returns>Result code for this API operation.</returns>
-/// <remarks>
-/// result is a pointer within buffer and does not need to be freed separately.
-/// </remarks>
-HRESULT PFTitleDataManagementAdminSetTitleDataGetResult(
-    _Inout_ XAsyncBlock* async,
-    _In_ size_t bufferSize,
-    _Out_writes_bytes_to_(bufferSize, *bufferUsed) void* buffer,
-    _Outptr_ PFTitleDataManagementSetTitleDataResult** result,
-    _Out_opt_ size_t* bufferUsed
 ) noexcept;
 #endif
 
@@ -722,44 +696,12 @@ HRESULT PFTitleDataManagementAdminSetTitleDataAndOverridesAsync(
 /// it will be added with the specified Value. If it already exists, the Value for that key will be overwritten
 /// with the new Value. See also AdminGetTitleInternalDataAsync.
 ///
-/// If successful, call <see cref="PFTitleDataManagementAdminSetTitleInternalDataGetResult"/> to get
-/// the result.
+/// Call <see cref="XAsyncGetStatus"/> to get the status of the operation.
 /// </remarks>
 HRESULT PFTitleDataManagementAdminSetTitleInternalDataAsync(
     _In_ PFStateHandle stateHandle,
     _In_ const PFTitleDataManagementSetTitleDataRequest* request,
     _Inout_ XAsyncBlock* async
-) noexcept;
-
-/// <summary>
-/// Get the size in bytes needed to store the result of a AdminSetTitleInternalData call.
-/// </summary>
-/// <param name="async">XAsyncBlock for the async operation.</param>
-/// <param name="bufferSize">The buffer size in bytes required for the result.</param>
-/// <returns>Result code for this API operation.</returns>
-HRESULT PFTitleDataManagementAdminSetTitleInternalDataGetResultSize(
-    _Inout_ XAsyncBlock* async,
-    _Out_ size_t* bufferSize
-) noexcept;
-
-/// <summary>
-/// Gets the result of a successful PFTitleDataManagementAdminSetTitleInternalDataAsync call.
-/// </summary>
-/// <param name="async">XAsyncBlock for the async operation.</param>
-/// <param name="bufferSize">The size of the buffer for the result object.</param>
-/// <param name="buffer">Byte buffer used for the result value and its fields.</param>
-/// <param name="result">Pointer to the result object.</param>
-/// <param name="bufferUsed">The number of bytes in the provided buffer that were used.</param>
-/// <returns>Result code for this API operation.</returns>
-/// <remarks>
-/// result is a pointer within buffer and does not need to be freed separately.
-/// </remarks>
-HRESULT PFTitleDataManagementAdminSetTitleInternalDataGetResult(
-    _Inout_ XAsyncBlock* async,
-    _In_ size_t bufferSize,
-    _Out_writes_bytes_to_(bufferSize, *bufferUsed) void* buffer,
-    _Outptr_ PFTitleDataManagementSetTitleDataResult** result,
-    _Out_opt_ size_t* bufferUsed
 ) noexcept;
 #endif
 
@@ -829,9 +771,12 @@ HRESULT PFTitleDataManagementAdminSetupPushNotificationGetResult(
 /// <param name="async">XAsyncBlock for the async operation.</param>
 /// <returns>Result code for this API operation.</returns>
 /// <remarks>
-/// This operation is additive. Items with ItemId values not currently in the catalog will be added,
-/// while those with ItemId values matching items currently in the catalog will overwrite those items
-/// with the given values. See also AdminGetCatalogItemsAsync, AdminSetCatalogItemsAsync.
+/// When used for SetCatalogItems, this operation is not additive. Using it will cause the indicated
+/// catalog version to be created from scratch. If there is an existing catalog with the version number
+/// in question, it will be deleted and replaced with only the items specified in this call. When used
+/// for UpdateCatalogItems, this operation is additive. Items with ItemId values not currently in the
+/// catalog will be added, while those with ItemId values matching items currently in the catalog will
+/// overwrite those items with the given values. See also AdminGetCatalogItemsAsync, AdminSetCatalogItemsAsync.
 ///
 /// Call <see cref="XAsyncGetStatus"/> to get the status of the operation.
 /// </remarks>
@@ -873,10 +818,13 @@ HRESULT PFTitleDataManagementAdminUpdateRandomResultTablesAsync(
 /// <param name="async">XAsyncBlock for the async operation.</param>
 /// <returns>Result code for this API operation.</returns>
 /// <remarks>
-/// This operation is additive. Items with ItemId values not currently in the store will be added, while
-/// those with ItemId values matching items currently in the catalog will overwrite those items with the
-/// given values. A store contains an array of references to items defined in the catalog, along with
-/// the prices for the item, in both real world and virtual currencies. These prices act as an override
+/// When used for SetStoreItems, this operation is not additive. Using it will cause the indicated virtual
+/// store to be created from scratch. If there is an existing store with the same storeId, it will be
+/// deleted and replaced with only the items specified in this call. When used for UpdateStoreItems, this
+/// operation is additive. Items with ItemId values not currently in the store will be added, while those
+/// with ItemId values matching items currently in the catalog will overwrite those items with the given
+/// values. In both cases, a store contains an array of references to items defined in the catalog, along
+/// with the prices for the item, in both real world and virtual currencies. These prices act as an override
 /// to any prices defined in the catalog. In this way, the base definitions of the items may be defined
 /// in the catalog, with all associated properties, while the pricing can be set for each store, as needed.
 /// This allows for subsets of goods to be defined for different purposes (in order to simplify showing
@@ -1187,6 +1135,7 @@ HRESULT PFTitleDataManagementClientGetTitleNewsGetResult(
     _Out_opt_ size_t* bufferUsed
 ) noexcept;
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 /// <summary>
 /// Retrieves the specified version of the title's catalog of virtual goods, including all defined properties
 /// </summary>
@@ -1234,7 +1183,9 @@ HRESULT PFTitleDataManagementServerGetCatalogItemsGetResult(
     _Outptr_ PFTitleDataManagementGetCatalogItemsResult** result,
     _Out_opt_ size_t* bufferUsed
 ) noexcept;
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 /// <summary>
 /// Retrieves the key-value store of custom publisher settings
 /// </summary>
@@ -1247,7 +1198,7 @@ HRESULT PFTitleDataManagementServerGetCatalogItemsGetResult(
 /// the client. This data is shared across all titles assigned to a particular publisher, and can be used
 /// for cross-game coordination. Only titles assigned to a publisher can use this API. For more information
 /// email helloplayfab@microsoft.com. Note that there may up to a minute delay in between updating title
-/// data and this API call returning the newest value. See also ServerSetPublisherDataAsync.
+/// data and this API call returning the newest value.
 ///
 /// If successful, call <see cref="PFTitleDataManagementServerGetPublisherDataGetResult"/> to get the
 /// result.
@@ -1288,7 +1239,9 @@ HRESULT PFTitleDataManagementServerGetPublisherDataGetResult(
     _Outptr_ PFTitleDataManagementGetPublisherDataResult** result,
     _Out_opt_ size_t* bufferUsed
 ) noexcept;
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 /// <summary>
 /// Retrieves the set of items defined for the specified store, including all prices defined, for the
 /// specified player
@@ -1307,7 +1260,7 @@ HRESULT PFTitleDataManagementServerGetPublisherDataGetResult(
 /// unique prices. Note that all prices defined in the catalog and store definitions for the item are
 /// considered valid, and that a compromised client can be made to send a request for an item based upon
 /// any of these definitions. If no price is specified in the store for an item, the price set in the
-/// catalog should be displayed to the user. See also ServerGetCatalogItemsAsync.
+/// catalog should be displayed to the user.
 ///
 /// If successful, call <see cref="PFTitleDataManagementServerGetStoreItemsGetResult"/> to get the result.
 /// </remarks>
@@ -1347,7 +1300,9 @@ HRESULT PFTitleDataManagementServerGetStoreItemsGetResult(
     _Outptr_ PFTitleDataManagementGetStoreItemsResult** result,
     _Out_opt_ size_t* bufferUsed
 ) noexcept;
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 /// <summary>
 /// Retrieves the current server time
 /// </summary>
@@ -1375,7 +1330,9 @@ HRESULT PFTitleDataManagementServerGetTimeGetResult(
     _Inout_ XAsyncBlock* async,
     _Out_ PFTitleDataManagementGetTimeResult* result
 ) noexcept;
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 /// <summary>
 /// Retrieves the key-value store of custom title settings
 /// </summary>
@@ -1390,7 +1347,6 @@ HRESULT PFTitleDataManagementServerGetTimeGetResult(
 /// title without the need to create, test, and ship a new build. If an override label is specified in
 /// the request, the overrides are applied automatically and returned with the title data. Note that there
 /// may up to a minute delay in between updating title data and this API call returning the newest value.
-/// See also ServerSetTitleDataAsync.
 ///
 /// If successful, call <see cref="PFTitleDataManagementServerGetTitleDataGetResult"/> to get the result.
 /// </remarks>
@@ -1430,7 +1386,9 @@ HRESULT PFTitleDataManagementServerGetTitleDataGetResult(
     _Outptr_ PFTitleDataManagementGetTitleDataResult** result,
     _Out_opt_ size_t* bufferUsed
 ) noexcept;
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 /// <summary>
 /// Retrieves the key-value store of custom internal title settings
 /// </summary>
@@ -1442,7 +1400,7 @@ HRESULT PFTitleDataManagementServerGetTitleDataGetResult(
 /// This API is designed to return title specific values which are accessible only to the server. This
 /// can be used to tweak settings on game servers and Cloud Scripts without needed to update and re-deploy
 /// them. Note that there may up to a minute delay in between updating title data and this API call returning
-/// the newest value. See also ServerSetTitleInternalDataAsync.
+/// the newest value.
 ///
 /// If successful, call <see cref="PFTitleDataManagementServerGetTitleInternalDataGetResult"/> to get
 /// the result.
@@ -1483,7 +1441,9 @@ HRESULT PFTitleDataManagementServerGetTitleInternalDataGetResult(
     _Outptr_ PFTitleDataManagementGetTitleDataResult** result,
     _Out_opt_ size_t* bufferUsed
 ) noexcept;
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 /// <summary>
 /// Retrieves the title news feed, as configured in the developer portal
 /// </summary>
@@ -1530,7 +1490,9 @@ HRESULT PFTitleDataManagementServerGetTitleNewsGetResult(
     _Outptr_ PFTitleDataManagementGetTitleNewsResult** result,
     _Out_opt_ size_t* bufferUsed
 ) noexcept;
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 /// <summary>
 /// Updates the key-value store of custom publisher settings
 /// </summary>
@@ -1544,7 +1506,7 @@ HRESULT PFTitleDataManagementServerGetTitleNewsGetResult(
 /// for cross-game coordination. Only titles assigned to a publisher can use this API. This operation
 /// is additive. If a Key does not exist in the current dataset, it will be added with the specified Value.
 /// If it already exists, the Value for that key will be overwritten with the new Value. For more information
-/// email helloplayfab@microsoft.com See also ServerGetPublisherDataAsync.
+/// email helloplayfab@microsoft.com.
 ///
 /// Call <see cref="XAsyncGetStatus"/> to get the status of the operation.
 /// </remarks>
@@ -1553,7 +1515,9 @@ HRESULT PFTitleDataManagementServerSetPublisherDataAsync(
     _In_ const PFTitleDataManagementSetPublisherDataRequest* request,
     _Inout_ XAsyncBlock* async
 ) noexcept;
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 /// <summary>
 /// Updates the key-value store of custom title settings
 /// </summary>
@@ -1567,47 +1531,18 @@ HRESULT PFTitleDataManagementServerSetPublisherDataAsync(
 /// as enemy spawn rates, weapon strengths, movement speeds, etc. This allows a developer to update the
 /// title without the need to create, test, and ship a new build. This operation is additive. If a Key
 /// does not exist in the current dataset, it will be added with the specified Value. If it already exists,
-/// the Value for that key will be overwritten with the new Value. See also ServerGetTitleDataAsync.
+/// the Value for that key will be overwritten with the new Value.
 ///
-/// If successful, call <see cref="PFTitleDataManagementServerSetTitleDataGetResult"/> to get the result.
+/// Call <see cref="XAsyncGetStatus"/> to get the status of the operation.
 /// </remarks>
 HRESULT PFTitleDataManagementServerSetTitleDataAsync(
     _In_ PFStateHandle stateHandle,
     _In_ const PFTitleDataManagementSetTitleDataRequest* request,
     _Inout_ XAsyncBlock* async
 ) noexcept;
+#endif
 
-/// <summary>
-/// Get the size in bytes needed to store the result of a ServerSetTitleData call.
-/// </summary>
-/// <param name="async">XAsyncBlock for the async operation.</param>
-/// <param name="bufferSize">The buffer size in bytes required for the result.</param>
-/// <returns>Result code for this API operation.</returns>
-HRESULT PFTitleDataManagementServerSetTitleDataGetResultSize(
-    _Inout_ XAsyncBlock* async,
-    _Out_ size_t* bufferSize
-) noexcept;
-
-/// <summary>
-/// Gets the result of a successful PFTitleDataManagementServerSetTitleDataAsync call.
-/// </summary>
-/// <param name="async">XAsyncBlock for the async operation.</param>
-/// <param name="bufferSize">The size of the buffer for the result object.</param>
-/// <param name="buffer">Byte buffer used for the result value and its fields.</param>
-/// <param name="result">Pointer to the result object.</param>
-/// <param name="bufferUsed">The number of bytes in the provided buffer that were used.</param>
-/// <returns>Result code for this API operation.</returns>
-/// <remarks>
-/// result is a pointer within buffer and does not need to be freed separately.
-/// </remarks>
-HRESULT PFTitleDataManagementServerSetTitleDataGetResult(
-    _Inout_ XAsyncBlock* async,
-    _In_ size_t bufferSize,
-    _Out_writes_bytes_to_(bufferSize, *bufferUsed) void* buffer,
-    _Outptr_ PFTitleDataManagementSetTitleDataResult** result,
-    _Out_opt_ size_t* bufferUsed
-) noexcept;
-
+#if HC_PLATFORM != HC_PLATFORM_GDK
 /// <summary>
 /// Updates the key-value store of custom title settings
 /// </summary>
@@ -1620,47 +1555,16 @@ HRESULT PFTitleDataManagementServerSetTitleDataGetResult(
 /// can be used to tweak settings on game servers and Cloud Scripts without needed to update and re-deploy
 /// them. This operation is additive. If a Key does not exist in the current dataset, it will be added
 /// with the specified Value. If it already exists, the Value for that key will be overwritten with the
-/// new Value. See also ServerGetTitleInternalDataAsync.
+/// new Value.
 ///
-/// If successful, call <see cref="PFTitleDataManagementServerSetTitleInternalDataGetResult"/> to get
-/// the result.
+/// Call <see cref="XAsyncGetStatus"/> to get the status of the operation.
 /// </remarks>
 HRESULT PFTitleDataManagementServerSetTitleInternalDataAsync(
     _In_ PFStateHandle stateHandle,
     _In_ const PFTitleDataManagementSetTitleDataRequest* request,
     _Inout_ XAsyncBlock* async
 ) noexcept;
-
-/// <summary>
-/// Get the size in bytes needed to store the result of a ServerSetTitleInternalData call.
-/// </summary>
-/// <param name="async">XAsyncBlock for the async operation.</param>
-/// <param name="bufferSize">The buffer size in bytes required for the result.</param>
-/// <returns>Result code for this API operation.</returns>
-HRESULT PFTitleDataManagementServerSetTitleInternalDataGetResultSize(
-    _Inout_ XAsyncBlock* async,
-    _Out_ size_t* bufferSize
-) noexcept;
-
-/// <summary>
-/// Gets the result of a successful PFTitleDataManagementServerSetTitleInternalDataAsync call.
-/// </summary>
-/// <param name="async">XAsyncBlock for the async operation.</param>
-/// <param name="bufferSize">The size of the buffer for the result object.</param>
-/// <param name="buffer">Byte buffer used for the result value and its fields.</param>
-/// <param name="result">Pointer to the result object.</param>
-/// <param name="bufferUsed">The number of bytes in the provided buffer that were used.</param>
-/// <returns>Result code for this API operation.</returns>
-/// <remarks>
-/// result is a pointer within buffer and does not need to be freed separately.
-/// </remarks>
-HRESULT PFTitleDataManagementServerSetTitleInternalDataGetResult(
-    _Inout_ XAsyncBlock* async,
-    _In_ size_t bufferSize,
-    _Out_writes_bytes_to_(bufferSize, *bufferUsed) void* buffer,
-    _Outptr_ PFTitleDataManagementSetTitleDataResult** result,
-    _Out_opt_ size_t* bufferUsed
-) noexcept;
+#endif
 
 
 }

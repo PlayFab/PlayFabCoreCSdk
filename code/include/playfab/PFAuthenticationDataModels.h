@@ -661,7 +661,9 @@ typedef struct PFAuthenticationLoginWithAppleRequest
 
     /// <summary>
     /// The JSON Web token (JWT) returned by Apple after login. Represented as the identityToken field
-    /// in the authorization credential payload.
+    /// in the authorization credential payload. If you choose to ignore the expiration date for identity
+    /// tokens, you will receive an NotAuthorized error if Apple rotates the signing key. In this case,
+    /// users have to login to provide a fresh identity token.
     /// </summary>
     _Null_terminated_ const char* identityToken;
 
@@ -966,6 +968,57 @@ typedef struct PFAuthenticationLoginWithGoogleAccountRequest
 } PFAuthenticationLoginWithGoogleAccountRequest;
 
 /// <summary>
+/// PFAuthenticationLoginWithGooglePlayGamesServicesRequest data model. Google Play Games sign-in is
+/// accomplished by obtaining a Google OAuth 2.0 credential using the Google Play Games sign-in for Android
+/// APIs on the device and passing it to this API. If this is the first time a user has signed in with
+/// the Google Play Games account and CreateAccount is set to true, a new PlayFab account will be created
+/// and linked to the Google Play Games account. Otherwise, if no PlayFab account is linked to the Google
+/// Play Games account, an error indicating this will be returned, so that the title can guide the user
+/// through creation of a PlayFab account. The current (recommended) method for obtaining a Google Play
+/// Games account credential in an Android application is to call GamesSignInClient.requestServerSideAccess()
+/// and send the auth code as the ServerAuthCode parameter of this API. Before doing this, you must create
+/// an OAuth 2.0 web application client ID in the Google API Console and configure its client ID and secret
+/// in the PlayFab Game Manager Google Add-on for your title. This method does not require prompting of
+/// the user for additional Google account permissions, resulting in a user experience with the least
+/// possible friction. For more information about obtaining the server auth code, see https://developers.google.com/games/services/android/signin.
+/// </summary>
+typedef struct PFAuthenticationLoginWithGooglePlayGamesServicesRequest
+{
+    /// <summary>
+    /// Automatically create a PlayFab account if one is not currently linked to this ID.
+    /// </summary>
+    bool createAccount;
+
+    /// <summary>
+    /// (Optional) The optional custom tags associated with the request (e.g. build number, external
+    /// trace identifiers, etc.).
+    /// </summary>
+    _Maybenull_ _Field_size_(customTagsCount) struct PFStringDictionaryEntry const* customTags;
+
+    /// <summary>
+    /// Count of customTags
+    /// </summary>
+    uint32_t customTagsCount;
+
+    /// <summary>
+    /// (Optional) Flags for which pieces of info to return for the user.
+    /// </summary>
+    _Maybenull_ PFGetPlayerCombinedInfoRequestParams const* infoRequestParameters;
+
+    /// <summary>
+    /// (Optional) Player secret that is used to verify API request signatures (Enterprise Only).
+    /// </summary>
+    _Maybenull_ _Null_terminated_ const char* playerSecret;
+
+    /// <summary>
+    /// OAuth 2.0 server authentication code obtained on the client by calling the requestServerSideAccess()
+    /// (https://developers.google.com/games/services/android/signin) Google Play Games client API.
+    /// </summary>
+    _Null_terminated_ const char* serverAuthCode;
+
+} PFAuthenticationLoginWithGooglePlayGamesServicesRequest;
+
+/// <summary>
 /// PFAuthenticationLoginWithIOSDeviceIDRequest data model. On iOS devices, the identifierForVendor (https://developer.apple.com/library/ios/documentation/UIKit/Reference/UIDevice_Class/index.html#//apple_ref/occ/instp/UIDevice/identifierForVendor)
 /// must be used as the DeviceId, as the UIDevice uniqueIdentifier has been deprecated as of iOS 5, and
 /// use of the advertisingIdentifier for this purpose will result in failure of Apple's certification
@@ -1232,15 +1285,16 @@ typedef struct PFAuthenticationLoginWithPlayFabRequest
 
 /// <summary>
 /// PFAuthenticationLoginWithPSNRequest data model. If this is the first time a user has signed in with
-/// the PlayStation Network account and CreateAccount is set to true, a new PlayFab account will be created
-/// and linked to the PSN account. In this case, no email or username will be associated with the PlayFab
-/// account. Otherwise, if no PlayFab account is linked to the PSN account, an error indicating this will
-/// be returned, so that the title can guide the user through creation of a PlayFab account.
+/// the PlayStation :tm: Network account and CreateAccount is set to true, a new PlayFab account will
+/// be created and linked to the PlayStation :tm: Network account. In this case, no email or username
+/// will be associated with the PlayFab account. Otherwise, if no PlayFab account is linked to the PlayStation
+/// :tm: Network account, an error indicating this will be returned, so that the title can guide the user
+/// through creation of a PlayFab account.
 /// </summary>
 typedef struct PFAuthenticationLoginWithPSNRequest
 {
     /// <summary>
-    /// Auth code provided by the PSN OAuth provider.
+    /// Auth code provided by the PlayStation :tm: Network OAuth provider.
     /// </summary>
     _Null_terminated_ const char* authCode;
 
@@ -1266,7 +1320,8 @@ typedef struct PFAuthenticationLoginWithPSNRequest
     _Maybenull_ PFGetPlayerCombinedInfoRequestParams const* infoRequestParameters;
 
     /// <summary>
-    /// (Optional) Id of the PSN issuer environment. If null, defaults to production environment.
+    /// (Optional) Id of the PlayStation :tm: Network issuer environment. If null, defaults to production
+    /// environment.
     /// </summary>
     _Maybenull_ int32_t const* issuerId;
 
@@ -1276,7 +1331,7 @@ typedef struct PFAuthenticationLoginWithPSNRequest
     _Maybenull_ _Null_terminated_ const char* playerSecret;
 
     /// <summary>
-    /// (Optional) Redirect URI supplied to PSN when requesting an auth code.
+    /// (Optional) Redirect URI supplied to PlayStation :tm: Network when requesting an auth code.
     /// </summary>
     _Maybenull_ _Null_terminated_ const char* redirectUri;
 
@@ -1755,6 +1810,73 @@ typedef struct PFAuthenticationServerSetPlayerSecretRequest
 } PFAuthenticationServerSetPlayerSecretRequest;
 
 /// <summary>
+/// PFAuthenticationAuthenticateCustomIdRequest data model. Create or return a game_server entity token.
+/// Caller must be a title entity.
+/// </summary>
+typedef struct PFAuthenticationAuthenticateCustomIdRequest
+{
+    /// <summary>
+    /// The customId used to create and retrieve game_server entity tokens. This is unique at the title
+    /// level. CustomId must be between 32 and 100 characters.
+    /// </summary>
+    _Null_terminated_ const char* customId;
+
+    /// <summary>
+    /// (Optional) The optional custom tags associated with the request (e.g. build number, external
+    /// trace identifiers, etc.).
+    /// </summary>
+    _Maybenull_ _Field_size_(customTagsCount) struct PFStringDictionaryEntry const* customTags;
+
+    /// <summary>
+    /// Count of customTags
+    /// </summary>
+    uint32_t customTagsCount;
+
+} PFAuthenticationAuthenticateCustomIdRequest;
+
+/// <summary>
+/// PFAuthenticationAuthenticateCustomIdResult data model.
+/// </summary>
+typedef struct PFAuthenticationAuthenticateCustomIdResult
+{
+    /// <summary>
+    /// (Optional) The token generated used to set X-EntityToken for game_server calls.
+    /// </summary>
+    _Maybenull_ PFAuthenticationEntityTokenResponse const* entityToken;
+
+    /// <summary>
+    /// True if the account was newly created on this authentication.
+    /// </summary>
+    bool newlyCreated;
+
+} PFAuthenticationAuthenticateCustomIdResult;
+
+/// <summary>
+/// PFAuthenticationDeleteRequest data model. Delete a game_server entity. The caller can be the game_server
+/// entity attempting to delete itself. Or a title entity attempting to delete game_server entities for
+/// this title.
+/// </summary>
+typedef struct PFAuthenticationDeleteRequest
+{
+    /// <summary>
+    /// (Optional) The optional custom tags associated with the request (e.g. build number, external
+    /// trace identifiers, etc.).
+    /// </summary>
+    _Maybenull_ _Field_size_(customTagsCount) struct PFStringDictionaryEntry const* customTags;
+
+    /// <summary>
+    /// Count of customTags
+    /// </summary>
+    uint32_t customTagsCount;
+
+    /// <summary>
+    /// The game_server entity to be removed.
+    /// </summary>
+    PFEntityKey const* entity;
+
+} PFAuthenticationDeleteRequest;
+
+/// <summary>
 /// PFAuthenticationGetEntityTokenRequest data model. This API must be called with X-SecretKey, X-Authentication
 /// or X-EntityToken headers. An optional EntityKey may be included to attempt to set the resulting EntityToken
 /// to a specific entity, however the entity must be a relation of the caller, such as the master_player_account
@@ -1776,7 +1898,8 @@ typedef struct PFAuthenticationGetEntityTokenRequest
     uint32_t customTagsCount;
 
     /// <summary>
-    /// (Optional) The entity to perform this action on.
+    /// (Optional) The optional entity to perform this action on. Defaults to the currently logged in
+    /// entity.
     /// </summary>
     _Maybenull_ PFEntityKey const* entity;
 

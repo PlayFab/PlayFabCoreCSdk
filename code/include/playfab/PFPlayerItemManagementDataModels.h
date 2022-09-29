@@ -532,13 +532,29 @@ enum class PFPlayerItemManagementGenericErrorCodes : uint32_t
     ApiNotEnabledForTitle,
     DuplicateTitleNameForPublisher,
     AzureTitleCreationInProgress,
-    DuplicateAzureResourceId,
     TitleConstraintsPublisherDeletion,
     InvalidPlayerAccountPoolId,
     PlayerAccountPoolNotFound,
     PlayerAccountPoolDeleted,
     TitleCleanupInProgress,
+    AzureResourceConcurrentOperationInProgress,
+    TitlePublisherUpdateNotAllowed,
     AzureResourceManagerNotSupportedInStamp,
+    ApiNotIncludedInAzurePlayFabFeatureSet,
+    GoogleServiceAccountFailedAuth,
+    GoogleAPIServiceUnavailable,
+    GoogleAPIServiceUnknownError,
+    NoValidIdentityForAad,
+    PlayerIdentityLinkNotFound,
+    PhotonApplicationIdAlreadyInUse,
+    CloudScriptUnableToDeleteProductionRevision,
+    CustomIdNotFound,
+    AutomationInvalidInput,
+    AutomationInvalidRuleName,
+    AutomationRuleAlreadyExists,
+    AutomationRuleLimitExceeded,
+    InvalidGooglePlayGamesServerAuthCode,
+    StorageAccountNotFound,
     MatchmakingEntityInvalid,
     MatchmakingPlayerAttributesInvalid,
     MatchmakingQueueNotFound,
@@ -562,7 +578,7 @@ enum class PFPlayerItemManagementGenericErrorCodes : uint32_t
     MatchmakingBadRequest,
     PubSubFeatureNotEnabledForTitle,
     PubSubTooManyRequests,
-    PubSubConnectionHandleAccessDenied,
+    PubSubConnectionNotFoundForEntity,
     PubSubConnectionHandleInvalid,
     PubSubSubscriptionLimitExceeded,
     TitleConfigNotFound,
@@ -606,6 +622,7 @@ enum class PFPlayerItemManagementGenericErrorCodes : uint32_t
     ExportCannotParseQuery,
     ExportControlCommandsNotAllowed,
     ExportQueryMissingTableReference,
+    ExportInsightsV1Deprecated,
     ExplorerBasicInvalidQueryName,
     ExplorerBasicInvalidQueryDescription,
     ExplorerBasicInvalidQueryConditions,
@@ -626,6 +643,7 @@ enum class PFPlayerItemManagementGenericErrorCodes : uint32_t
     PartyVersionNotFound,
     MultiplayerServerBuildReferencedByMatchmakingQueue,
     MultiplayerServerBuildReferencedByBuildAlias,
+    MultiplayerServerBuildAliasReferencedByMatchmakingQueue,
     ExperimentationExperimentStopped,
     ExperimentationExperimentRunning,
     ExperimentationExperimentNotFound,
@@ -686,7 +704,18 @@ enum class PFPlayerItemManagementGenericErrorCodes : uint32_t
     EventSinkConnectionInvalid,
     EventSinkConnectionUnauthorized,
     EventSinkRegionInvalid,
-    OperationCanceled
+    EventSinkLimitExceeded,
+    EventSinkSasTokenInvalid,
+    EventSinkNotFound,
+    EventSinkNameInvalid,
+    EventSinkSasTokenPermissionInvalid,
+    EventSinkSecretInvalid,
+    EventSinkTenantNotFound,
+    EventSinkAadNotFound,
+    EventSinkDatabaseNotFound,
+    OperationCanceled,
+    InvalidDisplayNameRandomSuffixLength,
+    AllowNonUniquePlayerDisplayNamesDisableNotAllowed
 };
 
 /// <summary>
@@ -812,7 +841,8 @@ typedef struct PFPlayerItemManagementCheckLimitedEditionItemAvailabilityResult
 /// PFPlayerItemManagementAdminGetUserInventoryRequest data model. All items currently in the user inventory
 /// will be returned, irrespective of how they were acquired (via purchasing, grants, coupons, etc.).
 /// Items that are expired, fully consumed, or are no longer valid are not considered to be in the user's
-/// current inventory, and so will not be not included.
+/// current inventory, and so will not be not included. There can be a delay of up to a half a second
+/// for inventory changes to be reflected in the GetUserInventory API response.
 /// </summary>
 typedef struct PFPlayerItemManagementAdminGetUserInventoryRequest
 {

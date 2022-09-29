@@ -630,7 +630,7 @@ HRESULT PFAccountManagementClientGetAccountInfoGetResult(
 
 HRESULT PFAccountManagementClientGetPlayerCombinedInfoAsync(
     _In_ PFTitlePlayerHandle contextHandle,
-    _In_ const PFGetPlayerCombinedInfoRequest* request,
+    _In_ const PFAccountManagementGetPlayerCombinedInfoRequest* request,
     _In_ XAsyncBlock* async
 ) noexcept
 {
@@ -653,14 +653,14 @@ HRESULT PFAccountManagementClientGetPlayerCombinedInfoGetResult(
     _In_ XAsyncBlock* async,
     _In_ size_t bufferSize,
     _Out_writes_bytes_to_(bufferSize, *bufferUsed) void* buffer,
-    _Outptr_ PFGetPlayerCombinedInfoResult** result,
+    _Outptr_ PFAccountManagementGetPlayerCombinedInfoResult** result,
     _Out_opt_ size_t* bufferUsed
 ) noexcept
 {
     RETURN_HR_INVALIDARG_IF_NULL(result);
 
     RETURN_IF_FAILED(XAsyncGetResult(async, nullptr, bufferSize, buffer, bufferUsed));
-    *result = static_cast<PFGetPlayerCombinedInfoResult*>(buffer);
+    *result = static_cast<PFAccountManagementGetPlayerCombinedInfoResult*>(buffer);
 
     return S_OK;
 }
@@ -887,6 +887,43 @@ HRESULT PFAccountManagementClientGetPlayFabIDsFromGoogleIDsGetResult(
     return S_OK;
 }
 
+HRESULT PFAccountManagementClientGetPlayFabIDsFromGooglePlayGamesPlayerIDsAsync(
+    _In_ PFTitlePlayerHandle contextHandle,
+    _In_ const PFAccountManagementGetPlayFabIDsFromGooglePlayGamesPlayerIDsRequest* request,
+    _In_ XAsyncBlock* async
+) noexcept
+{
+    RETURN_HR_INVALIDARG_IF_NULL(contextHandle);
+    RETURN_HR_INVALIDARG_IF_NULL(request);
+
+    auto provider = MakeProvider(async, __FUNCTION__, std::bind(&AccountManagementAPI::ClientGetPlayFabIDsFromGooglePlayGamesPlayerIDs, contextHandle->titlePlayer, *request, std::placeholders::_1));
+    return Provider::Run(UniquePtr<Provider>(provider.release()));
+}
+
+HRESULT PFAccountManagementClientGetPlayFabIDsFromGooglePlayGamesPlayerIDsGetResultSize(
+    _In_ XAsyncBlock* async,
+    _Out_ size_t* bufferSize
+) noexcept
+{
+    return XAsyncGetResultSize(async, bufferSize);
+}
+
+HRESULT PFAccountManagementClientGetPlayFabIDsFromGooglePlayGamesPlayerIDsGetResult(
+    _In_ XAsyncBlock* async,
+    _In_ size_t bufferSize,
+    _Out_writes_bytes_to_(bufferSize, *bufferUsed) void* buffer,
+    _Outptr_ PFAccountManagementGetPlayFabIDsFromGooglePlayGamesPlayerIDsResult** result,
+    _Out_opt_ size_t* bufferUsed
+) noexcept
+{
+    RETURN_HR_INVALIDARG_IF_NULL(result);
+
+    RETURN_IF_FAILED(XAsyncGetResult(async, nullptr, bufferSize, buffer, bufferUsed));
+    *result = static_cast<PFAccountManagementGetPlayFabIDsFromGooglePlayGamesPlayerIDsResult*>(buffer);
+
+    return S_OK;
+}
+
 HRESULT PFAccountManagementClientGetPlayFabIDsFromKongregateIDsAsync(
     _In_ PFTitlePlayerHandle contextHandle,
     _In_ const PFAccountManagementGetPlayFabIDsFromKongregateIDsRequest* request,
@@ -920,6 +957,43 @@ HRESULT PFAccountManagementClientGetPlayFabIDsFromKongregateIDsGetResult(
 
     RETURN_IF_FAILED(XAsyncGetResult(async, nullptr, bufferSize, buffer, bufferUsed));
     *result = static_cast<PFAccountManagementGetPlayFabIDsFromKongregateIDsResult*>(buffer);
+
+    return S_OK;
+}
+
+HRESULT PFAccountManagementClientGetPlayFabIDsFromNintendoServiceAccountIdsAsync(
+    _In_ PFTitlePlayerHandle contextHandle,
+    _In_ const PFAccountManagementGetPlayFabIDsFromNintendoServiceAccountIdsRequest* request,
+    _In_ XAsyncBlock* async
+) noexcept
+{
+    RETURN_HR_INVALIDARG_IF_NULL(contextHandle);
+    RETURN_HR_INVALIDARG_IF_NULL(request);
+
+    auto provider = MakeProvider(async, __FUNCTION__, std::bind(&AccountManagementAPI::ClientGetPlayFabIDsFromNintendoServiceAccountIds, contextHandle->titlePlayer, *request, std::placeholders::_1));
+    return Provider::Run(UniquePtr<Provider>(provider.release()));
+}
+
+HRESULT PFAccountManagementClientGetPlayFabIDsFromNintendoServiceAccountIdsGetResultSize(
+    _In_ XAsyncBlock* async,
+    _Out_ size_t* bufferSize
+) noexcept
+{
+    return XAsyncGetResultSize(async, bufferSize);
+}
+
+HRESULT PFAccountManagementClientGetPlayFabIDsFromNintendoServiceAccountIdsGetResult(
+    _In_ XAsyncBlock* async,
+    _In_ size_t bufferSize,
+    _Out_writes_bytes_to_(bufferSize, *bufferUsed) void* buffer,
+    _Outptr_ PFAccountManagementGetPlayFabIDsFromNintendoServiceAccountIdsResult** result,
+    _Out_opt_ size_t* bufferUsed
+) noexcept
+{
+    RETURN_HR_INVALIDARG_IF_NULL(result);
+
+    RETURN_IF_FAILED(XAsyncGetResult(async, nullptr, bufferSize, buffer, bufferUsed));
+    *result = static_cast<PFAccountManagementGetPlayFabIDsFromNintendoServiceAccountIdsResult*>(buffer);
 
     return S_OK;
 }
@@ -1200,6 +1274,19 @@ HRESULT PFAccountManagementClientLinkGoogleAccountAsync(
     return Provider::Run(UniquePtr<Provider>(provider.release()));
 }
 
+HRESULT PFAccountManagementClientLinkGooglePlayGamesServicesAccountAsync(
+    _In_ PFTitlePlayerHandle contextHandle,
+    _In_ const PFAccountManagementLinkGooglePlayGamesServicesAccountRequest* request,
+    _In_ XAsyncBlock* async
+) noexcept
+{
+    RETURN_HR_INVALIDARG_IF_NULL(contextHandle);
+    RETURN_HR_INVALIDARG_IF_NULL(request);
+
+    auto provider = MakeProvider(async, __FUNCTION__, std::bind(&AccountManagementAPI::ClientLinkGooglePlayGamesServicesAccount, contextHandle->titlePlayer, *request, std::placeholders::_1));
+    return Provider::Run(UniquePtr<Provider>(provider.release()));
+}
+
 HRESULT PFAccountManagementClientLinkIOSDeviceIDAsync(
     _In_ PFTitlePlayerHandle contextHandle,
     _In_ const PFAccountManagementLinkIOSDeviceIDRequest* request,
@@ -1228,7 +1315,7 @@ HRESULT PFAccountManagementClientLinkKongregateAsync(
 
 HRESULT PFAccountManagementClientLinkNintendoServiceAccountAsync(
     _In_ PFTitlePlayerHandle contextHandle,
-    _In_ const PFAccountManagementLinkNintendoServiceAccountRequest* request,
+    _In_ const PFAccountManagementClientLinkNintendoServiceAccountRequest* request,
     _In_ XAsyncBlock* async
 ) noexcept
 {
@@ -1241,7 +1328,7 @@ HRESULT PFAccountManagementClientLinkNintendoServiceAccountAsync(
 
 HRESULT PFAccountManagementClientLinkNintendoSwitchDeviceIdAsync(
     _In_ PFTitlePlayerHandle contextHandle,
-    _In_ const PFAccountManagementLinkNintendoSwitchDeviceIdRequest* request,
+    _In_ const PFAccountManagementClientLinkNintendoSwitchDeviceIdRequest* request,
     _In_ XAsyncBlock* async
 ) noexcept
 {
@@ -1468,6 +1555,19 @@ HRESULT PFAccountManagementClientUnlinkGoogleAccountAsync(
     return Provider::Run(UniquePtr<Provider>(provider.release()));
 }
 
+HRESULT PFAccountManagementClientUnlinkGooglePlayGamesServicesAccountAsync(
+    _In_ PFTitlePlayerHandle contextHandle,
+    _In_ const PFAccountManagementUnlinkGooglePlayGamesServicesAccountRequest* request,
+    _In_ XAsyncBlock* async
+) noexcept
+{
+    RETURN_HR_INVALIDARG_IF_NULL(contextHandle);
+    RETURN_HR_INVALIDARG_IF_NULL(request);
+
+    auto provider = MakeProvider(async, __FUNCTION__, std::bind(&AccountManagementAPI::ClientUnlinkGooglePlayGamesServicesAccount, contextHandle->titlePlayer, *request, std::placeholders::_1));
+    return Provider::Run(UniquePtr<Provider>(provider.release()));
+}
+
 HRESULT PFAccountManagementClientUnlinkIOSDeviceIDAsync(
     _In_ PFTitlePlayerHandle contextHandle,
     _In_ const PFAccountManagementUnlinkIOSDeviceIDRequest* request,
@@ -1496,7 +1596,7 @@ HRESULT PFAccountManagementClientUnlinkKongregateAsync(
 
 HRESULT PFAccountManagementClientUnlinkNintendoServiceAccountAsync(
     _In_ PFTitlePlayerHandle contextHandle,
-    _In_ const PFAccountManagementUnlinkNintendoServiceAccountRequest* request,
+    _In_ const PFAccountManagementClientUnlinkNintendoServiceAccountRequest* request,
     _In_ XAsyncBlock* async
 ) noexcept
 {
@@ -1509,7 +1609,7 @@ HRESULT PFAccountManagementClientUnlinkNintendoServiceAccountAsync(
 
 HRESULT PFAccountManagementClientUnlinkNintendoSwitchDeviceIdAsync(
     _In_ PFTitlePlayerHandle contextHandle,
-    _In_ const PFAccountManagementUnlinkNintendoSwitchDeviceIdRequest* request,
+    _In_ const PFAccountManagementClientUnlinkNintendoSwitchDeviceIdRequest* request,
     _In_ XAsyncBlock* async
 ) noexcept
 {
@@ -1698,17 +1798,41 @@ HRESULT PFAccountManagementServerDeletePlayerAsync(
     return Provider::Run(UniquePtr<Provider>(provider.release()));
 }
 
-HRESULT PFAccountManagementServerDeletePushNotificationTemplateAsync(
+HRESULT PFAccountManagementServerGetPlayerCombinedInfoAsync(
     _In_ PFStateHandle contextHandle,
-    _In_ const PFAccountManagementDeletePushNotificationTemplateRequest* request,
+    _In_ const PFAccountManagementGetPlayerCombinedInfoRequest* request,
     _In_ XAsyncBlock* async
 ) noexcept
 {
     RETURN_HR_INVALIDARG_IF_NULL(contextHandle);
     RETURN_HR_INVALIDARG_IF_NULL(request);
 
-    auto provider = MakeProvider(async, __FUNCTION__, std::bind(&AccountManagementAPI::ServerDeletePushNotificationTemplate, contextHandle->state, *request, std::placeholders::_1));
+    auto provider = MakeProvider(async, __FUNCTION__, std::bind(&AccountManagementAPI::ServerGetPlayerCombinedInfo, contextHandle->state, *request, std::placeholders::_1));
     return Provider::Run(UniquePtr<Provider>(provider.release()));
+}
+
+HRESULT PFAccountManagementServerGetPlayerCombinedInfoGetResultSize(
+    _In_ XAsyncBlock* async,
+    _Out_ size_t* bufferSize
+) noexcept
+{
+    return XAsyncGetResultSize(async, bufferSize);
+}
+
+HRESULT PFAccountManagementServerGetPlayerCombinedInfoGetResult(
+    _In_ XAsyncBlock* async,
+    _In_ size_t bufferSize,
+    _Out_writes_bytes_to_(bufferSize, *bufferUsed) void* buffer,
+    _Outptr_ PFAccountManagementGetPlayerCombinedInfoResult** result,
+    _Out_opt_ size_t* bufferUsed
+) noexcept
+{
+    RETURN_HR_INVALIDARG_IF_NULL(result);
+
+    RETURN_IF_FAILED(XAsyncGetResult(async, nullptr, bufferSize, buffer, bufferUsed));
+    *result = static_cast<PFAccountManagementGetPlayerCombinedInfoResult*>(buffer);
+
+    return S_OK;
 }
 
 HRESULT PFAccountManagementServerGetPlayerProfileAsync(
@@ -1859,6 +1983,43 @@ HRESULT PFAccountManagementServerGetPlayFabIDsFromGenericIDsGetResult(
     return S_OK;
 }
 
+HRESULT PFAccountManagementServerGetPlayFabIDsFromNintendoServiceAccountIdsAsync(
+    _In_ PFStateHandle contextHandle,
+    _In_ const PFAccountManagementGetPlayFabIDsFromNintendoServiceAccountIdsRequest* request,
+    _In_ XAsyncBlock* async
+) noexcept
+{
+    RETURN_HR_INVALIDARG_IF_NULL(contextHandle);
+    RETURN_HR_INVALIDARG_IF_NULL(request);
+
+    auto provider = MakeProvider(async, __FUNCTION__, std::bind(&AccountManagementAPI::ServerGetPlayFabIDsFromNintendoServiceAccountIds, contextHandle->state, *request, std::placeholders::_1));
+    return Provider::Run(UniquePtr<Provider>(provider.release()));
+}
+
+HRESULT PFAccountManagementServerGetPlayFabIDsFromNintendoServiceAccountIdsGetResultSize(
+    _In_ XAsyncBlock* async,
+    _Out_ size_t* bufferSize
+) noexcept
+{
+    return XAsyncGetResultSize(async, bufferSize);
+}
+
+HRESULT PFAccountManagementServerGetPlayFabIDsFromNintendoServiceAccountIdsGetResult(
+    _In_ XAsyncBlock* async,
+    _In_ size_t bufferSize,
+    _Out_writes_bytes_to_(bufferSize, *bufferUsed) void* buffer,
+    _Outptr_ PFAccountManagementGetPlayFabIDsFromNintendoServiceAccountIdsResult** result,
+    _Out_opt_ size_t* bufferUsed
+) noexcept
+{
+    RETURN_HR_INVALIDARG_IF_NULL(result);
+
+    RETURN_IF_FAILED(XAsyncGetResult(async, nullptr, bufferSize, buffer, bufferUsed));
+    *result = static_cast<PFAccountManagementGetPlayFabIDsFromNintendoServiceAccountIdsResult*>(buffer);
+
+    return S_OK;
+}
+
 HRESULT PFAccountManagementServerGetPlayFabIDsFromNintendoSwitchDeviceIdsAsync(
     _In_ PFStateHandle contextHandle,
     _In_ const PFAccountManagementGetPlayFabIDsFromNintendoSwitchDeviceIdsRequest* request,
@@ -1966,6 +2127,43 @@ HRESULT PFAccountManagementServerGetPlayFabIDsFromSteamIDsGetResult(
 
     RETURN_IF_FAILED(XAsyncGetResult(async, nullptr, bufferSize, buffer, bufferUsed));
     *result = static_cast<PFAccountManagementGetPlayFabIDsFromSteamIDsResult*>(buffer);
+
+    return S_OK;
+}
+
+HRESULT PFAccountManagementServerGetPlayFabIDsFromTwitchIDsAsync(
+    _In_ PFStateHandle contextHandle,
+    _In_ const PFAccountManagementGetPlayFabIDsFromTwitchIDsRequest* request,
+    _In_ XAsyncBlock* async
+) noexcept
+{
+    RETURN_HR_INVALIDARG_IF_NULL(contextHandle);
+    RETURN_HR_INVALIDARG_IF_NULL(request);
+
+    auto provider = MakeProvider(async, __FUNCTION__, std::bind(&AccountManagementAPI::ServerGetPlayFabIDsFromTwitchIDs, contextHandle->state, *request, std::placeholders::_1));
+    return Provider::Run(UniquePtr<Provider>(provider.release()));
+}
+
+HRESULT PFAccountManagementServerGetPlayFabIDsFromTwitchIDsGetResultSize(
+    _In_ XAsyncBlock* async,
+    _Out_ size_t* bufferSize
+) noexcept
+{
+    return XAsyncGetResultSize(async, bufferSize);
+}
+
+HRESULT PFAccountManagementServerGetPlayFabIDsFromTwitchIDsGetResult(
+    _In_ XAsyncBlock* async,
+    _In_ size_t bufferSize,
+    _Out_writes_bytes_to_(bufferSize, *bufferUsed) void* buffer,
+    _Outptr_ PFAccountManagementGetPlayFabIDsFromTwitchIDsResult** result,
+    _Out_opt_ size_t* bufferUsed
+) noexcept
+{
+    RETURN_HR_INVALIDARG_IF_NULL(result);
+
+    RETURN_IF_FAILED(XAsyncGetResult(async, nullptr, bufferSize, buffer, bufferUsed));
+    *result = static_cast<PFAccountManagementGetPlayFabIDsFromTwitchIDsResult*>(buffer);
 
     return S_OK;
 }
@@ -2118,6 +2316,32 @@ HRESULT PFAccountManagementServerGetUserBansGetResult(
     return S_OK;
 }
 
+HRESULT PFAccountManagementServerLinkNintendoServiceAccountAsync(
+    _In_ PFStateHandle contextHandle,
+    _In_ const PFAccountManagementServerLinkNintendoServiceAccountRequest* request,
+    _In_ XAsyncBlock* async
+) noexcept
+{
+    RETURN_HR_INVALIDARG_IF_NULL(contextHandle);
+    RETURN_HR_INVALIDARG_IF_NULL(request);
+
+    auto provider = MakeProvider(async, __FUNCTION__, std::bind(&AccountManagementAPI::ServerLinkNintendoServiceAccount, contextHandle->state, *request, std::placeholders::_1));
+    return Provider::Run(UniquePtr<Provider>(provider.release()));
+}
+
+HRESULT PFAccountManagementServerLinkNintendoSwitchDeviceIdAsync(
+    _In_ PFStateHandle contextHandle,
+    _In_ const PFAccountManagementServerLinkNintendoSwitchDeviceIdRequest* request,
+    _In_ XAsyncBlock* async
+) noexcept
+{
+    RETURN_HR_INVALIDARG_IF_NULL(contextHandle);
+    RETURN_HR_INVALIDARG_IF_NULL(request);
+
+    auto provider = MakeProvider(async, __FUNCTION__, std::bind(&AccountManagementAPI::ServerLinkNintendoSwitchDeviceId, contextHandle->state, *request, std::placeholders::_1));
+    return Provider::Run(UniquePtr<Provider>(provider.release()));
+}
+
 HRESULT PFAccountManagementServerLinkPSNAccountAsync(
     _In_ PFStateHandle contextHandle,
     _In_ const PFAccountManagementServerLinkPSNAccountRequest* request,
@@ -2244,43 +2468,6 @@ HRESULT PFAccountManagementServerRevokeBansGetResult(
     return S_OK;
 }
 
-HRESULT PFAccountManagementServerSavePushNotificationTemplateAsync(
-    _In_ PFStateHandle contextHandle,
-    _In_ const PFAccountManagementSavePushNotificationTemplateRequest* request,
-    _In_ XAsyncBlock* async
-) noexcept
-{
-    RETURN_HR_INVALIDARG_IF_NULL(contextHandle);
-    RETURN_HR_INVALIDARG_IF_NULL(request);
-
-    auto provider = MakeProvider(async, __FUNCTION__, std::bind(&AccountManagementAPI::ServerSavePushNotificationTemplate, contextHandle->state, *request, std::placeholders::_1));
-    return Provider::Run(UniquePtr<Provider>(provider.release()));
-}
-
-HRESULT PFAccountManagementServerSavePushNotificationTemplateGetResultSize(
-    _In_ XAsyncBlock* async,
-    _Out_ size_t* bufferSize
-) noexcept
-{
-    return XAsyncGetResultSize(async, bufferSize);
-}
-
-HRESULT PFAccountManagementServerSavePushNotificationTemplateGetResult(
-    _In_ XAsyncBlock* async,
-    _In_ size_t bufferSize,
-    _Out_writes_bytes_to_(bufferSize, *bufferUsed) void* buffer,
-    _Outptr_ PFAccountManagementSavePushNotificationTemplateResult** result,
-    _Out_opt_ size_t* bufferUsed
-) noexcept
-{
-    RETURN_HR_INVALIDARG_IF_NULL(result);
-
-    RETURN_IF_FAILED(XAsyncGetResult(async, nullptr, bufferSize, buffer, bufferUsed));
-    *result = static_cast<PFAccountManagementSavePushNotificationTemplateResult*>(buffer);
-
-    return S_OK;
-}
-
 HRESULT PFAccountManagementServerSendCustomAccountRecoveryEmailAsync(
     _In_ PFStateHandle contextHandle,
     _In_ const PFAccountManagementSendCustomAccountRecoveryEmailRequest* request,
@@ -2307,29 +2494,29 @@ HRESULT PFAccountManagementServerSendEmailFromTemplateAsync(
     return Provider::Run(UniquePtr<Provider>(provider.release()));
 }
 
-HRESULT PFAccountManagementServerSendPushNotificationAsync(
+HRESULT PFAccountManagementServerUnlinkNintendoServiceAccountAsync(
     _In_ PFStateHandle contextHandle,
-    _In_ const PFAccountManagementSendPushNotificationRequest* request,
+    _In_ const PFAccountManagementServerUnlinkNintendoServiceAccountRequest* request,
     _In_ XAsyncBlock* async
 ) noexcept
 {
     RETURN_HR_INVALIDARG_IF_NULL(contextHandle);
     RETURN_HR_INVALIDARG_IF_NULL(request);
 
-    auto provider = MakeProvider(async, __FUNCTION__, std::bind(&AccountManagementAPI::ServerSendPushNotification, contextHandle->state, *request, std::placeholders::_1));
+    auto provider = MakeProvider(async, __FUNCTION__, std::bind(&AccountManagementAPI::ServerUnlinkNintendoServiceAccount, contextHandle->state, *request, std::placeholders::_1));
     return Provider::Run(UniquePtr<Provider>(provider.release()));
 }
 
-HRESULT PFAccountManagementServerSendPushNotificationFromTemplateAsync(
+HRESULT PFAccountManagementServerUnlinkNintendoSwitchDeviceIdAsync(
     _In_ PFStateHandle contextHandle,
-    _In_ const PFAccountManagementSendPushNotificationFromTemplateRequest* request,
+    _In_ const PFAccountManagementServerUnlinkNintendoSwitchDeviceIdRequest* request,
     _In_ XAsyncBlock* async
 ) noexcept
 {
     RETURN_HR_INVALIDARG_IF_NULL(contextHandle);
     RETURN_HR_INVALIDARG_IF_NULL(request);
 
-    auto provider = MakeProvider(async, __FUNCTION__, std::bind(&AccountManagementAPI::ServerSendPushNotificationFromTemplate, contextHandle->state, *request, std::placeholders::_1));
+    auto provider = MakeProvider(async, __FUNCTION__, std::bind(&AccountManagementAPI::ServerUnlinkNintendoSwitchDeviceId, contextHandle->state, *request, std::placeholders::_1));
     return Provider::Run(UniquePtr<Provider>(provider.release()));
 }
 

@@ -58,7 +58,7 @@ public:
 
 };
 
-class GameModeInfo : public Wrappers::PFMatchmakingGameModeInfoWrapper<Allocator>, public InputModel, public OutputModel<PFMatchmakingGameModeInfo>
+class GameModeInfo : public Wrappers::PFMatchmakingGameModeInfoWrapper<Allocator>, public OutputModel<PFMatchmakingGameModeInfo>
 {
 public:
     using ModelWrapperType = typename Wrappers::PFMatchmakingGameModeInfoWrapper<Allocator>;
@@ -66,10 +66,6 @@ public:
 
     // Constructors
     using ModelWrapperType::ModelWrapperType;
-
-    // InputModel
-    JsonValue ToJson() const override;
-    static JsonValue ToJson(const PFMatchmakingGameModeInfo& input);
 
     // OutputModel
     void FromJson(const JsonValue& input) override;
@@ -96,21 +92,6 @@ public:
 
     static size_t RequiredBufferSize(const PFMatchmakingGetMatchmakerGameModesResult& model);
     static HRESULT Copy(const PFMatchmakingGetMatchmakerGameModesResult& input, PFMatchmakingGetMatchmakerGameModesResult& output, ModelBuffer& buffer);
-};
-
-class ModifyMatchmakerGameModesRequest : public Wrappers::PFMatchmakingModifyMatchmakerGameModesRequestWrapper<Allocator>, public InputModel
-{
-public:
-    using ModelWrapperType = typename Wrappers::PFMatchmakingModifyMatchmakerGameModesRequestWrapper<Allocator>;
-    using ModelWrapperType::ModelType;
-
-    // Constructors
-    using ModelWrapperType::ModelWrapperType;
-
-    // InputModel
-    JsonValue ToJson() const override;
-    static JsonValue ToJson(const PFMatchmakingModifyMatchmakerGameModesRequest& input);
-
 };
 
 class Container_Dictionary_String_String : public Wrappers::PFMatchmakingContainer_Dictionary_String_StringWrapper<Allocator>, public InputModel
@@ -278,39 +259,6 @@ public:
     static HRESULT Copy(const PFMatchmakingMatchmakeResult& input, PFMatchmakingMatchmakeResult& output, ModelBuffer& buffer);
 };
 
-class ClientStartGameRequest : public Wrappers::PFMatchmakingClientStartGameRequestWrapper<Allocator>, public InputModel
-{
-public:
-    using ModelWrapperType = typename Wrappers::PFMatchmakingClientStartGameRequestWrapper<Allocator>;
-    using ModelWrapperType::ModelType;
-
-    // Constructors
-    using ModelWrapperType::ModelWrapperType;
-
-    // InputModel
-    JsonValue ToJson() const override;
-    static JsonValue ToJson(const PFMatchmakingClientStartGameRequest& input);
-
-};
-
-class StartGameResult : public Wrappers::PFMatchmakingStartGameResultWrapper<Allocator>, public OutputModel<PFMatchmakingStartGameResult>
-{
-public:
-    using ModelWrapperType = typename Wrappers::PFMatchmakingStartGameResultWrapper<Allocator>;
-    using ModelWrapperType::ModelType;
-
-    // Constructors
-    using ModelWrapperType::ModelWrapperType;
-
-    // OutputModel
-    void FromJson(const JsonValue& input) override;
-    size_t RequiredBufferSize() const override;
-    Result<PFMatchmakingStartGameResult const*> Copy(ModelBuffer& buffer) const override;
-
-    static size_t RequiredBufferSize(const PFMatchmakingStartGameResult& model);
-    static HRESULT Copy(const PFMatchmakingStartGameResult& input, PFMatchmakingStartGameResult& output, ModelBuffer& buffer);
-};
-
 class AuthUserRequest : public Wrappers::PFMatchmakingAuthUserRequestWrapper<Allocator>, public InputModel
 {
 public:
@@ -372,39 +320,6 @@ public:
     JsonValue ToJson() const override;
     static JsonValue ToJson(const PFMatchmakingPlayerLeftRequest& input);
 
-};
-
-class MatchmakerStartGameRequest : public Wrappers::PFMatchmakingMatchmakerStartGameRequestWrapper<Allocator>, public InputModel
-{
-public:
-    using ModelWrapperType = typename Wrappers::PFMatchmakingMatchmakerStartGameRequestWrapper<Allocator>;
-    using ModelWrapperType::ModelType;
-
-    // Constructors
-    using ModelWrapperType::ModelWrapperType;
-
-    // InputModel
-    JsonValue ToJson() const override;
-    static JsonValue ToJson(const PFMatchmakingMatchmakerStartGameRequest& input);
-
-};
-
-class StartGameResponse : public Wrappers::PFMatchmakingStartGameResponseWrapper<Allocator>, public OutputModel<PFMatchmakingStartGameResponse>
-{
-public:
-    using ModelWrapperType = typename Wrappers::PFMatchmakingStartGameResponseWrapper<Allocator>;
-    using ModelWrapperType::ModelType;
-
-    // Constructors
-    using ModelWrapperType::ModelWrapperType;
-
-    // OutputModel
-    void FromJson(const JsonValue& input) override;
-    size_t RequiredBufferSize() const override;
-    Result<PFMatchmakingStartGameResponse const*> Copy(ModelBuffer& buffer) const override;
-
-    static size_t RequiredBufferSize(const PFMatchmakingStartGameResponse& model);
-    static HRESULT Copy(const PFMatchmakingStartGameResponse& input, PFMatchmakingStartGameResponse& output, ModelBuffer& buffer);
 };
 
 class UserInfoRequest : public Wrappers::PFMatchmakingUserInfoRequestWrapper<Allocator>, public InputModel

@@ -66,18 +66,6 @@ struct MatchmakeResultHolder : public XAsyncResult, public std::enable_shared_fr
     PFMatchmakingMatchmakeResult* result{ nullptr };
 };
 
-struct StartGameResultHolder : public XAsyncResult, public std::enable_shared_from_this<StartGameResultHolder>
-{
-    StartGameResultHolder() = default;
-    StartGameResultHolder(const StartGameResultHolder&) = delete;
-    StartGameResultHolder(StartGameResultHolder&&) = default;
-    StartGameResultHolder& operator=(const StartGameResultHolder&) = delete;
-    StartGameResultHolder& operator=(StartGameResultHolder&&) = default;
-    ~StartGameResultHolder() = default;
-
-    PFMatchmakingStartGameResult* result{ nullptr };
-};
-
 struct AuthUserResponseHolder : public XAsyncResult, public std::enable_shared_from_this<AuthUserResponseHolder>
 {
     AuthUserResponseHolder() = default;
@@ -88,18 +76,6 @@ struct AuthUserResponseHolder : public XAsyncResult, public std::enable_shared_f
     ~AuthUserResponseHolder() = default;
 
     PFMatchmakingAuthUserResponse* result{ nullptr };
-};
-
-struct StartGameResponseHolder : public XAsyncResult, public std::enable_shared_from_this<StartGameResponseHolder>
-{
-    StartGameResponseHolder() = default;
-    StartGameResponseHolder(const StartGameResponseHolder&) = delete;
-    StartGameResponseHolder(StartGameResponseHolder&&) = default;
-    StartGameResponseHolder& operator=(const StartGameResponseHolder&) = delete;
-    StartGameResponseHolder& operator=(StartGameResponseHolder&&) = default;
-    ~StartGameResponseHolder() = default;
-
-    PFMatchmakingStartGameResponse* result{ nullptr };
 };
 
 struct UserInfoResponseHolder : public XAsyncResult, public std::enable_shared_from_this<UserInfoResponseHolder>

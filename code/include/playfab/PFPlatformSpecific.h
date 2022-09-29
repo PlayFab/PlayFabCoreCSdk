@@ -86,7 +86,7 @@ HRESULT PFPlatformSpecificClientConsumeMicrosoftStoreEntitlementsGetResult(
 
 #if HC_PLATFORM != HC_PLATFORM_GDK
 /// <summary>
-/// Checks for any new PS5 entitlements. If any are found, they are consumed (if they're consumables)
+/// Checks for any new consumable entitlements. If any are found, they are consumed (if they're consumables)
 /// and added as PlayFab items
 /// </summary>
 /// <param name="entityHandle">PFTitlePlayerHandle to use for authentication.</param>
@@ -240,7 +240,8 @@ HRESULT PFPlatformSpecificClientConsumeXboxEntitlementsGetResult(
 
 #if HC_PLATFORM != HC_PLATFORM_GDK
 /// <summary>
-/// Uses the supplied OAuth code to refresh the internally cached player PSN auth token
+/// Uses the supplied OAuth code to refresh the internally cached player PlayStation :tm: Network auth
+/// token
 /// </summary>
 /// <param name="entityHandle">PFTitlePlayerHandle to use for authentication.</param>
 /// <param name="request">Populated request object.</param>

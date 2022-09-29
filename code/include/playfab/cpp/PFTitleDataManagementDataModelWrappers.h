@@ -2220,10 +2220,8 @@ public:
 
     PFTitleDataManagementSetTitleDataRequestWrapper(const PFTitleDataManagementSetTitleDataRequest& model) :
         ModelWrapper<PFTitleDataManagementSetTitleDataRequest, Alloc>{ model },
-        m_azureResourceId{ SafeString(model.azureResourceId) },
         m_customTags{ model.customTags, model.customTags + model.customTagsCount },
         m_key{ SafeString(model.key) },
-        m_titleId{ SafeString(model.titleId) },
         m_value{ SafeString(model.value) }
     {
         SetModelPointers();
@@ -2252,19 +2250,11 @@ public:
     {
         using std::swap;
         swap(lhs.m_model, rhs.m_model);
-        swap(lhs.m_azureResourceId, rhs.m_azureResourceId);
         swap(lhs.m_customTags, rhs.m_customTags);
         swap(lhs.m_key, rhs.m_key);
-        swap(lhs.m_titleId, rhs.m_titleId);
         swap(lhs.m_value, rhs.m_value);
         lhs.SetModelPointers();
         rhs.SetModelPointers();
-    }
-
-    void SetAzureResourceId(String value)
-    {
-        m_azureResourceId = std::move(value);
-        this->m_model.azureResourceId =  m_azureResourceId.empty() ? nullptr : m_azureResourceId.data();
     }
 
     void SetCustomTags(StringDictionaryEntryVector<Alloc> value)
@@ -2280,12 +2270,6 @@ public:
         this->m_model.key =  m_key.empty() ? nullptr : m_key.data();
     }
 
-    void SetTitleId(String value)
-    {
-        m_titleId = std::move(value);
-        this->m_model.titleId =  m_titleId.empty() ? nullptr : m_titleId.data();
-    }
-
     void SetValue(String value)
     {
         m_value = std::move(value);
@@ -2295,78 +2279,14 @@ public:
 private:
     void SetModelPointers()
     {
-        this->m_model.azureResourceId = m_azureResourceId.empty() ? nullptr : m_azureResourceId.data();
         this->m_model.customTags = m_customTags.empty() ? nullptr : m_customTags.data();
         this->m_model.key = m_key.empty() ? nullptr : m_key.data();
-        this->m_model.titleId = m_titleId.empty() ? nullptr : m_titleId.data();
         this->m_model.value = m_value.empty() ? nullptr : m_value.data();
     }
 
-    String m_azureResourceId;
     StringDictionaryEntryVector<Alloc> m_customTags;
     String m_key;
-    String m_titleId;
     String m_value;
-};
-
-template<template<typename AllocT> class Alloc = std::allocator>
-class PFTitleDataManagementSetTitleDataResultWrapper : public ModelWrapper<PFTitleDataManagementSetTitleDataResult, Alloc>
-{
-public:
-    using ModelType = typename PFTitleDataManagementSetTitleDataResult;
-    using String = typename std::basic_string<char, std::char_traits<char>, Alloc<char>>;
-    template<typename T> using Vector = typename std::vector<T, Alloc<T>>;
-
-    PFTitleDataManagementSetTitleDataResultWrapper() = default;
-
-    PFTitleDataManagementSetTitleDataResultWrapper(const PFTitleDataManagementSetTitleDataResult& model) :
-        ModelWrapper<PFTitleDataManagementSetTitleDataResult, Alloc>{ model },
-        m_azureResourceId{ SafeString(model.azureResourceId) }
-    {
-        SetModelPointers();
-    }
-
-    PFTitleDataManagementSetTitleDataResultWrapper(const PFTitleDataManagementSetTitleDataResultWrapper& src) :
-        PFTitleDataManagementSetTitleDataResultWrapper{ src.Model() }
-    {
-    }
-
-    PFTitleDataManagementSetTitleDataResultWrapper(PFTitleDataManagementSetTitleDataResultWrapper&& src) :
-        PFTitleDataManagementSetTitleDataResultWrapper{}
-    {
-        swap(*this, src);
-    }
-
-    PFTitleDataManagementSetTitleDataResultWrapper& operator=(PFTitleDataManagementSetTitleDataResultWrapper src) 
-    {
-        swap(*this, src);
-        return *this;
-    }
-
-    virtual ~PFTitleDataManagementSetTitleDataResultWrapper() = default;
-
-    friend void swap(PFTitleDataManagementSetTitleDataResultWrapper& lhs, PFTitleDataManagementSetTitleDataResultWrapper& rhs)
-    {
-        using std::swap;
-        swap(lhs.m_model, rhs.m_model);
-        swap(lhs.m_azureResourceId, rhs.m_azureResourceId);
-        lhs.SetModelPointers();
-        rhs.SetModelPointers();
-    }
-
-    void SetAzureResourceId(String value)
-    {
-        m_azureResourceId = std::move(value);
-        this->m_model.azureResourceId =  m_azureResourceId.empty() ? nullptr : m_azureResourceId.data();
-    }
-
-private:
-    void SetModelPointers()
-    {
-        this->m_model.azureResourceId = m_azureResourceId.empty() ? nullptr : m_azureResourceId.data();
-    }
-
-    String m_azureResourceId;
 };
 
 template<template<typename AllocT> class Alloc = std::allocator>
@@ -2451,6 +2371,7 @@ public:
 
     PFTitleDataManagementSetTitleDataAndOverridesRequestWrapper(const PFTitleDataManagementSetTitleDataAndOverridesRequest& model) :
         ModelWrapper<PFTitleDataManagementSetTitleDataAndOverridesRequest, Alloc>{ model },
+        m_customTags{ model.customTags, model.customTags + model.customTagsCount },
         m_keyValues{ model.keyValues, model.keyValues + model.keyValuesCount },
         m_overrideLabel{ SafeString(model.overrideLabel) }
     {
@@ -2480,10 +2401,18 @@ public:
     {
         using std::swap;
         swap(lhs.m_model, rhs.m_model);
+        swap(lhs.m_customTags, rhs.m_customTags);
         swap(lhs.m_keyValues, rhs.m_keyValues);
         swap(lhs.m_overrideLabel, rhs.m_overrideLabel);
         lhs.SetModelPointers();
         rhs.SetModelPointers();
+    }
+
+    void SetCustomTags(StringDictionaryEntryVector<Alloc> value)
+    {
+        m_customTags = std::move(value);
+        this->m_model.customTags =  m_customTags.empty() ? nullptr : m_customTags.data();
+        this->m_model.customTagsCount =  static_cast<uint32_t>(m_customTags.size());
     }
 
     void SetKeyValues(ModelVector<PFTitleDataManagementTitleDataKeyValueWrapper<Alloc>, Alloc> value)
@@ -2502,10 +2431,12 @@ public:
 private:
     void SetModelPointers()
     {
+        this->m_model.customTags = m_customTags.empty() ? nullptr : m_customTags.data();
         this->m_model.keyValues = m_keyValues.empty() ? nullptr : m_keyValues.data();
         this->m_model.overrideLabel = m_overrideLabel.empty() ? nullptr : m_overrideLabel.data();
     }
 
+    StringDictionaryEntryVector<Alloc> m_customTags;
     ModelVector<PFTitleDataManagementTitleDataKeyValueWrapper<Alloc>, Alloc> m_keyValues;
     String m_overrideLabel;
 };

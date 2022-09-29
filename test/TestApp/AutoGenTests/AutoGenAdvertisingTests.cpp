@@ -21,7 +21,7 @@ void AutoGenAdvertisingTests::Log(std::stringstream& ss)
 
 HRESULT AutoGenAdvertisingTests::LogHR(HRESULT hr)
 {
-    if( TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    if (TestApp::ShouldTrace(PFTestTraceLevel::Information))
     {
         TestApp::Log("Result: 0x%0.8x", hr);
     }
@@ -32,18 +32,26 @@ HRESULT AutoGenAdvertisingTests::LogHR(HRESULT hr)
 void AutoGenAdvertisingTests::AddTests()
 {
     // Generated tests 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestAdvertisingClientAttributeInstall", &AutoGenAdvertisingTests::TestAdvertisingClientAttributeInstall);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestAdvertisingClientGetAdPlacements", &AutoGenAdvertisingTests::TestAdvertisingClientGetAdPlacements);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestAdvertisingClientReportAdActivity", &AutoGenAdvertisingTests::TestAdvertisingClientReportAdActivity);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestAdvertisingClientRewardAdActivity", &AutoGenAdvertisingTests::TestAdvertisingClientRewardAdActivity);
+#endif
 }
 
 void AutoGenAdvertisingTests::ClassSetUp()
 {
-    HRESULT hr = PFAdminInitialize(testTitleData.titleId.data(), testTitleData.developerSecretKey.data(), nullptr, &stateHandle);
+    HRESULT hr = PFAdminInitialize(testTitleData.titleId.data(), testTitleData.developerSecretKey.data(), testTitleData.connectionString.data(), nullptr, &stateHandle);
     assert(SUCCEEDED(hr));
     if (SUCCEEDED(hr))
     {
@@ -148,12 +156,13 @@ void AutoGenAdvertisingTests::SetUp(TestContext& testContext)
 
 #pragma region ClientAttributeInstall
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenAdvertisingTests::TestAdvertisingClientAttributeInstall(TestContext& testContext)
 {
     auto async = std::make_unique<XAsyncHelper<XAsyncResult>>(testContext);
 
     PFAdvertisingAttributeInstallRequestWrapper<> request;
-    FillAttributeInstallRequest(request);
+    FillClientAttributeInstallRequest(request);
     LogAttributeInstallRequest(&request.Model(), "TestAdvertisingClientAttributeInstall");
     HRESULT hr = PFAdvertisingClientAttributeInstallAsync(titlePlayerHandle, &request.Model(), &async->asyncBlock);
     if (FAILED(hr))
@@ -163,14 +172,16 @@ void AutoGenAdvertisingTests::TestAdvertisingClientAttributeInstall(TestContext&
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region ClientGetAdPlacements
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenAdvertisingTests::TestAdvertisingClientGetAdPlacements(TestContext& testContext)
 {
-    struct ClientGetAdPlacementsResultHolder : public GetAdPlacementsResultHolder
+    struct ClientGetAdPlacementsResultHolderStruct : public GetAdPlacementsResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -180,19 +191,19 @@ void AutoGenAdvertisingTests::TestAdvertisingClientGetAdPlacements(TestContext& 
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFAdvertisingClientGetAdPlacementsGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
             
-            LogPFAdvertisingGetAdPlacementsResult(result);
+            LogGetAdPlacementsResult(result);
             return S_OK;
         }
 
         HRESULT Validate() override
         {
-            return ValidatePFAdvertisingGetAdPlacementsResult(result);
+            return ValidateClientGetAdPlacementsResponse(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<ClientGetAdPlacementsResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<ClientGetAdPlacementsResultHolderStruct>>(testContext);
 
     PFAdvertisingGetAdPlacementsRequestWrapper<> request;
-    FillGetAdPlacementsRequest(request);
+    FillClientGetAdPlacementsRequest(request);
     LogGetAdPlacementsRequest(&request.Model(), "TestAdvertisingClientGetAdPlacements");
     HRESULT hr = PFAdvertisingClientGetAdPlacementsAsync(titlePlayerHandle, &request.Model(), &async->asyncBlock);
     if (FAILED(hr))
@@ -202,17 +213,19 @@ void AutoGenAdvertisingTests::TestAdvertisingClientGetAdPlacements(TestContext& 
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region ClientReportAdActivity
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenAdvertisingTests::TestAdvertisingClientReportAdActivity(TestContext& testContext)
 {
     auto async = std::make_unique<XAsyncHelper<XAsyncResult>>(testContext);
 
     PFAdvertisingReportAdActivityRequestWrapper<> request;
-    FillReportAdActivityRequest(request);
+    FillClientReportAdActivityRequest(request);
     LogReportAdActivityRequest(&request.Model(), "TestAdvertisingClientReportAdActivity");
     HRESULT hr = PFAdvertisingClientReportAdActivityAsync(titlePlayerHandle, &request.Model(), &async->asyncBlock);
     if (FAILED(hr))
@@ -222,14 +235,16 @@ void AutoGenAdvertisingTests::TestAdvertisingClientReportAdActivity(TestContext&
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region ClientRewardAdActivity
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenAdvertisingTests::TestAdvertisingClientRewardAdActivity(TestContext& testContext)
 {
-    struct ClientRewardAdActivityResultHolder : public RewardAdActivityResultHolder
+    struct ClientRewardAdActivityResultHolderStruct : public RewardAdActivityResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -239,19 +254,19 @@ void AutoGenAdvertisingTests::TestAdvertisingClientRewardAdActivity(TestContext&
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFAdvertisingClientRewardAdActivityGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
             
-            LogPFAdvertisingRewardAdActivityResult(result);
+            LogRewardAdActivityResult(result);
             return S_OK;
         }
 
         HRESULT Validate() override
         {
-            return ValidatePFAdvertisingRewardAdActivityResult(result);
+            return ValidateClientRewardAdActivityResponse(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<ClientRewardAdActivityResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<ClientRewardAdActivityResultHolderStruct>>(testContext);
 
     PFAdvertisingRewardAdActivityRequestWrapper<> request;
-    FillRewardAdActivityRequest(request);
+    FillClientRewardAdActivityRequest(request);
     LogRewardAdActivityRequest(&request.Model(), "TestAdvertisingClientRewardAdActivity");
     HRESULT hr = PFAdvertisingClientRewardAdActivityAsync(titlePlayerHandle, &request.Model(), &async->asyncBlock);
     if (FAILED(hr))
@@ -261,6 +276,7 @@ void AutoGenAdvertisingTests::TestAdvertisingClientRewardAdActivity(TestContext&
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 

@@ -961,7 +961,7 @@ HRESULT PFAccountManagementClientGetAccountInfoGetResult(
 /// </remarks>
 HRESULT PFAccountManagementClientGetPlayerCombinedInfoAsync(
     _In_ PFTitlePlayerHandle titlePlayerHandle,
-    _In_ const PFGetPlayerCombinedInfoRequest* request,
+    _In_ const PFAccountManagementGetPlayerCombinedInfoRequest* request,
     _Inout_ XAsyncBlock* async
 ) noexcept;
 
@@ -992,7 +992,7 @@ HRESULT PFAccountManagementClientGetPlayerCombinedInfoGetResult(
     _Inout_ XAsyncBlock* async,
     _In_ size_t bufferSize,
     _Out_writes_bytes_to_(bufferSize, *bufferUsed) void* buffer,
-    _Outptr_ PFGetPlayerCombinedInfoResult** result,
+    _Outptr_ PFAccountManagementGetPlayerCombinedInfoResult** result,
     _Out_opt_ size_t* bufferUsed
 ) noexcept;
 
@@ -1296,6 +1296,56 @@ HRESULT PFAccountManagementClientGetPlayFabIDsFromGoogleIDsGetResult(
 ) noexcept;
 
 /// <summary>
+/// Retrieves the unique PlayFab identifiers for the given set of Google Play Games identifiers. The
+/// Google Play Games identifiers are the IDs for the user accounts, available as 'playerId' in the Google
+/// Play Games Services - Players API calls.
+/// </summary>
+/// <param name="entityHandle">PFTitlePlayerHandle to use for authentication.</param>
+/// <param name="request">Populated request object.</param>
+/// <param name="async">XAsyncBlock for the async operation.</param>
+/// <returns>Result code for this API operation.</returns>
+/// <remarks>
+/// If successful, call <see cref="PFAccountManagementClientGetPlayFabIDsFromGooglePlayGamesPlayerIDsGetResult"/>
+/// to get the result.
+/// </remarks>
+HRESULT PFAccountManagementClientGetPlayFabIDsFromGooglePlayGamesPlayerIDsAsync(
+    _In_ PFTitlePlayerHandle titlePlayerHandle,
+    _In_ const PFAccountManagementGetPlayFabIDsFromGooglePlayGamesPlayerIDsRequest* request,
+    _Inout_ XAsyncBlock* async
+) noexcept;
+
+/// <summary>
+/// Get the size in bytes needed to store the result of a ClientGetPlayFabIDsFromGooglePlayGamesPlayerIDs call.
+/// </summary>
+/// <param name="async">XAsyncBlock for the async operation.</param>
+/// <param name="bufferSize">The buffer size in bytes required for the result.</param>
+/// <returns>Result code for this API operation.</returns>
+HRESULT PFAccountManagementClientGetPlayFabIDsFromGooglePlayGamesPlayerIDsGetResultSize(
+    _Inout_ XAsyncBlock* async,
+    _Out_ size_t* bufferSize
+) noexcept;
+
+/// <summary>
+/// Gets the result of a successful PFAccountManagementClientGetPlayFabIDsFromGooglePlayGamesPlayerIDsAsync call.
+/// </summary>
+/// <param name="async">XAsyncBlock for the async operation.</param>
+/// <param name="bufferSize">The size of the buffer for the result object.</param>
+/// <param name="buffer">Byte buffer used for the result value and its fields.</param>
+/// <param name="result">Pointer to the result object.</param>
+/// <param name="bufferUsed">The number of bytes in the provided buffer that were used.</param>
+/// <returns>Result code for this API operation.</returns>
+/// <remarks>
+/// result is a pointer within buffer and does not need to be freed separately.
+/// </remarks>
+HRESULT PFAccountManagementClientGetPlayFabIDsFromGooglePlayGamesPlayerIDsGetResult(
+    _Inout_ XAsyncBlock* async,
+    _In_ size_t bufferSize,
+    _Out_writes_bytes_to_(bufferSize, *bufferUsed) void* buffer,
+    _Outptr_ PFAccountManagementGetPlayFabIDsFromGooglePlayGamesPlayerIDsResult** result,
+    _Out_opt_ size_t* bufferUsed
+) noexcept;
+
+/// <summary>
 /// Retrieves the unique PlayFab identifiers for the given set of Kongregate identifiers. The Kongregate
 /// identifiers are the IDs for the user accounts, available as 'user_id' from the Kongregate API methods(ex:
 /// http://developers.kongregate.com/docs/client/getUserId).
@@ -1346,7 +1396,55 @@ HRESULT PFAccountManagementClientGetPlayFabIDsFromKongregateIDsGetResult(
 ) noexcept;
 
 /// <summary>
-/// Retrieves the unique PlayFab identifiers for the given set of Nintendo Switch identifiers.
+/// Retrieves the unique PlayFab identifiers for the given set of Nintendo Service Account identifiers.
+/// </summary>
+/// <param name="entityHandle">PFTitlePlayerHandle to use for authentication.</param>
+/// <param name="request">Populated request object.</param>
+/// <param name="async">XAsyncBlock for the async operation.</param>
+/// <returns>Result code for this API operation.</returns>
+/// <remarks>
+/// If successful, call <see cref="PFAccountManagementClientGetPlayFabIDsFromNintendoServiceAccountIdsGetResult"/>
+/// to get the result.
+/// </remarks>
+HRESULT PFAccountManagementClientGetPlayFabIDsFromNintendoServiceAccountIdsAsync(
+    _In_ PFTitlePlayerHandle titlePlayerHandle,
+    _In_ const PFAccountManagementGetPlayFabIDsFromNintendoServiceAccountIdsRequest* request,
+    _Inout_ XAsyncBlock* async
+) noexcept;
+
+/// <summary>
+/// Get the size in bytes needed to store the result of a ClientGetPlayFabIDsFromNintendoServiceAccountIds call.
+/// </summary>
+/// <param name="async">XAsyncBlock for the async operation.</param>
+/// <param name="bufferSize">The buffer size in bytes required for the result.</param>
+/// <returns>Result code for this API operation.</returns>
+HRESULT PFAccountManagementClientGetPlayFabIDsFromNintendoServiceAccountIdsGetResultSize(
+    _Inout_ XAsyncBlock* async,
+    _Out_ size_t* bufferSize
+) noexcept;
+
+/// <summary>
+/// Gets the result of a successful PFAccountManagementClientGetPlayFabIDsFromNintendoServiceAccountIdsAsync call.
+/// </summary>
+/// <param name="async">XAsyncBlock for the async operation.</param>
+/// <param name="bufferSize">The size of the buffer for the result object.</param>
+/// <param name="buffer">Byte buffer used for the result value and its fields.</param>
+/// <param name="result">Pointer to the result object.</param>
+/// <param name="bufferUsed">The number of bytes in the provided buffer that were used.</param>
+/// <returns>Result code for this API operation.</returns>
+/// <remarks>
+/// result is a pointer within buffer and does not need to be freed separately.
+/// </remarks>
+HRESULT PFAccountManagementClientGetPlayFabIDsFromNintendoServiceAccountIdsGetResult(
+    _Inout_ XAsyncBlock* async,
+    _In_ size_t bufferSize,
+    _Out_writes_bytes_to_(bufferSize, *bufferUsed) void* buffer,
+    _Outptr_ PFAccountManagementGetPlayFabIDsFromNintendoServiceAccountIdsResult** result,
+    _Out_opt_ size_t* bufferUsed
+) noexcept;
+
+/// <summary>
+/// Retrieves the unique PlayFab identifiers for the given set of Nintendo Switch Device identifiers.
 /// </summary>
 /// <param name="entityHandle">PFTitlePlayerHandle to use for authentication.</param>
 /// <param name="request">Populated request object.</param>
@@ -1394,7 +1492,7 @@ HRESULT PFAccountManagementClientGetPlayFabIDsFromNintendoSwitchDeviceIdsGetResu
 ) noexcept;
 
 /// <summary>
-/// Retrieves the unique PlayFab identifiers for the given set of PlayStation Network identifiers.
+/// Retrieves the unique PlayFab identifiers for the given set of PlayStation :tm: Network identifiers.
 /// </summary>
 /// <param name="entityHandle">PFTitlePlayerHandle to use for authentication.</param>
 /// <param name="request">Populated request object.</param>
@@ -1727,7 +1825,8 @@ HRESULT PFAccountManagementClientLinkGameCenterAccountAsync(
 /// <returns>Result code for this API operation.</returns>
 /// <remarks>
 /// Google sign-in is accomplished by obtaining a Google OAuth 2.0 credential using the Google sign-in
-/// for Android APIs on the device and passing it to this API.
+/// for Android APIs on the device and passing it to this API. See also ClientLoginWithGoogleAccountAsync,
+/// ClientUnlinkGoogleAccountAsync.
 ///
 /// Call <see cref="XAsyncGetStatus"/> to get the status of the operation.
 /// </remarks>
@@ -1737,6 +1836,27 @@ HRESULT PFAccountManagementClientLinkGoogleAccountAsync(
     _Inout_ XAsyncBlock* async
 ) noexcept;
 #endif
+
+/// <summary>
+/// Links the currently signed-in user account to their Google Play Games account, using their Google
+/// Play Games account credentials
+/// </summary>
+/// <param name="entityHandle">PFTitlePlayerHandle to use for authentication.</param>
+/// <param name="request">Populated request object.</param>
+/// <param name="async">XAsyncBlock for the async operation.</param>
+/// <returns>Result code for this API operation.</returns>
+/// <remarks>
+/// Google Play Games sign-in is accomplished by obtaining a Google OAuth 2.0 credential using the Google
+/// Play Games sign-in for Android APIs on the device and passing it to this API. See also ClientLoginWithGooglePlayGamesServicesAsync,
+/// ClientUnlinkGooglePlayGamesServicesAccountAsync.
+///
+/// Call <see cref="XAsyncGetStatus"/> to get the status of the operation.
+/// </remarks>
+HRESULT PFAccountManagementClientLinkGooglePlayGamesServicesAccountAsync(
+    _In_ PFTitlePlayerHandle titlePlayerHandle,
+    _In_ const PFAccountManagementLinkGooglePlayGamesServicesAccountRequest* request,
+    _Inout_ XAsyncBlock* async
+) noexcept;
 
 #if HC_PLATFORM != HC_PLATFORM_GDK
 /// <summary>
@@ -1787,11 +1907,13 @@ HRESULT PFAccountManagementClientLinkKongregateAsync(
 /// <param name="async">XAsyncBlock for the async operation.</param>
 /// <returns>Result code for this API operation.</returns>
 /// <remarks>
+/// See also ClientLoginWithNintendoServiceAccountAsync, ClientUnlinkNintendoServiceAccountAsync.
+///
 /// Call <see cref="XAsyncGetStatus"/> to get the status of the operation.
 /// </remarks>
 HRESULT PFAccountManagementClientLinkNintendoServiceAccountAsync(
     _In_ PFTitlePlayerHandle titlePlayerHandle,
-    _In_ const PFAccountManagementLinkNintendoServiceAccountRequest* request,
+    _In_ const PFAccountManagementClientLinkNintendoServiceAccountRequest* request,
     _Inout_ XAsyncBlock* async
 ) noexcept;
 #endif
@@ -1805,11 +1927,13 @@ HRESULT PFAccountManagementClientLinkNintendoServiceAccountAsync(
 /// <param name="async">XAsyncBlock for the async operation.</param>
 /// <returns>Result code for this API operation.</returns>
 /// <remarks>
+/// See also ClientLoginWithNintendoSwitchDeviceIdAsync, ClientUnlinkNintendoSwitchDeviceIdAsync.
+///
 /// Call <see cref="XAsyncGetStatus"/> to get the status of the operation.
 /// </remarks>
 HRESULT PFAccountManagementClientLinkNintendoSwitchDeviceIdAsync(
     _In_ PFTitlePlayerHandle titlePlayerHandle,
-    _In_ const PFAccountManagementLinkNintendoSwitchDeviceIdRequest* request,
+    _In_ const PFAccountManagementClientLinkNintendoSwitchDeviceIdRequest* request,
     _Inout_ XAsyncBlock* async
 ) noexcept;
 #endif
@@ -1823,6 +1947,8 @@ HRESULT PFAccountManagementClientLinkNintendoSwitchDeviceIdAsync(
 /// <param name="async">XAsyncBlock for the async operation.</param>
 /// <returns>Result code for this API operation.</returns>
 /// <remarks>
+/// See also ClientLoginWithOpenIdConnectAsync, ClientUnlinkOpenIdConnectAsync.
+///
 /// Call <see cref="XAsyncGetStatus"/> to get the status of the operation.
 /// </remarks>
 HRESULT PFAccountManagementClientLinkOpenIdConnectAsync(
@@ -1833,8 +1959,8 @@ HRESULT PFAccountManagementClientLinkOpenIdConnectAsync(
 
 #if HC_PLATFORM != HC_PLATFORM_GDK
 /// <summary>
-/// Links the PlayStation Network account associated with the provided access code to the user's PlayFab
-/// account
+/// Links the PlayStation :tm: Network account associated with the provided access code to the user's
+/// PlayFab account
 /// </summary>
 /// <param name="entityHandle">PFTitlePlayerHandle to use for authentication.</param>
 /// <param name="request">Populated request object.</param>
@@ -1887,6 +2013,8 @@ HRESULT PFAccountManagementClientLinkSteamAccountAsync(
 /// <param name="async">XAsyncBlock for the async operation.</param>
 /// <returns>Result code for this API operation.</returns>
 /// <remarks>
+/// See also ClientLoginWithTwitchAsync, ClientUnlinkTwitchAsync.
+///
 /// Call <see cref="XAsyncGetStatus"/> to get the status of the operation.
 /// </remarks>
 HRESULT PFAccountManagementClientLinkTwitchAsync(
@@ -2127,6 +2255,8 @@ HRESULT PFAccountManagementClientUnlinkGameCenterAccountAsync(
 /// <param name="async">XAsyncBlock for the async operation.</param>
 /// <returns>Result code for this API operation.</returns>
 /// <remarks>
+/// See also ClientLinkGoogleAccountAsync, ClientLoginWithGoogleAccountAsync.
+///
 /// Call <see cref="XAsyncGetStatus"/> to get the status of the operation.
 /// </remarks>
 HRESULT PFAccountManagementClientUnlinkGoogleAccountAsync(
@@ -2135,6 +2265,24 @@ HRESULT PFAccountManagementClientUnlinkGoogleAccountAsync(
     _Inout_ XAsyncBlock* async
 ) noexcept;
 #endif
+
+/// <summary>
+/// Unlinks the related Google Play Games account from the user's PlayFab account.
+/// </summary>
+/// <param name="entityHandle">PFTitlePlayerHandle to use for authentication.</param>
+/// <param name="request">Populated request object.</param>
+/// <param name="async">XAsyncBlock for the async operation.</param>
+/// <returns>Result code for this API operation.</returns>
+/// <remarks>
+/// See also ClientLinkGooglePlayGamesServicesAccountAsync, ClientLoginWithGooglePlayGamesServicesAsync.
+///
+/// Call <see cref="XAsyncGetStatus"/> to get the status of the operation.
+/// </remarks>
+HRESULT PFAccountManagementClientUnlinkGooglePlayGamesServicesAccountAsync(
+    _In_ PFTitlePlayerHandle titlePlayerHandle,
+    _In_ const PFAccountManagementUnlinkGooglePlayGamesServicesAccountRequest* request,
+    _Inout_ XAsyncBlock* async
+) noexcept;
 
 #if HC_PLATFORM != HC_PLATFORM_GDK
 /// <summary>
@@ -2185,11 +2333,13 @@ HRESULT PFAccountManagementClientUnlinkKongregateAsync(
 /// <param name="async">XAsyncBlock for the async operation.</param>
 /// <returns>Result code for this API operation.</returns>
 /// <remarks>
+/// See also ClientLinkNintendoServiceAccountAsync, ClientLoginWithNintendoServiceAccountAsync.
+///
 /// Call <see cref="XAsyncGetStatus"/> to get the status of the operation.
 /// </remarks>
 HRESULT PFAccountManagementClientUnlinkNintendoServiceAccountAsync(
     _In_ PFTitlePlayerHandle titlePlayerHandle,
-    _In_ const PFAccountManagementUnlinkNintendoServiceAccountRequest* request,
+    _In_ const PFAccountManagementClientUnlinkNintendoServiceAccountRequest* request,
     _Inout_ XAsyncBlock* async
 ) noexcept;
 #endif
@@ -2203,11 +2353,13 @@ HRESULT PFAccountManagementClientUnlinkNintendoServiceAccountAsync(
 /// <param name="async">XAsyncBlock for the async operation.</param>
 /// <returns>Result code for this API operation.</returns>
 /// <remarks>
+/// See also ClientLinkNintendoSwitchDeviceIdAsync, ClientLoginWithNintendoSwitchDeviceIdAsync.
+///
 /// Call <see cref="XAsyncGetStatus"/> to get the status of the operation.
 /// </remarks>
 HRESULT PFAccountManagementClientUnlinkNintendoSwitchDeviceIdAsync(
     _In_ PFTitlePlayerHandle titlePlayerHandle,
-    _In_ const PFAccountManagementUnlinkNintendoSwitchDeviceIdRequest* request,
+    _In_ const PFAccountManagementClientUnlinkNintendoSwitchDeviceIdRequest* request,
     _Inout_ XAsyncBlock* async
 ) noexcept;
 #endif
@@ -2221,6 +2373,8 @@ HRESULT PFAccountManagementClientUnlinkNintendoSwitchDeviceIdAsync(
 /// <param name="async">XAsyncBlock for the async operation.</param>
 /// <returns>Result code for this API operation.</returns>
 /// <remarks>
+/// See also ClientLinkOpenIdConnectAsync.
+///
 /// Call <see cref="XAsyncGetStatus"/> to get the status of the operation.
 /// </remarks>
 HRESULT PFAccountManagementClientUnlinkOpenIdConnectAsync(
@@ -2231,7 +2385,7 @@ HRESULT PFAccountManagementClientUnlinkOpenIdConnectAsync(
 
 #if HC_PLATFORM != HC_PLATFORM_GDK
 /// <summary>
-/// Unlinks the related PSN account from the user's PlayFab account
+/// Unlinks the related PlayStation :tm: Network account from the user's PlayFab account
 /// </summary>
 /// <param name="entityHandle">PFTitlePlayerHandle to use for authentication.</param>
 /// <param name="request">Populated request object.</param>
@@ -2278,6 +2432,8 @@ HRESULT PFAccountManagementClientUnlinkSteamAccountAsync(
 /// <param name="async">XAsyncBlock for the async operation.</param>
 /// <returns>Result code for this API operation.</returns>
 /// <remarks>
+/// See also ClientLinkTwitchAsync, ClientLoginWithTwitchAsync.
+///
 /// Call <see cref="XAsyncGetStatus"/> to get the status of the operation.
 /// </remarks>
 HRESULT PFAccountManagementClientUnlinkTwitchAsync(
@@ -2373,6 +2529,7 @@ HRESULT PFAccountManagementClientUpdateUserTitleDisplayNameGetResult(
     _Out_opt_ size_t* bufferUsed
 ) noexcept;
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 /// <summary>
 /// Adds the specified generic service identifier to the player's PlayFab account. This is designed to
 /// allow for a PlayFab ID lookup of any arbitrary service identifier a title wants to add. This identifier
@@ -2384,8 +2541,6 @@ HRESULT PFAccountManagementClientUpdateUserTitleDisplayNameGetResult(
 /// <param name="async">XAsyncBlock for the async operation.</param>
 /// <returns>Result code for this API operation.</returns>
 /// <remarks>
-/// See also ServerGetPlayFabIDsFromGenericIDsAsync, ServerRemoveGenericIDAsync.
-///
 /// Call <see cref="XAsyncGetStatus"/> to get the status of the operation.
 /// </remarks>
 HRESULT PFAccountManagementServerAddGenericIDAsync(
@@ -2393,7 +2548,9 @@ HRESULT PFAccountManagementServerAddGenericIDAsync(
     _In_ const PFAccountManagementServerAddGenericIDRequest* request,
     _Inout_ XAsyncBlock* async
 ) noexcept;
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 /// <summary>
 /// Bans users by PlayFab ID with optional IP address, or MAC address for the provided game.
 /// </summary>
@@ -2403,8 +2560,7 @@ HRESULT PFAccountManagementServerAddGenericIDAsync(
 /// <returns>Result code for this API operation.</returns>
 /// <remarks>
 /// The existence of each user will not be verified. When banning by IP or MAC address, multiple players
-/// may be affected, so use this feature with caution. Returns information about the new bans. See also
-/// ServerGetUserBansAsync, ServerRevokeAllBansForUserAsync, ServerRevokeBansAsync, ServerUpdateBansAsync.
+/// may be affected, so use this feature with caution. Returns information about the new bans.
 ///
 /// If successful, call <see cref="PFAccountManagementServerBanUsersGetResult"/> to get the result.
 /// </remarks>
@@ -2444,7 +2600,9 @@ HRESULT PFAccountManagementServerBanUsersGetResult(
     _Outptr_ PFAccountManagementBanUsersResult** result,
     _Out_opt_ size_t* bufferUsed
 ) noexcept;
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 /// <summary>
 /// Removes a user's player account from a title and deletes all associated data
 /// </summary>
@@ -2470,23 +2628,60 @@ HRESULT PFAccountManagementServerDeletePlayerAsync(
     _In_ const PFAccountManagementDeletePlayerRequest* request,
     _Inout_ XAsyncBlock* async
 ) noexcept;
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 /// <summary>
-/// Deletes push notification template for title
+/// Returns whatever info is requested in the response for the user. Note that PII (like email address,
+/// facebook id) may be returned. All parameters default to false.
 /// </summary>
 /// <param name="stateHandle">PFStateHandle returned from PFInitialize call.</param>
 /// <param name="request">Populated request object.</param>
 /// <param name="async">XAsyncBlock for the async operation.</param>
 /// <returns>Result code for this API operation.</returns>
 /// <remarks>
-/// Call <see cref="XAsyncGetStatus"/> to get the status of the operation.
+/// If successful, call <see cref="PFAccountManagementServerGetPlayerCombinedInfoGetResult"/> to get
+/// the result.
 /// </remarks>
-HRESULT PFAccountManagementServerDeletePushNotificationTemplateAsync(
+HRESULT PFAccountManagementServerGetPlayerCombinedInfoAsync(
     _In_ PFStateHandle stateHandle,
-    _In_ const PFAccountManagementDeletePushNotificationTemplateRequest* request,
+    _In_ const PFAccountManagementGetPlayerCombinedInfoRequest* request,
     _Inout_ XAsyncBlock* async
 ) noexcept;
 
+/// <summary>
+/// Get the size in bytes needed to store the result of a ServerGetPlayerCombinedInfo call.
+/// </summary>
+/// <param name="async">XAsyncBlock for the async operation.</param>
+/// <param name="bufferSize">The buffer size in bytes required for the result.</param>
+/// <returns>Result code for this API operation.</returns>
+HRESULT PFAccountManagementServerGetPlayerCombinedInfoGetResultSize(
+    _Inout_ XAsyncBlock* async,
+    _Out_ size_t* bufferSize
+) noexcept;
+
+/// <summary>
+/// Gets the result of a successful PFAccountManagementServerGetPlayerCombinedInfoAsync call.
+/// </summary>
+/// <param name="async">XAsyncBlock for the async operation.</param>
+/// <param name="bufferSize">The size of the buffer for the result object.</param>
+/// <param name="buffer">Byte buffer used for the result value and its fields.</param>
+/// <param name="result">Pointer to the result object.</param>
+/// <param name="bufferUsed">The number of bytes in the provided buffer that were used.</param>
+/// <returns>Result code for this API operation.</returns>
+/// <remarks>
+/// result is a pointer within buffer and does not need to be freed separately.
+/// </remarks>
+HRESULT PFAccountManagementServerGetPlayerCombinedInfoGetResult(
+    _Inout_ XAsyncBlock* async,
+    _In_ size_t bufferSize,
+    _Out_writes_bytes_to_(bufferSize, *bufferUsed) void* buffer,
+    _Outptr_ PFAccountManagementGetPlayerCombinedInfoResult** result,
+    _Out_opt_ size_t* bufferUsed
+) noexcept;
+#endif
+
+#if HC_PLATFORM != HC_PLATFORM_GDK
 /// <summary>
 /// Retrieves the player's profile
 /// </summary>
@@ -2539,7 +2734,9 @@ HRESULT PFAccountManagementServerGetPlayerProfileGetResult(
     _Outptr_ PFAccountManagementGetPlayerProfileResult** result,
     _Out_opt_ size_t* bufferUsed
 ) noexcept;
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 /// <summary>
 /// Retrieves the unique PlayFab identifiers for the given set of Facebook identifiers.
 /// </summary>
@@ -2587,7 +2784,9 @@ HRESULT PFAccountManagementServerGetPlayFabIDsFromFacebookIDsGetResult(
     _Outptr_ PFAccountManagementGetPlayFabIDsFromFacebookIDsResult** result,
     _Out_opt_ size_t* bufferUsed
 ) noexcept;
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 /// <summary>
 /// Retrieves the unique PlayFab identifiers for the given set of Facebook Instant Games identifiers.
 /// </summary>
@@ -2635,7 +2834,9 @@ HRESULT PFAccountManagementServerGetPlayFabIDsFromFacebookInstantGamesIdsGetResu
     _Outptr_ PFAccountManagementGetPlayFabIDsFromFacebookInstantGamesIdsResult** result,
     _Out_opt_ size_t* bufferUsed
 ) noexcept;
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 /// <summary>
 /// Retrieves the unique PlayFab identifiers for the given set of generic service identifiers. A generic
 /// identifier is the service name plus the service-specific ID for the player, as specified by the title
@@ -2646,8 +2847,6 @@ HRESULT PFAccountManagementServerGetPlayFabIDsFromFacebookInstantGamesIdsGetResu
 /// <param name="async">XAsyncBlock for the async operation.</param>
 /// <returns>Result code for this API operation.</returns>
 /// <remarks>
-/// See also ServerAddGenericIDAsync, ServerRemoveGenericIDAsync.
-///
 /// If successful, call <see cref="PFAccountManagementServerGetPlayFabIDsFromGenericIDsGetResult"/> to
 /// get the result.
 /// </remarks>
@@ -2687,7 +2886,59 @@ HRESULT PFAccountManagementServerGetPlayFabIDsFromGenericIDsGetResult(
     _Outptr_ PFAccountManagementGetPlayFabIDsFromGenericIDsResult** result,
     _Out_opt_ size_t* bufferUsed
 ) noexcept;
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
+/// <summary>
+/// Retrieves the unique PlayFab identifiers for the given set of Nintendo Service Account identifiers.
+/// </summary>
+/// <param name="stateHandle">PFStateHandle returned from PFInitialize call.</param>
+/// <param name="request">Populated request object.</param>
+/// <param name="async">XAsyncBlock for the async operation.</param>
+/// <returns>Result code for this API operation.</returns>
+/// <remarks>
+/// If successful, call <see cref="PFAccountManagementServerGetPlayFabIDsFromNintendoServiceAccountIdsGetResult"/>
+/// to get the result.
+/// </remarks>
+HRESULT PFAccountManagementServerGetPlayFabIDsFromNintendoServiceAccountIdsAsync(
+    _In_ PFStateHandle stateHandle,
+    _In_ const PFAccountManagementGetPlayFabIDsFromNintendoServiceAccountIdsRequest* request,
+    _Inout_ XAsyncBlock* async
+) noexcept;
+
+/// <summary>
+/// Get the size in bytes needed to store the result of a ServerGetPlayFabIDsFromNintendoServiceAccountIds call.
+/// </summary>
+/// <param name="async">XAsyncBlock for the async operation.</param>
+/// <param name="bufferSize">The buffer size in bytes required for the result.</param>
+/// <returns>Result code for this API operation.</returns>
+HRESULT PFAccountManagementServerGetPlayFabIDsFromNintendoServiceAccountIdsGetResultSize(
+    _Inout_ XAsyncBlock* async,
+    _Out_ size_t* bufferSize
+) noexcept;
+
+/// <summary>
+/// Gets the result of a successful PFAccountManagementServerGetPlayFabIDsFromNintendoServiceAccountIdsAsync call.
+/// </summary>
+/// <param name="async">XAsyncBlock for the async operation.</param>
+/// <param name="bufferSize">The size of the buffer for the result object.</param>
+/// <param name="buffer">Byte buffer used for the result value and its fields.</param>
+/// <param name="result">Pointer to the result object.</param>
+/// <param name="bufferUsed">The number of bytes in the provided buffer that were used.</param>
+/// <returns>Result code for this API operation.</returns>
+/// <remarks>
+/// result is a pointer within buffer and does not need to be freed separately.
+/// </remarks>
+HRESULT PFAccountManagementServerGetPlayFabIDsFromNintendoServiceAccountIdsGetResult(
+    _Inout_ XAsyncBlock* async,
+    _In_ size_t bufferSize,
+    _Out_writes_bytes_to_(bufferSize, *bufferUsed) void* buffer,
+    _Outptr_ PFAccountManagementGetPlayFabIDsFromNintendoServiceAccountIdsResult** result,
+    _Out_opt_ size_t* bufferUsed
+) noexcept;
+#endif
+
+#if HC_PLATFORM != HC_PLATFORM_GDK
 /// <summary>
 /// Retrieves the unique PlayFab identifiers for the given set of Nintendo Switch Device identifiers.
 /// </summary>
@@ -2735,9 +2986,11 @@ HRESULT PFAccountManagementServerGetPlayFabIDsFromNintendoSwitchDeviceIdsGetResu
     _Outptr_ PFAccountManagementGetPlayFabIDsFromNintendoSwitchDeviceIdsResult** result,
     _Out_opt_ size_t* bufferUsed
 ) noexcept;
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 /// <summary>
-/// Retrieves the unique PlayFab identifiers for the given set of PlayStation Network identifiers.
+/// Retrieves the unique PlayFab identifiers for the given set of PlayStation :tm: Network identifiers.
 /// </summary>
 /// <param name="stateHandle">PFStateHandle returned from PFInitialize call.</param>
 /// <param name="request">Populated request object.</param>
@@ -2783,7 +3036,9 @@ HRESULT PFAccountManagementServerGetPlayFabIDsFromPSNAccountIDsGetResult(
     _Outptr_ PFAccountManagementGetPlayFabIDsFromPSNAccountIDsResult** result,
     _Out_opt_ size_t* bufferUsed
 ) noexcept;
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 /// <summary>
 /// Retrieves the unique PlayFab identifiers for the given set of Steam identifiers. The Steam identifiers
 /// are the profile IDs for the user accounts, available as SteamId in the Steamworks Community API calls.
@@ -2832,7 +3087,60 @@ HRESULT PFAccountManagementServerGetPlayFabIDsFromSteamIDsGetResult(
     _Outptr_ PFAccountManagementGetPlayFabIDsFromSteamIDsResult** result,
     _Out_opt_ size_t* bufferUsed
 ) noexcept;
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
+/// <summary>
+/// Retrieves the unique PlayFab identifiers for the given set of Twitch identifiers. The Twitch identifiers
+/// are the IDs for the user accounts, available as '_id' from the Twitch API methods (ex: https://github.com/justintv/Twitch-API/blob/master/v3_resources/users.md#get-usersuser).
+/// </summary>
+/// <param name="stateHandle">PFStateHandle returned from PFInitialize call.</param>
+/// <param name="request">Populated request object.</param>
+/// <param name="async">XAsyncBlock for the async operation.</param>
+/// <returns>Result code for this API operation.</returns>
+/// <remarks>
+/// If successful, call <see cref="PFAccountManagementServerGetPlayFabIDsFromTwitchIDsGetResult"/> to
+/// get the result.
+/// </remarks>
+HRESULT PFAccountManagementServerGetPlayFabIDsFromTwitchIDsAsync(
+    _In_ PFStateHandle stateHandle,
+    _In_ const PFAccountManagementGetPlayFabIDsFromTwitchIDsRequest* request,
+    _Inout_ XAsyncBlock* async
+) noexcept;
+
+/// <summary>
+/// Get the size in bytes needed to store the result of a ServerGetPlayFabIDsFromTwitchIDs call.
+/// </summary>
+/// <param name="async">XAsyncBlock for the async operation.</param>
+/// <param name="bufferSize">The buffer size in bytes required for the result.</param>
+/// <returns>Result code for this API operation.</returns>
+HRESULT PFAccountManagementServerGetPlayFabIDsFromTwitchIDsGetResultSize(
+    _Inout_ XAsyncBlock* async,
+    _Out_ size_t* bufferSize
+) noexcept;
+
+/// <summary>
+/// Gets the result of a successful PFAccountManagementServerGetPlayFabIDsFromTwitchIDsAsync call.
+/// </summary>
+/// <param name="async">XAsyncBlock for the async operation.</param>
+/// <param name="bufferSize">The size of the buffer for the result object.</param>
+/// <param name="buffer">Byte buffer used for the result value and its fields.</param>
+/// <param name="result">Pointer to the result object.</param>
+/// <param name="bufferUsed">The number of bytes in the provided buffer that were used.</param>
+/// <returns>Result code for this API operation.</returns>
+/// <remarks>
+/// result is a pointer within buffer and does not need to be freed separately.
+/// </remarks>
+HRESULT PFAccountManagementServerGetPlayFabIDsFromTwitchIDsGetResult(
+    _Inout_ XAsyncBlock* async,
+    _In_ size_t bufferSize,
+    _Out_writes_bytes_to_(bufferSize, *bufferUsed) void* buffer,
+    _Outptr_ PFAccountManagementGetPlayFabIDsFromTwitchIDsResult** result,
+    _Out_opt_ size_t* bufferUsed
+) noexcept;
+#endif
+
+#if HC_PLATFORM != HC_PLATFORM_GDK
 /// <summary>
 /// Retrieves the unique PlayFab identifiers for the given set of XboxLive identifiers.
 /// </summary>
@@ -2880,7 +3188,9 @@ HRESULT PFAccountManagementServerGetPlayFabIDsFromXboxLiveIDsGetResult(
     _Outptr_ PFAccountManagementGetPlayFabIDsFromXboxLiveIDsResult** result,
     _Out_opt_ size_t* bufferUsed
 ) noexcept;
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 /// <summary>
 /// Retrieves the associated PlayFab account identifiers for the given set of server custom identifiers.
 /// </summary>
@@ -2928,7 +3238,9 @@ HRESULT PFAccountManagementServerGetServerCustomIDsFromPlayFabIDsGetResult(
     _Outptr_ PFAccountManagementGetServerCustomIDsFromPlayFabIDsResult** result,
     _Out_opt_ size_t* bufferUsed
 ) noexcept;
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 /// <summary>
 /// Retrieves the relevant details for a specified user
 /// </summary>
@@ -2941,7 +3253,7 @@ HRESULT PFAccountManagementServerGetServerCustomIDsFromPlayFabIDsGetResult(
 /// of customer support. Note that data returned may be Personally Identifying Information (PII), such
 /// as email address, and so care should be taken in how this data is stored and managed. Since this call
 /// will always return the relevant information for users who have accessed the title, the recommendation
-/// is to not store this data locally. See also ServerGetUserInventoryAsync.
+/// is to not store this data locally.
 ///
 /// If successful, call <see cref="PFAccountManagementServerGetUserAccountInfoGetResult"/> to get the
 /// result.
@@ -2982,7 +3294,9 @@ HRESULT PFAccountManagementServerGetUserAccountInfoGetResult(
     _Outptr_ PFAccountManagementGetUserAccountInfoResult** result,
     _Out_opt_ size_t* bufferUsed
 ) noexcept;
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 /// <summary>
 /// Gets all bans for a user.
 /// </summary>
@@ -2991,8 +3305,7 @@ HRESULT PFAccountManagementServerGetUserAccountInfoGetResult(
 /// <param name="async">XAsyncBlock for the async operation.</param>
 /// <returns>Result code for this API operation.</returns>
 /// <remarks>
-/// Get all bans for a user, including inactive and expired bans.  See also ServerBanUsersAsync, ServerRevokeAllBansForUserAsync,
-/// ServerRevokeBansAsync, ServerUpdateBansAsync.
+/// Get all bans for a user, including inactive and expired bans. .
 ///
 /// If successful, call <see cref="PFAccountManagementServerGetUserBansGetResult"/> to get the result.
 /// </remarks>
@@ -3032,19 +3345,54 @@ HRESULT PFAccountManagementServerGetUserBansGetResult(
     _Outptr_ PFAccountManagementGetUserBansResult** result,
     _Out_opt_ size_t* bufferUsed
 ) noexcept;
+#endif
 
 #if HC_PLATFORM != HC_PLATFORM_GDK
 /// <summary>
-/// Links the PlayStation Network account associated with the provided access code to the user's PlayFab
-/// account
+/// Links the Nintendo account associated with the token to the user's PlayFab account
 /// </summary>
 /// <param name="stateHandle">PFStateHandle returned from PFInitialize call.</param>
 /// <param name="request">Populated request object.</param>
 /// <param name="async">XAsyncBlock for the async operation.</param>
 /// <returns>Result code for this API operation.</returns>
 /// <remarks>
-/// See also ServerUnlinkPSNAccountAsync.
-///
+/// Call <see cref="XAsyncGetStatus"/> to get the status of the operation.
+/// </remarks>
+HRESULT PFAccountManagementServerLinkNintendoServiceAccountAsync(
+    _In_ PFStateHandle stateHandle,
+    _In_ const PFAccountManagementServerLinkNintendoServiceAccountRequest* request,
+    _Inout_ XAsyncBlock* async
+) noexcept;
+#endif
+
+#if HC_PLATFORM != HC_PLATFORM_GDK
+/// <summary>
+/// Links the NintendoSwitchDeviceId to the user's PlayFab account
+/// </summary>
+/// <param name="stateHandle">PFStateHandle returned from PFInitialize call.</param>
+/// <param name="request">Populated request object.</param>
+/// <param name="async">XAsyncBlock for the async operation.</param>
+/// <returns>Result code for this API operation.</returns>
+/// <remarks>
+/// Call <see cref="XAsyncGetStatus"/> to get the status of the operation.
+/// </remarks>
+HRESULT PFAccountManagementServerLinkNintendoSwitchDeviceIdAsync(
+    _In_ PFStateHandle stateHandle,
+    _In_ const PFAccountManagementServerLinkNintendoSwitchDeviceIdRequest* request,
+    _Inout_ XAsyncBlock* async
+) noexcept;
+#endif
+
+#if HC_PLATFORM != HC_PLATFORM_GDK
+/// <summary>
+/// Links the PlayStation :tm: Network account associated with the provided access code to the user's
+/// PlayFab account
+/// </summary>
+/// <param name="stateHandle">PFStateHandle returned from PFInitialize call.</param>
+/// <param name="request">Populated request object.</param>
+/// <param name="async">XAsyncBlock for the async operation.</param>
+/// <returns>Result code for this API operation.</returns>
+/// <remarks>
 /// Call <see cref="XAsyncGetStatus"/> to get the status of the operation.
 /// </remarks>
 HRESULT PFAccountManagementServerLinkPSNAccountAsync(
@@ -3054,6 +3402,7 @@ HRESULT PFAccountManagementServerLinkPSNAccountAsync(
 ) noexcept;
 #endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 /// <summary>
 /// Links the custom server identifier, generated by the title, to the user's PlayFab account.
 /// </summary>
@@ -3069,7 +3418,9 @@ HRESULT PFAccountManagementServerLinkServerCustomIdAsync(
     _In_ const PFAccountManagementLinkServerCustomIdRequest* request,
     _Inout_ XAsyncBlock* async
 ) noexcept;
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 /// <summary>
 /// Links the Xbox Live account associated with the provided access code to the user's PlayFab account
 /// </summary>
@@ -3078,8 +3429,6 @@ HRESULT PFAccountManagementServerLinkServerCustomIdAsync(
 /// <param name="async">XAsyncBlock for the async operation.</param>
 /// <returns>Result code for this API operation.</returns>
 /// <remarks>
-/// See also ServerLoginWithXboxAsync, ServerUnlinkXboxAccountAsync.
-///
 /// Call <see cref="XAsyncGetStatus"/> to get the status of the operation.
 /// </remarks>
 HRESULT PFAccountManagementServerLinkXboxAccountAsync(
@@ -3087,7 +3436,9 @@ HRESULT PFAccountManagementServerLinkXboxAccountAsync(
     _In_ const PFAccountManagementServerLinkXboxAccountRequest* request,
     _Inout_ XAsyncBlock* async
 ) noexcept;
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 /// <summary>
 /// Removes the specified generic service identifier from the player's PlayFab account.
 /// </summary>
@@ -3096,8 +3447,6 @@ HRESULT PFAccountManagementServerLinkXboxAccountAsync(
 /// <param name="async">XAsyncBlock for the async operation.</param>
 /// <returns>Result code for this API operation.</returns>
 /// <remarks>
-/// See also ServerAddGenericIDAsync, ServerGetPlayFabIDsFromGenericIDsAsync.
-///
 /// Call <see cref="XAsyncGetStatus"/> to get the status of the operation.
 /// </remarks>
 HRESULT PFAccountManagementServerRemoveGenericIDAsync(
@@ -3105,7 +3454,9 @@ HRESULT PFAccountManagementServerRemoveGenericIDAsync(
     _In_ const PFAccountManagementServerRemoveGenericIDRequest* request,
     _Inout_ XAsyncBlock* async
 ) noexcept;
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 /// <summary>
 /// Revoke all active bans for a user.
 /// </summary>
@@ -3115,8 +3466,7 @@ HRESULT PFAccountManagementServerRemoveGenericIDAsync(
 /// <returns>Result code for this API operation.</returns>
 /// <remarks>
 /// Setting the active state of all non-expired bans for a user to Inactive. Expired bans with an Active
-/// state will be ignored, however. Returns information about applied updates only. See also ServerBanUsersAsync,
-/// ServerGetUserBansAsync, ServerRevokeBansAsync, ServerUpdateBansAsync.
+/// state will be ignored, however. Returns information about applied updates only.
 ///
 /// If successful, call <see cref="PFAccountManagementServerRevokeAllBansForUserGetResult"/> to get the
 /// result.
@@ -3157,7 +3507,9 @@ HRESULT PFAccountManagementServerRevokeAllBansForUserGetResult(
     _Outptr_ PFAccountManagementRevokeAllBansForUserResult** result,
     _Out_opt_ size_t* bufferUsed
 ) noexcept;
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 /// <summary>
 /// Revoke all active bans specified with BanId.
 /// </summary>
@@ -3168,7 +3520,7 @@ HRESULT PFAccountManagementServerRevokeAllBansForUserGetResult(
 /// <remarks>
 /// Setting the active state of all bans requested to Inactive regardless of whether that ban has already
 /// expired. BanIds that do not exist will be skipped. Returns information about applied updates only.
-///  See also ServerBanUsersAsync, ServerGetUserBansAsync, ServerRevokeAllBansForUserAsync, ServerUpdateBansAsync.
+/// .
 ///
 /// If successful, call <see cref="PFAccountManagementServerRevokeBansGetResult"/> to get the result.
 /// </remarks>
@@ -3208,55 +3560,9 @@ HRESULT PFAccountManagementServerRevokeBansGetResult(
     _Outptr_ PFAccountManagementRevokeBansResult** result,
     _Out_opt_ size_t* bufferUsed
 ) noexcept;
+#endif
 
-/// <summary>
-/// Saves push notification template for title
-/// </summary>
-/// <param name="stateHandle">PFStateHandle returned from PFInitialize call.</param>
-/// <param name="request">Populated request object.</param>
-/// <param name="async">XAsyncBlock for the async operation.</param>
-/// <returns>Result code for this API operation.</returns>
-/// <remarks>
-/// If successful, call <see cref="PFAccountManagementServerSavePushNotificationTemplateGetResult"/>
-/// to get the result.
-/// </remarks>
-HRESULT PFAccountManagementServerSavePushNotificationTemplateAsync(
-    _In_ PFStateHandle stateHandle,
-    _In_ const PFAccountManagementSavePushNotificationTemplateRequest* request,
-    _Inout_ XAsyncBlock* async
-) noexcept;
-
-/// <summary>
-/// Get the size in bytes needed to store the result of a ServerSavePushNotificationTemplate call.
-/// </summary>
-/// <param name="async">XAsyncBlock for the async operation.</param>
-/// <param name="bufferSize">The buffer size in bytes required for the result.</param>
-/// <returns>Result code for this API operation.</returns>
-HRESULT PFAccountManagementServerSavePushNotificationTemplateGetResultSize(
-    _Inout_ XAsyncBlock* async,
-    _Out_ size_t* bufferSize
-) noexcept;
-
-/// <summary>
-/// Gets the result of a successful PFAccountManagementServerSavePushNotificationTemplateAsync call.
-/// </summary>
-/// <param name="async">XAsyncBlock for the async operation.</param>
-/// <param name="bufferSize">The size of the buffer for the result object.</param>
-/// <param name="buffer">Byte buffer used for the result value and its fields.</param>
-/// <param name="result">Pointer to the result object.</param>
-/// <param name="bufferUsed">The number of bytes in the provided buffer that were used.</param>
-/// <returns>Result code for this API operation.</returns>
-/// <remarks>
-/// result is a pointer within buffer and does not need to be freed separately.
-/// </remarks>
-HRESULT PFAccountManagementServerSavePushNotificationTemplateGetResult(
-    _Inout_ XAsyncBlock* async,
-    _In_ size_t bufferSize,
-    _Out_writes_bytes_to_(bufferSize, *bufferUsed) void* buffer,
-    _Outptr_ PFAccountManagementSavePushNotificationTemplateResult** result,
-    _Out_opt_ size_t* bufferUsed
-) noexcept;
-
+#if HC_PLATFORM != HC_PLATFORM_GDK
 /// <summary>
 /// Forces an email to be sent to the registered contact email address for the user's account based on
 /// an account recovery email template
@@ -3277,7 +3583,9 @@ HRESULT PFAccountManagementServerSendCustomAccountRecoveryEmailAsync(
     _In_ const PFAccountManagementSendCustomAccountRecoveryEmailRequest* request,
     _Inout_ XAsyncBlock* async
 ) noexcept;
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 /// <summary>
 /// Sends an email based on an email template to a player's contact email 
 /// </summary>
@@ -3296,11 +3604,11 @@ HRESULT PFAccountManagementServerSendEmailFromTemplateAsync(
     _In_ const PFAccountManagementSendEmailFromTemplateRequest* request,
     _Inout_ XAsyncBlock* async
 ) noexcept;
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 /// <summary>
-/// Sends an iOS/Android Push Notification to a specific user, if that user's device has been configured
-/// for Push Notifications in PlayFab. If a user has linked both Android and iOS devices, both will be
-/// notified.
+/// Unlinks the related Nintendo account from the user's PlayFab account
 /// </summary>
 /// <param name="stateHandle">PFStateHandle returned from PFInitialize call.</param>
 /// <param name="request">Populated request object.</param>
@@ -3309,16 +3617,16 @@ HRESULT PFAccountManagementServerSendEmailFromTemplateAsync(
 /// <remarks>
 /// Call <see cref="XAsyncGetStatus"/> to get the status of the operation.
 /// </remarks>
-HRESULT PFAccountManagementServerSendPushNotificationAsync(
+HRESULT PFAccountManagementServerUnlinkNintendoServiceAccountAsync(
     _In_ PFStateHandle stateHandle,
-    _In_ const PFAccountManagementSendPushNotificationRequest* request,
+    _In_ const PFAccountManagementServerUnlinkNintendoServiceAccountRequest* request,
     _Inout_ XAsyncBlock* async
 ) noexcept;
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 /// <summary>
-/// Sends an iOS/Android Push Notification template to a specific user, if that user's device has been
-/// configured for Push Notifications in PlayFab. If a user has linked both Android and iOS devices, both
-/// will be notified.
+/// Unlinks the related NintendoSwitchDeviceId from the user's PlayFab account
 /// </summary>
 /// <param name="stateHandle">PFStateHandle returned from PFInitialize call.</param>
 /// <param name="request">Populated request object.</param>
@@ -3327,22 +3635,22 @@ HRESULT PFAccountManagementServerSendPushNotificationAsync(
 /// <remarks>
 /// Call <see cref="XAsyncGetStatus"/> to get the status of the operation.
 /// </remarks>
-HRESULT PFAccountManagementServerSendPushNotificationFromTemplateAsync(
+HRESULT PFAccountManagementServerUnlinkNintendoSwitchDeviceIdAsync(
     _In_ PFStateHandle stateHandle,
-    _In_ const PFAccountManagementSendPushNotificationFromTemplateRequest* request,
+    _In_ const PFAccountManagementServerUnlinkNintendoSwitchDeviceIdRequest* request,
     _Inout_ XAsyncBlock* async
 ) noexcept;
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 /// <summary>
-/// Unlinks the related PSN account from the user's PlayFab account
+/// Unlinks the related PlayStation :tm: Network account from the user's PlayFab account
 /// </summary>
 /// <param name="stateHandle">PFStateHandle returned from PFInitialize call.</param>
 /// <param name="request">Populated request object.</param>
 /// <param name="async">XAsyncBlock for the async operation.</param>
 /// <returns>Result code for this API operation.</returns>
 /// <remarks>
-/// See also ServerLinkPSNAccountAsync.
-///
 /// Call <see cref="XAsyncGetStatus"/> to get the status of the operation.
 /// </remarks>
 HRESULT PFAccountManagementServerUnlinkPSNAccountAsync(
@@ -3350,7 +3658,9 @@ HRESULT PFAccountManagementServerUnlinkPSNAccountAsync(
     _In_ const PFAccountManagementServerUnlinkPSNAccountRequest* request,
     _Inout_ XAsyncBlock* async
 ) noexcept;
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 /// <summary>
 /// Unlinks the custom server identifier from the user's PlayFab account.
 /// </summary>
@@ -3359,8 +3669,6 @@ HRESULT PFAccountManagementServerUnlinkPSNAccountAsync(
 /// <param name="async">XAsyncBlock for the async operation.</param>
 /// <returns>Result code for this API operation.</returns>
 /// <remarks>
-/// See also ServerLinkServerCustomIdAsync, ServerLoginWithServerCustomIdAsync.
-///
 /// Call <see cref="XAsyncGetStatus"/> to get the status of the operation.
 /// </remarks>
 HRESULT PFAccountManagementServerUnlinkServerCustomIdAsync(
@@ -3368,7 +3676,9 @@ HRESULT PFAccountManagementServerUnlinkServerCustomIdAsync(
     _In_ const PFAccountManagementUnlinkServerCustomIdRequest* request,
     _Inout_ XAsyncBlock* async
 ) noexcept;
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 /// <summary>
 /// Unlinks the related Xbox Live account from the user's PlayFab account
 /// </summary>
@@ -3377,8 +3687,6 @@ HRESULT PFAccountManagementServerUnlinkServerCustomIdAsync(
 /// <param name="async">XAsyncBlock for the async operation.</param>
 /// <returns>Result code for this API operation.</returns>
 /// <remarks>
-/// See also ServerLinkXboxAccountAsync.
-///
 /// Call <see cref="XAsyncGetStatus"/> to get the status of the operation.
 /// </remarks>
 HRESULT PFAccountManagementServerUnlinkXboxAccountAsync(
@@ -3386,7 +3694,9 @@ HRESULT PFAccountManagementServerUnlinkXboxAccountAsync(
     _In_ const PFAccountManagementServerUnlinkXboxAccountRequest* request,
     _Inout_ XAsyncBlock* async
 ) noexcept;
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 /// <summary>
 /// Update the avatar URL of the specified player
 /// </summary>
@@ -3402,7 +3712,9 @@ HRESULT PFAccountManagementServerUpdateAvatarUrlAsync(
     _In_ const PFAccountManagementServerUpdateAvatarUrlRequest* request,
     _Inout_ XAsyncBlock* async
 ) noexcept;
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 /// <summary>
 /// Updates information of a list of existing bans specified with Ban Ids.
 /// </summary>
@@ -3412,8 +3724,7 @@ HRESULT PFAccountManagementServerUpdateAvatarUrlAsync(
 /// <returns>Result code for this API operation.</returns>
 /// <remarks>
 /// For each ban, only updates the values that are set. Leave any value to null for no change. If a ban
-/// could not be found, the rest are still applied. Returns information about applied updates only. See
-/// also ServerBanUsersAsync, ServerGetUserBansAsync, ServerRevokeAllBansForUserAsync, ServerRevokeBansAsync.
+/// could not be found, the rest are still applied. Returns information about applied updates only.
 ///
 /// If successful, call <see cref="PFAccountManagementServerUpdateBansGetResult"/> to get the result.
 /// </remarks>
@@ -3453,6 +3764,7 @@ HRESULT PFAccountManagementServerUpdateBansGetResult(
     _Outptr_ PFAccountManagementUpdateBansResult** result,
     _Out_opt_ size_t* bufferUsed
 ) noexcept;
+#endif
 
 
 }

@@ -15,41 +15,77 @@ private:
     static void Log(std::stringstream& ss);
     static HRESULT LogHR(HRESULT hr);
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestAccountManagementAdminBanUsers(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestAccountManagementAdminDeleteMasterPlayerAccount(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestAccountManagementAdminDeleteMembershipSubscription(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestAccountManagementAdminDeletePlayer(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestAccountManagementAdminDeleteTitle(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestAccountManagementAdminExportMasterPlayerData(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestAccountManagementAdminGetPlayedTitleList(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestAccountManagementAdminGetPlayerIdFromAuthToken(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestAccountManagementAdminGetPlayerProfile(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestAccountManagementAdminGetUserAccountInfo(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestAccountManagementAdminGetUserBans(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestAccountManagementAdminResetPassword(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestAccountManagementAdminRevokeAllBansForUser(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestAccountManagementAdminRevokeBans(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestAccountManagementAdminSendAccountRecoveryEmail(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestAccountManagementAdminSetMembershipOverride(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestAccountManagementAdminUpdateBans(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestAccountManagementAdminUpdateUserTitleDisplayName(TestContext& testContext);
+#endif
 
     void TestAccountManagementClientAddGenericID(TestContext& testContext);
 
@@ -73,7 +109,11 @@ private:
 
     void TestAccountManagementClientGetPlayFabIDsFromGoogleIDs(TestContext& testContext);
 
+    void TestAccountManagementClientGetPlayFabIDsFromGooglePlayGamesPlayerIDs(TestContext& testContext);
+
     void TestAccountManagementClientGetPlayFabIDsFromKongregateIDs(TestContext& testContext);
+
+    void TestAccountManagementClientGetPlayFabIDsFromNintendoServiceAccountIds(TestContext& testContext);
 
     void TestAccountManagementClientGetPlayFabIDsFromNintendoSwitchDeviceIds(TestContext& testContext);
 
@@ -85,35 +125,63 @@ private:
 
     void TestAccountManagementClientGetPlayFabIDsFromXboxLiveIDs(TestContext& testContext);
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestAccountManagementClientLinkAndroidDeviceID(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestAccountManagementClientLinkApple(TestContext& testContext);
+#endif
 
     void TestAccountManagementClientLinkCustomID(TestContext& testContext);
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestAccountManagementClientLinkFacebookAccount(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestAccountManagementClientLinkFacebookInstantGamesId(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestAccountManagementClientLinkGameCenterAccount(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestAccountManagementClientLinkGoogleAccount(TestContext& testContext);
+#endif
 
+    void TestAccountManagementClientLinkGooglePlayGamesServicesAccount(TestContext& testContext);
+
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestAccountManagementClientLinkIOSDeviceID(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestAccountManagementClientLinkKongregate(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestAccountManagementClientLinkNintendoServiceAccount(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestAccountManagementClientLinkNintendoSwitchDeviceId(TestContext& testContext);
+#endif
 
     void TestAccountManagementClientLinkOpenIdConnect(TestContext& testContext);
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestAccountManagementClientLinkPSNAccount(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestAccountManagementClientLinkSteamAccount(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestAccountManagementClientLinkTwitch(TestContext& testContext);
+#endif
 
     void TestAccountManagementClientLinkXboxAccount(TestContext& testContext);
 
@@ -125,35 +193,63 @@ private:
 
     void TestAccountManagementClientSendAccountRecoveryEmail(TestContext& testContext);
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestAccountManagementClientUnlinkAndroidDeviceID(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestAccountManagementClientUnlinkApple(TestContext& testContext);
+#endif
 
     void TestAccountManagementClientUnlinkCustomID(TestContext& testContext);
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestAccountManagementClientUnlinkFacebookAccount(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestAccountManagementClientUnlinkFacebookInstantGamesId(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestAccountManagementClientUnlinkGameCenterAccount(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestAccountManagementClientUnlinkGoogleAccount(TestContext& testContext);
+#endif
 
+    void TestAccountManagementClientUnlinkGooglePlayGamesServicesAccount(TestContext& testContext);
+
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestAccountManagementClientUnlinkIOSDeviceID(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestAccountManagementClientUnlinkKongregate(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestAccountManagementClientUnlinkNintendoServiceAccount(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestAccountManagementClientUnlinkNintendoSwitchDeviceId(TestContext& testContext);
+#endif
 
     void TestAccountManagementClientUnlinkOpenIdConnect(TestContext& testContext);
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestAccountManagementClientUnlinkPSNAccount(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestAccountManagementClientUnlinkSteamAccount(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestAccountManagementClientUnlinkTwitch(TestContext& testContext);
+#endif
 
     void TestAccountManagementClientUnlinkXboxAccount(TestContext& testContext);
 
@@ -161,411 +257,539 @@ private:
 
     void TestAccountManagementClientUpdateUserTitleDisplayName(TestContext& testContext);
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestAccountManagementServerAddGenericID(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestAccountManagementServerBanUsers(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestAccountManagementServerDeletePlayer(TestContext& testContext);
+#endif
 
-    void TestAccountManagementServerDeletePushNotificationTemplate(TestContext& testContext);
+#if HC_PLATFORM != HC_PLATFORM_GDK
+    void TestAccountManagementServerGetPlayerCombinedInfo(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestAccountManagementServerGetPlayerProfile(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestAccountManagementServerGetPlayFabIDsFromFacebookIDs(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestAccountManagementServerGetPlayFabIDsFromFacebookInstantGamesIds(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestAccountManagementServerGetPlayFabIDsFromGenericIDs(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
+    void TestAccountManagementServerGetPlayFabIDsFromNintendoServiceAccountIds(TestContext& testContext);
+#endif
+
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestAccountManagementServerGetPlayFabIDsFromNintendoSwitchDeviceIds(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestAccountManagementServerGetPlayFabIDsFromPSNAccountIDs(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestAccountManagementServerGetPlayFabIDsFromSteamIDs(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
+    void TestAccountManagementServerGetPlayFabIDsFromTwitchIDs(TestContext& testContext);
+#endif
+
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestAccountManagementServerGetPlayFabIDsFromXboxLiveIDs(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestAccountManagementServerGetServerCustomIDsFromPlayFabIDs(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestAccountManagementServerGetUserAccountInfo(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestAccountManagementServerGetUserBans(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
+    void TestAccountManagementServerLinkNintendoServiceAccount(TestContext& testContext);
+#endif
+
+#if HC_PLATFORM != HC_PLATFORM_GDK
+    void TestAccountManagementServerLinkNintendoSwitchDeviceId(TestContext& testContext);
+#endif
+
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestAccountManagementServerLinkPSNAccount(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestAccountManagementServerLinkServerCustomId(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestAccountManagementServerLinkXboxAccount(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestAccountManagementServerRemoveGenericID(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestAccountManagementServerRevokeAllBansForUser(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestAccountManagementServerRevokeBans(TestContext& testContext);
+#endif
 
-    void TestAccountManagementServerSavePushNotificationTemplate(TestContext& testContext);
-
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestAccountManagementServerSendCustomAccountRecoveryEmail(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestAccountManagementServerSendEmailFromTemplate(TestContext& testContext);
+#endif
 
-    void TestAccountManagementServerSendPushNotification(TestContext& testContext);
+#if HC_PLATFORM != HC_PLATFORM_GDK
+    void TestAccountManagementServerUnlinkNintendoServiceAccount(TestContext& testContext);
+#endif
 
-    void TestAccountManagementServerSendPushNotificationFromTemplate(TestContext& testContext);
+#if HC_PLATFORM != HC_PLATFORM_GDK
+    void TestAccountManagementServerUnlinkNintendoSwitchDeviceId(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestAccountManagementServerUnlinkPSNAccount(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestAccountManagementServerUnlinkServerCustomId(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestAccountManagementServerUnlinkXboxAccount(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestAccountManagementServerUpdateAvatarUrl(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestAccountManagementServerUpdateBans(TestContext& testContext);
+#endif
 
 
 protected:
     void AddTests();
 
     static void LogBanUsersRequest(PFAccountManagementBanUsersRequest const* request, const char* testName);
-    static void FillBanUsersRequest(PlayFab::Wrappers::PFAccountManagementBanUsersRequestWrapper<>& request);
-    static HRESULT LogPFAccountManagementBanUsersResult(PFAccountManagementBanUsersResult const* result);
-    static HRESULT ValidatePFAccountManagementBanUsersResult(PFAccountManagementBanUsersResult* result);
-
+    static HRESULT LogBanUsersResult(PFAccountManagementBanUsersResult const* result);
     static void LogDeleteMasterPlayerAccountRequest(PFAccountManagementDeleteMasterPlayerAccountRequest const* request, const char* testName);
-    static void FillDeleteMasterPlayerAccountRequest(PlayFab::Wrappers::PFAccountManagementDeleteMasterPlayerAccountRequestWrapper<>& request);
-    static HRESULT LogPFAccountManagementDeleteMasterPlayerAccountResult(PFAccountManagementDeleteMasterPlayerAccountResult const* result);
-    static HRESULT ValidatePFAccountManagementDeleteMasterPlayerAccountResult(PFAccountManagementDeleteMasterPlayerAccountResult* result);
-
+    static HRESULT LogDeleteMasterPlayerAccountResult(PFAccountManagementDeleteMasterPlayerAccountResult const* result);
     static void LogDeleteMembershipSubscriptionRequest(PFAccountManagementDeleteMembershipSubscriptionRequest const* request, const char* testName);
-    static void FillDeleteMembershipSubscriptionRequest(PlayFab::Wrappers::PFAccountManagementDeleteMembershipSubscriptionRequestWrapper<>& request);
-
     static void LogDeletePlayerRequest(PFAccountManagementDeletePlayerRequest const* request, const char* testName);
-    static void FillDeletePlayerRequest(PlayFab::Wrappers::PFAccountManagementDeletePlayerRequestWrapper<>& request);
-
-
     static void LogExportMasterPlayerDataRequest(PFAccountManagementExportMasterPlayerDataRequest const* request, const char* testName);
-    static void FillExportMasterPlayerDataRequest(PlayFab::Wrappers::PFAccountManagementExportMasterPlayerDataRequestWrapper<>& request);
-    static HRESULT LogPFAccountManagementExportMasterPlayerDataResult(PFAccountManagementExportMasterPlayerDataResult const* result);
-    static HRESULT ValidatePFAccountManagementExportMasterPlayerDataResult(PFAccountManagementExportMasterPlayerDataResult* result);
-
+    static HRESULT LogExportMasterPlayerDataResult(PFAccountManagementExportMasterPlayerDataResult const* result);
     static void LogGetPlayedTitleListRequest(PFAccountManagementGetPlayedTitleListRequest const* request, const char* testName);
-    static void FillGetPlayedTitleListRequest(PlayFab::Wrappers::PFAccountManagementGetPlayedTitleListRequestWrapper<>& request);
-    static HRESULT LogPFAccountManagementGetPlayedTitleListResult(PFAccountManagementGetPlayedTitleListResult const* result);
-    static HRESULT ValidatePFAccountManagementGetPlayedTitleListResult(PFAccountManagementGetPlayedTitleListResult* result);
-
+    static HRESULT LogGetPlayedTitleListResult(PFAccountManagementGetPlayedTitleListResult const* result);
     static void LogGetPlayerIdFromAuthTokenRequest(PFAccountManagementGetPlayerIdFromAuthTokenRequest const* request, const char* testName);
-    static void FillGetPlayerIdFromAuthTokenRequest(PlayFab::Wrappers::PFAccountManagementGetPlayerIdFromAuthTokenRequestWrapper<>& request);
-    static HRESULT LogPFAccountManagementGetPlayerIdFromAuthTokenResult(PFAccountManagementGetPlayerIdFromAuthTokenResult const* result);
-    static HRESULT ValidatePFAccountManagementGetPlayerIdFromAuthTokenResult(PFAccountManagementGetPlayerIdFromAuthTokenResult* result);
-
+    static HRESULT LogGetPlayerIdFromAuthTokenResult(PFAccountManagementGetPlayerIdFromAuthTokenResult const* result);
     static void LogGetPlayerProfileRequest(PFAccountManagementGetPlayerProfileRequest const* request, const char* testName);
-    static void FillGetPlayerProfileRequest(PlayFab::Wrappers::PFAccountManagementGetPlayerProfileRequestWrapper<>& request);
-    static HRESULT LogPFAccountManagementGetPlayerProfileResult(PFAccountManagementGetPlayerProfileResult const* result);
-    static HRESULT ValidatePFAccountManagementGetPlayerProfileResult(PFAccountManagementGetPlayerProfileResult* result);
-
+    static HRESULT LogGetPlayerProfileResult(PFAccountManagementGetPlayerProfileResult const* result);
     static void LogLookupUserAccountInfoRequest(PFAccountManagementLookupUserAccountInfoRequest const* request, const char* testName);
-    static void FillLookupUserAccountInfoRequest(PlayFab::Wrappers::PFAccountManagementLookupUserAccountInfoRequestWrapper<>& request);
-    static HRESULT LogPFAccountManagementLookupUserAccountInfoResult(PFAccountManagementLookupUserAccountInfoResult const* result);
-    static HRESULT ValidatePFAccountManagementLookupUserAccountInfoResult(PFAccountManagementLookupUserAccountInfoResult* result);
-
+    static HRESULT LogLookupUserAccountInfoResult(PFAccountManagementLookupUserAccountInfoResult const* result);
     static void LogGetUserBansRequest(PFAccountManagementGetUserBansRequest const* request, const char* testName);
-    static void FillGetUserBansRequest(PlayFab::Wrappers::PFAccountManagementGetUserBansRequestWrapper<>& request);
-    static HRESULT LogPFAccountManagementGetUserBansResult(PFAccountManagementGetUserBansResult const* result);
-    static HRESULT ValidatePFAccountManagementGetUserBansResult(PFAccountManagementGetUserBansResult* result);
-
+    static HRESULT LogGetUserBansResult(PFAccountManagementGetUserBansResult const* result);
     static void LogResetPasswordRequest(PFAccountManagementResetPasswordRequest const* request, const char* testName);
-    static void FillResetPasswordRequest(PlayFab::Wrappers::PFAccountManagementResetPasswordRequestWrapper<>& request);
-
     static void LogRevokeAllBansForUserRequest(PFAccountManagementRevokeAllBansForUserRequest const* request, const char* testName);
-    static void FillRevokeAllBansForUserRequest(PlayFab::Wrappers::PFAccountManagementRevokeAllBansForUserRequestWrapper<>& request);
-    static HRESULT LogPFAccountManagementRevokeAllBansForUserResult(PFAccountManagementRevokeAllBansForUserResult const* result);
-    static HRESULT ValidatePFAccountManagementRevokeAllBansForUserResult(PFAccountManagementRevokeAllBansForUserResult* result);
-
+    static HRESULT LogRevokeAllBansForUserResult(PFAccountManagementRevokeAllBansForUserResult const* result);
     static void LogRevokeBansRequest(PFAccountManagementRevokeBansRequest const* request, const char* testName);
-    static void FillRevokeBansRequest(PlayFab::Wrappers::PFAccountManagementRevokeBansRequestWrapper<>& request);
-    static HRESULT LogPFAccountManagementRevokeBansResult(PFAccountManagementRevokeBansResult const* result);
-    static HRESULT ValidatePFAccountManagementRevokeBansResult(PFAccountManagementRevokeBansResult* result);
-
+    static HRESULT LogRevokeBansResult(PFAccountManagementRevokeBansResult const* result);
     static void LogAdminSendAccountRecoveryEmailRequest(PFAccountManagementAdminSendAccountRecoveryEmailRequest const* request, const char* testName);
-    static void FillAdminSendAccountRecoveryEmailRequest(PlayFab::Wrappers::PFAccountManagementAdminSendAccountRecoveryEmailRequestWrapper<>& request);
-
     static void LogSetMembershipOverrideRequest(PFAccountManagementSetMembershipOverrideRequest const* request, const char* testName);
-    static void FillSetMembershipOverrideRequest(PlayFab::Wrappers::PFAccountManagementSetMembershipOverrideRequestWrapper<>& request);
-
     static void LogUpdateBansRequest(PFAccountManagementUpdateBansRequest const* request, const char* testName);
-    static void FillUpdateBansRequest(PlayFab::Wrappers::PFAccountManagementUpdateBansRequestWrapper<>& request);
-    static HRESULT LogPFAccountManagementUpdateBansResult(PFAccountManagementUpdateBansResult const* result);
-    static HRESULT ValidatePFAccountManagementUpdateBansResult(PFAccountManagementUpdateBansResult* result);
-
+    static HRESULT LogUpdateBansResult(PFAccountManagementUpdateBansResult const* result);
     static void LogAdminUpdateUserTitleDisplayNameRequest(PFAccountManagementAdminUpdateUserTitleDisplayNameRequest const* request, const char* testName);
-    static void FillAdminUpdateUserTitleDisplayNameRequest(PlayFab::Wrappers::PFAccountManagementAdminUpdateUserTitleDisplayNameRequestWrapper<>& request);
-    static HRESULT LogPFAccountManagementUpdateUserTitleDisplayNameResult(PFAccountManagementUpdateUserTitleDisplayNameResult const* result);
-    static HRESULT ValidatePFAccountManagementUpdateUserTitleDisplayNameResult(PFAccountManagementUpdateUserTitleDisplayNameResult* result);
-
+    static HRESULT LogUpdateUserTitleDisplayNameResult(PFAccountManagementUpdateUserTitleDisplayNameResult const* result);
     static void LogClientAddGenericIDRequest(PFAccountManagementClientAddGenericIDRequest const* request, const char* testName);
-    static void FillClientAddGenericIDRequest(PlayFab::Wrappers::PFAccountManagementClientAddGenericIDRequestWrapper<>& request);
-
     static void LogAddOrUpdateContactEmailRequest(PFAccountManagementAddOrUpdateContactEmailRequest const* request, const char* testName);
-    static void FillAddOrUpdateContactEmailRequest(PlayFab::Wrappers::PFAccountManagementAddOrUpdateContactEmailRequestWrapper<>& request);
-
     static void LogAddUsernamePasswordRequest(PFAccountManagementAddUsernamePasswordRequest const* request, const char* testName);
-    static void FillAddUsernamePasswordRequest(PlayFab::Wrappers::PFAccountManagementAddUsernamePasswordRequestWrapper<>& request);
-    static HRESULT LogPFAccountManagementAddUsernamePasswordResult(PFAccountManagementAddUsernamePasswordResult const* result);
-    static HRESULT ValidatePFAccountManagementAddUsernamePasswordResult(PFAccountManagementAddUsernamePasswordResult* result);
-
+    static HRESULT LogAddUsernamePasswordResult(PFAccountManagementAddUsernamePasswordResult const* result);
     static void LogGetAccountInfoRequest(PFAccountManagementGetAccountInfoRequest const* request, const char* testName);
-    static void FillGetAccountInfoRequest(PlayFab::Wrappers::PFAccountManagementGetAccountInfoRequestWrapper<>& request);
-    static HRESULT LogPFAccountManagementGetAccountInfoResult(PFAccountManagementGetAccountInfoResult const* result);
-    static HRESULT ValidatePFAccountManagementGetAccountInfoResult(PFAccountManagementGetAccountInfoResult* result);
-
-    static void LogGetPlayerCombinedInfoRequest(PFGetPlayerCombinedInfoRequest const* request, const char* testName);
-    static void FillGetPlayerCombinedInfoRequest(PlayFab::Wrappers::PFGetPlayerCombinedInfoRequestWrapper<>& request);
-    static HRESULT LogPFGetPlayerCombinedInfoResult(PFGetPlayerCombinedInfoResult const* result);
-    static HRESULT ValidatePFGetPlayerCombinedInfoResult(PFGetPlayerCombinedInfoResult* result);
-
-
+    static HRESULT LogGetAccountInfoResult(PFAccountManagementGetAccountInfoResult const* result);
+    static void LogGetPlayerCombinedInfoRequest(PFAccountManagementGetPlayerCombinedInfoRequest const* request, const char* testName);
+    static HRESULT LogGetPlayerCombinedInfoResult(PFAccountManagementGetPlayerCombinedInfoResult const* result);
     static void LogGetPlayFabIDsFromFacebookIDsRequest(PFAccountManagementGetPlayFabIDsFromFacebookIDsRequest const* request, const char* testName);
-    static void FillGetPlayFabIDsFromFacebookIDsRequest(PlayFab::Wrappers::PFAccountManagementGetPlayFabIDsFromFacebookIDsRequestWrapper<>& request);
-    static HRESULT LogPFAccountManagementGetPlayFabIDsFromFacebookIDsResult(PFAccountManagementGetPlayFabIDsFromFacebookIDsResult const* result);
-    static HRESULT ValidatePFAccountManagementGetPlayFabIDsFromFacebookIDsResult(PFAccountManagementGetPlayFabIDsFromFacebookIDsResult* result);
-
+    static HRESULT LogGetPlayFabIDsFromFacebookIDsResult(PFAccountManagementGetPlayFabIDsFromFacebookIDsResult const* result);
     static void LogGetPlayFabIDsFromFacebookInstantGamesIdsRequest(PFAccountManagementGetPlayFabIDsFromFacebookInstantGamesIdsRequest const* request, const char* testName);
-    static void FillGetPlayFabIDsFromFacebookInstantGamesIdsRequest(PlayFab::Wrappers::PFAccountManagementGetPlayFabIDsFromFacebookInstantGamesIdsRequestWrapper<>& request);
-    static HRESULT LogPFAccountManagementGetPlayFabIDsFromFacebookInstantGamesIdsResult(PFAccountManagementGetPlayFabIDsFromFacebookInstantGamesIdsResult const* result);
-    static HRESULT ValidatePFAccountManagementGetPlayFabIDsFromFacebookInstantGamesIdsResult(PFAccountManagementGetPlayFabIDsFromFacebookInstantGamesIdsResult* result);
-
+    static HRESULT LogGetPlayFabIDsFromFacebookInstantGamesIdsResult(PFAccountManagementGetPlayFabIDsFromFacebookInstantGamesIdsResult const* result);
     static void LogGetPlayFabIDsFromGameCenterIDsRequest(PFAccountManagementGetPlayFabIDsFromGameCenterIDsRequest const* request, const char* testName);
-    static void FillGetPlayFabIDsFromGameCenterIDsRequest(PlayFab::Wrappers::PFAccountManagementGetPlayFabIDsFromGameCenterIDsRequestWrapper<>& request);
-    static HRESULT LogPFAccountManagementGetPlayFabIDsFromGameCenterIDsResult(PFAccountManagementGetPlayFabIDsFromGameCenterIDsResult const* result);
-    static HRESULT ValidatePFAccountManagementGetPlayFabIDsFromGameCenterIDsResult(PFAccountManagementGetPlayFabIDsFromGameCenterIDsResult* result);
-
+    static HRESULT LogGetPlayFabIDsFromGameCenterIDsResult(PFAccountManagementGetPlayFabIDsFromGameCenterIDsResult const* result);
     static void LogGetPlayFabIDsFromGenericIDsRequest(PFAccountManagementGetPlayFabIDsFromGenericIDsRequest const* request, const char* testName);
-    static void FillGetPlayFabIDsFromGenericIDsRequest(PlayFab::Wrappers::PFAccountManagementGetPlayFabIDsFromGenericIDsRequestWrapper<>& request);
-    static HRESULT LogPFAccountManagementGetPlayFabIDsFromGenericIDsResult(PFAccountManagementGetPlayFabIDsFromGenericIDsResult const* result);
-    static HRESULT ValidatePFAccountManagementGetPlayFabIDsFromGenericIDsResult(PFAccountManagementGetPlayFabIDsFromGenericIDsResult* result);
-
+    static HRESULT LogGetPlayFabIDsFromGenericIDsResult(PFAccountManagementGetPlayFabIDsFromGenericIDsResult const* result);
     static void LogGetPlayFabIDsFromGoogleIDsRequest(PFAccountManagementGetPlayFabIDsFromGoogleIDsRequest const* request, const char* testName);
-    static void FillGetPlayFabIDsFromGoogleIDsRequest(PlayFab::Wrappers::PFAccountManagementGetPlayFabIDsFromGoogleIDsRequestWrapper<>& request);
-    static HRESULT LogPFAccountManagementGetPlayFabIDsFromGoogleIDsResult(PFAccountManagementGetPlayFabIDsFromGoogleIDsResult const* result);
-    static HRESULT ValidatePFAccountManagementGetPlayFabIDsFromGoogleIDsResult(PFAccountManagementGetPlayFabIDsFromGoogleIDsResult* result);
-
+    static HRESULT LogGetPlayFabIDsFromGoogleIDsResult(PFAccountManagementGetPlayFabIDsFromGoogleIDsResult const* result);
+    static void LogGetPlayFabIDsFromGooglePlayGamesPlayerIDsRequest(PFAccountManagementGetPlayFabIDsFromGooglePlayGamesPlayerIDsRequest const* request, const char* testName);
+    static HRESULT LogGetPlayFabIDsFromGooglePlayGamesPlayerIDsResult(PFAccountManagementGetPlayFabIDsFromGooglePlayGamesPlayerIDsResult const* result);
     static void LogGetPlayFabIDsFromKongregateIDsRequest(PFAccountManagementGetPlayFabIDsFromKongregateIDsRequest const* request, const char* testName);
-    static void FillGetPlayFabIDsFromKongregateIDsRequest(PlayFab::Wrappers::PFAccountManagementGetPlayFabIDsFromKongregateIDsRequestWrapper<>& request);
-    static HRESULT LogPFAccountManagementGetPlayFabIDsFromKongregateIDsResult(PFAccountManagementGetPlayFabIDsFromKongregateIDsResult const* result);
-    static HRESULT ValidatePFAccountManagementGetPlayFabIDsFromKongregateIDsResult(PFAccountManagementGetPlayFabIDsFromKongregateIDsResult* result);
-
+    static HRESULT LogGetPlayFabIDsFromKongregateIDsResult(PFAccountManagementGetPlayFabIDsFromKongregateIDsResult const* result);
+    static void LogGetPlayFabIDsFromNintendoServiceAccountIdsRequest(PFAccountManagementGetPlayFabIDsFromNintendoServiceAccountIdsRequest const* request, const char* testName);
+    static HRESULT LogGetPlayFabIDsFromNintendoServiceAccountIdsResult(PFAccountManagementGetPlayFabIDsFromNintendoServiceAccountIdsResult const* result);
     static void LogGetPlayFabIDsFromNintendoSwitchDeviceIdsRequest(PFAccountManagementGetPlayFabIDsFromNintendoSwitchDeviceIdsRequest const* request, const char* testName);
-    static void FillGetPlayFabIDsFromNintendoSwitchDeviceIdsRequest(PlayFab::Wrappers::PFAccountManagementGetPlayFabIDsFromNintendoSwitchDeviceIdsRequestWrapper<>& request);
-    static HRESULT LogPFAccountManagementGetPlayFabIDsFromNintendoSwitchDeviceIdsResult(PFAccountManagementGetPlayFabIDsFromNintendoSwitchDeviceIdsResult const* result);
-    static HRESULT ValidatePFAccountManagementGetPlayFabIDsFromNintendoSwitchDeviceIdsResult(PFAccountManagementGetPlayFabIDsFromNintendoSwitchDeviceIdsResult* result);
-
+    static HRESULT LogGetPlayFabIDsFromNintendoSwitchDeviceIdsResult(PFAccountManagementGetPlayFabIDsFromNintendoSwitchDeviceIdsResult const* result);
     static void LogGetPlayFabIDsFromPSNAccountIDsRequest(PFAccountManagementGetPlayFabIDsFromPSNAccountIDsRequest const* request, const char* testName);
-    static void FillGetPlayFabIDsFromPSNAccountIDsRequest(PlayFab::Wrappers::PFAccountManagementGetPlayFabIDsFromPSNAccountIDsRequestWrapper<>& request);
-    static HRESULT LogPFAccountManagementGetPlayFabIDsFromPSNAccountIDsResult(PFAccountManagementGetPlayFabIDsFromPSNAccountIDsResult const* result);
-    static HRESULT ValidatePFAccountManagementGetPlayFabIDsFromPSNAccountIDsResult(PFAccountManagementGetPlayFabIDsFromPSNAccountIDsResult* result);
-
+    static HRESULT LogGetPlayFabIDsFromPSNAccountIDsResult(PFAccountManagementGetPlayFabIDsFromPSNAccountIDsResult const* result);
     static void LogGetPlayFabIDsFromSteamIDsRequest(PFAccountManagementGetPlayFabIDsFromSteamIDsRequest const* request, const char* testName);
-    static void FillGetPlayFabIDsFromSteamIDsRequest(PlayFab::Wrappers::PFAccountManagementGetPlayFabIDsFromSteamIDsRequestWrapper<>& request);
-    static HRESULT LogPFAccountManagementGetPlayFabIDsFromSteamIDsResult(PFAccountManagementGetPlayFabIDsFromSteamIDsResult const* result);
-    static HRESULT ValidatePFAccountManagementGetPlayFabIDsFromSteamIDsResult(PFAccountManagementGetPlayFabIDsFromSteamIDsResult* result);
-
+    static HRESULT LogGetPlayFabIDsFromSteamIDsResult(PFAccountManagementGetPlayFabIDsFromSteamIDsResult const* result);
     static void LogGetPlayFabIDsFromTwitchIDsRequest(PFAccountManagementGetPlayFabIDsFromTwitchIDsRequest const* request, const char* testName);
-    static void FillGetPlayFabIDsFromTwitchIDsRequest(PlayFab::Wrappers::PFAccountManagementGetPlayFabIDsFromTwitchIDsRequestWrapper<>& request);
-    static HRESULT LogPFAccountManagementGetPlayFabIDsFromTwitchIDsResult(PFAccountManagementGetPlayFabIDsFromTwitchIDsResult const* result);
-    static HRESULT ValidatePFAccountManagementGetPlayFabIDsFromTwitchIDsResult(PFAccountManagementGetPlayFabIDsFromTwitchIDsResult* result);
-
+    static HRESULT LogGetPlayFabIDsFromTwitchIDsResult(PFAccountManagementGetPlayFabIDsFromTwitchIDsResult const* result);
     static void LogGetPlayFabIDsFromXboxLiveIDsRequest(PFAccountManagementGetPlayFabIDsFromXboxLiveIDsRequest const* request, const char* testName);
-    static void FillGetPlayFabIDsFromXboxLiveIDsRequest(PlayFab::Wrappers::PFAccountManagementGetPlayFabIDsFromXboxLiveIDsRequestWrapper<>& request);
-    static HRESULT LogPFAccountManagementGetPlayFabIDsFromXboxLiveIDsResult(PFAccountManagementGetPlayFabIDsFromXboxLiveIDsResult const* result);
-    static HRESULT ValidatePFAccountManagementGetPlayFabIDsFromXboxLiveIDsResult(PFAccountManagementGetPlayFabIDsFromXboxLiveIDsResult* result);
-
+    static HRESULT LogGetPlayFabIDsFromXboxLiveIDsResult(PFAccountManagementGetPlayFabIDsFromXboxLiveIDsResult const* result);
     static void LogLinkAndroidDeviceIDRequest(PFAccountManagementLinkAndroidDeviceIDRequest const* request, const char* testName);
-    static void FillLinkAndroidDeviceIDRequest(PlayFab::Wrappers::PFAccountManagementLinkAndroidDeviceIDRequestWrapper<>& request);
-
     static void LogLinkAppleRequest(PFAccountManagementLinkAppleRequest const* request, const char* testName);
-    static void FillLinkAppleRequest(PlayFab::Wrappers::PFAccountManagementLinkAppleRequestWrapper<>& request);
-
     static void LogLinkCustomIDRequest(PFAccountManagementLinkCustomIDRequest const* request, const char* testName);
-    static void FillLinkCustomIDRequest(PlayFab::Wrappers::PFAccountManagementLinkCustomIDRequestWrapper<>& request);
-
     static void LogLinkFacebookAccountRequest(PFAccountManagementLinkFacebookAccountRequest const* request, const char* testName);
-    static void FillLinkFacebookAccountRequest(PlayFab::Wrappers::PFAccountManagementLinkFacebookAccountRequestWrapper<>& request);
-
     static void LogLinkFacebookInstantGamesIdRequest(PFAccountManagementLinkFacebookInstantGamesIdRequest const* request, const char* testName);
-    static void FillLinkFacebookInstantGamesIdRequest(PlayFab::Wrappers::PFAccountManagementLinkFacebookInstantGamesIdRequestWrapper<>& request);
-
     static void LogLinkGameCenterAccountRequest(PFAccountManagementLinkGameCenterAccountRequest const* request, const char* testName);
-    static void FillLinkGameCenterAccountRequest(PlayFab::Wrappers::PFAccountManagementLinkGameCenterAccountRequestWrapper<>& request);
-
     static void LogLinkGoogleAccountRequest(PFAccountManagementLinkGoogleAccountRequest const* request, const char* testName);
-    static void FillLinkGoogleAccountRequest(PlayFab::Wrappers::PFAccountManagementLinkGoogleAccountRequestWrapper<>& request);
-
+    static void LogLinkGooglePlayGamesServicesAccountRequest(PFAccountManagementLinkGooglePlayGamesServicesAccountRequest const* request, const char* testName);
     static void LogLinkIOSDeviceIDRequest(PFAccountManagementLinkIOSDeviceIDRequest const* request, const char* testName);
-    static void FillLinkIOSDeviceIDRequest(PlayFab::Wrappers::PFAccountManagementLinkIOSDeviceIDRequestWrapper<>& request);
-
     static void LogLinkKongregateAccountRequest(PFAccountManagementLinkKongregateAccountRequest const* request, const char* testName);
-    static void FillLinkKongregateAccountRequest(PlayFab::Wrappers::PFAccountManagementLinkKongregateAccountRequestWrapper<>& request);
-
-    static void LogLinkNintendoServiceAccountRequest(PFAccountManagementLinkNintendoServiceAccountRequest const* request, const char* testName);
-    static void FillLinkNintendoServiceAccountRequest(PlayFab::Wrappers::PFAccountManagementLinkNintendoServiceAccountRequestWrapper<>& request);
-
-    static void LogLinkNintendoSwitchDeviceIdRequest(PFAccountManagementLinkNintendoSwitchDeviceIdRequest const* request, const char* testName);
-    static void FillLinkNintendoSwitchDeviceIdRequest(PlayFab::Wrappers::PFAccountManagementLinkNintendoSwitchDeviceIdRequestWrapper<>& request);
-
+    static void LogClientLinkNintendoServiceAccountRequest(PFAccountManagementClientLinkNintendoServiceAccountRequest const* request, const char* testName);
+    static void LogClientLinkNintendoSwitchDeviceIdRequest(PFAccountManagementClientLinkNintendoSwitchDeviceIdRequest const* request, const char* testName);
     static void LogLinkOpenIdConnectRequest(PFAccountManagementLinkOpenIdConnectRequest const* request, const char* testName);
-    static void FillLinkOpenIdConnectRequest(PlayFab::Wrappers::PFAccountManagementLinkOpenIdConnectRequestWrapper<>& request);
-
     static void LogClientLinkPSNAccountRequest(PFAccountManagementClientLinkPSNAccountRequest const* request, const char* testName);
-    static void FillClientLinkPSNAccountRequest(PlayFab::Wrappers::PFAccountManagementClientLinkPSNAccountRequestWrapper<>& request);
-
     static void LogLinkSteamAccountRequest(PFAccountManagementLinkSteamAccountRequest const* request, const char* testName);
-    static void FillLinkSteamAccountRequest(PlayFab::Wrappers::PFAccountManagementLinkSteamAccountRequestWrapper<>& request);
-
     static void LogLinkTwitchAccountRequest(PFAccountManagementLinkTwitchAccountRequest const* request, const char* testName);
-    static void FillLinkTwitchAccountRequest(PlayFab::Wrappers::PFAccountManagementLinkTwitchAccountRequestWrapper<>& request);
-
     static void LogClientLinkXboxAccountRequest(PFAccountManagementClientLinkXboxAccountRequest const* request, const char* testName);
-    static void FillClientLinkXboxAccountRequest(PlayFab::Wrappers::PFAccountManagementClientLinkXboxAccountRequestWrapper<>& request);
-
     static void LogRemoveContactEmailRequest(PFAccountManagementRemoveContactEmailRequest const* request, const char* testName);
-    static void FillRemoveContactEmailRequest(PlayFab::Wrappers::PFAccountManagementRemoveContactEmailRequestWrapper<>& request);
-
     static void LogClientRemoveGenericIDRequest(PFAccountManagementClientRemoveGenericIDRequest const* request, const char* testName);
-    static void FillClientRemoveGenericIDRequest(PlayFab::Wrappers::PFAccountManagementClientRemoveGenericIDRequestWrapper<>& request);
-
     static void LogReportPlayerClientRequest(PFAccountManagementReportPlayerClientRequest const* request, const char* testName);
-    static void FillReportPlayerClientRequest(PlayFab::Wrappers::PFAccountManagementReportPlayerClientRequestWrapper<>& request);
-    static HRESULT LogPFAccountManagementReportPlayerClientResult(PFAccountManagementReportPlayerClientResult const* result);
-    static HRESULT ValidatePFAccountManagementReportPlayerClientResult(PFAccountManagementReportPlayerClientResult* result);
-
+    static HRESULT LogReportPlayerClientResult(PFAccountManagementReportPlayerClientResult const* result);
     static void LogClientSendAccountRecoveryEmailRequest(PFAccountManagementClientSendAccountRecoveryEmailRequest const* request, const char* testName);
-    static void FillClientSendAccountRecoveryEmailRequest(PlayFab::Wrappers::PFAccountManagementClientSendAccountRecoveryEmailRequestWrapper<>& request);
-
     static void LogUnlinkAndroidDeviceIDRequest(PFAccountManagementUnlinkAndroidDeviceIDRequest const* request, const char* testName);
-    static void FillUnlinkAndroidDeviceIDRequest(PlayFab::Wrappers::PFAccountManagementUnlinkAndroidDeviceIDRequestWrapper<>& request);
-
     static void LogUnlinkAppleRequest(PFAccountManagementUnlinkAppleRequest const* request, const char* testName);
-    static void FillUnlinkAppleRequest(PlayFab::Wrappers::PFAccountManagementUnlinkAppleRequestWrapper<>& request);
-
     static void LogUnlinkCustomIDRequest(PFAccountManagementUnlinkCustomIDRequest const* request, const char* testName);
-    static void FillUnlinkCustomIDRequest(PlayFab::Wrappers::PFAccountManagementUnlinkCustomIDRequestWrapper<>& request);
-
     static void LogUnlinkFacebookAccountRequest(PFAccountManagementUnlinkFacebookAccountRequest const* request, const char* testName);
-    static void FillUnlinkFacebookAccountRequest(PlayFab::Wrappers::PFAccountManagementUnlinkFacebookAccountRequestWrapper<>& request);
-
     static void LogUnlinkFacebookInstantGamesIdRequest(PFAccountManagementUnlinkFacebookInstantGamesIdRequest const* request, const char* testName);
-    static void FillUnlinkFacebookInstantGamesIdRequest(PlayFab::Wrappers::PFAccountManagementUnlinkFacebookInstantGamesIdRequestWrapper<>& request);
-
     static void LogUnlinkGameCenterAccountRequest(PFAccountManagementUnlinkGameCenterAccountRequest const* request, const char* testName);
-    static void FillUnlinkGameCenterAccountRequest(PlayFab::Wrappers::PFAccountManagementUnlinkGameCenterAccountRequestWrapper<>& request);
-
     static void LogUnlinkGoogleAccountRequest(PFAccountManagementUnlinkGoogleAccountRequest const* request, const char* testName);
-    static void FillUnlinkGoogleAccountRequest(PlayFab::Wrappers::PFAccountManagementUnlinkGoogleAccountRequestWrapper<>& request);
-
+    static void LogUnlinkGooglePlayGamesServicesAccountRequest(PFAccountManagementUnlinkGooglePlayGamesServicesAccountRequest const* request, const char* testName);
     static void LogUnlinkIOSDeviceIDRequest(PFAccountManagementUnlinkIOSDeviceIDRequest const* request, const char* testName);
-    static void FillUnlinkIOSDeviceIDRequest(PlayFab::Wrappers::PFAccountManagementUnlinkIOSDeviceIDRequestWrapper<>& request);
-
     static void LogUnlinkKongregateAccountRequest(PFAccountManagementUnlinkKongregateAccountRequest const* request, const char* testName);
-    static void FillUnlinkKongregateAccountRequest(PlayFab::Wrappers::PFAccountManagementUnlinkKongregateAccountRequestWrapper<>& request);
-
-    static void LogUnlinkNintendoServiceAccountRequest(PFAccountManagementUnlinkNintendoServiceAccountRequest const* request, const char* testName);
-    static void FillUnlinkNintendoServiceAccountRequest(PlayFab::Wrappers::PFAccountManagementUnlinkNintendoServiceAccountRequestWrapper<>& request);
-
-    static void LogUnlinkNintendoSwitchDeviceIdRequest(PFAccountManagementUnlinkNintendoSwitchDeviceIdRequest const* request, const char* testName);
-    static void FillUnlinkNintendoSwitchDeviceIdRequest(PlayFab::Wrappers::PFAccountManagementUnlinkNintendoSwitchDeviceIdRequestWrapper<>& request);
-
+    static void LogClientUnlinkNintendoServiceAccountRequest(PFAccountManagementClientUnlinkNintendoServiceAccountRequest const* request, const char* testName);
+    static void LogClientUnlinkNintendoSwitchDeviceIdRequest(PFAccountManagementClientUnlinkNintendoSwitchDeviceIdRequest const* request, const char* testName);
     static void LogUnlinkOpenIdConnectRequest(PFAccountManagementUnlinkOpenIdConnectRequest const* request, const char* testName);
-    static void FillUnlinkOpenIdConnectRequest(PlayFab::Wrappers::PFAccountManagementUnlinkOpenIdConnectRequestWrapper<>& request);
-
     static void LogClientUnlinkPSNAccountRequest(PFAccountManagementClientUnlinkPSNAccountRequest const* request, const char* testName);
-    static void FillClientUnlinkPSNAccountRequest(PlayFab::Wrappers::PFAccountManagementClientUnlinkPSNAccountRequestWrapper<>& request);
-
     static void LogUnlinkSteamAccountRequest(PFAccountManagementUnlinkSteamAccountRequest const* request, const char* testName);
-    static void FillUnlinkSteamAccountRequest(PlayFab::Wrappers::PFAccountManagementUnlinkSteamAccountRequestWrapper<>& request);
-
     static void LogUnlinkTwitchAccountRequest(PFAccountManagementUnlinkTwitchAccountRequest const* request, const char* testName);
-    static void FillUnlinkTwitchAccountRequest(PlayFab::Wrappers::PFAccountManagementUnlinkTwitchAccountRequestWrapper<>& request);
-
     static void LogClientUnlinkXboxAccountRequest(PFAccountManagementClientUnlinkXboxAccountRequest const* request, const char* testName);
-    static void FillClientUnlinkXboxAccountRequest(PlayFab::Wrappers::PFAccountManagementClientUnlinkXboxAccountRequestWrapper<>& request);
-
     static void LogClientUpdateAvatarUrlRequest(PFAccountManagementClientUpdateAvatarUrlRequest const* request, const char* testName);
-    static void FillClientUpdateAvatarUrlRequest(PlayFab::Wrappers::PFAccountManagementClientUpdateAvatarUrlRequestWrapper<>& request);
-
     static void LogClientUpdateUserTitleDisplayNameRequest(PFAccountManagementClientUpdateUserTitleDisplayNameRequest const* request, const char* testName);
-    static void FillClientUpdateUserTitleDisplayNameRequest(PlayFab::Wrappers::PFAccountManagementClientUpdateUserTitleDisplayNameRequestWrapper<>& request);
-
     static void LogServerAddGenericIDRequest(PFAccountManagementServerAddGenericIDRequest const* request, const char* testName);
-    static void FillServerAddGenericIDRequest(PlayFab::Wrappers::PFAccountManagementServerAddGenericIDRequestWrapper<>& request);
-
-
-
-    static void LogDeletePushNotificationTemplateRequest(PFAccountManagementDeletePushNotificationTemplateRequest const* request, const char* testName);
-    static void FillDeletePushNotificationTemplateRequest(PlayFab::Wrappers::PFAccountManagementDeletePushNotificationTemplateRequestWrapper<>& request);
-
-
-
-
-
-
-
-
-
     static void LogGetServerCustomIDsFromPlayFabIDsRequest(PFAccountManagementGetServerCustomIDsFromPlayFabIDsRequest const* request, const char* testName);
-    static void FillGetServerCustomIDsFromPlayFabIDsRequest(PlayFab::Wrappers::PFAccountManagementGetServerCustomIDsFromPlayFabIDsRequestWrapper<>& request);
-    static HRESULT LogPFAccountManagementGetServerCustomIDsFromPlayFabIDsResult(PFAccountManagementGetServerCustomIDsFromPlayFabIDsResult const* result);
-    static HRESULT ValidatePFAccountManagementGetServerCustomIDsFromPlayFabIDsResult(PFAccountManagementGetServerCustomIDsFromPlayFabIDsResult* result);
-
+    static HRESULT LogGetServerCustomIDsFromPlayFabIDsResult(PFAccountManagementGetServerCustomIDsFromPlayFabIDsResult const* result);
     static void LogGetUserAccountInfoRequest(PFAccountManagementGetUserAccountInfoRequest const* request, const char* testName);
-    static void FillGetUserAccountInfoRequest(PlayFab::Wrappers::PFAccountManagementGetUserAccountInfoRequestWrapper<>& request);
-    static HRESULT LogPFAccountManagementGetUserAccountInfoResult(PFAccountManagementGetUserAccountInfoResult const* result);
-    static HRESULT ValidatePFAccountManagementGetUserAccountInfoResult(PFAccountManagementGetUserAccountInfoResult* result);
-
-
+    static HRESULT LogGetUserAccountInfoResult(PFAccountManagementGetUserAccountInfoResult const* result);
+    static void LogServerLinkNintendoServiceAccountRequest(PFAccountManagementServerLinkNintendoServiceAccountRequest const* request, const char* testName);
+    static void LogServerLinkNintendoSwitchDeviceIdRequest(PFAccountManagementServerLinkNintendoSwitchDeviceIdRequest const* request, const char* testName);
     static void LogServerLinkPSNAccountRequest(PFAccountManagementServerLinkPSNAccountRequest const* request, const char* testName);
-    static void FillServerLinkPSNAccountRequest(PlayFab::Wrappers::PFAccountManagementServerLinkPSNAccountRequestWrapper<>& request);
-
     static void LogLinkServerCustomIdRequest(PFAccountManagementLinkServerCustomIdRequest const* request, const char* testName);
-    static void FillLinkServerCustomIdRequest(PlayFab::Wrappers::PFAccountManagementLinkServerCustomIdRequestWrapper<>& request);
-
     static void LogServerLinkXboxAccountRequest(PFAccountManagementServerLinkXboxAccountRequest const* request, const char* testName);
-    static void FillServerLinkXboxAccountRequest(PlayFab::Wrappers::PFAccountManagementServerLinkXboxAccountRequestWrapper<>& request);
-
     static void LogServerRemoveGenericIDRequest(PFAccountManagementServerRemoveGenericIDRequest const* request, const char* testName);
-    static void FillServerRemoveGenericIDRequest(PlayFab::Wrappers::PFAccountManagementServerRemoveGenericIDRequestWrapper<>& request);
-
-
-
-    static void LogSavePushNotificationTemplateRequest(PFAccountManagementSavePushNotificationTemplateRequest const* request, const char* testName);
-    static void FillSavePushNotificationTemplateRequest(PlayFab::Wrappers::PFAccountManagementSavePushNotificationTemplateRequestWrapper<>& request);
-    static HRESULT LogPFAccountManagementSavePushNotificationTemplateResult(PFAccountManagementSavePushNotificationTemplateResult const* result);
-    static HRESULT ValidatePFAccountManagementSavePushNotificationTemplateResult(PFAccountManagementSavePushNotificationTemplateResult* result);
-
     static void LogSendCustomAccountRecoveryEmailRequest(PFAccountManagementSendCustomAccountRecoveryEmailRequest const* request, const char* testName);
-    static void FillSendCustomAccountRecoveryEmailRequest(PlayFab::Wrappers::PFAccountManagementSendCustomAccountRecoveryEmailRequestWrapper<>& request);
-
     static void LogSendEmailFromTemplateRequest(PFAccountManagementSendEmailFromTemplateRequest const* request, const char* testName);
-    static void FillSendEmailFromTemplateRequest(PlayFab::Wrappers::PFAccountManagementSendEmailFromTemplateRequestWrapper<>& request);
-
-    static void LogSendPushNotificationRequest(PFAccountManagementSendPushNotificationRequest const* request, const char* testName);
-    static void FillSendPushNotificationRequest(PlayFab::Wrappers::PFAccountManagementSendPushNotificationRequestWrapper<>& request);
-
-    static void LogSendPushNotificationFromTemplateRequest(PFAccountManagementSendPushNotificationFromTemplateRequest const* request, const char* testName);
-    static void FillSendPushNotificationFromTemplateRequest(PlayFab::Wrappers::PFAccountManagementSendPushNotificationFromTemplateRequestWrapper<>& request);
-
+    static void LogServerUnlinkNintendoServiceAccountRequest(PFAccountManagementServerUnlinkNintendoServiceAccountRequest const* request, const char* testName);
+    static void LogServerUnlinkNintendoSwitchDeviceIdRequest(PFAccountManagementServerUnlinkNintendoSwitchDeviceIdRequest const* request, const char* testName);
     static void LogServerUnlinkPSNAccountRequest(PFAccountManagementServerUnlinkPSNAccountRequest const* request, const char* testName);
-    static void FillServerUnlinkPSNAccountRequest(PlayFab::Wrappers::PFAccountManagementServerUnlinkPSNAccountRequestWrapper<>& request);
-
     static void LogUnlinkServerCustomIdRequest(PFAccountManagementUnlinkServerCustomIdRequest const* request, const char* testName);
-    static void FillUnlinkServerCustomIdRequest(PlayFab::Wrappers::PFAccountManagementUnlinkServerCustomIdRequestWrapper<>& request);
-
     static void LogServerUnlinkXboxAccountRequest(PFAccountManagementServerUnlinkXboxAccountRequest const* request, const char* testName);
-    static void FillServerUnlinkXboxAccountRequest(PlayFab::Wrappers::PFAccountManagementServerUnlinkXboxAccountRequestWrapper<>& request);
-
     static void LogServerUpdateAvatarUrlRequest(PFAccountManagementServerUpdateAvatarUrlRequest const* request, const char* testName);
-    static void FillServerUpdateAvatarUrlRequest(PlayFab::Wrappers::PFAccountManagementServerUpdateAvatarUrlRequestWrapper<>& request);
 
+    void FillAdminBanUsersRequest(PlayFab::Wrappers::PFAccountManagementBanUsersRequestWrapper<>& request);
+    static HRESULT ValidateAdminBanUsersResponse(PFAccountManagementBanUsersResult* result);
+
+    void FillAdminDeleteMasterPlayerAccountRequest(PlayFab::Wrappers::PFAccountManagementDeleteMasterPlayerAccountRequestWrapper<>& request);
+    static HRESULT ValidateAdminDeleteMasterPlayerAccountResponse(PFAccountManagementDeleteMasterPlayerAccountResult* result);
+
+    void FillAdminDeleteMembershipSubscriptionRequest(PlayFab::Wrappers::PFAccountManagementDeleteMembershipSubscriptionRequestWrapper<>& request);
+
+    void FillAdminDeletePlayerRequest(PlayFab::Wrappers::PFAccountManagementDeletePlayerRequestWrapper<>& request);
+
+
+    void FillAdminExportMasterPlayerDataRequest(PlayFab::Wrappers::PFAccountManagementExportMasterPlayerDataRequestWrapper<>& request);
+    static HRESULT ValidateAdminExportMasterPlayerDataResponse(PFAccountManagementExportMasterPlayerDataResult* result);
+
+    void FillAdminGetPlayedTitleListRequest(PlayFab::Wrappers::PFAccountManagementGetPlayedTitleListRequestWrapper<>& request);
+    static HRESULT ValidateAdminGetPlayedTitleListResponse(PFAccountManagementGetPlayedTitleListResult* result);
+
+    void FillAdminGetPlayerIdFromAuthTokenRequest(PlayFab::Wrappers::PFAccountManagementGetPlayerIdFromAuthTokenRequestWrapper<>& request);
+    static HRESULT ValidateAdminGetPlayerIdFromAuthTokenResponse(PFAccountManagementGetPlayerIdFromAuthTokenResult* result);
+
+    void FillAdminGetPlayerProfileRequest(PlayFab::Wrappers::PFAccountManagementGetPlayerProfileRequestWrapper<>& request);
+    static HRESULT ValidateAdminGetPlayerProfileResponse(PFAccountManagementGetPlayerProfileResult* result);
+
+    void FillAdminGetUserAccountInfoRequest(PlayFab::Wrappers::PFAccountManagementLookupUserAccountInfoRequestWrapper<>& request);
+    static HRESULT ValidateAdminGetUserAccountInfoResponse(PFAccountManagementLookupUserAccountInfoResult* result);
+
+    void FillAdminGetUserBansRequest(PlayFab::Wrappers::PFAccountManagementGetUserBansRequestWrapper<>& request);
+    static HRESULT ValidateAdminGetUserBansResponse(PFAccountManagementGetUserBansResult* result);
+
+    void FillAdminResetPasswordRequest(PlayFab::Wrappers::PFAccountManagementResetPasswordRequestWrapper<>& request);
+
+    void FillAdminRevokeAllBansForUserRequest(PlayFab::Wrappers::PFAccountManagementRevokeAllBansForUserRequestWrapper<>& request);
+    static HRESULT ValidateAdminRevokeAllBansForUserResponse(PFAccountManagementRevokeAllBansForUserResult* result);
+
+    void FillAdminRevokeBansRequest(PlayFab::Wrappers::PFAccountManagementRevokeBansRequestWrapper<>& request);
+    static HRESULT ValidateAdminRevokeBansResponse(PFAccountManagementRevokeBansResult* result);
+
+    void FillAdminSendAccountRecoveryEmailRequest(PlayFab::Wrappers::PFAccountManagementAdminSendAccountRecoveryEmailRequestWrapper<>& request);
+
+    void FillAdminSetMembershipOverrideRequest(PlayFab::Wrappers::PFAccountManagementSetMembershipOverrideRequestWrapper<>& request);
+
+    void FillAdminUpdateBansRequest(PlayFab::Wrappers::PFAccountManagementUpdateBansRequestWrapper<>& request);
+    static HRESULT ValidateAdminUpdateBansResponse(PFAccountManagementUpdateBansResult* result);
+
+    void FillAdminUpdateUserTitleDisplayNameRequest(PlayFab::Wrappers::PFAccountManagementAdminUpdateUserTitleDisplayNameRequestWrapper<>& request);
+    static HRESULT ValidateAdminUpdateUserTitleDisplayNameResponse(PFAccountManagementUpdateUserTitleDisplayNameResult* result);
+
+    void FillClientAddGenericIDRequest(PlayFab::Wrappers::PFAccountManagementClientAddGenericIDRequestWrapper<>& request);
+
+    void FillClientAddOrUpdateContactEmailRequest(PlayFab::Wrappers::PFAccountManagementAddOrUpdateContactEmailRequestWrapper<>& request);
+
+    void FillClientAddUsernamePasswordRequest(PlayFab::Wrappers::PFAccountManagementAddUsernamePasswordRequestWrapper<>& request);
+    static HRESULT ValidateClientAddUsernamePasswordResponse(PFAccountManagementAddUsernamePasswordResult* result);
+
+    void FillClientGetAccountInfoRequest(PlayFab::Wrappers::PFAccountManagementGetAccountInfoRequestWrapper<>& request);
+    static HRESULT ValidateClientGetAccountInfoResponse(PFAccountManagementGetAccountInfoResult* result);
+
+    void FillClientGetPlayerCombinedInfoRequest(PlayFab::Wrappers::PFAccountManagementGetPlayerCombinedInfoRequestWrapper<>& request);
+    static HRESULT ValidateClientGetPlayerCombinedInfoResponse(PFAccountManagementGetPlayerCombinedInfoResult* result);
+
+    void FillClientGetPlayerProfileRequest(PlayFab::Wrappers::PFAccountManagementGetPlayerProfileRequestWrapper<>& request);
+    static HRESULT ValidateClientGetPlayerProfileResponse(PFAccountManagementGetPlayerProfileResult* result);
+
+    void FillClientGetPlayFabIDsFromFacebookIDsRequest(PlayFab::Wrappers::PFAccountManagementGetPlayFabIDsFromFacebookIDsRequestWrapper<>& request);
+    static HRESULT ValidateClientGetPlayFabIDsFromFacebookIDsResponse(PFAccountManagementGetPlayFabIDsFromFacebookIDsResult* result);
+
+    void FillClientGetPlayFabIDsFromFacebookInstantGamesIdsRequest(PlayFab::Wrappers::PFAccountManagementGetPlayFabIDsFromFacebookInstantGamesIdsRequestWrapper<>& request);
+    static HRESULT ValidateClientGetPlayFabIDsFromFacebookInstantGamesIdsResponse(PFAccountManagementGetPlayFabIDsFromFacebookInstantGamesIdsResult* result);
+
+    void FillClientGetPlayFabIDsFromGameCenterIDsRequest(PlayFab::Wrappers::PFAccountManagementGetPlayFabIDsFromGameCenterIDsRequestWrapper<>& request);
+    static HRESULT ValidateClientGetPlayFabIDsFromGameCenterIDsResponse(PFAccountManagementGetPlayFabIDsFromGameCenterIDsResult* result);
+
+    void FillClientGetPlayFabIDsFromGenericIDsRequest(PlayFab::Wrappers::PFAccountManagementGetPlayFabIDsFromGenericIDsRequestWrapper<>& request);
+    static HRESULT ValidateClientGetPlayFabIDsFromGenericIDsResponse(PFAccountManagementGetPlayFabIDsFromGenericIDsResult* result);
+
+    void FillClientGetPlayFabIDsFromGoogleIDsRequest(PlayFab::Wrappers::PFAccountManagementGetPlayFabIDsFromGoogleIDsRequestWrapper<>& request);
+    static HRESULT ValidateClientGetPlayFabIDsFromGoogleIDsResponse(PFAccountManagementGetPlayFabIDsFromGoogleIDsResult* result);
+
+    void FillClientGetPlayFabIDsFromGooglePlayGamesPlayerIDsRequest(PlayFab::Wrappers::PFAccountManagementGetPlayFabIDsFromGooglePlayGamesPlayerIDsRequestWrapper<>& request);
+    static HRESULT ValidateClientGetPlayFabIDsFromGooglePlayGamesPlayerIDsResponse(PFAccountManagementGetPlayFabIDsFromGooglePlayGamesPlayerIDsResult* result);
+
+    void FillClientGetPlayFabIDsFromKongregateIDsRequest(PlayFab::Wrappers::PFAccountManagementGetPlayFabIDsFromKongregateIDsRequestWrapper<>& request);
+    static HRESULT ValidateClientGetPlayFabIDsFromKongregateIDsResponse(PFAccountManagementGetPlayFabIDsFromKongregateIDsResult* result);
+
+    void FillClientGetPlayFabIDsFromNintendoServiceAccountIdsRequest(PlayFab::Wrappers::PFAccountManagementGetPlayFabIDsFromNintendoServiceAccountIdsRequestWrapper<>& request);
+    static HRESULT ValidateClientGetPlayFabIDsFromNintendoServiceAccountIdsResponse(PFAccountManagementGetPlayFabIDsFromNintendoServiceAccountIdsResult* result);
+
+    void FillClientGetPlayFabIDsFromNintendoSwitchDeviceIdsRequest(PlayFab::Wrappers::PFAccountManagementGetPlayFabIDsFromNintendoSwitchDeviceIdsRequestWrapper<>& request);
+    static HRESULT ValidateClientGetPlayFabIDsFromNintendoSwitchDeviceIdsResponse(PFAccountManagementGetPlayFabIDsFromNintendoSwitchDeviceIdsResult* result);
+
+    void FillClientGetPlayFabIDsFromPSNAccountIDsRequest(PlayFab::Wrappers::PFAccountManagementGetPlayFabIDsFromPSNAccountIDsRequestWrapper<>& request);
+    static HRESULT ValidateClientGetPlayFabIDsFromPSNAccountIDsResponse(PFAccountManagementGetPlayFabIDsFromPSNAccountIDsResult* result);
+
+    void FillClientGetPlayFabIDsFromSteamIDsRequest(PlayFab::Wrappers::PFAccountManagementGetPlayFabIDsFromSteamIDsRequestWrapper<>& request);
+    static HRESULT ValidateClientGetPlayFabIDsFromSteamIDsResponse(PFAccountManagementGetPlayFabIDsFromSteamIDsResult* result);
+
+    void FillClientGetPlayFabIDsFromTwitchIDsRequest(PlayFab::Wrappers::PFAccountManagementGetPlayFabIDsFromTwitchIDsRequestWrapper<>& request);
+    static HRESULT ValidateClientGetPlayFabIDsFromTwitchIDsResponse(PFAccountManagementGetPlayFabIDsFromTwitchIDsResult* result);
+
+    void FillClientGetPlayFabIDsFromXboxLiveIDsRequest(PlayFab::Wrappers::PFAccountManagementGetPlayFabIDsFromXboxLiveIDsRequestWrapper<>& request);
+    static HRESULT ValidateClientGetPlayFabIDsFromXboxLiveIDsResponse(PFAccountManagementGetPlayFabIDsFromXboxLiveIDsResult* result);
+
+    void FillClientLinkAndroidDeviceIDRequest(PlayFab::Wrappers::PFAccountManagementLinkAndroidDeviceIDRequestWrapper<>& request);
+
+    void FillClientLinkAppleRequest(PlayFab::Wrappers::PFAccountManagementLinkAppleRequestWrapper<>& request);
+
+    void FillClientLinkCustomIDRequest(PlayFab::Wrappers::PFAccountManagementLinkCustomIDRequestWrapper<>& request);
+
+    void FillClientLinkFacebookAccountRequest(PlayFab::Wrappers::PFAccountManagementLinkFacebookAccountRequestWrapper<>& request);
+
+    void FillClientLinkFacebookInstantGamesIdRequest(PlayFab::Wrappers::PFAccountManagementLinkFacebookInstantGamesIdRequestWrapper<>& request);
+
+    void FillClientLinkGameCenterAccountRequest(PlayFab::Wrappers::PFAccountManagementLinkGameCenterAccountRequestWrapper<>& request);
+
+    void FillClientLinkGoogleAccountRequest(PlayFab::Wrappers::PFAccountManagementLinkGoogleAccountRequestWrapper<>& request);
+
+    void FillClientLinkGooglePlayGamesServicesAccountRequest(PlayFab::Wrappers::PFAccountManagementLinkGooglePlayGamesServicesAccountRequestWrapper<>& request);
+
+    void FillClientLinkIOSDeviceIDRequest(PlayFab::Wrappers::PFAccountManagementLinkIOSDeviceIDRequestWrapper<>& request);
+
+    void FillClientLinkKongregateRequest(PlayFab::Wrappers::PFAccountManagementLinkKongregateAccountRequestWrapper<>& request);
+
+    void FillClientLinkNintendoServiceAccountRequest(PlayFab::Wrappers::PFAccountManagementClientLinkNintendoServiceAccountRequestWrapper<>& request);
+
+    void FillClientLinkNintendoSwitchDeviceIdRequest(PlayFab::Wrappers::PFAccountManagementClientLinkNintendoSwitchDeviceIdRequestWrapper<>& request);
+
+    void FillClientLinkOpenIdConnectRequest(PlayFab::Wrappers::PFAccountManagementLinkOpenIdConnectRequestWrapper<>& request);
+
+    void FillClientLinkPSNAccountRequest(PlayFab::Wrappers::PFAccountManagementClientLinkPSNAccountRequestWrapper<>& request);
+
+    void FillClientLinkSteamAccountRequest(PlayFab::Wrappers::PFAccountManagementLinkSteamAccountRequestWrapper<>& request);
+
+    void FillClientLinkTwitchRequest(PlayFab::Wrappers::PFAccountManagementLinkTwitchAccountRequestWrapper<>& request);
+
+    void FillClientLinkXboxAccountRequest(PlayFab::Wrappers::PFAccountManagementClientLinkXboxAccountRequestWrapper<>& request);
+
+    void FillClientRemoveContactEmailRequest(PlayFab::Wrappers::PFAccountManagementRemoveContactEmailRequestWrapper<>& request);
+
+    void FillClientRemoveGenericIDRequest(PlayFab::Wrappers::PFAccountManagementClientRemoveGenericIDRequestWrapper<>& request);
+
+    void FillClientReportPlayerRequest(PlayFab::Wrappers::PFAccountManagementReportPlayerClientRequestWrapper<>& request);
+    static HRESULT ValidateClientReportPlayerResponse(PFAccountManagementReportPlayerClientResult* result);
+
+    void FillClientSendAccountRecoveryEmailRequest(PlayFab::Wrappers::PFAccountManagementClientSendAccountRecoveryEmailRequestWrapper<>& request);
+
+    void FillClientUnlinkAndroidDeviceIDRequest(PlayFab::Wrappers::PFAccountManagementUnlinkAndroidDeviceIDRequestWrapper<>& request);
+
+    void FillClientUnlinkAppleRequest(PlayFab::Wrappers::PFAccountManagementUnlinkAppleRequestWrapper<>& request);
+
+    void FillClientUnlinkCustomIDRequest(PlayFab::Wrappers::PFAccountManagementUnlinkCustomIDRequestWrapper<>& request);
+
+    void FillClientUnlinkFacebookAccountRequest(PlayFab::Wrappers::PFAccountManagementUnlinkFacebookAccountRequestWrapper<>& request);
+
+    void FillClientUnlinkFacebookInstantGamesIdRequest(PlayFab::Wrappers::PFAccountManagementUnlinkFacebookInstantGamesIdRequestWrapper<>& request);
+
+    void FillClientUnlinkGameCenterAccountRequest(PlayFab::Wrappers::PFAccountManagementUnlinkGameCenterAccountRequestWrapper<>& request);
+
+    void FillClientUnlinkGoogleAccountRequest(PlayFab::Wrappers::PFAccountManagementUnlinkGoogleAccountRequestWrapper<>& request);
+
+    void FillClientUnlinkGooglePlayGamesServicesAccountRequest(PlayFab::Wrappers::PFAccountManagementUnlinkGooglePlayGamesServicesAccountRequestWrapper<>& request);
+
+    void FillClientUnlinkIOSDeviceIDRequest(PlayFab::Wrappers::PFAccountManagementUnlinkIOSDeviceIDRequestWrapper<>& request);
+
+    void FillClientUnlinkKongregateRequest(PlayFab::Wrappers::PFAccountManagementUnlinkKongregateAccountRequestWrapper<>& request);
+
+    void FillClientUnlinkNintendoServiceAccountRequest(PlayFab::Wrappers::PFAccountManagementClientUnlinkNintendoServiceAccountRequestWrapper<>& request);
+
+    void FillClientUnlinkNintendoSwitchDeviceIdRequest(PlayFab::Wrappers::PFAccountManagementClientUnlinkNintendoSwitchDeviceIdRequestWrapper<>& request);
+
+    void FillClientUnlinkOpenIdConnectRequest(PlayFab::Wrappers::PFAccountManagementUnlinkOpenIdConnectRequestWrapper<>& request);
+
+    void FillClientUnlinkPSNAccountRequest(PlayFab::Wrappers::PFAccountManagementClientUnlinkPSNAccountRequestWrapper<>& request);
+
+    void FillClientUnlinkSteamAccountRequest(PlayFab::Wrappers::PFAccountManagementUnlinkSteamAccountRequestWrapper<>& request);
+
+    void FillClientUnlinkTwitchRequest(PlayFab::Wrappers::PFAccountManagementUnlinkTwitchAccountRequestWrapper<>& request);
+
+    void FillClientUnlinkXboxAccountRequest(PlayFab::Wrappers::PFAccountManagementClientUnlinkXboxAccountRequestWrapper<>& request);
+
+    void FillClientUpdateAvatarUrlRequest(PlayFab::Wrappers::PFAccountManagementClientUpdateAvatarUrlRequestWrapper<>& request);
+
+    void FillClientUpdateUserTitleDisplayNameRequest(PlayFab::Wrappers::PFAccountManagementClientUpdateUserTitleDisplayNameRequestWrapper<>& request);
+    static HRESULT ValidateClientUpdateUserTitleDisplayNameResponse(PFAccountManagementUpdateUserTitleDisplayNameResult* result);
+
+    void FillServerAddGenericIDRequest(PlayFab::Wrappers::PFAccountManagementServerAddGenericIDRequestWrapper<>& request);
+
+    void FillServerBanUsersRequest(PlayFab::Wrappers::PFAccountManagementBanUsersRequestWrapper<>& request);
+    static HRESULT ValidateServerBanUsersResponse(PFAccountManagementBanUsersResult* result);
+
+    void FillServerDeletePlayerRequest(PlayFab::Wrappers::PFAccountManagementDeletePlayerRequestWrapper<>& request);
+
+    void FillServerGetPlayerCombinedInfoRequest(PlayFab::Wrappers::PFAccountManagementGetPlayerCombinedInfoRequestWrapper<>& request);
+    static HRESULT ValidateServerGetPlayerCombinedInfoResponse(PFAccountManagementGetPlayerCombinedInfoResult* result);
+
+    void FillServerGetPlayerProfileRequest(PlayFab::Wrappers::PFAccountManagementGetPlayerProfileRequestWrapper<>& request);
+    static HRESULT ValidateServerGetPlayerProfileResponse(PFAccountManagementGetPlayerProfileResult* result);
+
+    void FillServerGetPlayFabIDsFromFacebookIDsRequest(PlayFab::Wrappers::PFAccountManagementGetPlayFabIDsFromFacebookIDsRequestWrapper<>& request);
+    static HRESULT ValidateServerGetPlayFabIDsFromFacebookIDsResponse(PFAccountManagementGetPlayFabIDsFromFacebookIDsResult* result);
+
+    void FillServerGetPlayFabIDsFromFacebookInstantGamesIdsRequest(PlayFab::Wrappers::PFAccountManagementGetPlayFabIDsFromFacebookInstantGamesIdsRequestWrapper<>& request);
+    static HRESULT ValidateServerGetPlayFabIDsFromFacebookInstantGamesIdsResponse(PFAccountManagementGetPlayFabIDsFromFacebookInstantGamesIdsResult* result);
+
+    void FillServerGetPlayFabIDsFromGenericIDsRequest(PlayFab::Wrappers::PFAccountManagementGetPlayFabIDsFromGenericIDsRequestWrapper<>& request);
+    static HRESULT ValidateServerGetPlayFabIDsFromGenericIDsResponse(PFAccountManagementGetPlayFabIDsFromGenericIDsResult* result);
+
+    void FillServerGetPlayFabIDsFromNintendoServiceAccountIdsRequest(PlayFab::Wrappers::PFAccountManagementGetPlayFabIDsFromNintendoServiceAccountIdsRequestWrapper<>& request);
+    static HRESULT ValidateServerGetPlayFabIDsFromNintendoServiceAccountIdsResponse(PFAccountManagementGetPlayFabIDsFromNintendoServiceAccountIdsResult* result);
+
+    void FillServerGetPlayFabIDsFromNintendoSwitchDeviceIdsRequest(PlayFab::Wrappers::PFAccountManagementGetPlayFabIDsFromNintendoSwitchDeviceIdsRequestWrapper<>& request);
+    static HRESULT ValidateServerGetPlayFabIDsFromNintendoSwitchDeviceIdsResponse(PFAccountManagementGetPlayFabIDsFromNintendoSwitchDeviceIdsResult* result);
+
+    void FillServerGetPlayFabIDsFromPSNAccountIDsRequest(PlayFab::Wrappers::PFAccountManagementGetPlayFabIDsFromPSNAccountIDsRequestWrapper<>& request);
+    static HRESULT ValidateServerGetPlayFabIDsFromPSNAccountIDsResponse(PFAccountManagementGetPlayFabIDsFromPSNAccountIDsResult* result);
+
+    void FillServerGetPlayFabIDsFromSteamIDsRequest(PlayFab::Wrappers::PFAccountManagementGetPlayFabIDsFromSteamIDsRequestWrapper<>& request);
+    static HRESULT ValidateServerGetPlayFabIDsFromSteamIDsResponse(PFAccountManagementGetPlayFabIDsFromSteamIDsResult* result);
+
+    void FillServerGetPlayFabIDsFromTwitchIDsRequest(PlayFab::Wrappers::PFAccountManagementGetPlayFabIDsFromTwitchIDsRequestWrapper<>& request);
+    static HRESULT ValidateServerGetPlayFabIDsFromTwitchIDsResponse(PFAccountManagementGetPlayFabIDsFromTwitchIDsResult* result);
+
+    void FillServerGetPlayFabIDsFromXboxLiveIDsRequest(PlayFab::Wrappers::PFAccountManagementGetPlayFabIDsFromXboxLiveIDsRequestWrapper<>& request);
+    static HRESULT ValidateServerGetPlayFabIDsFromXboxLiveIDsResponse(PFAccountManagementGetPlayFabIDsFromXboxLiveIDsResult* result);
+
+    void FillServerGetServerCustomIDsFromPlayFabIDsRequest(PlayFab::Wrappers::PFAccountManagementGetServerCustomIDsFromPlayFabIDsRequestWrapper<>& request);
+    static HRESULT ValidateServerGetServerCustomIDsFromPlayFabIDsResponse(PFAccountManagementGetServerCustomIDsFromPlayFabIDsResult* result);
+
+    void FillServerGetUserAccountInfoRequest(PlayFab::Wrappers::PFAccountManagementGetUserAccountInfoRequestWrapper<>& request);
+    static HRESULT ValidateServerGetUserAccountInfoResponse(PFAccountManagementGetUserAccountInfoResult* result);
+
+    void FillServerGetUserBansRequest(PlayFab::Wrappers::PFAccountManagementGetUserBansRequestWrapper<>& request);
+    static HRESULT ValidateServerGetUserBansResponse(PFAccountManagementGetUserBansResult* result);
+
+    void FillServerLinkNintendoServiceAccountRequest(PlayFab::Wrappers::PFAccountManagementServerLinkNintendoServiceAccountRequestWrapper<>& request);
+
+    void FillServerLinkNintendoSwitchDeviceIdRequest(PlayFab::Wrappers::PFAccountManagementServerLinkNintendoSwitchDeviceIdRequestWrapper<>& request);
+
+    void FillServerLinkPSNAccountRequest(PlayFab::Wrappers::PFAccountManagementServerLinkPSNAccountRequestWrapper<>& request);
+
+    void FillServerLinkServerCustomIdRequest(PlayFab::Wrappers::PFAccountManagementLinkServerCustomIdRequestWrapper<>& request);
+
+    void FillServerLinkXboxAccountRequest(PlayFab::Wrappers::PFAccountManagementServerLinkXboxAccountRequestWrapper<>& request);
+
+    void FillServerRemoveGenericIDRequest(PlayFab::Wrappers::PFAccountManagementServerRemoveGenericIDRequestWrapper<>& request);
+
+    void FillServerRevokeAllBansForUserRequest(PlayFab::Wrappers::PFAccountManagementRevokeAllBansForUserRequestWrapper<>& request);
+    static HRESULT ValidateServerRevokeAllBansForUserResponse(PFAccountManagementRevokeAllBansForUserResult* result);
+
+    void FillServerRevokeBansRequest(PlayFab::Wrappers::PFAccountManagementRevokeBansRequestWrapper<>& request);
+    static HRESULT ValidateServerRevokeBansResponse(PFAccountManagementRevokeBansResult* result);
+
+    void FillServerSendCustomAccountRecoveryEmailRequest(PlayFab::Wrappers::PFAccountManagementSendCustomAccountRecoveryEmailRequestWrapper<>& request);
+
+    void FillServerSendEmailFromTemplateRequest(PlayFab::Wrappers::PFAccountManagementSendEmailFromTemplateRequestWrapper<>& request);
+
+    void FillServerUnlinkNintendoServiceAccountRequest(PlayFab::Wrappers::PFAccountManagementServerUnlinkNintendoServiceAccountRequestWrapper<>& request);
+
+    void FillServerUnlinkNintendoSwitchDeviceIdRequest(PlayFab::Wrappers::PFAccountManagementServerUnlinkNintendoSwitchDeviceIdRequestWrapper<>& request);
+
+    void FillServerUnlinkPSNAccountRequest(PlayFab::Wrappers::PFAccountManagementServerUnlinkPSNAccountRequestWrapper<>& request);
+
+    void FillServerUnlinkServerCustomIdRequest(PlayFab::Wrappers::PFAccountManagementUnlinkServerCustomIdRequestWrapper<>& request);
+
+    void FillServerUnlinkXboxAccountRequest(PlayFab::Wrappers::PFAccountManagementServerUnlinkXboxAccountRequestWrapper<>& request);
+
+    void FillServerUpdateAvatarUrlRequest(PlayFab::Wrappers::PFAccountManagementServerUpdateAvatarUrlRequestWrapper<>& request);
+
+    void FillServerUpdateBansRequest(PlayFab::Wrappers::PFAccountManagementUpdateBansRequestWrapper<>& request);
+    static HRESULT ValidateServerUpdateBansResponse(PFAccountManagementUpdateBansResult* result);
 
     struct AccountManagementTestData
     {

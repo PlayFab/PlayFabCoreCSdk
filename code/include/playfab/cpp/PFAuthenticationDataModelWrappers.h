@@ -2628,6 +2628,102 @@ private:
 };
 
 template<template<typename AllocT> class Alloc = std::allocator>
+class PFAuthenticationLoginWithGooglePlayGamesServicesRequestWrapper : public ModelWrapper<PFAuthenticationLoginWithGooglePlayGamesServicesRequest, Alloc>
+{
+public:
+    using ModelType = typename PFAuthenticationLoginWithGooglePlayGamesServicesRequest;
+    using String = typename std::basic_string<char, std::char_traits<char>, Alloc<char>>;
+    template<typename T> using Vector = typename std::vector<T, Alloc<T>>;
+
+    PFAuthenticationLoginWithGooglePlayGamesServicesRequestWrapper() = default;
+
+    PFAuthenticationLoginWithGooglePlayGamesServicesRequestWrapper(const PFAuthenticationLoginWithGooglePlayGamesServicesRequest& model) :
+        ModelWrapper<PFAuthenticationLoginWithGooglePlayGamesServicesRequest, Alloc>{ model },
+        m_customTags{ model.customTags, model.customTags + model.customTagsCount },
+        m_infoRequestParameters{ model.infoRequestParameters ? StdExtra::optional<PFGetPlayerCombinedInfoRequestParamsWrapper<Alloc>>{ *model.infoRequestParameters } : StdExtra::nullopt },
+        m_playerSecret{ SafeString(model.playerSecret) },
+        m_serverAuthCode{ SafeString(model.serverAuthCode) }
+    {
+        SetModelPointers();
+    }
+
+    PFAuthenticationLoginWithGooglePlayGamesServicesRequestWrapper(const PFAuthenticationLoginWithGooglePlayGamesServicesRequestWrapper& src) :
+        PFAuthenticationLoginWithGooglePlayGamesServicesRequestWrapper{ src.Model() }
+    {
+    }
+
+    PFAuthenticationLoginWithGooglePlayGamesServicesRequestWrapper(PFAuthenticationLoginWithGooglePlayGamesServicesRequestWrapper&& src) :
+        PFAuthenticationLoginWithGooglePlayGamesServicesRequestWrapper{}
+    {
+        swap(*this, src);
+    }
+
+    PFAuthenticationLoginWithGooglePlayGamesServicesRequestWrapper& operator=(PFAuthenticationLoginWithGooglePlayGamesServicesRequestWrapper src) 
+    {
+        swap(*this, src);
+        return *this;
+    }
+
+    virtual ~PFAuthenticationLoginWithGooglePlayGamesServicesRequestWrapper() = default;
+
+    friend void swap(PFAuthenticationLoginWithGooglePlayGamesServicesRequestWrapper& lhs, PFAuthenticationLoginWithGooglePlayGamesServicesRequestWrapper& rhs)
+    {
+        using std::swap;
+        swap(lhs.m_model, rhs.m_model);
+        swap(lhs.m_customTags, rhs.m_customTags);
+        swap(lhs.m_infoRequestParameters, rhs.m_infoRequestParameters);
+        swap(lhs.m_playerSecret, rhs.m_playerSecret);
+        swap(lhs.m_serverAuthCode, rhs.m_serverAuthCode);
+        lhs.SetModelPointers();
+        rhs.SetModelPointers();
+    }
+
+    void SetCreateAccount(bool value)
+    {
+        this->m_model.createAccount = value;
+    }
+
+    void SetCustomTags(StringDictionaryEntryVector<Alloc> value)
+    {
+        m_customTags = std::move(value);
+        this->m_model.customTags =  m_customTags.empty() ? nullptr : m_customTags.data();
+        this->m_model.customTagsCount =  static_cast<uint32_t>(m_customTags.size());
+    }
+
+    void SetInfoRequestParameters(StdExtra::optional<PFGetPlayerCombinedInfoRequestParamsWrapper<Alloc>> value)
+    {
+        m_infoRequestParameters = std::move(value);
+        this->m_model.infoRequestParameters = m_infoRequestParameters ? &m_infoRequestParameters->Model() : nullptr;
+    }
+
+    void SetPlayerSecret(String value)
+    {
+        m_playerSecret = std::move(value);
+        this->m_model.playerSecret =  m_playerSecret.empty() ? nullptr : m_playerSecret.data();
+    }
+
+    void SetServerAuthCode(String value)
+    {
+        m_serverAuthCode = std::move(value);
+        this->m_model.serverAuthCode =  m_serverAuthCode.empty() ? nullptr : m_serverAuthCode.data();
+    }
+
+private:
+    void SetModelPointers()
+    {
+        this->m_model.customTags = m_customTags.empty() ? nullptr : m_customTags.data();
+        this->m_model.infoRequestParameters = m_infoRequestParameters ?  &m_infoRequestParameters->Model() : nullptr;
+        this->m_model.playerSecret = m_playerSecret.empty() ? nullptr : m_playerSecret.data();
+        this->m_model.serverAuthCode = m_serverAuthCode.empty() ? nullptr : m_serverAuthCode.data();
+    }
+
+    StringDictionaryEntryVector<Alloc> m_customTags;
+    StdExtra::optional<PFGetPlayerCombinedInfoRequestParamsWrapper<Alloc>> m_infoRequestParameters;
+    String m_playerSecret;
+    String m_serverAuthCode;
+};
+
+template<template<typename AllocT> class Alloc = std::allocator>
 class PFAuthenticationLoginWithIOSDeviceIDRequestWrapper : public ModelWrapper<PFAuthenticationLoginWithIOSDeviceIDRequest, Alloc>
 {
 public:
@@ -4405,6 +4501,213 @@ private:
 
     String m_playerSecret;
     String m_playFabId;
+};
+
+template<template<typename AllocT> class Alloc = std::allocator>
+class PFAuthenticationAuthenticateCustomIdRequestWrapper : public ModelWrapper<PFAuthenticationAuthenticateCustomIdRequest, Alloc>
+{
+public:
+    using ModelType = typename PFAuthenticationAuthenticateCustomIdRequest;
+    using String = typename std::basic_string<char, std::char_traits<char>, Alloc<char>>;
+    template<typename T> using Vector = typename std::vector<T, Alloc<T>>;
+
+    PFAuthenticationAuthenticateCustomIdRequestWrapper() = default;
+
+    PFAuthenticationAuthenticateCustomIdRequestWrapper(const PFAuthenticationAuthenticateCustomIdRequest& model) :
+        ModelWrapper<PFAuthenticationAuthenticateCustomIdRequest, Alloc>{ model },
+        m_customId{ SafeString(model.customId) },
+        m_customTags{ model.customTags, model.customTags + model.customTagsCount }
+    {
+        SetModelPointers();
+    }
+
+    PFAuthenticationAuthenticateCustomIdRequestWrapper(const PFAuthenticationAuthenticateCustomIdRequestWrapper& src) :
+        PFAuthenticationAuthenticateCustomIdRequestWrapper{ src.Model() }
+    {
+    }
+
+    PFAuthenticationAuthenticateCustomIdRequestWrapper(PFAuthenticationAuthenticateCustomIdRequestWrapper&& src) :
+        PFAuthenticationAuthenticateCustomIdRequestWrapper{}
+    {
+        swap(*this, src);
+    }
+
+    PFAuthenticationAuthenticateCustomIdRequestWrapper& operator=(PFAuthenticationAuthenticateCustomIdRequestWrapper src) 
+    {
+        swap(*this, src);
+        return *this;
+    }
+
+    virtual ~PFAuthenticationAuthenticateCustomIdRequestWrapper() = default;
+
+    friend void swap(PFAuthenticationAuthenticateCustomIdRequestWrapper& lhs, PFAuthenticationAuthenticateCustomIdRequestWrapper& rhs)
+    {
+        using std::swap;
+        swap(lhs.m_model, rhs.m_model);
+        swap(lhs.m_customId, rhs.m_customId);
+        swap(lhs.m_customTags, rhs.m_customTags);
+        lhs.SetModelPointers();
+        rhs.SetModelPointers();
+    }
+
+    void SetCustomId(String value)
+    {
+        m_customId = std::move(value);
+        this->m_model.customId =  m_customId.empty() ? nullptr : m_customId.data();
+    }
+
+    void SetCustomTags(StringDictionaryEntryVector<Alloc> value)
+    {
+        m_customTags = std::move(value);
+        this->m_model.customTags =  m_customTags.empty() ? nullptr : m_customTags.data();
+        this->m_model.customTagsCount =  static_cast<uint32_t>(m_customTags.size());
+    }
+
+private:
+    void SetModelPointers()
+    {
+        this->m_model.customId = m_customId.empty() ? nullptr : m_customId.data();
+        this->m_model.customTags = m_customTags.empty() ? nullptr : m_customTags.data();
+    }
+
+    String m_customId;
+    StringDictionaryEntryVector<Alloc> m_customTags;
+};
+
+template<template<typename AllocT> class Alloc = std::allocator>
+class PFAuthenticationAuthenticateCustomIdResultWrapper : public ModelWrapper<PFAuthenticationAuthenticateCustomIdResult, Alloc>
+{
+public:
+    using ModelType = typename PFAuthenticationAuthenticateCustomIdResult;
+    using String = typename std::basic_string<char, std::char_traits<char>, Alloc<char>>;
+    template<typename T> using Vector = typename std::vector<T, Alloc<T>>;
+
+    PFAuthenticationAuthenticateCustomIdResultWrapper() = default;
+
+    PFAuthenticationAuthenticateCustomIdResultWrapper(const PFAuthenticationAuthenticateCustomIdResult& model) :
+        ModelWrapper<PFAuthenticationAuthenticateCustomIdResult, Alloc>{ model },
+        m_entityToken{ model.entityToken ? StdExtra::optional<PFAuthenticationEntityTokenResponseWrapper<Alloc>>{ *model.entityToken } : StdExtra::nullopt }
+    {
+        SetModelPointers();
+    }
+
+    PFAuthenticationAuthenticateCustomIdResultWrapper(const PFAuthenticationAuthenticateCustomIdResultWrapper& src) :
+        PFAuthenticationAuthenticateCustomIdResultWrapper{ src.Model() }
+    {
+    }
+
+    PFAuthenticationAuthenticateCustomIdResultWrapper(PFAuthenticationAuthenticateCustomIdResultWrapper&& src) :
+        PFAuthenticationAuthenticateCustomIdResultWrapper{}
+    {
+        swap(*this, src);
+    }
+
+    PFAuthenticationAuthenticateCustomIdResultWrapper& operator=(PFAuthenticationAuthenticateCustomIdResultWrapper src) 
+    {
+        swap(*this, src);
+        return *this;
+    }
+
+    virtual ~PFAuthenticationAuthenticateCustomIdResultWrapper() = default;
+
+    friend void swap(PFAuthenticationAuthenticateCustomIdResultWrapper& lhs, PFAuthenticationAuthenticateCustomIdResultWrapper& rhs)
+    {
+        using std::swap;
+        swap(lhs.m_model, rhs.m_model);
+        swap(lhs.m_entityToken, rhs.m_entityToken);
+        lhs.SetModelPointers();
+        rhs.SetModelPointers();
+    }
+
+    void SetEntityToken(StdExtra::optional<PFAuthenticationEntityTokenResponseWrapper<Alloc>> value)
+    {
+        m_entityToken = std::move(value);
+        this->m_model.entityToken = m_entityToken ? &m_entityToken->Model() : nullptr;
+    }
+
+    void SetNewlyCreated(bool value)
+    {
+        this->m_model.newlyCreated = value;
+    }
+
+private:
+    void SetModelPointers()
+    {
+        this->m_model.entityToken = m_entityToken ?  &m_entityToken->Model() : nullptr;
+    }
+
+    StdExtra::optional<PFAuthenticationEntityTokenResponseWrapper<Alloc>> m_entityToken;
+};
+
+template<template<typename AllocT> class Alloc = std::allocator>
+class PFAuthenticationDeleteRequestWrapper : public ModelWrapper<PFAuthenticationDeleteRequest, Alloc>
+{
+public:
+    using ModelType = typename PFAuthenticationDeleteRequest;
+    using String = typename std::basic_string<char, std::char_traits<char>, Alloc<char>>;
+    template<typename T> using Vector = typename std::vector<T, Alloc<T>>;
+
+    PFAuthenticationDeleteRequestWrapper() = default;
+
+    PFAuthenticationDeleteRequestWrapper(const PFAuthenticationDeleteRequest& model) :
+        ModelWrapper<PFAuthenticationDeleteRequest, Alloc>{ model },
+        m_customTags{ model.customTags, model.customTags + model.customTagsCount },
+        m_entity{ model.entity ? *model.entity : decltype(*model.entity){} }
+    {
+        SetModelPointers();
+    }
+
+    PFAuthenticationDeleteRequestWrapper(const PFAuthenticationDeleteRequestWrapper& src) :
+        PFAuthenticationDeleteRequestWrapper{ src.Model() }
+    {
+    }
+
+    PFAuthenticationDeleteRequestWrapper(PFAuthenticationDeleteRequestWrapper&& src) :
+        PFAuthenticationDeleteRequestWrapper{}
+    {
+        swap(*this, src);
+    }
+
+    PFAuthenticationDeleteRequestWrapper& operator=(PFAuthenticationDeleteRequestWrapper src) 
+    {
+        swap(*this, src);
+        return *this;
+    }
+
+    virtual ~PFAuthenticationDeleteRequestWrapper() = default;
+
+    friend void swap(PFAuthenticationDeleteRequestWrapper& lhs, PFAuthenticationDeleteRequestWrapper& rhs)
+    {
+        using std::swap;
+        swap(lhs.m_model, rhs.m_model);
+        swap(lhs.m_customTags, rhs.m_customTags);
+        swap(lhs.m_entity, rhs.m_entity);
+        lhs.SetModelPointers();
+        rhs.SetModelPointers();
+    }
+
+    void SetCustomTags(StringDictionaryEntryVector<Alloc> value)
+    {
+        m_customTags = std::move(value);
+        this->m_model.customTags =  m_customTags.empty() ? nullptr : m_customTags.data();
+        this->m_model.customTagsCount =  static_cast<uint32_t>(m_customTags.size());
+    }
+
+    void SetEntity(PFEntityKeyWrapper<Alloc> value)
+    {
+        m_entity = std::move(value);
+        this->m_model.entity = &m_entity.Model();
+    }
+
+private:
+    void SetModelPointers()
+    {
+        this->m_model.customTags = m_customTags.empty() ? nullptr : m_customTags.data();
+        this->m_model.entity = &m_entity.Model();
+    }
+
+    StringDictionaryEntryVector<Alloc> m_customTags;
+    PFEntityKeyWrapper<Alloc> m_entity;
 };
 
 template<template<typename AllocT> class Alloc = std::allocator>

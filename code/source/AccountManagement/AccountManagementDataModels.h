@@ -647,6 +647,39 @@ public:
     static HRESULT Copy(const PFAccountManagementGetAccountInfoResult& input, PFAccountManagementGetAccountInfoResult& output, ModelBuffer& buffer);
 };
 
+class GetPlayerCombinedInfoRequest : public Wrappers::PFAccountManagementGetPlayerCombinedInfoRequestWrapper<Allocator>, public InputModel
+{
+public:
+    using ModelWrapperType = typename Wrappers::PFAccountManagementGetPlayerCombinedInfoRequestWrapper<Allocator>;
+    using ModelWrapperType::ModelType;
+
+    // Constructors
+    using ModelWrapperType::ModelWrapperType;
+
+    // InputModel
+    JsonValue ToJson() const override;
+    static JsonValue ToJson(const PFAccountManagementGetPlayerCombinedInfoRequest& input);
+
+};
+
+class GetPlayerCombinedInfoResult : public Wrappers::PFAccountManagementGetPlayerCombinedInfoResultWrapper<Allocator>, public OutputModel<PFAccountManagementGetPlayerCombinedInfoResult>
+{
+public:
+    using ModelWrapperType = typename Wrappers::PFAccountManagementGetPlayerCombinedInfoResultWrapper<Allocator>;
+    using ModelWrapperType::ModelType;
+
+    // Constructors
+    using ModelWrapperType::ModelWrapperType;
+
+    // OutputModel
+    void FromJson(const JsonValue& input) override;
+    size_t RequiredBufferSize() const override;
+    Result<PFAccountManagementGetPlayerCombinedInfoResult const*> Copy(ModelBuffer& buffer) const override;
+
+    static size_t RequiredBufferSize(const PFAccountManagementGetPlayerCombinedInfoResult& model);
+    static HRESULT Copy(const PFAccountManagementGetPlayerCombinedInfoResult& input, PFAccountManagementGetPlayerCombinedInfoResult& output, ModelBuffer& buffer);
+};
+
 class GetPlayFabIDsFromFacebookIDsRequest : public Wrappers::PFAccountManagementGetPlayFabIDsFromFacebookIDsRequestWrapper<Allocator>, public InputModel
 {
 public:
@@ -902,6 +935,57 @@ public:
     static HRESULT Copy(const PFAccountManagementGetPlayFabIDsFromGoogleIDsResult& input, PFAccountManagementGetPlayFabIDsFromGoogleIDsResult& output, ModelBuffer& buffer);
 };
 
+class GetPlayFabIDsFromGooglePlayGamesPlayerIDsRequest : public Wrappers::PFAccountManagementGetPlayFabIDsFromGooglePlayGamesPlayerIDsRequestWrapper<Allocator>, public InputModel
+{
+public:
+    using ModelWrapperType = typename Wrappers::PFAccountManagementGetPlayFabIDsFromGooglePlayGamesPlayerIDsRequestWrapper<Allocator>;
+    using ModelWrapperType::ModelType;
+
+    // Constructors
+    using ModelWrapperType::ModelWrapperType;
+
+    // InputModel
+    JsonValue ToJson() const override;
+    static JsonValue ToJson(const PFAccountManagementGetPlayFabIDsFromGooglePlayGamesPlayerIDsRequest& input);
+
+};
+
+class GooglePlayGamesPlayFabIdPair : public Wrappers::PFAccountManagementGooglePlayGamesPlayFabIdPairWrapper<Allocator>, public OutputModel<PFAccountManagementGooglePlayGamesPlayFabIdPair>
+{
+public:
+    using ModelWrapperType = typename Wrappers::PFAccountManagementGooglePlayGamesPlayFabIdPairWrapper<Allocator>;
+    using ModelWrapperType::ModelType;
+
+    // Constructors
+    using ModelWrapperType::ModelWrapperType;
+
+    // OutputModel
+    void FromJson(const JsonValue& input) override;
+    size_t RequiredBufferSize() const override;
+    Result<PFAccountManagementGooglePlayGamesPlayFabIdPair const*> Copy(ModelBuffer& buffer) const override;
+
+    static size_t RequiredBufferSize(const PFAccountManagementGooglePlayGamesPlayFabIdPair& model);
+    static HRESULT Copy(const PFAccountManagementGooglePlayGamesPlayFabIdPair& input, PFAccountManagementGooglePlayGamesPlayFabIdPair& output, ModelBuffer& buffer);
+};
+
+class GetPlayFabIDsFromGooglePlayGamesPlayerIDsResult : public Wrappers::PFAccountManagementGetPlayFabIDsFromGooglePlayGamesPlayerIDsResultWrapper<Allocator>, public OutputModel<PFAccountManagementGetPlayFabIDsFromGooglePlayGamesPlayerIDsResult>
+{
+public:
+    using ModelWrapperType = typename Wrappers::PFAccountManagementGetPlayFabIDsFromGooglePlayGamesPlayerIDsResultWrapper<Allocator>;
+    using ModelWrapperType::ModelType;
+
+    // Constructors
+    using ModelWrapperType::ModelWrapperType;
+
+    // OutputModel
+    void FromJson(const JsonValue& input) override;
+    size_t RequiredBufferSize() const override;
+    Result<PFAccountManagementGetPlayFabIDsFromGooglePlayGamesPlayerIDsResult const*> Copy(ModelBuffer& buffer) const override;
+
+    static size_t RequiredBufferSize(const PFAccountManagementGetPlayFabIDsFromGooglePlayGamesPlayerIDsResult& model);
+    static HRESULT Copy(const PFAccountManagementGetPlayFabIDsFromGooglePlayGamesPlayerIDsResult& input, PFAccountManagementGetPlayFabIDsFromGooglePlayGamesPlayerIDsResult& output, ModelBuffer& buffer);
+};
+
 class GetPlayFabIDsFromKongregateIDsRequest : public Wrappers::PFAccountManagementGetPlayFabIDsFromKongregateIDsRequestWrapper<Allocator>, public InputModel
 {
 public:
@@ -951,6 +1035,57 @@ public:
 
     static size_t RequiredBufferSize(const PFAccountManagementGetPlayFabIDsFromKongregateIDsResult& model);
     static HRESULT Copy(const PFAccountManagementGetPlayFabIDsFromKongregateIDsResult& input, PFAccountManagementGetPlayFabIDsFromKongregateIDsResult& output, ModelBuffer& buffer);
+};
+
+class GetPlayFabIDsFromNintendoServiceAccountIdsRequest : public Wrappers::PFAccountManagementGetPlayFabIDsFromNintendoServiceAccountIdsRequestWrapper<Allocator>, public InputModel
+{
+public:
+    using ModelWrapperType = typename Wrappers::PFAccountManagementGetPlayFabIDsFromNintendoServiceAccountIdsRequestWrapper<Allocator>;
+    using ModelWrapperType::ModelType;
+
+    // Constructors
+    using ModelWrapperType::ModelWrapperType;
+
+    // InputModel
+    JsonValue ToJson() const override;
+    static JsonValue ToJson(const PFAccountManagementGetPlayFabIDsFromNintendoServiceAccountIdsRequest& input);
+
+};
+
+class NintendoServiceAccountPlayFabIdPair : public Wrappers::PFAccountManagementNintendoServiceAccountPlayFabIdPairWrapper<Allocator>, public OutputModel<PFAccountManagementNintendoServiceAccountPlayFabIdPair>
+{
+public:
+    using ModelWrapperType = typename Wrappers::PFAccountManagementNintendoServiceAccountPlayFabIdPairWrapper<Allocator>;
+    using ModelWrapperType::ModelType;
+
+    // Constructors
+    using ModelWrapperType::ModelWrapperType;
+
+    // OutputModel
+    void FromJson(const JsonValue& input) override;
+    size_t RequiredBufferSize() const override;
+    Result<PFAccountManagementNintendoServiceAccountPlayFabIdPair const*> Copy(ModelBuffer& buffer) const override;
+
+    static size_t RequiredBufferSize(const PFAccountManagementNintendoServiceAccountPlayFabIdPair& model);
+    static HRESULT Copy(const PFAccountManagementNintendoServiceAccountPlayFabIdPair& input, PFAccountManagementNintendoServiceAccountPlayFabIdPair& output, ModelBuffer& buffer);
+};
+
+class GetPlayFabIDsFromNintendoServiceAccountIdsResult : public Wrappers::PFAccountManagementGetPlayFabIDsFromNintendoServiceAccountIdsResultWrapper<Allocator>, public OutputModel<PFAccountManagementGetPlayFabIDsFromNintendoServiceAccountIdsResult>
+{
+public:
+    using ModelWrapperType = typename Wrappers::PFAccountManagementGetPlayFabIDsFromNintendoServiceAccountIdsResultWrapper<Allocator>;
+    using ModelWrapperType::ModelType;
+
+    // Constructors
+    using ModelWrapperType::ModelWrapperType;
+
+    // OutputModel
+    void FromJson(const JsonValue& input) override;
+    size_t RequiredBufferSize() const override;
+    Result<PFAccountManagementGetPlayFabIDsFromNintendoServiceAccountIdsResult const*> Copy(ModelBuffer& buffer) const override;
+
+    static size_t RequiredBufferSize(const PFAccountManagementGetPlayFabIDsFromNintendoServiceAccountIdsResult& model);
+    static HRESULT Copy(const PFAccountManagementGetPlayFabIDsFromNintendoServiceAccountIdsResult& input, PFAccountManagementGetPlayFabIDsFromNintendoServiceAccountIdsResult& output, ModelBuffer& buffer);
 };
 
 class GetPlayFabIDsFromNintendoSwitchDeviceIdsRequest : public Wrappers::PFAccountManagementGetPlayFabIDsFromNintendoSwitchDeviceIdsRequestWrapper<Allocator>, public InputModel
@@ -1313,6 +1448,21 @@ public:
 
 };
 
+class LinkGooglePlayGamesServicesAccountRequest : public Wrappers::PFAccountManagementLinkGooglePlayGamesServicesAccountRequestWrapper<Allocator>, public InputModel
+{
+public:
+    using ModelWrapperType = typename Wrappers::PFAccountManagementLinkGooglePlayGamesServicesAccountRequestWrapper<Allocator>;
+    using ModelWrapperType::ModelType;
+
+    // Constructors
+    using ModelWrapperType::ModelWrapperType;
+
+    // InputModel
+    JsonValue ToJson() const override;
+    static JsonValue ToJson(const PFAccountManagementLinkGooglePlayGamesServicesAccountRequest& input);
+
+};
+
 class LinkIOSDeviceIDRequest : public Wrappers::PFAccountManagementLinkIOSDeviceIDRequestWrapper<Allocator>, public InputModel
 {
 public:
@@ -1343,10 +1493,10 @@ public:
 
 };
 
-class LinkNintendoServiceAccountRequest : public Wrappers::PFAccountManagementLinkNintendoServiceAccountRequestWrapper<Allocator>, public InputModel
+class ClientLinkNintendoServiceAccountRequest : public Wrappers::PFAccountManagementClientLinkNintendoServiceAccountRequestWrapper<Allocator>, public InputModel
 {
 public:
-    using ModelWrapperType = typename Wrappers::PFAccountManagementLinkNintendoServiceAccountRequestWrapper<Allocator>;
+    using ModelWrapperType = typename Wrappers::PFAccountManagementClientLinkNintendoServiceAccountRequestWrapper<Allocator>;
     using ModelWrapperType::ModelType;
 
     // Constructors
@@ -1354,14 +1504,14 @@ public:
 
     // InputModel
     JsonValue ToJson() const override;
-    static JsonValue ToJson(const PFAccountManagementLinkNintendoServiceAccountRequest& input);
+    static JsonValue ToJson(const PFAccountManagementClientLinkNintendoServiceAccountRequest& input);
 
 };
 
-class LinkNintendoSwitchDeviceIdRequest : public Wrappers::PFAccountManagementLinkNintendoSwitchDeviceIdRequestWrapper<Allocator>, public InputModel
+class ClientLinkNintendoSwitchDeviceIdRequest : public Wrappers::PFAccountManagementClientLinkNintendoSwitchDeviceIdRequestWrapper<Allocator>, public InputModel
 {
 public:
-    using ModelWrapperType = typename Wrappers::PFAccountManagementLinkNintendoSwitchDeviceIdRequestWrapper<Allocator>;
+    using ModelWrapperType = typename Wrappers::PFAccountManagementClientLinkNintendoSwitchDeviceIdRequestWrapper<Allocator>;
     using ModelWrapperType::ModelType;
 
     // Constructors
@@ -1369,7 +1519,7 @@ public:
 
     // InputModel
     JsonValue ToJson() const override;
-    static JsonValue ToJson(const PFAccountManagementLinkNintendoSwitchDeviceIdRequest& input);
+    static JsonValue ToJson(const PFAccountManagementClientLinkNintendoSwitchDeviceIdRequest& input);
 
 };
 
@@ -1631,6 +1781,21 @@ public:
 
 };
 
+class UnlinkGooglePlayGamesServicesAccountRequest : public Wrappers::PFAccountManagementUnlinkGooglePlayGamesServicesAccountRequestWrapper<Allocator>, public InputModel
+{
+public:
+    using ModelWrapperType = typename Wrappers::PFAccountManagementUnlinkGooglePlayGamesServicesAccountRequestWrapper<Allocator>;
+    using ModelWrapperType::ModelType;
+
+    // Constructors
+    using ModelWrapperType::ModelWrapperType;
+
+    // InputModel
+    JsonValue ToJson() const override;
+    static JsonValue ToJson(const PFAccountManagementUnlinkGooglePlayGamesServicesAccountRequest& input);
+
+};
+
 class UnlinkIOSDeviceIDRequest : public Wrappers::PFAccountManagementUnlinkIOSDeviceIDRequestWrapper<Allocator>, public InputModel
 {
 public:
@@ -1661,10 +1826,10 @@ public:
 
 };
 
-class UnlinkNintendoServiceAccountRequest : public Wrappers::PFAccountManagementUnlinkNintendoServiceAccountRequestWrapper<Allocator>, public InputModel
+class ClientUnlinkNintendoServiceAccountRequest : public Wrappers::PFAccountManagementClientUnlinkNintendoServiceAccountRequestWrapper<Allocator>, public InputModel
 {
 public:
-    using ModelWrapperType = typename Wrappers::PFAccountManagementUnlinkNintendoServiceAccountRequestWrapper<Allocator>;
+    using ModelWrapperType = typename Wrappers::PFAccountManagementClientUnlinkNintendoServiceAccountRequestWrapper<Allocator>;
     using ModelWrapperType::ModelType;
 
     // Constructors
@@ -1672,14 +1837,14 @@ public:
 
     // InputModel
     JsonValue ToJson() const override;
-    static JsonValue ToJson(const PFAccountManagementUnlinkNintendoServiceAccountRequest& input);
+    static JsonValue ToJson(const PFAccountManagementClientUnlinkNintendoServiceAccountRequest& input);
 
 };
 
-class UnlinkNintendoSwitchDeviceIdRequest : public Wrappers::PFAccountManagementUnlinkNintendoSwitchDeviceIdRequestWrapper<Allocator>, public InputModel
+class ClientUnlinkNintendoSwitchDeviceIdRequest : public Wrappers::PFAccountManagementClientUnlinkNintendoSwitchDeviceIdRequestWrapper<Allocator>, public InputModel
 {
 public:
-    using ModelWrapperType = typename Wrappers::PFAccountManagementUnlinkNintendoSwitchDeviceIdRequestWrapper<Allocator>;
+    using ModelWrapperType = typename Wrappers::PFAccountManagementClientUnlinkNintendoSwitchDeviceIdRequestWrapper<Allocator>;
     using ModelWrapperType::ModelType;
 
     // Constructors
@@ -1687,7 +1852,7 @@ public:
 
     // InputModel
     JsonValue ToJson() const override;
-    static JsonValue ToJson(const PFAccountManagementUnlinkNintendoSwitchDeviceIdRequest& input);
+    static JsonValue ToJson(const PFAccountManagementClientUnlinkNintendoSwitchDeviceIdRequest& input);
 
 };
 
@@ -1811,21 +1976,6 @@ public:
 
 };
 
-class DeletePushNotificationTemplateRequest : public Wrappers::PFAccountManagementDeletePushNotificationTemplateRequestWrapper<Allocator>, public InputModel
-{
-public:
-    using ModelWrapperType = typename Wrappers::PFAccountManagementDeletePushNotificationTemplateRequestWrapper<Allocator>;
-    using ModelWrapperType::ModelType;
-
-    // Constructors
-    using ModelWrapperType::ModelWrapperType;
-
-    // InputModel
-    JsonValue ToJson() const override;
-    static JsonValue ToJson(const PFAccountManagementDeletePushNotificationTemplateRequest& input);
-
-};
-
 class GetServerCustomIDsFromPlayFabIDsRequest : public Wrappers::PFAccountManagementGetServerCustomIDsFromPlayFabIDsRequestWrapper<Allocator>, public InputModel
 {
 public:
@@ -1910,6 +2060,36 @@ public:
     static HRESULT Copy(const PFAccountManagementGetUserAccountInfoResult& input, PFAccountManagementGetUserAccountInfoResult& output, ModelBuffer& buffer);
 };
 
+class ServerLinkNintendoServiceAccountRequest : public Wrappers::PFAccountManagementServerLinkNintendoServiceAccountRequestWrapper<Allocator>, public InputModel
+{
+public:
+    using ModelWrapperType = typename Wrappers::PFAccountManagementServerLinkNintendoServiceAccountRequestWrapper<Allocator>;
+    using ModelWrapperType::ModelType;
+
+    // Constructors
+    using ModelWrapperType::ModelWrapperType;
+
+    // InputModel
+    JsonValue ToJson() const override;
+    static JsonValue ToJson(const PFAccountManagementServerLinkNintendoServiceAccountRequest& input);
+
+};
+
+class ServerLinkNintendoSwitchDeviceIdRequest : public Wrappers::PFAccountManagementServerLinkNintendoSwitchDeviceIdRequestWrapper<Allocator>, public InputModel
+{
+public:
+    using ModelWrapperType = typename Wrappers::PFAccountManagementServerLinkNintendoSwitchDeviceIdRequestWrapper<Allocator>;
+    using ModelWrapperType::ModelType;
+
+    // Constructors
+    using ModelWrapperType::ModelWrapperType;
+
+    // InputModel
+    JsonValue ToJson() const override;
+    static JsonValue ToJson(const PFAccountManagementServerLinkNintendoSwitchDeviceIdRequest& input);
+
+};
+
 class ServerLinkPSNAccountRequest : public Wrappers::PFAccountManagementServerLinkPSNAccountRequestWrapper<Allocator>, public InputModel
 {
 public:
@@ -1970,55 +2150,6 @@ public:
 
 };
 
-class LocalizedPushNotificationProperties : public Wrappers::PFAccountManagementLocalizedPushNotificationPropertiesWrapper<Allocator>, public InputModel
-{
-public:
-    using ModelWrapperType = typename Wrappers::PFAccountManagementLocalizedPushNotificationPropertiesWrapper<Allocator>;
-    using ModelWrapperType::ModelType;
-    using DictionaryEntryType = ModelWrapperType::DictionaryEntryType;
-
-    // Constructors
-    using ModelWrapperType::ModelWrapperType;
-
-    // InputModel
-    JsonValue ToJson() const override;
-    static JsonValue ToJson(const PFAccountManagementLocalizedPushNotificationProperties& input);
-
-};
-
-class SavePushNotificationTemplateRequest : public Wrappers::PFAccountManagementSavePushNotificationTemplateRequestWrapper<Allocator>, public InputModel
-{
-public:
-    using ModelWrapperType = typename Wrappers::PFAccountManagementSavePushNotificationTemplateRequestWrapper<Allocator>;
-    using ModelWrapperType::ModelType;
-
-    // Constructors
-    using ModelWrapperType::ModelWrapperType;
-
-    // InputModel
-    JsonValue ToJson() const override;
-    static JsonValue ToJson(const PFAccountManagementSavePushNotificationTemplateRequest& input);
-
-};
-
-class SavePushNotificationTemplateResult : public Wrappers::PFAccountManagementSavePushNotificationTemplateResultWrapper<Allocator>, public OutputModel<PFAccountManagementSavePushNotificationTemplateResult>
-{
-public:
-    using ModelWrapperType = typename Wrappers::PFAccountManagementSavePushNotificationTemplateResultWrapper<Allocator>;
-    using ModelWrapperType::ModelType;
-
-    // Constructors
-    using ModelWrapperType::ModelWrapperType;
-
-    // OutputModel
-    void FromJson(const JsonValue& input) override;
-    size_t RequiredBufferSize() const override;
-    Result<PFAccountManagementSavePushNotificationTemplateResult const*> Copy(ModelBuffer& buffer) const override;
-
-    static size_t RequiredBufferSize(const PFAccountManagementSavePushNotificationTemplateResult& model);
-    static HRESULT Copy(const PFAccountManagementSavePushNotificationTemplateResult& input, PFAccountManagementSavePushNotificationTemplateResult& output, ModelBuffer& buffer);
-};
-
 class SendCustomAccountRecoveryEmailRequest : public Wrappers::PFAccountManagementSendCustomAccountRecoveryEmailRequestWrapper<Allocator>, public InputModel
 {
 public:
@@ -2049,10 +2180,10 @@ public:
 
 };
 
-class AdvancedPushPlatformMsg : public Wrappers::PFAccountManagementAdvancedPushPlatformMsgWrapper<Allocator>, public InputModel
+class ServerUnlinkNintendoServiceAccountRequest : public Wrappers::PFAccountManagementServerUnlinkNintendoServiceAccountRequestWrapper<Allocator>, public InputModel
 {
 public:
-    using ModelWrapperType = typename Wrappers::PFAccountManagementAdvancedPushPlatformMsgWrapper<Allocator>;
+    using ModelWrapperType = typename Wrappers::PFAccountManagementServerUnlinkNintendoServiceAccountRequestWrapper<Allocator>;
     using ModelWrapperType::ModelType;
 
     // Constructors
@@ -2060,14 +2191,14 @@ public:
 
     // InputModel
     JsonValue ToJson() const override;
-    static JsonValue ToJson(const PFAccountManagementAdvancedPushPlatformMsg& input);
+    static JsonValue ToJson(const PFAccountManagementServerUnlinkNintendoServiceAccountRequest& input);
 
 };
 
-class PushNotificationPackage : public Wrappers::PFAccountManagementPushNotificationPackageWrapper<Allocator>, public InputModel
+class ServerUnlinkNintendoSwitchDeviceIdRequest : public Wrappers::PFAccountManagementServerUnlinkNintendoSwitchDeviceIdRequestWrapper<Allocator>, public InputModel
 {
 public:
-    using ModelWrapperType = typename Wrappers::PFAccountManagementPushNotificationPackageWrapper<Allocator>;
+    using ModelWrapperType = typename Wrappers::PFAccountManagementServerUnlinkNintendoSwitchDeviceIdRequestWrapper<Allocator>;
     using ModelWrapperType::ModelType;
 
     // Constructors
@@ -2075,37 +2206,7 @@ public:
 
     // InputModel
     JsonValue ToJson() const override;
-    static JsonValue ToJson(const PFAccountManagementPushNotificationPackage& input);
-
-};
-
-class SendPushNotificationRequest : public Wrappers::PFAccountManagementSendPushNotificationRequestWrapper<Allocator>, public InputModel
-{
-public:
-    using ModelWrapperType = typename Wrappers::PFAccountManagementSendPushNotificationRequestWrapper<Allocator>;
-    using ModelWrapperType::ModelType;
-
-    // Constructors
-    using ModelWrapperType::ModelWrapperType;
-
-    // InputModel
-    JsonValue ToJson() const override;
-    static JsonValue ToJson(const PFAccountManagementSendPushNotificationRequest& input);
-
-};
-
-class SendPushNotificationFromTemplateRequest : public Wrappers::PFAccountManagementSendPushNotificationFromTemplateRequestWrapper<Allocator>, public InputModel
-{
-public:
-    using ModelWrapperType = typename Wrappers::PFAccountManagementSendPushNotificationFromTemplateRequestWrapper<Allocator>;
-    using ModelWrapperType::ModelType;
-
-    // Constructors
-    using ModelWrapperType::ModelWrapperType;
-
-    // InputModel
-    JsonValue ToJson() const override;
-    static JsonValue ToJson(const PFAccountManagementSendPushNotificationFromTemplateRequest& input);
+    static JsonValue ToJson(const PFAccountManagementServerUnlinkNintendoSwitchDeviceIdRequest& input);
 
 };
 

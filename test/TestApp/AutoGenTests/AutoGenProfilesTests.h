@@ -15,7 +15,9 @@ private:
     static void Log(std::stringstream& ss);
     static HRESULT LogHR(HRESULT hr);
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestProfilesGetGlobalPolicy(TestContext& testContext);
+#endif
 
     void TestProfilesGetProfile(TestContext& testContext);
 
@@ -23,7 +25,9 @@ private:
 
     void TestProfilesGetTitlePlayersFromMasterPlayerAccountIds(TestContext& testContext);
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestProfilesSetGlobalPolicy(TestContext& testContext);
+#endif
 
     void TestProfilesSetProfileLanguage(TestContext& testContext);
 
@@ -34,37 +38,38 @@ protected:
     void AddTests();
 
     static void LogGetGlobalPolicyRequest(PFProfilesGetGlobalPolicyRequest const* request, const char* testName);
-    static void FillGetGlobalPolicyRequest(PlayFab::Wrappers::PFProfilesGetGlobalPolicyRequestWrapper<>& request);
-    static HRESULT LogPFProfilesGetGlobalPolicyResponse(PFProfilesGetGlobalPolicyResponse const* result);
-    static HRESULT ValidatePFProfilesGetGlobalPolicyResponse(PFProfilesGetGlobalPolicyResponse* result);
-
+    static HRESULT LogGetGlobalPolicyResponse(PFProfilesGetGlobalPolicyResponse const* result);
     static void LogGetEntityProfileRequest(PFProfilesGetEntityProfileRequest const* request, const char* testName);
-    static void FillGetEntityProfileRequest(PlayFab::Wrappers::PFProfilesGetEntityProfileRequestWrapper<>& request);
-    static HRESULT LogPFProfilesGetEntityProfileResponse(PFProfilesGetEntityProfileResponse const* result);
-    static HRESULT ValidatePFProfilesGetEntityProfileResponse(PFProfilesGetEntityProfileResponse* result);
-
+    static HRESULT LogGetEntityProfileResponse(PFProfilesGetEntityProfileResponse const* result);
     static void LogGetEntityProfilesRequest(PFProfilesGetEntityProfilesRequest const* request, const char* testName);
-    static void FillGetEntityProfilesRequest(PlayFab::Wrappers::PFProfilesGetEntityProfilesRequestWrapper<>& request);
-    static HRESULT LogPFProfilesGetEntityProfilesResponse(PFProfilesGetEntityProfilesResponse const* result);
-    static HRESULT ValidatePFProfilesGetEntityProfilesResponse(PFProfilesGetEntityProfilesResponse* result);
-
+    static HRESULT LogGetEntityProfilesResponse(PFProfilesGetEntityProfilesResponse const* result);
     static void LogGetTitlePlayersFromMasterPlayerAccountIdsRequest(PFProfilesGetTitlePlayersFromMasterPlayerAccountIdsRequest const* request, const char* testName);
-    static void FillGetTitlePlayersFromMasterPlayerAccountIdsRequest(PlayFab::Wrappers::PFProfilesGetTitlePlayersFromMasterPlayerAccountIdsRequestWrapper<>& request);
-    static HRESULT LogPFProfilesGetTitlePlayersFromMasterPlayerAccountIdsResponse(PFProfilesGetTitlePlayersFromMasterPlayerAccountIdsResponse const* result);
-    static HRESULT ValidatePFProfilesGetTitlePlayersFromMasterPlayerAccountIdsResponse(PFProfilesGetTitlePlayersFromMasterPlayerAccountIdsResponse* result);
-
+    static HRESULT LogGetTitlePlayersFromMasterPlayerAccountIdsResponse(PFProfilesGetTitlePlayersFromMasterPlayerAccountIdsResponse const* result);
     static void LogSetGlobalPolicyRequest(PFProfilesSetGlobalPolicyRequest const* request, const char* testName);
-    static void FillSetGlobalPolicyRequest(PlayFab::Wrappers::PFProfilesSetGlobalPolicyRequestWrapper<>& request);
-
     static void LogSetProfileLanguageRequest(PFProfilesSetProfileLanguageRequest const* request, const char* testName);
-    static void FillSetProfileLanguageRequest(PlayFab::Wrappers::PFProfilesSetProfileLanguageRequestWrapper<>& request);
-    static HRESULT LogPFProfilesSetProfileLanguageResponse(PFProfilesSetProfileLanguageResponse const* result);
-    static HRESULT ValidatePFProfilesSetProfileLanguageResponse(PFProfilesSetProfileLanguageResponse* result);
-
+    static HRESULT LogSetProfileLanguageResponse(PFProfilesSetProfileLanguageResponse const* result);
     static void LogSetEntityProfilePolicyRequest(PFProfilesSetEntityProfilePolicyRequest const* request, const char* testName);
-    static void FillSetEntityProfilePolicyRequest(PlayFab::Wrappers::PFProfilesSetEntityProfilePolicyRequestWrapper<>& request);
-    static HRESULT LogPFProfilesSetEntityProfilePolicyResponse(PFProfilesSetEntityProfilePolicyResponse const* result);
-    static HRESULT ValidatePFProfilesSetEntityProfilePolicyResponse(PFProfilesSetEntityProfilePolicyResponse* result);
+    static HRESULT LogSetEntityProfilePolicyResponse(PFProfilesSetEntityProfilePolicyResponse const* result);
+
+    void FillGetGlobalPolicyRequest(PlayFab::Wrappers::PFProfilesGetGlobalPolicyRequestWrapper<>& request);
+    static HRESULT ValidateGetGlobalPolicyResponse(PFProfilesGetGlobalPolicyResponse* result);
+
+    void FillGetProfileRequest(PlayFab::Wrappers::PFProfilesGetEntityProfileRequestWrapper<>& request);
+    static HRESULT ValidateGetProfileResponse(PFProfilesGetEntityProfileResponse* result);
+
+    void FillGetProfilesRequest(PlayFab::Wrappers::PFProfilesGetEntityProfilesRequestWrapper<>& request);
+    static HRESULT ValidateGetProfilesResponse(PFProfilesGetEntityProfilesResponse* result);
+
+    void FillGetTitlePlayersFromMasterPlayerAccountIdsRequest(PlayFab::Wrappers::PFProfilesGetTitlePlayersFromMasterPlayerAccountIdsRequestWrapper<>& request);
+    static HRESULT ValidateGetTitlePlayersFromMasterPlayerAccountIdsResponse(PFProfilesGetTitlePlayersFromMasterPlayerAccountIdsResponse* result);
+
+    void FillSetGlobalPolicyRequest(PlayFab::Wrappers::PFProfilesSetGlobalPolicyRequestWrapper<>& request);
+
+    void FillSetProfileLanguageRequest(PlayFab::Wrappers::PFProfilesSetProfileLanguageRequestWrapper<>& request);
+    static HRESULT ValidateSetProfileLanguageResponse(PFProfilesSetProfileLanguageResponse* result);
+
+    void FillSetProfilePolicyRequest(PlayFab::Wrappers::PFProfilesSetEntityProfilePolicyRequestWrapper<>& request);
+    static HRESULT ValidateSetProfilePolicyResponse(PFProfilesSetEntityProfilePolicyResponse* result);
 
     struct ProfilesTestData
     {

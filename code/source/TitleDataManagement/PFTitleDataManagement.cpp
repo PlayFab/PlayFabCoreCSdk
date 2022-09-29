@@ -419,30 +419,6 @@ HRESULT PFTitleDataManagementAdminSetTitleDataAsync(
     return Provider::Run(UniquePtr<Provider>(provider.release()));
 }
 
-HRESULT PFTitleDataManagementAdminSetTitleDataGetResultSize(
-    _In_ XAsyncBlock* async,
-    _Out_ size_t* bufferSize
-) noexcept
-{
-    return XAsyncGetResultSize(async, bufferSize);
-}
-
-HRESULT PFTitleDataManagementAdminSetTitleDataGetResult(
-    _In_ XAsyncBlock* async,
-    _In_ size_t bufferSize,
-    _Out_writes_bytes_to_(bufferSize, *bufferUsed) void* buffer,
-    _Outptr_ PFTitleDataManagementSetTitleDataResult** result,
-    _Out_opt_ size_t* bufferUsed
-) noexcept
-{
-    RETURN_HR_INVALIDARG_IF_NULL(result);
-
-    RETURN_IF_FAILED(XAsyncGetResult(async, nullptr, bufferSize, buffer, bufferUsed));
-    *result = static_cast<PFTitleDataManagementSetTitleDataResult*>(buffer);
-
-    return S_OK;
-}
-
 HRESULT PFTitleDataManagementAdminSetTitleDataAndOverridesAsync(
     _In_ PFStateHandle contextHandle,
     _In_ const PFTitleDataManagementSetTitleDataAndOverridesRequest* request,
@@ -467,30 +443,6 @@ HRESULT PFTitleDataManagementAdminSetTitleInternalDataAsync(
 
     auto provider = MakeProvider(async, __FUNCTION__, std::bind(&TitleDataManagementAPI::AdminSetTitleInternalData, contextHandle->state, *request, std::placeholders::_1));
     return Provider::Run(UniquePtr<Provider>(provider.release()));
-}
-
-HRESULT PFTitleDataManagementAdminSetTitleInternalDataGetResultSize(
-    _In_ XAsyncBlock* async,
-    _Out_ size_t* bufferSize
-) noexcept
-{
-    return XAsyncGetResultSize(async, bufferSize);
-}
-
-HRESULT PFTitleDataManagementAdminSetTitleInternalDataGetResult(
-    _In_ XAsyncBlock* async,
-    _In_ size_t bufferSize,
-    _Out_writes_bytes_to_(bufferSize, *bufferUsed) void* buffer,
-    _Outptr_ PFTitleDataManagementSetTitleDataResult** result,
-    _Out_opt_ size_t* bufferUsed
-) noexcept
-{
-    RETURN_HR_INVALIDARG_IF_NULL(result);
-
-    RETURN_IF_FAILED(XAsyncGetResult(async, nullptr, bufferSize, buffer, bufferUsed));
-    *result = static_cast<PFTitleDataManagementSetTitleDataResult*>(buffer);
-
-    return S_OK;
 }
 
 HRESULT PFTitleDataManagementAdminSetupPushNotificationAsync(
@@ -1040,30 +992,6 @@ HRESULT PFTitleDataManagementServerSetTitleDataAsync(
     return Provider::Run(UniquePtr<Provider>(provider.release()));
 }
 
-HRESULT PFTitleDataManagementServerSetTitleDataGetResultSize(
-    _In_ XAsyncBlock* async,
-    _Out_ size_t* bufferSize
-) noexcept
-{
-    return XAsyncGetResultSize(async, bufferSize);
-}
-
-HRESULT PFTitleDataManagementServerSetTitleDataGetResult(
-    _In_ XAsyncBlock* async,
-    _In_ size_t bufferSize,
-    _Out_writes_bytes_to_(bufferSize, *bufferUsed) void* buffer,
-    _Outptr_ PFTitleDataManagementSetTitleDataResult** result,
-    _Out_opt_ size_t* bufferUsed
-) noexcept
-{
-    RETURN_HR_INVALIDARG_IF_NULL(result);
-
-    RETURN_IF_FAILED(XAsyncGetResult(async, nullptr, bufferSize, buffer, bufferUsed));
-    *result = static_cast<PFTitleDataManagementSetTitleDataResult*>(buffer);
-
-    return S_OK;
-}
-
 HRESULT PFTitleDataManagementServerSetTitleInternalDataAsync(
     _In_ PFStateHandle contextHandle,
     _In_ const PFTitleDataManagementSetTitleDataRequest* request,
@@ -1075,29 +1003,5 @@ HRESULT PFTitleDataManagementServerSetTitleInternalDataAsync(
 
     auto provider = MakeProvider(async, __FUNCTION__, std::bind(&TitleDataManagementAPI::ServerSetTitleInternalData, contextHandle->state, *request, std::placeholders::_1));
     return Provider::Run(UniquePtr<Provider>(provider.release()));
-}
-
-HRESULT PFTitleDataManagementServerSetTitleInternalDataGetResultSize(
-    _In_ XAsyncBlock* async,
-    _Out_ size_t* bufferSize
-) noexcept
-{
-    return XAsyncGetResultSize(async, bufferSize);
-}
-
-HRESULT PFTitleDataManagementServerSetTitleInternalDataGetResult(
-    _In_ XAsyncBlock* async,
-    _In_ size_t bufferSize,
-    _Out_writes_bytes_to_(bufferSize, *bufferUsed) void* buffer,
-    _Outptr_ PFTitleDataManagementSetTitleDataResult** result,
-    _Out_opt_ size_t* bufferUsed
-) noexcept
-{
-    RETURN_HR_INVALIDARG_IF_NULL(result);
-
-    RETURN_IF_FAILED(XAsyncGetResult(async, nullptr, bufferSize, buffer, bufferUsed));
-    *result = static_cast<PFTitleDataManagementSetTitleDataResult*>(buffer);
-
-    return S_OK;
 }
 

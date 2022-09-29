@@ -138,6 +138,18 @@ struct ServerLoginResultHolder : public XAsyncResult, public std::enable_shared_
     PFAuthenticationServerLoginResult* result{ nullptr };
 };
 
+struct AuthenticateCustomIdResultHolder : public XAsyncResult, public std::enable_shared_from_this<AuthenticateCustomIdResultHolder>
+{
+    AuthenticateCustomIdResultHolder() = default;
+    AuthenticateCustomIdResultHolder(const AuthenticateCustomIdResultHolder&) = delete;
+    AuthenticateCustomIdResultHolder(AuthenticateCustomIdResultHolder&&) = default;
+    AuthenticateCustomIdResultHolder& operator=(const AuthenticateCustomIdResultHolder&) = delete;
+    AuthenticateCustomIdResultHolder& operator=(AuthenticateCustomIdResultHolder&&) = default;
+    ~AuthenticateCustomIdResultHolder() = default;
+
+    PFAuthenticationAuthenticateCustomIdResult* result{ nullptr };
+};
+
 struct GetEntityTokenResponseHolder : public XAsyncResult, public std::enable_shared_from_this<GetEntityTokenResponseHolder>
 {
     GetEntityTokenResponseHolder() = default;

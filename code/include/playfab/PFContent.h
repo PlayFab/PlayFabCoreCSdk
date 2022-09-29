@@ -213,8 +213,6 @@ HRESULT PFContentClientGetContentDownloadUrlGetResult(
 /// <param name="async">XAsyncBlock for the async operation.</param>
 /// <returns>Result code for this API operation.</returns>
 /// <remarks>
-/// See also AdminDeleteContentAsync, ClientGetContentDownloadUrlAsync, AdminGetContentListAsync, AdminGetContentUploadUrlAsync.
-///
 /// If successful, call <see cref="PFContentServerGetContentDownloadUrlGetResult"/> to get the result.
 /// </remarks>
 HRESULT PFContentServerGetContentDownloadUrlAsync(

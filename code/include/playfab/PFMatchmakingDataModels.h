@@ -193,34 +193,6 @@ typedef struct PFMatchmakingGetMatchmakerGameModesResult
 } PFMatchmakingGetMatchmakerGameModesResult;
 
 /// <summary>
-/// PFMatchmakingModifyMatchmakerGameModesRequest data model. These details are used by the PlayFab matchmaking
-/// service to determine if an existing Game Server Instance has room for additional users, and by the
-/// PlayFab game server management service to determine when a new Game Server Host should be created
-/// in order to prevent excess load on existing Hosts. This operation is not additive. Using it will cause
-/// the game mode definition for the game server executable in question to be created from scratch. If
-/// there is an existing game server mode definition for the given BuildVersion, it will be deleted and
-/// replaced with the data specified in this call.
-/// </summary>
-typedef struct PFMatchmakingModifyMatchmakerGameModesRequest
-{
-    /// <summary>
-    /// Previously uploaded build version for which game modes are being specified.
-    /// </summary>
-    _Null_terminated_ const char* buildVersion;
-
-    /// <summary>
-    /// Array of game modes (Note: this will replace all game modes for the indicated build version).
-    /// </summary>
-    _Field_size_(gameModesCount) PFMatchmakingGameModeInfo const* const* gameModes;
-
-    /// <summary>
-    /// Count of gameModes
-    /// </summary>
-    uint32_t gameModesCount;
-
-} PFMatchmakingModifyMatchmakerGameModesRequest;
-
-/// <summary>
 /// PFMatchmakingContainer_Dictionary_String_String data model. A data container.
 /// </summary>
 typedef struct PFMatchmakingContainer_Dictionary_String_String
@@ -601,104 +573,6 @@ typedef struct PFMatchmakingMatchmakeResult
 } PFMatchmakingMatchmakeResult;
 
 /// <summary>
-/// PFMatchmakingClientStartGameRequest data model. This API must be enabled for use as an option in
-/// the game manager website. It is disabled by default.
-/// </summary>
-typedef struct PFMatchmakingClientStartGameRequest
-{
-    /// <summary>
-    /// Version information for the build of the game server which is to be started.
-    /// </summary>
-    _Null_terminated_ const char* buildVersion;
-
-    /// <summary>
-    /// (Optional) Character to use for stats based matching. Leave null to use account stats.
-    /// </summary>
-    _Maybenull_ _Null_terminated_ const char* characterId;
-
-    /// <summary>
-    /// (Optional) Custom command line argument when starting game server process.
-    /// </summary>
-    _Maybenull_ _Null_terminated_ const char* customCommandLineData;
-
-    /// <summary>
-    /// (Optional) The optional custom tags associated with the request (e.g. build number, external
-    /// trace identifiers, etc.).
-    /// </summary>
-    _Maybenull_ _Field_size_(customTagsCount) struct PFStringDictionaryEntry const* customTags;
-
-    /// <summary>
-    /// Count of customTags
-    /// </summary>
-    uint32_t customTagsCount;
-
-    /// <summary>
-    /// The title-defined game mode this server is to be running (defaults to 0 if there is only one
-    /// mode).
-    /// </summary>
-    _Null_terminated_ const char* gameMode;
-
-    /// <summary>
-    /// The region to associate this server with for match filtering.
-    /// </summary>
-    PFRegion region;
-
-    /// <summary>
-    /// (Optional) Player statistic for others to use in finding this game. May be null for no stat-based
-    /// matching.
-    /// </summary>
-    _Maybenull_ _Null_terminated_ const char* statisticName;
-
-} PFMatchmakingClientStartGameRequest;
-
-/// <summary>
-/// PFMatchmakingStartGameResult data model.
-/// </summary>
-typedef struct PFMatchmakingStartGameResult
-{
-    /// <summary>
-    /// (Optional) Timestamp for when the server should expire, if applicable.
-    /// </summary>
-    _Maybenull_ _Null_terminated_ const char* expires;
-
-    /// <summary>
-    /// (Optional) Unique identifier for the lobby of the server started.
-    /// </summary>
-    _Maybenull_ _Null_terminated_ const char* lobbyID;
-
-    /// <summary>
-    /// (Optional) Password required to log into the server.
-    /// </summary>
-    _Maybenull_ _Null_terminated_ const char* password;
-
-    /// <summary>
-    /// (Optional) Server IPV4 address.
-    /// </summary>
-    _Maybenull_ _Null_terminated_ const char* serverIPV4Address;
-
-    /// <summary>
-    /// (Optional) Server IPV6 address.
-    /// </summary>
-    _Maybenull_ _Null_terminated_ const char* serverIPV6Address;
-
-    /// <summary>
-    /// (Optional) Port on the server to be used for communication.
-    /// </summary>
-    _Maybenull_ int32_t const* serverPort;
-
-    /// <summary>
-    /// (Optional) Server public DNS name.
-    /// </summary>
-    _Maybenull_ _Null_terminated_ const char* serverPublicDNSName;
-
-    /// <summary>
-    /// (Optional) Unique identifier for the server.
-    /// </summary>
-    _Maybenull_ _Null_terminated_ const char* ticket;
-
-} PFMatchmakingStartGameResult;
-
-/// <summary>
 /// PFMatchmakingAuthUserRequest data model. This API allows the external match-making service to confirm
 /// that the user has a valid Session Ticket for the title, in order to securely enable match-making.
 /// The client passes the user's Session Ticket to the external match-making service, which then passes
@@ -787,84 +661,6 @@ typedef struct PFMatchmakingPlayerLeftRequest
     _Null_terminated_ const char* playFabId;
 
 } PFMatchmakingPlayerLeftRequest;
-
-/// <summary>
-/// PFMatchmakingMatchmakerStartGameRequest data model.
-/// </summary>
-typedef struct PFMatchmakingMatchmakerStartGameRequest
-{
-    /// <summary>
-    /// Unique identifier of the previously uploaded build executable which is to be started.
-    /// </summary>
-    _Null_terminated_ const char* build;
-
-    /// <summary>
-    /// (Optional) Custom command line argument when starting game server process.
-    /// </summary>
-    _Maybenull_ _Null_terminated_ const char* customCommandLineData;
-
-    /// <summary>
-    /// (Optional) The optional custom tags associated with the request (e.g. build number, external
-    /// trace identifiers, etc.).
-    /// </summary>
-    _Maybenull_ _Field_size_(customTagsCount) struct PFStringDictionaryEntry const* customTags;
-
-    /// <summary>
-    /// Count of customTags
-    /// </summary>
-    uint32_t customTagsCount;
-
-    /// <summary>
-    /// HTTP endpoint URL for receiving game status events, if using an external matchmaker. When the
-    /// game ends, PlayFab will make a POST request to this URL with the X-SecretKey header set to the
-    /// value of the game's secret and an application/json body of { "EventName": "game_ended", "GameID":
-    /// "<gameid>" }.
-    /// </summary>
-    _Null_terminated_ const char* externalMatchmakerEventEndpoint;
-
-    /// <summary>
-    /// Game mode for this Game Server Instance.
-    /// </summary>
-    _Null_terminated_ const char* gameMode;
-
-    /// <summary>
-    /// Region with which to associate the server, for filtering.
-    /// </summary>
-    PFRegion region;
-
-} PFMatchmakingMatchmakerStartGameRequest;
-
-/// <summary>
-/// PFMatchmakingStartGameResponse data model.
-/// </summary>
-typedef struct PFMatchmakingStartGameResponse
-{
-    /// <summary>
-    /// (Optional) Unique identifier for the game/lobby in the new Game Server Instance.
-    /// </summary>
-    _Maybenull_ _Null_terminated_ const char* gameID;
-
-    /// <summary>
-    /// (Optional) IPV4 address of the server.
-    /// </summary>
-    _Maybenull_ _Null_terminated_ const char* serverIPV4Address;
-
-    /// <summary>
-    /// (Optional) IPV6 address of the new Game Server Instance.
-    /// </summary>
-    _Maybenull_ _Null_terminated_ const char* serverIPV6Address;
-
-    /// <summary>
-    /// Port number for communication with the Game Server Instance.
-    /// </summary>
-    uint32_t serverPort;
-
-    /// <summary>
-    /// (Optional) Public DNS name (if any) of the server.
-    /// </summary>
-    _Maybenull_ _Null_terminated_ const char* serverPublicDNSName;
-
-} PFMatchmakingStartGameResponse;
 
 /// <summary>
 /// PFMatchmakingUserInfoRequest data model.
@@ -1658,6 +1454,11 @@ typedef struct PFMatchmakingGetMatchRequest
 typedef struct PFMatchmakingGetMatchResult
 {
     /// <summary>
+    /// (Optional) A string that is used by players that are matched together to join an arranged lobby.
+    /// </summary>
+    _Maybenull_ _Null_terminated_ const char* arrangementString;
+
+    /// <summary>
     /// The Id of a match.
     /// </summary>
     _Null_terminated_ const char* matchId;
@@ -1736,6 +1537,12 @@ typedef struct PFMatchmakingGetMatchmakingTicketResult
     /// is in canceled state.
     /// </summary>
     _Maybenull_ _Null_terminated_ const char* cancellationReasonString;
+
+    /// <summary>
+    /// (Optional) Change number used for differentiating older matchmaking status updates from newer
+    /// ones.
+    /// </summary>
+    _Maybenull_ uint32_t const* changeNumber;
 
     /// <summary>
     /// The server date and time at which ticket was created.

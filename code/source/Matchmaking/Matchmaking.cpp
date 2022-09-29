@@ -91,45 +91,6 @@ AsyncOp<GetMatchmakerGameModesResult> MatchmakingAPI::AdminGetMatchmakerGameMode
     });
 }
 
-AsyncOp<void> MatchmakingAPI::AdminModifyMatchmakerGameModes(
-    SharedPtr<GlobalState const> state,
-    const ModifyMatchmakerGameModesRequest& request,
-    const TaskQueue& queue
-)
-{
-    auto secretKey{ state->SecretKey() };
-    if (!secretKey || secretKey->empty())
-    {
-        return E_PF_NOSECRETKEY;
-    }
-
-    const char* path{ "/Admin/ModifyMatchmakerGameModes" };
-    JsonValue requestBody{ request.ToJson() };
-    UnorderedMap<String, String> headers{{ kSecretKeyHeaderName, *secretKey }};
-
-    auto requestOp = state->HttpClient()->MakePostRequest(
-        path,
-        std::move(headers),
-        std::move(requestBody),
-        queue
-    );
-
-    return requestOp.Then([](Result<ServiceResponse> result) -> Result<void>
-    {
-        RETURN_IF_FAILED(result.hr);
-
-        auto serviceResponse = result.ExtractPayload();
-        if (serviceResponse.HttpCode == 200)
-        {
-            return S_OK;
-        }
-        else
-        {
-            return Result<void>{ ServiceErrorToHR(serviceResponse.ErrorCode), std::move(serviceResponse.ErrorMessage) };
-        }
-    });
-}
-
 AsyncOp<CurrentGamesResult> MatchmakingAPI::ClientGetCurrentGames(
     SharedPtr<TitlePlayer> entity,
     const CurrentGamesRequest& request,
@@ -256,48 +217,6 @@ AsyncOp<MatchmakeResult> MatchmakingAPI::ClientMatchmake(
     });
 }
 
-AsyncOp<StartGameResult> MatchmakingAPI::ClientStartGame(
-    SharedPtr<TitlePlayer> entity,
-    const ClientStartGameRequest& request,
-    const TaskQueue& queue
-)
-{
-    auto sessionTicket{ entity->SessionTicket() };
-    if (!sessionTicket || sessionTicket->empty()) 
-    {
-        return E_PF_NOSESSIONTICKET;
-    }
-
-    const char* path{ "/Client/StartGame" };
-    JsonValue requestBody{ request.ToJson() };
-    UnorderedMap<String, String> headers{{ kSessionTicketHeaderName, *sessionTicket }};
-
-    auto requestOp = entity->HttpClient()->MakeClassicRequest(
-        entity,
-        path,
-        std::move(headers),
-        std::move(requestBody),
-        queue
-    );
-
-    return requestOp.Then([](Result<ServiceResponse> result) -> Result<StartGameResult>
-    {
-        RETURN_IF_FAILED(result.hr);
-
-        auto serviceResponse = result.ExtractPayload();
-        if (serviceResponse.HttpCode == 200)
-        {
-            StartGameResult resultModel;
-            resultModel.FromJson(serviceResponse.Data);
-            return resultModel;
-        }
-        else
-        {
-            return Result<StartGameResult>{ ServiceErrorToHR(serviceResponse.ErrorCode), std::move(serviceResponse.ErrorMessage) };
-        }
-    });
-}
-
 AsyncOp<AuthUserResponse> MatchmakingAPI::AuthUser(
     SharedPtr<GlobalState const> state,
     const AuthUserRequest& request,
@@ -413,47 +332,6 @@ AsyncOp<void> MatchmakingAPI::PlayerLeft(
         else
         {
             return Result<void>{ ServiceErrorToHR(serviceResponse.ErrorCode), std::move(serviceResponse.ErrorMessage) };
-        }
-    });
-}
-
-AsyncOp<StartGameResponse> MatchmakingAPI::StartGame(
-    SharedPtr<GlobalState const> state,
-    const MatchmakerStartGameRequest& request,
-    const TaskQueue& queue
-)
-{
-    auto secretKey{ state->SecretKey() };
-    if (!secretKey || secretKey->empty())
-    {
-        return E_PF_NOSECRETKEY;
-    }
-
-    const char* path{ "/Matchmaker/StartGame" };
-    JsonValue requestBody{ request.ToJson() };
-    UnorderedMap<String, String> headers{{ kSecretKeyHeaderName, *secretKey }};
-
-    auto requestOp = state->HttpClient()->MakePostRequest(
-        path,
-        std::move(headers),
-        std::move(requestBody),
-        queue
-    );
-
-    return requestOp.Then([](Result<ServiceResponse> result) -> Result<StartGameResponse>
-    {
-        RETURN_IF_FAILED(result.hr);
-
-        auto serviceResponse = result.ExtractPayload();
-        if (serviceResponse.HttpCode == 200)
-        {
-            StartGameResponse resultModel;
-            resultModel.FromJson(serviceResponse.Data);
-            return resultModel;
-        }
-        else
-        {
-            return Result<StartGameResponse>{ ServiceErrorToHR(serviceResponse.ErrorCode), std::move(serviceResponse.ErrorMessage) };
         }
     });
 }

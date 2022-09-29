@@ -191,21 +191,6 @@ JsonValue GetMatchmakerGameModesRequest::ToJson(const PFMatchmakingGetMatchmaker
     return output;
 }
 
-JsonValue GameModeInfo::ToJson() const
-{
-    return GameModeInfo::ToJson(this->Model());
-}
-
-JsonValue GameModeInfo::ToJson(const PFMatchmakingGameModeInfo& input)
-{
-    JsonValue output{ rapidjson::kObjectType };
-    JsonUtils::ObjectAddMember(output, "Gamemode", input.gamemode);
-    JsonUtils::ObjectAddMember(output, "MaxPlayerCount", input.maxPlayerCount);
-    JsonUtils::ObjectAddMember(output, "MinPlayerCount", input.minPlayerCount);
-    JsonUtils::ObjectAddMember(output, "StartOpen", input.startOpen);
-    return output;
-}
-
 void GameModeInfo::FromJson(const JsonValue& input)
 {
     String gamemode{};
@@ -298,19 +283,6 @@ HRESULT GetMatchmakerGameModesResult::Copy(const PFMatchmakingGetMatchmakerGameM
         output.gameModes = propCopyResult.ExtractPayload();
     }
     return S_OK;
-}
-
-JsonValue ModifyMatchmakerGameModesRequest::ToJson() const
-{
-    return ModifyMatchmakerGameModesRequest::ToJson(this->Model());
-}
-
-JsonValue ModifyMatchmakerGameModesRequest::ToJson(const PFMatchmakingModifyMatchmakerGameModesRequest& input)
-{
-    JsonValue output{ rapidjson::kObjectType };
-    JsonUtils::ObjectAddMember(output, "BuildVersion", input.buildVersion);
-    JsonUtils::ObjectAddMemberArray<GameModeInfo>(output, "GameModes", input.gameModes, input.gameModesCount);
-    return output;
 }
 
 JsonValue Container_Dictionary_String_String::ToJson() const
@@ -902,153 +874,6 @@ HRESULT MatchmakeResult::Copy(const PFMatchmakingMatchmakeResult& input, PFMatch
     return S_OK;
 }
 
-JsonValue ClientStartGameRequest::ToJson() const
-{
-    return ClientStartGameRequest::ToJson(this->Model());
-}
-
-JsonValue ClientStartGameRequest::ToJson(const PFMatchmakingClientStartGameRequest& input)
-{
-    JsonValue output{ rapidjson::kObjectType };
-    JsonUtils::ObjectAddMember(output, "BuildVersion", input.buildVersion);
-    JsonUtils::ObjectAddMember(output, "CharacterId", input.characterId);
-    JsonUtils::ObjectAddMember(output, "CustomCommandLineData", input.customCommandLineData);
-    JsonUtils::ObjectAddMemberDictionary(output, "CustomTags", input.customTags, input.customTagsCount);
-    JsonUtils::ObjectAddMember(output, "GameMode", input.gameMode);
-    JsonUtils::ObjectAddMember(output, "Region", input.region);
-    JsonUtils::ObjectAddMember(output, "StatisticName", input.statisticName);
-    return output;
-}
-
-void StartGameResult::FromJson(const JsonValue& input)
-{
-    String expires{};
-    JsonUtils::ObjectGetMember(input, "Expires", expires);
-    this->SetExpires(std::move(expires));
-
-    String lobbyID{};
-    JsonUtils::ObjectGetMember(input, "LobbyID", lobbyID);
-    this->SetLobbyID(std::move(lobbyID));
-
-    String password{};
-    JsonUtils::ObjectGetMember(input, "Password", password);
-    this->SetPassword(std::move(password));
-
-    String serverIPV4Address{};
-    JsonUtils::ObjectGetMember(input, "ServerIPV4Address", serverIPV4Address);
-    this->SetServerIPV4Address(std::move(serverIPV4Address));
-
-    String serverIPV6Address{};
-    JsonUtils::ObjectGetMember(input, "ServerIPV6Address", serverIPV6Address);
-    this->SetServerIPV6Address(std::move(serverIPV6Address));
-
-    StdExtra::optional<int32_t> serverPort{};
-    JsonUtils::ObjectGetMember(input, "ServerPort", serverPort);
-    this->SetServerPort(std::move(serverPort));
-
-    String serverPublicDNSName{};
-    JsonUtils::ObjectGetMember(input, "ServerPublicDNSName", serverPublicDNSName);
-    this->SetServerPublicDNSName(std::move(serverPublicDNSName));
-
-    String ticket{};
-    JsonUtils::ObjectGetMember(input, "Ticket", ticket);
-    this->SetTicket(std::move(ticket));
-}
-
-size_t StartGameResult::RequiredBufferSize() const
-{
-    return RequiredBufferSize(this->Model());
-}
-
-Result<PFMatchmakingStartGameResult const*> StartGameResult::Copy(ModelBuffer& buffer) const
-{
-    return buffer.CopyTo<StartGameResult>(&this->Model());
-}
-
-size_t StartGameResult::RequiredBufferSize(const PFMatchmakingStartGameResult& model)
-{
-    size_t requiredSize{ alignof(ModelType) + sizeof(ModelType) };
-    if (model.expires)
-    {
-        requiredSize += (std::strlen(model.expires) + 1);
-    }
-    if (model.lobbyID)
-    {
-        requiredSize += (std::strlen(model.lobbyID) + 1);
-    }
-    if (model.password)
-    {
-        requiredSize += (std::strlen(model.password) + 1);
-    }
-    if (model.serverIPV4Address)
-    {
-        requiredSize += (std::strlen(model.serverIPV4Address) + 1);
-    }
-    if (model.serverIPV6Address)
-    {
-        requiredSize += (std::strlen(model.serverIPV6Address) + 1);
-    }
-    if (model.serverPort)
-    {
-        requiredSize += (alignof(int32_t) + sizeof(int32_t));
-    }
-    if (model.serverPublicDNSName)
-    {
-        requiredSize += (std::strlen(model.serverPublicDNSName) + 1);
-    }
-    if (model.ticket)
-    {
-        requiredSize += (std::strlen(model.ticket) + 1);
-    }
-    return requiredSize;
-}
-
-HRESULT StartGameResult::Copy(const PFMatchmakingStartGameResult& input, PFMatchmakingStartGameResult& output, ModelBuffer& buffer)
-{
-    output = input;
-    {
-        auto propCopyResult = buffer.CopyTo(input.expires); 
-        RETURN_IF_FAILED(propCopyResult.hr);
-        output.expires = propCopyResult.ExtractPayload();
-    }
-    {
-        auto propCopyResult = buffer.CopyTo(input.lobbyID); 
-        RETURN_IF_FAILED(propCopyResult.hr);
-        output.lobbyID = propCopyResult.ExtractPayload();
-    }
-    {
-        auto propCopyResult = buffer.CopyTo(input.password); 
-        RETURN_IF_FAILED(propCopyResult.hr);
-        output.password = propCopyResult.ExtractPayload();
-    }
-    {
-        auto propCopyResult = buffer.CopyTo(input.serverIPV4Address); 
-        RETURN_IF_FAILED(propCopyResult.hr);
-        output.serverIPV4Address = propCopyResult.ExtractPayload();
-    }
-    {
-        auto propCopyResult = buffer.CopyTo(input.serverIPV6Address); 
-        RETURN_IF_FAILED(propCopyResult.hr);
-        output.serverIPV6Address = propCopyResult.ExtractPayload();
-    }
-    {
-        auto propCopyResult = buffer.CopyTo(input.serverPort); 
-        RETURN_IF_FAILED(propCopyResult.hr);
-        output.serverPort = propCopyResult.ExtractPayload();
-    }
-    {
-        auto propCopyResult = buffer.CopyTo(input.serverPublicDNSName); 
-        RETURN_IF_FAILED(propCopyResult.hr);
-        output.serverPublicDNSName = propCopyResult.ExtractPayload();
-    }
-    {
-        auto propCopyResult = buffer.CopyTo(input.ticket); 
-        RETURN_IF_FAILED(propCopyResult.hr);
-        output.ticket = propCopyResult.ExtractPayload();
-    }
-    return S_OK;
-}
-
 JsonValue AuthUserRequest::ToJson() const
 {
     return AuthUserRequest::ToJson(this->Model());
@@ -1127,102 +952,6 @@ JsonValue PlayerLeftRequest::ToJson(const PFMatchmakingPlayerLeftRequest& input)
     JsonUtils::ObjectAddMember(output, "LobbyId", input.lobbyId);
     JsonUtils::ObjectAddMember(output, "PlayFabId", input.playFabId);
     return output;
-}
-
-JsonValue MatchmakerStartGameRequest::ToJson() const
-{
-    return MatchmakerStartGameRequest::ToJson(this->Model());
-}
-
-JsonValue MatchmakerStartGameRequest::ToJson(const PFMatchmakingMatchmakerStartGameRequest& input)
-{
-    JsonValue output{ rapidjson::kObjectType };
-    JsonUtils::ObjectAddMember(output, "Build", input.build);
-    JsonUtils::ObjectAddMember(output, "CustomCommandLineData", input.customCommandLineData);
-    JsonUtils::ObjectAddMemberDictionary(output, "CustomTags", input.customTags, input.customTagsCount);
-    JsonUtils::ObjectAddMember(output, "ExternalMatchmakerEventEndpoint", input.externalMatchmakerEventEndpoint);
-    JsonUtils::ObjectAddMember(output, "GameMode", input.gameMode);
-    JsonUtils::ObjectAddMember(output, "Region", input.region);
-    return output;
-}
-
-void StartGameResponse::FromJson(const JsonValue& input)
-{
-    String gameID{};
-    JsonUtils::ObjectGetMember(input, "GameID", gameID);
-    this->SetGameID(std::move(gameID));
-
-    String serverIPV4Address{};
-    JsonUtils::ObjectGetMember(input, "ServerIPV4Address", serverIPV4Address);
-    this->SetServerIPV4Address(std::move(serverIPV4Address));
-
-    String serverIPV6Address{};
-    JsonUtils::ObjectGetMember(input, "ServerIPV6Address", serverIPV6Address);
-    this->SetServerIPV6Address(std::move(serverIPV6Address));
-
-    JsonUtils::ObjectGetMember(input, "ServerPort", this->m_model.serverPort);
-
-    String serverPublicDNSName{};
-    JsonUtils::ObjectGetMember(input, "ServerPublicDNSName", serverPublicDNSName);
-    this->SetServerPublicDNSName(std::move(serverPublicDNSName));
-}
-
-size_t StartGameResponse::RequiredBufferSize() const
-{
-    return RequiredBufferSize(this->Model());
-}
-
-Result<PFMatchmakingStartGameResponse const*> StartGameResponse::Copy(ModelBuffer& buffer) const
-{
-    return buffer.CopyTo<StartGameResponse>(&this->Model());
-}
-
-size_t StartGameResponse::RequiredBufferSize(const PFMatchmakingStartGameResponse& model)
-{
-    size_t requiredSize{ alignof(ModelType) + sizeof(ModelType) };
-    if (model.gameID)
-    {
-        requiredSize += (std::strlen(model.gameID) + 1);
-    }
-    if (model.serverIPV4Address)
-    {
-        requiredSize += (std::strlen(model.serverIPV4Address) + 1);
-    }
-    if (model.serverIPV6Address)
-    {
-        requiredSize += (std::strlen(model.serverIPV6Address) + 1);
-    }
-    if (model.serverPublicDNSName)
-    {
-        requiredSize += (std::strlen(model.serverPublicDNSName) + 1);
-    }
-    return requiredSize;
-}
-
-HRESULT StartGameResponse::Copy(const PFMatchmakingStartGameResponse& input, PFMatchmakingStartGameResponse& output, ModelBuffer& buffer)
-{
-    output = input;
-    {
-        auto propCopyResult = buffer.CopyTo(input.gameID); 
-        RETURN_IF_FAILED(propCopyResult.hr);
-        output.gameID = propCopyResult.ExtractPayload();
-    }
-    {
-        auto propCopyResult = buffer.CopyTo(input.serverIPV4Address); 
-        RETURN_IF_FAILED(propCopyResult.hr);
-        output.serverIPV4Address = propCopyResult.ExtractPayload();
-    }
-    {
-        auto propCopyResult = buffer.CopyTo(input.serverIPV6Address); 
-        RETURN_IF_FAILED(propCopyResult.hr);
-        output.serverIPV6Address = propCopyResult.ExtractPayload();
-    }
-    {
-        auto propCopyResult = buffer.CopyTo(input.serverPublicDNSName); 
-        RETURN_IF_FAILED(propCopyResult.hr);
-        output.serverPublicDNSName = propCopyResult.ExtractPayload();
-    }
-    return S_OK;
 }
 
 JsonValue UserInfoRequest::ToJson() const
@@ -2108,6 +1837,10 @@ JsonValue GetMatchRequest::ToJson(const PFMatchmakingGetMatchRequest& input)
 
 void GetMatchResult::FromJson(const JsonValue& input)
 {
+    String arrangementString{};
+    JsonUtils::ObjectGetMember(input, "ArrangementString", arrangementString);
+    this->SetArrangementString(std::move(arrangementString));
+
     String matchId{};
     JsonUtils::ObjectGetMember(input, "MatchId", matchId);
     this->SetMatchId(std::move(matchId));
@@ -2141,6 +1874,10 @@ Result<PFMatchmakingGetMatchResult const*> GetMatchResult::Copy(ModelBuffer& buf
 size_t GetMatchResult::RequiredBufferSize(const PFMatchmakingGetMatchResult& model)
 {
     size_t requiredSize{ alignof(ModelType) + sizeof(ModelType) };
+    if (model.arrangementString)
+    {
+        requiredSize += (std::strlen(model.arrangementString) + 1);
+    }
     if (model.matchId)
     {
         requiredSize += (std::strlen(model.matchId) + 1);
@@ -2165,6 +1902,11 @@ size_t GetMatchResult::RequiredBufferSize(const PFMatchmakingGetMatchResult& mod
 HRESULT GetMatchResult::Copy(const PFMatchmakingGetMatchResult& input, PFMatchmakingGetMatchResult& output, ModelBuffer& buffer)
 {
     output = input;
+    {
+        auto propCopyResult = buffer.CopyTo(input.arrangementString); 
+        RETURN_IF_FAILED(propCopyResult.hr);
+        output.arrangementString = propCopyResult.ExtractPayload();
+    }
     {
         auto propCopyResult = buffer.CopyTo(input.matchId); 
         RETURN_IF_FAILED(propCopyResult.hr);
@@ -2208,6 +1950,10 @@ void GetMatchmakingTicketResult::FromJson(const JsonValue& input)
     String cancellationReasonString{};
     JsonUtils::ObjectGetMember(input, "CancellationReasonString", cancellationReasonString);
     this->SetCancellationReasonString(std::move(cancellationReasonString));
+
+    StdExtra::optional<uint32_t> changeNumber{};
+    JsonUtils::ObjectGetMember(input, "ChangeNumber", changeNumber);
+    this->SetChangeNumber(std::move(changeNumber));
 
     JsonUtils::ObjectGetMemberTime(input, "Created", this->m_model.created);
 
@@ -2259,6 +2005,10 @@ size_t GetMatchmakingTicketResult::RequiredBufferSize(const PFMatchmakingGetMatc
     {
         requiredSize += (std::strlen(model.cancellationReasonString) + 1);
     }
+    if (model.changeNumber)
+    {
+        requiredSize += (alignof(uint32_t) + sizeof(uint32_t));
+    }
     if (model.creator)
     {
         requiredSize += EntityKey::RequiredBufferSize(*model.creator);
@@ -2299,6 +2049,11 @@ HRESULT GetMatchmakingTicketResult::Copy(const PFMatchmakingGetMatchmakingTicket
         auto propCopyResult = buffer.CopyTo(input.cancellationReasonString); 
         RETURN_IF_FAILED(propCopyResult.hr);
         output.cancellationReasonString = propCopyResult.ExtractPayload();
+    }
+    {
+        auto propCopyResult = buffer.CopyTo(input.changeNumber); 
+        RETURN_IF_FAILED(propCopyResult.hr);
+        output.changeNumber = propCopyResult.ExtractPayload();
     }
     {
         auto propCopyResult = buffer.CopyTo<EntityKey>(input.creator); 

@@ -1085,6 +1085,22 @@ JsonValue LoginWithGoogleAccountRequest::ToJson(const PFAuthenticationLoginWithG
     return output;
 }
 
+JsonValue LoginWithGooglePlayGamesServicesRequest::ToJson() const
+{
+    return LoginWithGooglePlayGamesServicesRequest::ToJson(this->Model());
+}
+
+JsonValue LoginWithGooglePlayGamesServicesRequest::ToJson(const PFAuthenticationLoginWithGooglePlayGamesServicesRequest& input)
+{
+    JsonValue output{ rapidjson::kObjectType };
+    JsonUtils::ObjectAddMember(output, "CreateAccount", input.createAccount);
+    JsonUtils::ObjectAddMemberDictionary(output, "CustomTags", input.customTags, input.customTagsCount);
+    JsonUtils::ObjectAddMember<GetPlayerCombinedInfoRequestParams>(output, "InfoRequestParameters", input.infoRequestParameters);
+    JsonUtils::ObjectAddMember(output, "PlayerSecret", input.playerSecret);
+    JsonUtils::ObjectAddMember(output, "ServerAuthCode", input.serverAuthCode);
+    return output;
+}
+
 JsonValue LoginWithIOSDeviceIDRequest::ToJson() const
 {
     return LoginWithIOSDeviceIDRequest::ToJson(this->Model());
@@ -1439,6 +1455,75 @@ JsonValue ServerSetPlayerSecretRequest::ToJson(const PFAuthenticationServerSetPl
     JsonValue output{ rapidjson::kObjectType };
     JsonUtils::ObjectAddMember(output, "PlayerSecret", input.playerSecret);
     JsonUtils::ObjectAddMember(output, "PlayFabId", input.playFabId);
+    return output;
+}
+
+JsonValue AuthenticateCustomIdRequest::ToJson() const
+{
+    return AuthenticateCustomIdRequest::ToJson(this->Model());
+}
+
+JsonValue AuthenticateCustomIdRequest::ToJson(const PFAuthenticationAuthenticateCustomIdRequest& input)
+{
+    JsonValue output{ rapidjson::kObjectType };
+    JsonUtils::ObjectAddMember(output, "CustomId", input.customId);
+    JsonUtils::ObjectAddMemberDictionary(output, "CustomTags", input.customTags, input.customTagsCount);
+    return output;
+}
+
+void AuthenticateCustomIdResult::FromJson(const JsonValue& input)
+{
+    StdExtra::optional<EntityTokenResponse> entityToken{};
+    JsonUtils::ObjectGetMember(input, "EntityToken", entityToken);
+    if (entityToken)
+    {
+        this->SetEntityToken(std::move(*entityToken));
+    }
+
+    JsonUtils::ObjectGetMember(input, "NewlyCreated", this->m_model.newlyCreated);
+}
+
+size_t AuthenticateCustomIdResult::RequiredBufferSize() const
+{
+    return RequiredBufferSize(this->Model());
+}
+
+Result<PFAuthenticationAuthenticateCustomIdResult const*> AuthenticateCustomIdResult::Copy(ModelBuffer& buffer) const
+{
+    return buffer.CopyTo<AuthenticateCustomIdResult>(&this->Model());
+}
+
+size_t AuthenticateCustomIdResult::RequiredBufferSize(const PFAuthenticationAuthenticateCustomIdResult& model)
+{
+    size_t requiredSize{ alignof(ModelType) + sizeof(ModelType) };
+    if (model.entityToken)
+    {
+        requiredSize += EntityTokenResponse::RequiredBufferSize(*model.entityToken);
+    }
+    return requiredSize;
+}
+
+HRESULT AuthenticateCustomIdResult::Copy(const PFAuthenticationAuthenticateCustomIdResult& input, PFAuthenticationAuthenticateCustomIdResult& output, ModelBuffer& buffer)
+{
+    output = input;
+    {
+        auto propCopyResult = buffer.CopyTo<EntityTokenResponse>(input.entityToken); 
+        RETURN_IF_FAILED(propCopyResult.hr);
+        output.entityToken = propCopyResult.ExtractPayload();
+    }
+    return S_OK;
+}
+
+JsonValue DeleteRequest::ToJson() const
+{
+    return DeleteRequest::ToJson(this->Model());
+}
+
+JsonValue DeleteRequest::ToJson(const PFAuthenticationDeleteRequest& input)
+{
+    JsonValue output{ rapidjson::kObjectType };
+    JsonUtils::ObjectAddMemberDictionary(output, "CustomTags", input.customTags, input.customTagsCount);
+    JsonUtils::ObjectAddMember<EntityKey>(output, "Entity", input.entity);
     return output;
 }
 

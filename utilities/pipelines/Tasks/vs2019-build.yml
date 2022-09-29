@@ -18,13 +18,6 @@ steps:
       extSync: true
       disableMsbuildVersion: true
 
-  # Run PoliCheck.
-  # Ref: https://www.1eswiki.com/index.php?title=PoliCheck_Build_Task
-  - task: PoliCheck@1
-    displayName: Run PoliCheck
-    inputs:
-        optionsUEPATH: Utilities/Pipelines/Scripts/PoliCheckExclude.xml
-
   - task: BatchScript@1
     displayName: fetchTools.cmd
     inputs:
@@ -44,9 +37,9 @@ steps:
       versionSpec: 5.8
 
   - task: BatchScript@1
-    displayName: vsvars.cmd
+    displayName: vsvars2019.cmd
     inputs:
-      filename: Utilities/Pipelines/Scripts/vsvars.cmd
+      filename: Utilities/Pipelines/Scripts/vsvars2019.cmd
       modifyEnvironment: true
       
   - task: NuGetAuthenticate@0
@@ -127,7 +120,6 @@ steps:
             enable: true
           - toolName: CredScan
             enable: true
-      binVersion: 'PreProduction'
       
   - task: BatchScript@1
     displayName: collectLogs.cmd

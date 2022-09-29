@@ -102,6 +102,18 @@ struct GetItemResponseHolder : public XAsyncResult, public std::enable_shared_fr
     PFCatalogGetItemResponse* result{ nullptr };
 };
 
+struct GetItemContainersResponseHolder : public XAsyncResult, public std::enable_shared_from_this<GetItemContainersResponseHolder>
+{
+    GetItemContainersResponseHolder() = default;
+    GetItemContainersResponseHolder(const GetItemContainersResponseHolder&) = delete;
+    GetItemContainersResponseHolder(GetItemContainersResponseHolder&&) = default;
+    GetItemContainersResponseHolder& operator=(const GetItemContainersResponseHolder&) = delete;
+    GetItemContainersResponseHolder& operator=(GetItemContainersResponseHolder&&) = default;
+    ~GetItemContainersResponseHolder() = default;
+
+    PFCatalogGetItemContainersResponse* result{ nullptr };
+};
+
 struct GetItemModerationStateResponseHolder : public XAsyncResult, public std::enable_shared_from_this<GetItemModerationStateResponseHolder>
 {
     GetItemModerationStateResponseHolder() = default;
@@ -148,6 +160,18 @@ struct GetItemReviewSummaryResponseHolder : public XAsyncResult, public std::ena
     ~GetItemReviewSummaryResponseHolder() = default;
 
     PFCatalogGetItemReviewSummaryResponse* result{ nullptr };
+};
+
+struct GetItemsResponseHolder : public XAsyncResult, public std::enable_shared_from_this<GetItemsResponseHolder>
+{
+    GetItemsResponseHolder() = default;
+    GetItemsResponseHolder(const GetItemsResponseHolder&) = delete;
+    GetItemsResponseHolder(GetItemsResponseHolder&&) = default;
+    GetItemsResponseHolder& operator=(const GetItemsResponseHolder&) = delete;
+    GetItemsResponseHolder& operator=(GetItemsResponseHolder&&) = default;
+    ~GetItemsResponseHolder() = default;
+
+    PFCatalogGetItemsResponse* result{ nullptr };
 };
 
 struct SearchItemsResponseHolder : public XAsyncResult, public std::enable_shared_from_this<SearchItemsResponseHolder>

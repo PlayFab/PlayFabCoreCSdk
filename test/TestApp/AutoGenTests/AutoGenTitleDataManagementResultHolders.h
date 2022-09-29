@@ -78,18 +78,6 @@ struct ListVirtualCurrencyTypesResultHolder : public XAsyncResult, public std::e
     PFTitleDataManagementListVirtualCurrencyTypesResult* result{ nullptr };
 };
 
-struct SetTitleDataResultHolder : public XAsyncResult, public std::enable_shared_from_this<SetTitleDataResultHolder>
-{
-    SetTitleDataResultHolder() = default;
-    SetTitleDataResultHolder(const SetTitleDataResultHolder&) = delete;
-    SetTitleDataResultHolder(SetTitleDataResultHolder&&) = default;
-    SetTitleDataResultHolder& operator=(const SetTitleDataResultHolder&) = delete;
-    SetTitleDataResultHolder& operator=(SetTitleDataResultHolder&&) = default;
-    ~SetTitleDataResultHolder() = default;
-
-    PFTitleDataManagementSetTitleDataResult* result{ nullptr };
-};
-
 struct SetupPushNotificationResultHolder : public XAsyncResult, public std::enable_shared_from_this<SetupPushNotificationResultHolder>
 {
     SetupPushNotificationResultHolder() = default;

@@ -113,183 +113,184 @@ private:
 protected:
     void AddTests();
 
-    static void FillAcceptGroupApplicationPrerequisiteGetGroupRequest(PlayFab::Wrappers::PFGroupsGetGroupRequestWrapper<>& request);
-    static HRESULT StoreAcceptGroupApplicationPrerequisitePFGroupsGetGroupResponse(std::shared_ptr<GetGroupResponseHolder> result);
-    static void FillAcceptGroupApplicationPrerequisiteApplyToGroupRequest(PlayFab::Wrappers::PFGroupsApplyToGroupRequestWrapper<>& request);
-    static HRESULT StoreAcceptGroupApplicationPrerequisitePFGroupsApplyToGroupResponse(std::shared_ptr<ApplyToGroupResponseHolder> result);
     static void LogAcceptGroupApplicationRequest(PFGroupsAcceptGroupApplicationRequest const* request, const char* testName);
-    static void FillAcceptGroupApplicationRequest(PlayFab::Wrappers::PFGroupsAcceptGroupApplicationRequestWrapper<>& request);
-    static void FillAcceptGroupApplicationCleanupRemoveMembersRequest(PlayFab::Wrappers::PFGroupsRemoveMembersRequestWrapper<>& request);
-
-    static void FillAcceptGroupInvitationPrerequisiteGetGroupRequest(PlayFab::Wrappers::PFGroupsGetGroupRequestWrapper<>& request);
-    static HRESULT StoreAcceptGroupInvitationPrerequisitePFGroupsGetGroupResponse(std::shared_ptr<GetGroupResponseHolder> result);
-    static void FillAcceptGroupInvitationPrerequisiteInviteToGroupRequest(PlayFab::Wrappers::PFGroupsInviteToGroupRequestWrapper<>& request);
-    static HRESULT StoreAcceptGroupInvitationPrerequisitePFGroupsInviteToGroupResponse(std::shared_ptr<InviteToGroupResponseHolder> result);
     static void LogAcceptGroupInvitationRequest(PFGroupsAcceptGroupInvitationRequest const* request, const char* testName);
-    static void FillAcceptGroupInvitationRequest(PlayFab::Wrappers::PFGroupsAcceptGroupInvitationRequestWrapper<>& request);
-    static void FillAcceptGroupInvitationCleanupRemoveMembersRequest(PlayFab::Wrappers::PFGroupsRemoveMembersRequestWrapper<>& request);
-
-    static void FillAddMembersPrerequisiteGetGroupRequest(PlayFab::Wrappers::PFGroupsGetGroupRequestWrapper<>& request);
-    static HRESULT StoreAddMembersPrerequisitePFGroupsGetGroupResponse(std::shared_ptr<GetGroupResponseHolder> result);
     static void LogAddMembersRequest(PFGroupsAddMembersRequest const* request, const char* testName);
-    static void FillAddMembersRequest(PlayFab::Wrappers::PFGroupsAddMembersRequestWrapper<>& request);
-    static void FillAddMembersCleanupRemoveMembersRequest(PlayFab::Wrappers::PFGroupsRemoveMembersRequestWrapper<>& request);
-
-    static void FillApplyToGroupPrerequisiteGetGroupRequest(PlayFab::Wrappers::PFGroupsGetGroupRequestWrapper<>& request);
-    static HRESULT StoreApplyToGroupPrerequisitePFGroupsGetGroupResponse(std::shared_ptr<GetGroupResponseHolder> result);
     static void LogApplyToGroupRequest(PFGroupsApplyToGroupRequest const* request, const char* testName);
-    static void FillApplyToGroupRequest(PlayFab::Wrappers::PFGroupsApplyToGroupRequestWrapper<>& request);
-    static HRESULT LogPFGroupsApplyToGroupResponse(PFGroupsApplyToGroupResponse const* result);
-    static HRESULT ValidatePFGroupsApplyToGroupResponse(PFGroupsApplyToGroupResponse* result);
-    static void FillApplyToGroupCleanupRemoveGroupApplicationRequest(PlayFab::Wrappers::PFGroupsRemoveGroupApplicationRequestWrapper<>& request);
-
-    static void FillBlockEntityPrerequisiteGetGroupRequest(PlayFab::Wrappers::PFGroupsGetGroupRequestWrapper<>& request);
-    static HRESULT StoreBlockEntityPrerequisitePFGroupsGetGroupResponse(std::shared_ptr<GetGroupResponseHolder> result);
+    static HRESULT LogApplyToGroupResponse(PFGroupsApplyToGroupResponse const* result);
     static void LogBlockEntityRequest(PFGroupsBlockEntityRequest const* request, const char* testName);
-    static void FillBlockEntityRequest(PlayFab::Wrappers::PFGroupsBlockEntityRequestWrapper<>& request);
-    static void FillBlockEntityCleanupUnblockEntityRequest(PlayFab::Wrappers::PFGroupsUnblockEntityRequestWrapper<>& request);
-
-    static void FillChangeMemberRolePrerequisiteGetGroupRequest(PlayFab::Wrappers::PFGroupsGetGroupRequestWrapper<>& request);
-    static HRESULT StoreChangeMemberRolePrerequisitePFGroupsGetGroupResponse(std::shared_ptr<GetGroupResponseHolder> result);
     static void LogChangeMemberRoleRequest(PFGroupsChangeMemberRoleRequest const* request, const char* testName);
-    static void FillChangeMemberRoleRequest(PlayFab::Wrappers::PFGroupsChangeMemberRoleRequestWrapper<>& request);
-    static void FillChangeMemberRoleCleanupChangeMemberRoleRequest(PlayFab::Wrappers::PFGroupsChangeMemberRoleRequestWrapper<>& request);
-
     static void LogCreateGroupRequest(PFGroupsCreateGroupRequest const* request, const char* testName);
-    static void FillCreateGroupRequest(PlayFab::Wrappers::PFGroupsCreateGroupRequestWrapper<>& request);
-    static HRESULT LogPFGroupsCreateGroupResponse(PFGroupsCreateGroupResponse const* result);
-    static HRESULT ValidatePFGroupsCreateGroupResponse(PFGroupsCreateGroupResponse* result);
-    static void FillCreateGroupCleanupGetGroupRequest(PlayFab::Wrappers::PFGroupsGetGroupRequestWrapper<>& request);
-    static HRESULT StoreCreateGroupCleanupPFGroupsGetGroupResponse(std::shared_ptr<GetGroupResponseHolder> result);
-    static void FillCreateGroupCleanupDeleteGroupRequest(PlayFab::Wrappers::PFGroupsDeleteGroupRequestWrapper<>& request);
-
-    static void FillCreateRolePrerequisiteGetGroupRequest(PlayFab::Wrappers::PFGroupsGetGroupRequestWrapper<>& request);
-    static HRESULT StoreCreateRolePrerequisitePFGroupsGetGroupResponse(std::shared_ptr<GetGroupResponseHolder> result);
+    static HRESULT LogCreateGroupResponse(PFGroupsCreateGroupResponse const* result);
     static void LogCreateGroupRoleRequest(PFGroupsCreateGroupRoleRequest const* request, const char* testName);
-    static void FillCreateGroupRoleRequest(PlayFab::Wrappers::PFGroupsCreateGroupRoleRequestWrapper<>& request);
-    static HRESULT LogPFGroupsCreateGroupRoleResponse(PFGroupsCreateGroupRoleResponse const* result);
-    static HRESULT ValidatePFGroupsCreateGroupRoleResponse(PFGroupsCreateGroupRoleResponse* result);
-    static void FillCreateRoleCleanupDeleteRoleRequest(PlayFab::Wrappers::PFGroupsDeleteRoleRequestWrapper<>& request);
-
-    static void FillDeleteGroupPrerequisiteCreateGroupRequest(PlayFab::Wrappers::PFGroupsCreateGroupRequestWrapper<>& request);
-    static HRESULT StoreDeleteGroupPrerequisitePFGroupsCreateGroupResponse(std::shared_ptr<CreateGroupResponseHolder> result);
+    static HRESULT LogCreateGroupRoleResponse(PFGroupsCreateGroupRoleResponse const* result);
     static void LogDeleteGroupRequest(PFGroupsDeleteGroupRequest const* request, const char* testName);
-    static void FillDeleteGroupRequest(PlayFab::Wrappers::PFGroupsDeleteGroupRequestWrapper<>& request);
-
-    static void FillDeleteRolePrerequisiteGetGroupRequest(PlayFab::Wrappers::PFGroupsGetGroupRequestWrapper<>& request);
-    static HRESULT StoreDeleteRolePrerequisitePFGroupsGetGroupResponse(std::shared_ptr<GetGroupResponseHolder> result);
-    static void FillDeleteRolePrerequisiteCreateGroupRoleRequest(PlayFab::Wrappers::PFGroupsCreateGroupRoleRequestWrapper<>& request);
-    static HRESULT StoreDeleteRolePrerequisitePFGroupsCreateGroupRoleResponse(std::shared_ptr<CreateGroupRoleResponseHolder> result);
     static void LogDeleteRoleRequest(PFGroupsDeleteRoleRequest const* request, const char* testName);
-    static void FillDeleteRoleRequest(PlayFab::Wrappers::PFGroupsDeleteRoleRequestWrapper<>& request);
-
     static void LogGetGroupRequest(PFGroupsGetGroupRequest const* request, const char* testName);
-    static void FillGetGroupRequest(PlayFab::Wrappers::PFGroupsGetGroupRequestWrapper<>& request);
-    static HRESULT LogPFGroupsGetGroupResponse(PFGroupsGetGroupResponse const* result);
-    static HRESULT ValidatePFGroupsGetGroupResponse(PFGroupsGetGroupResponse* result);
-
-    static void FillInviteToGroupPrerequisiteGetGroupRequest(PlayFab::Wrappers::PFGroupsGetGroupRequestWrapper<>& request);
-    static HRESULT StoreInviteToGroupPrerequisitePFGroupsGetGroupResponse(std::shared_ptr<GetGroupResponseHolder> result);
+    static HRESULT LogGetGroupResponse(PFGroupsGetGroupResponse const* result);
     static void LogInviteToGroupRequest(PFGroupsInviteToGroupRequest const* request, const char* testName);
-    static void FillInviteToGroupRequest(PlayFab::Wrappers::PFGroupsInviteToGroupRequestWrapper<>& request);
-    static HRESULT LogPFGroupsInviteToGroupResponse(PFGroupsInviteToGroupResponse const* result);
-    static HRESULT ValidatePFGroupsInviteToGroupResponse(PFGroupsInviteToGroupResponse* result);
-    static void FillInviteToGroupCleanupRemoveGroupInvitationRequest(PlayFab::Wrappers::PFGroupsRemoveGroupInvitationRequestWrapper<>& request);
-
-    static void FillIsMemberPrerequisiteGetGroupRequest(PlayFab::Wrappers::PFGroupsGetGroupRequestWrapper<>& request);
-    static HRESULT StoreIsMemberPrerequisitePFGroupsGetGroupResponse(std::shared_ptr<GetGroupResponseHolder> result);
+    static HRESULT LogInviteToGroupResponse(PFGroupsInviteToGroupResponse const* result);
     static void LogIsMemberRequest(PFGroupsIsMemberRequest const* request, const char* testName);
-    static void FillIsMemberRequest(PlayFab::Wrappers::PFGroupsIsMemberRequestWrapper<>& request);
-    static HRESULT LogPFGroupsIsMemberResponse(PFGroupsIsMemberResponse const* result);
-    static HRESULT ValidatePFGroupsIsMemberResponse(PFGroupsIsMemberResponse* result);
-
-    static void FillListGroupApplicationsPrerequisiteGetGroupRequest(PlayFab::Wrappers::PFGroupsGetGroupRequestWrapper<>& request);
-    static HRESULT StoreListGroupApplicationsPrerequisitePFGroupsGetGroupResponse(std::shared_ptr<GetGroupResponseHolder> result);
+    static HRESULT LogIsMemberResponse(PFGroupsIsMemberResponse const* result);
     static void LogListGroupApplicationsRequest(PFGroupsListGroupApplicationsRequest const* request, const char* testName);
-    static void FillListGroupApplicationsRequest(PlayFab::Wrappers::PFGroupsListGroupApplicationsRequestWrapper<>& request);
-    static HRESULT LogPFGroupsListGroupApplicationsResponse(PFGroupsListGroupApplicationsResponse const* result);
-    static HRESULT ValidatePFGroupsListGroupApplicationsResponse(PFGroupsListGroupApplicationsResponse* result);
-
-    static void FillListGroupBlocksPrerequisiteGetGroupRequest(PlayFab::Wrappers::PFGroupsGetGroupRequestWrapper<>& request);
-    static HRESULT StoreListGroupBlocksPrerequisitePFGroupsGetGroupResponse(std::shared_ptr<GetGroupResponseHolder> result);
+    static HRESULT LogListGroupApplicationsResponse(PFGroupsListGroupApplicationsResponse const* result);
     static void LogListGroupBlocksRequest(PFGroupsListGroupBlocksRequest const* request, const char* testName);
-    static void FillListGroupBlocksRequest(PlayFab::Wrappers::PFGroupsListGroupBlocksRequestWrapper<>& request);
-    static HRESULT LogPFGroupsListGroupBlocksResponse(PFGroupsListGroupBlocksResponse const* result);
-    static HRESULT ValidatePFGroupsListGroupBlocksResponse(PFGroupsListGroupBlocksResponse* result);
-
-    static void FillListGroupInvitationsPrerequisiteGetGroupRequest(PlayFab::Wrappers::PFGroupsGetGroupRequestWrapper<>& request);
-    static HRESULT StoreListGroupInvitationsPrerequisitePFGroupsGetGroupResponse(std::shared_ptr<GetGroupResponseHolder> result);
+    static HRESULT LogListGroupBlocksResponse(PFGroupsListGroupBlocksResponse const* result);
     static void LogListGroupInvitationsRequest(PFGroupsListGroupInvitationsRequest const* request, const char* testName);
-    static void FillListGroupInvitationsRequest(PlayFab::Wrappers::PFGroupsListGroupInvitationsRequestWrapper<>& request);
-    static HRESULT LogPFGroupsListGroupInvitationsResponse(PFGroupsListGroupInvitationsResponse const* result);
-    static HRESULT ValidatePFGroupsListGroupInvitationsResponse(PFGroupsListGroupInvitationsResponse* result);
-
-    static void FillListGroupMembersPrerequisiteGetGroupRequest(PlayFab::Wrappers::PFGroupsGetGroupRequestWrapper<>& request);
-    static HRESULT StoreListGroupMembersPrerequisitePFGroupsGetGroupResponse(std::shared_ptr<GetGroupResponseHolder> result);
+    static HRESULT LogListGroupInvitationsResponse(PFGroupsListGroupInvitationsResponse const* result);
     static void LogListGroupMembersRequest(PFGroupsListGroupMembersRequest const* request, const char* testName);
-    static void FillListGroupMembersRequest(PlayFab::Wrappers::PFGroupsListGroupMembersRequestWrapper<>& request);
-    static HRESULT LogPFGroupsListGroupMembersResponse(PFGroupsListGroupMembersResponse const* result);
-    static HRESULT ValidatePFGroupsListGroupMembersResponse(PFGroupsListGroupMembersResponse* result);
-
-    static void FillListMembershipPrerequisiteGetGroupRequest(PlayFab::Wrappers::PFGroupsGetGroupRequestWrapper<>& request);
-    static HRESULT StoreListMembershipPrerequisitePFGroupsGetGroupResponse(std::shared_ptr<GetGroupResponseHolder> result);
+    static HRESULT LogListGroupMembersResponse(PFGroupsListGroupMembersResponse const* result);
     static void LogListMembershipRequest(PFGroupsListMembershipRequest const* request, const char* testName);
-    static void FillListMembershipRequest(PlayFab::Wrappers::PFGroupsListMembershipRequestWrapper<>& request);
-    static HRESULT LogPFGroupsListMembershipResponse(PFGroupsListMembershipResponse const* result);
-    static HRESULT ValidatePFGroupsListMembershipResponse(PFGroupsListMembershipResponse* result);
-
-    static void FillListMembershipOpportunitiesPrerequisiteGetGroupRequest(PlayFab::Wrappers::PFGroupsGetGroupRequestWrapper<>& request);
-    static HRESULT StoreListMembershipOpportunitiesPrerequisitePFGroupsGetGroupResponse(std::shared_ptr<GetGroupResponseHolder> result);
-    static void FillListMembershipOpportunitiesPrerequisiteApplyToGroupRequest(PlayFab::Wrappers::PFGroupsApplyToGroupRequestWrapper<>& request);
-    static HRESULT StoreListMembershipOpportunitiesPrerequisitePFGroupsApplyToGroupResponse(std::shared_ptr<ApplyToGroupResponseHolder> result);
+    static HRESULT LogListMembershipResponse(PFGroupsListMembershipResponse const* result);
     static void LogListMembershipOpportunitiesRequest(PFGroupsListMembershipOpportunitiesRequest const* request, const char* testName);
-    static void FillListMembershipOpportunitiesRequest(PlayFab::Wrappers::PFGroupsListMembershipOpportunitiesRequestWrapper<>& request);
-    static HRESULT LogPFGroupsListMembershipOpportunitiesResponse(PFGroupsListMembershipOpportunitiesResponse const* result);
-    static HRESULT ValidatePFGroupsListMembershipOpportunitiesResponse(PFGroupsListMembershipOpportunitiesResponse* result);
-    static void FillListMembershipOpportunitiesCleanupRemoveGroupApplicationRequest(PlayFab::Wrappers::PFGroupsRemoveGroupApplicationRequestWrapper<>& request);
-
-    static void FillRemoveGroupApplicationPrerequisiteGetGroupRequest(PlayFab::Wrappers::PFGroupsGetGroupRequestWrapper<>& request);
-    static HRESULT StoreRemoveGroupApplicationPrerequisitePFGroupsGetGroupResponse(std::shared_ptr<GetGroupResponseHolder> result);
-    static void FillRemoveGroupApplicationPrerequisiteApplyToGroupRequest(PlayFab::Wrappers::PFGroupsApplyToGroupRequestWrapper<>& request);
-    static HRESULT StoreRemoveGroupApplicationPrerequisitePFGroupsApplyToGroupResponse(std::shared_ptr<ApplyToGroupResponseHolder> result);
+    static HRESULT LogListMembershipOpportunitiesResponse(PFGroupsListMembershipOpportunitiesResponse const* result);
     static void LogRemoveGroupApplicationRequest(PFGroupsRemoveGroupApplicationRequest const* request, const char* testName);
-    static void FillRemoveGroupApplicationRequest(PlayFab::Wrappers::PFGroupsRemoveGroupApplicationRequestWrapper<>& request);
-
-    static void FillRemoveGroupInvitationPrerequisiteGetGroupRequest(PlayFab::Wrappers::PFGroupsGetGroupRequestWrapper<>& request);
-    static HRESULT StoreRemoveGroupInvitationPrerequisitePFGroupsGetGroupResponse(std::shared_ptr<GetGroupResponseHolder> result);
-    static void FillRemoveGroupInvitationPrerequisiteInviteToGroupRequest(PlayFab::Wrappers::PFGroupsInviteToGroupRequestWrapper<>& request);
-    static HRESULT StoreRemoveGroupInvitationPrerequisitePFGroupsInviteToGroupResponse(std::shared_ptr<InviteToGroupResponseHolder> result);
     static void LogRemoveGroupInvitationRequest(PFGroupsRemoveGroupInvitationRequest const* request, const char* testName);
-    static void FillRemoveGroupInvitationRequest(PlayFab::Wrappers::PFGroupsRemoveGroupInvitationRequestWrapper<>& request);
-
-    static void FillRemoveMembersPrerequisiteGetGroupRequest(PlayFab::Wrappers::PFGroupsGetGroupRequestWrapper<>& request);
-    static HRESULT StoreRemoveMembersPrerequisitePFGroupsGetGroupResponse(std::shared_ptr<GetGroupResponseHolder> result);
-    static void FillRemoveMembersPrerequisiteAddMembersRequest(PlayFab::Wrappers::PFGroupsAddMembersRequestWrapper<>& request);
     static void LogRemoveMembersRequest(PFGroupsRemoveMembersRequest const* request, const char* testName);
-    static void FillRemoveMembersRequest(PlayFab::Wrappers::PFGroupsRemoveMembersRequestWrapper<>& request);
-
-    static void FillUnblockEntityPrerequisiteGetGroupRequest(PlayFab::Wrappers::PFGroupsGetGroupRequestWrapper<>& request);
-    static HRESULT StoreUnblockEntityPrerequisitePFGroupsGetGroupResponse(std::shared_ptr<GetGroupResponseHolder> result);
-    static void FillUnblockEntityPrerequisiteBlockEntityRequest(PlayFab::Wrappers::PFGroupsBlockEntityRequestWrapper<>& request);
     static void LogUnblockEntityRequest(PFGroupsUnblockEntityRequest const* request, const char* testName);
-    static void FillUnblockEntityRequest(PlayFab::Wrappers::PFGroupsUnblockEntityRequestWrapper<>& request);
-
-    static void FillUpdateGroupPrerequisiteCreateGroupRequest(PlayFab::Wrappers::PFGroupsCreateGroupRequestWrapper<>& request);
-    static HRESULT StoreUpdateGroupPrerequisitePFGroupsCreateGroupResponse(std::shared_ptr<CreateGroupResponseHolder> result);
     static void LogUpdateGroupRequest(PFGroupsUpdateGroupRequest const* request, const char* testName);
-    static void FillUpdateGroupRequest(PlayFab::Wrappers::PFGroupsUpdateGroupRequestWrapper<>& request);
-    static HRESULT LogPFGroupsUpdateGroupResponse(PFGroupsUpdateGroupResponse const* result);
-    static HRESULT ValidatePFGroupsUpdateGroupResponse(PFGroupsUpdateGroupResponse* result);
-    static void FillUpdateGroupCleanupDeleteGroupRequest(PlayFab::Wrappers::PFGroupsDeleteGroupRequestWrapper<>& request);
-
-    static void FillUpdateRolePrerequisiteGetGroupRequest(PlayFab::Wrappers::PFGroupsGetGroupRequestWrapper<>& request);
-    static HRESULT StoreUpdateRolePrerequisitePFGroupsGetGroupResponse(std::shared_ptr<GetGroupResponseHolder> result);
-    static void FillUpdateRolePrerequisiteUpdateGroupRoleRequest(PlayFab::Wrappers::PFGroupsUpdateGroupRoleRequestWrapper<>& request);
-    static HRESULT StoreUpdateRolePrerequisitePFGroupsUpdateGroupRoleResponse(std::shared_ptr<UpdateGroupRoleResponseHolder> result);
+    static HRESULT LogUpdateGroupResponse(PFGroupsUpdateGroupResponse const* result);
     static void LogUpdateGroupRoleRequest(PFGroupsUpdateGroupRoleRequest const* request, const char* testName);
-    static void FillUpdateGroupRoleRequest(PlayFab::Wrappers::PFGroupsUpdateGroupRoleRequestWrapper<>& request);
-    static HRESULT LogPFGroupsUpdateGroupRoleResponse(PFGroupsUpdateGroupRoleResponse const* result);
-    static HRESULT ValidatePFGroupsUpdateGroupRoleResponse(PFGroupsUpdateGroupRoleResponse* result);
+    static HRESULT LogUpdateGroupRoleResponse(PFGroupsUpdateGroupRoleResponse const* result);
+
+    void FillAcceptGroupApplicationPrerequisiteGetGroupRequest(PlayFab::Wrappers::PFGroupsGetGroupRequestWrapper<>& request);
+    static HRESULT StoreAcceptGroupApplicationPrerequisiteGetGroupResponse(std::shared_ptr<GetGroupResponseHolder> result);
+    void FillAcceptGroupApplicationPrerequisiteApplyToGroupRequest(PlayFab::Wrappers::PFGroupsApplyToGroupRequestWrapper<>& request);
+    static HRESULT StoreAcceptGroupApplicationPrerequisiteApplyToGroupResponse(std::shared_ptr<ApplyToGroupResponseHolder> result);
+    void FillAcceptGroupApplicationRequest(PlayFab::Wrappers::PFGroupsAcceptGroupApplicationRequestWrapper<>& request);
+    void FillAcceptGroupApplicationCleanupRemoveMembersRequest(PlayFab::Wrappers::PFGroupsRemoveMembersRequestWrapper<>& request);
+
+    void FillAcceptGroupInvitationPrerequisiteGetGroupRequest(PlayFab::Wrappers::PFGroupsGetGroupRequestWrapper<>& request);
+    static HRESULT StoreAcceptGroupInvitationPrerequisiteGetGroupResponse(std::shared_ptr<GetGroupResponseHolder> result);
+    void FillAcceptGroupInvitationPrerequisiteInviteToGroupRequest(PlayFab::Wrappers::PFGroupsInviteToGroupRequestWrapper<>& request);
+    static HRESULT StoreAcceptGroupInvitationPrerequisiteInviteToGroupResponse(std::shared_ptr<InviteToGroupResponseHolder> result);
+    void FillAcceptGroupInvitationRequest(PlayFab::Wrappers::PFGroupsAcceptGroupInvitationRequestWrapper<>& request);
+    void FillAcceptGroupInvitationCleanupRemoveMembersRequest(PlayFab::Wrappers::PFGroupsRemoveMembersRequestWrapper<>& request);
+
+    void FillAddMembersPrerequisiteGetGroupRequest(PlayFab::Wrappers::PFGroupsGetGroupRequestWrapper<>& request);
+    static HRESULT StoreAddMembersPrerequisiteGetGroupResponse(std::shared_ptr<GetGroupResponseHolder> result);
+    void FillAddMembersRequest(PlayFab::Wrappers::PFGroupsAddMembersRequestWrapper<>& request);
+    void FillAddMembersCleanupRemoveMembersRequest(PlayFab::Wrappers::PFGroupsRemoveMembersRequestWrapper<>& request);
+
+    void FillApplyToGroupPrerequisiteGetGroupRequest(PlayFab::Wrappers::PFGroupsGetGroupRequestWrapper<>& request);
+    static HRESULT StoreApplyToGroupPrerequisiteGetGroupResponse(std::shared_ptr<GetGroupResponseHolder> result);
+    void FillApplyToGroupRequest(PlayFab::Wrappers::PFGroupsApplyToGroupRequestWrapper<>& request);
+    static HRESULT ValidateApplyToGroupResponse(PFGroupsApplyToGroupResponse* result);
+    void FillApplyToGroupCleanupRemoveGroupApplicationRequest(PlayFab::Wrappers::PFGroupsRemoveGroupApplicationRequestWrapper<>& request);
+
+    void FillBlockEntityPrerequisiteGetGroupRequest(PlayFab::Wrappers::PFGroupsGetGroupRequestWrapper<>& request);
+    static HRESULT StoreBlockEntityPrerequisiteGetGroupResponse(std::shared_ptr<GetGroupResponseHolder> result);
+    void FillBlockEntityRequest(PlayFab::Wrappers::PFGroupsBlockEntityRequestWrapper<>& request);
+    void FillBlockEntityCleanupUnblockEntityRequest(PlayFab::Wrappers::PFGroupsUnblockEntityRequestWrapper<>& request);
+
+    void FillChangeMemberRolePrerequisiteGetGroupRequest(PlayFab::Wrappers::PFGroupsGetGroupRequestWrapper<>& request);
+    static HRESULT StoreChangeMemberRolePrerequisiteGetGroupResponse(std::shared_ptr<GetGroupResponseHolder> result);
+    void FillChangeMemberRoleRequest(PlayFab::Wrappers::PFGroupsChangeMemberRoleRequestWrapper<>& request);
+    void FillChangeMemberRoleCleanupChangeMemberRoleRequest(PlayFab::Wrappers::PFGroupsChangeMemberRoleRequestWrapper<>& request);
+
+    void FillCreateGroupRequest(PlayFab::Wrappers::PFGroupsCreateGroupRequestWrapper<>& request);
+    static HRESULT ValidateCreateGroupResponse(PFGroupsCreateGroupResponse* result);
+    void FillCreateGroupCleanupGetGroupRequest(PlayFab::Wrappers::PFGroupsGetGroupRequestWrapper<>& request);
+    static HRESULT StoreCreateGroupCleanupGetGroupResponse(std::shared_ptr<GetGroupResponseHolder> result);
+    void FillCreateGroupCleanupDeleteGroupRequest(PlayFab::Wrappers::PFGroupsDeleteGroupRequestWrapper<>& request);
+
+    void FillCreateRolePrerequisiteGetGroupRequest(PlayFab::Wrappers::PFGroupsGetGroupRequestWrapper<>& request);
+    static HRESULT StoreCreateRolePrerequisiteGetGroupResponse(std::shared_ptr<GetGroupResponseHolder> result);
+    void FillCreateRoleRequest(PlayFab::Wrappers::PFGroupsCreateGroupRoleRequestWrapper<>& request);
+    static HRESULT ValidateCreateRoleResponse(PFGroupsCreateGroupRoleResponse* result);
+    void FillCreateRoleCleanupDeleteRoleRequest(PlayFab::Wrappers::PFGroupsDeleteRoleRequestWrapper<>& request);
+
+    void FillDeleteGroupPrerequisiteCreateGroupRequest(PlayFab::Wrappers::PFGroupsCreateGroupRequestWrapper<>& request);
+    static HRESULT StoreDeleteGroupPrerequisiteCreateGroupResponse(std::shared_ptr<CreateGroupResponseHolder> result);
+    void FillDeleteGroupRequest(PlayFab::Wrappers::PFGroupsDeleteGroupRequestWrapper<>& request);
+
+    void FillDeleteRolePrerequisiteGetGroupRequest(PlayFab::Wrappers::PFGroupsGetGroupRequestWrapper<>& request);
+    static HRESULT StoreDeleteRolePrerequisiteGetGroupResponse(std::shared_ptr<GetGroupResponseHolder> result);
+    void FillDeleteRolePrerequisiteCreateRoleRequest(PlayFab::Wrappers::PFGroupsCreateGroupRoleRequestWrapper<>& request);
+    static HRESULT StoreDeleteRolePrerequisiteCreateRoleResponse(std::shared_ptr<CreateGroupRoleResponseHolder> result);
+    void FillDeleteRoleRequest(PlayFab::Wrappers::PFGroupsDeleteRoleRequestWrapper<>& request);
+
+    void FillGetGroupRequest(PlayFab::Wrappers::PFGroupsGetGroupRequestWrapper<>& request);
+    static HRESULT ValidateGetGroupResponse(PFGroupsGetGroupResponse* result);
+
+    void FillInviteToGroupPrerequisiteGetGroupRequest(PlayFab::Wrappers::PFGroupsGetGroupRequestWrapper<>& request);
+    static HRESULT StoreInviteToGroupPrerequisiteGetGroupResponse(std::shared_ptr<GetGroupResponseHolder> result);
+    void FillInviteToGroupRequest(PlayFab::Wrappers::PFGroupsInviteToGroupRequestWrapper<>& request);
+    static HRESULT ValidateInviteToGroupResponse(PFGroupsInviteToGroupResponse* result);
+    void FillInviteToGroupCleanupRemoveGroupInvitationRequest(PlayFab::Wrappers::PFGroupsRemoveGroupInvitationRequestWrapper<>& request);
+
+    void FillIsMemberPrerequisiteGetGroupRequest(PlayFab::Wrappers::PFGroupsGetGroupRequestWrapper<>& request);
+    static HRESULT StoreIsMemberPrerequisiteGetGroupResponse(std::shared_ptr<GetGroupResponseHolder> result);
+    void FillIsMemberRequest(PlayFab::Wrappers::PFGroupsIsMemberRequestWrapper<>& request);
+    static HRESULT ValidateIsMemberResponse(PFGroupsIsMemberResponse* result);
+
+    void FillListGroupApplicationsPrerequisiteGetGroupRequest(PlayFab::Wrappers::PFGroupsGetGroupRequestWrapper<>& request);
+    static HRESULT StoreListGroupApplicationsPrerequisiteGetGroupResponse(std::shared_ptr<GetGroupResponseHolder> result);
+    void FillListGroupApplicationsRequest(PlayFab::Wrappers::PFGroupsListGroupApplicationsRequestWrapper<>& request);
+    static HRESULT ValidateListGroupApplicationsResponse(PFGroupsListGroupApplicationsResponse* result);
+
+    void FillListGroupBlocksPrerequisiteGetGroupRequest(PlayFab::Wrappers::PFGroupsGetGroupRequestWrapper<>& request);
+    static HRESULT StoreListGroupBlocksPrerequisiteGetGroupResponse(std::shared_ptr<GetGroupResponseHolder> result);
+    void FillListGroupBlocksRequest(PlayFab::Wrappers::PFGroupsListGroupBlocksRequestWrapper<>& request);
+    static HRESULT ValidateListGroupBlocksResponse(PFGroupsListGroupBlocksResponse* result);
+
+    void FillListGroupInvitationsPrerequisiteGetGroupRequest(PlayFab::Wrappers::PFGroupsGetGroupRequestWrapper<>& request);
+    static HRESULT StoreListGroupInvitationsPrerequisiteGetGroupResponse(std::shared_ptr<GetGroupResponseHolder> result);
+    void FillListGroupInvitationsRequest(PlayFab::Wrappers::PFGroupsListGroupInvitationsRequestWrapper<>& request);
+    static HRESULT ValidateListGroupInvitationsResponse(PFGroupsListGroupInvitationsResponse* result);
+
+    void FillListGroupMembersPrerequisiteGetGroupRequest(PlayFab::Wrappers::PFGroupsGetGroupRequestWrapper<>& request);
+    static HRESULT StoreListGroupMembersPrerequisiteGetGroupResponse(std::shared_ptr<GetGroupResponseHolder> result);
+    void FillListGroupMembersRequest(PlayFab::Wrappers::PFGroupsListGroupMembersRequestWrapper<>& request);
+    static HRESULT ValidateListGroupMembersResponse(PFGroupsListGroupMembersResponse* result);
+
+    void FillListMembershipPrerequisiteGetGroupRequest(PlayFab::Wrappers::PFGroupsGetGroupRequestWrapper<>& request);
+    static HRESULT StoreListMembershipPrerequisiteGetGroupResponse(std::shared_ptr<GetGroupResponseHolder> result);
+    void FillListMembershipRequest(PlayFab::Wrappers::PFGroupsListMembershipRequestWrapper<>& request);
+    static HRESULT ValidateListMembershipResponse(PFGroupsListMembershipResponse* result);
+
+    void FillListMembershipOpportunitiesPrerequisiteGetGroupRequest(PlayFab::Wrappers::PFGroupsGetGroupRequestWrapper<>& request);
+    static HRESULT StoreListMembershipOpportunitiesPrerequisiteGetGroupResponse(std::shared_ptr<GetGroupResponseHolder> result);
+    void FillListMembershipOpportunitiesPrerequisiteApplyToGroupRequest(PlayFab::Wrappers::PFGroupsApplyToGroupRequestWrapper<>& request);
+    static HRESULT StoreListMembershipOpportunitiesPrerequisiteApplyToGroupResponse(std::shared_ptr<ApplyToGroupResponseHolder> result);
+    void FillListMembershipOpportunitiesRequest(PlayFab::Wrappers::PFGroupsListMembershipOpportunitiesRequestWrapper<>& request);
+    static HRESULT ValidateListMembershipOpportunitiesResponse(PFGroupsListMembershipOpportunitiesResponse* result);
+    void FillListMembershipOpportunitiesCleanupRemoveGroupApplicationRequest(PlayFab::Wrappers::PFGroupsRemoveGroupApplicationRequestWrapper<>& request);
+
+    void FillRemoveGroupApplicationPrerequisiteGetGroupRequest(PlayFab::Wrappers::PFGroupsGetGroupRequestWrapper<>& request);
+    static HRESULT StoreRemoveGroupApplicationPrerequisiteGetGroupResponse(std::shared_ptr<GetGroupResponseHolder> result);
+    void FillRemoveGroupApplicationPrerequisiteApplyToGroupRequest(PlayFab::Wrappers::PFGroupsApplyToGroupRequestWrapper<>& request);
+    static HRESULT StoreRemoveGroupApplicationPrerequisiteApplyToGroupResponse(std::shared_ptr<ApplyToGroupResponseHolder> result);
+    void FillRemoveGroupApplicationRequest(PlayFab::Wrappers::PFGroupsRemoveGroupApplicationRequestWrapper<>& request);
+
+    void FillRemoveGroupInvitationPrerequisiteGetGroupRequest(PlayFab::Wrappers::PFGroupsGetGroupRequestWrapper<>& request);
+    static HRESULT StoreRemoveGroupInvitationPrerequisiteGetGroupResponse(std::shared_ptr<GetGroupResponseHolder> result);
+    void FillRemoveGroupInvitationPrerequisiteInviteToGroupRequest(PlayFab::Wrappers::PFGroupsInviteToGroupRequestWrapper<>& request);
+    static HRESULT StoreRemoveGroupInvitationPrerequisiteInviteToGroupResponse(std::shared_ptr<InviteToGroupResponseHolder> result);
+    void FillRemoveGroupInvitationRequest(PlayFab::Wrappers::PFGroupsRemoveGroupInvitationRequestWrapper<>& request);
+
+    void FillRemoveMembersPrerequisiteGetGroupRequest(PlayFab::Wrappers::PFGroupsGetGroupRequestWrapper<>& request);
+    static HRESULT StoreRemoveMembersPrerequisiteGetGroupResponse(std::shared_ptr<GetGroupResponseHolder> result);
+    void FillRemoveMembersPrerequisiteAddMembersRequest(PlayFab::Wrappers::PFGroupsAddMembersRequestWrapper<>& request);
+    void FillRemoveMembersRequest(PlayFab::Wrappers::PFGroupsRemoveMembersRequestWrapper<>& request);
+
+    void FillUnblockEntityPrerequisiteGetGroupRequest(PlayFab::Wrappers::PFGroupsGetGroupRequestWrapper<>& request);
+    static HRESULT StoreUnblockEntityPrerequisiteGetGroupResponse(std::shared_ptr<GetGroupResponseHolder> result);
+    void FillUnblockEntityPrerequisiteBlockEntityRequest(PlayFab::Wrappers::PFGroupsBlockEntityRequestWrapper<>& request);
+    void FillUnblockEntityRequest(PlayFab::Wrappers::PFGroupsUnblockEntityRequestWrapper<>& request);
+
+    void FillUpdateGroupPrerequisiteCreateGroupRequest(PlayFab::Wrappers::PFGroupsCreateGroupRequestWrapper<>& request);
+    static HRESULT StoreUpdateGroupPrerequisiteCreateGroupResponse(std::shared_ptr<CreateGroupResponseHolder> result);
+    void FillUpdateGroupRequest(PlayFab::Wrappers::PFGroupsUpdateGroupRequestWrapper<>& request);
+    static HRESULT ValidateUpdateGroupResponse(PFGroupsUpdateGroupResponse* result);
+    void FillUpdateGroupCleanupDeleteGroupRequest(PlayFab::Wrappers::PFGroupsDeleteGroupRequestWrapper<>& request);
+
+    void FillUpdateRolePrerequisiteGetGroupRequest(PlayFab::Wrappers::PFGroupsGetGroupRequestWrapper<>& request);
+    static HRESULT StoreUpdateRolePrerequisiteGetGroupResponse(std::shared_ptr<GetGroupResponseHolder> result);
+    void FillUpdateRolePrerequisiteUpdateRoleRequest(PlayFab::Wrappers::PFGroupsUpdateGroupRoleRequestWrapper<>& request);
+    static HRESULT StoreUpdateRolePrerequisiteUpdateRoleResponse(std::shared_ptr<UpdateGroupRoleResponseHolder> result);
+    void FillUpdateRoleRequest(PlayFab::Wrappers::PFGroupsUpdateGroupRoleRequestWrapper<>& request);
+    static HRESULT ValidateUpdateRoleResponse(PFGroupsUpdateGroupRoleResponse* result);
 
     struct GroupsTestData
     {

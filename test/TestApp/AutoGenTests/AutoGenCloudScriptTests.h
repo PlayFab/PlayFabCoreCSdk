@@ -15,17 +15,27 @@ private:
     static void Log(std::stringstream& ss);
     static HRESULT LogHR(HRESULT hr);
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestCloudScriptAdminGetCloudScriptRevision(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestCloudScriptAdminGetCloudScriptVersions(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestCloudScriptAdminSetPublishedRevision(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestCloudScriptAdminUpdateCloudScript(TestContext& testContext);
+#endif
 
     void TestCloudScriptClientExecuteCloudScript(TestContext& testContext);
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestCloudScriptServerExecuteCloudScript(TestContext& testContext);
+#endif
 
     void TestCloudScriptExecuteEntityCloudScript(TestContext& testContext);
 
@@ -33,98 +43,123 @@ private:
 
     void TestCloudScriptGetFunction(TestContext& testContext);
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestCloudScriptListFunctions(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestCloudScriptListHttpFunctions(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestCloudScriptListQueuedFunctions(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestCloudScriptPostFunctionResultForEntityTriggeredAction(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestCloudScriptPostFunctionResultForFunctionExecution(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestCloudScriptPostFunctionResultForPlayerTriggeredAction(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestCloudScriptPostFunctionResultForScheduledTask(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestCloudScriptRegisterHttpFunction(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestCloudScriptRegisterQueuedFunction(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestCloudScriptUnregisterFunction(TestContext& testContext);
+#endif
 
 
 protected:
     void AddTests();
 
     static void LogGetCloudScriptRevisionRequest(PFCloudScriptGetCloudScriptRevisionRequest const* request, const char* testName);
-    static void FillGetCloudScriptRevisionRequest(PlayFab::Wrappers::PFCloudScriptGetCloudScriptRevisionRequestWrapper<>& request);
-    static HRESULT LogPFCloudScriptGetCloudScriptRevisionResult(PFCloudScriptGetCloudScriptRevisionResult const* result);
-    static HRESULT ValidatePFCloudScriptGetCloudScriptRevisionResult(PFCloudScriptGetCloudScriptRevisionResult* result);
-
-    static HRESULT LogPFCloudScriptGetCloudScriptVersionsResult(PFCloudScriptGetCloudScriptVersionsResult const* result);
-    static HRESULT ValidatePFCloudScriptGetCloudScriptVersionsResult(PFCloudScriptGetCloudScriptVersionsResult* result);
-
+    static HRESULT LogGetCloudScriptRevisionResult(PFCloudScriptGetCloudScriptRevisionResult const* result);
+    static HRESULT LogGetCloudScriptVersionsResult(PFCloudScriptGetCloudScriptVersionsResult const* result);
     static void LogSetPublishedRevisionRequest(PFCloudScriptSetPublishedRevisionRequest const* request, const char* testName);
-    static void FillSetPublishedRevisionRequest(PlayFab::Wrappers::PFCloudScriptSetPublishedRevisionRequestWrapper<>& request);
-
     static void LogUpdateCloudScriptRequest(PFCloudScriptUpdateCloudScriptRequest const* request, const char* testName);
-    static void FillUpdateCloudScriptRequest(PlayFab::Wrappers::PFCloudScriptUpdateCloudScriptRequestWrapper<>& request);
-    static HRESULT LogPFCloudScriptUpdateCloudScriptResult(PFCloudScriptUpdateCloudScriptResult const* result);
-    static HRESULT ValidatePFCloudScriptUpdateCloudScriptResult(PFCloudScriptUpdateCloudScriptResult* result);
-
+    static HRESULT LogUpdateCloudScriptResult(PFCloudScriptUpdateCloudScriptResult const* result);
     static void LogExecuteCloudScriptRequest(PFCloudScriptExecuteCloudScriptRequest const* request, const char* testName);
-    static void FillExecuteCloudScriptRequest(PlayFab::Wrappers::PFCloudScriptExecuteCloudScriptRequestWrapper<>& request);
-    static HRESULT LogPFExecuteCloudScriptResult(PFExecuteCloudScriptResult const* result);
-    static HRESULT ValidatePFExecuteCloudScriptResult(PFExecuteCloudScriptResult* result);
-
+    static HRESULT LogExecuteCloudScriptResult(PFExecuteCloudScriptResult const* result);
     static void LogExecuteCloudScriptServerRequest(PFCloudScriptExecuteCloudScriptServerRequest const* request, const char* testName);
-    static void FillExecuteCloudScriptServerRequest(PlayFab::Wrappers::PFCloudScriptExecuteCloudScriptServerRequestWrapper<>& request);
-
     static void LogExecuteEntityCloudScriptRequest(PFCloudScriptExecuteEntityCloudScriptRequest const* request, const char* testName);
-    static void FillExecuteEntityCloudScriptRequest(PlayFab::Wrappers::PFCloudScriptExecuteEntityCloudScriptRequestWrapper<>& request);
-
     static void LogExecuteFunctionRequest(PFCloudScriptExecuteFunctionRequest const* request, const char* testName);
-    static void FillExecuteFunctionRequest(PlayFab::Wrappers::PFCloudScriptExecuteFunctionRequestWrapper<>& request);
-    static HRESULT LogPFCloudScriptExecuteFunctionResult(PFCloudScriptExecuteFunctionResult const* result);
-    static HRESULT ValidatePFCloudScriptExecuteFunctionResult(PFCloudScriptExecuteFunctionResult* result);
-
+    static HRESULT LogExecuteFunctionResult(PFCloudScriptExecuteFunctionResult const* result);
     static void LogGetFunctionRequest(PFCloudScriptGetFunctionRequest const* request, const char* testName);
-    static void FillGetFunctionRequest(PlayFab::Wrappers::PFCloudScriptGetFunctionRequestWrapper<>& request);
-    static HRESULT LogPFCloudScriptGetFunctionResult(PFCloudScriptGetFunctionResult const* result);
-    static HRESULT ValidatePFCloudScriptGetFunctionResult(PFCloudScriptGetFunctionResult* result);
-
+    static HRESULT LogGetFunctionResult(PFCloudScriptGetFunctionResult const* result);
     static void LogListFunctionsRequest(PFCloudScriptListFunctionsRequest const* request, const char* testName);
-    static void FillListFunctionsRequest(PlayFab::Wrappers::PFCloudScriptListFunctionsRequestWrapper<>& request);
-    static HRESULT LogPFCloudScriptListFunctionsResult(PFCloudScriptListFunctionsResult const* result);
-    static HRESULT ValidatePFCloudScriptListFunctionsResult(PFCloudScriptListFunctionsResult* result);
-
-    static HRESULT LogPFCloudScriptListHttpFunctionsResult(PFCloudScriptListHttpFunctionsResult const* result);
-    static HRESULT ValidatePFCloudScriptListHttpFunctionsResult(PFCloudScriptListHttpFunctionsResult* result);
-
-    static HRESULT LogPFCloudScriptListQueuedFunctionsResult(PFCloudScriptListQueuedFunctionsResult const* result);
-    static HRESULT ValidatePFCloudScriptListQueuedFunctionsResult(PFCloudScriptListQueuedFunctionsResult* result);
-
+    static HRESULT LogListFunctionsResult(PFCloudScriptListFunctionsResult const* result);
+    static HRESULT LogListHttpFunctionsResult(PFCloudScriptListHttpFunctionsResult const* result);
+    static HRESULT LogListQueuedFunctionsResult(PFCloudScriptListQueuedFunctionsResult const* result);
     static void LogPostFunctionResultForEntityTriggeredActionRequest(PFCloudScriptPostFunctionResultForEntityTriggeredActionRequest const* request, const char* testName);
-    static void FillPostFunctionResultForEntityTriggeredActionRequest(PlayFab::Wrappers::PFCloudScriptPostFunctionResultForEntityTriggeredActionRequestWrapper<>& request);
-
     static void LogPostFunctionResultForFunctionExecutionRequest(PFCloudScriptPostFunctionResultForFunctionExecutionRequest const* request, const char* testName);
-    static void FillPostFunctionResultForFunctionExecutionRequest(PlayFab::Wrappers::PFCloudScriptPostFunctionResultForFunctionExecutionRequestWrapper<>& request);
-
     static void LogPostFunctionResultForPlayerTriggeredActionRequest(PFCloudScriptPostFunctionResultForPlayerTriggeredActionRequest const* request, const char* testName);
-    static void FillPostFunctionResultForPlayerTriggeredActionRequest(PlayFab::Wrappers::PFCloudScriptPostFunctionResultForPlayerTriggeredActionRequestWrapper<>& request);
-
     static void LogPostFunctionResultForScheduledTaskRequest(PFCloudScriptPostFunctionResultForScheduledTaskRequest const* request, const char* testName);
-    static void FillPostFunctionResultForScheduledTaskRequest(PlayFab::Wrappers::PFCloudScriptPostFunctionResultForScheduledTaskRequestWrapper<>& request);
-
     static void LogRegisterHttpFunctionRequest(PFCloudScriptRegisterHttpFunctionRequest const* request, const char* testName);
-    static void FillRegisterHttpFunctionRequest(PlayFab::Wrappers::PFCloudScriptRegisterHttpFunctionRequestWrapper<>& request);
-
     static void LogRegisterQueuedFunctionRequest(PFCloudScriptRegisterQueuedFunctionRequest const* request, const char* testName);
-    static void FillRegisterQueuedFunctionRequest(PlayFab::Wrappers::PFCloudScriptRegisterQueuedFunctionRequestWrapper<>& request);
-
     static void LogUnregisterFunctionRequest(PFCloudScriptUnregisterFunctionRequest const* request, const char* testName);
-    static void FillUnregisterFunctionRequest(PlayFab::Wrappers::PFCloudScriptUnregisterFunctionRequestWrapper<>& request);
+
+    void FillAdminGetCloudScriptRevisionRequest(PlayFab::Wrappers::PFCloudScriptGetCloudScriptRevisionRequestWrapper<>& request);
+    static HRESULT ValidateAdminGetCloudScriptRevisionResponse(PFCloudScriptGetCloudScriptRevisionResult* result);
+
+    static HRESULT ValidateAdminGetCloudScriptVersionsResponse(PFCloudScriptGetCloudScriptVersionsResult* result);
+
+    void FillAdminSetPublishedRevisionRequest(PlayFab::Wrappers::PFCloudScriptSetPublishedRevisionRequestWrapper<>& request);
+
+    void FillAdminUpdateCloudScriptRequest(PlayFab::Wrappers::PFCloudScriptUpdateCloudScriptRequestWrapper<>& request);
+    static HRESULT ValidateAdminUpdateCloudScriptResponse(PFCloudScriptUpdateCloudScriptResult* result);
+
+    void FillClientExecuteCloudScriptRequest(PlayFab::Wrappers::PFCloudScriptExecuteCloudScriptRequestWrapper<>& request);
+    static HRESULT ValidateClientExecuteCloudScriptResponse(PFExecuteCloudScriptResult* result);
+
+    void FillServerExecuteCloudScriptRequest(PlayFab::Wrappers::PFCloudScriptExecuteCloudScriptServerRequestWrapper<>& request);
+    static HRESULT ValidateServerExecuteCloudScriptResponse(PFExecuteCloudScriptResult* result);
+
+    void FillExecuteEntityCloudScriptRequest(PlayFab::Wrappers::PFCloudScriptExecuteEntityCloudScriptRequestWrapper<>& request);
+    static HRESULT ValidateExecuteEntityCloudScriptResponse(PFExecuteCloudScriptResult* result);
+
+    void FillExecuteFunctionRequest(PlayFab::Wrappers::PFCloudScriptExecuteFunctionRequestWrapper<>& request);
+    static HRESULT ValidateExecuteFunctionResponse(PFCloudScriptExecuteFunctionResult* result);
+
+    void FillGetFunctionRequest(PlayFab::Wrappers::PFCloudScriptGetFunctionRequestWrapper<>& request);
+    static HRESULT ValidateGetFunctionResponse(PFCloudScriptGetFunctionResult* result);
+
+    void FillListFunctionsRequest(PlayFab::Wrappers::PFCloudScriptListFunctionsRequestWrapper<>& request);
+    static HRESULT ValidateListFunctionsResponse(PFCloudScriptListFunctionsResult* result);
+
+    void FillListHttpFunctionsRequest(PlayFab::Wrappers::PFCloudScriptListFunctionsRequestWrapper<>& request);
+    static HRESULT ValidateListHttpFunctionsResponse(PFCloudScriptListHttpFunctionsResult* result);
+
+    void FillListQueuedFunctionsRequest(PlayFab::Wrappers::PFCloudScriptListFunctionsRequestWrapper<>& request);
+    static HRESULT ValidateListQueuedFunctionsResponse(PFCloudScriptListQueuedFunctionsResult* result);
+
+    void FillPostFunctionResultForEntityTriggeredActionRequest(PlayFab::Wrappers::PFCloudScriptPostFunctionResultForEntityTriggeredActionRequestWrapper<>& request);
+
+    void FillPostFunctionResultForFunctionExecutionRequest(PlayFab::Wrappers::PFCloudScriptPostFunctionResultForFunctionExecutionRequestWrapper<>& request);
+
+    void FillPostFunctionResultForPlayerTriggeredActionRequest(PlayFab::Wrappers::PFCloudScriptPostFunctionResultForPlayerTriggeredActionRequestWrapper<>& request);
+
+    void FillPostFunctionResultForScheduledTaskRequest(PlayFab::Wrappers::PFCloudScriptPostFunctionResultForScheduledTaskRequestWrapper<>& request);
+
+    void FillRegisterHttpFunctionRequest(PlayFab::Wrappers::PFCloudScriptRegisterHttpFunctionRequestWrapper<>& request);
+
+    void FillRegisterQueuedFunctionRequest(PlayFab::Wrappers::PFCloudScriptRegisterQueuedFunctionRequestWrapper<>& request);
+
+    void FillUnregisterFunctionRequest(PlayFab::Wrappers::PFCloudScriptUnregisterFunctionRequestWrapper<>& request);
 
     struct CloudScriptTestData
     {

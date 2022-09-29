@@ -21,7 +21,7 @@ void AutoGenSegmentsTests::Log(std::stringstream& ss)
 
 HRESULT AutoGenSegmentsTests::LogHR(HRESULT hr)
 {
-    if( TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    if (TestApp::ShouldTrace(PFTestTraceLevel::Information))
     {
         TestApp::Log("Result: 0x%0.8x", hr);
     }
@@ -32,18 +32,26 @@ HRESULT AutoGenSegmentsTests::LogHR(HRESULT hr)
 void AutoGenSegmentsTests::AddTests()
 {
     // Generated tests 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestSegmentsAdminCreateSegment", &AutoGenSegmentsTests::TestSegmentsAdminCreateSegment);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestSegmentsAdminDeleteSegment", &AutoGenSegmentsTests::TestSegmentsAdminDeleteSegment);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestSegmentsAdminGetSegments", &AutoGenSegmentsTests::TestSegmentsAdminGetSegments);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestSegmentsAdminUpdateSegment", &AutoGenSegmentsTests::TestSegmentsAdminUpdateSegment);
+#endif
 }
 
 void AutoGenSegmentsTests::ClassSetUp()
 {
-    HRESULT hr = PFAdminInitialize(testTitleData.titleId.data(), testTitleData.developerSecretKey.data(), nullptr, &stateHandle);
+    HRESULT hr = PFAdminInitialize(testTitleData.titleId.data(), testTitleData.developerSecretKey.data(), testTitleData.connectionString.data(), nullptr, &stateHandle);
     assert(SUCCEEDED(hr));
     if (SUCCEEDED(hr))
     {
@@ -148,9 +156,10 @@ void AutoGenSegmentsTests::SetUp(TestContext& testContext)
 
 #pragma region AdminCreateSegment
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenSegmentsTests::TestSegmentsAdminCreateSegment(TestContext& testContext)
 {
-    struct AdminCreateSegmentResultHolder : public CreateSegmentResponseHolder
+    struct AdminCreateSegmentResultHolderStruct : public CreateSegmentResponseHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -160,19 +169,19 @@ void AutoGenSegmentsTests::TestSegmentsAdminCreateSegment(TestContext& testConte
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFSegmentsAdminCreateSegmentGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
             
-            LogPFSegmentsCreateSegmentResponse(result);
+            LogCreateSegmentResponse(result);
             return S_OK;
         }
 
         HRESULT Validate() override
         {
-            return ValidatePFSegmentsCreateSegmentResponse(result);
+            return ValidateAdminCreateSegmentResponse(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<AdminCreateSegmentResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<AdminCreateSegmentResultHolderStruct>>(testContext);
 
     PFSegmentsCreateSegmentRequestWrapper<> request;
-    FillCreateSegmentRequest(request);
+    FillAdminCreateSegmentRequest(request);
     LogCreateSegmentRequest(&request.Model(), "TestSegmentsAdminCreateSegment");
     HRESULT hr = PFSegmentsAdminCreateSegmentAsync(stateHandle, &request.Model(), &async->asyncBlock);
     if (FAILED(hr))
@@ -182,14 +191,16 @@ void AutoGenSegmentsTests::TestSegmentsAdminCreateSegment(TestContext& testConte
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region AdminDeleteSegment
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenSegmentsTests::TestSegmentsAdminDeleteSegment(TestContext& testContext)
 {
-    struct AdminDeleteSegmentResultHolder : public DeleteSegmentsResponseHolder
+    struct AdminDeleteSegmentResultHolderStruct : public DeleteSegmentsResponseHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -199,19 +210,19 @@ void AutoGenSegmentsTests::TestSegmentsAdminDeleteSegment(TestContext& testConte
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFSegmentsAdminDeleteSegmentGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
             
-            LogPFSegmentsDeleteSegmentsResponse(result);
+            LogDeleteSegmentsResponse(result);
             return S_OK;
         }
 
         HRESULT Validate() override
         {
-            return ValidatePFSegmentsDeleteSegmentsResponse(result);
+            return ValidateAdminDeleteSegmentResponse(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<AdminDeleteSegmentResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<AdminDeleteSegmentResultHolderStruct>>(testContext);
 
     PFSegmentsDeleteSegmentRequestWrapper<> request;
-    FillDeleteSegmentRequest(request);
+    FillAdminDeleteSegmentRequest(request);
     LogDeleteSegmentRequest(&request.Model(), "TestSegmentsAdminDeleteSegment");
     HRESULT hr = PFSegmentsAdminDeleteSegmentAsync(stateHandle, &request.Model(), &async->asyncBlock);
     if (FAILED(hr))
@@ -221,14 +232,16 @@ void AutoGenSegmentsTests::TestSegmentsAdminDeleteSegment(TestContext& testConte
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region AdminGetSegments
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenSegmentsTests::TestSegmentsAdminGetSegments(TestContext& testContext)
 {
-    struct AdminGetSegmentsResultHolder : public GetSegmentsResponseHolder
+    struct AdminGetSegmentsResultHolderStruct : public GetSegmentsResponseHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -238,19 +251,19 @@ void AutoGenSegmentsTests::TestSegmentsAdminGetSegments(TestContext& testContext
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFSegmentsAdminGetSegmentsGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
             
-            LogPFSegmentsGetSegmentsResponse(result);
+            LogGetSegmentsResponse(result);
             return S_OK;
         }
 
         HRESULT Validate() override
         {
-            return ValidatePFSegmentsGetSegmentsResponse(result);
+            return ValidateAdminGetSegmentsResponse(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<AdminGetSegmentsResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<AdminGetSegmentsResultHolderStruct>>(testContext);
 
     PFSegmentsGetSegmentsRequestWrapper<> request;
-    FillGetSegmentsRequest(request);
+    FillAdminGetSegmentsRequest(request);
     LogGetSegmentsRequest(&request.Model(), "TestSegmentsAdminGetSegments");
     HRESULT hr = PFSegmentsAdminGetSegmentsAsync(stateHandle, &request.Model(), &async->asyncBlock);
     if (FAILED(hr))
@@ -260,14 +273,16 @@ void AutoGenSegmentsTests::TestSegmentsAdminGetSegments(TestContext& testContext
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region AdminUpdateSegment
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenSegmentsTests::TestSegmentsAdminUpdateSegment(TestContext& testContext)
 {
-    struct AdminUpdateSegmentResultHolder : public UpdateSegmentResponseHolder
+    struct AdminUpdateSegmentResultHolderStruct : public UpdateSegmentResponseHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -277,19 +292,19 @@ void AutoGenSegmentsTests::TestSegmentsAdminUpdateSegment(TestContext& testConte
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFSegmentsAdminUpdateSegmentGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
             
-            LogPFSegmentsUpdateSegmentResponse(result);
+            LogUpdateSegmentResponse(result);
             return S_OK;
         }
 
         HRESULT Validate() override
         {
-            return ValidatePFSegmentsUpdateSegmentResponse(result);
+            return ValidateAdminUpdateSegmentResponse(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<AdminUpdateSegmentResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<AdminUpdateSegmentResultHolderStruct>>(testContext);
 
     PFSegmentsUpdateSegmentRequestWrapper<> request;
-    FillUpdateSegmentRequest(request);
+    FillAdminUpdateSegmentRequest(request);
     LogUpdateSegmentRequest(&request.Model(), "TestSegmentsAdminUpdateSegment");
     HRESULT hr = PFSegmentsAdminUpdateSegmentAsync(stateHandle, &request.Model(), &async->asyncBlock);
     if (FAILED(hr))
@@ -299,6 +314,7 @@ void AutoGenSegmentsTests::TestSegmentsAdminUpdateSegment(TestContext& testConte
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 

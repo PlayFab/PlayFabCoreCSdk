@@ -39,6 +39,7 @@ public:
     static AsyncOp<SharedPtr<TitlePlayer>> ClientLoginWithFacebookInstantGamesId(SharedPtr<GlobalState const> state, const LoginWithFacebookInstantGamesIdRequest& request, const TaskQueue& queue);
     static AsyncOp<SharedPtr<TitlePlayer>> ClientLoginWithGameCenter(SharedPtr<GlobalState const> state, const LoginWithGameCenterRequest& request, const TaskQueue& queue);
     static AsyncOp<SharedPtr<TitlePlayer>> ClientLoginWithGoogleAccount(SharedPtr<GlobalState const> state, const LoginWithGoogleAccountRequest& request, const TaskQueue& queue);
+    static AsyncOp<SharedPtr<TitlePlayer>> ClientLoginWithGooglePlayGamesServices(SharedPtr<GlobalState const> state, const LoginWithGooglePlayGamesServicesRequest& request, const TaskQueue& queue);
     static AsyncOp<SharedPtr<TitlePlayer>> ClientLoginWithIOSDeviceID(SharedPtr<GlobalState const> state, const LoginWithIOSDeviceIDRequest& request, const TaskQueue& queue);
     static AsyncOp<SharedPtr<TitlePlayer>> ClientLoginWithKongregate(SharedPtr<GlobalState const> state, const LoginWithKongregateRequest& request, const TaskQueue& queue);
     static AsyncOp<SharedPtr<TitlePlayer>> ClientLoginWithNintendoServiceAccount(SharedPtr<GlobalState const> state, const LoginWithNintendoServiceAccountRequest& request, const TaskQueue& queue);
@@ -60,6 +61,8 @@ public:
     static AsyncOp<SharedPtr<TitlePlayer>> ServerLoginWithXbox(SharedPtr<GlobalState const> state, const ServerLoginWithXboxRequest& request, const TaskQueue& queue);
     static AsyncOp<SharedPtr<TitlePlayer>> ServerLoginWithXboxId(SharedPtr<GlobalState const> state, const LoginWithXboxIdRequest& request, const TaskQueue& queue);
     static AsyncOp<void> ServerSetPlayerSecret(SharedPtr<GlobalState const> state, const ServerSetPlayerSecretRequest& request, const TaskQueue& queue);
+    static AsyncOp<AuthenticateCustomIdResult> AuthenticateGameServerWithCustomId(SharedPtr<Entity> entity, const AuthenticateCustomIdRequest& request, const TaskQueue& queue);
+    static AsyncOp<void> Delete(SharedPtr<Entity> entity, const DeleteRequest& request, const TaskQueue& queue);
     static AsyncOp<SharedPtr<Entity>> GetEntityToken(SharedPtr<GlobalState const> state, const GetEntityTokenRequest& request, const TaskQueue& queue);
     static AsyncOp<ValidateEntityTokenResponse> ValidateEntityToken(SharedPtr<Entity> entity, const ValidateEntityTokenRequest& request, const TaskQueue& queue);
 };

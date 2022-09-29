@@ -34,9 +34,9 @@ public:
     static AsyncOp<void> AdminSetCatalogItems(SharedPtr<GlobalState const> state, const UpdateCatalogItemsRequest& request, const TaskQueue& queue);
     static AsyncOp<void> AdminSetPublisherData(SharedPtr<GlobalState const> state, const SetPublisherDataRequest& request, const TaskQueue& queue);
     static AsyncOp<void> AdminSetStoreItems(SharedPtr<GlobalState const> state, const UpdateStoreItemsRequest& request, const TaskQueue& queue);
-    static AsyncOp<SetTitleDataResult> AdminSetTitleData(SharedPtr<GlobalState const> state, const SetTitleDataRequest& request, const TaskQueue& queue);
+    static AsyncOp<void> AdminSetTitleData(SharedPtr<GlobalState const> state, const SetTitleDataRequest& request, const TaskQueue& queue);
     static AsyncOp<void> AdminSetTitleDataAndOverrides(SharedPtr<GlobalState const> state, const SetTitleDataAndOverridesRequest& request, const TaskQueue& queue);
-    static AsyncOp<SetTitleDataResult> AdminSetTitleInternalData(SharedPtr<GlobalState const> state, const SetTitleDataRequest& request, const TaskQueue& queue);
+    static AsyncOp<void> AdminSetTitleInternalData(SharedPtr<GlobalState const> state, const SetTitleDataRequest& request, const TaskQueue& queue);
     static AsyncOp<SetupPushNotificationResult> AdminSetupPushNotification(SharedPtr<GlobalState const> state, const SetupPushNotificationRequest& request, const TaskQueue& queue);
     static AsyncOp<void> AdminUpdateCatalogItems(SharedPtr<GlobalState const> state, const UpdateCatalogItemsRequest& request, const TaskQueue& queue);
     static AsyncOp<void> AdminUpdateRandomResultTables(SharedPtr<GlobalState const> state, const UpdateRandomResultTablesRequest& request, const TaskQueue& queue);
@@ -55,8 +55,8 @@ public:
     static AsyncOp<GetTitleDataResult> ServerGetTitleInternalData(SharedPtr<GlobalState const> state, const GetTitleDataRequest& request, const TaskQueue& queue);
     static AsyncOp<GetTitleNewsResult> ServerGetTitleNews(SharedPtr<GlobalState const> state, const GetTitleNewsRequest& request, const TaskQueue& queue);
     static AsyncOp<void> ServerSetPublisherData(SharedPtr<GlobalState const> state, const SetPublisherDataRequest& request, const TaskQueue& queue);
-    static AsyncOp<SetTitleDataResult> ServerSetTitleData(SharedPtr<GlobalState const> state, const SetTitleDataRequest& request, const TaskQueue& queue);
-    static AsyncOp<SetTitleDataResult> ServerSetTitleInternalData(SharedPtr<GlobalState const> state, const SetTitleDataRequest& request, const TaskQueue& queue);
+    static AsyncOp<void> ServerSetTitleData(SharedPtr<GlobalState const> state, const SetTitleDataRequest& request, const TaskQueue& queue);
+    static AsyncOp<void> ServerSetTitleInternalData(SharedPtr<GlobalState const> state, const SetTitleDataRequest& request, const TaskQueue& queue);
 };
 
 } // namespace TitleDataManagement

@@ -117,7 +117,7 @@ typedef struct PFPlatformSpecificConsumeMicrosoftStoreEntitlementsResponse
 typedef struct PFPlatformSpecificPlayStation5Payload
 {
     /// <summary>
-    /// (Optional) An optional list of entitlement ids to query against PSN.
+    /// (Optional) An optional list of entitlement ids to query against PlayStation :tm: Network.
     /// </summary>
     _Maybenull_ _Field_size_(idsCount) const char* const* ids;
 
@@ -127,7 +127,7 @@ typedef struct PFPlatformSpecificPlayStation5Payload
     uint32_t idsCount;
 
     /// <summary>
-    /// (Optional) Id of the PSN service label to consume entitlements from.
+    /// (Optional) Id of the PlayStation :tm: Network service label to consume entitlements from.
     /// </summary>
     _Maybenull_ _Null_terminated_ const char* serviceLabel;
 
@@ -201,7 +201,7 @@ typedef struct PFPlatformSpecificConsumePSNEntitlementsRequest
     uint32_t customTagsCount;
 
     /// <summary>
-    /// Id of the PSN service label to consume entitlements from.
+    /// Id of the PlayStation :tm: Network service label to consume entitlements from.
     /// </summary>
     int32_t serviceLabel;
 
@@ -276,17 +276,18 @@ typedef struct PFPlatformSpecificConsumeXboxEntitlementsResult
 typedef struct PFPlatformSpecificRefreshPSNAuthTokenRequest
 {
     /// <summary>
-    /// Auth code returned by PSN OAuth system.
+    /// Auth code returned by PlayStation :tm: Network OAuth system.
     /// </summary>
     _Null_terminated_ const char* authCode;
 
     /// <summary>
-    /// (Optional) Id of the PSN issuer environment. If null, defaults to production environment.
+    /// (Optional) Id of the PlayStation :tm: Network issuer environment. If null, defaults to production
+    /// environment.
     /// </summary>
     _Maybenull_ int32_t const* issuerId;
 
     /// <summary>
-    /// Redirect URI supplied to PSN when requesting an auth code.
+    /// Redirect URI supplied to PlayStation :tm: Network when requesting an auth code.
     /// </summary>
     _Null_terminated_ const char* redirectUri;
 
@@ -386,7 +387,8 @@ typedef struct PFPlatformSpecificPurchaseReceiptFulfillment
 
 /// <summary>
 /// PFPlatformSpecificRestoreIOSPurchasesResult data model. Once verified, the valid items will be restored
-/// into the user's inventory.
+/// into the user's inventory. This result should be used for immediate updates to the local client game
+/// state as opposed to the GetUserInventory API which can have an up to half second delay.
 /// </summary>
 typedef struct PFPlatformSpecificRestoreIOSPurchasesResult
 {
@@ -449,7 +451,9 @@ typedef struct PFPlatformSpecificValidateAmazonReceiptRequest
 
 /// <summary>
 /// PFPlatformSpecificValidateAmazonReceiptResult data model. Once verified, the catalog item matching
-/// the Amazon item name will be added to the user's inventory.
+/// the Amazon item name will be added to the user's inventory. This result should be used for immediate
+/// updates to the local client game state as opposed to the GetUserInventory API which can have an up
+/// to half second delay.
 /// </summary>
 typedef struct PFPlatformSpecificValidateAmazonReceiptResult
 {
@@ -516,7 +520,9 @@ typedef struct PFPlatformSpecificValidateGooglePlayPurchaseRequest
 
 /// <summary>
 /// PFPlatformSpecificValidateGooglePlayPurchaseResult data model. Once verified, the catalog item (ItemId)
-/// matching the GooglePlay store item (productId) will be added to the user's inventory.
+/// matching the GooglePlay store item (productId) will be added to the user's inventory. This result
+/// should be used for immediate updates to the local client game state as opposed to the GetUserInventory
+/// API which can have an up to half second delay.
 /// </summary>
 typedef struct PFPlatformSpecificValidateGooglePlayPurchaseResult
 {
@@ -578,7 +584,9 @@ typedef struct PFPlatformSpecificValidateIOSReceiptRequest
 
 /// <summary>
 /// PFPlatformSpecificValidateIOSReceiptResult data model. Once verified, the catalog item matching the
-/// iTunes item name will be added to the user's inventory.
+/// iTunes item name will be added to the user's inventory. This result should be used for immediate updates
+/// to the local client game state as opposed to the GetUserInventory API which can have an up to half
+/// second delay.
 /// </summary>
 typedef struct PFPlatformSpecificValidateIOSReceiptResult
 {
@@ -635,7 +643,9 @@ typedef struct PFPlatformSpecificValidateWindowsReceiptRequest
 
 /// <summary>
 /// PFPlatformSpecificValidateWindowsReceiptResult data model. Once verified, the catalog item matching
-/// the Product name will be added to the user's inventory.
+/// the Product name will be added to the user's inventory. This result should be used for immediate updates
+/// to the local client game state as opposed to the GetUserInventory API which can have an up to half
+/// second delay.
 /// </summary>
 typedef struct PFPlatformSpecificValidateWindowsReceiptResult
 {

@@ -33,6 +33,12 @@ typedef struct PFProfilesGetGlobalPolicyRequest
     /// </summary>
     uint32_t customTagsCount;
 
+    /// <summary>
+    /// (Optional) The optional entity to perform this action on. Defaults to the currently logged in
+    /// entity.
+    /// </summary>
+    _Maybenull_ PFEntityKey const* entity;
+
 } PFProfilesGetGlobalPolicyRequest;
 
 /// <summary>
@@ -117,7 +123,8 @@ typedef struct PFProfilesGetEntityProfileRequest
     _Maybenull_ bool const* dataAsObject;
 
     /// <summary>
-    /// (Optional) The entity to perform this action on.
+    /// (Optional) The optional entity to perform this action on. Defaults to the currently logged in
+    /// entity.
     /// </summary>
     _Maybenull_ PFEntityKey const* entity;
 
@@ -507,7 +514,8 @@ typedef struct PFProfilesSetProfileLanguageRequest
     uint32_t customTagsCount;
 
     /// <summary>
-    /// (Optional) The entity to perform this action on.
+    /// (Optional) The optional entity to perform this action on. Defaults to the currently logged in
+    /// entity.
     /// </summary>
     _Maybenull_ PFEntityKey const* entity;
 

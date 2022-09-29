@@ -338,7 +338,8 @@ typedef struct PFCloudScriptExecuteEntityCloudScriptRequest
     uint32_t customTagsCount;
 
     /// <summary>
-    /// (Optional) The entity to perform this action on.
+    /// (Optional) The optional entity to perform this action on. Defaults to the currently logged in
+    /// entity.
     /// </summary>
     _Maybenull_ PFEntityKey const* entity;
 
@@ -392,7 +393,8 @@ typedef struct PFCloudScriptExecuteFunctionRequest
     uint32_t customTagsCount;
 
     /// <summary>
-    /// (Optional) The entity to perform this action on.
+    /// (Optional) The optional entity to perform this action on. Defaults to the currently logged in
+    /// entity.
     /// </summary>
     _Maybenull_ PFEntityKey const* entity;
 
@@ -493,49 +495,7 @@ typedef struct PFCloudScriptGetFunctionRequest
     /// </summary>
     _Null_terminated_ const char* functionName;
 
-    /// <summary>
-    /// (Optional) The Id of the parent Title.
-    /// </summary>
-    _Maybenull_ _Null_terminated_ const char* titleId;
-
 } PFCloudScriptGetFunctionRequest;
-
-/// <summary>
-/// PFCloudScriptAzureResourceSystemData data model.
-/// </summary>
-typedef struct PFCloudScriptAzureResourceSystemData
-{
-    /// <summary>
-    /// (Optional) The timestamp of resource creation (UTC).
-    /// </summary>
-    _Maybenull_ time_t const* createdAt;
-
-    /// <summary>
-    /// (Optional) The identity that created the resource.
-    /// </summary>
-    _Maybenull_ _Null_terminated_ const char* createdBy;
-
-    /// <summary>
-    /// (Optional) The type of identity that created the resource.
-    /// </summary>
-    _Maybenull_ _Null_terminated_ const char* createdByType;
-
-    /// <summary>
-    /// (Optional) The type of identity that last modified the resource.
-    /// </summary>
-    _Maybenull_ time_t const* lastModifiedAt;
-
-    /// <summary>
-    /// (Optional) The identity that last modified the resource.
-    /// </summary>
-    _Maybenull_ _Null_terminated_ const char* lastModifiedBy;
-
-    /// <summary>
-    /// (Optional) The type of identity that last modified the resource.
-    /// </summary>
-    _Maybenull_ _Null_terminated_ const char* lastModifiedByType;
-
-} PFCloudScriptAzureResourceSystemData;
 
 /// <summary>
 /// PFCloudScriptGetFunctionResult data model.
@@ -557,11 +517,6 @@ typedef struct PFCloudScriptGetFunctionResult
     /// (Optional) The name of the queue for a queue trigger Azure Function.
     /// </summary>
     _Maybenull_ _Null_terminated_ const char* queueName;
-
-    /// <summary>
-    /// (Optional) System Data of the Azure Resource.
-    /// </summary>
-    _Maybenull_ PFCloudScriptAzureResourceSystemData const* systemData;
 
     /// <summary>
     /// (Optional) The trigger type for the function.
@@ -586,11 +541,6 @@ typedef struct PFCloudScriptListFunctionsRequest
     /// Count of customTags
     /// </summary>
     uint32_t customTagsCount;
-
-    /// <summary>
-    /// (Optional) The Id of the parent Title.
-    /// </summary>
-    _Maybenull_ _Null_terminated_ const char* titleId;
 
 } PFCloudScriptListFunctionsRequest;
 
@@ -648,11 +598,6 @@ typedef struct PFCloudScriptHttpFunctionModel
     /// </summary>
     _Maybenull_ _Null_terminated_ const char* functionUrl;
 
-    /// <summary>
-    /// (Optional) The System data of the Azure Resource.
-    /// </summary>
-    _Maybenull_ PFCloudScriptAzureResourceSystemData const* systemData;
-
 } PFCloudScriptHttpFunctionModel;
 
 /// <summary>
@@ -691,11 +636,6 @@ typedef struct PFCloudScriptQueuedFunctionModel
     /// (Optional) The name of the queue that triggers the Azure Function.
     /// </summary>
     _Maybenull_ _Null_terminated_ const char* queueName;
-
-    /// <summary>
-    /// (Optional) The System data of the Azure Resource.
-    /// </summary>
-    _Maybenull_ PFCloudScriptAzureResourceSystemData const* systemData;
 
 } PFCloudScriptQueuedFunctionModel;
 
@@ -826,7 +766,8 @@ typedef struct PFCloudScriptPostFunctionResultForPlayerTriggeredActionRequest
     uint32_t customTagsCount;
 
     /// <summary>
-    /// (Optional) The entity to perform this action on.
+    /// (Optional) The optional entity to perform this action on. Defaults to the currently logged in
+    /// entity.
     /// </summary>
     _Maybenull_ PFEntityKey const* entity;
 
@@ -886,11 +827,6 @@ typedef struct PFCloudScriptPostFunctionResultForScheduledTaskRequest
 typedef struct PFCloudScriptRegisterHttpFunctionRequest
 {
     /// <summary>
-    /// (Optional) The Id of the Azure Resource.
-    /// </summary>
-    _Maybenull_ _Null_terminated_ const char* azureResourceId;
-
-    /// <summary>
     /// (Optional) The optional custom tags associated with the request (e.g. build number, external
     /// trace identifiers, etc.).
     /// </summary>
@@ -911,16 +847,6 @@ typedef struct PFCloudScriptRegisterHttpFunctionRequest
     /// </summary>
     _Null_terminated_ const char* functionUrl;
 
-    /// <summary>
-    /// (Optional) System Data of the Azure Resource.
-    /// </summary>
-    _Maybenull_ PFCloudScriptAzureResourceSystemData const* systemData;
-
-    /// <summary>
-    /// (Optional) The Id of the parent Title.
-    /// </summary>
-    _Maybenull_ _Null_terminated_ const char* titleId;
-
 } PFCloudScriptRegisterHttpFunctionRequest;
 
 /// <summary>
@@ -929,11 +855,6 @@ typedef struct PFCloudScriptRegisterHttpFunctionRequest
 /// </summary>
 typedef struct PFCloudScriptRegisterQueuedFunctionRequest
 {
-    /// <summary>
-    /// (Optional) The Id of the Azure Resource.
-    /// </summary>
-    _Maybenull_ _Null_terminated_ const char* azureResourceId;
-
     /// <summary>
     /// A connection string for the storage account that hosts the queue for the Azure Function.
     /// </summary>
@@ -960,16 +881,6 @@ typedef struct PFCloudScriptRegisterQueuedFunctionRequest
     /// </summary>
     _Null_terminated_ const char* queueName;
 
-    /// <summary>
-    /// (Optional) System Data of the Azure Resource.
-    /// </summary>
-    _Maybenull_ PFCloudScriptAzureResourceSystemData const* systemData;
-
-    /// <summary>
-    /// (Optional) The Id of the parent Title.
-    /// </summary>
-    _Maybenull_ _Null_terminated_ const char* titleId;
-
 } PFCloudScriptRegisterQueuedFunctionRequest;
 
 /// <summary>
@@ -992,11 +903,6 @@ typedef struct PFCloudScriptUnregisterFunctionRequest
     /// The name of the function to register.
     /// </summary>
     _Null_terminated_ const char* functionName;
-
-    /// <summary>
-    /// (Optional) The Id of the parent Title.
-    /// </summary>
-    _Maybenull_ _Null_terminated_ const char* titleId;
 
 } PFCloudScriptUnregisterFunctionRequest;
 

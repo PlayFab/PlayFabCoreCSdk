@@ -161,7 +161,7 @@ HRESULT PFCloudScriptAdminUpdateCloudScriptGetResult(
 
 /// <summary>
 /// Executes a CloudScript function, with the 'currentPlayerId' set to the PlayFab ID of the authenticated
-/// player.
+/// player. The PlayFab ID is the entity ID of the player's master_player_account entity.
 /// </summary>
 /// <param name="entityHandle">PFTitlePlayerHandle to use for authentication.</param>
 /// <param name="request">Populated request object.</param>
@@ -207,9 +207,10 @@ HRESULT PFCloudScriptClientExecuteCloudScriptGetResult(
     _Out_opt_ size_t* bufferUsed
 ) noexcept;
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 /// <summary>
-/// Executes a CloudScript function, with the 'currentPlayerId' variable set to the specified PlayFabId
-/// parameter value.
+/// Executes a CloudScript function, with the 'currentPlayerId' set to the PlayFab ID of the authenticated
+/// player. The PlayFab ID is the entity ID of the player's master_player_account entity.
 /// </summary>
 /// <param name="stateHandle">PFStateHandle returned from PFInitialize call.</param>
 /// <param name="request">Populated request object.</param>
@@ -254,6 +255,7 @@ HRESULT PFCloudScriptServerExecuteCloudScriptGetResult(
     _Outptr_ PFExecuteCloudScriptResult** result,
     _Out_opt_ size_t* bufferUsed
 ) noexcept;
+#endif
 
 /// <summary>
 /// Cloud Script is one of PlayFab's most versatile features. It allows client code to request execution

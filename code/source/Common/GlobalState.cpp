@@ -9,9 +9,9 @@ using namespace PlayFab;
 namespace PlayFab
 {
 
-GlobalState::GlobalState(String&& titleId, _In_opt_z_ const char* secretKey, _In_opt_ XTaskQueueHandle backgroundQueue) :
+GlobalState::GlobalState(String&& titleId, _In_opt_z_ const char* secretKey, _In_opt_z_ const char* connectionString, _In_opt_ XTaskQueueHandle backgroundQueue) :
     m_titleId{ std::move(titleId) },
-    m_httpClient{ MakeShared<PlayFab::HttpClient>(m_titleId) },
+    m_httpClient{ connectionString ? MakeShared<PlayFab::HttpClient>(m_titleId, connectionString) : MakeShared<PlayFab::HttpClient>(m_titleId) },
     m_secretKey{ secretKey ? MakeShared<String>(secretKey) : nullptr },
     m_qosAPI{ MakeShared<QoS::QoSAPI>() },
     m_backgroundQueue{ backgroundQueue }
@@ -40,14 +40,15 @@ SharedPtr<QoS::QoSAPI const> GlobalState::QoSAPI() const
 
 } // namespace PlayFab
 
-PFGlobalState::PFGlobalState(_In_z_ const char* titleId, _In_opt_z_ const char* secretKey, _In_opt_ XTaskQueueHandle backgroundQueue) :
-    state{ MakeShared<GlobalState>(titleId, secretKey, backgroundQueue) }
+PFGlobalState::PFGlobalState(_In_z_ const char* titleId, _In_opt_z_ const char* secretKey, _In_opt_z_ const char* connectionString, _In_opt_ XTaskQueueHandle backgroundQueue) :
+    state{ MakeShared<GlobalState>(titleId, secretKey, connectionString, backgroundQueue) }
 {
 }
 
 HRESULT PFGlobalState::Create(
     _In_z_ const char* titleId,
     _In_opt_z_ const char* secretKey,
+    _In_opt_z_ const char* connectionString,
     _In_opt_ XTaskQueueHandle backgroundQueue,
     _Outptr_ PFStateHandle* stateHandle
 )
@@ -56,7 +57,7 @@ HRESULT PFGlobalState::Create(
     RETURN_IF_FAILED(HCInitialize(nullptr));
 
     Allocator<PFGlobalState> a{};
-    *stateHandle = UniquePtr<PFGlobalState>(new (a.allocate(1)) PFGlobalState(titleId, secretKey, backgroundQueue)).release();
+    *stateHandle = UniquePtr<PFGlobalState>(new (a.allocate(1)) PFGlobalState(titleId, secretKey, connectionString, backgroundQueue)).release();
     return S_OK;
 }
 

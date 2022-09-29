@@ -743,6 +743,35 @@ HRESULT PFAuthenticationClientLoginWithGoogleAccountAsync(
 ) noexcept;
 
 /// <summary>
+/// Signs the user in using their Google Play Games account credentials
+/// </summary>
+/// <param name="stateHandle">PFStateHandle returned from PFInitialize call.</param>
+/// <param name="request">Populated request object.</param>
+/// <param name="async">XAsyncBlock for the async operation.</param>
+/// <returns>Result code for this API operation.</returns>
+/// <remarks>
+/// Google Play Games sign-in is accomplished by obtaining a Google OAuth 2.0 credential using the Google
+/// Play Games sign-in for Android APIs on the device and passing it to this API. If this is the first
+/// time a user has signed in with the Google Play Games account and CreateAccount is set to true, a new
+/// PlayFab account will be created and linked to the Google Play Games account. Otherwise, if no PlayFab
+/// account is linked to the Google Play Games account, an error indicating this will be returned, so
+/// that the title can guide the user through creation of a PlayFab account. The current (recommended)
+/// method for obtaining a Google Play Games account credential in an Android application is to call GamesSignInClient.requestServerSideAccess()
+/// and send the auth code as the ServerAuthCode parameter of this API. Before doing this, you must create
+/// an OAuth 2.0 web application client ID in the Google API Console and configure its client ID and secret
+/// in the PlayFab Game Manager Google Add-on for your title. This method does not require prompting of
+/// the user for additional Google account permissions, resulting in a user experience with the least
+/// possible friction. For more information about obtaining the server auth code, see https://developers.google.com/games/services/android/signin.
+///
+/// If successful, call <see cref="PFAuthenticationClientLoginGetResult"/> to get the result.
+/// </remarks>
+HRESULT PFAuthenticationClientLoginWithGooglePlayGamesServicesAsync(
+    _In_ PFStateHandle stateHandle,
+    _In_ const PFAuthenticationLoginWithGooglePlayGamesServicesRequest* request,
+    _Inout_ XAsyncBlock* async
+) noexcept;
+
+/// <summary>
 /// Signs the user in using the vendor-specific iOS device identifier, returning a session identifier
 /// that can subsequently be used for API calls which require an authenticated user
 /// </summary>
@@ -804,6 +833,8 @@ HRESULT PFAuthenticationClientLoginWithKongregateAsync(
 /// <param name="async">XAsyncBlock for the async operation.</param>
 /// <returns>Result code for this API operation.</returns>
 /// <remarks>
+/// See also ClientLinkNintendoServiceAccountAsync, ClientUnlinkNintendoServiceAccountAsync.
+///
 /// If successful, call <see cref="PFAuthenticationClientLoginGetResult"/> to get the result.
 /// </remarks>
 HRESULT PFAuthenticationClientLoginWithNintendoServiceAccountAsync(
@@ -821,6 +852,8 @@ HRESULT PFAuthenticationClientLoginWithNintendoServiceAccountAsync(
 /// <param name="async">XAsyncBlock for the async operation.</param>
 /// <returns>Result code for this API operation.</returns>
 /// <remarks>
+/// See also ClientLinkNintendoSwitchDeviceIdAsync, ClientUnlinkNintendoSwitchDeviceIdAsync.
+///
 /// If successful, call <see cref="PFAuthenticationClientLoginGetResult"/> to get the result.
 /// </remarks>
 HRESULT PFAuthenticationClientLoginWithNintendoSwitchDeviceIdAsync(
@@ -838,6 +871,8 @@ HRESULT PFAuthenticationClientLoginWithNintendoSwitchDeviceIdAsync(
 /// <param name="async">XAsyncBlock for the async operation.</param>
 /// <returns>Result code for this API operation.</returns>
 /// <remarks>
+/// See also ClientLinkOpenIdConnectAsync, ClientUnlinkOpenIdConnectAsync.
+///
 /// If successful, call <see cref="PFAuthenticationClientLoginGetResult"/> to get the result.
 /// </remarks>
 HRESULT PFAuthenticationClientLoginWithOpenIdConnectAsync(
@@ -872,7 +907,7 @@ HRESULT PFAuthenticationClientLoginWithPlayFabAsync(
 ) noexcept;
 
 /// <summary>
-/// Signs the user in using a PlayStation Network authentication code, returning a session identifier
+/// Signs the user in using a PlayStation :tm: Network authentication code, returning a session identifier
 /// that can subsequently be used for API calls which require an authenticated user
 /// </summary>
 /// <param name="stateHandle">PFStateHandle returned from PFInitialize call.</param>
@@ -880,11 +915,12 @@ HRESULT PFAuthenticationClientLoginWithPlayFabAsync(
 /// <param name="async">XAsyncBlock for the async operation.</param>
 /// <returns>Result code for this API operation.</returns>
 /// <remarks>
-/// If this is the first time a user has signed in with the PlayStation Network account and CreateAccount
-/// is set to true, a new PlayFab account will be created and linked to the PSN account. In this case,
-/// no email or username will be associated with the PlayFab account. Otherwise, if no PlayFab account
-/// is linked to the PSN account, an error indicating this will be returned, so that the title can guide
-/// the user through creation of a PlayFab account. See also ClientLinkPSNAccountAsync, ClientUnlinkPSNAccountAsync.
+/// If this is the first time a user has signed in with the PlayStation :tm: Network account and CreateAccount
+/// is set to true, a new PlayFab account will be created and linked to the PlayStation :tm: Network account.
+/// In this case, no email or username will be associated with the PlayFab account. Otherwise, if no PlayFab
+/// account is linked to the PlayStation :tm: Network account, an error indicating this will be returned,
+/// so that the title can guide the user through creation of a PlayFab account. See also ClientLinkPSNAccountAsync,
+/// ClientUnlinkPSNAccountAsync.
 ///
 /// If successful, call <see cref="PFAuthenticationClientLoginGetResult"/> to get the result.
 /// </remarks>
@@ -936,7 +972,8 @@ HRESULT PFAuthenticationClientLoginWithSteamAsync(
 /// the PlayFab system. If CreateAccount is set to true and there is not already a user matched to the
 /// Twitch username that generated the token, then PlayFab will create a new account for this user and
 /// link the ID. In this case, no email or username will be associated with the PlayFab account. If there
-/// is already a different PlayFab user linked with this account, then an error will be returned.
+/// is already a different PlayFab user linked with this account, then an error will be returned. See
+/// also ClientLinkTwitchAsync, ClientUnlinkTwitchAsync.
 ///
 /// If successful, call <see cref="PFAuthenticationClientLoginGetResult"/> to get the result.
 /// </remarks>
@@ -1048,6 +1085,7 @@ HRESULT PFAuthenticationClientSetPlayerSecretAsync(
     _Inout_ XAsyncBlock* async
 ) noexcept;
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 /// <summary>
 /// Validated a client's session ticket, and if successful, returns details for that user
 /// </summary>
@@ -1100,7 +1138,9 @@ HRESULT PFAuthenticationServerAuthenticateSessionTicketGetResult(
     _Outptr_ PFAuthenticationAuthenticateSessionTicketResult** result,
     _Out_opt_ size_t* bufferUsed
 ) noexcept;
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 /// <summary>
 /// Securely login a game client from an external server backend using a custom identifier for that player.
 /// Server Custom ID and Client Custom ID are mutually exclusive and cannot be used to retrieve the same
@@ -1133,7 +1173,9 @@ HRESULT PFAuthenticationServerLoginGetResult(
     _In_ XAsyncBlock* async,
     _Out_ PFTitlePlayerHandle* titlePlayerHandle
 ) noexcept;
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 /// <summary>
 /// Signs the user in using an Steam ID, returning a session identifier that can subsequently be used
 /// for API calls which require an authenticated user
@@ -1158,7 +1200,9 @@ HRESULT PFAuthenticationServerLoginWithSteamIdAsync(
     _In_ const PFAuthenticationLoginWithSteamIdRequest* request,
     _Inout_ XAsyncBlock* async
 ) noexcept;
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 /// <summary>
 /// Signs the user in using a Xbox Live Token from an external server backend, returning a session identifier
 /// that can subsequently be used for API calls which require an authenticated user
@@ -1172,7 +1216,7 @@ HRESULT PFAuthenticationServerLoginWithSteamIdAsync(
 /// to true, a new PlayFab account will be created and linked to the Xbox Live account. In this case,
 /// no email or username will be associated with the PlayFab account. Otherwise, if no PlayFab account
 /// is linked to the Xbox Live account, an error indicating this will be returned, so that the title can
-/// guide the user through creation of a PlayFab account. See also ServerLinkXboxAccountAsync, ServerUnlinkXboxAccountAsync.
+/// guide the user through creation of a PlayFab account.
 ///
 /// If successful, call <see cref="PFAuthenticationServerLoginGetResult"/> to get the result.
 /// </remarks>
@@ -1181,7 +1225,9 @@ HRESULT PFAuthenticationServerLoginWithXboxAsync(
     _In_ const PFAuthenticationServerLoginWithXboxRequest* request,
     _Inout_ XAsyncBlock* async
 ) noexcept;
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 /// <summary>
 /// Signs the user in using an Xbox ID and Sandbox ID, returning a session identifier that can subsequently
 /// be used for API calls which require an authenticated user
@@ -1204,7 +1250,9 @@ HRESULT PFAuthenticationServerLoginWithXboxIdAsync(
     _In_ const PFAuthenticationLoginWithXboxIdRequest* request,
     _Inout_ XAsyncBlock* async
 ) noexcept;
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 /// <summary>
 /// Sets the player's secret if it is not already set. Player secrets are used to sign API requests.
 /// To reset a player's secret use the Admin or Server API method SetPlayerSecret.
@@ -1226,6 +1274,76 @@ HRESULT PFAuthenticationServerLoginWithXboxIdAsync(
 HRESULT PFAuthenticationServerSetPlayerSecretAsync(
     _In_ PFStateHandle stateHandle,
     _In_ const PFAuthenticationServerSetPlayerSecretRequest* request,
+    _Inout_ XAsyncBlock* async
+) noexcept;
+#endif
+
+/// <summary>
+/// Create a game_server entity token and return a new or existing game_server entity.
+/// </summary>
+/// <param name="entityHandle">PFEntityHandle to use for authentication.</param>
+/// <param name="request">Populated request object.</param>
+/// <param name="async">XAsyncBlock for the async operation.</param>
+/// <returns>Result code for this API operation.</returns>
+/// <remarks>
+/// Create or return a game_server entity token. Caller must be a title entity.
+///
+/// If successful, call <see cref="PFAuthenticationAuthenticateGameServerWithCustomIdGetResult"/> to
+/// get the result.
+/// </remarks>
+HRESULT PFAuthenticationAuthenticateGameServerWithCustomIdAsync(
+    _In_ PFEntityHandle entityHandle,
+    _In_ const PFAuthenticationAuthenticateCustomIdRequest* request,
+    _Inout_ XAsyncBlock* async
+) noexcept;
+
+/// <summary>
+/// Get the size in bytes needed to store the result of a AuthenticateGameServerWithCustomId call.
+/// </summary>
+/// <param name="async">XAsyncBlock for the async operation.</param>
+/// <param name="bufferSize">The buffer size in bytes required for the result.</param>
+/// <returns>Result code for this API operation.</returns>
+HRESULT PFAuthenticationAuthenticateGameServerWithCustomIdGetResultSize(
+    _Inout_ XAsyncBlock* async,
+    _Out_ size_t* bufferSize
+) noexcept;
+
+/// <summary>
+/// Gets the result of a successful PFAuthenticationAuthenticateGameServerWithCustomIdAsync call.
+/// </summary>
+/// <param name="async">XAsyncBlock for the async operation.</param>
+/// <param name="bufferSize">The size of the buffer for the result object.</param>
+/// <param name="buffer">Byte buffer used for the result value and its fields.</param>
+/// <param name="result">Pointer to the result object.</param>
+/// <param name="bufferUsed">The number of bytes in the provided buffer that were used.</param>
+/// <returns>Result code for this API operation.</returns>
+/// <remarks>
+/// result is a pointer within buffer and does not need to be freed separately.
+/// </remarks>
+HRESULT PFAuthenticationAuthenticateGameServerWithCustomIdGetResult(
+    _Inout_ XAsyncBlock* async,
+    _In_ size_t bufferSize,
+    _Out_writes_bytes_to_(bufferSize, *bufferUsed) void* buffer,
+    _Outptr_ PFAuthenticationAuthenticateCustomIdResult** result,
+    _Out_opt_ size_t* bufferUsed
+) noexcept;
+
+/// <summary>
+/// Delete a game_server entity.
+/// </summary>
+/// <param name="entityHandle">PFEntityHandle to use for authentication.</param>
+/// <param name="request">Populated request object.</param>
+/// <param name="async">XAsyncBlock for the async operation.</param>
+/// <returns>Result code for this API operation.</returns>
+/// <remarks>
+/// Delete a game_server entity. The caller can be the game_server entity attempting to delete itself.
+/// Or a title entity attempting to delete game_server entities for this title.
+///
+/// Call <see cref="XAsyncGetStatus"/> to get the status of the operation.
+/// </remarks>
+HRESULT PFAuthenticationDeleteAsync(
+    _In_ PFEntityHandle entityHandle,
+    _In_ const PFAuthenticationDeleteRequest* request,
     _Inout_ XAsyncBlock* async
 ) noexcept;
 

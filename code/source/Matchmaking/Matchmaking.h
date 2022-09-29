@@ -20,15 +20,12 @@ public:
     // ------------ Generated API calls
     static AsyncOp<GetMatchmakerGameInfoResult> AdminGetMatchmakerGameInfo(SharedPtr<GlobalState const> state, const GetMatchmakerGameInfoRequest& request, const TaskQueue& queue);
     static AsyncOp<GetMatchmakerGameModesResult> AdminGetMatchmakerGameModes(SharedPtr<GlobalState const> state, const GetMatchmakerGameModesRequest& request, const TaskQueue& queue);
-    static AsyncOp<void> AdminModifyMatchmakerGameModes(SharedPtr<GlobalState const> state, const ModifyMatchmakerGameModesRequest& request, const TaskQueue& queue);
     static AsyncOp<CurrentGamesResult> ClientGetCurrentGames(SharedPtr<TitlePlayer> entity, const CurrentGamesRequest& request, const TaskQueue& queue);
     static AsyncOp<GameServerRegionsResult> ClientGetGameServerRegions(SharedPtr<TitlePlayer> entity, const GameServerRegionsRequest& request, const TaskQueue& queue);
     static AsyncOp<MatchmakeResult> ClientMatchmake(SharedPtr<TitlePlayer> entity, const MatchmakeRequest& request, const TaskQueue& queue);
-    static AsyncOp<StartGameResult> ClientStartGame(SharedPtr<TitlePlayer> entity, const ClientStartGameRequest& request, const TaskQueue& queue);
     static AsyncOp<AuthUserResponse> AuthUser(SharedPtr<GlobalState const> state, const AuthUserRequest& request, const TaskQueue& queue);
     static AsyncOp<void> PlayerJoined(SharedPtr<GlobalState const> state, const PlayerJoinedRequest& request, const TaskQueue& queue);
     static AsyncOp<void> PlayerLeft(SharedPtr<GlobalState const> state, const PlayerLeftRequest& request, const TaskQueue& queue);
-    static AsyncOp<StartGameResponse> StartGame(SharedPtr<GlobalState const> state, const MatchmakerStartGameRequest& request, const TaskQueue& queue);
     static AsyncOp<UserInfoResponse> UserInfo(SharedPtr<GlobalState const> state, const UserInfoRequest& request, const TaskQueue& queue);
     static AsyncOp<void> ServerDeregisterGame(SharedPtr<GlobalState const> state, const DeregisterGameRequest& request, const TaskQueue& queue);
     static AsyncOp<NotifyMatchmakerPlayerLeftResult> ServerNotifyMatchmakerPlayerLeft(SharedPtr<GlobalState const> state, const NotifyMatchmakerPlayerLeftRequest& request, const TaskQueue& queue);

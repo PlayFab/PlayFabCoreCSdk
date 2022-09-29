@@ -267,6 +267,21 @@ HRESULT LinuxInstrumentationConfiguration::Copy(const PFMultiplayerServerLinuxIn
     return S_OK;
 }
 
+JsonValue MonitoringApplicationConfigurationParams::ToJson() const
+{
+    return MonitoringApplicationConfigurationParams::ToJson(this->Model());
+}
+
+JsonValue MonitoringApplicationConfigurationParams::ToJson(const PFMultiplayerServerMonitoringApplicationConfigurationParams& input)
+{
+    JsonValue output{ rapidjson::kObjectType };
+    JsonUtils::ObjectAddMember<AssetReferenceParams>(output, "AssetReference", input.assetReference);
+    JsonUtils::ObjectAddMember(output, "ExecutionScriptName", input.executionScriptName);
+    JsonUtils::ObjectAddMember(output, "InstallationScriptName", input.installationScriptName);
+    JsonUtils::ObjectAddMember(output, "OnStartRuntimeInMinutes", input.onStartRuntimeInMinutes);
+    return output;
+}
+
 JsonValue DynamicStandbyThreshold::ToJson() const
 {
     return DynamicStandbyThreshold::ToJson(this->Model());
@@ -515,6 +530,49 @@ JsonValue BuildRegionParams::ToJson(const PFMultiplayerServerBuildRegionParams& 
     return output;
 }
 
+JsonValue ServerResourceConstraintParams::ToJson() const
+{
+    return ServerResourceConstraintParams::ToJson(this->Model());
+}
+
+JsonValue ServerResourceConstraintParams::ToJson(const PFMultiplayerServerServerResourceConstraintParams& input)
+{
+    JsonValue output{ rapidjson::kObjectType };
+    JsonUtils::ObjectAddMember(output, "CpuLimit", input.cpuLimit);
+    JsonUtils::ObjectAddMember(output, "MemoryLimitGB", input.memoryLimitGB);
+    return output;
+}
+
+void ServerResourceConstraintParams::FromJson(const JsonValue& input)
+{
+    JsonUtils::ObjectGetMember(input, "CpuLimit", this->m_model.cpuLimit);
+
+    JsonUtils::ObjectGetMember(input, "MemoryLimitGB", this->m_model.memoryLimitGB);
+}
+
+size_t ServerResourceConstraintParams::RequiredBufferSize() const
+{
+    return RequiredBufferSize(this->Model());
+}
+
+Result<PFMultiplayerServerServerResourceConstraintParams const*> ServerResourceConstraintParams::Copy(ModelBuffer& buffer) const
+{
+    return buffer.CopyTo<ServerResourceConstraintParams>(&this->Model());
+}
+
+size_t ServerResourceConstraintParams::RequiredBufferSize(const PFMultiplayerServerServerResourceConstraintParams& model)
+{
+    UNREFERENCED_PARAMETER(model); // Fixed size
+    return sizeof(ModelType);
+}
+
+HRESULT ServerResourceConstraintParams::Copy(const PFMultiplayerServerServerResourceConstraintParams& input, PFMultiplayerServerServerResourceConstraintParams& output, ModelBuffer& buffer)
+{
+    output = input;
+    UNREFERENCED_PARAMETER(buffer); // Fixed size
+    return S_OK;
+}
+
 JsonValue CreateBuildWithCustomContainerRequest::ToJson() const
 {
     return CreateBuildWithCustomContainerRequest::ToJson(this->Model());
@@ -533,9 +591,11 @@ JsonValue CreateBuildWithCustomContainerRequest::ToJson(const PFMultiplayerServe
     JsonUtils::ObjectAddMemberArray<GameCertificateReferenceParams>(output, "GameCertificateReferences", input.gameCertificateReferences, input.gameCertificateReferencesCount);
     JsonUtils::ObjectAddMember<LinuxInstrumentationConfiguration>(output, "LinuxInstrumentationConfiguration", input.linuxInstrumentationConfiguration);
     JsonUtils::ObjectAddMemberDictionary(output, "Metadata", input.metadata, input.metadataCount);
+    JsonUtils::ObjectAddMember<MonitoringApplicationConfigurationParams>(output, "MonitoringApplicationConfiguration", input.monitoringApplicationConfiguration);
     JsonUtils::ObjectAddMember(output, "MultiplayerServerCountPerVm", input.multiplayerServerCountPerVm);
     JsonUtils::ObjectAddMemberArray<Port>(output, "Ports", input.ports, input.portsCount);
     JsonUtils::ObjectAddMemberArray<BuildRegionParams>(output, "RegionConfigurations", input.regionConfigurations, input.regionConfigurationsCount);
+    JsonUtils::ObjectAddMember<ServerResourceConstraintParams>(output, "ServerResourceConstraints", input.serverResourceConstraints);
     JsonUtils::ObjectAddMember(output, "UseStreamingForAssetDownloads", input.useStreamingForAssetDownloads);
     JsonUtils::ObjectAddMember(output, "VmSize", input.vmSize);
     return output;
@@ -643,6 +703,83 @@ HRESULT GameCertificateReference::Copy(const PFMultiplayerServerGameCertificateR
     return S_OK;
 }
 
+void MonitoringApplicationConfiguration::FromJson(const JsonValue& input)
+{
+    AssetReference assetReference{};
+    JsonUtils::ObjectGetMember(input, "AssetReference", assetReference);
+    this->SetAssetReference(std::move(assetReference));
+
+    String executionScriptName{};
+    JsonUtils::ObjectGetMember(input, "ExecutionScriptName", executionScriptName);
+    this->SetExecutionScriptName(std::move(executionScriptName));
+
+    String installationScriptName{};
+    JsonUtils::ObjectGetMember(input, "InstallationScriptName", installationScriptName);
+    this->SetInstallationScriptName(std::move(installationScriptName));
+
+    StdExtra::optional<double> onStartRuntimeInMinutes{};
+    JsonUtils::ObjectGetMember(input, "OnStartRuntimeInMinutes", onStartRuntimeInMinutes);
+    this->SetOnStartRuntimeInMinutes(std::move(onStartRuntimeInMinutes));
+}
+
+size_t MonitoringApplicationConfiguration::RequiredBufferSize() const
+{
+    return RequiredBufferSize(this->Model());
+}
+
+Result<PFMultiplayerServerMonitoringApplicationConfiguration const*> MonitoringApplicationConfiguration::Copy(ModelBuffer& buffer) const
+{
+    return buffer.CopyTo<MonitoringApplicationConfiguration>(&this->Model());
+}
+
+size_t MonitoringApplicationConfiguration::RequiredBufferSize(const PFMultiplayerServerMonitoringApplicationConfiguration& model)
+{
+    size_t requiredSize{ alignof(ModelType) + sizeof(ModelType) };
+    if (model.assetReference)
+    {
+        requiredSize += AssetReference::RequiredBufferSize(*model.assetReference);
+    }
+    if (model.executionScriptName)
+    {
+        requiredSize += (std::strlen(model.executionScriptName) + 1);
+    }
+    if (model.installationScriptName)
+    {
+        requiredSize += (std::strlen(model.installationScriptName) + 1);
+    }
+    if (model.onStartRuntimeInMinutes)
+    {
+        requiredSize += (alignof(double) + sizeof(double));
+    }
+    return requiredSize;
+}
+
+HRESULT MonitoringApplicationConfiguration::Copy(const PFMultiplayerServerMonitoringApplicationConfiguration& input, PFMultiplayerServerMonitoringApplicationConfiguration& output, ModelBuffer& buffer)
+{
+    output = input;
+    {
+        auto propCopyResult = buffer.CopyTo<AssetReference>(input.assetReference); 
+        RETURN_IF_FAILED(propCopyResult.hr);
+        output.assetReference = propCopyResult.ExtractPayload();
+    }
+    {
+        auto propCopyResult = buffer.CopyTo(input.executionScriptName); 
+        RETURN_IF_FAILED(propCopyResult.hr);
+        output.executionScriptName = propCopyResult.ExtractPayload();
+    }
+    {
+        auto propCopyResult = buffer.CopyTo(input.installationScriptName); 
+        RETURN_IF_FAILED(propCopyResult.hr);
+        output.installationScriptName = propCopyResult.ExtractPayload();
+    }
+    {
+        auto propCopyResult = buffer.CopyTo(input.onStartRuntimeInMinutes); 
+        RETURN_IF_FAILED(propCopyResult.hr);
+        output.onStartRuntimeInMinutes = propCopyResult.ExtractPayload();
+    }
+    return S_OK;
+}
+
 void CurrentServerStats::FromJson(const JsonValue& input)
 {
     JsonUtils::ObjectGetMember(input, "Active", this->m_model.active);
@@ -692,6 +829,8 @@ void BuildRegion::FromJson(const JsonValue& input)
     {
         this->SetDynamicStandbySettings(std::move(*dynamicStandbySettings));
     }
+
+    JsonUtils::ObjectGetMember(input, "IsAssetReplicationComplete", this->m_model.isAssetReplicationComplete);
 
     JsonUtils::ObjectGetMember(input, "MaxServers", this->m_model.maxServers);
 
@@ -858,6 +997,13 @@ void CreateBuildWithCustomContainerResponse::FromJson(const JsonValue& input)
     JsonUtils::ObjectGetMember(input, "Metadata", metadata);
     this->SetMetadata(std::move(metadata));
 
+    StdExtra::optional<MonitoringApplicationConfiguration> monitoringApplicationConfiguration{};
+    JsonUtils::ObjectGetMember(input, "MonitoringApplicationConfiguration", monitoringApplicationConfiguration);
+    if (monitoringApplicationConfiguration)
+    {
+        this->SetMonitoringApplicationConfiguration(std::move(*monitoringApplicationConfiguration));
+    }
+
     JsonUtils::ObjectGetMember(input, "MultiplayerServerCountPerVm", this->m_model.multiplayerServerCountPerVm);
 
     String osPlatform{};
@@ -871,6 +1017,13 @@ void CreateBuildWithCustomContainerResponse::FromJson(const JsonValue& input)
     ModelVector<BuildRegion> regionConfigurations{};
     JsonUtils::ObjectGetMember<BuildRegion>(input, "RegionConfigurations", regionConfigurations);
     this->SetRegionConfigurations(std::move(regionConfigurations));
+
+    StdExtra::optional<ServerResourceConstraintParams> serverResourceConstraints{};
+    JsonUtils::ObjectGetMember(input, "ServerResourceConstraints", serverResourceConstraints);
+    if (serverResourceConstraints)
+    {
+        this->SetServerResourceConstraints(std::move(*serverResourceConstraints));
+    }
 
     String serverType{};
     JsonUtils::ObjectGetMember(input, "ServerType", serverType);
@@ -946,6 +1099,10 @@ size_t CreateBuildWithCustomContainerResponse::RequiredBufferSize(const PFMultip
         requiredSize += (std::strlen(model.metadata[i].key) + 1);
         requiredSize += (std::strlen(model.metadata[i].value) + 1);
     }
+    if (model.monitoringApplicationConfiguration)
+    {
+        requiredSize += MonitoringApplicationConfiguration::RequiredBufferSize(*model.monitoringApplicationConfiguration);
+    }
     if (model.osPlatform)
     {
         requiredSize += (std::strlen(model.osPlatform) + 1);
@@ -959,6 +1116,10 @@ size_t CreateBuildWithCustomContainerResponse::RequiredBufferSize(const PFMultip
     for (size_t i = 0; i < model.regionConfigurationsCount; ++i)
     {
         requiredSize += BuildRegion::RequiredBufferSize(*model.regionConfigurations[i]);
+    }
+    if (model.serverResourceConstraints)
+    {
+        requiredSize += ServerResourceConstraintParams::RequiredBufferSize(*model.serverResourceConstraints);
     }
     if (model.serverType)
     {
@@ -1034,6 +1195,11 @@ HRESULT CreateBuildWithCustomContainerResponse::Copy(const PFMultiplayerServerCr
         output.metadata = propCopyResult.ExtractPayload();
     }
     {
+        auto propCopyResult = buffer.CopyTo<MonitoringApplicationConfiguration>(input.monitoringApplicationConfiguration); 
+        RETURN_IF_FAILED(propCopyResult.hr);
+        output.monitoringApplicationConfiguration = propCopyResult.ExtractPayload();
+    }
+    {
         auto propCopyResult = buffer.CopyTo(input.osPlatform); 
         RETURN_IF_FAILED(propCopyResult.hr);
         output.osPlatform = propCopyResult.ExtractPayload();
@@ -1047,6 +1213,11 @@ HRESULT CreateBuildWithCustomContainerResponse::Copy(const PFMultiplayerServerCr
         auto propCopyResult = buffer.CopyToArray<BuildRegion>(input.regionConfigurations, input.regionConfigurationsCount);
         RETURN_IF_FAILED(propCopyResult.hr);
         output.regionConfigurations = propCopyResult.ExtractPayload();
+    }
+    {
+        auto propCopyResult = buffer.CopyTo<ServerResourceConstraintParams>(input.serverResourceConstraints); 
+        RETURN_IF_FAILED(propCopyResult.hr);
+        output.serverResourceConstraints = propCopyResult.ExtractPayload();
     }
     {
         auto propCopyResult = buffer.CopyTo(input.serverType); 
@@ -1131,6 +1302,20 @@ HRESULT InstrumentationConfiguration::Copy(const PFMultiplayerServerInstrumentat
     return S_OK;
 }
 
+JsonValue WindowsCrashDumpConfiguration::ToJson() const
+{
+    return WindowsCrashDumpConfiguration::ToJson(this->Model());
+}
+
+JsonValue WindowsCrashDumpConfiguration::ToJson(const PFMultiplayerServerWindowsCrashDumpConfiguration& input)
+{
+    JsonValue output{ rapidjson::kObjectType };
+    JsonUtils::ObjectAddMember(output, "CustomDumpFlags", input.customDumpFlags);
+    JsonUtils::ObjectAddMember(output, "DumpType", input.dumpType);
+    JsonUtils::ObjectAddMember(output, "IsEnabled", input.isEnabled);
+    return output;
+}
+
 JsonValue CreateBuildWithManagedContainerRequest::ToJson() const
 {
     return CreateBuildWithManagedContainerRequest::ToJson(this->Model());
@@ -1148,12 +1333,15 @@ JsonValue CreateBuildWithManagedContainerRequest::ToJson(const PFMultiplayerServ
     JsonUtils::ObjectAddMember(output, "GameWorkingDirectory", input.gameWorkingDirectory);
     JsonUtils::ObjectAddMember<InstrumentationConfiguration>(output, "InstrumentationConfiguration", input.instrumentationConfiguration);
     JsonUtils::ObjectAddMemberDictionary(output, "Metadata", input.metadata, input.metadataCount);
+    JsonUtils::ObjectAddMember<MonitoringApplicationConfigurationParams>(output, "MonitoringApplicationConfiguration", input.monitoringApplicationConfiguration);
     JsonUtils::ObjectAddMember(output, "MultiplayerServerCountPerVm", input.multiplayerServerCountPerVm);
     JsonUtils::ObjectAddMemberArray<Port>(output, "Ports", input.ports, input.portsCount);
     JsonUtils::ObjectAddMemberArray<BuildRegionParams>(output, "RegionConfigurations", input.regionConfigurations, input.regionConfigurationsCount);
+    JsonUtils::ObjectAddMember<ServerResourceConstraintParams>(output, "ServerResourceConstraints", input.serverResourceConstraints);
     JsonUtils::ObjectAddMember(output, "StartMultiplayerServerCommand", input.startMultiplayerServerCommand);
     JsonUtils::ObjectAddMember(output, "UseStreamingForAssetDownloads", input.useStreamingForAssetDownloads);
     JsonUtils::ObjectAddMember(output, "VmSize", input.vmSize);
+    JsonUtils::ObjectAddMember<WindowsCrashDumpConfiguration>(output, "WindowsCrashDumpConfiguration", input.windowsCrashDumpConfiguration);
     return output;
 }
 
@@ -1202,6 +1390,13 @@ void CreateBuildWithManagedContainerResponse::FromJson(const JsonValue& input)
     JsonUtils::ObjectGetMember(input, "Metadata", metadata);
     this->SetMetadata(std::move(metadata));
 
+    StdExtra::optional<MonitoringApplicationConfiguration> monitoringApplicationConfiguration{};
+    JsonUtils::ObjectGetMember(input, "MonitoringApplicationConfiguration", monitoringApplicationConfiguration);
+    if (monitoringApplicationConfiguration)
+    {
+        this->SetMonitoringApplicationConfiguration(std::move(*monitoringApplicationConfiguration));
+    }
+
     JsonUtils::ObjectGetMember(input, "MultiplayerServerCountPerVm", this->m_model.multiplayerServerCountPerVm);
 
     String osPlatform{};
@@ -1215,6 +1410,13 @@ void CreateBuildWithManagedContainerResponse::FromJson(const JsonValue& input)
     ModelVector<BuildRegion> regionConfigurations{};
     JsonUtils::ObjectGetMember<BuildRegion>(input, "RegionConfigurations", regionConfigurations);
     this->SetRegionConfigurations(std::move(regionConfigurations));
+
+    StdExtra::optional<ServerResourceConstraintParams> serverResourceConstraints{};
+    JsonUtils::ObjectGetMember(input, "ServerResourceConstraints", serverResourceConstraints);
+    if (serverResourceConstraints)
+    {
+        this->SetServerResourceConstraints(std::move(*serverResourceConstraints));
+    }
 
     String serverType{};
     JsonUtils::ObjectGetMember(input, "ServerType", serverType);
@@ -1290,6 +1492,10 @@ size_t CreateBuildWithManagedContainerResponse::RequiredBufferSize(const PFMulti
         requiredSize += (std::strlen(model.metadata[i].key) + 1);
         requiredSize += (std::strlen(model.metadata[i].value) + 1);
     }
+    if (model.monitoringApplicationConfiguration)
+    {
+        requiredSize += MonitoringApplicationConfiguration::RequiredBufferSize(*model.monitoringApplicationConfiguration);
+    }
     if (model.osPlatform)
     {
         requiredSize += (std::strlen(model.osPlatform) + 1);
@@ -1303,6 +1509,10 @@ size_t CreateBuildWithManagedContainerResponse::RequiredBufferSize(const PFMulti
     for (size_t i = 0; i < model.regionConfigurationsCount; ++i)
     {
         requiredSize += BuildRegion::RequiredBufferSize(*model.regionConfigurations[i]);
+    }
+    if (model.serverResourceConstraints)
+    {
+        requiredSize += ServerResourceConstraintParams::RequiredBufferSize(*model.serverResourceConstraints);
     }
     if (model.serverType)
     {
@@ -1377,6 +1587,11 @@ HRESULT CreateBuildWithManagedContainerResponse::Copy(const PFMultiplayerServerC
         output.metadata = propCopyResult.ExtractPayload();
     }
     {
+        auto propCopyResult = buffer.CopyTo<MonitoringApplicationConfiguration>(input.monitoringApplicationConfiguration); 
+        RETURN_IF_FAILED(propCopyResult.hr);
+        output.monitoringApplicationConfiguration = propCopyResult.ExtractPayload();
+    }
+    {
         auto propCopyResult = buffer.CopyTo(input.osPlatform); 
         RETURN_IF_FAILED(propCopyResult.hr);
         output.osPlatform = propCopyResult.ExtractPayload();
@@ -1390,6 +1605,11 @@ HRESULT CreateBuildWithManagedContainerResponse::Copy(const PFMultiplayerServerC
         auto propCopyResult = buffer.CopyToArray<BuildRegion>(input.regionConfigurations, input.regionConfigurationsCount);
         RETURN_IF_FAILED(propCopyResult.hr);
         output.regionConfigurations = propCopyResult.ExtractPayload();
+    }
+    {
+        auto propCopyResult = buffer.CopyTo<ServerResourceConstraintParams>(input.serverResourceConstraints); 
+        RETURN_IF_FAILED(propCopyResult.hr);
+        output.serverResourceConstraints = propCopyResult.ExtractPayload();
     }
     {
         auto propCopyResult = buffer.CopyTo(input.serverType); 
@@ -1431,6 +1651,7 @@ JsonValue CreateBuildWithProcessBasedServerRequest::ToJson(const PFMultiplayerSe
     JsonUtils::ObjectAddMember<InstrumentationConfiguration>(output, "InstrumentationConfiguration", input.instrumentationConfiguration);
     JsonUtils::ObjectAddMember(output, "IsOSPreview", input.isOSPreview);
     JsonUtils::ObjectAddMemberDictionary(output, "Metadata", input.metadata, input.metadataCount);
+    JsonUtils::ObjectAddMember<MonitoringApplicationConfigurationParams>(output, "MonitoringApplicationConfiguration", input.monitoringApplicationConfiguration);
     JsonUtils::ObjectAddMember(output, "MultiplayerServerCountPerVm", input.multiplayerServerCountPerVm);
     JsonUtils::ObjectAddMember(output, "OsPlatform", input.osPlatform);
     JsonUtils::ObjectAddMemberArray<Port>(output, "Ports", input.ports, input.portsCount);
@@ -1489,6 +1710,13 @@ void CreateBuildWithProcessBasedServerResponse::FromJson(const JsonValue& input)
     StringDictionaryEntryVector metadata{};
     JsonUtils::ObjectGetMember(input, "Metadata", metadata);
     this->SetMetadata(std::move(metadata));
+
+    StdExtra::optional<MonitoringApplicationConfiguration> monitoringApplicationConfiguration{};
+    JsonUtils::ObjectGetMember(input, "MonitoringApplicationConfiguration", monitoringApplicationConfiguration);
+    if (monitoringApplicationConfiguration)
+    {
+        this->SetMonitoringApplicationConfiguration(std::move(*monitoringApplicationConfiguration));
+    }
 
     JsonUtils::ObjectGetMember(input, "MultiplayerServerCountPerVm", this->m_model.multiplayerServerCountPerVm);
 
@@ -1582,6 +1810,10 @@ size_t CreateBuildWithProcessBasedServerResponse::RequiredBufferSize(const PFMul
         requiredSize += (std::strlen(model.metadata[i].key) + 1);
         requiredSize += (std::strlen(model.metadata[i].value) + 1);
     }
+    if (model.monitoringApplicationConfiguration)
+    {
+        requiredSize += MonitoringApplicationConfiguration::RequiredBufferSize(*model.monitoringApplicationConfiguration);
+    }
     if (model.osPlatform)
     {
         requiredSize += (std::strlen(model.osPlatform) + 1);
@@ -1672,6 +1904,11 @@ HRESULT CreateBuildWithProcessBasedServerResponse::Copy(const PFMultiplayerServe
         auto propCopyResult = buffer.CopyToDictionary(input.metadata, input.metadataCount);
         RETURN_IF_FAILED(propCopyResult.hr);
         output.metadata = propCopyResult.ExtractPayload();
+    }
+    {
+        auto propCopyResult = buffer.CopyTo<MonitoringApplicationConfiguration>(input.monitoringApplicationConfiguration); 
+        RETURN_IF_FAILED(propCopyResult.hr);
+        output.monitoringApplicationConfiguration = propCopyResult.ExtractPayload();
     }
     {
         auto propCopyResult = buffer.CopyTo(input.osPlatform); 
@@ -2261,6 +2498,13 @@ void GetBuildResponse::FromJson(const JsonValue& input)
     JsonUtils::ObjectGetMember<BuildRegion>(input, "RegionConfigurations", regionConfigurations);
     this->SetRegionConfigurations(std::move(regionConfigurations));
 
+    StdExtra::optional<ServerResourceConstraintParams> serverResourceConstraints{};
+    JsonUtils::ObjectGetMember(input, "ServerResourceConstraints", serverResourceConstraints);
+    if (serverResourceConstraints)
+    {
+        this->SetServerResourceConstraints(std::move(*serverResourceConstraints));
+    }
+
     String serverType{};
     JsonUtils::ObjectGetMember(input, "ServerType", serverType);
     this->SetServerType(std::move(serverType));
@@ -2268,10 +2512,6 @@ void GetBuildResponse::FromJson(const JsonValue& input)
     String startMultiplayerServerCommand{};
     JsonUtils::ObjectGetMember(input, "StartMultiplayerServerCommand", startMultiplayerServerCommand);
     this->SetStartMultiplayerServerCommand(std::move(startMultiplayerServerCommand));
-
-    StdExtra::optional<bool> useStreamingForAssetDownloads{};
-    JsonUtils::ObjectGetMember(input, "UseStreamingForAssetDownloads", useStreamingForAssetDownloads);
-    this->SetUseStreamingForAssetDownloads(std::move(useStreamingForAssetDownloads));
 
     StdExtra::optional<PFMultiplayerServerAzureVmSize> vmSize{};
     JsonUtils::ObjectGetMember(input, "VmSize", vmSize);
@@ -2357,6 +2597,10 @@ size_t GetBuildResponse::RequiredBufferSize(const PFMultiplayerServerGetBuildRes
     {
         requiredSize += BuildRegion::RequiredBufferSize(*model.regionConfigurations[i]);
     }
+    if (model.serverResourceConstraints)
+    {
+        requiredSize += ServerResourceConstraintParams::RequiredBufferSize(*model.serverResourceConstraints);
+    }
     if (model.serverType)
     {
         requiredSize += (std::strlen(model.serverType) + 1);
@@ -2364,10 +2608,6 @@ size_t GetBuildResponse::RequiredBufferSize(const PFMultiplayerServerGetBuildRes
     if (model.startMultiplayerServerCommand)
     {
         requiredSize += (std::strlen(model.startMultiplayerServerCommand) + 1);
-    }
-    if (model.useStreamingForAssetDownloads)
-    {
-        requiredSize += (alignof(bool) + sizeof(bool));
     }
     if (model.vmSize)
     {
@@ -2455,6 +2695,11 @@ HRESULT GetBuildResponse::Copy(const PFMultiplayerServerGetBuildResponse& input,
         output.regionConfigurations = propCopyResult.ExtractPayload();
     }
     {
+        auto propCopyResult = buffer.CopyTo<ServerResourceConstraintParams>(input.serverResourceConstraints); 
+        RETURN_IF_FAILED(propCopyResult.hr);
+        output.serverResourceConstraints = propCopyResult.ExtractPayload();
+    }
+    {
         auto propCopyResult = buffer.CopyTo(input.serverType); 
         RETURN_IF_FAILED(propCopyResult.hr);
         output.serverType = propCopyResult.ExtractPayload();
@@ -2463,11 +2708,6 @@ HRESULT GetBuildResponse::Copy(const PFMultiplayerServerGetBuildResponse& input,
         auto propCopyResult = buffer.CopyTo(input.startMultiplayerServerCommand); 
         RETURN_IF_FAILED(propCopyResult.hr);
         output.startMultiplayerServerCommand = propCopyResult.ExtractPayload();
-    }
-    {
-        auto propCopyResult = buffer.CopyTo(input.useStreamingForAssetDownloads); 
-        RETURN_IF_FAILED(propCopyResult.hr);
-        output.useStreamingForAssetDownloads = propCopyResult.ExtractPayload();
     }
     {
         auto propCopyResult = buffer.CopyTo(input.vmSize); 
@@ -2574,9 +2814,7 @@ JsonValue GetMultiplayerServerDetailsRequest::ToJson() const
 JsonValue GetMultiplayerServerDetailsRequest::ToJson(const PFMultiplayerServerGetMultiplayerServerDetailsRequest& input)
 {
     JsonValue output{ rapidjson::kObjectType };
-    JsonUtils::ObjectAddMember(output, "BuildId", input.buildId);
     JsonUtils::ObjectAddMemberDictionary(output, "CustomTags", input.customTags, input.customTagsCount);
-    JsonUtils::ObjectAddMember(output, "Region", input.region);
     JsonUtils::ObjectAddMember(output, "SessionId", input.sessionId);
     return output;
 }

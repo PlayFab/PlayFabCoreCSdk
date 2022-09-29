@@ -1149,8 +1149,7 @@ public:
     PFCloudScriptGetFunctionRequestWrapper(const PFCloudScriptGetFunctionRequest& model) :
         ModelWrapper<PFCloudScriptGetFunctionRequest, Alloc>{ model },
         m_customTags{ model.customTags, model.customTags + model.customTagsCount },
-        m_functionName{ SafeString(model.functionName) },
-        m_titleId{ SafeString(model.titleId) }
+        m_functionName{ SafeString(model.functionName) }
     {
         SetModelPointers();
     }
@@ -1180,7 +1179,6 @@ public:
         swap(lhs.m_model, rhs.m_model);
         swap(lhs.m_customTags, rhs.m_customTags);
         swap(lhs.m_functionName, rhs.m_functionName);
-        swap(lhs.m_titleId, rhs.m_titleId);
         lhs.SetModelPointers();
         rhs.SetModelPointers();
     }
@@ -1198,133 +1196,15 @@ public:
         this->m_model.functionName =  m_functionName.empty() ? nullptr : m_functionName.data();
     }
 
-    void SetTitleId(String value)
-    {
-        m_titleId = std::move(value);
-        this->m_model.titleId =  m_titleId.empty() ? nullptr : m_titleId.data();
-    }
-
 private:
     void SetModelPointers()
     {
         this->m_model.customTags = m_customTags.empty() ? nullptr : m_customTags.data();
         this->m_model.functionName = m_functionName.empty() ? nullptr : m_functionName.data();
-        this->m_model.titleId = m_titleId.empty() ? nullptr : m_titleId.data();
     }
 
     StringDictionaryEntryVector<Alloc> m_customTags;
     String m_functionName;
-    String m_titleId;
-};
-
-template<template<typename AllocT> class Alloc = std::allocator>
-class PFCloudScriptAzureResourceSystemDataWrapper : public ModelWrapper<PFCloudScriptAzureResourceSystemData, Alloc>
-{
-public:
-    using ModelType = typename PFCloudScriptAzureResourceSystemData;
-    using String = typename std::basic_string<char, std::char_traits<char>, Alloc<char>>;
-    template<typename T> using Vector = typename std::vector<T, Alloc<T>>;
-
-    PFCloudScriptAzureResourceSystemDataWrapper() = default;
-
-    PFCloudScriptAzureResourceSystemDataWrapper(const PFCloudScriptAzureResourceSystemData& model) :
-        ModelWrapper<PFCloudScriptAzureResourceSystemData, Alloc>{ model },
-        m_createdAt{ model.createdAt ? StdExtra::optional<time_t>{ *model.createdAt } : StdExtra::nullopt },
-        m_createdBy{ SafeString(model.createdBy) },
-        m_createdByType{ SafeString(model.createdByType) },
-        m_lastModifiedAt{ model.lastModifiedAt ? StdExtra::optional<time_t>{ *model.lastModifiedAt } : StdExtra::nullopt },
-        m_lastModifiedBy{ SafeString(model.lastModifiedBy) },
-        m_lastModifiedByType{ SafeString(model.lastModifiedByType) }
-    {
-        SetModelPointers();
-    }
-
-    PFCloudScriptAzureResourceSystemDataWrapper(const PFCloudScriptAzureResourceSystemDataWrapper& src) :
-        PFCloudScriptAzureResourceSystemDataWrapper{ src.Model() }
-    {
-    }
-
-    PFCloudScriptAzureResourceSystemDataWrapper(PFCloudScriptAzureResourceSystemDataWrapper&& src) :
-        PFCloudScriptAzureResourceSystemDataWrapper{}
-    {
-        swap(*this, src);
-    }
-
-    PFCloudScriptAzureResourceSystemDataWrapper& operator=(PFCloudScriptAzureResourceSystemDataWrapper src) 
-    {
-        swap(*this, src);
-        return *this;
-    }
-
-    virtual ~PFCloudScriptAzureResourceSystemDataWrapper() = default;
-
-    friend void swap(PFCloudScriptAzureResourceSystemDataWrapper& lhs, PFCloudScriptAzureResourceSystemDataWrapper& rhs)
-    {
-        using std::swap;
-        swap(lhs.m_model, rhs.m_model);
-        swap(lhs.m_createdAt, rhs.m_createdAt);
-        swap(lhs.m_createdBy, rhs.m_createdBy);
-        swap(lhs.m_createdByType, rhs.m_createdByType);
-        swap(lhs.m_lastModifiedAt, rhs.m_lastModifiedAt);
-        swap(lhs.m_lastModifiedBy, rhs.m_lastModifiedBy);
-        swap(lhs.m_lastModifiedByType, rhs.m_lastModifiedByType);
-        lhs.SetModelPointers();
-        rhs.SetModelPointers();
-    }
-
-    void SetCreatedAt(StdExtra::optional<time_t> value)
-    {
-        m_createdAt = std::move(value);
-        this->m_model.createdAt = m_createdAt ? m_createdAt.operator->() : nullptr;
-    }
-
-    void SetCreatedBy(String value)
-    {
-        m_createdBy = std::move(value);
-        this->m_model.createdBy =  m_createdBy.empty() ? nullptr : m_createdBy.data();
-    }
-
-    void SetCreatedByType(String value)
-    {
-        m_createdByType = std::move(value);
-        this->m_model.createdByType =  m_createdByType.empty() ? nullptr : m_createdByType.data();
-    }
-
-    void SetLastModifiedAt(StdExtra::optional<time_t> value)
-    {
-        m_lastModifiedAt = std::move(value);
-        this->m_model.lastModifiedAt = m_lastModifiedAt ? m_lastModifiedAt.operator->() : nullptr;
-    }
-
-    void SetLastModifiedBy(String value)
-    {
-        m_lastModifiedBy = std::move(value);
-        this->m_model.lastModifiedBy =  m_lastModifiedBy.empty() ? nullptr : m_lastModifiedBy.data();
-    }
-
-    void SetLastModifiedByType(String value)
-    {
-        m_lastModifiedByType = std::move(value);
-        this->m_model.lastModifiedByType =  m_lastModifiedByType.empty() ? nullptr : m_lastModifiedByType.data();
-    }
-
-private:
-    void SetModelPointers()
-    {
-        this->m_model.createdAt = m_createdAt ? m_createdAt.operator->() : nullptr;
-        this->m_model.createdBy = m_createdBy.empty() ? nullptr : m_createdBy.data();
-        this->m_model.createdByType = m_createdByType.empty() ? nullptr : m_createdByType.data();
-        this->m_model.lastModifiedAt = m_lastModifiedAt ? m_lastModifiedAt.operator->() : nullptr;
-        this->m_model.lastModifiedBy = m_lastModifiedBy.empty() ? nullptr : m_lastModifiedBy.data();
-        this->m_model.lastModifiedByType = m_lastModifiedByType.empty() ? nullptr : m_lastModifiedByType.data();
-    }
-
-    StdExtra::optional<time_t> m_createdAt;
-    String m_createdBy;
-    String m_createdByType;
-    StdExtra::optional<time_t> m_lastModifiedAt;
-    String m_lastModifiedBy;
-    String m_lastModifiedByType;
 };
 
 template<template<typename AllocT> class Alloc = std::allocator>
@@ -1342,7 +1222,6 @@ public:
         m_connectionString{ SafeString(model.connectionString) },
         m_functionUrl{ SafeString(model.functionUrl) },
         m_queueName{ SafeString(model.queueName) },
-        m_systemData{ model.systemData ? StdExtra::optional<PFCloudScriptAzureResourceSystemDataWrapper<Alloc>>{ *model.systemData } : StdExtra::nullopt },
         m_triggerType{ SafeString(model.triggerType) }
     {
         SetModelPointers();
@@ -1374,7 +1253,6 @@ public:
         swap(lhs.m_connectionString, rhs.m_connectionString);
         swap(lhs.m_functionUrl, rhs.m_functionUrl);
         swap(lhs.m_queueName, rhs.m_queueName);
-        swap(lhs.m_systemData, rhs.m_systemData);
         swap(lhs.m_triggerType, rhs.m_triggerType);
         lhs.SetModelPointers();
         rhs.SetModelPointers();
@@ -1398,12 +1276,6 @@ public:
         this->m_model.queueName =  m_queueName.empty() ? nullptr : m_queueName.data();
     }
 
-    void SetSystemData(StdExtra::optional<PFCloudScriptAzureResourceSystemDataWrapper<Alloc>> value)
-    {
-        m_systemData = std::move(value);
-        this->m_model.systemData = m_systemData ? &m_systemData->Model() : nullptr;
-    }
-
     void SetTriggerType(String value)
     {
         m_triggerType = std::move(value);
@@ -1416,14 +1288,12 @@ private:
         this->m_model.connectionString = m_connectionString.empty() ? nullptr : m_connectionString.data();
         this->m_model.functionUrl = m_functionUrl.empty() ? nullptr : m_functionUrl.data();
         this->m_model.queueName = m_queueName.empty() ? nullptr : m_queueName.data();
-        this->m_model.systemData = m_systemData ?  &m_systemData->Model() : nullptr;
         this->m_model.triggerType = m_triggerType.empty() ? nullptr : m_triggerType.data();
     }
 
     String m_connectionString;
     String m_functionUrl;
     String m_queueName;
-    StdExtra::optional<PFCloudScriptAzureResourceSystemDataWrapper<Alloc>> m_systemData;
     String m_triggerType;
 };
 
@@ -1439,8 +1309,7 @@ public:
 
     PFCloudScriptListFunctionsRequestWrapper(const PFCloudScriptListFunctionsRequest& model) :
         ModelWrapper<PFCloudScriptListFunctionsRequest, Alloc>{ model },
-        m_customTags{ model.customTags, model.customTags + model.customTagsCount },
-        m_titleId{ SafeString(model.titleId) }
+        m_customTags{ model.customTags, model.customTags + model.customTagsCount }
     {
         SetModelPointers();
     }
@@ -1469,7 +1338,6 @@ public:
         using std::swap;
         swap(lhs.m_model, rhs.m_model);
         swap(lhs.m_customTags, rhs.m_customTags);
-        swap(lhs.m_titleId, rhs.m_titleId);
         lhs.SetModelPointers();
         rhs.SetModelPointers();
     }
@@ -1481,21 +1349,13 @@ public:
         this->m_model.customTagsCount =  static_cast<uint32_t>(m_customTags.size());
     }
 
-    void SetTitleId(String value)
-    {
-        m_titleId = std::move(value);
-        this->m_model.titleId =  m_titleId.empty() ? nullptr : m_titleId.data();
-    }
-
 private:
     void SetModelPointers()
     {
         this->m_model.customTags = m_customTags.empty() ? nullptr : m_customTags.data();
-        this->m_model.titleId = m_titleId.empty() ? nullptr : m_titleId.data();
     }
 
     StringDictionaryEntryVector<Alloc> m_customTags;
-    String m_titleId;
 };
 
 template<template<typename AllocT> class Alloc = std::allocator>
@@ -1652,8 +1512,7 @@ public:
     PFCloudScriptHttpFunctionModelWrapper(const PFCloudScriptHttpFunctionModel& model) :
         ModelWrapper<PFCloudScriptHttpFunctionModel, Alloc>{ model },
         m_functionName{ SafeString(model.functionName) },
-        m_functionUrl{ SafeString(model.functionUrl) },
-        m_systemData{ model.systemData ? StdExtra::optional<PFCloudScriptAzureResourceSystemDataWrapper<Alloc>>{ *model.systemData } : StdExtra::nullopt }
+        m_functionUrl{ SafeString(model.functionUrl) }
     {
         SetModelPointers();
     }
@@ -1683,7 +1542,6 @@ public:
         swap(lhs.m_model, rhs.m_model);
         swap(lhs.m_functionName, rhs.m_functionName);
         swap(lhs.m_functionUrl, rhs.m_functionUrl);
-        swap(lhs.m_systemData, rhs.m_systemData);
         lhs.SetModelPointers();
         rhs.SetModelPointers();
     }
@@ -1700,23 +1558,15 @@ public:
         this->m_model.functionUrl =  m_functionUrl.empty() ? nullptr : m_functionUrl.data();
     }
 
-    void SetSystemData(StdExtra::optional<PFCloudScriptAzureResourceSystemDataWrapper<Alloc>> value)
-    {
-        m_systemData = std::move(value);
-        this->m_model.systemData = m_systemData ? &m_systemData->Model() : nullptr;
-    }
-
 private:
     void SetModelPointers()
     {
         this->m_model.functionName = m_functionName.empty() ? nullptr : m_functionName.data();
         this->m_model.functionUrl = m_functionUrl.empty() ? nullptr : m_functionUrl.data();
-        this->m_model.systemData = m_systemData ?  &m_systemData->Model() : nullptr;
     }
 
     String m_functionName;
     String m_functionUrl;
-    StdExtra::optional<PFCloudScriptAzureResourceSystemDataWrapper<Alloc>> m_systemData;
 };
 
 template<template<typename AllocT> class Alloc = std::allocator>
@@ -1794,8 +1644,7 @@ public:
         ModelWrapper<PFCloudScriptQueuedFunctionModel, Alloc>{ model },
         m_connectionString{ SafeString(model.connectionString) },
         m_functionName{ SafeString(model.functionName) },
-        m_queueName{ SafeString(model.queueName) },
-        m_systemData{ model.systemData ? StdExtra::optional<PFCloudScriptAzureResourceSystemDataWrapper<Alloc>>{ *model.systemData } : StdExtra::nullopt }
+        m_queueName{ SafeString(model.queueName) }
     {
         SetModelPointers();
     }
@@ -1826,7 +1675,6 @@ public:
         swap(lhs.m_connectionString, rhs.m_connectionString);
         swap(lhs.m_functionName, rhs.m_functionName);
         swap(lhs.m_queueName, rhs.m_queueName);
-        swap(lhs.m_systemData, rhs.m_systemData);
         lhs.SetModelPointers();
         rhs.SetModelPointers();
     }
@@ -1849,25 +1697,17 @@ public:
         this->m_model.queueName =  m_queueName.empty() ? nullptr : m_queueName.data();
     }
 
-    void SetSystemData(StdExtra::optional<PFCloudScriptAzureResourceSystemDataWrapper<Alloc>> value)
-    {
-        m_systemData = std::move(value);
-        this->m_model.systemData = m_systemData ? &m_systemData->Model() : nullptr;
-    }
-
 private:
     void SetModelPointers()
     {
         this->m_model.connectionString = m_connectionString.empty() ? nullptr : m_connectionString.data();
         this->m_model.functionName = m_functionName.empty() ? nullptr : m_functionName.data();
         this->m_model.queueName = m_queueName.empty() ? nullptr : m_queueName.data();
-        this->m_model.systemData = m_systemData ?  &m_systemData->Model() : nullptr;
     }
 
     String m_connectionString;
     String m_functionName;
     String m_queueName;
-    StdExtra::optional<PFCloudScriptAzureResourceSystemDataWrapper<Alloc>> m_systemData;
 };
 
 template<template<typename AllocT> class Alloc = std::allocator>
@@ -2407,12 +2247,9 @@ public:
 
     PFCloudScriptRegisterHttpFunctionRequestWrapper(const PFCloudScriptRegisterHttpFunctionRequest& model) :
         ModelWrapper<PFCloudScriptRegisterHttpFunctionRequest, Alloc>{ model },
-        m_azureResourceId{ SafeString(model.azureResourceId) },
         m_customTags{ model.customTags, model.customTags + model.customTagsCount },
         m_functionName{ SafeString(model.functionName) },
-        m_functionUrl{ SafeString(model.functionUrl) },
-        m_systemData{ model.systemData ? StdExtra::optional<PFCloudScriptAzureResourceSystemDataWrapper<Alloc>>{ *model.systemData } : StdExtra::nullopt },
-        m_titleId{ SafeString(model.titleId) }
+        m_functionUrl{ SafeString(model.functionUrl) }
     {
         SetModelPointers();
     }
@@ -2440,20 +2277,11 @@ public:
     {
         using std::swap;
         swap(lhs.m_model, rhs.m_model);
-        swap(lhs.m_azureResourceId, rhs.m_azureResourceId);
         swap(lhs.m_customTags, rhs.m_customTags);
         swap(lhs.m_functionName, rhs.m_functionName);
         swap(lhs.m_functionUrl, rhs.m_functionUrl);
-        swap(lhs.m_systemData, rhs.m_systemData);
-        swap(lhs.m_titleId, rhs.m_titleId);
         lhs.SetModelPointers();
         rhs.SetModelPointers();
-    }
-
-    void SetAzureResourceId(String value)
-    {
-        m_azureResourceId = std::move(value);
-        this->m_model.azureResourceId =  m_azureResourceId.empty() ? nullptr : m_azureResourceId.data();
     }
 
     void SetCustomTags(StringDictionaryEntryVector<Alloc> value)
@@ -2475,35 +2303,17 @@ public:
         this->m_model.functionUrl =  m_functionUrl.empty() ? nullptr : m_functionUrl.data();
     }
 
-    void SetSystemData(StdExtra::optional<PFCloudScriptAzureResourceSystemDataWrapper<Alloc>> value)
-    {
-        m_systemData = std::move(value);
-        this->m_model.systemData = m_systemData ? &m_systemData->Model() : nullptr;
-    }
-
-    void SetTitleId(String value)
-    {
-        m_titleId = std::move(value);
-        this->m_model.titleId =  m_titleId.empty() ? nullptr : m_titleId.data();
-    }
-
 private:
     void SetModelPointers()
     {
-        this->m_model.azureResourceId = m_azureResourceId.empty() ? nullptr : m_azureResourceId.data();
         this->m_model.customTags = m_customTags.empty() ? nullptr : m_customTags.data();
         this->m_model.functionName = m_functionName.empty() ? nullptr : m_functionName.data();
         this->m_model.functionUrl = m_functionUrl.empty() ? nullptr : m_functionUrl.data();
-        this->m_model.systemData = m_systemData ?  &m_systemData->Model() : nullptr;
-        this->m_model.titleId = m_titleId.empty() ? nullptr : m_titleId.data();
     }
 
-    String m_azureResourceId;
     StringDictionaryEntryVector<Alloc> m_customTags;
     String m_functionName;
     String m_functionUrl;
-    StdExtra::optional<PFCloudScriptAzureResourceSystemDataWrapper<Alloc>> m_systemData;
-    String m_titleId;
 };
 
 template<template<typename AllocT> class Alloc = std::allocator>
@@ -2518,13 +2328,10 @@ public:
 
     PFCloudScriptRegisterQueuedFunctionRequestWrapper(const PFCloudScriptRegisterQueuedFunctionRequest& model) :
         ModelWrapper<PFCloudScriptRegisterQueuedFunctionRequest, Alloc>{ model },
-        m_azureResourceId{ SafeString(model.azureResourceId) },
         m_connectionString{ SafeString(model.connectionString) },
         m_customTags{ model.customTags, model.customTags + model.customTagsCount },
         m_functionName{ SafeString(model.functionName) },
-        m_queueName{ SafeString(model.queueName) },
-        m_systemData{ model.systemData ? StdExtra::optional<PFCloudScriptAzureResourceSystemDataWrapper<Alloc>>{ *model.systemData } : StdExtra::nullopt },
-        m_titleId{ SafeString(model.titleId) }
+        m_queueName{ SafeString(model.queueName) }
     {
         SetModelPointers();
     }
@@ -2552,21 +2359,12 @@ public:
     {
         using std::swap;
         swap(lhs.m_model, rhs.m_model);
-        swap(lhs.m_azureResourceId, rhs.m_azureResourceId);
         swap(lhs.m_connectionString, rhs.m_connectionString);
         swap(lhs.m_customTags, rhs.m_customTags);
         swap(lhs.m_functionName, rhs.m_functionName);
         swap(lhs.m_queueName, rhs.m_queueName);
-        swap(lhs.m_systemData, rhs.m_systemData);
-        swap(lhs.m_titleId, rhs.m_titleId);
         lhs.SetModelPointers();
         rhs.SetModelPointers();
-    }
-
-    void SetAzureResourceId(String value)
-    {
-        m_azureResourceId = std::move(value);
-        this->m_model.azureResourceId =  m_azureResourceId.empty() ? nullptr : m_azureResourceId.data();
     }
 
     void SetConnectionString(String value)
@@ -2594,37 +2392,19 @@ public:
         this->m_model.queueName =  m_queueName.empty() ? nullptr : m_queueName.data();
     }
 
-    void SetSystemData(StdExtra::optional<PFCloudScriptAzureResourceSystemDataWrapper<Alloc>> value)
-    {
-        m_systemData = std::move(value);
-        this->m_model.systemData = m_systemData ? &m_systemData->Model() : nullptr;
-    }
-
-    void SetTitleId(String value)
-    {
-        m_titleId = std::move(value);
-        this->m_model.titleId =  m_titleId.empty() ? nullptr : m_titleId.data();
-    }
-
 private:
     void SetModelPointers()
     {
-        this->m_model.azureResourceId = m_azureResourceId.empty() ? nullptr : m_azureResourceId.data();
         this->m_model.connectionString = m_connectionString.empty() ? nullptr : m_connectionString.data();
         this->m_model.customTags = m_customTags.empty() ? nullptr : m_customTags.data();
         this->m_model.functionName = m_functionName.empty() ? nullptr : m_functionName.data();
         this->m_model.queueName = m_queueName.empty() ? nullptr : m_queueName.data();
-        this->m_model.systemData = m_systemData ?  &m_systemData->Model() : nullptr;
-        this->m_model.titleId = m_titleId.empty() ? nullptr : m_titleId.data();
     }
 
-    String m_azureResourceId;
     String m_connectionString;
     StringDictionaryEntryVector<Alloc> m_customTags;
     String m_functionName;
     String m_queueName;
-    StdExtra::optional<PFCloudScriptAzureResourceSystemDataWrapper<Alloc>> m_systemData;
-    String m_titleId;
 };
 
 template<template<typename AllocT> class Alloc = std::allocator>
@@ -2640,8 +2420,7 @@ public:
     PFCloudScriptUnregisterFunctionRequestWrapper(const PFCloudScriptUnregisterFunctionRequest& model) :
         ModelWrapper<PFCloudScriptUnregisterFunctionRequest, Alloc>{ model },
         m_customTags{ model.customTags, model.customTags + model.customTagsCount },
-        m_functionName{ SafeString(model.functionName) },
-        m_titleId{ SafeString(model.titleId) }
+        m_functionName{ SafeString(model.functionName) }
     {
         SetModelPointers();
     }
@@ -2671,7 +2450,6 @@ public:
         swap(lhs.m_model, rhs.m_model);
         swap(lhs.m_customTags, rhs.m_customTags);
         swap(lhs.m_functionName, rhs.m_functionName);
-        swap(lhs.m_titleId, rhs.m_titleId);
         lhs.SetModelPointers();
         rhs.SetModelPointers();
     }
@@ -2689,23 +2467,15 @@ public:
         this->m_model.functionName =  m_functionName.empty() ? nullptr : m_functionName.data();
     }
 
-    void SetTitleId(String value)
-    {
-        m_titleId = std::move(value);
-        this->m_model.titleId =  m_titleId.empty() ? nullptr : m_titleId.data();
-    }
-
 private:
     void SetModelPointers()
     {
         this->m_model.customTags = m_customTags.empty() ? nullptr : m_customTags.data();
         this->m_model.functionName = m_functionName.empty() ? nullptr : m_functionName.data();
-        this->m_model.titleId = m_titleId.empty() ? nullptr : m_titleId.data();
     }
 
     StringDictionaryEntryVector<Alloc> m_customTags;
     String m_functionName;
-    String m_titleId;
 };
 
 } // namespace Wrappers

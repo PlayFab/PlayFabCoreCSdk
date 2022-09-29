@@ -648,7 +648,7 @@ AsyncOp<void> TitleDataManagementAPI::AdminSetStoreItems(
     });
 }
 
-AsyncOp<SetTitleDataResult> TitleDataManagementAPI::AdminSetTitleData(
+AsyncOp<void> TitleDataManagementAPI::AdminSetTitleData(
     SharedPtr<GlobalState const> state,
     const SetTitleDataRequest& request,
     const TaskQueue& queue
@@ -671,20 +671,18 @@ AsyncOp<SetTitleDataResult> TitleDataManagementAPI::AdminSetTitleData(
         queue
     );
 
-    return requestOp.Then([](Result<ServiceResponse> result) -> Result<SetTitleDataResult>
+    return requestOp.Then([](Result<ServiceResponse> result) -> Result<void>
     {
         RETURN_IF_FAILED(result.hr);
 
         auto serviceResponse = result.ExtractPayload();
         if (serviceResponse.HttpCode == 200)
         {
-            SetTitleDataResult resultModel;
-            resultModel.FromJson(serviceResponse.Data);
-            return resultModel;
+            return S_OK;
         }
         else
         {
-            return Result<SetTitleDataResult>{ ServiceErrorToHR(serviceResponse.ErrorCode), std::move(serviceResponse.ErrorMessage) };
+            return Result<void>{ ServiceErrorToHR(serviceResponse.ErrorCode), std::move(serviceResponse.ErrorMessage) };
         }
     });
 }
@@ -728,7 +726,7 @@ AsyncOp<void> TitleDataManagementAPI::AdminSetTitleDataAndOverrides(
     });
 }
 
-AsyncOp<SetTitleDataResult> TitleDataManagementAPI::AdminSetTitleInternalData(
+AsyncOp<void> TitleDataManagementAPI::AdminSetTitleInternalData(
     SharedPtr<GlobalState const> state,
     const SetTitleDataRequest& request,
     const TaskQueue& queue
@@ -751,20 +749,18 @@ AsyncOp<SetTitleDataResult> TitleDataManagementAPI::AdminSetTitleInternalData(
         queue
     );
 
-    return requestOp.Then([](Result<ServiceResponse> result) -> Result<SetTitleDataResult>
+    return requestOp.Then([](Result<ServiceResponse> result) -> Result<void>
     {
         RETURN_IF_FAILED(result.hr);
 
         auto serviceResponse = result.ExtractPayload();
         if (serviceResponse.HttpCode == 200)
         {
-            SetTitleDataResult resultModel;
-            resultModel.FromJson(serviceResponse.Data);
-            return resultModel;
+            return S_OK;
         }
         else
         {
-            return Result<SetTitleDataResult>{ ServiceErrorToHR(serviceResponse.ErrorCode), std::move(serviceResponse.ErrorMessage) };
+            return Result<void>{ ServiceErrorToHR(serviceResponse.ErrorCode), std::move(serviceResponse.ErrorMessage) };
         }
     });
 }
@@ -1503,7 +1499,7 @@ AsyncOp<void> TitleDataManagementAPI::ServerSetPublisherData(
     });
 }
 
-AsyncOp<SetTitleDataResult> TitleDataManagementAPI::ServerSetTitleData(
+AsyncOp<void> TitleDataManagementAPI::ServerSetTitleData(
     SharedPtr<GlobalState const> state,
     const SetTitleDataRequest& request,
     const TaskQueue& queue
@@ -1526,25 +1522,23 @@ AsyncOp<SetTitleDataResult> TitleDataManagementAPI::ServerSetTitleData(
         queue
     );
 
-    return requestOp.Then([](Result<ServiceResponse> result) -> Result<SetTitleDataResult>
+    return requestOp.Then([](Result<ServiceResponse> result) -> Result<void>
     {
         RETURN_IF_FAILED(result.hr);
 
         auto serviceResponse = result.ExtractPayload();
         if (serviceResponse.HttpCode == 200)
         {
-            SetTitleDataResult resultModel;
-            resultModel.FromJson(serviceResponse.Data);
-            return resultModel;
+            return S_OK;
         }
         else
         {
-            return Result<SetTitleDataResult>{ ServiceErrorToHR(serviceResponse.ErrorCode), std::move(serviceResponse.ErrorMessage) };
+            return Result<void>{ ServiceErrorToHR(serviceResponse.ErrorCode), std::move(serviceResponse.ErrorMessage) };
         }
     });
 }
 
-AsyncOp<SetTitleDataResult> TitleDataManagementAPI::ServerSetTitleInternalData(
+AsyncOp<void> TitleDataManagementAPI::ServerSetTitleInternalData(
     SharedPtr<GlobalState const> state,
     const SetTitleDataRequest& request,
     const TaskQueue& queue
@@ -1567,20 +1561,18 @@ AsyncOp<SetTitleDataResult> TitleDataManagementAPI::ServerSetTitleInternalData(
         queue
     );
 
-    return requestOp.Then([](Result<ServiceResponse> result) -> Result<SetTitleDataResult>
+    return requestOp.Then([](Result<ServiceResponse> result) -> Result<void>
     {
         RETURN_IF_FAILED(result.hr);
 
         auto serviceResponse = result.ExtractPayload();
         if (serviceResponse.HttpCode == 200)
         {
-            SetTitleDataResult resultModel;
-            resultModel.FromJson(serviceResponse.Data);
-            return resultModel;
+            return S_OK;
         }
         else
         {
-            return Result<SetTitleDataResult>{ ServiceErrorToHR(serviceResponse.ErrorCode), std::move(serviceResponse.ErrorMessage) };
+            return Result<void>{ ServiceErrorToHR(serviceResponse.ErrorCode), std::move(serviceResponse.ErrorMessage) };
         }
     });
 }

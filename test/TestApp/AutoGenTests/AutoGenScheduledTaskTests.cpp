@@ -21,7 +21,7 @@ void AutoGenScheduledTaskTests::Log(std::stringstream& ss)
 
 HRESULT AutoGenScheduledTaskTests::LogHR(HRESULT hr)
 {
-    if( TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    if (TestApp::ShouldTrace(PFTestTraceLevel::Information))
     {
         TestApp::Log("Result: 0x%0.8x", hr);
     }
@@ -32,32 +32,54 @@ HRESULT AutoGenScheduledTaskTests::LogHR(HRESULT hr)
 void AutoGenScheduledTaskTests::AddTests()
 {
     // Generated tests 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestScheduledTaskAdminAbortTaskInstance", &AutoGenScheduledTaskTests::TestScheduledTaskAdminAbortTaskInstance);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestScheduledTaskAdminCreateActionsOnPlayersInSegmentTask", &AutoGenScheduledTaskTests::TestScheduledTaskAdminCreateActionsOnPlayersInSegmentTask);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestScheduledTaskAdminCreateCloudScriptTask", &AutoGenScheduledTaskTests::TestScheduledTaskAdminCreateCloudScriptTask);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestScheduledTaskAdminCreateInsightsScheduledScalingTask", &AutoGenScheduledTaskTests::TestScheduledTaskAdminCreateInsightsScheduledScalingTask);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestScheduledTaskAdminDeleteTask", &AutoGenScheduledTaskTests::TestScheduledTaskAdminDeleteTask);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestScheduledTaskAdminGetActionsOnPlayersInSegmentTaskInstance", &AutoGenScheduledTaskTests::TestScheduledTaskAdminGetActionsOnPlayersInSegmentTaskInstance);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestScheduledTaskAdminGetCloudScriptTaskInstance", &AutoGenScheduledTaskTests::TestScheduledTaskAdminGetCloudScriptTaskInstance);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestScheduledTaskAdminGetTaskInstances", &AutoGenScheduledTaskTests::TestScheduledTaskAdminGetTaskInstances);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestScheduledTaskAdminGetTasks", &AutoGenScheduledTaskTests::TestScheduledTaskAdminGetTasks);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestScheduledTaskAdminRunTask", &AutoGenScheduledTaskTests::TestScheduledTaskAdminRunTask);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestScheduledTaskAdminUpdateTask", &AutoGenScheduledTaskTests::TestScheduledTaskAdminUpdateTask);
+#endif
 }
 
 void AutoGenScheduledTaskTests::ClassSetUp()
 {
-    HRESULT hr = PFAdminInitialize(testTitleData.titleId.data(), testTitleData.developerSecretKey.data(), nullptr, &stateHandle);
+    HRESULT hr = PFAdminInitialize(testTitleData.titleId.data(), testTitleData.developerSecretKey.data(), testTitleData.connectionString.data(), nullptr, &stateHandle);
     assert(SUCCEEDED(hr));
     if (SUCCEEDED(hr))
     {
@@ -162,12 +184,13 @@ void AutoGenScheduledTaskTests::SetUp(TestContext& testContext)
 
 #pragma region AdminAbortTaskInstance
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenScheduledTaskTests::TestScheduledTaskAdminAbortTaskInstance(TestContext& testContext)
 {
     auto async = std::make_unique<XAsyncHelper<XAsyncResult>>(testContext);
 
     PFScheduledTaskAbortTaskInstanceRequestWrapper<> request;
-    FillAbortTaskInstanceRequest(request);
+    FillAdminAbortTaskInstanceRequest(request);
     LogAbortTaskInstanceRequest(&request.Model(), "TestScheduledTaskAdminAbortTaskInstance");
     HRESULT hr = PFScheduledTaskAdminAbortTaskInstanceAsync(stateHandle, &request.Model(), &async->asyncBlock);
     if (FAILED(hr))
@@ -177,14 +200,16 @@ void AutoGenScheduledTaskTests::TestScheduledTaskAdminAbortTaskInstance(TestCont
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region AdminCreateActionsOnPlayersInSegmentTask
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenScheduledTaskTests::TestScheduledTaskAdminCreateActionsOnPlayersInSegmentTask(TestContext& testContext)
 {
-    struct AdminCreateActionsOnPlayersInSegmentTaskResultHolder : public CreateTaskResultHolder
+    struct AdminCreateActionsOnPlayersInSegmentTaskResultHolderStruct : public CreateTaskResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -194,19 +219,19 @@ void AutoGenScheduledTaskTests::TestScheduledTaskAdminCreateActionsOnPlayersInSe
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFScheduledTaskAdminCreateActionsOnPlayersInSegmentTaskGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
             
-            LogPFScheduledTaskCreateTaskResult(result);
+            LogCreateTaskResult(result);
             return S_OK;
         }
 
         HRESULT Validate() override
         {
-            return ValidatePFScheduledTaskCreateTaskResult(result);
+            return ValidateAdminCreateActionsOnPlayersInSegmentTaskResponse(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<AdminCreateActionsOnPlayersInSegmentTaskResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<AdminCreateActionsOnPlayersInSegmentTaskResultHolderStruct>>(testContext);
 
     PFScheduledTaskCreateActionsOnPlayerSegmentTaskRequestWrapper<> request;
-    FillCreateActionsOnPlayerSegmentTaskRequest(request);
+    FillAdminCreateActionsOnPlayersInSegmentTaskRequest(request);
     LogCreateActionsOnPlayerSegmentTaskRequest(&request.Model(), "TestScheduledTaskAdminCreateActionsOnPlayersInSegmentTask");
     HRESULT hr = PFScheduledTaskAdminCreateActionsOnPlayersInSegmentTaskAsync(stateHandle, &request.Model(), &async->asyncBlock);
     if (FAILED(hr))
@@ -216,14 +241,16 @@ void AutoGenScheduledTaskTests::TestScheduledTaskAdminCreateActionsOnPlayersInSe
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region AdminCreateCloudScriptTask
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenScheduledTaskTests::TestScheduledTaskAdminCreateCloudScriptTask(TestContext& testContext)
 {
-    struct AdminCreateCloudScriptTaskResultHolder : public CreateTaskResultHolder
+    struct AdminCreateCloudScriptTaskResultHolderStruct : public CreateTaskResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -233,19 +260,19 @@ void AutoGenScheduledTaskTests::TestScheduledTaskAdminCreateCloudScriptTask(Test
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFScheduledTaskAdminCreateCloudScriptTaskGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
             
-            LogPFScheduledTaskCreateTaskResult(result);
+            LogCreateTaskResult(result);
             return S_OK;
         }
 
         HRESULT Validate() override
         {
-            return ValidatePFScheduledTaskCreateTaskResult(result);
+            return ValidateAdminCreateCloudScriptTaskResponse(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<AdminCreateCloudScriptTaskResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<AdminCreateCloudScriptTaskResultHolderStruct>>(testContext);
 
     PFScheduledTaskCreateCloudScriptTaskRequestWrapper<> request;
-    FillCreateCloudScriptTaskRequest(request);
+    FillAdminCreateCloudScriptTaskRequest(request);
     LogCreateCloudScriptTaskRequest(&request.Model(), "TestScheduledTaskAdminCreateCloudScriptTask");
     HRESULT hr = PFScheduledTaskAdminCreateCloudScriptTaskAsync(stateHandle, &request.Model(), &async->asyncBlock);
     if (FAILED(hr))
@@ -255,14 +282,16 @@ void AutoGenScheduledTaskTests::TestScheduledTaskAdminCreateCloudScriptTask(Test
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region AdminCreateInsightsScheduledScalingTask
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenScheduledTaskTests::TestScheduledTaskAdminCreateInsightsScheduledScalingTask(TestContext& testContext)
 {
-    struct AdminCreateInsightsScheduledScalingTaskResultHolder : public CreateTaskResultHolder
+    struct AdminCreateInsightsScheduledScalingTaskResultHolderStruct : public CreateTaskResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -272,19 +301,19 @@ void AutoGenScheduledTaskTests::TestScheduledTaskAdminCreateInsightsScheduledSca
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFScheduledTaskAdminCreateInsightsScheduledScalingTaskGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
             
-            LogPFScheduledTaskCreateTaskResult(result);
+            LogCreateTaskResult(result);
             return S_OK;
         }
 
         HRESULT Validate() override
         {
-            return ValidatePFScheduledTaskCreateTaskResult(result);
+            return ValidateAdminCreateInsightsScheduledScalingTaskResponse(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<AdminCreateInsightsScheduledScalingTaskResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<AdminCreateInsightsScheduledScalingTaskResultHolderStruct>>(testContext);
 
     PFScheduledTaskCreateInsightsScheduledScalingTaskRequestWrapper<> request;
-    FillCreateInsightsScheduledScalingTaskRequest(request);
+    FillAdminCreateInsightsScheduledScalingTaskRequest(request);
     LogCreateInsightsScheduledScalingTaskRequest(&request.Model(), "TestScheduledTaskAdminCreateInsightsScheduledScalingTask");
     HRESULT hr = PFScheduledTaskAdminCreateInsightsScheduledScalingTaskAsync(stateHandle, &request.Model(), &async->asyncBlock);
     if (FAILED(hr))
@@ -294,17 +323,19 @@ void AutoGenScheduledTaskTests::TestScheduledTaskAdminCreateInsightsScheduledSca
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region AdminDeleteTask
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenScheduledTaskTests::TestScheduledTaskAdminDeleteTask(TestContext& testContext)
 {
     auto async = std::make_unique<XAsyncHelper<XAsyncResult>>(testContext);
 
     PFScheduledTaskDeleteTaskRequestWrapper<> request;
-    FillDeleteTaskRequest(request);
+    FillAdminDeleteTaskRequest(request);
     LogDeleteTaskRequest(&request.Model(), "TestScheduledTaskAdminDeleteTask");
     HRESULT hr = PFScheduledTaskAdminDeleteTaskAsync(stateHandle, &request.Model(), &async->asyncBlock);
     if (FAILED(hr))
@@ -314,14 +345,16 @@ void AutoGenScheduledTaskTests::TestScheduledTaskAdminDeleteTask(TestContext& te
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region AdminGetActionsOnPlayersInSegmentTaskInstance
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenScheduledTaskTests::TestScheduledTaskAdminGetActionsOnPlayersInSegmentTaskInstance(TestContext& testContext)
 {
-    struct AdminGetActionsOnPlayersInSegmentTaskInstanceResultHolder : public GetActionsOnPlayersInSegmentTaskInstanceResultHolder
+    struct AdminGetActionsOnPlayersInSegmentTaskInstanceResultHolderStruct : public GetActionsOnPlayersInSegmentTaskInstanceResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -331,19 +364,19 @@ void AutoGenScheduledTaskTests::TestScheduledTaskAdminGetActionsOnPlayersInSegme
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFScheduledTaskAdminGetActionsOnPlayersInSegmentTaskInstanceGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
             
-            LogPFScheduledTaskGetActionsOnPlayersInSegmentTaskInstanceResult(result);
+            LogGetActionsOnPlayersInSegmentTaskInstanceResult(result);
             return S_OK;
         }
 
         HRESULT Validate() override
         {
-            return ValidatePFScheduledTaskGetActionsOnPlayersInSegmentTaskInstanceResult(result);
+            return ValidateAdminGetActionsOnPlayersInSegmentTaskInstanceResponse(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<AdminGetActionsOnPlayersInSegmentTaskInstanceResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<AdminGetActionsOnPlayersInSegmentTaskInstanceResultHolderStruct>>(testContext);
 
     PFScheduledTaskGetTaskInstanceRequestWrapper<> request;
-    FillGetTaskInstanceRequest(request);
+    FillAdminGetActionsOnPlayersInSegmentTaskInstanceRequest(request);
     LogGetTaskInstanceRequest(&request.Model(), "TestScheduledTaskAdminGetActionsOnPlayersInSegmentTaskInstance");
     HRESULT hr = PFScheduledTaskAdminGetActionsOnPlayersInSegmentTaskInstanceAsync(stateHandle, &request.Model(), &async->asyncBlock);
     if (FAILED(hr))
@@ -353,14 +386,16 @@ void AutoGenScheduledTaskTests::TestScheduledTaskAdminGetActionsOnPlayersInSegme
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region AdminGetCloudScriptTaskInstance
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenScheduledTaskTests::TestScheduledTaskAdminGetCloudScriptTaskInstance(TestContext& testContext)
 {
-    struct AdminGetCloudScriptTaskInstanceResultHolder : public GetCloudScriptTaskInstanceResultHolder
+    struct AdminGetCloudScriptTaskInstanceResultHolderStruct : public GetCloudScriptTaskInstanceResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -370,19 +405,19 @@ void AutoGenScheduledTaskTests::TestScheduledTaskAdminGetCloudScriptTaskInstance
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFScheduledTaskAdminGetCloudScriptTaskInstanceGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
             
-            LogPFScheduledTaskGetCloudScriptTaskInstanceResult(result);
+            LogGetCloudScriptTaskInstanceResult(result);
             return S_OK;
         }
 
         HRESULT Validate() override
         {
-            return ValidatePFScheduledTaskGetCloudScriptTaskInstanceResult(result);
+            return ValidateAdminGetCloudScriptTaskInstanceResponse(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<AdminGetCloudScriptTaskInstanceResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<AdminGetCloudScriptTaskInstanceResultHolderStruct>>(testContext);
 
     PFScheduledTaskGetTaskInstanceRequestWrapper<> request;
-    FillGetTaskInstanceRequest(request);
+    FillAdminGetCloudScriptTaskInstanceRequest(request);
     LogGetTaskInstanceRequest(&request.Model(), "TestScheduledTaskAdminGetCloudScriptTaskInstance");
     HRESULT hr = PFScheduledTaskAdminGetCloudScriptTaskInstanceAsync(stateHandle, &request.Model(), &async->asyncBlock);
     if (FAILED(hr))
@@ -392,14 +427,16 @@ void AutoGenScheduledTaskTests::TestScheduledTaskAdminGetCloudScriptTaskInstance
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region AdminGetTaskInstances
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenScheduledTaskTests::TestScheduledTaskAdminGetTaskInstances(TestContext& testContext)
 {
-    struct AdminGetTaskInstancesResultHolder : public GetTaskInstancesResultHolder
+    struct AdminGetTaskInstancesResultHolderStruct : public GetTaskInstancesResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -409,19 +446,19 @@ void AutoGenScheduledTaskTests::TestScheduledTaskAdminGetTaskInstances(TestConte
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFScheduledTaskAdminGetTaskInstancesGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
             
-            LogPFScheduledTaskGetTaskInstancesResult(result);
+            LogGetTaskInstancesResult(result);
             return S_OK;
         }
 
         HRESULT Validate() override
         {
-            return ValidatePFScheduledTaskGetTaskInstancesResult(result);
+            return ValidateAdminGetTaskInstancesResponse(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<AdminGetTaskInstancesResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<AdminGetTaskInstancesResultHolderStruct>>(testContext);
 
     PFScheduledTaskGetTaskInstancesRequestWrapper<> request;
-    FillGetTaskInstancesRequest(request);
+    FillAdminGetTaskInstancesRequest(request);
     LogGetTaskInstancesRequest(&request.Model(), "TestScheduledTaskAdminGetTaskInstances");
     HRESULT hr = PFScheduledTaskAdminGetTaskInstancesAsync(stateHandle, &request.Model(), &async->asyncBlock);
     if (FAILED(hr))
@@ -431,14 +468,16 @@ void AutoGenScheduledTaskTests::TestScheduledTaskAdminGetTaskInstances(TestConte
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region AdminGetTasks
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenScheduledTaskTests::TestScheduledTaskAdminGetTasks(TestContext& testContext)
 {
-    struct AdminGetTasksResultHolder : public GetTasksResultHolder
+    struct AdminGetTasksResultHolderStruct : public GetTasksResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -448,19 +487,19 @@ void AutoGenScheduledTaskTests::TestScheduledTaskAdminGetTasks(TestContext& test
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFScheduledTaskAdminGetTasksGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
             
-            LogPFScheduledTaskGetTasksResult(result);
+            LogGetTasksResult(result);
             return S_OK;
         }
 
         HRESULT Validate() override
         {
-            return ValidatePFScheduledTaskGetTasksResult(result);
+            return ValidateAdminGetTasksResponse(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<AdminGetTasksResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<AdminGetTasksResultHolderStruct>>(testContext);
 
     PFScheduledTaskGetTasksRequestWrapper<> request;
-    FillGetTasksRequest(request);
+    FillAdminGetTasksRequest(request);
     LogGetTasksRequest(&request.Model(), "TestScheduledTaskAdminGetTasks");
     HRESULT hr = PFScheduledTaskAdminGetTasksAsync(stateHandle, &request.Model(), &async->asyncBlock);
     if (FAILED(hr))
@@ -470,14 +509,16 @@ void AutoGenScheduledTaskTests::TestScheduledTaskAdminGetTasks(TestContext& test
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region AdminRunTask
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenScheduledTaskTests::TestScheduledTaskAdminRunTask(TestContext& testContext)
 {
-    struct AdminRunTaskResultHolder : public RunTaskResultHolder
+    struct AdminRunTaskResultHolderStruct : public RunTaskResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -487,19 +528,19 @@ void AutoGenScheduledTaskTests::TestScheduledTaskAdminRunTask(TestContext& testC
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFScheduledTaskAdminRunTaskGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
             
-            LogPFScheduledTaskRunTaskResult(result);
+            LogRunTaskResult(result);
             return S_OK;
         }
 
         HRESULT Validate() override
         {
-            return ValidatePFScheduledTaskRunTaskResult(result);
+            return ValidateAdminRunTaskResponse(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<AdminRunTaskResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<AdminRunTaskResultHolderStruct>>(testContext);
 
     PFScheduledTaskRunTaskRequestWrapper<> request;
-    FillRunTaskRequest(request);
+    FillAdminRunTaskRequest(request);
     LogRunTaskRequest(&request.Model(), "TestScheduledTaskAdminRunTask");
     HRESULT hr = PFScheduledTaskAdminRunTaskAsync(stateHandle, &request.Model(), &async->asyncBlock);
     if (FAILED(hr))
@@ -509,17 +550,19 @@ void AutoGenScheduledTaskTests::TestScheduledTaskAdminRunTask(TestContext& testC
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region AdminUpdateTask
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenScheduledTaskTests::TestScheduledTaskAdminUpdateTask(TestContext& testContext)
 {
     auto async = std::make_unique<XAsyncHelper<XAsyncResult>>(testContext);
 
     PFScheduledTaskUpdateTaskRequestWrapper<> request;
-    FillUpdateTaskRequest(request);
+    FillAdminUpdateTaskRequest(request);
     LogUpdateTaskRequest(&request.Model(), "TestScheduledTaskAdminUpdateTask");
     HRESULT hr = PFScheduledTaskAdminUpdateTaskAsync(stateHandle, &request.Model(), &async->asyncBlock);
     if (FAILED(hr))
@@ -529,6 +572,7 @@ void AutoGenScheduledTaskTests::TestScheduledTaskAdminUpdateTask(TestContext& te
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 

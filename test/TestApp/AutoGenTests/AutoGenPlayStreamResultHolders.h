@@ -6,6 +6,18 @@ namespace PlayFabUnit
 {
 
 
+struct ExportPlayersInSegmentResultHolder : public XAsyncResult, public std::enable_shared_from_this<ExportPlayersInSegmentResultHolder>
+{
+    ExportPlayersInSegmentResultHolder() = default;
+    ExportPlayersInSegmentResultHolder(const ExportPlayersInSegmentResultHolder&) = delete;
+    ExportPlayersInSegmentResultHolder(ExportPlayersInSegmentResultHolder&&) = default;
+    ExportPlayersInSegmentResultHolder& operator=(const ExportPlayersInSegmentResultHolder&) = delete;
+    ExportPlayersInSegmentResultHolder& operator=(ExportPlayersInSegmentResultHolder&&) = default;
+    ~ExportPlayersInSegmentResultHolder() = default;
+
+    PFPlayStreamExportPlayersInSegmentResult* result{ nullptr };
+};
+
 struct GetAllSegmentsResultHolder : public XAsyncResult, public std::enable_shared_from_this<GetAllSegmentsResultHolder>
 {
     GetAllSegmentsResultHolder() = default;
@@ -42,28 +54,16 @@ struct GetPlayersInSegmentResultHolder : public XAsyncResult, public std::enable
     PFPlayStreamGetPlayersInSegmentResult* result{ nullptr };
 };
 
-struct GetPlayerTagsResultHolder : public XAsyncResult, public std::enable_shared_from_this<GetPlayerTagsResultHolder>
+struct GetPlayersInSegmentExportResponseHolder : public XAsyncResult, public std::enable_shared_from_this<GetPlayersInSegmentExportResponseHolder>
 {
-    GetPlayerTagsResultHolder() = default;
-    GetPlayerTagsResultHolder(const GetPlayerTagsResultHolder&) = delete;
-    GetPlayerTagsResultHolder(GetPlayerTagsResultHolder&&) = default;
-    GetPlayerTagsResultHolder& operator=(const GetPlayerTagsResultHolder&) = delete;
-    GetPlayerTagsResultHolder& operator=(GetPlayerTagsResultHolder&&) = default;
-    ~GetPlayerTagsResultHolder() = default;
+    GetPlayersInSegmentExportResponseHolder() = default;
+    GetPlayersInSegmentExportResponseHolder(const GetPlayersInSegmentExportResponseHolder&) = delete;
+    GetPlayersInSegmentExportResponseHolder(GetPlayersInSegmentExportResponseHolder&&) = default;
+    GetPlayersInSegmentExportResponseHolder& operator=(const GetPlayersInSegmentExportResponseHolder&) = delete;
+    GetPlayersInSegmentExportResponseHolder& operator=(GetPlayersInSegmentExportResponseHolder&&) = default;
+    ~GetPlayersInSegmentExportResponseHolder() = default;
 
-    PFPlayStreamGetPlayerTagsResult* result{ nullptr };
-};
-
-struct WriteEventsResponseHolder : public XAsyncResult, public std::enable_shared_from_this<WriteEventsResponseHolder>
-{
-    WriteEventsResponseHolder() = default;
-    WriteEventsResponseHolder(const WriteEventsResponseHolder&) = delete;
-    WriteEventsResponseHolder(WriteEventsResponseHolder&&) = default;
-    WriteEventsResponseHolder& operator=(const WriteEventsResponseHolder&) = delete;
-    WriteEventsResponseHolder& operator=(WriteEventsResponseHolder&&) = default;
-    ~WriteEventsResponseHolder() = default;
-
-    PFPlayStreamWriteEventsResponse* result{ nullptr };
+    PFPlayStreamGetPlayersInSegmentExportResponse* result{ nullptr };
 };
 
 

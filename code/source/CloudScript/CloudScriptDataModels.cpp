@@ -516,128 +516,7 @@ JsonValue GetFunctionRequest::ToJson(const PFCloudScriptGetFunctionRequest& inpu
     JsonValue output{ rapidjson::kObjectType };
     JsonUtils::ObjectAddMemberDictionary(output, "CustomTags", input.customTags, input.customTagsCount);
     JsonUtils::ObjectAddMember(output, "FunctionName", input.functionName);
-    JsonUtils::ObjectAddMember(output, "TitleId", input.titleId);
     return output;
-}
-
-JsonValue AzureResourceSystemData::ToJson() const
-{
-    return AzureResourceSystemData::ToJson(this->Model());
-}
-
-JsonValue AzureResourceSystemData::ToJson(const PFCloudScriptAzureResourceSystemData& input)
-{
-    JsonValue output{ rapidjson::kObjectType };
-    JsonUtils::ObjectAddMemberTime(output, "CreatedAt", input.createdAt);
-    JsonUtils::ObjectAddMember(output, "CreatedBy", input.createdBy);
-    JsonUtils::ObjectAddMember(output, "CreatedByType", input.createdByType);
-    JsonUtils::ObjectAddMemberTime(output, "LastModifiedAt", input.lastModifiedAt);
-    JsonUtils::ObjectAddMember(output, "LastModifiedBy", input.lastModifiedBy);
-    JsonUtils::ObjectAddMember(output, "LastModifiedByType", input.lastModifiedByType);
-    return output;
-}
-
-void AzureResourceSystemData::FromJson(const JsonValue& input)
-{
-    StdExtra::optional<time_t> createdAt{};
-    JsonUtils::ObjectGetMemberTime(input, "CreatedAt", createdAt);
-    this->SetCreatedAt(std::move(createdAt));
-
-    String createdBy{};
-    JsonUtils::ObjectGetMember(input, "CreatedBy", createdBy);
-    this->SetCreatedBy(std::move(createdBy));
-
-    String createdByType{};
-    JsonUtils::ObjectGetMember(input, "CreatedByType", createdByType);
-    this->SetCreatedByType(std::move(createdByType));
-
-    StdExtra::optional<time_t> lastModifiedAt{};
-    JsonUtils::ObjectGetMemberTime(input, "LastModifiedAt", lastModifiedAt);
-    this->SetLastModifiedAt(std::move(lastModifiedAt));
-
-    String lastModifiedBy{};
-    JsonUtils::ObjectGetMember(input, "LastModifiedBy", lastModifiedBy);
-    this->SetLastModifiedBy(std::move(lastModifiedBy));
-
-    String lastModifiedByType{};
-    JsonUtils::ObjectGetMember(input, "LastModifiedByType", lastModifiedByType);
-    this->SetLastModifiedByType(std::move(lastModifiedByType));
-}
-
-size_t AzureResourceSystemData::RequiredBufferSize() const
-{
-    return RequiredBufferSize(this->Model());
-}
-
-Result<PFCloudScriptAzureResourceSystemData const*> AzureResourceSystemData::Copy(ModelBuffer& buffer) const
-{
-    return buffer.CopyTo<AzureResourceSystemData>(&this->Model());
-}
-
-size_t AzureResourceSystemData::RequiredBufferSize(const PFCloudScriptAzureResourceSystemData& model)
-{
-    size_t requiredSize{ alignof(ModelType) + sizeof(ModelType) };
-    if (model.createdAt)
-    {
-        requiredSize += (alignof(time_t) + sizeof(time_t));
-    }
-    if (model.createdBy)
-    {
-        requiredSize += (std::strlen(model.createdBy) + 1);
-    }
-    if (model.createdByType)
-    {
-        requiredSize += (std::strlen(model.createdByType) + 1);
-    }
-    if (model.lastModifiedAt)
-    {
-        requiredSize += (alignof(time_t) + sizeof(time_t));
-    }
-    if (model.lastModifiedBy)
-    {
-        requiredSize += (std::strlen(model.lastModifiedBy) + 1);
-    }
-    if (model.lastModifiedByType)
-    {
-        requiredSize += (std::strlen(model.lastModifiedByType) + 1);
-    }
-    return requiredSize;
-}
-
-HRESULT AzureResourceSystemData::Copy(const PFCloudScriptAzureResourceSystemData& input, PFCloudScriptAzureResourceSystemData& output, ModelBuffer& buffer)
-{
-    output = input;
-    {
-        auto propCopyResult = buffer.CopyTo(input.createdAt); 
-        RETURN_IF_FAILED(propCopyResult.hr);
-        output.createdAt = propCopyResult.ExtractPayload();
-    }
-    {
-        auto propCopyResult = buffer.CopyTo(input.createdBy); 
-        RETURN_IF_FAILED(propCopyResult.hr);
-        output.createdBy = propCopyResult.ExtractPayload();
-    }
-    {
-        auto propCopyResult = buffer.CopyTo(input.createdByType); 
-        RETURN_IF_FAILED(propCopyResult.hr);
-        output.createdByType = propCopyResult.ExtractPayload();
-    }
-    {
-        auto propCopyResult = buffer.CopyTo(input.lastModifiedAt); 
-        RETURN_IF_FAILED(propCopyResult.hr);
-        output.lastModifiedAt = propCopyResult.ExtractPayload();
-    }
-    {
-        auto propCopyResult = buffer.CopyTo(input.lastModifiedBy); 
-        RETURN_IF_FAILED(propCopyResult.hr);
-        output.lastModifiedBy = propCopyResult.ExtractPayload();
-    }
-    {
-        auto propCopyResult = buffer.CopyTo(input.lastModifiedByType); 
-        RETURN_IF_FAILED(propCopyResult.hr);
-        output.lastModifiedByType = propCopyResult.ExtractPayload();
-    }
-    return S_OK;
 }
 
 void GetFunctionResult::FromJson(const JsonValue& input)
@@ -653,13 +532,6 @@ void GetFunctionResult::FromJson(const JsonValue& input)
     String queueName{};
     JsonUtils::ObjectGetMember(input, "QueueName", queueName);
     this->SetQueueName(std::move(queueName));
-
-    StdExtra::optional<AzureResourceSystemData> systemData{};
-    JsonUtils::ObjectGetMember(input, "SystemData", systemData);
-    if (systemData)
-    {
-        this->SetSystemData(std::move(*systemData));
-    }
 
     String triggerType{};
     JsonUtils::ObjectGetMember(input, "TriggerType", triggerType);
@@ -691,10 +563,6 @@ size_t GetFunctionResult::RequiredBufferSize(const PFCloudScriptGetFunctionResul
     {
         requiredSize += (std::strlen(model.queueName) + 1);
     }
-    if (model.systemData)
-    {
-        requiredSize += AzureResourceSystemData::RequiredBufferSize(*model.systemData);
-    }
     if (model.triggerType)
     {
         requiredSize += (std::strlen(model.triggerType) + 1);
@@ -721,11 +589,6 @@ HRESULT GetFunctionResult::Copy(const PFCloudScriptGetFunctionResult& input, PFC
         output.queueName = propCopyResult.ExtractPayload();
     }
     {
-        auto propCopyResult = buffer.CopyTo<AzureResourceSystemData>(input.systemData); 
-        RETURN_IF_FAILED(propCopyResult.hr);
-        output.systemData = propCopyResult.ExtractPayload();
-    }
-    {
         auto propCopyResult = buffer.CopyTo(input.triggerType); 
         RETURN_IF_FAILED(propCopyResult.hr);
         output.triggerType = propCopyResult.ExtractPayload();
@@ -742,7 +605,6 @@ JsonValue ListFunctionsRequest::ToJson(const PFCloudScriptListFunctionsRequest& 
 {
     JsonValue output{ rapidjson::kObjectType };
     JsonUtils::ObjectAddMemberDictionary(output, "CustomTags", input.customTags, input.customTagsCount);
-    JsonUtils::ObjectAddMember(output, "TitleId", input.titleId);
     return output;
 }
 
@@ -858,13 +720,6 @@ void HttpFunctionModel::FromJson(const JsonValue& input)
     String functionUrl{};
     JsonUtils::ObjectGetMember(input, "FunctionUrl", functionUrl);
     this->SetFunctionUrl(std::move(functionUrl));
-
-    StdExtra::optional<AzureResourceSystemData> systemData{};
-    JsonUtils::ObjectGetMember(input, "SystemData", systemData);
-    if (systemData)
-    {
-        this->SetSystemData(std::move(*systemData));
-    }
 }
 
 size_t HttpFunctionModel::RequiredBufferSize() const
@@ -888,10 +743,6 @@ size_t HttpFunctionModel::RequiredBufferSize(const PFCloudScriptHttpFunctionMode
     {
         requiredSize += (std::strlen(model.functionUrl) + 1);
     }
-    if (model.systemData)
-    {
-        requiredSize += AzureResourceSystemData::RequiredBufferSize(*model.systemData);
-    }
     return requiredSize;
 }
 
@@ -907,11 +758,6 @@ HRESULT HttpFunctionModel::Copy(const PFCloudScriptHttpFunctionModel& input, PFC
         auto propCopyResult = buffer.CopyTo(input.functionUrl); 
         RETURN_IF_FAILED(propCopyResult.hr);
         output.functionUrl = propCopyResult.ExtractPayload();
-    }
-    {
-        auto propCopyResult = buffer.CopyTo<AzureResourceSystemData>(input.systemData); 
-        RETURN_IF_FAILED(propCopyResult.hr);
-        output.systemData = propCopyResult.ExtractPayload();
     }
     return S_OK;
 }
@@ -968,13 +814,6 @@ void QueuedFunctionModel::FromJson(const JsonValue& input)
     String queueName{};
     JsonUtils::ObjectGetMember(input, "QueueName", queueName);
     this->SetQueueName(std::move(queueName));
-
-    StdExtra::optional<AzureResourceSystemData> systemData{};
-    JsonUtils::ObjectGetMember(input, "SystemData", systemData);
-    if (systemData)
-    {
-        this->SetSystemData(std::move(*systemData));
-    }
 }
 
 size_t QueuedFunctionModel::RequiredBufferSize() const
@@ -1002,10 +841,6 @@ size_t QueuedFunctionModel::RequiredBufferSize(const PFCloudScriptQueuedFunction
     {
         requiredSize += (std::strlen(model.queueName) + 1);
     }
-    if (model.systemData)
-    {
-        requiredSize += AzureResourceSystemData::RequiredBufferSize(*model.systemData);
-    }
     return requiredSize;
 }
 
@@ -1026,11 +861,6 @@ HRESULT QueuedFunctionModel::Copy(const PFCloudScriptQueuedFunctionModel& input,
         auto propCopyResult = buffer.CopyTo(input.queueName); 
         RETURN_IF_FAILED(propCopyResult.hr);
         output.queueName = propCopyResult.ExtractPayload();
-    }
-    {
-        auto propCopyResult = buffer.CopyTo<AzureResourceSystemData>(input.systemData); 
-        RETURN_IF_FAILED(propCopyResult.hr);
-        output.systemData = propCopyResult.ExtractPayload();
     }
     return S_OK;
 }
@@ -1158,12 +988,9 @@ JsonValue RegisterHttpFunctionRequest::ToJson() const
 JsonValue RegisterHttpFunctionRequest::ToJson(const PFCloudScriptRegisterHttpFunctionRequest& input)
 {
     JsonValue output{ rapidjson::kObjectType };
-    JsonUtils::ObjectAddMember(output, "AzureResourceId", input.azureResourceId);
     JsonUtils::ObjectAddMemberDictionary(output, "CustomTags", input.customTags, input.customTagsCount);
     JsonUtils::ObjectAddMember(output, "FunctionName", input.functionName);
     JsonUtils::ObjectAddMember(output, "FunctionUrl", input.functionUrl);
-    JsonUtils::ObjectAddMember<AzureResourceSystemData>(output, "SystemData", input.systemData);
-    JsonUtils::ObjectAddMember(output, "TitleId", input.titleId);
     return output;
 }
 
@@ -1175,13 +1002,10 @@ JsonValue RegisterQueuedFunctionRequest::ToJson() const
 JsonValue RegisterQueuedFunctionRequest::ToJson(const PFCloudScriptRegisterQueuedFunctionRequest& input)
 {
     JsonValue output{ rapidjson::kObjectType };
-    JsonUtils::ObjectAddMember(output, "AzureResourceId", input.azureResourceId);
     JsonUtils::ObjectAddMember(output, "ConnectionString", input.connectionString);
     JsonUtils::ObjectAddMemberDictionary(output, "CustomTags", input.customTags, input.customTagsCount);
     JsonUtils::ObjectAddMember(output, "FunctionName", input.functionName);
     JsonUtils::ObjectAddMember(output, "QueueName", input.queueName);
-    JsonUtils::ObjectAddMember<AzureResourceSystemData>(output, "SystemData", input.systemData);
-    JsonUtils::ObjectAddMember(output, "TitleId", input.titleId);
     return output;
 }
 
@@ -1195,7 +1019,6 @@ JsonValue UnregisterFunctionRequest::ToJson(const PFCloudScriptUnregisterFunctio
     JsonValue output{ rapidjson::kObjectType };
     JsonUtils::ObjectAddMemberDictionary(output, "CustomTags", input.customTags, input.customTagsCount);
     JsonUtils::ObjectAddMember(output, "FunctionName", input.functionName);
-    JsonUtils::ObjectAddMember(output, "TitleId", input.titleId);
     return output;
 }
 

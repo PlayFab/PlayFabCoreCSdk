@@ -11,7 +11,7 @@ namespace PlayFabUnit
 
 void AutoGenSegmentsTests::LogCreateSegmentRequest(PFSegmentsCreateSegmentRequest const* request, const char* testName)
 {
-    if( !TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    if (!TestApp::ShouldTrace(PFTestTraceLevel::Information))
     {
         return;
     }
@@ -28,9 +28,9 @@ void AutoGenSegmentsTests::LogCreateSegmentRequest(PFSegmentsCreateSegmentReques
 
 }
 
-HRESULT AutoGenSegmentsTests::LogPFSegmentsCreateSegmentResponse(PFSegmentsCreateSegmentResponse const* result)
+HRESULT AutoGenSegmentsTests::LogCreateSegmentResponse(PFSegmentsCreateSegmentResponse const* result)
 {
-    if( !TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    if (!TestApp::ShouldTrace(PFTestTraceLevel::Information))
     {
         return S_OK;
     }
@@ -38,15 +38,15 @@ HRESULT AutoGenSegmentsTests::LogPFSegmentsCreateSegmentResponse(PFSegmentsCreat
     std::stringstream ss;
     ss << "Response:"; Log(ss);
 
-    // Found PlayFabSegmentsCreateSegmentResponse
-    if( result->errorMessage ) { ss << "  errorMessage " << result->errorMessage; Log(ss); } else { ss << "  errorMessage = nullptr"; Log(ss); } // Class: const char* 
-    if( result->segmentId ) { ss << "  segmentId " << result->segmentId; Log(ss); } else { ss << "  segmentId = nullptr"; Log(ss); } // Class: const char* 
+    // Found PlayFabSegmentsCreateSegmentResponse    
+    if (result->errorMessage) { ss << "  errorMessage " << result->errorMessage; Log(ss); } else { ss << "  errorMessage = nullptr"; Log(ss); } // Class: const char*     
+    if (result->segmentId) { ss << "  segmentId " << result->segmentId; Log(ss); } else { ss << "  segmentId = nullptr"; Log(ss); } // Class: const char* 
     return S_OK;
 }
 
 void AutoGenSegmentsTests::LogDeleteSegmentRequest(PFSegmentsDeleteSegmentRequest const* request, const char* testName)
 {
-    if( !TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    if (!TestApp::ShouldTrace(PFTestTraceLevel::Information))
     {
         return;
     }
@@ -59,13 +59,13 @@ void AutoGenSegmentsTests::LogDeleteSegmentRequest(PFSegmentsDeleteSegmentReques
 
     // PlayFabSegmentsDeleteSegmentRequest struct:
     // request->segmentId: const char*
-    if( request->segmentId ) { ss << "  segmentId " << request->segmentId; Log(ss); } else { ss << "  segmentId = nullptr"; Log(ss); } // Class: const char* 
+    if (request->segmentId) { ss << "  segmentId " << request->segmentId; Log(ss); } else { ss << "  segmentId = nullptr"; Log(ss); } // Class: const char* 
 
 }
 
-HRESULT AutoGenSegmentsTests::LogPFSegmentsDeleteSegmentsResponse(PFSegmentsDeleteSegmentsResponse const* result)
+HRESULT AutoGenSegmentsTests::LogDeleteSegmentsResponse(PFSegmentsDeleteSegmentsResponse const* result)
 {
-    if( !TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    if (!TestApp::ShouldTrace(PFTestTraceLevel::Information))
     {
         return S_OK;
     }
@@ -73,14 +73,14 @@ HRESULT AutoGenSegmentsTests::LogPFSegmentsDeleteSegmentsResponse(PFSegmentsDele
     std::stringstream ss;
     ss << "Response:"; Log(ss);
 
-    // Found PlayFabSegmentsDeleteSegmentsResponse
-    if( result->errorMessage ) { ss << "  errorMessage " << result->errorMessage; Log(ss); } else { ss << "  errorMessage = nullptr"; Log(ss); } // Class: const char* 
+    // Found PlayFabSegmentsDeleteSegmentsResponse    
+    if (result->errorMessage) { ss << "  errorMessage " << result->errorMessage; Log(ss); } else { ss << "  errorMessage = nullptr"; Log(ss); } // Class: const char* 
     return S_OK;
 }
 
 void AutoGenSegmentsTests::LogGetSegmentsRequest(PFSegmentsGetSegmentsRequest const* request, const char* testName)
 {
-    if( !TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    if (!TestApp::ShouldTrace(PFTestTraceLevel::Information))
     {
         return;
     }
@@ -97,16 +97,16 @@ void AutoGenSegmentsTests::LogGetSegmentsRequest(PFSegmentsGetSegmentsRequest co
     ss << "  segmentIdsCount " << request->segmentIdsCount; Log(ss);
 
     // const char*
-    for( uint32_t i=0; i<request->segmentIdsCount; i++ )
+    for (uint32_t i=0; i<request->segmentIdsCount; i++)
     {
             ss << "  request->segmentIds[" << i << "]:" << request->segmentIds[i]; Log(ss); // const char*
     } 
 
 }
 
-HRESULT AutoGenSegmentsTests::LogPFSegmentsGetSegmentsResponse(PFSegmentsGetSegmentsResponse const* result)
+HRESULT AutoGenSegmentsTests::LogGetSegmentsResponse(PFSegmentsGetSegmentsResponse const* result)
 {
-    if( !TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    if (!TestApp::ShouldTrace(PFTestTraceLevel::Information))
     {
         return S_OK;
     }
@@ -114,12 +114,12 @@ HRESULT AutoGenSegmentsTests::LogPFSegmentsGetSegmentsResponse(PFSegmentsGetSegm
     std::stringstream ss;
     ss << "Response:"; Log(ss);
 
-    // Found PlayFabSegmentsGetSegmentsResponse
-    if( result->errorMessage ) { ss << "  errorMessage " << result->errorMessage; Log(ss); } else { ss << "  errorMessage = nullptr"; Log(ss); } // Class: const char*     
+    // Found PlayFabSegmentsGetSegmentsResponse    
+    if (result->errorMessage) { ss << "  errorMessage " << result->errorMessage; Log(ss); } else { ss << "  errorMessage = nullptr"; Log(ss); } // Class: const char*         
     ss << "  segmentsCount " << result->segmentsCount; Log(ss);
 
     // PFSegmentsSegmentModel
-    for( uint32_t i=0; i<result->segmentsCount; i++ )
+    for (uint32_t i=0; i<result->segmentsCount; i++)
     {
             ss << "  result->segments[" << i << "]:" << result->segments[i]; Log(ss); // PFSegmentsSegmentModel
     } 
@@ -128,7 +128,7 @@ HRESULT AutoGenSegmentsTests::LogPFSegmentsGetSegmentsResponse(PFSegmentsGetSegm
 
 void AutoGenSegmentsTests::LogUpdateSegmentRequest(PFSegmentsUpdateSegmentRequest const* request, const char* testName)
 {
-    if( !TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    if (!TestApp::ShouldTrace(PFTestTraceLevel::Information))
     {
         return;
     }
@@ -145,9 +145,9 @@ void AutoGenSegmentsTests::LogUpdateSegmentRequest(PFSegmentsUpdateSegmentReques
 
 }
 
-HRESULT AutoGenSegmentsTests::LogPFSegmentsUpdateSegmentResponse(PFSegmentsUpdateSegmentResponse const* result)
+HRESULT AutoGenSegmentsTests::LogUpdateSegmentResponse(PFSegmentsUpdateSegmentResponse const* result)
 {
-    if( !TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    if (!TestApp::ShouldTrace(PFTestTraceLevel::Information))
     {
         return S_OK;
     }
@@ -155,9 +155,9 @@ HRESULT AutoGenSegmentsTests::LogPFSegmentsUpdateSegmentResponse(PFSegmentsUpdat
     std::stringstream ss;
     ss << "Response:"; Log(ss);
 
-    // Found PlayFabSegmentsUpdateSegmentResponse
-    if( result->errorMessage ) { ss << "  errorMessage " << result->errorMessage; Log(ss); } else { ss << "  errorMessage = nullptr"; Log(ss); } // Class: const char* 
-    if( result->segmentId ) { ss << "  segmentId " << result->segmentId; Log(ss); } else { ss << "  segmentId = nullptr"; Log(ss); } // Class: const char* 
+    // Found PlayFabSegmentsUpdateSegmentResponse    
+    if (result->errorMessage) { ss << "  errorMessage " << result->errorMessage; Log(ss); } else { ss << "  errorMessage = nullptr"; Log(ss); } // Class: const char*     
+    if (result->segmentId) { ss << "  segmentId " << result->segmentId; Log(ss); } else { ss << "  segmentId = nullptr"; Log(ss); } // Class: const char* 
     return S_OK;
 }
 

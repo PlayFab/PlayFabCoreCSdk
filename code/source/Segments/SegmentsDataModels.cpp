@@ -1199,6 +1199,187 @@ HRESULT LocationSegmentFilter::Copy(const PFSegmentsLocationSegmentFilter& input
     return S_OK;
 }
 
+JsonValue PlayerChurnPredictionSegmentFilter::ToJson() const
+{
+    return PlayerChurnPredictionSegmentFilter::ToJson(this->Model());
+}
+
+JsonValue PlayerChurnPredictionSegmentFilter::ToJson(const PFSegmentsPlayerChurnPredictionSegmentFilter& input)
+{
+    JsonValue output{ rapidjson::kObjectType };
+    JsonUtils::ObjectAddMember(output, "Comparison", input.comparison);
+    JsonUtils::ObjectAddMember(output, "RiskLevel", input.riskLevel);
+    return output;
+}
+
+void PlayerChurnPredictionSegmentFilter::FromJson(const JsonValue& input)
+{
+    StdExtra::optional<PFSegmentsSegmentFilterComparison> comparison{};
+    JsonUtils::ObjectGetMember(input, "Comparison", comparison);
+    this->SetComparison(std::move(comparison));
+
+    StdExtra::optional<PFSegmentsChurnRiskLevel> riskLevel{};
+    JsonUtils::ObjectGetMember(input, "RiskLevel", riskLevel);
+    this->SetRiskLevel(std::move(riskLevel));
+}
+
+size_t PlayerChurnPredictionSegmentFilter::RequiredBufferSize() const
+{
+    return RequiredBufferSize(this->Model());
+}
+
+Result<PFSegmentsPlayerChurnPredictionSegmentFilter const*> PlayerChurnPredictionSegmentFilter::Copy(ModelBuffer& buffer) const
+{
+    return buffer.CopyTo<PlayerChurnPredictionSegmentFilter>(&this->Model());
+}
+
+size_t PlayerChurnPredictionSegmentFilter::RequiredBufferSize(const PFSegmentsPlayerChurnPredictionSegmentFilter& model)
+{
+    size_t requiredSize{ alignof(ModelType) + sizeof(ModelType) };
+    if (model.comparison)
+    {
+        requiredSize += (alignof(PFSegmentsSegmentFilterComparison) + sizeof(PFSegmentsSegmentFilterComparison));
+    }
+    if (model.riskLevel)
+    {
+        requiredSize += (alignof(PFSegmentsChurnRiskLevel) + sizeof(PFSegmentsChurnRiskLevel));
+    }
+    return requiredSize;
+}
+
+HRESULT PlayerChurnPredictionSegmentFilter::Copy(const PFSegmentsPlayerChurnPredictionSegmentFilter& input, PFSegmentsPlayerChurnPredictionSegmentFilter& output, ModelBuffer& buffer)
+{
+    output = input;
+    {
+        auto propCopyResult = buffer.CopyTo(input.comparison); 
+        RETURN_IF_FAILED(propCopyResult.hr);
+        output.comparison = propCopyResult.ExtractPayload();
+    }
+    {
+        auto propCopyResult = buffer.CopyTo(input.riskLevel); 
+        RETURN_IF_FAILED(propCopyResult.hr);
+        output.riskLevel = propCopyResult.ExtractPayload();
+    }
+    return S_OK;
+}
+
+JsonValue PlayerChurnPredictionTimeSegmentFilter::ToJson() const
+{
+    return PlayerChurnPredictionTimeSegmentFilter::ToJson(this->Model());
+}
+
+JsonValue PlayerChurnPredictionTimeSegmentFilter::ToJson(const PFSegmentsPlayerChurnPredictionTimeSegmentFilter& input)
+{
+    JsonValue output{ rapidjson::kObjectType };
+    JsonUtils::ObjectAddMember(output, "Comparison", input.comparison);
+    JsonUtils::ObjectAddMember(output, "DurationInDays", input.durationInDays);
+    return output;
+}
+
+void PlayerChurnPredictionTimeSegmentFilter::FromJson(const JsonValue& input)
+{
+    StdExtra::optional<PFSegmentsSegmentFilterComparison> comparison{};
+    JsonUtils::ObjectGetMember(input, "Comparison", comparison);
+    this->SetComparison(std::move(comparison));
+
+    JsonUtils::ObjectGetMember(input, "DurationInDays", this->m_model.durationInDays);
+}
+
+size_t PlayerChurnPredictionTimeSegmentFilter::RequiredBufferSize() const
+{
+    return RequiredBufferSize(this->Model());
+}
+
+Result<PFSegmentsPlayerChurnPredictionTimeSegmentFilter const*> PlayerChurnPredictionTimeSegmentFilter::Copy(ModelBuffer& buffer) const
+{
+    return buffer.CopyTo<PlayerChurnPredictionTimeSegmentFilter>(&this->Model());
+}
+
+size_t PlayerChurnPredictionTimeSegmentFilter::RequiredBufferSize(const PFSegmentsPlayerChurnPredictionTimeSegmentFilter& model)
+{
+    size_t requiredSize{ alignof(ModelType) + sizeof(ModelType) };
+    if (model.comparison)
+    {
+        requiredSize += (alignof(PFSegmentsSegmentFilterComparison) + sizeof(PFSegmentsSegmentFilterComparison));
+    }
+    return requiredSize;
+}
+
+HRESULT PlayerChurnPredictionTimeSegmentFilter::Copy(const PFSegmentsPlayerChurnPredictionTimeSegmentFilter& input, PFSegmentsPlayerChurnPredictionTimeSegmentFilter& output, ModelBuffer& buffer)
+{
+    output = input;
+    {
+        auto propCopyResult = buffer.CopyTo(input.comparison); 
+        RETURN_IF_FAILED(propCopyResult.hr);
+        output.comparison = propCopyResult.ExtractPayload();
+    }
+    return S_OK;
+}
+
+JsonValue PlayerChurnPreviousPredictionSegmentFilter::ToJson() const
+{
+    return PlayerChurnPreviousPredictionSegmentFilter::ToJson(this->Model());
+}
+
+JsonValue PlayerChurnPreviousPredictionSegmentFilter::ToJson(const PFSegmentsPlayerChurnPreviousPredictionSegmentFilter& input)
+{
+    JsonValue output{ rapidjson::kObjectType };
+    JsonUtils::ObjectAddMember(output, "Comparison", input.comparison);
+    JsonUtils::ObjectAddMember(output, "RiskLevel", input.riskLevel);
+    return output;
+}
+
+void PlayerChurnPreviousPredictionSegmentFilter::FromJson(const JsonValue& input)
+{
+    StdExtra::optional<PFSegmentsSegmentFilterComparison> comparison{};
+    JsonUtils::ObjectGetMember(input, "Comparison", comparison);
+    this->SetComparison(std::move(comparison));
+
+    StdExtra::optional<PFSegmentsChurnRiskLevel> riskLevel{};
+    JsonUtils::ObjectGetMember(input, "RiskLevel", riskLevel);
+    this->SetRiskLevel(std::move(riskLevel));
+}
+
+size_t PlayerChurnPreviousPredictionSegmentFilter::RequiredBufferSize() const
+{
+    return RequiredBufferSize(this->Model());
+}
+
+Result<PFSegmentsPlayerChurnPreviousPredictionSegmentFilter const*> PlayerChurnPreviousPredictionSegmentFilter::Copy(ModelBuffer& buffer) const
+{
+    return buffer.CopyTo<PlayerChurnPreviousPredictionSegmentFilter>(&this->Model());
+}
+
+size_t PlayerChurnPreviousPredictionSegmentFilter::RequiredBufferSize(const PFSegmentsPlayerChurnPreviousPredictionSegmentFilter& model)
+{
+    size_t requiredSize{ alignof(ModelType) + sizeof(ModelType) };
+    if (model.comparison)
+    {
+        requiredSize += (alignof(PFSegmentsSegmentFilterComparison) + sizeof(PFSegmentsSegmentFilterComparison));
+    }
+    if (model.riskLevel)
+    {
+        requiredSize += (alignof(PFSegmentsChurnRiskLevel) + sizeof(PFSegmentsChurnRiskLevel));
+    }
+    return requiredSize;
+}
+
+HRESULT PlayerChurnPreviousPredictionSegmentFilter::Copy(const PFSegmentsPlayerChurnPreviousPredictionSegmentFilter& input, PFSegmentsPlayerChurnPreviousPredictionSegmentFilter& output, ModelBuffer& buffer)
+{
+    output = input;
+    {
+        auto propCopyResult = buffer.CopyTo(input.comparison); 
+        RETURN_IF_FAILED(propCopyResult.hr);
+        output.comparison = propCopyResult.ExtractPayload();
+    }
+    {
+        auto propCopyResult = buffer.CopyTo(input.riskLevel); 
+        RETURN_IF_FAILED(propCopyResult.hr);
+        output.riskLevel = propCopyResult.ExtractPayload();
+    }
+    return S_OK;
+}
+
 JsonValue PushNotificationSegmentFilter::ToJson() const
 {
     return PushNotificationSegmentFilter::ToJson(this->Model());
@@ -1694,6 +1875,9 @@ JsonValue SegmentAndDefinition::ToJson(const PFSegmentsSegmentAndDefinition& inp
     JsonUtils::ObjectAddMember<LinkedUserAccountSegmentFilter>(output, "LinkedUserAccountFilter", input.linkedUserAccountFilter);
     JsonUtils::ObjectAddMember<LinkedUserAccountHasEmailSegmentFilter>(output, "LinkedUserAccountHasEmailFilter", input.linkedUserAccountHasEmailFilter);
     JsonUtils::ObjectAddMember<LocationSegmentFilter>(output, "LocationFilter", input.locationFilter);
+    JsonUtils::ObjectAddMember<PlayerChurnPredictionSegmentFilter>(output, "PlayerChurnPredictionFilter", input.playerChurnPredictionFilter);
+    JsonUtils::ObjectAddMember<PlayerChurnPredictionTimeSegmentFilter>(output, "PlayerChurnPredictionTimeFilter", input.playerChurnPredictionTimeFilter);
+    JsonUtils::ObjectAddMember<PlayerChurnPreviousPredictionSegmentFilter>(output, "PlayerChurnPreviousPredictionFilter", input.playerChurnPreviousPredictionFilter);
     JsonUtils::ObjectAddMember<PushNotificationSegmentFilter>(output, "PushNotificationFilter", input.pushNotificationFilter);
     JsonUtils::ObjectAddMember<StatisticSegmentFilter>(output, "StatisticFilter", input.statisticFilter);
     JsonUtils::ObjectAddMember<TagSegmentFilter>(output, "TagFilter", input.tagFilter);
@@ -1760,6 +1944,27 @@ void SegmentAndDefinition::FromJson(const JsonValue& input)
     if (locationFilter)
     {
         this->SetLocationFilter(std::move(*locationFilter));
+    }
+
+    StdExtra::optional<PlayerChurnPredictionSegmentFilter> playerChurnPredictionFilter{};
+    JsonUtils::ObjectGetMember(input, "PlayerChurnPredictionFilter", playerChurnPredictionFilter);
+    if (playerChurnPredictionFilter)
+    {
+        this->SetPlayerChurnPredictionFilter(std::move(*playerChurnPredictionFilter));
+    }
+
+    StdExtra::optional<PlayerChurnPredictionTimeSegmentFilter> playerChurnPredictionTimeFilter{};
+    JsonUtils::ObjectGetMember(input, "PlayerChurnPredictionTimeFilter", playerChurnPredictionTimeFilter);
+    if (playerChurnPredictionTimeFilter)
+    {
+        this->SetPlayerChurnPredictionTimeFilter(std::move(*playerChurnPredictionTimeFilter));
+    }
+
+    StdExtra::optional<PlayerChurnPreviousPredictionSegmentFilter> playerChurnPreviousPredictionFilter{};
+    JsonUtils::ObjectGetMember(input, "PlayerChurnPreviousPredictionFilter", playerChurnPreviousPredictionFilter);
+    if (playerChurnPreviousPredictionFilter)
+    {
+        this->SetPlayerChurnPreviousPredictionFilter(std::move(*playerChurnPreviousPredictionFilter));
     }
 
     StdExtra::optional<PushNotificationSegmentFilter> pushNotificationFilter{};
@@ -1857,6 +2062,18 @@ size_t SegmentAndDefinition::RequiredBufferSize(const PFSegmentsSegmentAndDefini
     {
         requiredSize += LocationSegmentFilter::RequiredBufferSize(*model.locationFilter);
     }
+    if (model.playerChurnPredictionFilter)
+    {
+        requiredSize += PlayerChurnPredictionSegmentFilter::RequiredBufferSize(*model.playerChurnPredictionFilter);
+    }
+    if (model.playerChurnPredictionTimeFilter)
+    {
+        requiredSize += PlayerChurnPredictionTimeSegmentFilter::RequiredBufferSize(*model.playerChurnPredictionTimeFilter);
+    }
+    if (model.playerChurnPreviousPredictionFilter)
+    {
+        requiredSize += PlayerChurnPreviousPredictionSegmentFilter::RequiredBufferSize(*model.playerChurnPreviousPredictionFilter);
+    }
     if (model.pushNotificationFilter)
     {
         requiredSize += PushNotificationSegmentFilter::RequiredBufferSize(*model.pushNotificationFilter);
@@ -1930,6 +2147,21 @@ HRESULT SegmentAndDefinition::Copy(const PFSegmentsSegmentAndDefinition& input, 
         auto propCopyResult = buffer.CopyTo<LocationSegmentFilter>(input.locationFilter); 
         RETURN_IF_FAILED(propCopyResult.hr);
         output.locationFilter = propCopyResult.ExtractPayload();
+    }
+    {
+        auto propCopyResult = buffer.CopyTo<PlayerChurnPredictionSegmentFilter>(input.playerChurnPredictionFilter); 
+        RETURN_IF_FAILED(propCopyResult.hr);
+        output.playerChurnPredictionFilter = propCopyResult.ExtractPayload();
+    }
+    {
+        auto propCopyResult = buffer.CopyTo<PlayerChurnPredictionTimeSegmentFilter>(input.playerChurnPredictionTimeFilter); 
+        RETURN_IF_FAILED(propCopyResult.hr);
+        output.playerChurnPredictionTimeFilter = propCopyResult.ExtractPayload();
+    }
+    {
+        auto propCopyResult = buffer.CopyTo<PlayerChurnPreviousPredictionSegmentFilter>(input.playerChurnPreviousPredictionFilter); 
+        RETURN_IF_FAILED(propCopyResult.hr);
+        output.playerChurnPreviousPredictionFilter = propCopyResult.ExtractPayload();
     }
     {
         auto propCopyResult = buffer.CopyTo<PushNotificationSegmentFilter>(input.pushNotificationFilter); 
@@ -2028,7 +2260,6 @@ JsonValue SegmentModel::ToJson() const
 JsonValue SegmentModel::ToJson(const PFSegmentsSegmentModel& input)
 {
     JsonValue output{ rapidjson::kObjectType };
-    JsonUtils::ObjectAddMember(output, "AzureResourceId", input.azureResourceId);
     JsonUtils::ObjectAddMember(output, "Description", input.description);
     JsonUtils::ObjectAddMemberArray<SegmentTrigger>(output, "EnteredSegmentActions", input.enteredSegmentActions, input.enteredSegmentActionsCount);
     JsonUtils::ObjectAddMemberTime(output, "LastUpdateTime", input.lastUpdateTime);
@@ -2041,10 +2272,6 @@ JsonValue SegmentModel::ToJson(const PFSegmentsSegmentModel& input)
 
 void SegmentModel::FromJson(const JsonValue& input)
 {
-    String azureResourceId{};
-    JsonUtils::ObjectGetMember(input, "AzureResourceId", azureResourceId);
-    this->SetAzureResourceId(std::move(azureResourceId));
-
     String description{};
     JsonUtils::ObjectGetMember(input, "Description", description);
     this->SetDescription(std::move(description));
@@ -2085,10 +2312,6 @@ Result<PFSegmentsSegmentModel const*> SegmentModel::Copy(ModelBuffer& buffer) co
 size_t SegmentModel::RequiredBufferSize(const PFSegmentsSegmentModel& model)
 {
     size_t requiredSize{ alignof(ModelType) + sizeof(ModelType) };
-    if (model.azureResourceId)
-    {
-        requiredSize += (std::strlen(model.azureResourceId) + 1);
-    }
     if (model.description)
     {
         requiredSize += (std::strlen(model.description) + 1);
@@ -2122,11 +2345,6 @@ size_t SegmentModel::RequiredBufferSize(const PFSegmentsSegmentModel& model)
 HRESULT SegmentModel::Copy(const PFSegmentsSegmentModel& input, PFSegmentsSegmentModel& output, ModelBuffer& buffer)
 {
     output = input;
-    {
-        auto propCopyResult = buffer.CopyTo(input.azureResourceId); 
-        RETURN_IF_FAILED(propCopyResult.hr);
-        output.azureResourceId = propCopyResult.ExtractPayload();
-    }
     {
         auto propCopyResult = buffer.CopyTo(input.description); 
         RETURN_IF_FAILED(propCopyResult.hr);

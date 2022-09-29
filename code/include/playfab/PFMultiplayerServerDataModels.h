@@ -280,6 +280,34 @@ typedef struct PFMultiplayerServerLinuxInstrumentationConfiguration
 } PFMultiplayerServerLinuxInstrumentationConfiguration;
 
 /// <summary>
+/// PFMultiplayerServerMonitoringApplicationConfigurationParams data model.
+/// </summary>
+typedef struct PFMultiplayerServerMonitoringApplicationConfigurationParams
+{
+    /// <summary>
+    /// Asset which contains the monitoring application files and scripts.
+    /// </summary>
+    PFMultiplayerServerAssetReferenceParams const* assetReference;
+
+    /// <summary>
+    /// Execution script name, this will be the main executable for the monitoring application.
+    /// </summary>
+    _Null_terminated_ const char* executionScriptName;
+
+    /// <summary>
+    /// (Optional) Installation script name, this will be run before the ExecutionScript.
+    /// </summary>
+    _Maybenull_ _Null_terminated_ const char* installationScriptName;
+
+    /// <summary>
+    /// (Optional) Timespan the monitoring application will be kept alive when running from the start
+    /// of the VM.
+    /// </summary>
+    _Maybenull_ double const* onStartRuntimeInMinutes;
+
+} PFMultiplayerServerMonitoringApplicationConfigurationParams;
+
+/// <summary>
 /// PFMultiplayerServerDynamicStandbyThreshold data model.
 /// </summary>
 typedef struct PFMultiplayerServerDynamicStandbyThreshold
@@ -432,6 +460,24 @@ typedef struct PFMultiplayerServerBuildRegionParams
 } PFMultiplayerServerBuildRegionParams;
 
 /// <summary>
+/// PFMultiplayerServerServerResourceConstraintParams data model.
+/// </summary>
+typedef struct PFMultiplayerServerServerResourceConstraintParams
+{
+    /// <summary>
+    /// The maximum number of cores that each server is allowed to use.
+    /// </summary>
+    double cpuLimit;
+
+    /// <summary>
+    /// The maximum number of GiB of memory that each server is allowed to use. WARNING: After exceeding
+    /// this limit, the server will be killed.
+    /// </summary>
+    double memoryLimitGB;
+
+} PFMultiplayerServerServerResourceConstraintParams;
+
+/// <summary>
 /// PFMultiplayerServerCreateBuildWithCustomContainerRequest data model. Creates a multiplayer server
 /// build with a custom container and returns information about the build creation request.
 /// </summary>
@@ -513,6 +559,11 @@ typedef struct PFMultiplayerServerCreateBuildWithCustomContainerRequest
     uint32_t metadataCount;
 
     /// <summary>
+    /// (Optional) The configuration for the monitoring application on the build.
+    /// </summary>
+    _Maybenull_ PFMultiplayerServerMonitoringApplicationConfigurationParams const* monitoringApplicationConfiguration;
+
+    /// <summary>
     /// The number of multiplayer servers to host on a single VM.
     /// </summary>
     int32_t multiplayerServerCountPerVm;
@@ -536,6 +587,11 @@ typedef struct PFMultiplayerServerCreateBuildWithCustomContainerRequest
     /// Count of regionConfigurations
     /// </summary>
     uint32_t regionConfigurationsCount;
+
+    /// <summary>
+    /// (Optional) The resource constraints to apply to each server on the VM (EXPERIMENTAL API).
+    /// </summary>
+    _Maybenull_ PFMultiplayerServerServerResourceConstraintParams const* serverResourceConstraints;
 
     /// <summary>
     /// (Optional) When true, assets will be downloaded and uncompressed in memory, without the compressedversion
@@ -589,6 +645,34 @@ typedef struct PFMultiplayerServerGameCertificateReference
 } PFMultiplayerServerGameCertificateReference;
 
 /// <summary>
+/// PFMultiplayerServerMonitoringApplicationConfiguration data model.
+/// </summary>
+typedef struct PFMultiplayerServerMonitoringApplicationConfiguration
+{
+    /// <summary>
+    /// Asset which contains the monitoring application files and scripts.
+    /// </summary>
+    PFMultiplayerServerAssetReference const* assetReference;
+
+    /// <summary>
+    /// Execution script name, this will be the main executable for the monitoring application.
+    /// </summary>
+    _Null_terminated_ const char* executionScriptName;
+
+    /// <summary>
+    /// (Optional) Installation script name, this will be run before the ExecutionScript.
+    /// </summary>
+    _Maybenull_ _Null_terminated_ const char* installationScriptName;
+
+    /// <summary>
+    /// (Optional) Timespan the monitoring application will be kept alive when running from the start
+    /// of the VM.
+    /// </summary>
+    _Maybenull_ double const* onStartRuntimeInMinutes;
+
+} PFMultiplayerServerMonitoringApplicationConfiguration;
+
+/// <summary>
 /// PFMultiplayerServerCurrentServerStats data model.
 /// </summary>
 typedef struct PFMultiplayerServerCurrentServerStats
@@ -629,6 +713,11 @@ typedef struct PFMultiplayerServerBuildRegion
     /// (Optional) Optional settings to control dynamic adjustment of standby target.
     /// </summary>
     _Maybenull_ PFMultiplayerServerDynamicStandbySettings const* dynamicStandbySettings;
+
+    /// <summary>
+    /// Whether the game assets provided for the build have been replicated to this region.
+    /// </summary>
+    bool isAssetReplicationComplete;
 
     /// <summary>
     /// The maximum number of multiplayer servers for the region.
@@ -748,6 +837,11 @@ typedef struct PFMultiplayerServerCreateBuildWithCustomContainerResponse
     uint32_t metadataCount;
 
     /// <summary>
+    /// (Optional) The configuration for the monitoring application for the build.
+    /// </summary>
+    _Maybenull_ PFMultiplayerServerMonitoringApplicationConfiguration const* monitoringApplicationConfiguration;
+
+    /// <summary>
     /// The number of multiplayer servers to host on a single VM of the build.
     /// </summary>
     int32_t multiplayerServerCountPerVm;
@@ -776,6 +870,11 @@ typedef struct PFMultiplayerServerCreateBuildWithCustomContainerResponse
     /// Count of regionConfigurations
     /// </summary>
     uint32_t regionConfigurationsCount;
+
+    /// <summary>
+    /// (Optional) The resource constraints to apply to each server on the VM (EXPERIMENTAL API).
+    /// </summary>
+    _Maybenull_ PFMultiplayerServerServerResourceConstraintParams const* serverResourceConstraints;
 
     /// <summary>
     /// (Optional) The type of game server being hosted.
@@ -820,6 +919,30 @@ typedef struct PFMultiplayerServerInstrumentationConfiguration
     uint32_t processesToMonitorCount;
 
 } PFMultiplayerServerInstrumentationConfiguration;
+
+/// <summary>
+/// PFMultiplayerServerWindowsCrashDumpConfiguration data model.
+/// </summary>
+typedef struct PFMultiplayerServerWindowsCrashDumpConfiguration
+{
+    /// <summary>
+    /// (Optional) See https://docs.microsoft.com/en-us/windows/win32/wer/collecting-user-mode-dumps
+    /// for valid values.
+    /// </summary>
+    _Maybenull_ int32_t const* customDumpFlags;
+
+    /// <summary>
+    /// (Optional) See https://docs.microsoft.com/en-us/windows/win32/wer/collecting-user-mode-dumps
+    /// for valid values.
+    /// </summary>
+    _Maybenull_ int32_t const* dumpType;
+
+    /// <summary>
+    /// Designates whether automatic crash dump capturing will be enabled for this Build.
+    /// </summary>
+    bool isEnabled;
+
+} PFMultiplayerServerWindowsCrashDumpConfiguration;
 
 /// <summary>
 /// PFMultiplayerServerCreateBuildWithManagedContainerRequest data model. Creates a multiplayer server
@@ -899,6 +1022,11 @@ typedef struct PFMultiplayerServerCreateBuildWithManagedContainerRequest
     uint32_t metadataCount;
 
     /// <summary>
+    /// (Optional) The configuration for the monitoring application on the build.
+    /// </summary>
+    _Maybenull_ PFMultiplayerServerMonitoringApplicationConfigurationParams const* monitoringApplicationConfiguration;
+
+    /// <summary>
     /// The number of multiplayer servers to host on a single VM.
     /// </summary>
     int32_t multiplayerServerCountPerVm;
@@ -924,6 +1052,11 @@ typedef struct PFMultiplayerServerCreateBuildWithManagedContainerRequest
     uint32_t regionConfigurationsCount;
 
     /// <summary>
+    /// (Optional) The resource constraints to apply to each server on the VM (EXPERIMENTAL API).
+    /// </summary>
+    _Maybenull_ PFMultiplayerServerServerResourceConstraintParams const* serverResourceConstraints;
+
+    /// <summary>
     /// The command to run when the multiplayer server is started, including any arguments.
     /// </summary>
     _Null_terminated_ const char* startMultiplayerServerCommand;
@@ -938,6 +1071,11 @@ typedef struct PFMultiplayerServerCreateBuildWithManagedContainerRequest
     /// (Optional) The VM size to create the build on.
     /// </summary>
     _Maybenull_ PFMultiplayerServerAzureVmSize const* vmSize;
+
+    /// <summary>
+    /// (Optional) The crash dump configuration for the build.
+    /// </summary>
+    _Maybenull_ PFMultiplayerServerWindowsCrashDumpConfiguration const* windowsCrashDumpConfiguration;
 
 } PFMultiplayerServerCreateBuildWithManagedContainerRequest;
 
@@ -1015,6 +1153,11 @@ typedef struct PFMultiplayerServerCreateBuildWithManagedContainerResponse
     uint32_t metadataCount;
 
     /// <summary>
+    /// (Optional) The configuration for the monitoring application for the build.
+    /// </summary>
+    _Maybenull_ PFMultiplayerServerMonitoringApplicationConfiguration const* monitoringApplicationConfiguration;
+
+    /// <summary>
     /// The number of multiplayer servers to host on a single VM of the build.
     /// </summary>
     int32_t multiplayerServerCountPerVm;
@@ -1043,6 +1186,11 @@ typedef struct PFMultiplayerServerCreateBuildWithManagedContainerResponse
     /// Count of regionConfigurations
     /// </summary>
     uint32_t regionConfigurationsCount;
+
+    /// <summary>
+    /// (Optional) The resource constraints to apply to each server on the VM (EXPERIMENTAL API).
+    /// </summary>
+    _Maybenull_ PFMultiplayerServerServerResourceConstraintParams const* serverResourceConstraints;
 
     /// <summary>
     /// (Optional) The type of game server being hosted.
@@ -1144,6 +1292,11 @@ typedef struct PFMultiplayerServerCreateBuildWithProcessBasedServerRequest
     /// Count of metadata
     /// </summary>
     uint32_t metadataCount;
+
+    /// <summary>
+    /// (Optional) The configuration for the monitoring application on the build.
+    /// </summary>
+    _Maybenull_ PFMultiplayerServerMonitoringApplicationConfigurationParams const* monitoringApplicationConfiguration;
 
     /// <summary>
     /// The number of multiplayer servers to host on a single VM.
@@ -1272,6 +1425,11 @@ typedef struct PFMultiplayerServerCreateBuildWithProcessBasedServerResponse
     /// Count of metadata
     /// </summary>
     uint32_t metadataCount;
+
+    /// <summary>
+    /// (Optional) The configuration for the monitoring application for the build.
+    /// </summary>
+    _Maybenull_ PFMultiplayerServerMonitoringApplicationConfiguration const* monitoringApplicationConfiguration;
 
     /// <summary>
     /// The number of multiplayer servers to host on a single VM of the build.
@@ -1925,6 +2083,11 @@ typedef struct PFMultiplayerServerGetBuildResponse
     uint32_t regionConfigurationsCount;
 
     /// <summary>
+    /// (Optional) The resource constraints to apply to each server on the VM.
+    /// </summary>
+    _Maybenull_ PFMultiplayerServerServerResourceConstraintParams const* serverResourceConstraints;
+
+    /// <summary>
     /// (Optional) The type of game server being hosted.
     /// </summary>
     _Maybenull_ _Null_terminated_ const char* serverType;
@@ -1934,12 +2097,6 @@ typedef struct PFMultiplayerServerGetBuildResponse
     /// This only applies to managed builds. If the build is a custom build, this field will be null.
     /// </summary>
     _Maybenull_ _Null_terminated_ const char* startMultiplayerServerCommand;
-
-    /// <summary>
-    /// (Optional) When true, assets will be downloaded and uncompressed in memory, without the compressedversion
-    /// being written first to disc.
-    /// </summary>
-    _Maybenull_ bool const* useStreamingForAssetDownloads;
 
     /// <summary>
     /// (Optional) The VM size the build was created on.
@@ -2020,11 +2177,6 @@ typedef struct PFMultiplayerServerGetContainerRegistryCredentialsResponse
 typedef struct PFMultiplayerServerGetMultiplayerServerDetailsRequest
 {
     /// <summary>
-    /// The guid string build ID of the multiplayer server to get details for.
-    /// </summary>
-    _Null_terminated_ const char* buildId;
-
-    /// <summary>
     /// (Optional) The optional custom tags associated with the request (e.g. build number, external
     /// trace identifiers, etc.).
     /// </summary>
@@ -2034,11 +2186,6 @@ typedef struct PFMultiplayerServerGetMultiplayerServerDetailsRequest
     /// Count of customTags
     /// </summary>
     uint32_t customTagsCount;
-
-    /// <summary>
-    /// The region the multiplayer server is located in to get details for.
-    /// </summary>
-    _Null_terminated_ const char* region;
 
     /// <summary>
     /// The title generated guid string session ID of the multiplayer server to get details for. This

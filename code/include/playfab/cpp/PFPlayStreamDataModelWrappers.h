@@ -17,84 +17,133 @@ namespace Wrappers
 {
 
 template<template<typename AllocT> class Alloc = std::allocator>
-class PFPlayStreamAddPlayerTagRequestWrapper : public ModelWrapper<PFPlayStreamAddPlayerTagRequest, Alloc>
+class PFPlayStreamExportPlayersInSegmentRequestWrapper : public ModelWrapper<PFPlayStreamExportPlayersInSegmentRequest, Alloc>
 {
 public:
-    using ModelType = typename PFPlayStreamAddPlayerTagRequest;
+    using ModelType = typename PFPlayStreamExportPlayersInSegmentRequest;
     using String = typename std::basic_string<char, std::char_traits<char>, Alloc<char>>;
     template<typename T> using Vector = typename std::vector<T, Alloc<T>>;
 
-    PFPlayStreamAddPlayerTagRequestWrapper() = default;
+    PFPlayStreamExportPlayersInSegmentRequestWrapper() = default;
 
-    PFPlayStreamAddPlayerTagRequestWrapper(const PFPlayStreamAddPlayerTagRequest& model) :
-        ModelWrapper<PFPlayStreamAddPlayerTagRequest, Alloc>{ model },
-        m_customTags{ model.customTags, model.customTags + model.customTagsCount },
-        m_playFabId{ SafeString(model.playFabId) },
-        m_tagName{ SafeString(model.tagName) }
+    PFPlayStreamExportPlayersInSegmentRequestWrapper(const PFPlayStreamExportPlayersInSegmentRequest& model) :
+        ModelWrapper<PFPlayStreamExportPlayersInSegmentRequest, Alloc>{ model },
+        m_segmentId{ SafeString(model.segmentId) }
     {
         SetModelPointers();
     }
 
-    PFPlayStreamAddPlayerTagRequestWrapper(const PFPlayStreamAddPlayerTagRequestWrapper& src) :
-        PFPlayStreamAddPlayerTagRequestWrapper{ src.Model() }
+    PFPlayStreamExportPlayersInSegmentRequestWrapper(const PFPlayStreamExportPlayersInSegmentRequestWrapper& src) :
+        PFPlayStreamExportPlayersInSegmentRequestWrapper{ src.Model() }
     {
     }
 
-    PFPlayStreamAddPlayerTagRequestWrapper(PFPlayStreamAddPlayerTagRequestWrapper&& src) :
-        PFPlayStreamAddPlayerTagRequestWrapper{}
+    PFPlayStreamExportPlayersInSegmentRequestWrapper(PFPlayStreamExportPlayersInSegmentRequestWrapper&& src) :
+        PFPlayStreamExportPlayersInSegmentRequestWrapper{}
     {
         swap(*this, src);
     }
 
-    PFPlayStreamAddPlayerTagRequestWrapper& operator=(PFPlayStreamAddPlayerTagRequestWrapper src) 
+    PFPlayStreamExportPlayersInSegmentRequestWrapper& operator=(PFPlayStreamExportPlayersInSegmentRequestWrapper src) 
     {
         swap(*this, src);
         return *this;
     }
 
-    virtual ~PFPlayStreamAddPlayerTagRequestWrapper() = default;
+    virtual ~PFPlayStreamExportPlayersInSegmentRequestWrapper() = default;
 
-    friend void swap(PFPlayStreamAddPlayerTagRequestWrapper& lhs, PFPlayStreamAddPlayerTagRequestWrapper& rhs)
+    friend void swap(PFPlayStreamExportPlayersInSegmentRequestWrapper& lhs, PFPlayStreamExportPlayersInSegmentRequestWrapper& rhs)
     {
         using std::swap;
         swap(lhs.m_model, rhs.m_model);
-        swap(lhs.m_customTags, rhs.m_customTags);
-        swap(lhs.m_playFabId, rhs.m_playFabId);
-        swap(lhs.m_tagName, rhs.m_tagName);
+        swap(lhs.m_segmentId, rhs.m_segmentId);
         lhs.SetModelPointers();
         rhs.SetModelPointers();
     }
 
-    void SetCustomTags(StringDictionaryEntryVector<Alloc> value)
+    void SetSegmentId(String value)
     {
-        m_customTags = std::move(value);
-        this->m_model.customTags =  m_customTags.empty() ? nullptr : m_customTags.data();
-        this->m_model.customTagsCount =  static_cast<uint32_t>(m_customTags.size());
-    }
-
-    void SetPlayFabId(String value)
-    {
-        m_playFabId = std::move(value);
-        this->m_model.playFabId =  m_playFabId.empty() ? nullptr : m_playFabId.data();
-    }
-
-    void SetTagName(String value)
-    {
-        m_tagName = std::move(value);
-        this->m_model.tagName =  m_tagName.empty() ? nullptr : m_tagName.data();
+        m_segmentId = std::move(value);
+        this->m_model.segmentId =  m_segmentId.empty() ? nullptr : m_segmentId.data();
     }
 
 private:
     void SetModelPointers()
     {
-        this->m_model.customTags = m_customTags.empty() ? nullptr : m_customTags.data();
-        this->m_model.playFabId = m_playFabId.empty() ? nullptr : m_playFabId.data();
-        this->m_model.tagName = m_tagName.empty() ? nullptr : m_tagName.data();
+        this->m_model.segmentId = m_segmentId.empty() ? nullptr : m_segmentId.data();
     }
 
-    StringDictionaryEntryVector<Alloc> m_customTags;
-    String m_playFabId;
-    String m_tagName;
+    String m_segmentId;
+};
+
+template<template<typename AllocT> class Alloc = std::allocator>
+class PFPlayStreamExportPlayersInSegmentResultWrapper : public ModelWrapper<PFPlayStreamExportPlayersInSegmentResult, Alloc>
+{
+public:
+    using ModelType = typename PFPlayStreamExportPlayersInSegmentResult;
+    using String = typename std::basic_string<char, std::char_traits<char>, Alloc<char>>;
+    template<typename T> using Vector = typename std::vector<T, Alloc<T>>;
+
+    PFPlayStreamExportPlayersInSegmentResultWrapper() = default;
+
+    PFPlayStreamExportPlayersInSegmentResultWrapper(const PFPlayStreamExportPlayersInSegmentResult& model) :
+        ModelWrapper<PFPlayStreamExportPlayersInSegmentResult, Alloc>{ model },
+        m_exportId{ SafeString(model.exportId) },
+        m_segmentId{ SafeString(model.segmentId) }
+    {
+        SetModelPointers();
+    }
+
+    PFPlayStreamExportPlayersInSegmentResultWrapper(const PFPlayStreamExportPlayersInSegmentResultWrapper& src) :
+        PFPlayStreamExportPlayersInSegmentResultWrapper{ src.Model() }
+    {
+    }
+
+    PFPlayStreamExportPlayersInSegmentResultWrapper(PFPlayStreamExportPlayersInSegmentResultWrapper&& src) :
+        PFPlayStreamExportPlayersInSegmentResultWrapper{}
+    {
+        swap(*this, src);
+    }
+
+    PFPlayStreamExportPlayersInSegmentResultWrapper& operator=(PFPlayStreamExportPlayersInSegmentResultWrapper src) 
+    {
+        swap(*this, src);
+        return *this;
+    }
+
+    virtual ~PFPlayStreamExportPlayersInSegmentResultWrapper() = default;
+
+    friend void swap(PFPlayStreamExportPlayersInSegmentResultWrapper& lhs, PFPlayStreamExportPlayersInSegmentResultWrapper& rhs)
+    {
+        using std::swap;
+        swap(lhs.m_model, rhs.m_model);
+        swap(lhs.m_exportId, rhs.m_exportId);
+        swap(lhs.m_segmentId, rhs.m_segmentId);
+        lhs.SetModelPointers();
+        rhs.SetModelPointers();
+    }
+
+    void SetExportId(String value)
+    {
+        m_exportId = std::move(value);
+        this->m_model.exportId =  m_exportId.empty() ? nullptr : m_exportId.data();
+    }
+
+    void SetSegmentId(String value)
+    {
+        m_segmentId = std::move(value);
+        this->m_model.segmentId =  m_segmentId.empty() ? nullptr : m_segmentId.data();
+    }
+
+private:
+    void SetModelPointers()
+    {
+        this->m_model.exportId = m_exportId.empty() ? nullptr : m_exportId.data();
+        this->m_model.segmentId = m_segmentId.empty() ? nullptr : m_segmentId.data();
+    }
+
+    String m_exportId;
+    String m_segmentId;
 };
 
 template<template<typename AllocT> class Alloc = std::allocator>
@@ -1305,500 +1354,133 @@ private:
 };
 
 template<template<typename AllocT> class Alloc = std::allocator>
-class PFPlayStreamGetPlayerTagsRequestWrapper : public ModelWrapper<PFPlayStreamGetPlayerTagsRequest, Alloc>
+class PFPlayStreamGetPlayersInSegmentExportRequestWrapper : public ModelWrapper<PFPlayStreamGetPlayersInSegmentExportRequest, Alloc>
 {
 public:
-    using ModelType = typename PFPlayStreamGetPlayerTagsRequest;
+    using ModelType = typename PFPlayStreamGetPlayersInSegmentExportRequest;
     using String = typename std::basic_string<char, std::char_traits<char>, Alloc<char>>;
     template<typename T> using Vector = typename std::vector<T, Alloc<T>>;
 
-    PFPlayStreamGetPlayerTagsRequestWrapper() = default;
+    PFPlayStreamGetPlayersInSegmentExportRequestWrapper() = default;
 
-    PFPlayStreamGetPlayerTagsRequestWrapper(const PFPlayStreamGetPlayerTagsRequest& model) :
-        ModelWrapper<PFPlayStreamGetPlayerTagsRequest, Alloc>{ model },
-        m_customTags{ model.customTags, model.customTags + model.customTagsCount },
-        m_playfabNamespace{ SafeString(model.playfabNamespace) },
-        m_playFabId{ SafeString(model.playFabId) }
+    PFPlayStreamGetPlayersInSegmentExportRequestWrapper(const PFPlayStreamGetPlayersInSegmentExportRequest& model) :
+        ModelWrapper<PFPlayStreamGetPlayersInSegmentExportRequest, Alloc>{ model },
+        m_exportId{ SafeString(model.exportId) }
     {
         SetModelPointers();
     }
 
-    PFPlayStreamGetPlayerTagsRequestWrapper(const PFPlayStreamGetPlayerTagsRequestWrapper& src) :
-        PFPlayStreamGetPlayerTagsRequestWrapper{ src.Model() }
+    PFPlayStreamGetPlayersInSegmentExportRequestWrapper(const PFPlayStreamGetPlayersInSegmentExportRequestWrapper& src) :
+        PFPlayStreamGetPlayersInSegmentExportRequestWrapper{ src.Model() }
     {
     }
 
-    PFPlayStreamGetPlayerTagsRequestWrapper(PFPlayStreamGetPlayerTagsRequestWrapper&& src) :
-        PFPlayStreamGetPlayerTagsRequestWrapper{}
+    PFPlayStreamGetPlayersInSegmentExportRequestWrapper(PFPlayStreamGetPlayersInSegmentExportRequestWrapper&& src) :
+        PFPlayStreamGetPlayersInSegmentExportRequestWrapper{}
     {
         swap(*this, src);
     }
 
-    PFPlayStreamGetPlayerTagsRequestWrapper& operator=(PFPlayStreamGetPlayerTagsRequestWrapper src) 
+    PFPlayStreamGetPlayersInSegmentExportRequestWrapper& operator=(PFPlayStreamGetPlayersInSegmentExportRequestWrapper src) 
     {
         swap(*this, src);
         return *this;
     }
 
-    virtual ~PFPlayStreamGetPlayerTagsRequestWrapper() = default;
+    virtual ~PFPlayStreamGetPlayersInSegmentExportRequestWrapper() = default;
 
-    friend void swap(PFPlayStreamGetPlayerTagsRequestWrapper& lhs, PFPlayStreamGetPlayerTagsRequestWrapper& rhs)
+    friend void swap(PFPlayStreamGetPlayersInSegmentExportRequestWrapper& lhs, PFPlayStreamGetPlayersInSegmentExportRequestWrapper& rhs)
     {
         using std::swap;
         swap(lhs.m_model, rhs.m_model);
-        swap(lhs.m_customTags, rhs.m_customTags);
-        swap(lhs.m_playfabNamespace, rhs.m_playfabNamespace);
-        swap(lhs.m_playFabId, rhs.m_playFabId);
+        swap(lhs.m_exportId, rhs.m_exportId);
         lhs.SetModelPointers();
         rhs.SetModelPointers();
     }
 
-    void SetCustomTags(StringDictionaryEntryVector<Alloc> value)
+    void SetExportId(String value)
     {
-        m_customTags = std::move(value);
-        this->m_model.customTags =  m_customTags.empty() ? nullptr : m_customTags.data();
-        this->m_model.customTagsCount =  static_cast<uint32_t>(m_customTags.size());
-    }
-
-    void SetplayfabNamespace(String value)
-    {
-        m_playfabNamespace = std::move(value);
-        this->m_model.playfabNamespace =  m_playfabNamespace.empty() ? nullptr : m_playfabNamespace.data();
-    }
-
-    void SetPlayFabId(String value)
-    {
-        m_playFabId = std::move(value);
-        this->m_model.playFabId =  m_playFabId.empty() ? nullptr : m_playFabId.data();
+        m_exportId = std::move(value);
+        this->m_model.exportId =  m_exportId.empty() ? nullptr : m_exportId.data();
     }
 
 private:
     void SetModelPointers()
     {
-        this->m_model.customTags = m_customTags.empty() ? nullptr : m_customTags.data();
-        this->m_model.playfabNamespace = m_playfabNamespace.empty() ? nullptr : m_playfabNamespace.data();
-        this->m_model.playFabId = m_playFabId.empty() ? nullptr : m_playFabId.data();
+        this->m_model.exportId = m_exportId.empty() ? nullptr : m_exportId.data();
     }
 
-    StringDictionaryEntryVector<Alloc> m_customTags;
-    String m_playfabNamespace;
-    String m_playFabId;
+    String m_exportId;
 };
 
 template<template<typename AllocT> class Alloc = std::allocator>
-class PFPlayStreamGetPlayerTagsResultWrapper : public ModelWrapper<PFPlayStreamGetPlayerTagsResult, Alloc>
+class PFPlayStreamGetPlayersInSegmentExportResponseWrapper : public ModelWrapper<PFPlayStreamGetPlayersInSegmentExportResponse, Alloc>
 {
 public:
-    using ModelType = typename PFPlayStreamGetPlayerTagsResult;
+    using ModelType = typename PFPlayStreamGetPlayersInSegmentExportResponse;
     using String = typename std::basic_string<char, std::char_traits<char>, Alloc<char>>;
     template<typename T> using Vector = typename std::vector<T, Alloc<T>>;
 
-    PFPlayStreamGetPlayerTagsResultWrapper() = default;
+    PFPlayStreamGetPlayersInSegmentExportResponseWrapper() = default;
 
-    PFPlayStreamGetPlayerTagsResultWrapper(const PFPlayStreamGetPlayerTagsResult& model) :
-        ModelWrapper<PFPlayStreamGetPlayerTagsResult, Alloc>{ model },
-        m_playFabId{ SafeString(model.playFabId) },
-        m_tags{ model.tags, model.tags + model.tagsCount }
+    PFPlayStreamGetPlayersInSegmentExportResponseWrapper(const PFPlayStreamGetPlayersInSegmentExportResponse& model) :
+        ModelWrapper<PFPlayStreamGetPlayersInSegmentExportResponse, Alloc>{ model },
+        m_indexUrl{ SafeString(model.indexUrl) },
+        m_state{ SafeString(model.state) }
     {
         SetModelPointers();
     }
 
-    PFPlayStreamGetPlayerTagsResultWrapper(const PFPlayStreamGetPlayerTagsResultWrapper& src) :
-        PFPlayStreamGetPlayerTagsResultWrapper{ src.Model() }
+    PFPlayStreamGetPlayersInSegmentExportResponseWrapper(const PFPlayStreamGetPlayersInSegmentExportResponseWrapper& src) :
+        PFPlayStreamGetPlayersInSegmentExportResponseWrapper{ src.Model() }
     {
     }
 
-    PFPlayStreamGetPlayerTagsResultWrapper(PFPlayStreamGetPlayerTagsResultWrapper&& src) :
-        PFPlayStreamGetPlayerTagsResultWrapper{}
+    PFPlayStreamGetPlayersInSegmentExportResponseWrapper(PFPlayStreamGetPlayersInSegmentExportResponseWrapper&& src) :
+        PFPlayStreamGetPlayersInSegmentExportResponseWrapper{}
     {
         swap(*this, src);
     }
 
-    PFPlayStreamGetPlayerTagsResultWrapper& operator=(PFPlayStreamGetPlayerTagsResultWrapper src) 
+    PFPlayStreamGetPlayersInSegmentExportResponseWrapper& operator=(PFPlayStreamGetPlayersInSegmentExportResponseWrapper src) 
     {
         swap(*this, src);
         return *this;
     }
 
-    virtual ~PFPlayStreamGetPlayerTagsResultWrapper() = default;
+    virtual ~PFPlayStreamGetPlayersInSegmentExportResponseWrapper() = default;
 
-    friend void swap(PFPlayStreamGetPlayerTagsResultWrapper& lhs, PFPlayStreamGetPlayerTagsResultWrapper& rhs)
+    friend void swap(PFPlayStreamGetPlayersInSegmentExportResponseWrapper& lhs, PFPlayStreamGetPlayersInSegmentExportResponseWrapper& rhs)
     {
         using std::swap;
         swap(lhs.m_model, rhs.m_model);
-        swap(lhs.m_playFabId, rhs.m_playFabId);
-        swap(lhs.m_tags, rhs.m_tags);
+        swap(lhs.m_indexUrl, rhs.m_indexUrl);
+        swap(lhs.m_state, rhs.m_state);
         lhs.SetModelPointers();
         rhs.SetModelPointers();
     }
 
-    void SetPlayFabId(String value)
+    void SetIndexUrl(String value)
     {
-        m_playFabId = std::move(value);
-        this->m_model.playFabId =  m_playFabId.empty() ? nullptr : m_playFabId.data();
+        m_indexUrl = std::move(value);
+        this->m_model.indexUrl =  m_indexUrl.empty() ? nullptr : m_indexUrl.data();
     }
 
-    void SetTags(CStringVector<Alloc> value)
+    void SetState(String value)
     {
-        m_tags = std::move(value);
-        this->m_model.tags =  m_tags.empty() ? nullptr : m_tags.data();
-        this->m_model.tagsCount =  static_cast<uint32_t>(m_tags.size());
+        m_state = std::move(value);
+        this->m_model.state =  m_state.empty() ? nullptr : m_state.data();
     }
 
 private:
     void SetModelPointers()
     {
-        this->m_model.playFabId = m_playFabId.empty() ? nullptr : m_playFabId.data();
-        this->m_model.tags = m_tags.empty() ? nullptr : m_tags.data();
+        this->m_model.indexUrl = m_indexUrl.empty() ? nullptr : m_indexUrl.data();
+        this->m_model.state = m_state.empty() ? nullptr : m_state.data();
     }
 
-    String m_playFabId;
-    CStringVector<Alloc> m_tags;
-};
-
-template<template<typename AllocT> class Alloc = std::allocator>
-class PFPlayStreamRemovePlayerTagRequestWrapper : public ModelWrapper<PFPlayStreamRemovePlayerTagRequest, Alloc>
-{
-public:
-    using ModelType = typename PFPlayStreamRemovePlayerTagRequest;
-    using String = typename std::basic_string<char, std::char_traits<char>, Alloc<char>>;
-    template<typename T> using Vector = typename std::vector<T, Alloc<T>>;
-
-    PFPlayStreamRemovePlayerTagRequestWrapper() = default;
-
-    PFPlayStreamRemovePlayerTagRequestWrapper(const PFPlayStreamRemovePlayerTagRequest& model) :
-        ModelWrapper<PFPlayStreamRemovePlayerTagRequest, Alloc>{ model },
-        m_customTags{ model.customTags, model.customTags + model.customTagsCount },
-        m_playFabId{ SafeString(model.playFabId) },
-        m_tagName{ SafeString(model.tagName) }
-    {
-        SetModelPointers();
-    }
-
-    PFPlayStreamRemovePlayerTagRequestWrapper(const PFPlayStreamRemovePlayerTagRequestWrapper& src) :
-        PFPlayStreamRemovePlayerTagRequestWrapper{ src.Model() }
-    {
-    }
-
-    PFPlayStreamRemovePlayerTagRequestWrapper(PFPlayStreamRemovePlayerTagRequestWrapper&& src) :
-        PFPlayStreamRemovePlayerTagRequestWrapper{}
-    {
-        swap(*this, src);
-    }
-
-    PFPlayStreamRemovePlayerTagRequestWrapper& operator=(PFPlayStreamRemovePlayerTagRequestWrapper src) 
-    {
-        swap(*this, src);
-        return *this;
-    }
-
-    virtual ~PFPlayStreamRemovePlayerTagRequestWrapper() = default;
-
-    friend void swap(PFPlayStreamRemovePlayerTagRequestWrapper& lhs, PFPlayStreamRemovePlayerTagRequestWrapper& rhs)
-    {
-        using std::swap;
-        swap(lhs.m_model, rhs.m_model);
-        swap(lhs.m_customTags, rhs.m_customTags);
-        swap(lhs.m_playFabId, rhs.m_playFabId);
-        swap(lhs.m_tagName, rhs.m_tagName);
-        lhs.SetModelPointers();
-        rhs.SetModelPointers();
-    }
-
-    void SetCustomTags(StringDictionaryEntryVector<Alloc> value)
-    {
-        m_customTags = std::move(value);
-        this->m_model.customTags =  m_customTags.empty() ? nullptr : m_customTags.data();
-        this->m_model.customTagsCount =  static_cast<uint32_t>(m_customTags.size());
-    }
-
-    void SetPlayFabId(String value)
-    {
-        m_playFabId = std::move(value);
-        this->m_model.playFabId =  m_playFabId.empty() ? nullptr : m_playFabId.data();
-    }
-
-    void SetTagName(String value)
-    {
-        m_tagName = std::move(value);
-        this->m_model.tagName =  m_tagName.empty() ? nullptr : m_tagName.data();
-    }
-
-private:
-    void SetModelPointers()
-    {
-        this->m_model.customTags = m_customTags.empty() ? nullptr : m_customTags.data();
-        this->m_model.playFabId = m_playFabId.empty() ? nullptr : m_playFabId.data();
-        this->m_model.tagName = m_tagName.empty() ? nullptr : m_tagName.data();
-    }
-
-    StringDictionaryEntryVector<Alloc> m_customTags;
-    String m_playFabId;
-    String m_tagName;
-};
-
-template<template<typename AllocT> class Alloc = std::allocator>
-class PFPlayStreamEventContentsWrapper : public ModelWrapper<PFPlayStreamEventContents, Alloc>
-{
-public:
-    using ModelType = typename PFPlayStreamEventContents;
-    using String = typename std::basic_string<char, std::char_traits<char>, Alloc<char>>;
-    template<typename T> using Vector = typename std::vector<T, Alloc<T>>;
-
-    PFPlayStreamEventContentsWrapper() = default;
-
-    PFPlayStreamEventContentsWrapper(const PFPlayStreamEventContents& model) :
-        ModelWrapper<PFPlayStreamEventContents, Alloc>{ model },
-        m_customTags{ model.customTags, model.customTags + model.customTagsCount },
-        m_entity{ model.entity ? StdExtra::optional<PFEntityKeyWrapper<Alloc>>{ *model.entity } : StdExtra::nullopt },
-        m_eventNamespace{ SafeString(model.eventNamespace) },
-        m_name{ SafeString(model.name) },
-        m_originalId{ SafeString(model.originalId) },
-        m_originalTimestamp{ model.originalTimestamp ? StdExtra::optional<time_t>{ *model.originalTimestamp } : StdExtra::nullopt },
-        m_payload{ model.payload },
-        m_payloadJSON{ SafeString(model.payloadJSON) }
-    {
-        SetModelPointers();
-    }
-
-    PFPlayStreamEventContentsWrapper(const PFPlayStreamEventContentsWrapper& src) :
-        PFPlayStreamEventContentsWrapper{ src.Model() }
-    {
-    }
-
-    PFPlayStreamEventContentsWrapper(PFPlayStreamEventContentsWrapper&& src) :
-        PFPlayStreamEventContentsWrapper{}
-    {
-        swap(*this, src);
-    }
-
-    PFPlayStreamEventContentsWrapper& operator=(PFPlayStreamEventContentsWrapper src) 
-    {
-        swap(*this, src);
-        return *this;
-    }
-
-    virtual ~PFPlayStreamEventContentsWrapper() = default;
-
-    friend void swap(PFPlayStreamEventContentsWrapper& lhs, PFPlayStreamEventContentsWrapper& rhs)
-    {
-        using std::swap;
-        swap(lhs.m_model, rhs.m_model);
-        swap(lhs.m_customTags, rhs.m_customTags);
-        swap(lhs.m_entity, rhs.m_entity);
-        swap(lhs.m_eventNamespace, rhs.m_eventNamespace);
-        swap(lhs.m_name, rhs.m_name);
-        swap(lhs.m_originalId, rhs.m_originalId);
-        swap(lhs.m_originalTimestamp, rhs.m_originalTimestamp);
-        swap(lhs.m_payload, rhs.m_payload);
-        swap(lhs.m_payloadJSON, rhs.m_payloadJSON);
-        lhs.SetModelPointers();
-        rhs.SetModelPointers();
-    }
-
-    void SetCustomTags(StringDictionaryEntryVector<Alloc> value)
-    {
-        m_customTags = std::move(value);
-        this->m_model.customTags =  m_customTags.empty() ? nullptr : m_customTags.data();
-        this->m_model.customTagsCount =  static_cast<uint32_t>(m_customTags.size());
-    }
-
-    void SetEntity(StdExtra::optional<PFEntityKeyWrapper<Alloc>> value)
-    {
-        m_entity = std::move(value);
-        this->m_model.entity = m_entity ? &m_entity->Model() : nullptr;
-    }
-
-    void SetEventNamespace(String value)
-    {
-        m_eventNamespace = std::move(value);
-        this->m_model.eventNamespace =  m_eventNamespace.empty() ? nullptr : m_eventNamespace.data();
-    }
-
-    void SetName(String value)
-    {
-        m_name = std::move(value);
-        this->m_model.name =  m_name.empty() ? nullptr : m_name.data();
-    }
-
-    void SetOriginalId(String value)
-    {
-        m_originalId = std::move(value);
-        this->m_model.originalId =  m_originalId.empty() ? nullptr : m_originalId.data();
-    }
-
-    void SetOriginalTimestamp(StdExtra::optional<time_t> value)
-    {
-        m_originalTimestamp = std::move(value);
-        this->m_model.originalTimestamp = m_originalTimestamp ? m_originalTimestamp.operator->() : nullptr;
-    }
-
-    void SetPayload(JsonObject<Alloc> value)
-    {
-        m_payload = std::move(value);
-        this->m_model.payload.stringValue = m_payload.stringValue.empty() ? nullptr : m_payload.stringValue.data();
-    }
-
-    void SetPayloadJSON(String value)
-    {
-        m_payloadJSON = std::move(value);
-        this->m_model.payloadJSON =  m_payloadJSON.empty() ? nullptr : m_payloadJSON.data();
-    }
-
-private:
-    void SetModelPointers()
-    {
-        this->m_model.customTags = m_customTags.empty() ? nullptr : m_customTags.data();
-        this->m_model.entity = m_entity ?  &m_entity->Model() : nullptr;
-        this->m_model.eventNamespace = m_eventNamespace.empty() ? nullptr : m_eventNamespace.data();
-        this->m_model.name = m_name.empty() ? nullptr : m_name.data();
-        this->m_model.originalId = m_originalId.empty() ? nullptr : m_originalId.data();
-        this->m_model.originalTimestamp = m_originalTimestamp ? m_originalTimestamp.operator->() : nullptr;
-        this->m_model.payload.stringValue = m_payload.stringValue.empty() ? nullptr : m_payload.stringValue.data();
-        this->m_model.payloadJSON = m_payloadJSON.empty() ? nullptr : m_payloadJSON.data();
-    }
-
-    StringDictionaryEntryVector<Alloc> m_customTags;
-    StdExtra::optional<PFEntityKeyWrapper<Alloc>> m_entity;
-    String m_eventNamespace;
-    String m_name;
-    String m_originalId;
-    StdExtra::optional<time_t> m_originalTimestamp;
-    JsonObject<Alloc> m_payload;
-    String m_payloadJSON;
-};
-
-template<template<typename AllocT> class Alloc = std::allocator>
-class PFPlayStreamWriteEventsRequestWrapper : public ModelWrapper<PFPlayStreamWriteEventsRequest, Alloc>
-{
-public:
-    using ModelType = typename PFPlayStreamWriteEventsRequest;
-    using String = typename std::basic_string<char, std::char_traits<char>, Alloc<char>>;
-    template<typename T> using Vector = typename std::vector<T, Alloc<T>>;
-
-    PFPlayStreamWriteEventsRequestWrapper() = default;
-
-    PFPlayStreamWriteEventsRequestWrapper(const PFPlayStreamWriteEventsRequest& model) :
-        ModelWrapper<PFPlayStreamWriteEventsRequest, Alloc>{ model },
-        m_customTags{ model.customTags, model.customTags + model.customTagsCount },
-        m_events{ model.events, model.events + model.eventsCount }
-    {
-        SetModelPointers();
-    }
-
-    PFPlayStreamWriteEventsRequestWrapper(const PFPlayStreamWriteEventsRequestWrapper& src) :
-        PFPlayStreamWriteEventsRequestWrapper{ src.Model() }
-    {
-    }
-
-    PFPlayStreamWriteEventsRequestWrapper(PFPlayStreamWriteEventsRequestWrapper&& src) :
-        PFPlayStreamWriteEventsRequestWrapper{}
-    {
-        swap(*this, src);
-    }
-
-    PFPlayStreamWriteEventsRequestWrapper& operator=(PFPlayStreamWriteEventsRequestWrapper src) 
-    {
-        swap(*this, src);
-        return *this;
-    }
-
-    virtual ~PFPlayStreamWriteEventsRequestWrapper() = default;
-
-    friend void swap(PFPlayStreamWriteEventsRequestWrapper& lhs, PFPlayStreamWriteEventsRequestWrapper& rhs)
-    {
-        using std::swap;
-        swap(lhs.m_model, rhs.m_model);
-        swap(lhs.m_customTags, rhs.m_customTags);
-        swap(lhs.m_events, rhs.m_events);
-        lhs.SetModelPointers();
-        rhs.SetModelPointers();
-    }
-
-    void SetCustomTags(StringDictionaryEntryVector<Alloc> value)
-    {
-        m_customTags = std::move(value);
-        this->m_model.customTags =  m_customTags.empty() ? nullptr : m_customTags.data();
-        this->m_model.customTagsCount =  static_cast<uint32_t>(m_customTags.size());
-    }
-
-    void SetEvents(ModelVector<PFPlayStreamEventContentsWrapper<Alloc>, Alloc> value)
-    {
-        m_events = std::move(value);
-        this->m_model.events =  m_events.empty() ? nullptr : m_events.data();
-        this->m_model.eventsCount =  static_cast<uint32_t>(m_events.size());
-    }
-
-private:
-    void SetModelPointers()
-    {
-        this->m_model.customTags = m_customTags.empty() ? nullptr : m_customTags.data();
-        this->m_model.events = m_events.empty() ? nullptr : m_events.data();
-    }
-
-    StringDictionaryEntryVector<Alloc> m_customTags;
-    ModelVector<PFPlayStreamEventContentsWrapper<Alloc>, Alloc> m_events;
-};
-
-template<template<typename AllocT> class Alloc = std::allocator>
-class PFPlayStreamWriteEventsResponseWrapper : public ModelWrapper<PFPlayStreamWriteEventsResponse, Alloc>
-{
-public:
-    using ModelType = typename PFPlayStreamWriteEventsResponse;
-    using String = typename std::basic_string<char, std::char_traits<char>, Alloc<char>>;
-    template<typename T> using Vector = typename std::vector<T, Alloc<T>>;
-
-    PFPlayStreamWriteEventsResponseWrapper() = default;
-
-    PFPlayStreamWriteEventsResponseWrapper(const PFPlayStreamWriteEventsResponse& model) :
-        ModelWrapper<PFPlayStreamWriteEventsResponse, Alloc>{ model },
-        m_assignedEventIds{ model.assignedEventIds, model.assignedEventIds + model.assignedEventIdsCount }
-    {
-        SetModelPointers();
-    }
-
-    PFPlayStreamWriteEventsResponseWrapper(const PFPlayStreamWriteEventsResponseWrapper& src) :
-        PFPlayStreamWriteEventsResponseWrapper{ src.Model() }
-    {
-    }
-
-    PFPlayStreamWriteEventsResponseWrapper(PFPlayStreamWriteEventsResponseWrapper&& src) :
-        PFPlayStreamWriteEventsResponseWrapper{}
-    {
-        swap(*this, src);
-    }
-
-    PFPlayStreamWriteEventsResponseWrapper& operator=(PFPlayStreamWriteEventsResponseWrapper src) 
-    {
-        swap(*this, src);
-        return *this;
-    }
-
-    virtual ~PFPlayStreamWriteEventsResponseWrapper() = default;
-
-    friend void swap(PFPlayStreamWriteEventsResponseWrapper& lhs, PFPlayStreamWriteEventsResponseWrapper& rhs)
-    {
-        using std::swap;
-        swap(lhs.m_model, rhs.m_model);
-        swap(lhs.m_assignedEventIds, rhs.m_assignedEventIds);
-        lhs.SetModelPointers();
-        rhs.SetModelPointers();
-    }
-
-    void SetAssignedEventIds(CStringVector<Alloc> value)
-    {
-        m_assignedEventIds = std::move(value);
-        this->m_model.assignedEventIds =  m_assignedEventIds.empty() ? nullptr : m_assignedEventIds.data();
-        this->m_model.assignedEventIdsCount =  static_cast<uint32_t>(m_assignedEventIds.size());
-    }
-
-private:
-    void SetModelPointers()
-    {
-        this->m_model.assignedEventIds = m_assignedEventIds.empty() ? nullptr : m_assignedEventIds.data();
-    }
-
-    CStringVector<Alloc> m_assignedEventIds;
+    String m_indexUrl;
+    String m_state;
 };
 
 } // namespace Wrappers

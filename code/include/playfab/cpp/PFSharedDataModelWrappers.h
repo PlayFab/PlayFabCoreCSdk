@@ -2146,7 +2146,8 @@ public:
 
     PFUserXboxInfoWrapper(const PFUserXboxInfo& model) :
         ModelWrapper<PFUserXboxInfo, Alloc>{ model },
-        m_xboxUserId{ SafeString(model.xboxUserId) }
+        m_xboxUserId{ SafeString(model.xboxUserId) },
+        m_xboxUserSandbox{ SafeString(model.xboxUserSandbox) }
     {
         SetModelPointers();
     }
@@ -2175,6 +2176,7 @@ public:
         using std::swap;
         swap(lhs.m_model, rhs.m_model);
         swap(lhs.m_xboxUserId, rhs.m_xboxUserId);
+        swap(lhs.m_xboxUserSandbox, rhs.m_xboxUserSandbox);
         lhs.SetModelPointers();
         rhs.SetModelPointers();
     }
@@ -2185,13 +2187,21 @@ public:
         this->m_model.xboxUserId =  m_xboxUserId.empty() ? nullptr : m_xboxUserId.data();
     }
 
+    void SetXboxUserSandbox(String value)
+    {
+        m_xboxUserSandbox = std::move(value);
+        this->m_model.xboxUserSandbox =  m_xboxUserSandbox.empty() ? nullptr : m_xboxUserSandbox.data();
+    }
+
 private:
     void SetModelPointers()
     {
         this->m_model.xboxUserId = m_xboxUserId.empty() ? nullptr : m_xboxUserId.data();
+        this->m_model.xboxUserSandbox = m_xboxUserSandbox.empty() ? nullptr : m_xboxUserSandbox.data();
     }
 
     String m_xboxUserId;
+    String m_xboxUserSandbox;
 };
 
 template<template<typename AllocT> class Alloc = std::allocator>
@@ -2939,6 +2949,86 @@ private:
 };
 
 template<template<typename AllocT> class Alloc = std::allocator>
+class PFUserGooglePlayGamesInfoWrapper : public ModelWrapper<PFUserGooglePlayGamesInfo, Alloc>
+{
+public:
+    using ModelType = typename PFUserGooglePlayGamesInfo;
+    using String = typename std::basic_string<char, std::char_traits<char>, Alloc<char>>;
+    template<typename T> using Vector = typename std::vector<T, Alloc<T>>;
+
+    PFUserGooglePlayGamesInfoWrapper() = default;
+
+    PFUserGooglePlayGamesInfoWrapper(const PFUserGooglePlayGamesInfo& model) :
+        ModelWrapper<PFUserGooglePlayGamesInfo, Alloc>{ model },
+        m_googlePlayGamesPlayerAvatarImageUrl{ SafeString(model.googlePlayGamesPlayerAvatarImageUrl) },
+        m_googlePlayGamesPlayerDisplayName{ SafeString(model.googlePlayGamesPlayerDisplayName) },
+        m_googlePlayGamesPlayerId{ SafeString(model.googlePlayGamesPlayerId) }
+    {
+        SetModelPointers();
+    }
+
+    PFUserGooglePlayGamesInfoWrapper(const PFUserGooglePlayGamesInfoWrapper& src) :
+        PFUserGooglePlayGamesInfoWrapper{ src.Model() }
+    {
+    }
+
+    PFUserGooglePlayGamesInfoWrapper(PFUserGooglePlayGamesInfoWrapper&& src) :
+        PFUserGooglePlayGamesInfoWrapper{}
+    {
+        swap(*this, src);
+    }
+
+    PFUserGooglePlayGamesInfoWrapper& operator=(PFUserGooglePlayGamesInfoWrapper src) 
+    {
+        swap(*this, src);
+        return *this;
+    }
+
+    virtual ~PFUserGooglePlayGamesInfoWrapper() = default;
+
+    friend void swap(PFUserGooglePlayGamesInfoWrapper& lhs, PFUserGooglePlayGamesInfoWrapper& rhs)
+    {
+        using std::swap;
+        swap(lhs.m_model, rhs.m_model);
+        swap(lhs.m_googlePlayGamesPlayerAvatarImageUrl, rhs.m_googlePlayGamesPlayerAvatarImageUrl);
+        swap(lhs.m_googlePlayGamesPlayerDisplayName, rhs.m_googlePlayGamesPlayerDisplayName);
+        swap(lhs.m_googlePlayGamesPlayerId, rhs.m_googlePlayGamesPlayerId);
+        lhs.SetModelPointers();
+        rhs.SetModelPointers();
+    }
+
+    void SetGooglePlayGamesPlayerAvatarImageUrl(String value)
+    {
+        m_googlePlayGamesPlayerAvatarImageUrl = std::move(value);
+        this->m_model.googlePlayGamesPlayerAvatarImageUrl =  m_googlePlayGamesPlayerAvatarImageUrl.empty() ? nullptr : m_googlePlayGamesPlayerAvatarImageUrl.data();
+    }
+
+    void SetGooglePlayGamesPlayerDisplayName(String value)
+    {
+        m_googlePlayGamesPlayerDisplayName = std::move(value);
+        this->m_model.googlePlayGamesPlayerDisplayName =  m_googlePlayGamesPlayerDisplayName.empty() ? nullptr : m_googlePlayGamesPlayerDisplayName.data();
+    }
+
+    void SetGooglePlayGamesPlayerId(String value)
+    {
+        m_googlePlayGamesPlayerId = std::move(value);
+        this->m_model.googlePlayGamesPlayerId =  m_googlePlayGamesPlayerId.empty() ? nullptr : m_googlePlayGamesPlayerId.data();
+    }
+
+private:
+    void SetModelPointers()
+    {
+        this->m_model.googlePlayGamesPlayerAvatarImageUrl = m_googlePlayGamesPlayerAvatarImageUrl.empty() ? nullptr : m_googlePlayGamesPlayerAvatarImageUrl.data();
+        this->m_model.googlePlayGamesPlayerDisplayName = m_googlePlayGamesPlayerDisplayName.empty() ? nullptr : m_googlePlayGamesPlayerDisplayName.data();
+        this->m_model.googlePlayGamesPlayerId = m_googlePlayGamesPlayerId.empty() ? nullptr : m_googlePlayGamesPlayerId.data();
+    }
+
+    String m_googlePlayGamesPlayerAvatarImageUrl;
+    String m_googlePlayGamesPlayerDisplayName;
+    String m_googlePlayGamesPlayerId;
+};
+
+template<template<typename AllocT> class Alloc = std::allocator>
 class PFUserIosDeviceInfoWrapper : public ModelWrapper<PFUserIosDeviceInfo, Alloc>
 {
 public:
@@ -3542,6 +3632,7 @@ public:
         m_facebookInstantGamesIdInfo{ model.facebookInstantGamesIdInfo ? StdExtra::optional<PFUserFacebookInstantGamesIdInfoWrapper<Alloc>>{ *model.facebookInstantGamesIdInfo } : StdExtra::nullopt },
         m_gameCenterInfo{ model.gameCenterInfo ? StdExtra::optional<PFUserGameCenterInfoWrapper<Alloc>>{ *model.gameCenterInfo } : StdExtra::nullopt },
         m_googleInfo{ model.googleInfo ? StdExtra::optional<PFUserGoogleInfoWrapper<Alloc>>{ *model.googleInfo } : StdExtra::nullopt },
+        m_googlePlayGamesInfo{ model.googlePlayGamesInfo ? StdExtra::optional<PFUserGooglePlayGamesInfoWrapper<Alloc>>{ *model.googlePlayGamesInfo } : StdExtra::nullopt },
         m_iosDeviceInfo{ model.iosDeviceInfo ? StdExtra::optional<PFUserIosDeviceInfoWrapper<Alloc>>{ *model.iosDeviceInfo } : StdExtra::nullopt },
         m_kongregateInfo{ model.kongregateInfo ? StdExtra::optional<PFUserKongregateInfoWrapper<Alloc>>{ *model.kongregateInfo } : StdExtra::nullopt },
         m_nintendoSwitchAccountInfo{ model.nintendoSwitchAccountInfo ? StdExtra::optional<PFUserNintendoSwitchAccountIdInfoWrapper<Alloc>>{ *model.nintendoSwitchAccountInfo } : StdExtra::nullopt },
@@ -3589,6 +3680,7 @@ public:
         swap(lhs.m_facebookInstantGamesIdInfo, rhs.m_facebookInstantGamesIdInfo);
         swap(lhs.m_gameCenterInfo, rhs.m_gameCenterInfo);
         swap(lhs.m_googleInfo, rhs.m_googleInfo);
+        swap(lhs.m_googlePlayGamesInfo, rhs.m_googlePlayGamesInfo);
         swap(lhs.m_iosDeviceInfo, rhs.m_iosDeviceInfo);
         swap(lhs.m_kongregateInfo, rhs.m_kongregateInfo);
         swap(lhs.m_nintendoSwitchAccountInfo, rhs.m_nintendoSwitchAccountInfo);
@@ -3651,6 +3743,12 @@ public:
     {
         m_googleInfo = std::move(value);
         this->m_model.googleInfo = m_googleInfo ? &m_googleInfo->Model() : nullptr;
+    }
+
+    void SetGooglePlayGamesInfo(StdExtra::optional<PFUserGooglePlayGamesInfoWrapper<Alloc>> value)
+    {
+        m_googlePlayGamesInfo = std::move(value);
+        this->m_model.googlePlayGamesInfo = m_googlePlayGamesInfo ? &m_googlePlayGamesInfo->Model() : nullptr;
     }
 
     void SetIosDeviceInfo(StdExtra::optional<PFUserIosDeviceInfoWrapper<Alloc>> value)
@@ -3742,6 +3840,7 @@ private:
         this->m_model.facebookInstantGamesIdInfo = m_facebookInstantGamesIdInfo ?  &m_facebookInstantGamesIdInfo->Model() : nullptr;
         this->m_model.gameCenterInfo = m_gameCenterInfo ?  &m_gameCenterInfo->Model() : nullptr;
         this->m_model.googleInfo = m_googleInfo ?  &m_googleInfo->Model() : nullptr;
+        this->m_model.googlePlayGamesInfo = m_googlePlayGamesInfo ?  &m_googlePlayGamesInfo->Model() : nullptr;
         this->m_model.iosDeviceInfo = m_iosDeviceInfo ?  &m_iosDeviceInfo->Model() : nullptr;
         this->m_model.kongregateInfo = m_kongregateInfo ?  &m_kongregateInfo->Model() : nullptr;
         this->m_model.nintendoSwitchAccountInfo = m_nintendoSwitchAccountInfo ?  &m_nintendoSwitchAccountInfo->Model() : nullptr;
@@ -3764,6 +3863,7 @@ private:
     StdExtra::optional<PFUserFacebookInstantGamesIdInfoWrapper<Alloc>> m_facebookInstantGamesIdInfo;
     StdExtra::optional<PFUserGameCenterInfoWrapper<Alloc>> m_gameCenterInfo;
     StdExtra::optional<PFUserGoogleInfoWrapper<Alloc>> m_googleInfo;
+    StdExtra::optional<PFUserGooglePlayGamesInfoWrapper<Alloc>> m_googlePlayGamesInfo;
     StdExtra::optional<PFUserIosDeviceInfoWrapper<Alloc>> m_iosDeviceInfo;
     StdExtra::optional<PFUserKongregateInfoWrapper<Alloc>> m_kongregateInfo;
     StdExtra::optional<PFUserNintendoSwitchAccountIdInfoWrapper<Alloc>> m_nintendoSwitchAccountInfo;
@@ -4027,157 +4127,6 @@ private:
     ModelDictionaryEntryVector<PFUserDataRecordWrapper<Alloc>, Alloc> m_userReadOnlyData;
     DictionaryEntryVector<PFInt32DictionaryEntry, Alloc> m_userVirtualCurrency;
     ModelDictionaryEntryVector<PFVirtualCurrencyRechargeTimeWrapper<Alloc>, Alloc> m_userVirtualCurrencyRechargeTimes;
-};
-
-template<template<typename AllocT> class Alloc = std::allocator>
-class PFGetPlayerCombinedInfoRequestWrapper : public ModelWrapper<PFGetPlayerCombinedInfoRequest, Alloc>
-{
-public:
-    using ModelType = typename PFGetPlayerCombinedInfoRequest;
-    using String = typename std::basic_string<char, std::char_traits<char>, Alloc<char>>;
-    template<typename T> using Vector = typename std::vector<T, Alloc<T>>;
-
-    PFGetPlayerCombinedInfoRequestWrapper() = default;
-
-    PFGetPlayerCombinedInfoRequestWrapper(const PFGetPlayerCombinedInfoRequest& model) :
-        ModelWrapper<PFGetPlayerCombinedInfoRequest, Alloc>{ model },
-        m_customTags{ model.customTags, model.customTags + model.customTagsCount },
-        m_infoRequestParameters{ model.infoRequestParameters ? *model.infoRequestParameters : decltype(*model.infoRequestParameters){} },
-        m_playFabId{ SafeString(model.playFabId) }
-    {
-        SetModelPointers();
-    }
-
-    PFGetPlayerCombinedInfoRequestWrapper(const PFGetPlayerCombinedInfoRequestWrapper& src) :
-        PFGetPlayerCombinedInfoRequestWrapper{ src.Model() }
-    {
-    }
-
-    PFGetPlayerCombinedInfoRequestWrapper(PFGetPlayerCombinedInfoRequestWrapper&& src) :
-        PFGetPlayerCombinedInfoRequestWrapper{}
-    {
-        swap(*this, src);
-    }
-
-    PFGetPlayerCombinedInfoRequestWrapper& operator=(PFGetPlayerCombinedInfoRequestWrapper src) 
-    {
-        swap(*this, src);
-        return *this;
-    }
-
-    virtual ~PFGetPlayerCombinedInfoRequestWrapper() = default;
-
-    friend void swap(PFGetPlayerCombinedInfoRequestWrapper& lhs, PFGetPlayerCombinedInfoRequestWrapper& rhs)
-    {
-        using std::swap;
-        swap(lhs.m_model, rhs.m_model);
-        swap(lhs.m_customTags, rhs.m_customTags);
-        swap(lhs.m_infoRequestParameters, rhs.m_infoRequestParameters);
-        swap(lhs.m_playFabId, rhs.m_playFabId);
-        lhs.SetModelPointers();
-        rhs.SetModelPointers();
-    }
-
-    void SetCustomTags(StringDictionaryEntryVector<Alloc> value)
-    {
-        m_customTags = std::move(value);
-        this->m_model.customTags =  m_customTags.empty() ? nullptr : m_customTags.data();
-        this->m_model.customTagsCount =  static_cast<uint32_t>(m_customTags.size());
-    }
-
-    void SetInfoRequestParameters(PFGetPlayerCombinedInfoRequestParamsWrapper<Alloc> value)
-    {
-        m_infoRequestParameters = std::move(value);
-        this->m_model.infoRequestParameters = &m_infoRequestParameters.Model();
-    }
-
-    void SetPlayFabId(String value)
-    {
-        m_playFabId = std::move(value);
-        this->m_model.playFabId =  m_playFabId.empty() ? nullptr : m_playFabId.data();
-    }
-
-private:
-    void SetModelPointers()
-    {
-        this->m_model.customTags = m_customTags.empty() ? nullptr : m_customTags.data();
-        this->m_model.infoRequestParameters = &m_infoRequestParameters.Model();
-        this->m_model.playFabId = m_playFabId.empty() ? nullptr : m_playFabId.data();
-    }
-
-    StringDictionaryEntryVector<Alloc> m_customTags;
-    PFGetPlayerCombinedInfoRequestParamsWrapper<Alloc> m_infoRequestParameters;
-    String m_playFabId;
-};
-
-template<template<typename AllocT> class Alloc = std::allocator>
-class PFGetPlayerCombinedInfoResultWrapper : public ModelWrapper<PFGetPlayerCombinedInfoResult, Alloc>
-{
-public:
-    using ModelType = typename PFGetPlayerCombinedInfoResult;
-    using String = typename std::basic_string<char, std::char_traits<char>, Alloc<char>>;
-    template<typename T> using Vector = typename std::vector<T, Alloc<T>>;
-
-    PFGetPlayerCombinedInfoResultWrapper() = default;
-
-    PFGetPlayerCombinedInfoResultWrapper(const PFGetPlayerCombinedInfoResult& model) :
-        ModelWrapper<PFGetPlayerCombinedInfoResult, Alloc>{ model },
-        m_infoResultPayload{ model.infoResultPayload ? StdExtra::optional<PFGetPlayerCombinedInfoResultPayloadWrapper<Alloc>>{ *model.infoResultPayload } : StdExtra::nullopt },
-        m_playFabId{ SafeString(model.playFabId) }
-    {
-        SetModelPointers();
-    }
-
-    PFGetPlayerCombinedInfoResultWrapper(const PFGetPlayerCombinedInfoResultWrapper& src) :
-        PFGetPlayerCombinedInfoResultWrapper{ src.Model() }
-    {
-    }
-
-    PFGetPlayerCombinedInfoResultWrapper(PFGetPlayerCombinedInfoResultWrapper&& src) :
-        PFGetPlayerCombinedInfoResultWrapper{}
-    {
-        swap(*this, src);
-    }
-
-    PFGetPlayerCombinedInfoResultWrapper& operator=(PFGetPlayerCombinedInfoResultWrapper src) 
-    {
-        swap(*this, src);
-        return *this;
-    }
-
-    virtual ~PFGetPlayerCombinedInfoResultWrapper() = default;
-
-    friend void swap(PFGetPlayerCombinedInfoResultWrapper& lhs, PFGetPlayerCombinedInfoResultWrapper& rhs)
-    {
-        using std::swap;
-        swap(lhs.m_model, rhs.m_model);
-        swap(lhs.m_infoResultPayload, rhs.m_infoResultPayload);
-        swap(lhs.m_playFabId, rhs.m_playFabId);
-        lhs.SetModelPointers();
-        rhs.SetModelPointers();
-    }
-
-    void SetInfoResultPayload(StdExtra::optional<PFGetPlayerCombinedInfoResultPayloadWrapper<Alloc>> value)
-    {
-        m_infoResultPayload = std::move(value);
-        this->m_model.infoResultPayload = m_infoResultPayload ? &m_infoResultPayload->Model() : nullptr;
-    }
-
-    void SetPlayFabId(String value)
-    {
-        m_playFabId = std::move(value);
-        this->m_model.playFabId =  m_playFabId.empty() ? nullptr : m_playFabId.data();
-    }
-
-private:
-    void SetModelPointers()
-    {
-        this->m_model.infoResultPayload = m_infoResultPayload ?  &m_infoResultPayload->Model() : nullptr;
-        this->m_model.playFabId = m_playFabId.empty() ? nullptr : m_playFabId.data();
-    }
-
-    StdExtra::optional<PFGetPlayerCombinedInfoResultPayloadWrapper<Alloc>> m_infoResultPayload;
-    String m_playFabId;
 };
 
 template<template<typename AllocT> class Alloc = std::allocator>

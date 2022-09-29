@@ -439,77 +439,6 @@ private:
 };
 
 template<template<typename AllocT> class Alloc = std::allocator>
-class PFMatchmakingModifyMatchmakerGameModesRequestWrapper : public ModelWrapper<PFMatchmakingModifyMatchmakerGameModesRequest, Alloc>
-{
-public:
-    using ModelType = typename PFMatchmakingModifyMatchmakerGameModesRequest;
-    using String = typename std::basic_string<char, std::char_traits<char>, Alloc<char>>;
-    template<typename T> using Vector = typename std::vector<T, Alloc<T>>;
-
-    PFMatchmakingModifyMatchmakerGameModesRequestWrapper() = default;
-
-    PFMatchmakingModifyMatchmakerGameModesRequestWrapper(const PFMatchmakingModifyMatchmakerGameModesRequest& model) :
-        ModelWrapper<PFMatchmakingModifyMatchmakerGameModesRequest, Alloc>{ model },
-        m_buildVersion{ SafeString(model.buildVersion) },
-        m_gameModes{ model.gameModes, model.gameModes + model.gameModesCount }
-    {
-        SetModelPointers();
-    }
-
-    PFMatchmakingModifyMatchmakerGameModesRequestWrapper(const PFMatchmakingModifyMatchmakerGameModesRequestWrapper& src) :
-        PFMatchmakingModifyMatchmakerGameModesRequestWrapper{ src.Model() }
-    {
-    }
-
-    PFMatchmakingModifyMatchmakerGameModesRequestWrapper(PFMatchmakingModifyMatchmakerGameModesRequestWrapper&& src) :
-        PFMatchmakingModifyMatchmakerGameModesRequestWrapper{}
-    {
-        swap(*this, src);
-    }
-
-    PFMatchmakingModifyMatchmakerGameModesRequestWrapper& operator=(PFMatchmakingModifyMatchmakerGameModesRequestWrapper src) 
-    {
-        swap(*this, src);
-        return *this;
-    }
-
-    virtual ~PFMatchmakingModifyMatchmakerGameModesRequestWrapper() = default;
-
-    friend void swap(PFMatchmakingModifyMatchmakerGameModesRequestWrapper& lhs, PFMatchmakingModifyMatchmakerGameModesRequestWrapper& rhs)
-    {
-        using std::swap;
-        swap(lhs.m_model, rhs.m_model);
-        swap(lhs.m_buildVersion, rhs.m_buildVersion);
-        swap(lhs.m_gameModes, rhs.m_gameModes);
-        lhs.SetModelPointers();
-        rhs.SetModelPointers();
-    }
-
-    void SetBuildVersion(String value)
-    {
-        m_buildVersion = std::move(value);
-        this->m_model.buildVersion =  m_buildVersion.empty() ? nullptr : m_buildVersion.data();
-    }
-
-    void SetGameModes(ModelVector<PFMatchmakingGameModeInfoWrapper<Alloc>, Alloc> value)
-    {
-        m_gameModes = std::move(value);
-        this->m_model.gameModes =  m_gameModes.empty() ? nullptr : m_gameModes.data();
-        this->m_model.gameModesCount =  static_cast<uint32_t>(m_gameModes.size());
-    }
-
-private:
-    void SetModelPointers()
-    {
-        this->m_model.buildVersion = m_buildVersion.empty() ? nullptr : m_buildVersion.data();
-        this->m_model.gameModes = m_gameModes.empty() ? nullptr : m_gameModes.data();
-    }
-
-    String m_buildVersion;
-    ModelVector<PFMatchmakingGameModeInfoWrapper<Alloc>, Alloc> m_gameModes;
-};
-
-template<template<typename AllocT> class Alloc = std::allocator>
 class PFMatchmakingContainer_Dictionary_String_StringWrapper : public ModelWrapper<PFMatchmakingContainer_Dictionary_String_String, Alloc>
 {
 public:
@@ -1518,252 +1447,6 @@ private:
 };
 
 template<template<typename AllocT> class Alloc = std::allocator>
-class PFMatchmakingClientStartGameRequestWrapper : public ModelWrapper<PFMatchmakingClientStartGameRequest, Alloc>
-{
-public:
-    using ModelType = typename PFMatchmakingClientStartGameRequest;
-    using String = typename std::basic_string<char, std::char_traits<char>, Alloc<char>>;
-    template<typename T> using Vector = typename std::vector<T, Alloc<T>>;
-
-    PFMatchmakingClientStartGameRequestWrapper() = default;
-
-    PFMatchmakingClientStartGameRequestWrapper(const PFMatchmakingClientStartGameRequest& model) :
-        ModelWrapper<PFMatchmakingClientStartGameRequest, Alloc>{ model },
-        m_buildVersion{ SafeString(model.buildVersion) },
-        m_characterId{ SafeString(model.characterId) },
-        m_customCommandLineData{ SafeString(model.customCommandLineData) },
-        m_customTags{ model.customTags, model.customTags + model.customTagsCount },
-        m_gameMode{ SafeString(model.gameMode) },
-        m_statisticName{ SafeString(model.statisticName) }
-    {
-        SetModelPointers();
-    }
-
-    PFMatchmakingClientStartGameRequestWrapper(const PFMatchmakingClientStartGameRequestWrapper& src) :
-        PFMatchmakingClientStartGameRequestWrapper{ src.Model() }
-    {
-    }
-
-    PFMatchmakingClientStartGameRequestWrapper(PFMatchmakingClientStartGameRequestWrapper&& src) :
-        PFMatchmakingClientStartGameRequestWrapper{}
-    {
-        swap(*this, src);
-    }
-
-    PFMatchmakingClientStartGameRequestWrapper& operator=(PFMatchmakingClientStartGameRequestWrapper src) 
-    {
-        swap(*this, src);
-        return *this;
-    }
-
-    virtual ~PFMatchmakingClientStartGameRequestWrapper() = default;
-
-    friend void swap(PFMatchmakingClientStartGameRequestWrapper& lhs, PFMatchmakingClientStartGameRequestWrapper& rhs)
-    {
-        using std::swap;
-        swap(lhs.m_model, rhs.m_model);
-        swap(lhs.m_buildVersion, rhs.m_buildVersion);
-        swap(lhs.m_characterId, rhs.m_characterId);
-        swap(lhs.m_customCommandLineData, rhs.m_customCommandLineData);
-        swap(lhs.m_customTags, rhs.m_customTags);
-        swap(lhs.m_gameMode, rhs.m_gameMode);
-        swap(lhs.m_statisticName, rhs.m_statisticName);
-        lhs.SetModelPointers();
-        rhs.SetModelPointers();
-    }
-
-    void SetBuildVersion(String value)
-    {
-        m_buildVersion = std::move(value);
-        this->m_model.buildVersion =  m_buildVersion.empty() ? nullptr : m_buildVersion.data();
-    }
-
-    void SetCharacterId(String value)
-    {
-        m_characterId = std::move(value);
-        this->m_model.characterId =  m_characterId.empty() ? nullptr : m_characterId.data();
-    }
-
-    void SetCustomCommandLineData(String value)
-    {
-        m_customCommandLineData = std::move(value);
-        this->m_model.customCommandLineData =  m_customCommandLineData.empty() ? nullptr : m_customCommandLineData.data();
-    }
-
-    void SetCustomTags(StringDictionaryEntryVector<Alloc> value)
-    {
-        m_customTags = std::move(value);
-        this->m_model.customTags =  m_customTags.empty() ? nullptr : m_customTags.data();
-        this->m_model.customTagsCount =  static_cast<uint32_t>(m_customTags.size());
-    }
-
-    void SetGameMode(String value)
-    {
-        m_gameMode = std::move(value);
-        this->m_model.gameMode =  m_gameMode.empty() ? nullptr : m_gameMode.data();
-    }
-
-    void SetRegion(PFRegion value)
-    {
-        this->m_model.region = value;
-    }
-
-    void SetStatisticName(String value)
-    {
-        m_statisticName = std::move(value);
-        this->m_model.statisticName =  m_statisticName.empty() ? nullptr : m_statisticName.data();
-    }
-
-private:
-    void SetModelPointers()
-    {
-        this->m_model.buildVersion = m_buildVersion.empty() ? nullptr : m_buildVersion.data();
-        this->m_model.characterId = m_characterId.empty() ? nullptr : m_characterId.data();
-        this->m_model.customCommandLineData = m_customCommandLineData.empty() ? nullptr : m_customCommandLineData.data();
-        this->m_model.customTags = m_customTags.empty() ? nullptr : m_customTags.data();
-        this->m_model.gameMode = m_gameMode.empty() ? nullptr : m_gameMode.data();
-        this->m_model.statisticName = m_statisticName.empty() ? nullptr : m_statisticName.data();
-    }
-
-    String m_buildVersion;
-    String m_characterId;
-    String m_customCommandLineData;
-    StringDictionaryEntryVector<Alloc> m_customTags;
-    String m_gameMode;
-    String m_statisticName;
-};
-
-template<template<typename AllocT> class Alloc = std::allocator>
-class PFMatchmakingStartGameResultWrapper : public ModelWrapper<PFMatchmakingStartGameResult, Alloc>
-{
-public:
-    using ModelType = typename PFMatchmakingStartGameResult;
-    using String = typename std::basic_string<char, std::char_traits<char>, Alloc<char>>;
-    template<typename T> using Vector = typename std::vector<T, Alloc<T>>;
-
-    PFMatchmakingStartGameResultWrapper() = default;
-
-    PFMatchmakingStartGameResultWrapper(const PFMatchmakingStartGameResult& model) :
-        ModelWrapper<PFMatchmakingStartGameResult, Alloc>{ model },
-        m_expires{ SafeString(model.expires) },
-        m_lobbyID{ SafeString(model.lobbyID) },
-        m_password{ SafeString(model.password) },
-        m_serverIPV4Address{ SafeString(model.serverIPV4Address) },
-        m_serverIPV6Address{ SafeString(model.serverIPV6Address) },
-        m_serverPort{ model.serverPort ? StdExtra::optional<int32_t>{ *model.serverPort } : StdExtra::nullopt },
-        m_serverPublicDNSName{ SafeString(model.serverPublicDNSName) },
-        m_ticket{ SafeString(model.ticket) }
-    {
-        SetModelPointers();
-    }
-
-    PFMatchmakingStartGameResultWrapper(const PFMatchmakingStartGameResultWrapper& src) :
-        PFMatchmakingStartGameResultWrapper{ src.Model() }
-    {
-    }
-
-    PFMatchmakingStartGameResultWrapper(PFMatchmakingStartGameResultWrapper&& src) :
-        PFMatchmakingStartGameResultWrapper{}
-    {
-        swap(*this, src);
-    }
-
-    PFMatchmakingStartGameResultWrapper& operator=(PFMatchmakingStartGameResultWrapper src) 
-    {
-        swap(*this, src);
-        return *this;
-    }
-
-    virtual ~PFMatchmakingStartGameResultWrapper() = default;
-
-    friend void swap(PFMatchmakingStartGameResultWrapper& lhs, PFMatchmakingStartGameResultWrapper& rhs)
-    {
-        using std::swap;
-        swap(lhs.m_model, rhs.m_model);
-        swap(lhs.m_expires, rhs.m_expires);
-        swap(lhs.m_lobbyID, rhs.m_lobbyID);
-        swap(lhs.m_password, rhs.m_password);
-        swap(lhs.m_serverIPV4Address, rhs.m_serverIPV4Address);
-        swap(lhs.m_serverIPV6Address, rhs.m_serverIPV6Address);
-        swap(lhs.m_serverPort, rhs.m_serverPort);
-        swap(lhs.m_serverPublicDNSName, rhs.m_serverPublicDNSName);
-        swap(lhs.m_ticket, rhs.m_ticket);
-        lhs.SetModelPointers();
-        rhs.SetModelPointers();
-    }
-
-    void SetExpires(String value)
-    {
-        m_expires = std::move(value);
-        this->m_model.expires =  m_expires.empty() ? nullptr : m_expires.data();
-    }
-
-    void SetLobbyID(String value)
-    {
-        m_lobbyID = std::move(value);
-        this->m_model.lobbyID =  m_lobbyID.empty() ? nullptr : m_lobbyID.data();
-    }
-
-    void SetPassword(String value)
-    {
-        m_password = std::move(value);
-        this->m_model.password =  m_password.empty() ? nullptr : m_password.data();
-    }
-
-    void SetServerIPV4Address(String value)
-    {
-        m_serverIPV4Address = std::move(value);
-        this->m_model.serverIPV4Address =  m_serverIPV4Address.empty() ? nullptr : m_serverIPV4Address.data();
-    }
-
-    void SetServerIPV6Address(String value)
-    {
-        m_serverIPV6Address = std::move(value);
-        this->m_model.serverIPV6Address =  m_serverIPV6Address.empty() ? nullptr : m_serverIPV6Address.data();
-    }
-
-    void SetServerPort(StdExtra::optional<int32_t> value)
-    {
-        m_serverPort = std::move(value);
-        this->m_model.serverPort = m_serverPort ? m_serverPort.operator->() : nullptr;
-    }
-
-    void SetServerPublicDNSName(String value)
-    {
-        m_serverPublicDNSName = std::move(value);
-        this->m_model.serverPublicDNSName =  m_serverPublicDNSName.empty() ? nullptr : m_serverPublicDNSName.data();
-    }
-
-    void SetTicket(String value)
-    {
-        m_ticket = std::move(value);
-        this->m_model.ticket =  m_ticket.empty() ? nullptr : m_ticket.data();
-    }
-
-private:
-    void SetModelPointers()
-    {
-        this->m_model.expires = m_expires.empty() ? nullptr : m_expires.data();
-        this->m_model.lobbyID = m_lobbyID.empty() ? nullptr : m_lobbyID.data();
-        this->m_model.password = m_password.empty() ? nullptr : m_password.data();
-        this->m_model.serverIPV4Address = m_serverIPV4Address.empty() ? nullptr : m_serverIPV4Address.data();
-        this->m_model.serverIPV6Address = m_serverIPV6Address.empty() ? nullptr : m_serverIPV6Address.data();
-        this->m_model.serverPort = m_serverPort ? m_serverPort.operator->() : nullptr;
-        this->m_model.serverPublicDNSName = m_serverPublicDNSName.empty() ? nullptr : m_serverPublicDNSName.data();
-        this->m_model.ticket = m_ticket.empty() ? nullptr : m_ticket.data();
-    }
-
-    String m_expires;
-    String m_lobbyID;
-    String m_password;
-    String m_serverIPV4Address;
-    String m_serverIPV6Address;
-    StdExtra::optional<int32_t> m_serverPort;
-    String m_serverPublicDNSName;
-    String m_ticket;
-};
-
-template<template<typename AllocT> class Alloc = std::allocator>
 class PFMatchmakingAuthUserRequestWrapper : public ModelWrapper<PFMatchmakingAuthUserRequest, Alloc>
 {
 public:
@@ -2048,207 +1731,6 @@ private:
     StringDictionaryEntryVector<Alloc> m_customTags;
     String m_lobbyId;
     String m_playFabId;
-};
-
-template<template<typename AllocT> class Alloc = std::allocator>
-class PFMatchmakingMatchmakerStartGameRequestWrapper : public ModelWrapper<PFMatchmakingMatchmakerStartGameRequest, Alloc>
-{
-public:
-    using ModelType = typename PFMatchmakingMatchmakerStartGameRequest;
-    using String = typename std::basic_string<char, std::char_traits<char>, Alloc<char>>;
-    template<typename T> using Vector = typename std::vector<T, Alloc<T>>;
-
-    PFMatchmakingMatchmakerStartGameRequestWrapper() = default;
-
-    PFMatchmakingMatchmakerStartGameRequestWrapper(const PFMatchmakingMatchmakerStartGameRequest& model) :
-        ModelWrapper<PFMatchmakingMatchmakerStartGameRequest, Alloc>{ model },
-        m_build{ SafeString(model.build) },
-        m_customCommandLineData{ SafeString(model.customCommandLineData) },
-        m_customTags{ model.customTags, model.customTags + model.customTagsCount },
-        m_externalMatchmakerEventEndpoint{ SafeString(model.externalMatchmakerEventEndpoint) },
-        m_gameMode{ SafeString(model.gameMode) }
-    {
-        SetModelPointers();
-    }
-
-    PFMatchmakingMatchmakerStartGameRequestWrapper(const PFMatchmakingMatchmakerStartGameRequestWrapper& src) :
-        PFMatchmakingMatchmakerStartGameRequestWrapper{ src.Model() }
-    {
-    }
-
-    PFMatchmakingMatchmakerStartGameRequestWrapper(PFMatchmakingMatchmakerStartGameRequestWrapper&& src) :
-        PFMatchmakingMatchmakerStartGameRequestWrapper{}
-    {
-        swap(*this, src);
-    }
-
-    PFMatchmakingMatchmakerStartGameRequestWrapper& operator=(PFMatchmakingMatchmakerStartGameRequestWrapper src) 
-    {
-        swap(*this, src);
-        return *this;
-    }
-
-    virtual ~PFMatchmakingMatchmakerStartGameRequestWrapper() = default;
-
-    friend void swap(PFMatchmakingMatchmakerStartGameRequestWrapper& lhs, PFMatchmakingMatchmakerStartGameRequestWrapper& rhs)
-    {
-        using std::swap;
-        swap(lhs.m_model, rhs.m_model);
-        swap(lhs.m_build, rhs.m_build);
-        swap(lhs.m_customCommandLineData, rhs.m_customCommandLineData);
-        swap(lhs.m_customTags, rhs.m_customTags);
-        swap(lhs.m_externalMatchmakerEventEndpoint, rhs.m_externalMatchmakerEventEndpoint);
-        swap(lhs.m_gameMode, rhs.m_gameMode);
-        lhs.SetModelPointers();
-        rhs.SetModelPointers();
-    }
-
-    void SetBuild(String value)
-    {
-        m_build = std::move(value);
-        this->m_model.build =  m_build.empty() ? nullptr : m_build.data();
-    }
-
-    void SetCustomCommandLineData(String value)
-    {
-        m_customCommandLineData = std::move(value);
-        this->m_model.customCommandLineData =  m_customCommandLineData.empty() ? nullptr : m_customCommandLineData.data();
-    }
-
-    void SetCustomTags(StringDictionaryEntryVector<Alloc> value)
-    {
-        m_customTags = std::move(value);
-        this->m_model.customTags =  m_customTags.empty() ? nullptr : m_customTags.data();
-        this->m_model.customTagsCount =  static_cast<uint32_t>(m_customTags.size());
-    }
-
-    void SetExternalMatchmakerEventEndpoint(String value)
-    {
-        m_externalMatchmakerEventEndpoint = std::move(value);
-        this->m_model.externalMatchmakerEventEndpoint =  m_externalMatchmakerEventEndpoint.empty() ? nullptr : m_externalMatchmakerEventEndpoint.data();
-    }
-
-    void SetGameMode(String value)
-    {
-        m_gameMode = std::move(value);
-        this->m_model.gameMode =  m_gameMode.empty() ? nullptr : m_gameMode.data();
-    }
-
-    void SetRegion(PFRegion value)
-    {
-        this->m_model.region = value;
-    }
-
-private:
-    void SetModelPointers()
-    {
-        this->m_model.build = m_build.empty() ? nullptr : m_build.data();
-        this->m_model.customCommandLineData = m_customCommandLineData.empty() ? nullptr : m_customCommandLineData.data();
-        this->m_model.customTags = m_customTags.empty() ? nullptr : m_customTags.data();
-        this->m_model.externalMatchmakerEventEndpoint = m_externalMatchmakerEventEndpoint.empty() ? nullptr : m_externalMatchmakerEventEndpoint.data();
-        this->m_model.gameMode = m_gameMode.empty() ? nullptr : m_gameMode.data();
-    }
-
-    String m_build;
-    String m_customCommandLineData;
-    StringDictionaryEntryVector<Alloc> m_customTags;
-    String m_externalMatchmakerEventEndpoint;
-    String m_gameMode;
-};
-
-template<template<typename AllocT> class Alloc = std::allocator>
-class PFMatchmakingStartGameResponseWrapper : public ModelWrapper<PFMatchmakingStartGameResponse, Alloc>
-{
-public:
-    using ModelType = typename PFMatchmakingStartGameResponse;
-    using String = typename std::basic_string<char, std::char_traits<char>, Alloc<char>>;
-    template<typename T> using Vector = typename std::vector<T, Alloc<T>>;
-
-    PFMatchmakingStartGameResponseWrapper() = default;
-
-    PFMatchmakingStartGameResponseWrapper(const PFMatchmakingStartGameResponse& model) :
-        ModelWrapper<PFMatchmakingStartGameResponse, Alloc>{ model },
-        m_gameID{ SafeString(model.gameID) },
-        m_serverIPV4Address{ SafeString(model.serverIPV4Address) },
-        m_serverIPV6Address{ SafeString(model.serverIPV6Address) },
-        m_serverPublicDNSName{ SafeString(model.serverPublicDNSName) }
-    {
-        SetModelPointers();
-    }
-
-    PFMatchmakingStartGameResponseWrapper(const PFMatchmakingStartGameResponseWrapper& src) :
-        PFMatchmakingStartGameResponseWrapper{ src.Model() }
-    {
-    }
-
-    PFMatchmakingStartGameResponseWrapper(PFMatchmakingStartGameResponseWrapper&& src) :
-        PFMatchmakingStartGameResponseWrapper{}
-    {
-        swap(*this, src);
-    }
-
-    PFMatchmakingStartGameResponseWrapper& operator=(PFMatchmakingStartGameResponseWrapper src) 
-    {
-        swap(*this, src);
-        return *this;
-    }
-
-    virtual ~PFMatchmakingStartGameResponseWrapper() = default;
-
-    friend void swap(PFMatchmakingStartGameResponseWrapper& lhs, PFMatchmakingStartGameResponseWrapper& rhs)
-    {
-        using std::swap;
-        swap(lhs.m_model, rhs.m_model);
-        swap(lhs.m_gameID, rhs.m_gameID);
-        swap(lhs.m_serverIPV4Address, rhs.m_serverIPV4Address);
-        swap(lhs.m_serverIPV6Address, rhs.m_serverIPV6Address);
-        swap(lhs.m_serverPublicDNSName, rhs.m_serverPublicDNSName);
-        lhs.SetModelPointers();
-        rhs.SetModelPointers();
-    }
-
-    void SetGameID(String value)
-    {
-        m_gameID = std::move(value);
-        this->m_model.gameID =  m_gameID.empty() ? nullptr : m_gameID.data();
-    }
-
-    void SetServerIPV4Address(String value)
-    {
-        m_serverIPV4Address = std::move(value);
-        this->m_model.serverIPV4Address =  m_serverIPV4Address.empty() ? nullptr : m_serverIPV4Address.data();
-    }
-
-    void SetServerIPV6Address(String value)
-    {
-        m_serverIPV6Address = std::move(value);
-        this->m_model.serverIPV6Address =  m_serverIPV6Address.empty() ? nullptr : m_serverIPV6Address.data();
-    }
-
-    void SetServerPort(uint32_t value)
-    {
-        this->m_model.serverPort = value;
-    }
-
-    void SetServerPublicDNSName(String value)
-    {
-        m_serverPublicDNSName = std::move(value);
-        this->m_model.serverPublicDNSName =  m_serverPublicDNSName.empty() ? nullptr : m_serverPublicDNSName.data();
-    }
-
-private:
-    void SetModelPointers()
-    {
-        this->m_model.gameID = m_gameID.empty() ? nullptr : m_gameID.data();
-        this->m_model.serverIPV4Address = m_serverIPV4Address.empty() ? nullptr : m_serverIPV4Address.data();
-        this->m_model.serverIPV6Address = m_serverIPV6Address.empty() ? nullptr : m_serverIPV6Address.data();
-        this->m_model.serverPublicDNSName = m_serverPublicDNSName.empty() ? nullptr : m_serverPublicDNSName.data();
-    }
-
-    String m_gameID;
-    String m_serverIPV4Address;
-    String m_serverIPV6Address;
-    String m_serverPublicDNSName;
 };
 
 template<template<typename AllocT> class Alloc = std::allocator>
@@ -4435,6 +3917,7 @@ public:
 
     PFMatchmakingGetMatchResultWrapper(const PFMatchmakingGetMatchResult& model) :
         ModelWrapper<PFMatchmakingGetMatchResult, Alloc>{ model },
+        m_arrangementString{ SafeString(model.arrangementString) },
         m_matchId{ SafeString(model.matchId) },
         m_members{ model.members, model.members + model.membersCount },
         m_regionPreferences{ model.regionPreferences, model.regionPreferences + model.regionPreferencesCount },
@@ -4466,12 +3949,19 @@ public:
     {
         using std::swap;
         swap(lhs.m_model, rhs.m_model);
+        swap(lhs.m_arrangementString, rhs.m_arrangementString);
         swap(lhs.m_matchId, rhs.m_matchId);
         swap(lhs.m_members, rhs.m_members);
         swap(lhs.m_regionPreferences, rhs.m_regionPreferences);
         swap(lhs.m_serverDetails, rhs.m_serverDetails);
         lhs.SetModelPointers();
         rhs.SetModelPointers();
+    }
+
+    void SetArrangementString(String value)
+    {
+        m_arrangementString = std::move(value);
+        this->m_model.arrangementString =  m_arrangementString.empty() ? nullptr : m_arrangementString.data();
     }
 
     void SetMatchId(String value)
@@ -4503,12 +3993,14 @@ public:
 private:
     void SetModelPointers()
     {
+        this->m_model.arrangementString = m_arrangementString.empty() ? nullptr : m_arrangementString.data();
         this->m_model.matchId = m_matchId.empty() ? nullptr : m_matchId.data();
         this->m_model.members = m_members.empty() ? nullptr : m_members.data();
         this->m_model.regionPreferences = m_regionPreferences.empty() ? nullptr : m_regionPreferences.data();
         this->m_model.serverDetails = m_serverDetails ?  &m_serverDetails->Model() : nullptr;
     }
 
+    String m_arrangementString;
     String m_matchId;
     ModelVector<PFMatchmakingMatchmakingPlayerWithTeamAssignmentWrapper<Alloc>, Alloc> m_members;
     CStringVector<Alloc> m_regionPreferences;
@@ -4614,6 +4106,7 @@ public:
     PFMatchmakingGetMatchmakingTicketResultWrapper(const PFMatchmakingGetMatchmakingTicketResult& model) :
         ModelWrapper<PFMatchmakingGetMatchmakingTicketResult, Alloc>{ model },
         m_cancellationReasonString{ SafeString(model.cancellationReasonString) },
+        m_changeNumber{ model.changeNumber ? StdExtra::optional<uint32_t>{ *model.changeNumber } : StdExtra::nullopt },
         m_creator{ model.creator ? *model.creator : decltype(*model.creator){} },
         m_matchId{ SafeString(model.matchId) },
         m_members{ model.members, model.members + model.membersCount },
@@ -4649,6 +4142,7 @@ public:
         using std::swap;
         swap(lhs.m_model, rhs.m_model);
         swap(lhs.m_cancellationReasonString, rhs.m_cancellationReasonString);
+        swap(lhs.m_changeNumber, rhs.m_changeNumber);
         swap(lhs.m_creator, rhs.m_creator);
         swap(lhs.m_matchId, rhs.m_matchId);
         swap(lhs.m_members, rhs.m_members);
@@ -4664,6 +4158,12 @@ public:
     {
         m_cancellationReasonString = std::move(value);
         this->m_model.cancellationReasonString =  m_cancellationReasonString.empty() ? nullptr : m_cancellationReasonString.data();
+    }
+
+    void SetChangeNumber(StdExtra::optional<uint32_t> value)
+    {
+        m_changeNumber = std::move(value);
+        this->m_model.changeNumber = m_changeNumber ? m_changeNumber.operator->() : nullptr;
     }
 
     void SetCreated(time_t value)
@@ -4724,6 +4224,7 @@ private:
     void SetModelPointers()
     {
         this->m_model.cancellationReasonString = m_cancellationReasonString.empty() ? nullptr : m_cancellationReasonString.data();
+        this->m_model.changeNumber = m_changeNumber ? m_changeNumber.operator->() : nullptr;
         this->m_model.creator = &m_creator.Model();
         this->m_model.matchId = m_matchId.empty() ? nullptr : m_matchId.data();
         this->m_model.members = m_members.empty() ? nullptr : m_members.data();
@@ -4734,6 +4235,7 @@ private:
     }
 
     String m_cancellationReasonString;
+    StdExtra::optional<uint32_t> m_changeNumber;
     PFEntityKeyWrapper<Alloc> m_creator;
     String m_matchId;
     ModelVector<PFMatchmakingMatchmakingPlayerWrapper<Alloc>, Alloc> m_members;

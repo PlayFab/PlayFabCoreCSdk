@@ -82,6 +82,8 @@ JsonValue Content::ToJson(const PFCatalogContent& input)
     JsonUtils::ObjectAddMember(output, "Id", input.id);
     JsonUtils::ObjectAddMember(output, "MaxClientVersion", input.maxClientVersion);
     JsonUtils::ObjectAddMember(output, "MinClientVersion", input.minClientVersion);
+    JsonUtils::ObjectAddMemberArray(output, "Tags", input.tags, input.tagsCount);
+    JsonUtils::ObjectAddMember(output, "Type", input.type);
     JsonUtils::ObjectAddMember(output, "Url", input.url);
     return output;
 }
@@ -99,6 +101,14 @@ void Content::FromJson(const JsonValue& input)
     String minClientVersion{};
     JsonUtils::ObjectGetMember(input, "MinClientVersion", minClientVersion);
     this->SetMinClientVersion(std::move(minClientVersion));
+
+    CStringVector tags{};
+    JsonUtils::ObjectGetMember(input, "Tags", tags);
+    this->SetTags(std::move(tags));
+
+    String type{};
+    JsonUtils::ObjectGetMember(input, "Type", type);
+    this->SetType(std::move(type));
 
     String url{};
     JsonUtils::ObjectGetMember(input, "Url", url);
@@ -130,6 +140,15 @@ size_t Content::RequiredBufferSize(const PFCatalogContent& model)
     {
         requiredSize += (std::strlen(model.minClientVersion) + 1);
     }
+    requiredSize += (alignof(char*) + sizeof(char*) * model.tagsCount);
+    for (size_t i = 0; i < model.tagsCount; ++i)
+    {
+        requiredSize += (std::strlen(model.tags[i]) + 1);
+    }
+    if (model.type)
+    {
+        requiredSize += (std::strlen(model.type) + 1);
+    }
     if (model.url)
     {
         requiredSize += (std::strlen(model.url) + 1);
@@ -156,6 +175,80 @@ HRESULT Content::Copy(const PFCatalogContent& input, PFCatalogContent& output, M
         output.minClientVersion = propCopyResult.ExtractPayload();
     }
     {
+        auto propCopyResult = buffer.CopyToArray(input.tags, input.tagsCount);
+        RETURN_IF_FAILED(propCopyResult.hr);
+        output.tags = propCopyResult.ExtractPayload();
+    }
+    {
+        auto propCopyResult = buffer.CopyTo(input.type); 
+        RETURN_IF_FAILED(propCopyResult.hr);
+        output.type = propCopyResult.ExtractPayload();
+    }
+    {
+        auto propCopyResult = buffer.CopyTo(input.url); 
+        RETURN_IF_FAILED(propCopyResult.hr);
+        output.url = propCopyResult.ExtractPayload();
+    }
+    return S_OK;
+}
+
+JsonValue DeepLink::ToJson() const
+{
+    return DeepLink::ToJson(this->Model());
+}
+
+JsonValue DeepLink::ToJson(const PFCatalogDeepLink& input)
+{
+    JsonValue output{ rapidjson::kObjectType };
+    JsonUtils::ObjectAddMember(output, "Platform", input.platform);
+    JsonUtils::ObjectAddMember(output, "Url", input.url);
+    return output;
+}
+
+void DeepLink::FromJson(const JsonValue& input)
+{
+    String platform{};
+    JsonUtils::ObjectGetMember(input, "Platform", platform);
+    this->SetPlatform(std::move(platform));
+
+    String url{};
+    JsonUtils::ObjectGetMember(input, "Url", url);
+    this->SetUrl(std::move(url));
+}
+
+size_t DeepLink::RequiredBufferSize() const
+{
+    return RequiredBufferSize(this->Model());
+}
+
+Result<PFCatalogDeepLink const*> DeepLink::Copy(ModelBuffer& buffer) const
+{
+    return buffer.CopyTo<DeepLink>(&this->Model());
+}
+
+size_t DeepLink::RequiredBufferSize(const PFCatalogDeepLink& model)
+{
+    size_t requiredSize{ alignof(ModelType) + sizeof(ModelType) };
+    if (model.platform)
+    {
+        requiredSize += (std::strlen(model.platform) + 1);
+    }
+    if (model.url)
+    {
+        requiredSize += (std::strlen(model.url) + 1);
+    }
+    return requiredSize;
+}
+
+HRESULT DeepLink::Copy(const PFCatalogDeepLink& input, PFCatalogDeepLink& output, ModelBuffer& buffer)
+{
+    output = input;
+    {
+        auto propCopyResult = buffer.CopyTo(input.platform); 
+        RETURN_IF_FAILED(propCopyResult.hr);
+        output.platform = propCopyResult.ExtractPayload();
+    }
+    {
         auto propCopyResult = buffer.CopyTo(input.url); 
         RETURN_IF_FAILED(propCopyResult.hr);
         output.url = propCopyResult.ExtractPayload();
@@ -172,6 +265,7 @@ JsonValue Image::ToJson(const PFCatalogImage& input)
 {
     JsonValue output{ rapidjson::kObjectType };
     JsonUtils::ObjectAddMember(output, "Id", input.id);
+    JsonUtils::ObjectAddMember(output, "Tag", input.tag);
     JsonUtils::ObjectAddMember(output, "Type", input.type);
     JsonUtils::ObjectAddMember(output, "Url", input.url);
     return output;
@@ -182,6 +276,10 @@ void Image::FromJson(const JsonValue& input)
     String id{};
     JsonUtils::ObjectGetMember(input, "Id", id);
     this->SetId(std::move(id));
+
+    String tag{};
+    JsonUtils::ObjectGetMember(input, "Tag", tag);
+    this->SetTag(std::move(tag));
 
     String type{};
     JsonUtils::ObjectGetMember(input, "Type", type);
@@ -209,6 +307,10 @@ size_t Image::RequiredBufferSize(const PFCatalogImage& model)
     {
         requiredSize += (std::strlen(model.id) + 1);
     }
+    if (model.tag)
+    {
+        requiredSize += (std::strlen(model.tag) + 1);
+    }
     if (model.type)
     {
         requiredSize += (std::strlen(model.type) + 1);
@@ -229,6 +331,11 @@ HRESULT Image::Copy(const PFCatalogImage& input, PFCatalogImage& output, ModelBu
         output.id = propCopyResult.ExtractPayload();
     }
     {
+        auto propCopyResult = buffer.CopyTo(input.tag); 
+        RETURN_IF_FAILED(propCopyResult.hr);
+        output.tag = propCopyResult.ExtractPayload();
+    }
+    {
         auto propCopyResult = buffer.CopyTo(input.type); 
         RETURN_IF_FAILED(propCopyResult.hr);
         output.type = propCopyResult.ExtractPayload();
@@ -237,6 +344,242 @@ HRESULT Image::Copy(const PFCatalogImage& input, PFCatalogImage& output, ModelBu
         auto propCopyResult = buffer.CopyTo(input.url); 
         RETURN_IF_FAILED(propCopyResult.hr);
         output.url = propCopyResult.ExtractPayload();
+    }
+    return S_OK;
+}
+
+JsonValue CatalogPriceAmount::ToJson() const
+{
+    return CatalogPriceAmount::ToJson(this->Model());
+}
+
+JsonValue CatalogPriceAmount::ToJson(const PFCatalogCatalogPriceAmount& input)
+{
+    JsonValue output{ rapidjson::kObjectType };
+    JsonUtils::ObjectAddMember(output, "Amount", input.amount);
+    JsonUtils::ObjectAddMember(output, "ItemId", input.itemId);
+    return output;
+}
+
+void CatalogPriceAmount::FromJson(const JsonValue& input)
+{
+    JsonUtils::ObjectGetMember(input, "Amount", this->m_model.amount);
+
+    String itemId{};
+    JsonUtils::ObjectGetMember(input, "ItemId", itemId);
+    this->SetItemId(std::move(itemId));
+}
+
+size_t CatalogPriceAmount::RequiredBufferSize() const
+{
+    return RequiredBufferSize(this->Model());
+}
+
+Result<PFCatalogCatalogPriceAmount const*> CatalogPriceAmount::Copy(ModelBuffer& buffer) const
+{
+    return buffer.CopyTo<CatalogPriceAmount>(&this->Model());
+}
+
+size_t CatalogPriceAmount::RequiredBufferSize(const PFCatalogCatalogPriceAmount& model)
+{
+    size_t requiredSize{ alignof(ModelType) + sizeof(ModelType) };
+    if (model.itemId)
+    {
+        requiredSize += (std::strlen(model.itemId) + 1);
+    }
+    return requiredSize;
+}
+
+HRESULT CatalogPriceAmount::Copy(const PFCatalogCatalogPriceAmount& input, PFCatalogCatalogPriceAmount& output, ModelBuffer& buffer)
+{
+    output = input;
+    {
+        auto propCopyResult = buffer.CopyTo(input.itemId); 
+        RETURN_IF_FAILED(propCopyResult.hr);
+        output.itemId = propCopyResult.ExtractPayload();
+    }
+    return S_OK;
+}
+
+JsonValue CatalogPrice::ToJson() const
+{
+    return CatalogPrice::ToJson(this->Model());
+}
+
+JsonValue CatalogPrice::ToJson(const PFCatalogCatalogPrice& input)
+{
+    JsonValue output{ rapidjson::kObjectType };
+    JsonUtils::ObjectAddMemberArray<CatalogPriceAmount>(output, "Amounts", input.amounts, input.amountsCount);
+    return output;
+}
+
+void CatalogPrice::FromJson(const JsonValue& input)
+{
+    ModelVector<CatalogPriceAmount> amounts{};
+    JsonUtils::ObjectGetMember<CatalogPriceAmount>(input, "Amounts", amounts);
+    this->SetAmounts(std::move(amounts));
+}
+
+size_t CatalogPrice::RequiredBufferSize() const
+{
+    return RequiredBufferSize(this->Model());
+}
+
+Result<PFCatalogCatalogPrice const*> CatalogPrice::Copy(ModelBuffer& buffer) const
+{
+    return buffer.CopyTo<CatalogPrice>(&this->Model());
+}
+
+size_t CatalogPrice::RequiredBufferSize(const PFCatalogCatalogPrice& model)
+{
+    size_t requiredSize{ alignof(ModelType) + sizeof(ModelType) };
+    requiredSize += (alignof(PFCatalogCatalogPriceAmount*) + sizeof(PFCatalogCatalogPriceAmount*) * model.amountsCount);
+    for (size_t i = 0; i < model.amountsCount; ++i)
+    {
+        requiredSize += CatalogPriceAmount::RequiredBufferSize(*model.amounts[i]);
+    }
+    return requiredSize;
+}
+
+HRESULT CatalogPrice::Copy(const PFCatalogCatalogPrice& input, PFCatalogCatalogPrice& output, ModelBuffer& buffer)
+{
+    output = input;
+    {
+        auto propCopyResult = buffer.CopyToArray<CatalogPriceAmount>(input.amounts, input.amountsCount);
+        RETURN_IF_FAILED(propCopyResult.hr);
+        output.amounts = propCopyResult.ExtractPayload();
+    }
+    return S_OK;
+}
+
+JsonValue CatalogPriceOptions::ToJson() const
+{
+    return CatalogPriceOptions::ToJson(this->Model());
+}
+
+JsonValue CatalogPriceOptions::ToJson(const PFCatalogCatalogPriceOptions& input)
+{
+    JsonValue output{ rapidjson::kObjectType };
+    JsonUtils::ObjectAddMemberArray<CatalogPrice>(output, "Prices", input.prices, input.pricesCount);
+    return output;
+}
+
+void CatalogPriceOptions::FromJson(const JsonValue& input)
+{
+    ModelVector<CatalogPrice> prices{};
+    JsonUtils::ObjectGetMember<CatalogPrice>(input, "Prices", prices);
+    this->SetPrices(std::move(prices));
+}
+
+size_t CatalogPriceOptions::RequiredBufferSize() const
+{
+    return RequiredBufferSize(this->Model());
+}
+
+Result<PFCatalogCatalogPriceOptions const*> CatalogPriceOptions::Copy(ModelBuffer& buffer) const
+{
+    return buffer.CopyTo<CatalogPriceOptions>(&this->Model());
+}
+
+size_t CatalogPriceOptions::RequiredBufferSize(const PFCatalogCatalogPriceOptions& model)
+{
+    size_t requiredSize{ alignof(ModelType) + sizeof(ModelType) };
+    requiredSize += (alignof(PFCatalogCatalogPrice*) + sizeof(PFCatalogCatalogPrice*) * model.pricesCount);
+    for (size_t i = 0; i < model.pricesCount; ++i)
+    {
+        requiredSize += CatalogPrice::RequiredBufferSize(*model.prices[i]);
+    }
+    return requiredSize;
+}
+
+HRESULT CatalogPriceOptions::Copy(const PFCatalogCatalogPriceOptions& input, PFCatalogCatalogPriceOptions& output, ModelBuffer& buffer)
+{
+    output = input;
+    {
+        auto propCopyResult = buffer.CopyToArray<CatalogPrice>(input.prices, input.pricesCount);
+        RETURN_IF_FAILED(propCopyResult.hr);
+        output.prices = propCopyResult.ExtractPayload();
+    }
+    return S_OK;
+}
+
+JsonValue CatalogItemReference::ToJson() const
+{
+    return CatalogItemReference::ToJson(this->Model());
+}
+
+JsonValue CatalogItemReference::ToJson(const PFCatalogCatalogItemReference& input)
+{
+    JsonValue output{ rapidjson::kObjectType };
+    JsonUtils::ObjectAddMember(output, "Amount", input.amount);
+    JsonUtils::ObjectAddMember(output, "Id", input.id);
+    JsonUtils::ObjectAddMember<CatalogPriceOptions>(output, "PriceOptions", input.priceOptions);
+    return output;
+}
+
+void CatalogItemReference::FromJson(const JsonValue& input)
+{
+    StdExtra::optional<int32_t> amount{};
+    JsonUtils::ObjectGetMember(input, "Amount", amount);
+    this->SetAmount(std::move(amount));
+
+    String id{};
+    JsonUtils::ObjectGetMember(input, "Id", id);
+    this->SetId(std::move(id));
+
+    StdExtra::optional<CatalogPriceOptions> priceOptions{};
+    JsonUtils::ObjectGetMember(input, "PriceOptions", priceOptions);
+    if (priceOptions)
+    {
+        this->SetPriceOptions(std::move(*priceOptions));
+    }
+}
+
+size_t CatalogItemReference::RequiredBufferSize() const
+{
+    return RequiredBufferSize(this->Model());
+}
+
+Result<PFCatalogCatalogItemReference const*> CatalogItemReference::Copy(ModelBuffer& buffer) const
+{
+    return buffer.CopyTo<CatalogItemReference>(&this->Model());
+}
+
+size_t CatalogItemReference::RequiredBufferSize(const PFCatalogCatalogItemReference& model)
+{
+    size_t requiredSize{ alignof(ModelType) + sizeof(ModelType) };
+    if (model.amount)
+    {
+        requiredSize += (alignof(int32_t) + sizeof(int32_t));
+    }
+    if (model.id)
+    {
+        requiredSize += (std::strlen(model.id) + 1);
+    }
+    if (model.priceOptions)
+    {
+        requiredSize += CatalogPriceOptions::RequiredBufferSize(*model.priceOptions);
+    }
+    return requiredSize;
+}
+
+HRESULT CatalogItemReference::Copy(const PFCatalogCatalogItemReference& input, PFCatalogCatalogItemReference& output, ModelBuffer& buffer)
+{
+    output = input;
+    {
+        auto propCopyResult = buffer.CopyTo(input.amount); 
+        RETURN_IF_FAILED(propCopyResult.hr);
+        output.amount = propCopyResult.ExtractPayload();
+    }
+    {
+        auto propCopyResult = buffer.CopyTo(input.id); 
+        RETURN_IF_FAILED(propCopyResult.hr);
+        output.id = propCopyResult.ExtractPayload();
+    }
+    {
+        auto propCopyResult = buffer.CopyTo<CatalogPriceOptions>(input.priceOptions); 
+        RETURN_IF_FAILED(propCopyResult.hr);
+        output.priceOptions = propCopyResult.ExtractPayload();
     }
     return S_OK;
 }
@@ -504,6 +847,320 @@ HRESULT Rating::Copy(const PFCatalogRating& input, PFCatalogRating& output, Mode
     return S_OK;
 }
 
+JsonValue FilterOptions::ToJson() const
+{
+    return FilterOptions::ToJson(this->Model());
+}
+
+JsonValue FilterOptions::ToJson(const PFCatalogFilterOptions& input)
+{
+    JsonValue output{ rapidjson::kObjectType };
+    JsonUtils::ObjectAddMember(output, "Filter", input.filter);
+    JsonUtils::ObjectAddMember(output, "IncludeAllItems", input.includeAllItems);
+    return output;
+}
+
+void FilterOptions::FromJson(const JsonValue& input)
+{
+    String filter{};
+    JsonUtils::ObjectGetMember(input, "Filter", filter);
+    this->SetFilter(std::move(filter));
+
+    StdExtra::optional<bool> includeAllItems{};
+    JsonUtils::ObjectGetMember(input, "IncludeAllItems", includeAllItems);
+    this->SetIncludeAllItems(std::move(includeAllItems));
+}
+
+size_t FilterOptions::RequiredBufferSize() const
+{
+    return RequiredBufferSize(this->Model());
+}
+
+Result<PFCatalogFilterOptions const*> FilterOptions::Copy(ModelBuffer& buffer) const
+{
+    return buffer.CopyTo<FilterOptions>(&this->Model());
+}
+
+size_t FilterOptions::RequiredBufferSize(const PFCatalogFilterOptions& model)
+{
+    size_t requiredSize{ alignof(ModelType) + sizeof(ModelType) };
+    if (model.filter)
+    {
+        requiredSize += (std::strlen(model.filter) + 1);
+    }
+    if (model.includeAllItems)
+    {
+        requiredSize += (alignof(bool) + sizeof(bool));
+    }
+    return requiredSize;
+}
+
+HRESULT FilterOptions::Copy(const PFCatalogFilterOptions& input, PFCatalogFilterOptions& output, ModelBuffer& buffer)
+{
+    output = input;
+    {
+        auto propCopyResult = buffer.CopyTo(input.filter); 
+        RETURN_IF_FAILED(propCopyResult.hr);
+        output.filter = propCopyResult.ExtractPayload();
+    }
+    {
+        auto propCopyResult = buffer.CopyTo(input.includeAllItems); 
+        RETURN_IF_FAILED(propCopyResult.hr);
+        output.includeAllItems = propCopyResult.ExtractPayload();
+    }
+    return S_OK;
+}
+
+JsonValue CatalogPriceAmountOverride::ToJson() const
+{
+    return CatalogPriceAmountOverride::ToJson(this->Model());
+}
+
+JsonValue CatalogPriceAmountOverride::ToJson(const PFCatalogCatalogPriceAmountOverride& input)
+{
+    JsonValue output{ rapidjson::kObjectType };
+    JsonUtils::ObjectAddMember(output, "FixedValue", input.fixedValue);
+    JsonUtils::ObjectAddMember(output, "ItemId", input.itemId);
+    JsonUtils::ObjectAddMember(output, "Multiplier", input.multiplier);
+    return output;
+}
+
+void CatalogPriceAmountOverride::FromJson(const JsonValue& input)
+{
+    StdExtra::optional<int32_t> fixedValue{};
+    JsonUtils::ObjectGetMember(input, "FixedValue", fixedValue);
+    this->SetFixedValue(std::move(fixedValue));
+
+    String itemId{};
+    JsonUtils::ObjectGetMember(input, "ItemId", itemId);
+    this->SetItemId(std::move(itemId));
+
+    StdExtra::optional<double> multiplier{};
+    JsonUtils::ObjectGetMember(input, "Multiplier", multiplier);
+    this->SetMultiplier(std::move(multiplier));
+}
+
+size_t CatalogPriceAmountOverride::RequiredBufferSize() const
+{
+    return RequiredBufferSize(this->Model());
+}
+
+Result<PFCatalogCatalogPriceAmountOverride const*> CatalogPriceAmountOverride::Copy(ModelBuffer& buffer) const
+{
+    return buffer.CopyTo<CatalogPriceAmountOverride>(&this->Model());
+}
+
+size_t CatalogPriceAmountOverride::RequiredBufferSize(const PFCatalogCatalogPriceAmountOverride& model)
+{
+    size_t requiredSize{ alignof(ModelType) + sizeof(ModelType) };
+    if (model.fixedValue)
+    {
+        requiredSize += (alignof(int32_t) + sizeof(int32_t));
+    }
+    if (model.itemId)
+    {
+        requiredSize += (std::strlen(model.itemId) + 1);
+    }
+    if (model.multiplier)
+    {
+        requiredSize += (alignof(double) + sizeof(double));
+    }
+    return requiredSize;
+}
+
+HRESULT CatalogPriceAmountOverride::Copy(const PFCatalogCatalogPriceAmountOverride& input, PFCatalogCatalogPriceAmountOverride& output, ModelBuffer& buffer)
+{
+    output = input;
+    {
+        auto propCopyResult = buffer.CopyTo(input.fixedValue); 
+        RETURN_IF_FAILED(propCopyResult.hr);
+        output.fixedValue = propCopyResult.ExtractPayload();
+    }
+    {
+        auto propCopyResult = buffer.CopyTo(input.itemId); 
+        RETURN_IF_FAILED(propCopyResult.hr);
+        output.itemId = propCopyResult.ExtractPayload();
+    }
+    {
+        auto propCopyResult = buffer.CopyTo(input.multiplier); 
+        RETURN_IF_FAILED(propCopyResult.hr);
+        output.multiplier = propCopyResult.ExtractPayload();
+    }
+    return S_OK;
+}
+
+JsonValue CatalogPriceOverride::ToJson() const
+{
+    return CatalogPriceOverride::ToJson(this->Model());
+}
+
+JsonValue CatalogPriceOverride::ToJson(const PFCatalogCatalogPriceOverride& input)
+{
+    JsonValue output{ rapidjson::kObjectType };
+    JsonUtils::ObjectAddMemberArray<CatalogPriceAmountOverride>(output, "Amounts", input.amounts, input.amountsCount);
+    return output;
+}
+
+void CatalogPriceOverride::FromJson(const JsonValue& input)
+{
+    ModelVector<CatalogPriceAmountOverride> amounts{};
+    JsonUtils::ObjectGetMember<CatalogPriceAmountOverride>(input, "Amounts", amounts);
+    this->SetAmounts(std::move(amounts));
+}
+
+size_t CatalogPriceOverride::RequiredBufferSize() const
+{
+    return RequiredBufferSize(this->Model());
+}
+
+Result<PFCatalogCatalogPriceOverride const*> CatalogPriceOverride::Copy(ModelBuffer& buffer) const
+{
+    return buffer.CopyTo<CatalogPriceOverride>(&this->Model());
+}
+
+size_t CatalogPriceOverride::RequiredBufferSize(const PFCatalogCatalogPriceOverride& model)
+{
+    size_t requiredSize{ alignof(ModelType) + sizeof(ModelType) };
+    requiredSize += (alignof(PFCatalogCatalogPriceAmountOverride*) + sizeof(PFCatalogCatalogPriceAmountOverride*) * model.amountsCount);
+    for (size_t i = 0; i < model.amountsCount; ++i)
+    {
+        requiredSize += CatalogPriceAmountOverride::RequiredBufferSize(*model.amounts[i]);
+    }
+    return requiredSize;
+}
+
+HRESULT CatalogPriceOverride::Copy(const PFCatalogCatalogPriceOverride& input, PFCatalogCatalogPriceOverride& output, ModelBuffer& buffer)
+{
+    output = input;
+    {
+        auto propCopyResult = buffer.CopyToArray<CatalogPriceAmountOverride>(input.amounts, input.amountsCount);
+        RETURN_IF_FAILED(propCopyResult.hr);
+        output.amounts = propCopyResult.ExtractPayload();
+    }
+    return S_OK;
+}
+
+JsonValue CatalogPriceOptionsOverride::ToJson() const
+{
+    return CatalogPriceOptionsOverride::ToJson(this->Model());
+}
+
+JsonValue CatalogPriceOptionsOverride::ToJson(const PFCatalogCatalogPriceOptionsOverride& input)
+{
+    JsonValue output{ rapidjson::kObjectType };
+    JsonUtils::ObjectAddMemberArray<CatalogPriceOverride>(output, "Prices", input.prices, input.pricesCount);
+    return output;
+}
+
+void CatalogPriceOptionsOverride::FromJson(const JsonValue& input)
+{
+    ModelVector<CatalogPriceOverride> prices{};
+    JsonUtils::ObjectGetMember<CatalogPriceOverride>(input, "Prices", prices);
+    this->SetPrices(std::move(prices));
+}
+
+size_t CatalogPriceOptionsOverride::RequiredBufferSize() const
+{
+    return RequiredBufferSize(this->Model());
+}
+
+Result<PFCatalogCatalogPriceOptionsOverride const*> CatalogPriceOptionsOverride::Copy(ModelBuffer& buffer) const
+{
+    return buffer.CopyTo<CatalogPriceOptionsOverride>(&this->Model());
+}
+
+size_t CatalogPriceOptionsOverride::RequiredBufferSize(const PFCatalogCatalogPriceOptionsOverride& model)
+{
+    size_t requiredSize{ alignof(ModelType) + sizeof(ModelType) };
+    requiredSize += (alignof(PFCatalogCatalogPriceOverride*) + sizeof(PFCatalogCatalogPriceOverride*) * model.pricesCount);
+    for (size_t i = 0; i < model.pricesCount; ++i)
+    {
+        requiredSize += CatalogPriceOverride::RequiredBufferSize(*model.prices[i]);
+    }
+    return requiredSize;
+}
+
+HRESULT CatalogPriceOptionsOverride::Copy(const PFCatalogCatalogPriceOptionsOverride& input, PFCatalogCatalogPriceOptionsOverride& output, ModelBuffer& buffer)
+{
+    output = input;
+    {
+        auto propCopyResult = buffer.CopyToArray<CatalogPriceOverride>(input.prices, input.pricesCount);
+        RETURN_IF_FAILED(propCopyResult.hr);
+        output.prices = propCopyResult.ExtractPayload();
+    }
+    return S_OK;
+}
+
+JsonValue StoreDetails::ToJson() const
+{
+    return StoreDetails::ToJson(this->Model());
+}
+
+JsonValue StoreDetails::ToJson(const PFCatalogStoreDetails& input)
+{
+    JsonValue output{ rapidjson::kObjectType };
+    JsonUtils::ObjectAddMember<FilterOptions>(output, "FilterOptions", input.filterOptions);
+    JsonUtils::ObjectAddMember<CatalogPriceOptionsOverride>(output, "PriceOptionsOverride", input.priceOptionsOverride);
+    return output;
+}
+
+void StoreDetails::FromJson(const JsonValue& input)
+{
+    StdExtra::optional<FilterOptions> filterOptions{};
+    JsonUtils::ObjectGetMember(input, "FilterOptions", filterOptions);
+    if (filterOptions)
+    {
+        this->SetFilterOptions(std::move(*filterOptions));
+    }
+
+    StdExtra::optional<CatalogPriceOptionsOverride> priceOptionsOverride{};
+    JsonUtils::ObjectGetMember(input, "PriceOptionsOverride", priceOptionsOverride);
+    if (priceOptionsOverride)
+    {
+        this->SetPriceOptionsOverride(std::move(*priceOptionsOverride));
+    }
+}
+
+size_t StoreDetails::RequiredBufferSize() const
+{
+    return RequiredBufferSize(this->Model());
+}
+
+Result<PFCatalogStoreDetails const*> StoreDetails::Copy(ModelBuffer& buffer) const
+{
+    return buffer.CopyTo<StoreDetails>(&this->Model());
+}
+
+size_t StoreDetails::RequiredBufferSize(const PFCatalogStoreDetails& model)
+{
+    size_t requiredSize{ alignof(ModelType) + sizeof(ModelType) };
+    if (model.filterOptions)
+    {
+        requiredSize += FilterOptions::RequiredBufferSize(*model.filterOptions);
+    }
+    if (model.priceOptionsOverride)
+    {
+        requiredSize += CatalogPriceOptionsOverride::RequiredBufferSize(*model.priceOptionsOverride);
+    }
+    return requiredSize;
+}
+
+HRESULT StoreDetails::Copy(const PFCatalogStoreDetails& input, PFCatalogStoreDetails& output, ModelBuffer& buffer)
+{
+    output = input;
+    {
+        auto propCopyResult = buffer.CopyTo<FilterOptions>(input.filterOptions); 
+        RETURN_IF_FAILED(propCopyResult.hr);
+        output.filterOptions = propCopyResult.ExtractPayload();
+    }
+    {
+        auto propCopyResult = buffer.CopyTo<CatalogPriceOptionsOverride>(input.priceOptionsOverride); 
+        RETURN_IF_FAILED(propCopyResult.hr);
+        output.priceOptionsOverride = propCopyResult.ExtractPayload();
+    }
+    return S_OK;
+}
+
 JsonValue CatalogItem::ToJson() const
 {
     return CatalogItem::ToJson(this->Model());
@@ -517,6 +1174,7 @@ JsonValue CatalogItem::ToJson(const PFCatalogCatalogItem& input)
     JsonUtils::ObjectAddMember(output, "ContentType", input.contentType);
     JsonUtils::ObjectAddMemberTime(output, "CreationDate", input.creationDate);
     JsonUtils::ObjectAddMember<EntityKey>(output, "CreatorEntity", input.creatorEntity);
+    JsonUtils::ObjectAddMemberArray<DeepLink>(output, "DeepLinks", input.deepLinks, input.deepLinksCount);
     JsonUtils::ObjectAddMemberDictionary(output, "Description", input.description, input.descriptionCount);
     JsonUtils::ObjectAddMember(output, "DisplayProperties", input.displayProperties);
     JsonUtils::ObjectAddMember(output, "DisplayVersion", input.displayVersion);
@@ -525,11 +1183,15 @@ JsonValue CatalogItem::ToJson(const PFCatalogCatalogItem& input)
     JsonUtils::ObjectAddMember(output, "Id", input.id);
     JsonUtils::ObjectAddMemberArray<Image>(output, "Images", input.images, input.imagesCount);
     JsonUtils::ObjectAddMember(output, "IsHidden", input.isHidden);
+    JsonUtils::ObjectAddMemberArray<CatalogItemReference>(output, "ItemReferences", input.itemReferences, input.itemReferencesCount);
     JsonUtils::ObjectAddMemberDictionary<KeywordSet>(output, "Keywords", input.keywords, input.keywordsCount);
     JsonUtils::ObjectAddMemberTime(output, "LastModifiedDate", input.lastModifiedDate);
     JsonUtils::ObjectAddMember<ModerationState>(output, "Moderation", input.moderation);
+    JsonUtils::ObjectAddMemberArray(output, "Platforms", input.platforms, input.platformsCount);
+    JsonUtils::ObjectAddMember<CatalogPriceOptions>(output, "PriceOptions", input.priceOptions);
     JsonUtils::ObjectAddMember<Rating>(output, "Rating", input.rating);
     JsonUtils::ObjectAddMemberTime(output, "StartDate", input.startDate);
+    JsonUtils::ObjectAddMember<StoreDetails>(output, "StoreDetails", input.storeDetails);
     JsonUtils::ObjectAddMemberArray(output, "Tags", input.tags, input.tagsCount);
     JsonUtils::ObjectAddMemberDictionary(output, "Title", input.title, input.titleCount);
     JsonUtils::ObjectAddMember(output, "Type", input.type);
@@ -560,6 +1222,10 @@ void CatalogItem::FromJson(const JsonValue& input)
     {
         this->SetCreatorEntity(std::move(*creatorEntity));
     }
+
+    ModelVector<DeepLink> deepLinks{};
+    JsonUtils::ObjectGetMember<DeepLink>(input, "DeepLinks", deepLinks);
+    this->SetDeepLinks(std::move(deepLinks));
 
     StringDictionaryEntryVector description{};
     JsonUtils::ObjectGetMember(input, "Description", description);
@@ -593,6 +1259,10 @@ void CatalogItem::FromJson(const JsonValue& input)
     JsonUtils::ObjectGetMember(input, "IsHidden", isHidden);
     this->SetIsHidden(std::move(isHidden));
 
+    ModelVector<CatalogItemReference> itemReferences{};
+    JsonUtils::ObjectGetMember<CatalogItemReference>(input, "ItemReferences", itemReferences);
+    this->SetItemReferences(std::move(itemReferences));
+
     ModelDictionaryEntryVector<KeywordSet> keywords{};
     JsonUtils::ObjectGetMember<KeywordSet>(input, "Keywords", keywords);
     this->SetKeywords(std::move(keywords));
@@ -608,6 +1278,17 @@ void CatalogItem::FromJson(const JsonValue& input)
         this->SetModeration(std::move(*moderation));
     }
 
+    CStringVector platforms{};
+    JsonUtils::ObjectGetMember(input, "Platforms", platforms);
+    this->SetPlatforms(std::move(platforms));
+
+    StdExtra::optional<CatalogPriceOptions> priceOptions{};
+    JsonUtils::ObjectGetMember(input, "PriceOptions", priceOptions);
+    if (priceOptions)
+    {
+        this->SetPriceOptions(std::move(*priceOptions));
+    }
+
     StdExtra::optional<Rating> rating{};
     JsonUtils::ObjectGetMember(input, "Rating", rating);
     if (rating)
@@ -618,6 +1299,13 @@ void CatalogItem::FromJson(const JsonValue& input)
     StdExtra::optional<time_t> startDate{};
     JsonUtils::ObjectGetMemberTime(input, "StartDate", startDate);
     this->SetStartDate(std::move(startDate));
+
+    StdExtra::optional<StoreDetails> storeDetails{};
+    JsonUtils::ObjectGetMember(input, "StoreDetails", storeDetails);
+    if (storeDetails)
+    {
+        this->SetStoreDetails(std::move(*storeDetails));
+    }
 
     CStringVector tags{};
     JsonUtils::ObjectGetMember(input, "Tags", tags);
@@ -667,6 +1355,11 @@ size_t CatalogItem::RequiredBufferSize(const PFCatalogCatalogItem& model)
     {
         requiredSize += EntityKey::RequiredBufferSize(*model.creatorEntity);
     }
+    requiredSize += (alignof(PFCatalogDeepLink*) + sizeof(PFCatalogDeepLink*) * model.deepLinksCount);
+    for (size_t i = 0; i < model.deepLinksCount; ++i)
+    {
+        requiredSize += DeepLink::RequiredBufferSize(*model.deepLinks[i]);
+    }
     requiredSize += (alignof(PFStringDictionaryEntry) + sizeof(PFStringDictionaryEntry) * model.descriptionCount);
     for (size_t i = 0; i < model.descriptionCount; ++i)
     {
@@ -702,6 +1395,11 @@ size_t CatalogItem::RequiredBufferSize(const PFCatalogCatalogItem& model)
     {
         requiredSize += (alignof(bool) + sizeof(bool));
     }
+    requiredSize += (alignof(PFCatalogCatalogItemReference*) + sizeof(PFCatalogCatalogItemReference*) * model.itemReferencesCount);
+    for (size_t i = 0; i < model.itemReferencesCount; ++i)
+    {
+        requiredSize += CatalogItemReference::RequiredBufferSize(*model.itemReferences[i]);
+    }
     requiredSize += (alignof(PFCatalogKeywordSetDictionaryEntry) + sizeof(PFCatalogKeywordSetDictionaryEntry) * model.keywordsCount);
     for (size_t i = 0; i < model.keywordsCount; ++i)
     {
@@ -716,6 +1414,15 @@ size_t CatalogItem::RequiredBufferSize(const PFCatalogCatalogItem& model)
     {
         requiredSize += ModerationState::RequiredBufferSize(*model.moderation);
     }
+    requiredSize += (alignof(char*) + sizeof(char*) * model.platformsCount);
+    for (size_t i = 0; i < model.platformsCount; ++i)
+    {
+        requiredSize += (std::strlen(model.platforms[i]) + 1);
+    }
+    if (model.priceOptions)
+    {
+        requiredSize += CatalogPriceOptions::RequiredBufferSize(*model.priceOptions);
+    }
     if (model.rating)
     {
         requiredSize += Rating::RequiredBufferSize(*model.rating);
@@ -723,6 +1430,10 @@ size_t CatalogItem::RequiredBufferSize(const PFCatalogCatalogItem& model)
     if (model.startDate)
     {
         requiredSize += (alignof(time_t) + sizeof(time_t));
+    }
+    if (model.storeDetails)
+    {
+        requiredSize += StoreDetails::RequiredBufferSize(*model.storeDetails);
     }
     requiredSize += (alignof(char*) + sizeof(char*) * model.tagsCount);
     for (size_t i = 0; i < model.tagsCount; ++i)
@@ -771,6 +1482,11 @@ HRESULT CatalogItem::Copy(const PFCatalogCatalogItem& input, PFCatalogCatalogIte
         output.creatorEntity = propCopyResult.ExtractPayload();
     }
     {
+        auto propCopyResult = buffer.CopyToArray<DeepLink>(input.deepLinks, input.deepLinksCount);
+        RETURN_IF_FAILED(propCopyResult.hr);
+        output.deepLinks = propCopyResult.ExtractPayload();
+    }
+    {
         auto propCopyResult = buffer.CopyToDictionary(input.description, input.descriptionCount);
         RETURN_IF_FAILED(propCopyResult.hr);
         output.description = propCopyResult.ExtractPayload();
@@ -811,6 +1527,11 @@ HRESULT CatalogItem::Copy(const PFCatalogCatalogItem& input, PFCatalogCatalogIte
         output.isHidden = propCopyResult.ExtractPayload();
     }
     {
+        auto propCopyResult = buffer.CopyToArray<CatalogItemReference>(input.itemReferences, input.itemReferencesCount);
+        RETURN_IF_FAILED(propCopyResult.hr);
+        output.itemReferences = propCopyResult.ExtractPayload();
+    }
+    {
         auto propCopyResult = buffer.CopyToDictionary<KeywordSet>(input.keywords, input.keywordsCount);
         RETURN_IF_FAILED(propCopyResult.hr);
         output.keywords = propCopyResult.ExtractPayload();
@@ -826,6 +1547,16 @@ HRESULT CatalogItem::Copy(const PFCatalogCatalogItem& input, PFCatalogCatalogIte
         output.moderation = propCopyResult.ExtractPayload();
     }
     {
+        auto propCopyResult = buffer.CopyToArray(input.platforms, input.platformsCount);
+        RETURN_IF_FAILED(propCopyResult.hr);
+        output.platforms = propCopyResult.ExtractPayload();
+    }
+    {
+        auto propCopyResult = buffer.CopyTo<CatalogPriceOptions>(input.priceOptions); 
+        RETURN_IF_FAILED(propCopyResult.hr);
+        output.priceOptions = propCopyResult.ExtractPayload();
+    }
+    {
         auto propCopyResult = buffer.CopyTo<Rating>(input.rating); 
         RETURN_IF_FAILED(propCopyResult.hr);
         output.rating = propCopyResult.ExtractPayload();
@@ -834,6 +1565,11 @@ HRESULT CatalogItem::Copy(const PFCatalogCatalogItem& input, PFCatalogCatalogIte
         auto propCopyResult = buffer.CopyTo(input.startDate); 
         RETURN_IF_FAILED(propCopyResult.hr);
         output.startDate = propCopyResult.ExtractPayload();
+    }
+    {
+        auto propCopyResult = buffer.CopyTo<StoreDetails>(input.storeDetails); 
+        RETURN_IF_FAILED(propCopyResult.hr);
+        output.storeDetails = propCopyResult.ExtractPayload();
     }
     {
         auto propCopyResult = buffer.CopyToArray(input.tags, input.tagsCount);
@@ -1076,6 +1812,136 @@ JsonValue GetCatalogConfigRequest::ToJson(const PFCatalogGetCatalogConfigRequest
     return output;
 }
 
+JsonValue CatalogSpecificConfig::ToJson() const
+{
+    return CatalogSpecificConfig::ToJson(this->Model());
+}
+
+JsonValue CatalogSpecificConfig::ToJson(const PFCatalogCatalogSpecificConfig& input)
+{
+    JsonValue output{ rapidjson::kObjectType };
+    JsonUtils::ObjectAddMemberArray(output, "ContentTypes", input.contentTypes, input.contentTypesCount);
+    JsonUtils::ObjectAddMemberArray(output, "Tags", input.tags, input.tagsCount);
+    return output;
+}
+
+void CatalogSpecificConfig::FromJson(const JsonValue& input)
+{
+    CStringVector contentTypes{};
+    JsonUtils::ObjectGetMember(input, "ContentTypes", contentTypes);
+    this->SetContentTypes(std::move(contentTypes));
+
+    CStringVector tags{};
+    JsonUtils::ObjectGetMember(input, "Tags", tags);
+    this->SetTags(std::move(tags));
+}
+
+size_t CatalogSpecificConfig::RequiredBufferSize() const
+{
+    return RequiredBufferSize(this->Model());
+}
+
+Result<PFCatalogCatalogSpecificConfig const*> CatalogSpecificConfig::Copy(ModelBuffer& buffer) const
+{
+    return buffer.CopyTo<CatalogSpecificConfig>(&this->Model());
+}
+
+size_t CatalogSpecificConfig::RequiredBufferSize(const PFCatalogCatalogSpecificConfig& model)
+{
+    size_t requiredSize{ alignof(ModelType) + sizeof(ModelType) };
+    requiredSize += (alignof(char*) + sizeof(char*) * model.contentTypesCount);
+    for (size_t i = 0; i < model.contentTypesCount; ++i)
+    {
+        requiredSize += (std::strlen(model.contentTypes[i]) + 1);
+    }
+    requiredSize += (alignof(char*) + sizeof(char*) * model.tagsCount);
+    for (size_t i = 0; i < model.tagsCount; ++i)
+    {
+        requiredSize += (std::strlen(model.tags[i]) + 1);
+    }
+    return requiredSize;
+}
+
+HRESULT CatalogSpecificConfig::Copy(const PFCatalogCatalogSpecificConfig& input, PFCatalogCatalogSpecificConfig& output, ModelBuffer& buffer)
+{
+    output = input;
+    {
+        auto propCopyResult = buffer.CopyToArray(input.contentTypes, input.contentTypesCount);
+        RETURN_IF_FAILED(propCopyResult.hr);
+        output.contentTypes = propCopyResult.ExtractPayload();
+    }
+    {
+        auto propCopyResult = buffer.CopyToArray(input.tags, input.tagsCount);
+        RETURN_IF_FAILED(propCopyResult.hr);
+        output.tags = propCopyResult.ExtractPayload();
+    }
+    return S_OK;
+}
+
+JsonValue DeepLinkFormat::ToJson() const
+{
+    return DeepLinkFormat::ToJson(this->Model());
+}
+
+JsonValue DeepLinkFormat::ToJson(const PFCatalogDeepLinkFormat& input)
+{
+    JsonValue output{ rapidjson::kObjectType };
+    JsonUtils::ObjectAddMember(output, "Format", input.format);
+    JsonUtils::ObjectAddMember(output, "Platform", input.platform);
+    return output;
+}
+
+void DeepLinkFormat::FromJson(const JsonValue& input)
+{
+    String format{};
+    JsonUtils::ObjectGetMember(input, "Format", format);
+    this->SetFormat(std::move(format));
+
+    String platform{};
+    JsonUtils::ObjectGetMember(input, "Platform", platform);
+    this->SetPlatform(std::move(platform));
+}
+
+size_t DeepLinkFormat::RequiredBufferSize() const
+{
+    return RequiredBufferSize(this->Model());
+}
+
+Result<PFCatalogDeepLinkFormat const*> DeepLinkFormat::Copy(ModelBuffer& buffer) const
+{
+    return buffer.CopyTo<DeepLinkFormat>(&this->Model());
+}
+
+size_t DeepLinkFormat::RequiredBufferSize(const PFCatalogDeepLinkFormat& model)
+{
+    size_t requiredSize{ alignof(ModelType) + sizeof(ModelType) };
+    if (model.format)
+    {
+        requiredSize += (std::strlen(model.format) + 1);
+    }
+    if (model.platform)
+    {
+        requiredSize += (std::strlen(model.platform) + 1);
+    }
+    return requiredSize;
+}
+
+HRESULT DeepLinkFormat::Copy(const PFCatalogDeepLinkFormat& input, PFCatalogDeepLinkFormat& output, ModelBuffer& buffer)
+{
+    output = input;
+    {
+        auto propCopyResult = buffer.CopyTo(input.format); 
+        RETURN_IF_FAILED(propCopyResult.hr);
+        output.format = propCopyResult.ExtractPayload();
+    }
+    {
+        auto propCopyResult = buffer.CopyTo(input.platform); 
+        RETURN_IF_FAILED(propCopyResult.hr);
+        output.platform = propCopyResult.ExtractPayload();
+    }
+    return S_OK;
+}
+
 JsonValue DisplayPropertyIndexInfo::ToJson() const
 {
     return DisplayPropertyIndexInfo::ToJson(this->Model());
@@ -1136,6 +2002,123 @@ HRESULT DisplayPropertyIndexInfo::Copy(const PFCatalogDisplayPropertyIndexInfo& 
         auto propCopyResult = buffer.CopyTo(input.type); 
         RETURN_IF_FAILED(propCopyResult.hr);
         output.type = propCopyResult.ExtractPayload();
+    }
+    return S_OK;
+}
+
+JsonValue FileConfig::ToJson() const
+{
+    return FileConfig::ToJson(this->Model());
+}
+
+JsonValue FileConfig::ToJson(const PFCatalogFileConfig& input)
+{
+    JsonValue output{ rapidjson::kObjectType };
+    JsonUtils::ObjectAddMemberArray(output, "ContentTypes", input.contentTypes, input.contentTypesCount);
+    JsonUtils::ObjectAddMemberArray(output, "Tags", input.tags, input.tagsCount);
+    return output;
+}
+
+void FileConfig::FromJson(const JsonValue& input)
+{
+    CStringVector contentTypes{};
+    JsonUtils::ObjectGetMember(input, "ContentTypes", contentTypes);
+    this->SetContentTypes(std::move(contentTypes));
+
+    CStringVector tags{};
+    JsonUtils::ObjectGetMember(input, "Tags", tags);
+    this->SetTags(std::move(tags));
+}
+
+size_t FileConfig::RequiredBufferSize() const
+{
+    return RequiredBufferSize(this->Model());
+}
+
+Result<PFCatalogFileConfig const*> FileConfig::Copy(ModelBuffer& buffer) const
+{
+    return buffer.CopyTo<FileConfig>(&this->Model());
+}
+
+size_t FileConfig::RequiredBufferSize(const PFCatalogFileConfig& model)
+{
+    size_t requiredSize{ alignof(ModelType) + sizeof(ModelType) };
+    requiredSize += (alignof(char*) + sizeof(char*) * model.contentTypesCount);
+    for (size_t i = 0; i < model.contentTypesCount; ++i)
+    {
+        requiredSize += (std::strlen(model.contentTypes[i]) + 1);
+    }
+    requiredSize += (alignof(char*) + sizeof(char*) * model.tagsCount);
+    for (size_t i = 0; i < model.tagsCount; ++i)
+    {
+        requiredSize += (std::strlen(model.tags[i]) + 1);
+    }
+    return requiredSize;
+}
+
+HRESULT FileConfig::Copy(const PFCatalogFileConfig& input, PFCatalogFileConfig& output, ModelBuffer& buffer)
+{
+    output = input;
+    {
+        auto propCopyResult = buffer.CopyToArray(input.contentTypes, input.contentTypesCount);
+        RETURN_IF_FAILED(propCopyResult.hr);
+        output.contentTypes = propCopyResult.ExtractPayload();
+    }
+    {
+        auto propCopyResult = buffer.CopyToArray(input.tags, input.tagsCount);
+        RETURN_IF_FAILED(propCopyResult.hr);
+        output.tags = propCopyResult.ExtractPayload();
+    }
+    return S_OK;
+}
+
+JsonValue ImageConfig::ToJson() const
+{
+    return ImageConfig::ToJson(this->Model());
+}
+
+JsonValue ImageConfig::ToJson(const PFCatalogImageConfig& input)
+{
+    JsonValue output{ rapidjson::kObjectType };
+    JsonUtils::ObjectAddMemberArray(output, "Tags", input.tags, input.tagsCount);
+    return output;
+}
+
+void ImageConfig::FromJson(const JsonValue& input)
+{
+    CStringVector tags{};
+    JsonUtils::ObjectGetMember(input, "Tags", tags);
+    this->SetTags(std::move(tags));
+}
+
+size_t ImageConfig::RequiredBufferSize() const
+{
+    return RequiredBufferSize(this->Model());
+}
+
+Result<PFCatalogImageConfig const*> ImageConfig::Copy(ModelBuffer& buffer) const
+{
+    return buffer.CopyTo<ImageConfig>(&this->Model());
+}
+
+size_t ImageConfig::RequiredBufferSize(const PFCatalogImageConfig& model)
+{
+    size_t requiredSize{ alignof(ModelType) + sizeof(ModelType) };
+    requiredSize += (alignof(char*) + sizeof(char*) * model.tagsCount);
+    for (size_t i = 0; i < model.tagsCount; ++i)
+    {
+        requiredSize += (std::strlen(model.tags[i]) + 1);
+    }
+    return requiredSize;
+}
+
+HRESULT ImageConfig::Copy(const PFCatalogImageConfig& input, PFCatalogImageConfig& output, ModelBuffer& buffer)
+{
+    output = input;
+    {
+        auto propCopyResult = buffer.CopyToArray(input.tags, input.tagsCount);
+        RETURN_IF_FAILED(propCopyResult.hr);
+        output.tags = propCopyResult.ExtractPayload();
     }
     return S_OK;
 }
@@ -1215,8 +2198,13 @@ JsonValue CatalogConfig::ToJson(const PFCatalogCatalogConfig& input)
 {
     JsonValue output{ rapidjson::kObjectType };
     JsonUtils::ObjectAddMemberArray<EntityKey>(output, "AdminEntities", input.adminEntities, input.adminEntitiesCount);
+    JsonUtils::ObjectAddMember<CatalogSpecificConfig>(output, "Catalog", input.catalog);
+    JsonUtils::ObjectAddMemberArray<DeepLinkFormat>(output, "DeepLinkFormats", input.deepLinkFormats, input.deepLinkFormatsCount);
     JsonUtils::ObjectAddMemberArray<DisplayPropertyIndexInfo>(output, "DisplayPropertyIndexInfos", input.displayPropertyIndexInfos, input.displayPropertyIndexInfosCount);
+    JsonUtils::ObjectAddMember<FileConfig>(output, "File", input.file);
+    JsonUtils::ObjectAddMember<ImageConfig>(output, "Image", input.image);
     JsonUtils::ObjectAddMember(output, "IsCatalogEnabled", input.isCatalogEnabled);
+    JsonUtils::ObjectAddMemberArray(output, "Platforms", input.platforms, input.platformsCount);
     JsonUtils::ObjectAddMemberArray<EntityKey>(output, "ReviewerEntities", input.reviewerEntities, input.reviewerEntitiesCount);
     JsonUtils::ObjectAddMember<UserGeneratedContentSpecificConfig>(output, "UserGeneratedContent", input.userGeneratedContent);
     return output;
@@ -1228,11 +2216,40 @@ void CatalogConfig::FromJson(const JsonValue& input)
     JsonUtils::ObjectGetMember<EntityKey>(input, "AdminEntities", adminEntities);
     this->SetAdminEntities(std::move(adminEntities));
 
+    StdExtra::optional<CatalogSpecificConfig> catalog{};
+    JsonUtils::ObjectGetMember(input, "Catalog", catalog);
+    if (catalog)
+    {
+        this->SetCatalog(std::move(*catalog));
+    }
+
+    ModelVector<DeepLinkFormat> deepLinkFormats{};
+    JsonUtils::ObjectGetMember<DeepLinkFormat>(input, "DeepLinkFormats", deepLinkFormats);
+    this->SetDeepLinkFormats(std::move(deepLinkFormats));
+
     ModelVector<DisplayPropertyIndexInfo> displayPropertyIndexInfos{};
     JsonUtils::ObjectGetMember<DisplayPropertyIndexInfo>(input, "DisplayPropertyIndexInfos", displayPropertyIndexInfos);
     this->SetDisplayPropertyIndexInfos(std::move(displayPropertyIndexInfos));
 
+    StdExtra::optional<FileConfig> file{};
+    JsonUtils::ObjectGetMember(input, "File", file);
+    if (file)
+    {
+        this->SetFile(std::move(*file));
+    }
+
+    StdExtra::optional<ImageConfig> image{};
+    JsonUtils::ObjectGetMember(input, "Image", image);
+    if (image)
+    {
+        this->SetImage(std::move(*image));
+    }
+
     JsonUtils::ObjectGetMember(input, "IsCatalogEnabled", this->m_model.isCatalogEnabled);
+
+    CStringVector platforms{};
+    JsonUtils::ObjectGetMember(input, "Platforms", platforms);
+    this->SetPlatforms(std::move(platforms));
 
     ModelVector<EntityKey> reviewerEntities{};
     JsonUtils::ObjectGetMember<EntityKey>(input, "ReviewerEntities", reviewerEntities);
@@ -1264,10 +2281,32 @@ size_t CatalogConfig::RequiredBufferSize(const PFCatalogCatalogConfig& model)
     {
         requiredSize += EntityKey::RequiredBufferSize(*model.adminEntities[i]);
     }
+    if (model.catalog)
+    {
+        requiredSize += CatalogSpecificConfig::RequiredBufferSize(*model.catalog);
+    }
+    requiredSize += (alignof(PFCatalogDeepLinkFormat*) + sizeof(PFCatalogDeepLinkFormat*) * model.deepLinkFormatsCount);
+    for (size_t i = 0; i < model.deepLinkFormatsCount; ++i)
+    {
+        requiredSize += DeepLinkFormat::RequiredBufferSize(*model.deepLinkFormats[i]);
+    }
     requiredSize += (alignof(PFCatalogDisplayPropertyIndexInfo*) + sizeof(PFCatalogDisplayPropertyIndexInfo*) * model.displayPropertyIndexInfosCount);
     for (size_t i = 0; i < model.displayPropertyIndexInfosCount; ++i)
     {
         requiredSize += DisplayPropertyIndexInfo::RequiredBufferSize(*model.displayPropertyIndexInfos[i]);
+    }
+    if (model.file)
+    {
+        requiredSize += FileConfig::RequiredBufferSize(*model.file);
+    }
+    if (model.image)
+    {
+        requiredSize += ImageConfig::RequiredBufferSize(*model.image);
+    }
+    requiredSize += (alignof(char*) + sizeof(char*) * model.platformsCount);
+    for (size_t i = 0; i < model.platformsCount; ++i)
+    {
+        requiredSize += (std::strlen(model.platforms[i]) + 1);
     }
     requiredSize += (alignof(PFEntityKey*) + sizeof(PFEntityKey*) * model.reviewerEntitiesCount);
     for (size_t i = 0; i < model.reviewerEntitiesCount; ++i)
@@ -1290,9 +2329,34 @@ HRESULT CatalogConfig::Copy(const PFCatalogCatalogConfig& input, PFCatalogCatalo
         output.adminEntities = propCopyResult.ExtractPayload();
     }
     {
+        auto propCopyResult = buffer.CopyTo<CatalogSpecificConfig>(input.catalog); 
+        RETURN_IF_FAILED(propCopyResult.hr);
+        output.catalog = propCopyResult.ExtractPayload();
+    }
+    {
+        auto propCopyResult = buffer.CopyToArray<DeepLinkFormat>(input.deepLinkFormats, input.deepLinkFormatsCount);
+        RETURN_IF_FAILED(propCopyResult.hr);
+        output.deepLinkFormats = propCopyResult.ExtractPayload();
+    }
+    {
         auto propCopyResult = buffer.CopyToArray<DisplayPropertyIndexInfo>(input.displayPropertyIndexInfos, input.displayPropertyIndexInfosCount);
         RETURN_IF_FAILED(propCopyResult.hr);
         output.displayPropertyIndexInfos = propCopyResult.ExtractPayload();
+    }
+    {
+        auto propCopyResult = buffer.CopyTo<FileConfig>(input.file); 
+        RETURN_IF_FAILED(propCopyResult.hr);
+        output.file = propCopyResult.ExtractPayload();
+    }
+    {
+        auto propCopyResult = buffer.CopyTo<ImageConfig>(input.image); 
+        RETURN_IF_FAILED(propCopyResult.hr);
+        output.image = propCopyResult.ExtractPayload();
+    }
+    {
+        auto propCopyResult = buffer.CopyToArray(input.platforms, input.platformsCount);
+        RETURN_IF_FAILED(propCopyResult.hr);
+        output.platforms = propCopyResult.ExtractPayload();
     }
     {
         auto propCopyResult = buffer.CopyToArray<EntityKey>(input.reviewerEntities, input.reviewerEntitiesCount);
@@ -1483,6 +2547,7 @@ JsonValue GetEntityDraftItemsRequest::ToJson(const PFCatalogGetEntityDraftItemsR
     JsonUtils::ObjectAddMember(output, "Count", input.count);
     JsonUtils::ObjectAddMemberDictionary(output, "CustomTags", input.customTags, input.customTagsCount);
     JsonUtils::ObjectAddMember<EntityKey>(output, "Entity", input.entity);
+    JsonUtils::ObjectAddMember(output, "Filter", input.filter);
     return output;
 }
 
@@ -1562,13 +2627,13 @@ JsonValue Review::ToJson(const PFCatalogReview& input)
 {
     JsonValue output{ rapidjson::kObjectType };
     JsonUtils::ObjectAddMember(output, "HelpfulNegative", input.helpfulNegative);
-    JsonUtils::ObjectAddMember(output, "HelpfulnessVotes", input.helpfulnessVotes);
     JsonUtils::ObjectAddMember(output, "HelpfulPositive", input.helpfulPositive);
     JsonUtils::ObjectAddMember(output, "IsInstalled", input.isInstalled);
     JsonUtils::ObjectAddMember(output, "ItemId", input.itemId);
     JsonUtils::ObjectAddMember(output, "ItemVersion", input.itemVersion);
     JsonUtils::ObjectAddMember(output, "Locale", input.locale);
     JsonUtils::ObjectAddMember(output, "Rating", input.rating);
+    JsonUtils::ObjectAddMember<EntityKey>(output, "ReviewerEntity", input.reviewerEntity);
     JsonUtils::ObjectAddMember(output, "ReviewerId", input.reviewerId);
     JsonUtils::ObjectAddMember(output, "ReviewId", input.reviewId);
     JsonUtils::ObjectAddMember(output, "ReviewText", input.reviewText);
@@ -1580,8 +2645,6 @@ JsonValue Review::ToJson(const PFCatalogReview& input)
 void Review::FromJson(const JsonValue& input)
 {
     JsonUtils::ObjectGetMember(input, "HelpfulNegative", this->m_model.helpfulNegative);
-
-    JsonUtils::ObjectGetMember(input, "HelpfulnessVotes", this->m_model.helpfulnessVotes);
 
     JsonUtils::ObjectGetMember(input, "HelpfulPositive", this->m_model.helpfulPositive);
 
@@ -1600,6 +2663,13 @@ void Review::FromJson(const JsonValue& input)
     this->SetLocale(std::move(locale));
 
     JsonUtils::ObjectGetMember(input, "Rating", this->m_model.rating);
+
+    StdExtra::optional<EntityKey> reviewerEntity{};
+    JsonUtils::ObjectGetMember(input, "ReviewerEntity", reviewerEntity);
+    if (reviewerEntity)
+    {
+        this->SetReviewerEntity(std::move(*reviewerEntity));
+    }
 
     String reviewerId{};
     JsonUtils::ObjectGetMember(input, "ReviewerId", reviewerId);
@@ -1645,6 +2715,10 @@ size_t Review::RequiredBufferSize(const PFCatalogReview& model)
     {
         requiredSize += (std::strlen(model.locale) + 1);
     }
+    if (model.reviewerEntity)
+    {
+        requiredSize += EntityKey::RequiredBufferSize(*model.reviewerEntity);
+    }
     if (model.reviewerId)
     {
         requiredSize += (std::strlen(model.reviewerId) + 1);
@@ -1681,6 +2755,11 @@ HRESULT Review::Copy(const PFCatalogReview& input, PFCatalogReview& output, Mode
         auto propCopyResult = buffer.CopyTo(input.locale); 
         RETURN_IF_FAILED(propCopyResult.hr);
         output.locale = propCopyResult.ExtractPayload();
+    }
+    {
+        auto propCopyResult = buffer.CopyTo<EntityKey>(input.reviewerEntity); 
+        RETURN_IF_FAILED(propCopyResult.hr);
+        output.reviewerEntity = propCopyResult.ExtractPayload();
     }
     {
         auto propCopyResult = buffer.CopyTo(input.reviewerId); 
@@ -1802,6 +2881,75 @@ HRESULT GetItemResponse::Copy(const PFCatalogGetItemResponse& input, PFCatalogGe
     return S_OK;
 }
 
+JsonValue GetItemContainersRequest::ToJson() const
+{
+    return GetItemContainersRequest::ToJson(this->Model());
+}
+
+JsonValue GetItemContainersRequest::ToJson(const PFCatalogGetItemContainersRequest& input)
+{
+    JsonValue output{ rapidjson::kObjectType };
+    JsonUtils::ObjectAddMember<CatalogAlternateId>(output, "AlternateId", input.alternateId);
+    JsonUtils::ObjectAddMember(output, "ContinuationToken", input.continuationToken);
+    JsonUtils::ObjectAddMember(output, "Count", input.count);
+    JsonUtils::ObjectAddMemberDictionary(output, "CustomTags", input.customTags, input.customTagsCount);
+    JsonUtils::ObjectAddMember<EntityKey>(output, "Entity", input.entity);
+    JsonUtils::ObjectAddMember(output, "Id", input.id);
+    return output;
+}
+
+void GetItemContainersResponse::FromJson(const JsonValue& input)
+{
+    ModelVector<CatalogItem> containers{};
+    JsonUtils::ObjectGetMember<CatalogItem>(input, "Containers", containers);
+    this->SetContainers(std::move(containers));
+
+    String continuationToken{};
+    JsonUtils::ObjectGetMember(input, "ContinuationToken", continuationToken);
+    this->SetContinuationToken(std::move(continuationToken));
+}
+
+size_t GetItemContainersResponse::RequiredBufferSize() const
+{
+    return RequiredBufferSize(this->Model());
+}
+
+Result<PFCatalogGetItemContainersResponse const*> GetItemContainersResponse::Copy(ModelBuffer& buffer) const
+{
+    return buffer.CopyTo<GetItemContainersResponse>(&this->Model());
+}
+
+size_t GetItemContainersResponse::RequiredBufferSize(const PFCatalogGetItemContainersResponse& model)
+{
+    size_t requiredSize{ alignof(ModelType) + sizeof(ModelType) };
+    requiredSize += (alignof(PFCatalogCatalogItem*) + sizeof(PFCatalogCatalogItem*) * model.containersCount);
+    for (size_t i = 0; i < model.containersCount; ++i)
+    {
+        requiredSize += CatalogItem::RequiredBufferSize(*model.containers[i]);
+    }
+    if (model.continuationToken)
+    {
+        requiredSize += (std::strlen(model.continuationToken) + 1);
+    }
+    return requiredSize;
+}
+
+HRESULT GetItemContainersResponse::Copy(const PFCatalogGetItemContainersResponse& input, PFCatalogGetItemContainersResponse& output, ModelBuffer& buffer)
+{
+    output = input;
+    {
+        auto propCopyResult = buffer.CopyToArray<CatalogItem>(input.containers, input.containersCount);
+        RETURN_IF_FAILED(propCopyResult.hr);
+        output.containers = propCopyResult.ExtractPayload();
+    }
+    {
+        auto propCopyResult = buffer.CopyTo(input.continuationToken); 
+        RETURN_IF_FAILED(propCopyResult.hr);
+        output.continuationToken = propCopyResult.ExtractPayload();
+    }
+    return S_OK;
+}
+
 JsonValue GetItemModerationStateRequest::ToJson() const
 {
     return GetItemModerationStateRequest::ToJson(this->Model());
@@ -1872,50 +3020,8 @@ JsonValue GetItemPublishStatusRequest::ToJson(const PFCatalogGetItemPublishStatu
     return output;
 }
 
-void ScanResult::FromJson(const JsonValue& input)
-{
-    String url{};
-    JsonUtils::ObjectGetMember(input, "Url", url);
-    this->SetUrl(std::move(url));
-}
-
-size_t ScanResult::RequiredBufferSize() const
-{
-    return RequiredBufferSize(this->Model());
-}
-
-Result<PFCatalogScanResult const*> ScanResult::Copy(ModelBuffer& buffer) const
-{
-    return buffer.CopyTo<ScanResult>(&this->Model());
-}
-
-size_t ScanResult::RequiredBufferSize(const PFCatalogScanResult& model)
-{
-    size_t requiredSize{ alignof(ModelType) + sizeof(ModelType) };
-    if (model.url)
-    {
-        requiredSize += (std::strlen(model.url) + 1);
-    }
-    return requiredSize;
-}
-
-HRESULT ScanResult::Copy(const PFCatalogScanResult& input, PFCatalogScanResult& output, ModelBuffer& buffer)
-{
-    output = input;
-    {
-        auto propCopyResult = buffer.CopyTo(input.url); 
-        RETURN_IF_FAILED(propCopyResult.hr);
-        output.url = propCopyResult.ExtractPayload();
-    }
-    return S_OK;
-}
-
 void GetItemPublishStatusResponse::FromJson(const JsonValue& input)
 {
-    ModelVector<ScanResult> failedScanResults{};
-    JsonUtils::ObjectGetMember<ScanResult>(input, "FailedScanResults", failedScanResults);
-    this->SetFailedScanResults(std::move(failedScanResults));
-
     StdExtra::optional<PFCatalogPublishResult> result{};
     JsonUtils::ObjectGetMember(input, "Result", result);
     this->SetResult(std::move(result));
@@ -1938,11 +3044,6 @@ Result<PFCatalogGetItemPublishStatusResponse const*> GetItemPublishStatusRespons
 size_t GetItemPublishStatusResponse::RequiredBufferSize(const PFCatalogGetItemPublishStatusResponse& model)
 {
     size_t requiredSize{ alignof(ModelType) + sizeof(ModelType) };
-    requiredSize += (alignof(PFCatalogScanResult*) + sizeof(PFCatalogScanResult*) * model.failedScanResultsCount);
-    for (size_t i = 0; i < model.failedScanResultsCount; ++i)
-    {
-        requiredSize += ScanResult::RequiredBufferSize(*model.failedScanResults[i]);
-    }
     if (model.result)
     {
         requiredSize += (alignof(PFCatalogPublishResult) + sizeof(PFCatalogPublishResult));
@@ -1957,11 +3058,6 @@ size_t GetItemPublishStatusResponse::RequiredBufferSize(const PFCatalogGetItemPu
 HRESULT GetItemPublishStatusResponse::Copy(const PFCatalogGetItemPublishStatusResponse& input, PFCatalogGetItemPublishStatusResponse& output, ModelBuffer& buffer)
 {
     output = input;
-    {
-        auto propCopyResult = buffer.CopyToArray<ScanResult>(input.failedScanResults, input.failedScanResultsCount);
-        RETURN_IF_FAILED(propCopyResult.hr);
-        output.failedScanResults = propCopyResult.ExtractPayload();
-    }
     {
         auto propCopyResult = buffer.CopyTo(input.result); 
         RETURN_IF_FAILED(propCopyResult.hr);
@@ -2133,6 +3229,60 @@ HRESULT GetItemReviewSummaryResponse::Copy(const PFCatalogGetItemReviewSummaryRe
     return S_OK;
 }
 
+JsonValue GetItemsRequest::ToJson() const
+{
+    return GetItemsRequest::ToJson(this->Model());
+}
+
+JsonValue GetItemsRequest::ToJson(const PFCatalogGetItemsRequest& input)
+{
+    JsonValue output{ rapidjson::kObjectType };
+    JsonUtils::ObjectAddMemberArray<CatalogAlternateId>(output, "AlternateIds", input.alternateIds, input.alternateIdsCount);
+    JsonUtils::ObjectAddMemberDictionary(output, "CustomTags", input.customTags, input.customTagsCount);
+    JsonUtils::ObjectAddMember<EntityKey>(output, "Entity", input.entity);
+    JsonUtils::ObjectAddMemberArray(output, "Ids", input.ids, input.idsCount);
+    return output;
+}
+
+void GetItemsResponse::FromJson(const JsonValue& input)
+{
+    ModelVector<CatalogItem> items{};
+    JsonUtils::ObjectGetMember<CatalogItem>(input, "Items", items);
+    this->SetItems(std::move(items));
+}
+
+size_t GetItemsResponse::RequiredBufferSize() const
+{
+    return RequiredBufferSize(this->Model());
+}
+
+Result<PFCatalogGetItemsResponse const*> GetItemsResponse::Copy(ModelBuffer& buffer) const
+{
+    return buffer.CopyTo<GetItemsResponse>(&this->Model());
+}
+
+size_t GetItemsResponse::RequiredBufferSize(const PFCatalogGetItemsResponse& model)
+{
+    size_t requiredSize{ alignof(ModelType) + sizeof(ModelType) };
+    requiredSize += (alignof(PFCatalogCatalogItem*) + sizeof(PFCatalogCatalogItem*) * model.itemsCount);
+    for (size_t i = 0; i < model.itemsCount; ++i)
+    {
+        requiredSize += CatalogItem::RequiredBufferSize(*model.items[i]);
+    }
+    return requiredSize;
+}
+
+HRESULT GetItemsResponse::Copy(const PFCatalogGetItemsResponse& input, PFCatalogGetItemsResponse& output, ModelBuffer& buffer)
+{
+    output = input;
+    {
+        auto propCopyResult = buffer.CopyToArray<CatalogItem>(input.items, input.itemsCount);
+        RETURN_IF_FAILED(propCopyResult.hr);
+        output.items = propCopyResult.ExtractPayload();
+    }
+    return S_OK;
+}
+
 JsonValue PublishDraftItemRequest::ToJson() const
 {
     return PublishDraftItemRequest::ToJson(this->Model());
@@ -2200,6 +3350,19 @@ JsonValue ReviewItemRequest::ToJson(const PFCatalogReviewItemRequest& input)
     return output;
 }
 
+JsonValue StoreReference::ToJson() const
+{
+    return StoreReference::ToJson(this->Model());
+}
+
+JsonValue StoreReference::ToJson(const PFCatalogStoreReference& input)
+{
+    JsonValue output{ rapidjson::kObjectType };
+    JsonUtils::ObjectAddMember<CatalogAlternateId>(output, "AlternateId", input.alternateId);
+    JsonUtils::ObjectAddMember(output, "Id", input.id);
+    return output;
+}
+
 JsonValue SearchItemsRequest::ToJson() const
 {
     return SearchItemsRequest::ToJson(this->Model());
@@ -2216,6 +3379,7 @@ JsonValue SearchItemsRequest::ToJson(const PFCatalogSearchItemsRequest& input)
     JsonUtils::ObjectAddMember(output, "OrderBy", input.orderBy);
     JsonUtils::ObjectAddMember(output, "Search", input.search);
     JsonUtils::ObjectAddMember(output, "Select", input.select);
+    JsonUtils::ObjectAddMember<StoreReference>(output, "Store", input.store);
     return output;
 }
 

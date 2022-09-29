@@ -164,7 +164,7 @@ void Sample::Update(DX::StepTimer const& timer)
 
     if (m_testsCompleted)
     {
-        //ExitSample();
+        ExitSample();
     }
 
     auto pad = m_gamePad->GetState(0);
@@ -391,6 +391,7 @@ void TestApp::Log(_Printf_format_string_ char const* format, ...)
     vsprintf_s(message, format, varArgs);
     va_end(varArgs);
 
+    // Log to screen
     if (g_Sample && g_Sample->m_log != nullptr)
     {
         std::wstring wstr = DX::Utf8ToWide(message);
@@ -401,6 +402,14 @@ void TestApp::Log(_Printf_format_string_ char const* format, ...)
         std::cout << message;
         std::cout << "\n";
     }
+
+    // Log to file
+    std::ofstream file{ s_logfileName, std::ios::app };
+    if (file.is_open())
+    {
+        file << message << std::endl;
+        file.close();
+    }
 }
 
 // Partial class implementation of TestApp.
@@ -410,7 +419,7 @@ bool TestApp::LoadTitleDataJson(std::shared_ptr<char*>& testDataJson, size_t& te
 {
     // Read the title data from the file into the output character array.
     std::ifstream titleDataFile;
-    titleDataFile.open("TestTitle.json", std::ios::binary | std::ios::in);
+    titleDataFile.open("testTitleData.json", std::ios::binary | std::ios::in);
 
     if (!titleDataFile)
     {

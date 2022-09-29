@@ -126,7 +126,8 @@ typedef struct PFFriendsFriendInfo
     _Maybenull_ PFPlayerProfileModel const* profile;
 
     /// <summary>
-    /// (Optional) Available PSN information, if the user and PlayFab friend are both connected to PSN.
+    /// (Optional) Available PlayStation :tm: Network information, if the user and PlayFab friend are
+    /// both connected to PlayStation :tm: Network.
     /// </summary>
     _Maybenull_ PFUserPsnInfo const* PSNInfo;
 

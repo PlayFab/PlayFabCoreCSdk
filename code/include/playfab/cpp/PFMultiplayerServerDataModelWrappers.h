@@ -469,6 +469,96 @@ private:
 };
 
 template<template<typename AllocT> class Alloc = std::allocator>
+class PFMultiplayerServerMonitoringApplicationConfigurationParamsWrapper : public ModelWrapper<PFMultiplayerServerMonitoringApplicationConfigurationParams, Alloc>
+{
+public:
+    using ModelType = typename PFMultiplayerServerMonitoringApplicationConfigurationParams;
+    using String = typename std::basic_string<char, std::char_traits<char>, Alloc<char>>;
+    template<typename T> using Vector = typename std::vector<T, Alloc<T>>;
+
+    PFMultiplayerServerMonitoringApplicationConfigurationParamsWrapper() = default;
+
+    PFMultiplayerServerMonitoringApplicationConfigurationParamsWrapper(const PFMultiplayerServerMonitoringApplicationConfigurationParams& model) :
+        ModelWrapper<PFMultiplayerServerMonitoringApplicationConfigurationParams, Alloc>{ model },
+        m_assetReference{ model.assetReference ? *model.assetReference : decltype(*model.assetReference){} },
+        m_executionScriptName{ SafeString(model.executionScriptName) },
+        m_installationScriptName{ SafeString(model.installationScriptName) },
+        m_onStartRuntimeInMinutes{ model.onStartRuntimeInMinutes ? StdExtra::optional<double>{ *model.onStartRuntimeInMinutes } : StdExtra::nullopt }
+    {
+        SetModelPointers();
+    }
+
+    PFMultiplayerServerMonitoringApplicationConfigurationParamsWrapper(const PFMultiplayerServerMonitoringApplicationConfigurationParamsWrapper& src) :
+        PFMultiplayerServerMonitoringApplicationConfigurationParamsWrapper{ src.Model() }
+    {
+    }
+
+    PFMultiplayerServerMonitoringApplicationConfigurationParamsWrapper(PFMultiplayerServerMonitoringApplicationConfigurationParamsWrapper&& src) :
+        PFMultiplayerServerMonitoringApplicationConfigurationParamsWrapper{}
+    {
+        swap(*this, src);
+    }
+
+    PFMultiplayerServerMonitoringApplicationConfigurationParamsWrapper& operator=(PFMultiplayerServerMonitoringApplicationConfigurationParamsWrapper src) 
+    {
+        swap(*this, src);
+        return *this;
+    }
+
+    virtual ~PFMultiplayerServerMonitoringApplicationConfigurationParamsWrapper() = default;
+
+    friend void swap(PFMultiplayerServerMonitoringApplicationConfigurationParamsWrapper& lhs, PFMultiplayerServerMonitoringApplicationConfigurationParamsWrapper& rhs)
+    {
+        using std::swap;
+        swap(lhs.m_model, rhs.m_model);
+        swap(lhs.m_assetReference, rhs.m_assetReference);
+        swap(lhs.m_executionScriptName, rhs.m_executionScriptName);
+        swap(lhs.m_installationScriptName, rhs.m_installationScriptName);
+        swap(lhs.m_onStartRuntimeInMinutes, rhs.m_onStartRuntimeInMinutes);
+        lhs.SetModelPointers();
+        rhs.SetModelPointers();
+    }
+
+    void SetAssetReference(PFMultiplayerServerAssetReferenceParamsWrapper<Alloc> value)
+    {
+        m_assetReference = std::move(value);
+        this->m_model.assetReference = &m_assetReference.Model();
+    }
+
+    void SetExecutionScriptName(String value)
+    {
+        m_executionScriptName = std::move(value);
+        this->m_model.executionScriptName =  m_executionScriptName.empty() ? nullptr : m_executionScriptName.data();
+    }
+
+    void SetInstallationScriptName(String value)
+    {
+        m_installationScriptName = std::move(value);
+        this->m_model.installationScriptName =  m_installationScriptName.empty() ? nullptr : m_installationScriptName.data();
+    }
+
+    void SetOnStartRuntimeInMinutes(StdExtra::optional<double> value)
+    {
+        m_onStartRuntimeInMinutes = std::move(value);
+        this->m_model.onStartRuntimeInMinutes = m_onStartRuntimeInMinutes ? m_onStartRuntimeInMinutes.operator->() : nullptr;
+    }
+
+private:
+    void SetModelPointers()
+    {
+        this->m_model.assetReference = &m_assetReference.Model();
+        this->m_model.executionScriptName = m_executionScriptName.empty() ? nullptr : m_executionScriptName.data();
+        this->m_model.installationScriptName = m_installationScriptName.empty() ? nullptr : m_installationScriptName.data();
+        this->m_model.onStartRuntimeInMinutes = m_onStartRuntimeInMinutes ? m_onStartRuntimeInMinutes.operator->() : nullptr;
+    }
+
+    PFMultiplayerServerAssetReferenceParamsWrapper<Alloc> m_assetReference;
+    String m_executionScriptName;
+    String m_installationScriptName;
+    StdExtra::optional<double> m_onStartRuntimeInMinutes;
+};
+
+template<template<typename AllocT> class Alloc = std::allocator>
 class PFMultiplayerServerDynamicStandbyThresholdWrapper : public ModelWrapper<PFMultiplayerServerDynamicStandbyThreshold, Alloc>
 {
 public:
@@ -829,6 +919,29 @@ private:
 };
 
 template<template<typename AllocT> class Alloc = std::allocator>
+class PFMultiplayerServerServerResourceConstraintParamsWrapper : public ModelWrapper<PFMultiplayerServerServerResourceConstraintParams, Alloc>
+{
+public:
+    using ModelType = typename PFMultiplayerServerServerResourceConstraintParams;
+    using String = typename std::basic_string<char, std::char_traits<char>, Alloc<char>>;
+    template<typename T> using Vector = typename std::vector<T, Alloc<T>>;
+
+    using ModelWrapper<PFMultiplayerServerServerResourceConstraintParams, Alloc>::ModelWrapper;
+
+    void SetCpuLimit(double value)
+    {
+        this->m_model.cpuLimit = value;
+    }
+
+    void SetMemoryLimitGB(double value)
+    {
+        this->m_model.memoryLimitGB = value;
+    }
+
+private:
+};
+
+template<template<typename AllocT> class Alloc = std::allocator>
 class PFMultiplayerServerCreateBuildWithCustomContainerRequestWrapper : public ModelWrapper<PFMultiplayerServerCreateBuildWithCustomContainerRequest, Alloc>
 {
 public:
@@ -850,8 +963,10 @@ public:
         m_gameCertificateReferences{ model.gameCertificateReferences, model.gameCertificateReferences + model.gameCertificateReferencesCount },
         m_linuxInstrumentationConfiguration{ model.linuxInstrumentationConfiguration ? StdExtra::optional<PFMultiplayerServerLinuxInstrumentationConfigurationWrapper<Alloc>>{ *model.linuxInstrumentationConfiguration } : StdExtra::nullopt },
         m_metadata{ model.metadata, model.metadata + model.metadataCount },
+        m_monitoringApplicationConfiguration{ model.monitoringApplicationConfiguration ? StdExtra::optional<PFMultiplayerServerMonitoringApplicationConfigurationParamsWrapper<Alloc>>{ *model.monitoringApplicationConfiguration } : StdExtra::nullopt },
         m_ports{ model.ports, model.ports + model.portsCount },
         m_regionConfigurations{ model.regionConfigurations, model.regionConfigurations + model.regionConfigurationsCount },
+        m_serverResourceConstraints{ model.serverResourceConstraints ? StdExtra::optional<PFMultiplayerServerServerResourceConstraintParamsWrapper<Alloc>>{ *model.serverResourceConstraints } : StdExtra::nullopt },
         m_useStreamingForAssetDownloads{ model.useStreamingForAssetDownloads ? StdExtra::optional<bool>{ *model.useStreamingForAssetDownloads } : StdExtra::nullopt },
         m_vmSize{ model.vmSize ? StdExtra::optional<PFMultiplayerServerAzureVmSize>{ *model.vmSize } : StdExtra::nullopt }
     {
@@ -891,8 +1006,10 @@ public:
         swap(lhs.m_gameCertificateReferences, rhs.m_gameCertificateReferences);
         swap(lhs.m_linuxInstrumentationConfiguration, rhs.m_linuxInstrumentationConfiguration);
         swap(lhs.m_metadata, rhs.m_metadata);
+        swap(lhs.m_monitoringApplicationConfiguration, rhs.m_monitoringApplicationConfiguration);
         swap(lhs.m_ports, rhs.m_ports);
         swap(lhs.m_regionConfigurations, rhs.m_regionConfigurations);
+        swap(lhs.m_serverResourceConstraints, rhs.m_serverResourceConstraints);
         swap(lhs.m_useStreamingForAssetDownloads, rhs.m_useStreamingForAssetDownloads);
         swap(lhs.m_vmSize, rhs.m_vmSize);
         lhs.SetModelPointers();
@@ -963,6 +1080,12 @@ public:
         this->m_model.metadataCount =  static_cast<uint32_t>(m_metadata.size());
     }
 
+    void SetMonitoringApplicationConfiguration(StdExtra::optional<PFMultiplayerServerMonitoringApplicationConfigurationParamsWrapper<Alloc>> value)
+    {
+        m_monitoringApplicationConfiguration = std::move(value);
+        this->m_model.monitoringApplicationConfiguration = m_monitoringApplicationConfiguration ? &m_monitoringApplicationConfiguration->Model() : nullptr;
+    }
+
     void SetMultiplayerServerCountPerVm(int32_t value)
     {
         this->m_model.multiplayerServerCountPerVm = value;
@@ -980,6 +1103,12 @@ public:
         m_regionConfigurations = std::move(value);
         this->m_model.regionConfigurations =  m_regionConfigurations.empty() ? nullptr : m_regionConfigurations.data();
         this->m_model.regionConfigurationsCount =  static_cast<uint32_t>(m_regionConfigurations.size());
+    }
+
+    void SetServerResourceConstraints(StdExtra::optional<PFMultiplayerServerServerResourceConstraintParamsWrapper<Alloc>> value)
+    {
+        m_serverResourceConstraints = std::move(value);
+        this->m_model.serverResourceConstraints = m_serverResourceConstraints ? &m_serverResourceConstraints->Model() : nullptr;
     }
 
     void SetUseStreamingForAssetDownloads(StdExtra::optional<bool> value)
@@ -1007,8 +1136,10 @@ private:
         this->m_model.gameCertificateReferences = m_gameCertificateReferences.empty() ? nullptr : m_gameCertificateReferences.data();
         this->m_model.linuxInstrumentationConfiguration = m_linuxInstrumentationConfiguration ?  &m_linuxInstrumentationConfiguration->Model() : nullptr;
         this->m_model.metadata = m_metadata.empty() ? nullptr : m_metadata.data();
+        this->m_model.monitoringApplicationConfiguration = m_monitoringApplicationConfiguration ?  &m_monitoringApplicationConfiguration->Model() : nullptr;
         this->m_model.ports = m_ports.empty() ? nullptr : m_ports.data();
         this->m_model.regionConfigurations = m_regionConfigurations.empty() ? nullptr : m_regionConfigurations.data();
+        this->m_model.serverResourceConstraints = m_serverResourceConstraints ?  &m_serverResourceConstraints->Model() : nullptr;
         this->m_model.useStreamingForAssetDownloads = m_useStreamingForAssetDownloads ? m_useStreamingForAssetDownloads.operator->() : nullptr;
         this->m_model.vmSize = m_vmSize ? m_vmSize.operator->() : nullptr;
     }
@@ -1023,8 +1154,10 @@ private:
     ModelVector<PFMultiplayerServerGameCertificateReferenceParamsWrapper<Alloc>, Alloc> m_gameCertificateReferences;
     StdExtra::optional<PFMultiplayerServerLinuxInstrumentationConfigurationWrapper<Alloc>> m_linuxInstrumentationConfiguration;
     StringDictionaryEntryVector<Alloc> m_metadata;
+    StdExtra::optional<PFMultiplayerServerMonitoringApplicationConfigurationParamsWrapper<Alloc>> m_monitoringApplicationConfiguration;
     ModelVector<PFPortWrapper<Alloc>, Alloc> m_ports;
     ModelVector<PFMultiplayerServerBuildRegionParamsWrapper<Alloc>, Alloc> m_regionConfigurations;
+    StdExtra::optional<PFMultiplayerServerServerResourceConstraintParamsWrapper<Alloc>> m_serverResourceConstraints;
     StdExtra::optional<bool> m_useStreamingForAssetDownloads;
     StdExtra::optional<PFMultiplayerServerAzureVmSize> m_vmSize;
 };
@@ -1170,6 +1303,96 @@ private:
 };
 
 template<template<typename AllocT> class Alloc = std::allocator>
+class PFMultiplayerServerMonitoringApplicationConfigurationWrapper : public ModelWrapper<PFMultiplayerServerMonitoringApplicationConfiguration, Alloc>
+{
+public:
+    using ModelType = typename PFMultiplayerServerMonitoringApplicationConfiguration;
+    using String = typename std::basic_string<char, std::char_traits<char>, Alloc<char>>;
+    template<typename T> using Vector = typename std::vector<T, Alloc<T>>;
+
+    PFMultiplayerServerMonitoringApplicationConfigurationWrapper() = default;
+
+    PFMultiplayerServerMonitoringApplicationConfigurationWrapper(const PFMultiplayerServerMonitoringApplicationConfiguration& model) :
+        ModelWrapper<PFMultiplayerServerMonitoringApplicationConfiguration, Alloc>{ model },
+        m_assetReference{ model.assetReference ? *model.assetReference : decltype(*model.assetReference){} },
+        m_executionScriptName{ SafeString(model.executionScriptName) },
+        m_installationScriptName{ SafeString(model.installationScriptName) },
+        m_onStartRuntimeInMinutes{ model.onStartRuntimeInMinutes ? StdExtra::optional<double>{ *model.onStartRuntimeInMinutes } : StdExtra::nullopt }
+    {
+        SetModelPointers();
+    }
+
+    PFMultiplayerServerMonitoringApplicationConfigurationWrapper(const PFMultiplayerServerMonitoringApplicationConfigurationWrapper& src) :
+        PFMultiplayerServerMonitoringApplicationConfigurationWrapper{ src.Model() }
+    {
+    }
+
+    PFMultiplayerServerMonitoringApplicationConfigurationWrapper(PFMultiplayerServerMonitoringApplicationConfigurationWrapper&& src) :
+        PFMultiplayerServerMonitoringApplicationConfigurationWrapper{}
+    {
+        swap(*this, src);
+    }
+
+    PFMultiplayerServerMonitoringApplicationConfigurationWrapper& operator=(PFMultiplayerServerMonitoringApplicationConfigurationWrapper src) 
+    {
+        swap(*this, src);
+        return *this;
+    }
+
+    virtual ~PFMultiplayerServerMonitoringApplicationConfigurationWrapper() = default;
+
+    friend void swap(PFMultiplayerServerMonitoringApplicationConfigurationWrapper& lhs, PFMultiplayerServerMonitoringApplicationConfigurationWrapper& rhs)
+    {
+        using std::swap;
+        swap(lhs.m_model, rhs.m_model);
+        swap(lhs.m_assetReference, rhs.m_assetReference);
+        swap(lhs.m_executionScriptName, rhs.m_executionScriptName);
+        swap(lhs.m_installationScriptName, rhs.m_installationScriptName);
+        swap(lhs.m_onStartRuntimeInMinutes, rhs.m_onStartRuntimeInMinutes);
+        lhs.SetModelPointers();
+        rhs.SetModelPointers();
+    }
+
+    void SetAssetReference(PFMultiplayerServerAssetReferenceWrapper<Alloc> value)
+    {
+        m_assetReference = std::move(value);
+        this->m_model.assetReference = &m_assetReference.Model();
+    }
+
+    void SetExecutionScriptName(String value)
+    {
+        m_executionScriptName = std::move(value);
+        this->m_model.executionScriptName =  m_executionScriptName.empty() ? nullptr : m_executionScriptName.data();
+    }
+
+    void SetInstallationScriptName(String value)
+    {
+        m_installationScriptName = std::move(value);
+        this->m_model.installationScriptName =  m_installationScriptName.empty() ? nullptr : m_installationScriptName.data();
+    }
+
+    void SetOnStartRuntimeInMinutes(StdExtra::optional<double> value)
+    {
+        m_onStartRuntimeInMinutes = std::move(value);
+        this->m_model.onStartRuntimeInMinutes = m_onStartRuntimeInMinutes ? m_onStartRuntimeInMinutes.operator->() : nullptr;
+    }
+
+private:
+    void SetModelPointers()
+    {
+        this->m_model.assetReference = &m_assetReference.Model();
+        this->m_model.executionScriptName = m_executionScriptName.empty() ? nullptr : m_executionScriptName.data();
+        this->m_model.installationScriptName = m_installationScriptName.empty() ? nullptr : m_installationScriptName.data();
+        this->m_model.onStartRuntimeInMinutes = m_onStartRuntimeInMinutes ? m_onStartRuntimeInMinutes.operator->() : nullptr;
+    }
+
+    PFMultiplayerServerAssetReferenceWrapper<Alloc> m_assetReference;
+    String m_executionScriptName;
+    String m_installationScriptName;
+    StdExtra::optional<double> m_onStartRuntimeInMinutes;
+};
+
+template<template<typename AllocT> class Alloc = std::allocator>
 class PFMultiplayerServerCurrentServerStatsWrapper : public ModelWrapper<PFMultiplayerServerCurrentServerStats, Alloc>
 {
 public:
@@ -1271,6 +1494,11 @@ public:
         this->m_model.dynamicStandbySettings = m_dynamicStandbySettings ? &m_dynamicStandbySettings->Model() : nullptr;
     }
 
+    void SetIsAssetReplicationComplete(bool value)
+    {
+        this->m_model.isAssetReplicationComplete = value;
+    }
+
     void SetMaxServers(int32_t value)
     {
         this->m_model.maxServers = value;
@@ -1355,9 +1583,11 @@ public:
         m_gameCertificateReferences{ model.gameCertificateReferences, model.gameCertificateReferences + model.gameCertificateReferencesCount },
         m_linuxInstrumentationConfiguration{ model.linuxInstrumentationConfiguration ? StdExtra::optional<PFMultiplayerServerLinuxInstrumentationConfigurationWrapper<Alloc>>{ *model.linuxInstrumentationConfiguration } : StdExtra::nullopt },
         m_metadata{ model.metadata, model.metadata + model.metadataCount },
+        m_monitoringApplicationConfiguration{ model.monitoringApplicationConfiguration ? StdExtra::optional<PFMultiplayerServerMonitoringApplicationConfigurationWrapper<Alloc>>{ *model.monitoringApplicationConfiguration } : StdExtra::nullopt },
         m_osPlatform{ SafeString(model.osPlatform) },
         m_ports{ model.ports, model.ports + model.portsCount },
         m_regionConfigurations{ model.regionConfigurations, model.regionConfigurations + model.regionConfigurationsCount },
+        m_serverResourceConstraints{ model.serverResourceConstraints ? StdExtra::optional<PFMultiplayerServerServerResourceConstraintParamsWrapper<Alloc>>{ *model.serverResourceConstraints } : StdExtra::nullopt },
         m_serverType{ SafeString(model.serverType) },
         m_useStreamingForAssetDownloads{ model.useStreamingForAssetDownloads ? StdExtra::optional<bool>{ *model.useStreamingForAssetDownloads } : StdExtra::nullopt },
         m_vmSize{ model.vmSize ? StdExtra::optional<PFMultiplayerServerAzureVmSize>{ *model.vmSize } : StdExtra::nullopt }
@@ -1399,9 +1629,11 @@ public:
         swap(lhs.m_gameCertificateReferences, rhs.m_gameCertificateReferences);
         swap(lhs.m_linuxInstrumentationConfiguration, rhs.m_linuxInstrumentationConfiguration);
         swap(lhs.m_metadata, rhs.m_metadata);
+        swap(lhs.m_monitoringApplicationConfiguration, rhs.m_monitoringApplicationConfiguration);
         swap(lhs.m_osPlatform, rhs.m_osPlatform);
         swap(lhs.m_ports, rhs.m_ports);
         swap(lhs.m_regionConfigurations, rhs.m_regionConfigurations);
+        swap(lhs.m_serverResourceConstraints, rhs.m_serverResourceConstraints);
         swap(lhs.m_serverType, rhs.m_serverType);
         swap(lhs.m_useStreamingForAssetDownloads, rhs.m_useStreamingForAssetDownloads);
         swap(lhs.m_vmSize, rhs.m_vmSize);
@@ -1478,6 +1710,12 @@ public:
         this->m_model.metadataCount =  static_cast<uint32_t>(m_metadata.size());
     }
 
+    void SetMonitoringApplicationConfiguration(StdExtra::optional<PFMultiplayerServerMonitoringApplicationConfigurationWrapper<Alloc>> value)
+    {
+        m_monitoringApplicationConfiguration = std::move(value);
+        this->m_model.monitoringApplicationConfiguration = m_monitoringApplicationConfiguration ? &m_monitoringApplicationConfiguration->Model() : nullptr;
+    }
+
     void SetMultiplayerServerCountPerVm(int32_t value)
     {
         this->m_model.multiplayerServerCountPerVm = value;
@@ -1501,6 +1739,12 @@ public:
         m_regionConfigurations = std::move(value);
         this->m_model.regionConfigurations =  m_regionConfigurations.empty() ? nullptr : m_regionConfigurations.data();
         this->m_model.regionConfigurationsCount =  static_cast<uint32_t>(m_regionConfigurations.size());
+    }
+
+    void SetServerResourceConstraints(StdExtra::optional<PFMultiplayerServerServerResourceConstraintParamsWrapper<Alloc>> value)
+    {
+        m_serverResourceConstraints = std::move(value);
+        this->m_model.serverResourceConstraints = m_serverResourceConstraints ? &m_serverResourceConstraints->Model() : nullptr;
     }
 
     void SetServerType(String value)
@@ -1535,9 +1779,11 @@ private:
         this->m_model.gameCertificateReferences = m_gameCertificateReferences.empty() ? nullptr : m_gameCertificateReferences.data();
         this->m_model.linuxInstrumentationConfiguration = m_linuxInstrumentationConfiguration ?  &m_linuxInstrumentationConfiguration->Model() : nullptr;
         this->m_model.metadata = m_metadata.empty() ? nullptr : m_metadata.data();
+        this->m_model.monitoringApplicationConfiguration = m_monitoringApplicationConfiguration ?  &m_monitoringApplicationConfiguration->Model() : nullptr;
         this->m_model.osPlatform = m_osPlatform.empty() ? nullptr : m_osPlatform.data();
         this->m_model.ports = m_ports.empty() ? nullptr : m_ports.data();
         this->m_model.regionConfigurations = m_regionConfigurations.empty() ? nullptr : m_regionConfigurations.data();
+        this->m_model.serverResourceConstraints = m_serverResourceConstraints ?  &m_serverResourceConstraints->Model() : nullptr;
         this->m_model.serverType = m_serverType.empty() ? nullptr : m_serverType.data();
         this->m_model.useStreamingForAssetDownloads = m_useStreamingForAssetDownloads ? m_useStreamingForAssetDownloads.operator->() : nullptr;
         this->m_model.vmSize = m_vmSize ? m_vmSize.operator->() : nullptr;
@@ -1554,9 +1800,11 @@ private:
     ModelVector<PFMultiplayerServerGameCertificateReferenceWrapper<Alloc>, Alloc> m_gameCertificateReferences;
     StdExtra::optional<PFMultiplayerServerLinuxInstrumentationConfigurationWrapper<Alloc>> m_linuxInstrumentationConfiguration;
     StringDictionaryEntryVector<Alloc> m_metadata;
+    StdExtra::optional<PFMultiplayerServerMonitoringApplicationConfigurationWrapper<Alloc>> m_monitoringApplicationConfiguration;
     String m_osPlatform;
     ModelVector<PFPortWrapper<Alloc>, Alloc> m_ports;
     ModelVector<PFMultiplayerServerBuildRegionWrapper<Alloc>, Alloc> m_regionConfigurations;
+    StdExtra::optional<PFMultiplayerServerServerResourceConstraintParamsWrapper<Alloc>> m_serverResourceConstraints;
     String m_serverType;
     StdExtra::optional<bool> m_useStreamingForAssetDownloads;
     StdExtra::optional<PFMultiplayerServerAzureVmSize> m_vmSize;
@@ -1634,6 +1882,81 @@ private:
 };
 
 template<template<typename AllocT> class Alloc = std::allocator>
+class PFMultiplayerServerWindowsCrashDumpConfigurationWrapper : public ModelWrapper<PFMultiplayerServerWindowsCrashDumpConfiguration, Alloc>
+{
+public:
+    using ModelType = typename PFMultiplayerServerWindowsCrashDumpConfiguration;
+    using String = typename std::basic_string<char, std::char_traits<char>, Alloc<char>>;
+    template<typename T> using Vector = typename std::vector<T, Alloc<T>>;
+
+    PFMultiplayerServerWindowsCrashDumpConfigurationWrapper() = default;
+
+    PFMultiplayerServerWindowsCrashDumpConfigurationWrapper(const PFMultiplayerServerWindowsCrashDumpConfiguration& model) :
+        ModelWrapper<PFMultiplayerServerWindowsCrashDumpConfiguration, Alloc>{ model },
+        m_customDumpFlags{ model.customDumpFlags ? StdExtra::optional<int32_t>{ *model.customDumpFlags } : StdExtra::nullopt },
+        m_dumpType{ model.dumpType ? StdExtra::optional<int32_t>{ *model.dumpType } : StdExtra::nullopt }
+    {
+        SetModelPointers();
+    }
+
+    PFMultiplayerServerWindowsCrashDumpConfigurationWrapper(const PFMultiplayerServerWindowsCrashDumpConfigurationWrapper& src) :
+        PFMultiplayerServerWindowsCrashDumpConfigurationWrapper{ src.Model() }
+    {
+    }
+
+    PFMultiplayerServerWindowsCrashDumpConfigurationWrapper(PFMultiplayerServerWindowsCrashDumpConfigurationWrapper&& src) :
+        PFMultiplayerServerWindowsCrashDumpConfigurationWrapper{}
+    {
+        swap(*this, src);
+    }
+
+    PFMultiplayerServerWindowsCrashDumpConfigurationWrapper& operator=(PFMultiplayerServerWindowsCrashDumpConfigurationWrapper src) 
+    {
+        swap(*this, src);
+        return *this;
+    }
+
+    virtual ~PFMultiplayerServerWindowsCrashDumpConfigurationWrapper() = default;
+
+    friend void swap(PFMultiplayerServerWindowsCrashDumpConfigurationWrapper& lhs, PFMultiplayerServerWindowsCrashDumpConfigurationWrapper& rhs)
+    {
+        using std::swap;
+        swap(lhs.m_model, rhs.m_model);
+        swap(lhs.m_customDumpFlags, rhs.m_customDumpFlags);
+        swap(lhs.m_dumpType, rhs.m_dumpType);
+        lhs.SetModelPointers();
+        rhs.SetModelPointers();
+    }
+
+    void SetCustomDumpFlags(StdExtra::optional<int32_t> value)
+    {
+        m_customDumpFlags = std::move(value);
+        this->m_model.customDumpFlags = m_customDumpFlags ? m_customDumpFlags.operator->() : nullptr;
+    }
+
+    void SetDumpType(StdExtra::optional<int32_t> value)
+    {
+        m_dumpType = std::move(value);
+        this->m_model.dumpType = m_dumpType ? m_dumpType.operator->() : nullptr;
+    }
+
+    void SetIsEnabled(bool value)
+    {
+        this->m_model.isEnabled = value;
+    }
+
+private:
+    void SetModelPointers()
+    {
+        this->m_model.customDumpFlags = m_customDumpFlags ? m_customDumpFlags.operator->() : nullptr;
+        this->m_model.dumpType = m_dumpType ? m_dumpType.operator->() : nullptr;
+    }
+
+    StdExtra::optional<int32_t> m_customDumpFlags;
+    StdExtra::optional<int32_t> m_dumpType;
+};
+
+template<template<typename AllocT> class Alloc = std::allocator>
 class PFMultiplayerServerCreateBuildWithManagedContainerRequestWrapper : public ModelWrapper<PFMultiplayerServerCreateBuildWithManagedContainerRequest, Alloc>
 {
 public:
@@ -1654,11 +1977,14 @@ public:
         m_gameWorkingDirectory{ SafeString(model.gameWorkingDirectory) },
         m_instrumentationConfiguration{ model.instrumentationConfiguration ? StdExtra::optional<PFMultiplayerServerInstrumentationConfigurationWrapper<Alloc>>{ *model.instrumentationConfiguration } : StdExtra::nullopt },
         m_metadata{ model.metadata, model.metadata + model.metadataCount },
+        m_monitoringApplicationConfiguration{ model.monitoringApplicationConfiguration ? StdExtra::optional<PFMultiplayerServerMonitoringApplicationConfigurationParamsWrapper<Alloc>>{ *model.monitoringApplicationConfiguration } : StdExtra::nullopt },
         m_ports{ model.ports, model.ports + model.portsCount },
         m_regionConfigurations{ model.regionConfigurations, model.regionConfigurations + model.regionConfigurationsCount },
+        m_serverResourceConstraints{ model.serverResourceConstraints ? StdExtra::optional<PFMultiplayerServerServerResourceConstraintParamsWrapper<Alloc>>{ *model.serverResourceConstraints } : StdExtra::nullopt },
         m_startMultiplayerServerCommand{ SafeString(model.startMultiplayerServerCommand) },
         m_useStreamingForAssetDownloads{ model.useStreamingForAssetDownloads ? StdExtra::optional<bool>{ *model.useStreamingForAssetDownloads } : StdExtra::nullopt },
-        m_vmSize{ model.vmSize ? StdExtra::optional<PFMultiplayerServerAzureVmSize>{ *model.vmSize } : StdExtra::nullopt }
+        m_vmSize{ model.vmSize ? StdExtra::optional<PFMultiplayerServerAzureVmSize>{ *model.vmSize } : StdExtra::nullopt },
+        m_windowsCrashDumpConfiguration{ model.windowsCrashDumpConfiguration ? StdExtra::optional<PFMultiplayerServerWindowsCrashDumpConfigurationWrapper<Alloc>>{ *model.windowsCrashDumpConfiguration } : StdExtra::nullopt }
     {
         SetModelPointers();
     }
@@ -1695,11 +2021,14 @@ public:
         swap(lhs.m_gameWorkingDirectory, rhs.m_gameWorkingDirectory);
         swap(lhs.m_instrumentationConfiguration, rhs.m_instrumentationConfiguration);
         swap(lhs.m_metadata, rhs.m_metadata);
+        swap(lhs.m_monitoringApplicationConfiguration, rhs.m_monitoringApplicationConfiguration);
         swap(lhs.m_ports, rhs.m_ports);
         swap(lhs.m_regionConfigurations, rhs.m_regionConfigurations);
+        swap(lhs.m_serverResourceConstraints, rhs.m_serverResourceConstraints);
         swap(lhs.m_startMultiplayerServerCommand, rhs.m_startMultiplayerServerCommand);
         swap(lhs.m_useStreamingForAssetDownloads, rhs.m_useStreamingForAssetDownloads);
         swap(lhs.m_vmSize, rhs.m_vmSize);
+        swap(lhs.m_windowsCrashDumpConfiguration, rhs.m_windowsCrashDumpConfiguration);
         lhs.SetModelPointers();
         rhs.SetModelPointers();
     }
@@ -1762,6 +2091,12 @@ public:
         this->m_model.metadataCount =  static_cast<uint32_t>(m_metadata.size());
     }
 
+    void SetMonitoringApplicationConfiguration(StdExtra::optional<PFMultiplayerServerMonitoringApplicationConfigurationParamsWrapper<Alloc>> value)
+    {
+        m_monitoringApplicationConfiguration = std::move(value);
+        this->m_model.monitoringApplicationConfiguration = m_monitoringApplicationConfiguration ? &m_monitoringApplicationConfiguration->Model() : nullptr;
+    }
+
     void SetMultiplayerServerCountPerVm(int32_t value)
     {
         this->m_model.multiplayerServerCountPerVm = value;
@@ -1779,6 +2114,12 @@ public:
         m_regionConfigurations = std::move(value);
         this->m_model.regionConfigurations =  m_regionConfigurations.empty() ? nullptr : m_regionConfigurations.data();
         this->m_model.regionConfigurationsCount =  static_cast<uint32_t>(m_regionConfigurations.size());
+    }
+
+    void SetServerResourceConstraints(StdExtra::optional<PFMultiplayerServerServerResourceConstraintParamsWrapper<Alloc>> value)
+    {
+        m_serverResourceConstraints = std::move(value);
+        this->m_model.serverResourceConstraints = m_serverResourceConstraints ? &m_serverResourceConstraints->Model() : nullptr;
     }
 
     void SetStartMultiplayerServerCommand(String value)
@@ -1799,6 +2140,12 @@ public:
         this->m_model.vmSize = m_vmSize ? m_vmSize.operator->() : nullptr;
     }
 
+    void SetWindowsCrashDumpConfiguration(StdExtra::optional<PFMultiplayerServerWindowsCrashDumpConfigurationWrapper<Alloc>> value)
+    {
+        m_windowsCrashDumpConfiguration = std::move(value);
+        this->m_model.windowsCrashDumpConfiguration = m_windowsCrashDumpConfiguration ? &m_windowsCrashDumpConfiguration->Model() : nullptr;
+    }
+
 private:
     void SetModelPointers()
     {
@@ -1811,11 +2158,14 @@ private:
         this->m_model.gameWorkingDirectory = m_gameWorkingDirectory.empty() ? nullptr : m_gameWorkingDirectory.data();
         this->m_model.instrumentationConfiguration = m_instrumentationConfiguration ?  &m_instrumentationConfiguration->Model() : nullptr;
         this->m_model.metadata = m_metadata.empty() ? nullptr : m_metadata.data();
+        this->m_model.monitoringApplicationConfiguration = m_monitoringApplicationConfiguration ?  &m_monitoringApplicationConfiguration->Model() : nullptr;
         this->m_model.ports = m_ports.empty() ? nullptr : m_ports.data();
         this->m_model.regionConfigurations = m_regionConfigurations.empty() ? nullptr : m_regionConfigurations.data();
+        this->m_model.serverResourceConstraints = m_serverResourceConstraints ?  &m_serverResourceConstraints->Model() : nullptr;
         this->m_model.startMultiplayerServerCommand = m_startMultiplayerServerCommand.empty() ? nullptr : m_startMultiplayerServerCommand.data();
         this->m_model.useStreamingForAssetDownloads = m_useStreamingForAssetDownloads ? m_useStreamingForAssetDownloads.operator->() : nullptr;
         this->m_model.vmSize = m_vmSize ? m_vmSize.operator->() : nullptr;
+        this->m_model.windowsCrashDumpConfiguration = m_windowsCrashDumpConfiguration ?  &m_windowsCrashDumpConfiguration->Model() : nullptr;
     }
 
     StdExtra::optional<bool> m_areAssetsReadonly;
@@ -1827,11 +2177,14 @@ private:
     String m_gameWorkingDirectory;
     StdExtra::optional<PFMultiplayerServerInstrumentationConfigurationWrapper<Alloc>> m_instrumentationConfiguration;
     StringDictionaryEntryVector<Alloc> m_metadata;
+    StdExtra::optional<PFMultiplayerServerMonitoringApplicationConfigurationParamsWrapper<Alloc>> m_monitoringApplicationConfiguration;
     ModelVector<PFPortWrapper<Alloc>, Alloc> m_ports;
     ModelVector<PFMultiplayerServerBuildRegionParamsWrapper<Alloc>, Alloc> m_regionConfigurations;
+    StdExtra::optional<PFMultiplayerServerServerResourceConstraintParamsWrapper<Alloc>> m_serverResourceConstraints;
     String m_startMultiplayerServerCommand;
     StdExtra::optional<bool> m_useStreamingForAssetDownloads;
     StdExtra::optional<PFMultiplayerServerAzureVmSize> m_vmSize;
+    StdExtra::optional<PFMultiplayerServerWindowsCrashDumpConfigurationWrapper<Alloc>> m_windowsCrashDumpConfiguration;
 };
 
 template<template<typename AllocT> class Alloc = std::allocator>
@@ -1856,9 +2209,11 @@ public:
         m_gameWorkingDirectory{ SafeString(model.gameWorkingDirectory) },
         m_instrumentationConfiguration{ model.instrumentationConfiguration ? StdExtra::optional<PFMultiplayerServerInstrumentationConfigurationWrapper<Alloc>>{ *model.instrumentationConfiguration } : StdExtra::nullopt },
         m_metadata{ model.metadata, model.metadata + model.metadataCount },
+        m_monitoringApplicationConfiguration{ model.monitoringApplicationConfiguration ? StdExtra::optional<PFMultiplayerServerMonitoringApplicationConfigurationWrapper<Alloc>>{ *model.monitoringApplicationConfiguration } : StdExtra::nullopt },
         m_osPlatform{ SafeString(model.osPlatform) },
         m_ports{ model.ports, model.ports + model.portsCount },
         m_regionConfigurations{ model.regionConfigurations, model.regionConfigurations + model.regionConfigurationsCount },
+        m_serverResourceConstraints{ model.serverResourceConstraints ? StdExtra::optional<PFMultiplayerServerServerResourceConstraintParamsWrapper<Alloc>>{ *model.serverResourceConstraints } : StdExtra::nullopt },
         m_serverType{ SafeString(model.serverType) },
         m_startMultiplayerServerCommand{ SafeString(model.startMultiplayerServerCommand) },
         m_useStreamingForAssetDownloads{ model.useStreamingForAssetDownloads ? StdExtra::optional<bool>{ *model.useStreamingForAssetDownloads } : StdExtra::nullopt },
@@ -1900,9 +2255,11 @@ public:
         swap(lhs.m_gameWorkingDirectory, rhs.m_gameWorkingDirectory);
         swap(lhs.m_instrumentationConfiguration, rhs.m_instrumentationConfiguration);
         swap(lhs.m_metadata, rhs.m_metadata);
+        swap(lhs.m_monitoringApplicationConfiguration, rhs.m_monitoringApplicationConfiguration);
         swap(lhs.m_osPlatform, rhs.m_osPlatform);
         swap(lhs.m_ports, rhs.m_ports);
         swap(lhs.m_regionConfigurations, rhs.m_regionConfigurations);
+        swap(lhs.m_serverResourceConstraints, rhs.m_serverResourceConstraints);
         swap(lhs.m_serverType, rhs.m_serverType);
         swap(lhs.m_startMultiplayerServerCommand, rhs.m_startMultiplayerServerCommand);
         swap(lhs.m_useStreamingForAssetDownloads, rhs.m_useStreamingForAssetDownloads);
@@ -1974,6 +2331,12 @@ public:
         this->m_model.metadataCount =  static_cast<uint32_t>(m_metadata.size());
     }
 
+    void SetMonitoringApplicationConfiguration(StdExtra::optional<PFMultiplayerServerMonitoringApplicationConfigurationWrapper<Alloc>> value)
+    {
+        m_monitoringApplicationConfiguration = std::move(value);
+        this->m_model.monitoringApplicationConfiguration = m_monitoringApplicationConfiguration ? &m_monitoringApplicationConfiguration->Model() : nullptr;
+    }
+
     void SetMultiplayerServerCountPerVm(int32_t value)
     {
         this->m_model.multiplayerServerCountPerVm = value;
@@ -1997,6 +2360,12 @@ public:
         m_regionConfigurations = std::move(value);
         this->m_model.regionConfigurations =  m_regionConfigurations.empty() ? nullptr : m_regionConfigurations.data();
         this->m_model.regionConfigurationsCount =  static_cast<uint32_t>(m_regionConfigurations.size());
+    }
+
+    void SetServerResourceConstraints(StdExtra::optional<PFMultiplayerServerServerResourceConstraintParamsWrapper<Alloc>> value)
+    {
+        m_serverResourceConstraints = std::move(value);
+        this->m_model.serverResourceConstraints = m_serverResourceConstraints ? &m_serverResourceConstraints->Model() : nullptr;
     }
 
     void SetServerType(String value)
@@ -2036,9 +2405,11 @@ private:
         this->m_model.gameWorkingDirectory = m_gameWorkingDirectory.empty() ? nullptr : m_gameWorkingDirectory.data();
         this->m_model.instrumentationConfiguration = m_instrumentationConfiguration ?  &m_instrumentationConfiguration->Model() : nullptr;
         this->m_model.metadata = m_metadata.empty() ? nullptr : m_metadata.data();
+        this->m_model.monitoringApplicationConfiguration = m_monitoringApplicationConfiguration ?  &m_monitoringApplicationConfiguration->Model() : nullptr;
         this->m_model.osPlatform = m_osPlatform.empty() ? nullptr : m_osPlatform.data();
         this->m_model.ports = m_ports.empty() ? nullptr : m_ports.data();
         this->m_model.regionConfigurations = m_regionConfigurations.empty() ? nullptr : m_regionConfigurations.data();
+        this->m_model.serverResourceConstraints = m_serverResourceConstraints ?  &m_serverResourceConstraints->Model() : nullptr;
         this->m_model.serverType = m_serverType.empty() ? nullptr : m_serverType.data();
         this->m_model.startMultiplayerServerCommand = m_startMultiplayerServerCommand.empty() ? nullptr : m_startMultiplayerServerCommand.data();
         this->m_model.useStreamingForAssetDownloads = m_useStreamingForAssetDownloads ? m_useStreamingForAssetDownloads.operator->() : nullptr;
@@ -2055,9 +2426,11 @@ private:
     String m_gameWorkingDirectory;
     StdExtra::optional<PFMultiplayerServerInstrumentationConfigurationWrapper<Alloc>> m_instrumentationConfiguration;
     StringDictionaryEntryVector<Alloc> m_metadata;
+    StdExtra::optional<PFMultiplayerServerMonitoringApplicationConfigurationWrapper<Alloc>> m_monitoringApplicationConfiguration;
     String m_osPlatform;
     ModelVector<PFPortWrapper<Alloc>, Alloc> m_ports;
     ModelVector<PFMultiplayerServerBuildRegionWrapper<Alloc>, Alloc> m_regionConfigurations;
+    StdExtra::optional<PFMultiplayerServerServerResourceConstraintParamsWrapper<Alloc>> m_serverResourceConstraints;
     String m_serverType;
     String m_startMultiplayerServerCommand;
     StdExtra::optional<bool> m_useStreamingForAssetDownloads;
@@ -2085,6 +2458,7 @@ public:
         m_instrumentationConfiguration{ model.instrumentationConfiguration ? StdExtra::optional<PFMultiplayerServerInstrumentationConfigurationWrapper<Alloc>>{ *model.instrumentationConfiguration } : StdExtra::nullopt },
         m_isOSPreview{ model.isOSPreview ? StdExtra::optional<bool>{ *model.isOSPreview } : StdExtra::nullopt },
         m_metadata{ model.metadata, model.metadata + model.metadataCount },
+        m_monitoringApplicationConfiguration{ model.monitoringApplicationConfiguration ? StdExtra::optional<PFMultiplayerServerMonitoringApplicationConfigurationParamsWrapper<Alloc>>{ *model.monitoringApplicationConfiguration } : StdExtra::nullopt },
         m_osPlatform{ SafeString(model.osPlatform) },
         m_ports{ model.ports, model.ports + model.portsCount },
         m_regionConfigurations{ model.regionConfigurations, model.regionConfigurations + model.regionConfigurationsCount },
@@ -2127,6 +2501,7 @@ public:
         swap(lhs.m_instrumentationConfiguration, rhs.m_instrumentationConfiguration);
         swap(lhs.m_isOSPreview, rhs.m_isOSPreview);
         swap(lhs.m_metadata, rhs.m_metadata);
+        swap(lhs.m_monitoringApplicationConfiguration, rhs.m_monitoringApplicationConfiguration);
         swap(lhs.m_osPlatform, rhs.m_osPlatform);
         swap(lhs.m_ports, rhs.m_ports);
         swap(lhs.m_regionConfigurations, rhs.m_regionConfigurations);
@@ -2195,6 +2570,12 @@ public:
         this->m_model.metadataCount =  static_cast<uint32_t>(m_metadata.size());
     }
 
+    void SetMonitoringApplicationConfiguration(StdExtra::optional<PFMultiplayerServerMonitoringApplicationConfigurationParamsWrapper<Alloc>> value)
+    {
+        m_monitoringApplicationConfiguration = std::move(value);
+        this->m_model.monitoringApplicationConfiguration = m_monitoringApplicationConfiguration ? &m_monitoringApplicationConfiguration->Model() : nullptr;
+    }
+
     void SetMultiplayerServerCountPerVm(int32_t value)
     {
         this->m_model.multiplayerServerCountPerVm = value;
@@ -2250,6 +2631,7 @@ private:
         this->m_model.instrumentationConfiguration = m_instrumentationConfiguration ?  &m_instrumentationConfiguration->Model() : nullptr;
         this->m_model.isOSPreview = m_isOSPreview ? m_isOSPreview.operator->() : nullptr;
         this->m_model.metadata = m_metadata.empty() ? nullptr : m_metadata.data();
+        this->m_model.monitoringApplicationConfiguration = m_monitoringApplicationConfiguration ?  &m_monitoringApplicationConfiguration->Model() : nullptr;
         this->m_model.osPlatform = m_osPlatform.empty() ? nullptr : m_osPlatform.data();
         this->m_model.ports = m_ports.empty() ? nullptr : m_ports.data();
         this->m_model.regionConfigurations = m_regionConfigurations.empty() ? nullptr : m_regionConfigurations.data();
@@ -2267,6 +2649,7 @@ private:
     StdExtra::optional<PFMultiplayerServerInstrumentationConfigurationWrapper<Alloc>> m_instrumentationConfiguration;
     StdExtra::optional<bool> m_isOSPreview;
     StringDictionaryEntryVector<Alloc> m_metadata;
+    StdExtra::optional<PFMultiplayerServerMonitoringApplicationConfigurationParamsWrapper<Alloc>> m_monitoringApplicationConfiguration;
     String m_osPlatform;
     ModelVector<PFPortWrapper<Alloc>, Alloc> m_ports;
     ModelVector<PFMultiplayerServerBuildRegionParamsWrapper<Alloc>, Alloc> m_regionConfigurations;
@@ -2298,6 +2681,7 @@ public:
         m_instrumentationConfiguration{ model.instrumentationConfiguration ? StdExtra::optional<PFMultiplayerServerInstrumentationConfigurationWrapper<Alloc>>{ *model.instrumentationConfiguration } : StdExtra::nullopt },
         m_isOSPreview{ model.isOSPreview ? StdExtra::optional<bool>{ *model.isOSPreview } : StdExtra::nullopt },
         m_metadata{ model.metadata, model.metadata + model.metadataCount },
+        m_monitoringApplicationConfiguration{ model.monitoringApplicationConfiguration ? StdExtra::optional<PFMultiplayerServerMonitoringApplicationConfigurationWrapper<Alloc>>{ *model.monitoringApplicationConfiguration } : StdExtra::nullopt },
         m_osPlatform{ SafeString(model.osPlatform) },
         m_ports{ model.ports, model.ports + model.portsCount },
         m_regionConfigurations{ model.regionConfigurations, model.regionConfigurations + model.regionConfigurationsCount },
@@ -2343,6 +2727,7 @@ public:
         swap(lhs.m_instrumentationConfiguration, rhs.m_instrumentationConfiguration);
         swap(lhs.m_isOSPreview, rhs.m_isOSPreview);
         swap(lhs.m_metadata, rhs.m_metadata);
+        swap(lhs.m_monitoringApplicationConfiguration, rhs.m_monitoringApplicationConfiguration);
         swap(lhs.m_osPlatform, rhs.m_osPlatform);
         swap(lhs.m_ports, rhs.m_ports);
         swap(lhs.m_regionConfigurations, rhs.m_regionConfigurations);
@@ -2423,6 +2808,12 @@ public:
         this->m_model.metadataCount =  static_cast<uint32_t>(m_metadata.size());
     }
 
+    void SetMonitoringApplicationConfiguration(StdExtra::optional<PFMultiplayerServerMonitoringApplicationConfigurationWrapper<Alloc>> value)
+    {
+        m_monitoringApplicationConfiguration = std::move(value);
+        this->m_model.monitoringApplicationConfiguration = m_monitoringApplicationConfiguration ? &m_monitoringApplicationConfiguration->Model() : nullptr;
+    }
+
     void SetMultiplayerServerCountPerVm(int32_t value)
     {
         this->m_model.multiplayerServerCountPerVm = value;
@@ -2486,6 +2877,7 @@ private:
         this->m_model.instrumentationConfiguration = m_instrumentationConfiguration ?  &m_instrumentationConfiguration->Model() : nullptr;
         this->m_model.isOSPreview = m_isOSPreview ? m_isOSPreview.operator->() : nullptr;
         this->m_model.metadata = m_metadata.empty() ? nullptr : m_metadata.data();
+        this->m_model.monitoringApplicationConfiguration = m_monitoringApplicationConfiguration ?  &m_monitoringApplicationConfiguration->Model() : nullptr;
         this->m_model.osPlatform = m_osPlatform.empty() ? nullptr : m_osPlatform.data();
         this->m_model.ports = m_ports.empty() ? nullptr : m_ports.data();
         this->m_model.regionConfigurations = m_regionConfigurations.empty() ? nullptr : m_regionConfigurations.data();
@@ -2506,6 +2898,7 @@ private:
     StdExtra::optional<PFMultiplayerServerInstrumentationConfigurationWrapper<Alloc>> m_instrumentationConfiguration;
     StdExtra::optional<bool> m_isOSPreview;
     StringDictionaryEntryVector<Alloc> m_metadata;
+    StdExtra::optional<PFMultiplayerServerMonitoringApplicationConfigurationWrapper<Alloc>> m_monitoringApplicationConfiguration;
     String m_osPlatform;
     ModelVector<PFPortWrapper<Alloc>, Alloc> m_ports;
     ModelVector<PFMultiplayerServerBuildRegionWrapper<Alloc>, Alloc> m_regionConfigurations;
@@ -3991,9 +4384,9 @@ public:
         m_osPlatform{ SafeString(model.osPlatform) },
         m_ports{ model.ports, model.ports + model.portsCount },
         m_regionConfigurations{ model.regionConfigurations, model.regionConfigurations + model.regionConfigurationsCount },
+        m_serverResourceConstraints{ model.serverResourceConstraints ? StdExtra::optional<PFMultiplayerServerServerResourceConstraintParamsWrapper<Alloc>>{ *model.serverResourceConstraints } : StdExtra::nullopt },
         m_serverType{ SafeString(model.serverType) },
         m_startMultiplayerServerCommand{ SafeString(model.startMultiplayerServerCommand) },
-        m_useStreamingForAssetDownloads{ model.useStreamingForAssetDownloads ? StdExtra::optional<bool>{ *model.useStreamingForAssetDownloads } : StdExtra::nullopt },
         m_vmSize{ model.vmSize ? StdExtra::optional<PFMultiplayerServerAzureVmSize>{ *model.vmSize } : StdExtra::nullopt }
     {
         SetModelPointers();
@@ -4037,9 +4430,9 @@ public:
         swap(lhs.m_osPlatform, rhs.m_osPlatform);
         swap(lhs.m_ports, rhs.m_ports);
         swap(lhs.m_regionConfigurations, rhs.m_regionConfigurations);
+        swap(lhs.m_serverResourceConstraints, rhs.m_serverResourceConstraints);
         swap(lhs.m_serverType, rhs.m_serverType);
         swap(lhs.m_startMultiplayerServerCommand, rhs.m_startMultiplayerServerCommand);
-        swap(lhs.m_useStreamingForAssetDownloads, rhs.m_useStreamingForAssetDownloads);
         swap(lhs.m_vmSize, rhs.m_vmSize);
         lhs.SetModelPointers();
         rhs.SetModelPointers();
@@ -4145,6 +4538,12 @@ public:
         this->m_model.regionConfigurationsCount =  static_cast<uint32_t>(m_regionConfigurations.size());
     }
 
+    void SetServerResourceConstraints(StdExtra::optional<PFMultiplayerServerServerResourceConstraintParamsWrapper<Alloc>> value)
+    {
+        m_serverResourceConstraints = std::move(value);
+        this->m_model.serverResourceConstraints = m_serverResourceConstraints ? &m_serverResourceConstraints->Model() : nullptr;
+    }
+
     void SetServerType(String value)
     {
         m_serverType = std::move(value);
@@ -4155,12 +4554,6 @@ public:
     {
         m_startMultiplayerServerCommand = std::move(value);
         this->m_model.startMultiplayerServerCommand =  m_startMultiplayerServerCommand.empty() ? nullptr : m_startMultiplayerServerCommand.data();
-    }
-
-    void SetUseStreamingForAssetDownloads(StdExtra::optional<bool> value)
-    {
-        m_useStreamingForAssetDownloads = std::move(value);
-        this->m_model.useStreamingForAssetDownloads = m_useStreamingForAssetDownloads ? m_useStreamingForAssetDownloads.operator->() : nullptr;
     }
 
     void SetVmSize(StdExtra::optional<PFMultiplayerServerAzureVmSize> value)
@@ -4187,9 +4580,9 @@ private:
         this->m_model.osPlatform = m_osPlatform.empty() ? nullptr : m_osPlatform.data();
         this->m_model.ports = m_ports.empty() ? nullptr : m_ports.data();
         this->m_model.regionConfigurations = m_regionConfigurations.empty() ? nullptr : m_regionConfigurations.data();
+        this->m_model.serverResourceConstraints = m_serverResourceConstraints ?  &m_serverResourceConstraints->Model() : nullptr;
         this->m_model.serverType = m_serverType.empty() ? nullptr : m_serverType.data();
         this->m_model.startMultiplayerServerCommand = m_startMultiplayerServerCommand.empty() ? nullptr : m_startMultiplayerServerCommand.data();
-        this->m_model.useStreamingForAssetDownloads = m_useStreamingForAssetDownloads ? m_useStreamingForAssetDownloads.operator->() : nullptr;
         this->m_model.vmSize = m_vmSize ? m_vmSize.operator->() : nullptr;
     }
 
@@ -4208,9 +4601,9 @@ private:
     String m_osPlatform;
     ModelVector<PFPortWrapper<Alloc>, Alloc> m_ports;
     ModelVector<PFMultiplayerServerBuildRegionWrapper<Alloc>, Alloc> m_regionConfigurations;
+    StdExtra::optional<PFMultiplayerServerServerResourceConstraintParamsWrapper<Alloc>> m_serverResourceConstraints;
     String m_serverType;
     String m_startMultiplayerServerCommand;
-    StdExtra::optional<bool> m_useStreamingForAssetDownloads;
     StdExtra::optional<PFMultiplayerServerAzureVmSize> m_vmSize;
 };
 
@@ -4438,9 +4831,7 @@ public:
 
     PFMultiplayerServerGetMultiplayerServerDetailsRequestWrapper(const PFMultiplayerServerGetMultiplayerServerDetailsRequest& model) :
         ModelWrapper<PFMultiplayerServerGetMultiplayerServerDetailsRequest, Alloc>{ model },
-        m_buildId{ SafeString(model.buildId) },
         m_customTags{ model.customTags, model.customTags + model.customTagsCount },
-        m_region{ SafeString(model.region) },
         m_sessionId{ SafeString(model.sessionId) }
     {
         SetModelPointers();
@@ -4469,18 +4860,10 @@ public:
     {
         using std::swap;
         swap(lhs.m_model, rhs.m_model);
-        swap(lhs.m_buildId, rhs.m_buildId);
         swap(lhs.m_customTags, rhs.m_customTags);
-        swap(lhs.m_region, rhs.m_region);
         swap(lhs.m_sessionId, rhs.m_sessionId);
         lhs.SetModelPointers();
         rhs.SetModelPointers();
-    }
-
-    void SetBuildId(String value)
-    {
-        m_buildId = std::move(value);
-        this->m_model.buildId =  m_buildId.empty() ? nullptr : m_buildId.data();
     }
 
     void SetCustomTags(StringDictionaryEntryVector<Alloc> value)
@@ -4488,12 +4871,6 @@ public:
         m_customTags = std::move(value);
         this->m_model.customTags =  m_customTags.empty() ? nullptr : m_customTags.data();
         this->m_model.customTagsCount =  static_cast<uint32_t>(m_customTags.size());
-    }
-
-    void SetRegion(String value)
-    {
-        m_region = std::move(value);
-        this->m_model.region =  m_region.empty() ? nullptr : m_region.data();
     }
 
     void SetSessionId(String value)
@@ -4505,15 +4882,11 @@ public:
 private:
     void SetModelPointers()
     {
-        this->m_model.buildId = m_buildId.empty() ? nullptr : m_buildId.data();
         this->m_model.customTags = m_customTags.empty() ? nullptr : m_customTags.data();
-        this->m_model.region = m_region.empty() ? nullptr : m_region.data();
         this->m_model.sessionId = m_sessionId.empty() ? nullptr : m_sessionId.data();
     }
 
-    String m_buildId;
     StringDictionaryEntryVector<Alloc> m_customTags;
-    String m_region;
     String m_sessionId;
 };
 

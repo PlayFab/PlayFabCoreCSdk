@@ -28,7 +28,8 @@ public:
 
     PFProfilesGetGlobalPolicyRequestWrapper(const PFProfilesGetGlobalPolicyRequest& model) :
         ModelWrapper<PFProfilesGetGlobalPolicyRequest, Alloc>{ model },
-        m_customTags{ model.customTags, model.customTags + model.customTagsCount }
+        m_customTags{ model.customTags, model.customTags + model.customTagsCount },
+        m_entity{ model.entity ? StdExtra::optional<PFEntityKeyWrapper<Alloc>>{ *model.entity } : StdExtra::nullopt }
     {
         SetModelPointers();
     }
@@ -57,6 +58,7 @@ public:
         using std::swap;
         swap(lhs.m_model, rhs.m_model);
         swap(lhs.m_customTags, rhs.m_customTags);
+        swap(lhs.m_entity, rhs.m_entity);
         lhs.SetModelPointers();
         rhs.SetModelPointers();
     }
@@ -68,13 +70,21 @@ public:
         this->m_model.customTagsCount =  static_cast<uint32_t>(m_customTags.size());
     }
 
+    void SetEntity(StdExtra::optional<PFEntityKeyWrapper<Alloc>> value)
+    {
+        m_entity = std::move(value);
+        this->m_model.entity = m_entity ? &m_entity->Model() : nullptr;
+    }
+
 private:
     void SetModelPointers()
     {
         this->m_model.customTags = m_customTags.empty() ? nullptr : m_customTags.data();
+        this->m_model.entity = m_entity ?  &m_entity->Model() : nullptr;
     }
 
     StringDictionaryEntryVector<Alloc> m_customTags;
+    StdExtra::optional<PFEntityKeyWrapper<Alloc>> m_entity;
 };
 
 template<template<typename AllocT> class Alloc = std::allocator>

@@ -432,6 +432,55 @@ HRESULT PFCatalogGetItemGetResult(
 ) noexcept;
 
 /// <summary>
+/// Search for a given item and return a set of bundles and stores containing the item
+/// </summary>
+/// <param name="entityHandle">PFEntityHandle to use for authentication.</param>
+/// <param name="request">Populated request object.</param>
+/// <param name="async">XAsyncBlock for the async operation.</param>
+/// <returns>Result code for this API operation.</returns>
+/// <remarks>
+/// Given an item, return a set of bundles and stores containing the item.
+///
+/// If successful, call <see cref="PFCatalogGetItemContainersGetResult"/> to get the result.
+/// </remarks>
+HRESULT PFCatalogGetItemContainersAsync(
+    _In_ PFEntityHandle entityHandle,
+    _In_ const PFCatalogGetItemContainersRequest* request,
+    _Inout_ XAsyncBlock* async
+) noexcept;
+
+/// <summary>
+/// Get the size in bytes needed to store the result of a GetItemContainers call.
+/// </summary>
+/// <param name="async">XAsyncBlock for the async operation.</param>
+/// <param name="bufferSize">The buffer size in bytes required for the result.</param>
+/// <returns>Result code for this API operation.</returns>
+HRESULT PFCatalogGetItemContainersGetResultSize(
+    _Inout_ XAsyncBlock* async,
+    _Out_ size_t* bufferSize
+) noexcept;
+
+/// <summary>
+/// Gets the result of a successful PFCatalogGetItemContainersAsync call.
+/// </summary>
+/// <param name="async">XAsyncBlock for the async operation.</param>
+/// <param name="bufferSize">The size of the buffer for the result object.</param>
+/// <param name="buffer">Byte buffer used for the result value and its fields.</param>
+/// <param name="result">Pointer to the result object.</param>
+/// <param name="bufferUsed">The number of bytes in the provided buffer that were used.</param>
+/// <returns>Result code for this API operation.</returns>
+/// <remarks>
+/// result is a pointer within buffer and does not need to be freed separately.
+/// </remarks>
+HRESULT PFCatalogGetItemContainersGetResult(
+    _Inout_ XAsyncBlock* async,
+    _In_ size_t bufferSize,
+    _Out_writes_bytes_to_(bufferSize, *bufferUsed) void* buffer,
+    _Outptr_ PFCatalogGetItemContainersResponse** result,
+    _Out_opt_ size_t* bufferUsed
+) noexcept;
+
+/// <summary>
 /// Gets the moderation state for an item, including the concern category and string reason.
 /// </summary>
 /// <param name="entityHandle">PFEntityHandle to use for authentication.</param>
@@ -616,6 +665,53 @@ HRESULT PFCatalogGetItemReviewSummaryGetResult(
     _In_ size_t bufferSize,
     _Out_writes_bytes_to_(bufferSize, *bufferUsed) void* buffer,
     _Outptr_ PFCatalogGetItemReviewSummaryResponse** result,
+    _Out_opt_ size_t* bufferUsed
+) noexcept;
+
+/// <summary>
+/// Retrieves items from the public catalog.
+/// </summary>
+/// <param name="entityHandle">PFEntityHandle to use for authentication.</param>
+/// <param name="request">Populated request object.</param>
+/// <param name="async">XAsyncBlock for the async operation.</param>
+/// <returns>Result code for this API operation.</returns>
+/// <remarks>
+/// If successful, call <see cref="PFCatalogGetItemsGetResult"/> to get the result.
+/// </remarks>
+HRESULT PFCatalogGetItemsAsync(
+    _In_ PFEntityHandle entityHandle,
+    _In_ const PFCatalogGetItemsRequest* request,
+    _Inout_ XAsyncBlock* async
+) noexcept;
+
+/// <summary>
+/// Get the size in bytes needed to store the result of a GetItems call.
+/// </summary>
+/// <param name="async">XAsyncBlock for the async operation.</param>
+/// <param name="bufferSize">The buffer size in bytes required for the result.</param>
+/// <returns>Result code for this API operation.</returns>
+HRESULT PFCatalogGetItemsGetResultSize(
+    _Inout_ XAsyncBlock* async,
+    _Out_ size_t* bufferSize
+) noexcept;
+
+/// <summary>
+/// Gets the result of a successful PFCatalogGetItemsAsync call.
+/// </summary>
+/// <param name="async">XAsyncBlock for the async operation.</param>
+/// <param name="bufferSize">The size of the buffer for the result object.</param>
+/// <param name="buffer">Byte buffer used for the result value and its fields.</param>
+/// <param name="result">Pointer to the result object.</param>
+/// <param name="bufferUsed">The number of bytes in the provided buffer that were used.</param>
+/// <returns>Result code for this API operation.</returns>
+/// <remarks>
+/// result is a pointer within buffer and does not need to be freed separately.
+/// </remarks>
+HRESULT PFCatalogGetItemsGetResult(
+    _Inout_ XAsyncBlock* async,
+    _In_ size_t bufferSize,
+    _Out_writes_bytes_to_(bufferSize, *bufferUsed) void* buffer,
+    _Outptr_ PFCatalogGetItemsResponse** result,
     _Out_opt_ size_t* bufferUsed
 ) noexcept;
 

@@ -86,11 +86,13 @@ typedef struct PFGlobalState* PFStateHandle;
 /// Create PlayFab global state.
 /// </summary>
 /// <param name="playFabTitleId">PlayFab TitleId for the title. Found in the Game Manager for your title on the PlayFab Website.</param>
+/// <param name="connectionString">Optional connection string to directly access a title resource. Configured via Game Manager.</param>
 /// <param name="backgroundQueue">An XTaskQueue that should be used for background work. If no queue is a default (threadpool) queue will be used.</param>
 /// <param name="stateHandle">Pointer to PFStateHandle to write.</param>
 /// <returns>Result code for this API operation.</returns>
 HRESULT PFInitialize(
     _In_z_ const char* playFabTitleId,
+    _In_opt_z_ const char* connectionString,
     _In_opt_ XTaskQueueHandle backgroundQueue,
     _Outptr_ PFStateHandle* stateHandle
 ) noexcept;
@@ -101,17 +103,18 @@ HRESULT PFInitialize(
 /// </summary>
 /// <param name="playFabTitleId">PlayFab TitleId for the title. Found in the Game Manager for your title on the PlayFab Website.</param>
 /// <param name="secretKey">Key to be used for Authentication for Server and Admin APIs.</param>
+/// <param name="connectionString">Optional connection string to directly access a title resource. Configured via Game Manager.</param>
 /// <param name="backgroundQueue">An XTaskQueue that should be used for background work. If no queue is a default (threadpool) queue will be used.</param>
 /// <param name="stateHandle">Pointer to PFStateHandle to write.</param>
 /// <returns>Result code for this API operation.</returns>
 HRESULT PFAdminInitialize(
     _In_z_ const char* playFabTitleId,
     _In_z_ const char* secretKey,
+    _In_opt_z_ const char* connectionString,
     _In_opt_ XTaskQueueHandle backgroundQueue,
     _Outptr_ PFStateHandle* stateHandle
 ) noexcept;
 #endif
-
 
 /// <summary>
 /// Cleanup PlayFab global state.

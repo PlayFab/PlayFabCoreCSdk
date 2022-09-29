@@ -21,7 +21,7 @@ void AutoGenPlatformSpecificTests::Log(std::stringstream& ss)
 
 HRESULT AutoGenPlatformSpecificTests::LogHR(HRESULT hr)
 {
-    if( TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    if (TestApp::ShouldTrace(PFTestTraceLevel::Information))
     {
         TestApp::Log("Result: 0x%0.8x", hr);
     }
@@ -32,36 +32,56 @@ HRESULT AutoGenPlatformSpecificTests::LogHR(HRESULT hr)
 void AutoGenPlatformSpecificTests::AddTests()
 {
     // Generated tests 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestPlatformSpecificClientAndroidDevicePushNotificationRegistration", &AutoGenPlatformSpecificTests::TestPlatformSpecificClientAndroidDevicePushNotificationRegistration);
+#endif
 
     AddTest("TestPlatformSpecificClientConsumeMicrosoftStoreEntitlements", &AutoGenPlatformSpecificTests::TestPlatformSpecificClientConsumeMicrosoftStoreEntitlements);
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestPlatformSpecificClientConsumePS5Entitlements", &AutoGenPlatformSpecificTests::TestPlatformSpecificClientConsumePS5Entitlements);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestPlatformSpecificClientConsumePSNEntitlements", &AutoGenPlatformSpecificTests::TestPlatformSpecificClientConsumePSNEntitlements);
+#endif
 
     AddTest("TestPlatformSpecificClientConsumeXboxEntitlements", &AutoGenPlatformSpecificTests::TestPlatformSpecificClientConsumeXboxEntitlements);
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestPlatformSpecificClientRefreshPSNAuthToken", &AutoGenPlatformSpecificTests::TestPlatformSpecificClientRefreshPSNAuthToken);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestPlatformSpecificClientRegisterForIOSPushNotification", &AutoGenPlatformSpecificTests::TestPlatformSpecificClientRegisterForIOSPushNotification);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestPlatformSpecificClientRestoreIOSPurchases", &AutoGenPlatformSpecificTests::TestPlatformSpecificClientRestoreIOSPurchases);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestPlatformSpecificClientValidateAmazonIAPReceipt", &AutoGenPlatformSpecificTests::TestPlatformSpecificClientValidateAmazonIAPReceipt);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestPlatformSpecificClientValidateGooglePlayPurchase", &AutoGenPlatformSpecificTests::TestPlatformSpecificClientValidateGooglePlayPurchase);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestPlatformSpecificClientValidateIOSReceipt", &AutoGenPlatformSpecificTests::TestPlatformSpecificClientValidateIOSReceipt);
+#endif
 
     AddTest("TestPlatformSpecificClientValidateWindowsStoreReceipt", &AutoGenPlatformSpecificTests::TestPlatformSpecificClientValidateWindowsStoreReceipt);
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestPlatformSpecificServerAwardSteamAchievement", &AutoGenPlatformSpecificTests::TestPlatformSpecificServerAwardSteamAchievement);
+#endif
 }
 
 void AutoGenPlatformSpecificTests::ClassSetUp()
 {
-    HRESULT hr = PFAdminInitialize(testTitleData.titleId.data(), testTitleData.developerSecretKey.data(), nullptr, &stateHandle);
+    HRESULT hr = PFAdminInitialize(testTitleData.titleId.data(), testTitleData.developerSecretKey.data(), testTitleData.connectionString.data(), nullptr, &stateHandle);
     assert(SUCCEEDED(hr));
     if (SUCCEEDED(hr))
     {
@@ -166,12 +186,13 @@ void AutoGenPlatformSpecificTests::SetUp(TestContext& testContext)
 
 #pragma region ClientAndroidDevicePushNotificationRegistration
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenPlatformSpecificTests::TestPlatformSpecificClientAndroidDevicePushNotificationRegistration(TestContext& testContext)
 {
     auto async = std::make_unique<XAsyncHelper<XAsyncResult>>(testContext);
 
     PFPlatformSpecificAndroidDevicePushNotificationRegistrationRequestWrapper<> request;
-    FillAndroidDevicePushNotificationRegistrationRequest(request);
+    FillClientAndroidDevicePushNotificationRegistrationRequest(request);
     LogAndroidDevicePushNotificationRegistrationRequest(&request.Model(), "TestPlatformSpecificClientAndroidDevicePushNotificationRegistration");
     HRESULT hr = PFPlatformSpecificClientAndroidDevicePushNotificationRegistrationAsync(titlePlayerHandle, &request.Model(), &async->asyncBlock);
     if (FAILED(hr))
@@ -181,6 +202,7 @@ void AutoGenPlatformSpecificTests::TestPlatformSpecificClientAndroidDevicePushNo
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
@@ -188,7 +210,7 @@ void AutoGenPlatformSpecificTests::TestPlatformSpecificClientAndroidDevicePushNo
 
 void AutoGenPlatformSpecificTests::TestPlatformSpecificClientConsumeMicrosoftStoreEntitlements(TestContext& testContext)
 {
-    struct ClientConsumeMicrosoftStoreEntitlementsResultHolder : public ConsumeMicrosoftStoreEntitlementsResponseHolder
+    struct ClientConsumeMicrosoftStoreEntitlementsResultHolderStruct : public ConsumeMicrosoftStoreEntitlementsResponseHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -198,19 +220,19 @@ void AutoGenPlatformSpecificTests::TestPlatformSpecificClientConsumeMicrosoftSto
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFPlatformSpecificClientConsumeMicrosoftStoreEntitlementsGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
             
-            LogPFPlatformSpecificConsumeMicrosoftStoreEntitlementsResponse(result);
+            LogConsumeMicrosoftStoreEntitlementsResponse(result);
             return S_OK;
         }
 
         HRESULT Validate() override
         {
-            return ValidatePFPlatformSpecificConsumeMicrosoftStoreEntitlementsResponse(result);
+            return ValidateClientConsumeMicrosoftStoreEntitlementsResponse(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<ClientConsumeMicrosoftStoreEntitlementsResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<ClientConsumeMicrosoftStoreEntitlementsResultHolderStruct>>(testContext);
 
     PFPlatformSpecificConsumeMicrosoftStoreEntitlementsRequestWrapper<> request;
-    FillConsumeMicrosoftStoreEntitlementsRequest(request);
+    FillClientConsumeMicrosoftStoreEntitlementsRequest(request);
     LogConsumeMicrosoftStoreEntitlementsRequest(&request.Model(), "TestPlatformSpecificClientConsumeMicrosoftStoreEntitlements");
     HRESULT hr = PFPlatformSpecificClientConsumeMicrosoftStoreEntitlementsAsync(titlePlayerHandle, &request.Model(), &async->asyncBlock);
     if (FAILED(hr))
@@ -225,9 +247,10 @@ void AutoGenPlatformSpecificTests::TestPlatformSpecificClientConsumeMicrosoftSto
 
 #pragma region ClientConsumePS5Entitlements
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenPlatformSpecificTests::TestPlatformSpecificClientConsumePS5Entitlements(TestContext& testContext)
 {
-    struct ClientConsumePS5EntitlementsResultHolder : public ConsumePS5EntitlementsResultHolder
+    struct ClientConsumePS5EntitlementsResultHolderStruct : public ConsumePS5EntitlementsResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -237,19 +260,19 @@ void AutoGenPlatformSpecificTests::TestPlatformSpecificClientConsumePS5Entitleme
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFPlatformSpecificClientConsumePS5EntitlementsGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
             
-            LogPFPlatformSpecificConsumePS5EntitlementsResult(result);
+            LogConsumePS5EntitlementsResult(result);
             return S_OK;
         }
 
         HRESULT Validate() override
         {
-            return ValidatePFPlatformSpecificConsumePS5EntitlementsResult(result);
+            return ValidateClientConsumePS5EntitlementsResponse(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<ClientConsumePS5EntitlementsResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<ClientConsumePS5EntitlementsResultHolderStruct>>(testContext);
 
     PFPlatformSpecificConsumePS5EntitlementsRequestWrapper<> request;
-    FillConsumePS5EntitlementsRequest(request);
+    FillClientConsumePS5EntitlementsRequest(request);
     LogConsumePS5EntitlementsRequest(&request.Model(), "TestPlatformSpecificClientConsumePS5Entitlements");
     HRESULT hr = PFPlatformSpecificClientConsumePS5EntitlementsAsync(titlePlayerHandle, &request.Model(), &async->asyncBlock);
     if (FAILED(hr))
@@ -259,14 +282,16 @@ void AutoGenPlatformSpecificTests::TestPlatformSpecificClientConsumePS5Entitleme
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region ClientConsumePSNEntitlements
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenPlatformSpecificTests::TestPlatformSpecificClientConsumePSNEntitlements(TestContext& testContext)
 {
-    struct ClientConsumePSNEntitlementsResultHolder : public ConsumePSNEntitlementsResultHolder
+    struct ClientConsumePSNEntitlementsResultHolderStruct : public ConsumePSNEntitlementsResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -276,19 +301,19 @@ void AutoGenPlatformSpecificTests::TestPlatformSpecificClientConsumePSNEntitleme
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFPlatformSpecificClientConsumePSNEntitlementsGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
             
-            LogPFPlatformSpecificConsumePSNEntitlementsResult(result);
+            LogConsumePSNEntitlementsResult(result);
             return S_OK;
         }
 
         HRESULT Validate() override
         {
-            return ValidatePFPlatformSpecificConsumePSNEntitlementsResult(result);
+            return ValidateClientConsumePSNEntitlementsResponse(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<ClientConsumePSNEntitlementsResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<ClientConsumePSNEntitlementsResultHolderStruct>>(testContext);
 
     PFPlatformSpecificConsumePSNEntitlementsRequestWrapper<> request;
-    FillConsumePSNEntitlementsRequest(request);
+    FillClientConsumePSNEntitlementsRequest(request);
     LogConsumePSNEntitlementsRequest(&request.Model(), "TestPlatformSpecificClientConsumePSNEntitlements");
     HRESULT hr = PFPlatformSpecificClientConsumePSNEntitlementsAsync(titlePlayerHandle, &request.Model(), &async->asyncBlock);
     if (FAILED(hr))
@@ -298,6 +323,7 @@ void AutoGenPlatformSpecificTests::TestPlatformSpecificClientConsumePSNEntitleme
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
@@ -305,7 +331,7 @@ void AutoGenPlatformSpecificTests::TestPlatformSpecificClientConsumePSNEntitleme
 
 void AutoGenPlatformSpecificTests::TestPlatformSpecificClientConsumeXboxEntitlements(TestContext& testContext)
 {
-    struct ClientConsumeXboxEntitlementsResultHolder : public ConsumeXboxEntitlementsResultHolder
+    struct ClientConsumeXboxEntitlementsResultHolderStruct : public ConsumeXboxEntitlementsResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -315,19 +341,19 @@ void AutoGenPlatformSpecificTests::TestPlatformSpecificClientConsumeXboxEntitlem
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFPlatformSpecificClientConsumeXboxEntitlementsGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
             
-            LogPFPlatformSpecificConsumeXboxEntitlementsResult(result);
+            LogConsumeXboxEntitlementsResult(result);
             return S_OK;
         }
 
         HRESULT Validate() override
         {
-            return ValidatePFPlatformSpecificConsumeXboxEntitlementsResult(result);
+            return ValidateClientConsumeXboxEntitlementsResponse(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<ClientConsumeXboxEntitlementsResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<ClientConsumeXboxEntitlementsResultHolderStruct>>(testContext);
 
     PFPlatformSpecificConsumeXboxEntitlementsRequestWrapper<> request;
-    FillConsumeXboxEntitlementsRequest(request);
+    FillClientConsumeXboxEntitlementsRequest(request);
     LogConsumeXboxEntitlementsRequest(&request.Model(), "TestPlatformSpecificClientConsumeXboxEntitlements");
     HRESULT hr = PFPlatformSpecificClientConsumeXboxEntitlementsAsync(titlePlayerHandle, &request.Model(), &async->asyncBlock);
     if (FAILED(hr))
@@ -342,12 +368,13 @@ void AutoGenPlatformSpecificTests::TestPlatformSpecificClientConsumeXboxEntitlem
 
 #pragma region ClientRefreshPSNAuthToken
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenPlatformSpecificTests::TestPlatformSpecificClientRefreshPSNAuthToken(TestContext& testContext)
 {
     auto async = std::make_unique<XAsyncHelper<XAsyncResult>>(testContext);
 
     PFPlatformSpecificRefreshPSNAuthTokenRequestWrapper<> request;
-    FillRefreshPSNAuthTokenRequest(request);
+    FillClientRefreshPSNAuthTokenRequest(request);
     LogRefreshPSNAuthTokenRequest(&request.Model(), "TestPlatformSpecificClientRefreshPSNAuthToken");
     HRESULT hr = PFPlatformSpecificClientRefreshPSNAuthTokenAsync(titlePlayerHandle, &request.Model(), &async->asyncBlock);
     if (FAILED(hr))
@@ -357,17 +384,19 @@ void AutoGenPlatformSpecificTests::TestPlatformSpecificClientRefreshPSNAuthToken
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region ClientRegisterForIOSPushNotification
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenPlatformSpecificTests::TestPlatformSpecificClientRegisterForIOSPushNotification(TestContext& testContext)
 {
     auto async = std::make_unique<XAsyncHelper<XAsyncResult>>(testContext);
 
     PFPlatformSpecificRegisterForIOSPushNotificationRequestWrapper<> request;
-    FillRegisterForIOSPushNotificationRequest(request);
+    FillClientRegisterForIOSPushNotificationRequest(request);
     LogRegisterForIOSPushNotificationRequest(&request.Model(), "TestPlatformSpecificClientRegisterForIOSPushNotification");
     HRESULT hr = PFPlatformSpecificClientRegisterForIOSPushNotificationAsync(titlePlayerHandle, &request.Model(), &async->asyncBlock);
     if (FAILED(hr))
@@ -377,14 +406,16 @@ void AutoGenPlatformSpecificTests::TestPlatformSpecificClientRegisterForIOSPushN
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region ClientRestoreIOSPurchases
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenPlatformSpecificTests::TestPlatformSpecificClientRestoreIOSPurchases(TestContext& testContext)
 {
-    struct ClientRestoreIOSPurchasesResultHolder : public RestoreIOSPurchasesResultHolder
+    struct ClientRestoreIOSPurchasesResultHolderStruct : public RestoreIOSPurchasesResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -394,19 +425,19 @@ void AutoGenPlatformSpecificTests::TestPlatformSpecificClientRestoreIOSPurchases
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFPlatformSpecificClientRestoreIOSPurchasesGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
             
-            LogPFPlatformSpecificRestoreIOSPurchasesResult(result);
+            LogRestoreIOSPurchasesResult(result);
             return S_OK;
         }
 
         HRESULT Validate() override
         {
-            return ValidatePFPlatformSpecificRestoreIOSPurchasesResult(result);
+            return ValidateClientRestoreIOSPurchasesResponse(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<ClientRestoreIOSPurchasesResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<ClientRestoreIOSPurchasesResultHolderStruct>>(testContext);
 
     PFPlatformSpecificRestoreIOSPurchasesRequestWrapper<> request;
-    FillRestoreIOSPurchasesRequest(request);
+    FillClientRestoreIOSPurchasesRequest(request);
     LogRestoreIOSPurchasesRequest(&request.Model(), "TestPlatformSpecificClientRestoreIOSPurchases");
     HRESULT hr = PFPlatformSpecificClientRestoreIOSPurchasesAsync(titlePlayerHandle, &request.Model(), &async->asyncBlock);
     if (FAILED(hr))
@@ -416,14 +447,16 @@ void AutoGenPlatformSpecificTests::TestPlatformSpecificClientRestoreIOSPurchases
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region ClientValidateAmazonIAPReceipt
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenPlatformSpecificTests::TestPlatformSpecificClientValidateAmazonIAPReceipt(TestContext& testContext)
 {
-    struct ClientValidateAmazonIAPReceiptResultHolder : public ValidateAmazonReceiptResultHolder
+    struct ClientValidateAmazonIAPReceiptResultHolderStruct : public ValidateAmazonReceiptResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -433,19 +466,19 @@ void AutoGenPlatformSpecificTests::TestPlatformSpecificClientValidateAmazonIAPRe
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFPlatformSpecificClientValidateAmazonIAPReceiptGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
             
-            LogPFPlatformSpecificValidateAmazonReceiptResult(result);
+            LogValidateAmazonReceiptResult(result);
             return S_OK;
         }
 
         HRESULT Validate() override
         {
-            return ValidatePFPlatformSpecificValidateAmazonReceiptResult(result);
+            return ValidateClientValidateAmazonIAPReceiptResponse(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<ClientValidateAmazonIAPReceiptResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<ClientValidateAmazonIAPReceiptResultHolderStruct>>(testContext);
 
     PFPlatformSpecificValidateAmazonReceiptRequestWrapper<> request;
-    FillValidateAmazonReceiptRequest(request);
+    FillClientValidateAmazonIAPReceiptRequest(request);
     LogValidateAmazonReceiptRequest(&request.Model(), "TestPlatformSpecificClientValidateAmazonIAPReceipt");
     HRESULT hr = PFPlatformSpecificClientValidateAmazonIAPReceiptAsync(titlePlayerHandle, &request.Model(), &async->asyncBlock);
     if (FAILED(hr))
@@ -455,14 +488,16 @@ void AutoGenPlatformSpecificTests::TestPlatformSpecificClientValidateAmazonIAPRe
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region ClientValidateGooglePlayPurchase
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenPlatformSpecificTests::TestPlatformSpecificClientValidateGooglePlayPurchase(TestContext& testContext)
 {
-    struct ClientValidateGooglePlayPurchaseResultHolder : public ValidateGooglePlayPurchaseResultHolder
+    struct ClientValidateGooglePlayPurchaseResultHolderStruct : public ValidateGooglePlayPurchaseResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -472,19 +507,19 @@ void AutoGenPlatformSpecificTests::TestPlatformSpecificClientValidateGooglePlayP
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFPlatformSpecificClientValidateGooglePlayPurchaseGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
             
-            LogPFPlatformSpecificValidateGooglePlayPurchaseResult(result);
+            LogValidateGooglePlayPurchaseResult(result);
             return S_OK;
         }
 
         HRESULT Validate() override
         {
-            return ValidatePFPlatformSpecificValidateGooglePlayPurchaseResult(result);
+            return ValidateClientValidateGooglePlayPurchaseResponse(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<ClientValidateGooglePlayPurchaseResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<ClientValidateGooglePlayPurchaseResultHolderStruct>>(testContext);
 
     PFPlatformSpecificValidateGooglePlayPurchaseRequestWrapper<> request;
-    FillValidateGooglePlayPurchaseRequest(request);
+    FillClientValidateGooglePlayPurchaseRequest(request);
     LogValidateGooglePlayPurchaseRequest(&request.Model(), "TestPlatformSpecificClientValidateGooglePlayPurchase");
     HRESULT hr = PFPlatformSpecificClientValidateGooglePlayPurchaseAsync(titlePlayerHandle, &request.Model(), &async->asyncBlock);
     if (FAILED(hr))
@@ -494,14 +529,16 @@ void AutoGenPlatformSpecificTests::TestPlatformSpecificClientValidateGooglePlayP
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
 #pragma region ClientValidateIOSReceipt
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenPlatformSpecificTests::TestPlatformSpecificClientValidateIOSReceipt(TestContext& testContext)
 {
-    struct ClientValidateIOSReceiptResultHolder : public ValidateIOSReceiptResultHolder
+    struct ClientValidateIOSReceiptResultHolderStruct : public ValidateIOSReceiptResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -511,19 +548,19 @@ void AutoGenPlatformSpecificTests::TestPlatformSpecificClientValidateIOSReceipt(
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFPlatformSpecificClientValidateIOSReceiptGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
             
-            LogPFPlatformSpecificValidateIOSReceiptResult(result);
+            LogValidateIOSReceiptResult(result);
             return S_OK;
         }
 
         HRESULT Validate() override
         {
-            return ValidatePFPlatformSpecificValidateIOSReceiptResult(result);
+            return ValidateClientValidateIOSReceiptResponse(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<ClientValidateIOSReceiptResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<ClientValidateIOSReceiptResultHolderStruct>>(testContext);
 
     PFPlatformSpecificValidateIOSReceiptRequestWrapper<> request;
-    FillValidateIOSReceiptRequest(request);
+    FillClientValidateIOSReceiptRequest(request);
     LogValidateIOSReceiptRequest(&request.Model(), "TestPlatformSpecificClientValidateIOSReceipt");
     HRESULT hr = PFPlatformSpecificClientValidateIOSReceiptAsync(titlePlayerHandle, &request.Model(), &async->asyncBlock);
     if (FAILED(hr))
@@ -533,6 +570,7 @@ void AutoGenPlatformSpecificTests::TestPlatformSpecificClientValidateIOSReceipt(
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 
@@ -540,7 +578,7 @@ void AutoGenPlatformSpecificTests::TestPlatformSpecificClientValidateIOSReceipt(
 
 void AutoGenPlatformSpecificTests::TestPlatformSpecificClientValidateWindowsStoreReceipt(TestContext& testContext)
 {
-    struct ClientValidateWindowsStoreReceiptResultHolder : public ValidateWindowsReceiptResultHolder
+    struct ClientValidateWindowsStoreReceiptResultHolderStruct : public ValidateWindowsReceiptResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -550,19 +588,19 @@ void AutoGenPlatformSpecificTests::TestPlatformSpecificClientValidateWindowsStor
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFPlatformSpecificClientValidateWindowsStoreReceiptGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
             
-            LogPFPlatformSpecificValidateWindowsReceiptResult(result);
+            LogValidateWindowsReceiptResult(result);
             return S_OK;
         }
 
         HRESULT Validate() override
         {
-            return ValidatePFPlatformSpecificValidateWindowsReceiptResult(result);
+            return ValidateClientValidateWindowsStoreReceiptResponse(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<ClientValidateWindowsStoreReceiptResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<ClientValidateWindowsStoreReceiptResultHolderStruct>>(testContext);
 
     PFPlatformSpecificValidateWindowsReceiptRequestWrapper<> request;
-    FillValidateWindowsReceiptRequest(request);
+    FillClientValidateWindowsStoreReceiptRequest(request);
     LogValidateWindowsReceiptRequest(&request.Model(), "TestPlatformSpecificClientValidateWindowsStoreReceipt");
     HRESULT hr = PFPlatformSpecificClientValidateWindowsStoreReceiptAsync(titlePlayerHandle, &request.Model(), &async->asyncBlock);
     if (FAILED(hr))
@@ -577,9 +615,10 @@ void AutoGenPlatformSpecificTests::TestPlatformSpecificClientValidateWindowsStor
 
 #pragma region ServerAwardSteamAchievement
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenPlatformSpecificTests::TestPlatformSpecificServerAwardSteamAchievement(TestContext& testContext)
 {
-    struct ServerAwardSteamAchievementResultHolder : public AwardSteamAchievementResultHolder
+    struct ServerAwardSteamAchievementResultHolderStruct : public AwardSteamAchievementResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -589,19 +628,19 @@ void AutoGenPlatformSpecificTests::TestPlatformSpecificServerAwardSteamAchieveme
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFPlatformSpecificServerAwardSteamAchievementGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
             
-            LogPFPlatformSpecificAwardSteamAchievementResult(result);
+            LogAwardSteamAchievementResult(result);
             return S_OK;
         }
 
         HRESULT Validate() override
         {
-            return ValidatePFPlatformSpecificAwardSteamAchievementResult(result);
+            return ValidateServerAwardSteamAchievementResponse(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<ServerAwardSteamAchievementResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<ServerAwardSteamAchievementResultHolderStruct>>(testContext);
 
     PFPlatformSpecificAwardSteamAchievementRequestWrapper<> request;
-    FillAwardSteamAchievementRequest(request);
+    FillServerAwardSteamAchievementRequest(request);
     LogAwardSteamAchievementRequest(&request.Model(), "TestPlatformSpecificServerAwardSteamAchievement");
     HRESULT hr = PFPlatformSpecificServerAwardSteamAchievementAsync(stateHandle, &request.Model(), &async->asyncBlock);
     if (FAILED(hr))
@@ -611,6 +650,7 @@ void AutoGenPlatformSpecificTests::TestPlatformSpecificServerAwardSteamAchieveme
     }
     async.release(); 
 }
+#endif
 
 #pragma endregion
 

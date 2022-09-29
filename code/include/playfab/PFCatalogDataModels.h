@@ -115,11 +115,43 @@ typedef struct PFCatalogContent
     _Maybenull_ _Null_terminated_ const char* minClientVersion;
 
     /// <summary>
+    /// (Optional) The list of tags that are associated with this content.
+    /// </summary>
+    _Maybenull_ _Field_size_(tagsCount) const char* const* tags;
+
+    /// <summary>
+    /// Count of tags
+    /// </summary>
+    uint32_t tagsCount;
+
+    /// <summary>
+    /// (Optional) The client-defined type of the content.
+    /// </summary>
+    _Maybenull_ _Null_terminated_ const char* type;
+
+    /// <summary>
     /// (Optional) The Azure CDN URL for retrieval of the catalog item binary content.
     /// </summary>
     _Maybenull_ _Null_terminated_ const char* url;
 
 } PFCatalogContent;
+
+/// <summary>
+/// PFCatalogDeepLink data model.
+/// </summary>
+typedef struct PFCatalogDeepLink
+{
+    /// <summary>
+    /// (Optional) Target platform for this deep link.
+    /// </summary>
+    _Maybenull_ _Null_terminated_ const char* platform;
+
+    /// <summary>
+    /// (Optional) The deep link for this platform.
+    /// </summary>
+    _Maybenull_ _Null_terminated_ const char* url;
+
+} PFCatalogDeepLink;
 
 /// <summary>
 /// PFCatalogImage data model.
@@ -132,6 +164,11 @@ typedef struct PFCatalogImage
     _Maybenull_ _Null_terminated_ const char* id;
 
     /// <summary>
+    /// (Optional) The client-defined tag associated with this image.
+    /// </summary>
+    _Maybenull_ _Null_terminated_ const char* tag;
+
+    /// <summary>
     /// (Optional) The client-defined type of this image.
     /// </summary>
     _Maybenull_ _Null_terminated_ const char* type;
@@ -142,6 +179,79 @@ typedef struct PFCatalogImage
     _Maybenull_ _Null_terminated_ const char* url;
 
 } PFCatalogImage;
+
+/// <summary>
+/// PFCatalogCatalogPriceAmount data model.
+/// </summary>
+typedef struct PFCatalogCatalogPriceAmount
+{
+    /// <summary>
+    /// The amount of the price.
+    /// </summary>
+    int32_t amount;
+
+    /// <summary>
+    /// (Optional) The Item Id of the price.
+    /// </summary>
+    _Maybenull_ _Null_terminated_ const char* itemId;
+
+} PFCatalogCatalogPriceAmount;
+
+/// <summary>
+/// PFCatalogCatalogPrice data model.
+/// </summary>
+typedef struct PFCatalogCatalogPrice
+{
+    /// <summary>
+    /// (Optional) The amounts of the catalog item price.
+    /// </summary>
+    _Maybenull_ _Field_size_(amountsCount) PFCatalogCatalogPriceAmount const* const* amounts;
+
+    /// <summary>
+    /// Count of amounts
+    /// </summary>
+    uint32_t amountsCount;
+
+} PFCatalogCatalogPrice;
+
+/// <summary>
+/// PFCatalogCatalogPriceOptions data model.
+/// </summary>
+typedef struct PFCatalogCatalogPriceOptions
+{
+    /// <summary>
+    /// (Optional) Prices of the catalog item.
+    /// </summary>
+    _Maybenull_ _Field_size_(pricesCount) PFCatalogCatalogPrice const* const* prices;
+
+    /// <summary>
+    /// Count of prices
+    /// </summary>
+    uint32_t pricesCount;
+
+} PFCatalogCatalogPriceOptions;
+
+/// <summary>
+/// PFCatalogCatalogItemReference data model.
+/// </summary>
+typedef struct PFCatalogCatalogItemReference
+{
+    /// <summary>
+    /// (Optional) The amount of the catalog item.
+    /// </summary>
+    _Maybenull_ int32_t const* amount;
+
+    /// <summary>
+    /// (Optional) The unique ID of the catalog item.
+    /// </summary>
+    _Maybenull_ _Null_terminated_ const char* id;
+
+    /// <summary>
+    /// (Optional) The prices the catalog item can be purchased for.
+    /// </summary>
+    _Maybenull_ PFCatalogCatalogPriceOptions const* priceOptions;
+
+} PFCatalogCatalogItemReference;
 
 /// <summary>
 /// PFCatalogKeywordSet data model.
@@ -225,6 +335,100 @@ typedef struct PFCatalogRating
 } PFCatalogRating;
 
 /// <summary>
+/// PFCatalogFilterOptions data model.
+/// </summary>
+typedef struct PFCatalogFilterOptions
+{
+    /// <summary>
+    /// (Optional) The OData filter utilized. Mutually exclusive with 'IncludeAllItems'.
+    /// </summary>
+    _Maybenull_ _Null_terminated_ const char* filter;
+
+    /// <summary>
+    /// (Optional) The flag that overrides the filter and allows for returning all catalog items. Mutually
+    /// exclusive with 'Filter'.
+    /// </summary>
+    _Maybenull_ bool const* includeAllItems;
+
+} PFCatalogFilterOptions;
+
+/// <summary>
+/// PFCatalogCatalogPriceAmountOverride data model.
+/// </summary>
+typedef struct PFCatalogCatalogPriceAmountOverride
+{
+    /// <summary>
+    /// (Optional) The exact value that should be utilized in the override.
+    /// </summary>
+    _Maybenull_ int32_t const* fixedValue;
+
+    /// <summary>
+    /// (Optional) The id of the item this override should utilize.
+    /// </summary>
+    _Maybenull_ _Null_terminated_ const char* itemId;
+
+    /// <summary>
+    /// (Optional) The multiplier that will be applied to the base Catalog value to determine what value
+    /// should be utilized in the override.
+    /// </summary>
+    _Maybenull_ double const* multiplier;
+
+} PFCatalogCatalogPriceAmountOverride;
+
+/// <summary>
+/// PFCatalogCatalogPriceOverride data model.
+/// </summary>
+typedef struct PFCatalogCatalogPriceOverride
+{
+    /// <summary>
+    /// (Optional) The currency amounts utilized in the override for a singular price.
+    /// </summary>
+    _Maybenull_ _Field_size_(amountsCount) PFCatalogCatalogPriceAmountOverride const* const* amounts;
+
+    /// <summary>
+    /// Count of amounts
+    /// </summary>
+    uint32_t amountsCount;
+
+} PFCatalogCatalogPriceOverride;
+
+/// <summary>
+/// PFCatalogCatalogPriceOptionsOverride data model.
+/// </summary>
+typedef struct PFCatalogCatalogPriceOptionsOverride
+{
+    /// <summary>
+    /// (Optional) The prices utilized in the override.
+    /// </summary>
+    _Maybenull_ _Field_size_(pricesCount) PFCatalogCatalogPriceOverride const* const* prices;
+
+    /// <summary>
+    /// Count of prices
+    /// </summary>
+    uint32_t pricesCount;
+
+} PFCatalogCatalogPriceOptionsOverride;
+
+/// <summary>
+/// PFCatalogStoreDetails data model.
+/// </summary>
+typedef struct PFCatalogStoreDetails
+{
+    /// <summary>
+    /// (Optional) The options for the filter in filter-based stores. These options are mutually exclusive
+    /// with item references.
+    /// </summary>
+    _Maybenull_ PFCatalogFilterOptions const* filterOptions;
+
+    /// <summary>
+    /// (Optional) The global prices utilized in the store. These options are mutually exclusive with
+    /// price options in item references.
+    /// </summary>
+    _Maybenull_ PFCatalogCatalogPriceOptionsOverride const* priceOptionsOverride;
+
+} PFCatalogStoreDetails;
+
+/// <summary>
 /// PFCatalogCatalogItem data model.
 /// </summary>
 typedef struct PFCatalogCatalogItem
@@ -263,6 +467,16 @@ typedef struct PFCatalogCatalogItem
     /// (Optional) The ID of the creator of this catalog item.
     /// </summary>
     _Maybenull_ PFEntityKey const* creatorEntity;
+
+    /// <summary>
+    /// (Optional) The set of platform specific deep links for this item.
+    /// </summary>
+    _Maybenull_ _Field_size_(deepLinksCount) PFCatalogDeepLink const* const* deepLinks;
+
+    /// <summary>
+    /// Count of deepLinks
+    /// </summary>
+    uint32_t deepLinksCount;
 
     /// <summary>
     /// (Optional) A dictionary of localized descriptions. Key is language code and localized string
@@ -318,6 +532,16 @@ typedef struct PFCatalogCatalogItem
     _Maybenull_ bool const* isHidden;
 
     /// <summary>
+    /// (Optional) The item references associated with this item.
+    /// </summary>
+    _Maybenull_ _Field_size_(itemReferencesCount) PFCatalogCatalogItemReference const* const* itemReferences;
+
+    /// <summary>
+    /// Count of itemReferences
+    /// </summary>
+    uint32_t itemReferencesCount;
+
+    /// <summary>
     /// (Optional) A dictionary of localized keywords. Key is language code and localized list of keywords
     /// is the value.
     /// </summary>
@@ -339,6 +563,21 @@ typedef struct PFCatalogCatalogItem
     _Maybenull_ PFCatalogModerationState const* moderation;
 
     /// <summary>
+    /// (Optional) The platforms supported by this item.
+    /// </summary>
+    _Maybenull_ _Field_size_(platformsCount) const char* const* platforms;
+
+    /// <summary>
+    /// Count of platforms
+    /// </summary>
+    uint32_t platformsCount;
+
+    /// <summary>
+    /// (Optional) The base price of this item.
+    /// </summary>
+    _Maybenull_ PFCatalogCatalogPriceOptions const* priceOptions;
+
+    /// <summary>
     /// (Optional) Rating summary for this item.
     /// </summary>
     _Maybenull_ PFCatalogRating const* rating;
@@ -348,6 +587,11 @@ typedef struct PFCatalogCatalogItem
     /// appear immediately.
     /// </summary>
     _Maybenull_ time_t const* startDate;
+
+    /// <summary>
+    /// (Optional) Optional details for stores items.
+    /// </summary>
+    _Maybenull_ PFCatalogStoreDetails const* storeDetails;
 
     /// <summary>
     /// (Optional) The list of tags that are associated with this item.
@@ -371,7 +615,8 @@ typedef struct PFCatalogCatalogItem
     uint32_t titleCount;
 
     /// <summary>
-    /// (Optional) The high-level type of the item.
+    /// (Optional) The high-level type of the item. The following item types are supported: bundle, catalogItem,
+    /// currency, store, ugc.
     /// </summary>
     _Maybenull_ _Null_terminated_ const char* type;
 
@@ -575,6 +820,51 @@ typedef struct PFCatalogGetCatalogConfigRequest
 } PFCatalogGetCatalogConfigRequest;
 
 /// <summary>
+/// PFCatalogCatalogSpecificConfig data model.
+/// </summary>
+typedef struct PFCatalogCatalogSpecificConfig
+{
+    /// <summary>
+    /// (Optional) The set of content types that will be used for validation.
+    /// </summary>
+    _Maybenull_ _Field_size_(contentTypesCount) const char* const* contentTypes;
+
+    /// <summary>
+    /// Count of contentTypes
+    /// </summary>
+    uint32_t contentTypesCount;
+
+    /// <summary>
+    /// (Optional) The set of tags that will be used for validation.
+    /// </summary>
+    _Maybenull_ _Field_size_(tagsCount) const char* const* tags;
+
+    /// <summary>
+    /// Count of tags
+    /// </summary>
+    uint32_t tagsCount;
+
+} PFCatalogCatalogSpecificConfig;
+
+/// <summary>
+/// PFCatalogDeepLinkFormat data model.
+/// </summary>
+typedef struct PFCatalogDeepLinkFormat
+{
+    /// <summary>
+    /// (Optional) The format of the deep link to return. The format should contain '{id}' to represent
+    /// where the item ID should be placed.
+    /// </summary>
+    _Maybenull_ _Null_terminated_ const char* format;
+
+    /// <summary>
+    /// (Optional) The target platform for the deep link.
+    /// </summary>
+    _Maybenull_ _Null_terminated_ const char* platform;
+
+} PFCatalogDeepLinkFormat;
+
+/// <summary>
 /// PFCatalogDisplayPropertyIndexInfo data model.
 /// </summary>
 typedef struct PFCatalogDisplayPropertyIndexInfo
@@ -592,13 +882,12 @@ typedef struct PFCatalogDisplayPropertyIndexInfo
 } PFCatalogDisplayPropertyIndexInfo;
 
 /// <summary>
-/// PFCatalogUserGeneratedContentSpecificConfig data model.
+/// PFCatalogFileConfig data model.
 /// </summary>
-typedef struct PFCatalogUserGeneratedContentSpecificConfig
+typedef struct PFCatalogFileConfig
 {
     /// <summary>
-    /// (Optional) The set of content types that will be used for validation and if no values are provided
-    /// then anything is allowed.
+    /// (Optional) The set of content types that will be used for validation.
     /// </summary>
     _Maybenull_ _Field_size_(contentTypesCount) const char* const* contentTypes;
 
@@ -608,8 +897,51 @@ typedef struct PFCatalogUserGeneratedContentSpecificConfig
     uint32_t contentTypesCount;
 
     /// <summary>
-    /// (Optional) The set of tags that will be used for validation and if no values are provided then
-    /// anything is allowed.
+    /// (Optional) The set of tags that will be used for validation.
+    /// </summary>
+    _Maybenull_ _Field_size_(tagsCount) const char* const* tags;
+
+    /// <summary>
+    /// Count of tags
+    /// </summary>
+    uint32_t tagsCount;
+
+} PFCatalogFileConfig;
+
+/// <summary>
+/// PFCatalogImageConfig data model.
+/// </summary>
+typedef struct PFCatalogImageConfig
+{
+    /// <summary>
+    /// (Optional) The set of tags that will be used for validation.
+    /// </summary>
+    _Maybenull_ _Field_size_(tagsCount) const char* const* tags;
+
+    /// <summary>
+    /// Count of tags
+    /// </summary>
+    uint32_t tagsCount;
+
+} PFCatalogImageConfig;
+
+/// <summary>
+/// PFCatalogUserGeneratedContentSpecificConfig data model.
+/// </summary>
+typedef struct PFCatalogUserGeneratedContentSpecificConfig
+{
+    /// <summary>
+    /// (Optional) The set of content types that will be used for validation.
+    /// </summary>
+    _Maybenull_ _Field_size_(contentTypesCount) const char* const* contentTypes;
+
+    /// <summary>
+    /// Count of contentTypes
+    /// </summary>
+    uint32_t contentTypesCount;
+
+    /// <summary>
+    /// (Optional) The set of tags that will be used for validation.
     /// </summary>
     _Maybenull_ _Field_size_(tagsCount) const char* const* tags;
 
@@ -636,6 +968,21 @@ typedef struct PFCatalogCatalogConfig
     uint32_t adminEntitiesCount;
 
     /// <summary>
+    /// (Optional) The set of configuration that only applies to catalog items.
+    /// </summary>
+    _Maybenull_ PFCatalogCatalogSpecificConfig const* catalog;
+
+    /// <summary>
+    /// (Optional) A list of deep link formats.
+    /// </summary>
+    _Maybenull_ _Field_size_(deepLinkFormatsCount) PFCatalogDeepLinkFormat const* const* deepLinkFormats;
+
+    /// <summary>
+    /// Count of deepLinkFormats
+    /// </summary>
+    uint32_t deepLinkFormatsCount;
+
+    /// <summary>
     /// (Optional) A list of display properties to index.
     /// </summary>
     _Maybenull_ _Field_size_(displayPropertyIndexInfosCount) PFCatalogDisplayPropertyIndexInfo const* const* displayPropertyIndexInfos;
@@ -646,9 +993,29 @@ typedef struct PFCatalogCatalogConfig
     uint32_t displayPropertyIndexInfosCount;
 
     /// <summary>
+    /// (Optional) The set of configuration that only applies to Files.
+    /// </summary>
+    _Maybenull_ PFCatalogFileConfig const* file;
+
+    /// <summary>
+    /// (Optional) The set of configuration that only applies to Images.
+    /// </summary>
+    _Maybenull_ PFCatalogImageConfig const* image;
+
+    /// <summary>
     /// Flag defining whether catalog is enabled.
     /// </summary>
     bool isCatalogEnabled;
+
+    /// <summary>
+    /// (Optional) A list of Platforms that can be applied to catalog items.
+    /// </summary>
+    _Maybenull_ _Field_size_(platformsCount) const char* const* platforms;
+
+    /// <summary>
+    /// Count of platforms
+    /// </summary>
+    uint32_t platformsCount;
 
     /// <summary>
     /// (Optional) A set of player entity keys that are allowed to review content.
@@ -821,6 +1188,11 @@ typedef struct PFCatalogGetEntityDraftItemsRequest
     /// </summary>
     _Maybenull_ PFEntityKey const* entity;
 
+    /// <summary>
+    /// (Optional) OData Filter to specify ItemType.
+    /// </summary>
+    _Maybenull_ _Null_terminated_ const char* filter;
+
 } PFCatalogGetEntityDraftItemsRequest;
 
 /// <summary>
@@ -889,11 +1261,6 @@ typedef struct PFCatalogReview
     int32_t helpfulNegative;
 
     /// <summary>
-    /// Total number of helpfulness votes for this review.
-    /// </summary>
-    int32_t helpfulnessVotes;
-
-    /// <summary>
     /// The number of positive helpfulness votes for this review.
     /// </summary>
     int32_t helpfulPositive;
@@ -925,6 +1292,12 @@ typedef struct PFCatalogReview
 
     /// <summary>
     /// (Optional) The ID of the author of the review.
+    /// </summary>
+    _Maybenull_ PFEntityKey const* reviewerEntity;
+
+    /// <summary>
+    /// (Optional) Deprecated. Use ReviewerEntity instead. This property will be removed in a future
+    /// release.
     /// </summary>
     _Maybenull_ _Null_terminated_ const char* reviewerId;
 
@@ -1008,6 +1381,73 @@ typedef struct PFCatalogGetItemResponse
 } PFCatalogGetItemResponse;
 
 /// <summary>
+/// PFCatalogGetItemContainersRequest data model. Given an item, return a set of bundles and stores containing
+/// the item.
+/// </summary>
+typedef struct PFCatalogGetItemContainersRequest
+{
+    /// <summary>
+    /// (Optional) An alternate ID associated with this item.
+    /// </summary>
+    _Maybenull_ PFCatalogCatalogAlternateId const* alternateId;
+
+    /// <summary>
+    /// (Optional) An opaque token used to retrieve the next page of items in the inventory, if any are
+    /// available. Should be null on initial request.
+    /// </summary>
+    _Maybenull_ _Null_terminated_ const char* continuationToken;
+
+    /// <summary>
+    /// Number of items to retrieve. Maximum page size is 25.
+    /// </summary>
+    int32_t count;
+
+    /// <summary>
+    /// (Optional) The optional custom tags associated with the request (e.g. build number, external
+    /// trace identifiers, etc.).
+    /// </summary>
+    _Maybenull_ _Field_size_(customTagsCount) struct PFStringDictionaryEntry const* customTags;
+
+    /// <summary>
+    /// Count of customTags
+    /// </summary>
+    uint32_t customTagsCount;
+
+    /// <summary>
+    /// (Optional) The entity to perform this action on.
+    /// </summary>
+    _Maybenull_ PFEntityKey const* entity;
+
+    /// <summary>
+    /// (Optional) The unique ID of the item.
+    /// </summary>
+    _Maybenull_ _Null_terminated_ const char* id;
+
+} PFCatalogGetItemContainersRequest;
+
+/// <summary>
+/// PFCatalogGetItemContainersResponse data model.
+/// </summary>
+typedef struct PFCatalogGetItemContainersResponse
+{
+    /// <summary>
+    /// (Optional) List of Bundles and Stores containing the requested items.
+    /// </summary>
+    _Maybenull_ _Field_size_(containersCount) PFCatalogCatalogItem const* const* containers;
+
+    /// <summary>
+    /// Count of containers
+    /// </summary>
+    uint32_t containersCount;
+
+    /// <summary>
+    /// (Optional) An opaque token used to retrieve the next page of items, if any are available.
+    /// </summary>
+    _Maybenull_ _Null_terminated_ const char* continuationToken;
+
+} PFCatalogGetItemContainersResponse;
+
+/// <summary>
 /// PFCatalogGetItemModerationStateRequest data model.
 /// </summary>
 typedef struct PFCatalogGetItemModerationStateRequest
@@ -1081,32 +1521,10 @@ typedef struct PFCatalogGetItemPublishStatusRequest
 } PFCatalogGetItemPublishStatusRequest;
 
 /// <summary>
-/// PFCatalogScanResult data model.
-/// </summary>
-typedef struct PFCatalogScanResult
-{
-    /// <summary>
-    /// (Optional) The URL of the item which failed the scan.
-    /// </summary>
-    _Maybenull_ _Null_terminated_ const char* url;
-
-} PFCatalogScanResult;
-
-/// <summary>
 /// PFCatalogGetItemPublishStatusResponse data model.
 /// </summary>
 typedef struct PFCatalogGetItemPublishStatusResponse
 {
-    /// <summary>
-    /// (Optional) Scan results for any items that failed content scans.
-    /// </summary>
-    _Maybenull_ _Field_size_(failedScanResultsCount) PFCatalogScanResult const* const* failedScanResults;
-
-    /// <summary>
-    /// Count of failedScanResults
-    /// </summary>
-    uint32_t failedScanResultsCount;
-
     /// <summary>
     /// (Optional) High level status of the published item.
     /// </summary>
@@ -1238,6 +1656,66 @@ typedef struct PFCatalogGetItemReviewSummaryResponse
     int32_t reviewsCount;
 
 } PFCatalogGetItemReviewSummaryResponse;
+
+/// <summary>
+/// PFCatalogGetItemsRequest data model.
+/// </summary>
+typedef struct PFCatalogGetItemsRequest
+{
+    /// <summary>
+    /// (Optional) List of item alternate IDs.
+    /// </summary>
+    _Maybenull_ _Field_size_(alternateIdsCount) PFCatalogCatalogAlternateId const* const* alternateIds;
+
+    /// <summary>
+    /// Count of alternateIds
+    /// </summary>
+    uint32_t alternateIdsCount;
+
+    /// <summary>
+    /// (Optional) The optional custom tags associated with the request (e.g. build number, external
+    /// trace identifiers, etc.).
+    /// </summary>
+    _Maybenull_ _Field_size_(customTagsCount) struct PFStringDictionaryEntry const* customTags;
+
+    /// <summary>
+    /// Count of customTags
+    /// </summary>
+    uint32_t customTagsCount;
+
+    /// <summary>
+    /// (Optional) The entity to perform this action on.
+    /// </summary>
+    _Maybenull_ PFEntityKey const* entity;
+
+    /// <summary>
+    /// (Optional) List of Item Ids.
+    /// </summary>
+    _Maybenull_ _Field_size_(idsCount) const char* const* ids;
+
+    /// <summary>
+    /// Count of ids
+    /// </summary>
+    uint32_t idsCount;
+
+} PFCatalogGetItemsRequest;
+
+/// <summary>
+/// PFCatalogGetItemsResponse data model.
+/// </summary>
+typedef struct PFCatalogGetItemsResponse
+{
+    /// <summary>
+    /// (Optional) Metadata of set of items.
+    /// </summary>
+    _Maybenull_ _Field_size_(itemsCount) PFCatalogCatalogItem const* const* items;
+
+    /// <summary>
+    /// Count of items
+    /// </summary>
+    uint32_t itemsCount;
+
+} PFCatalogGetItemsResponse;
 
 /// <summary>
 /// PFCatalogPublishDraftItemRequest data model. The call kicks off a workflow to publish the item to
@@ -1412,6 +1890,23 @@ typedef struct PFCatalogReviewItemRequest
 } PFCatalogReviewItemRequest;
 
 /// <summary>
+/// PFCatalogStoreReference data model.
+/// </summary>
+typedef struct PFCatalogStoreReference
+{
+    /// <summary>
+    /// (Optional) An alternate ID of the store.
+    /// </summary>
+    _Maybenull_ PFCatalogCatalogAlternateId const* alternateId;
+
+    /// <summary>
+    /// (Optional) The unique ID of the store.
+    /// </summary>
+    _Maybenull_ _Null_terminated_ const char* id;
+
+} PFCatalogStoreReference;
+
+/// <summary>
 /// PFCatalogSearchItemsRequest data model.
 /// </summary>
 typedef struct PFCatalogSearchItemsRequest
@@ -1462,6 +1957,11 @@ typedef struct PFCatalogSearchItemsRequest
     /// default search result metadata will be returned.
     /// </summary>
     _Maybenull_ _Null_terminated_ const char* select;
+
+    /// <summary>
+    /// (Optional) The store to restrict the search request to.
+    /// </summary>
+    _Maybenull_ PFCatalogStoreReference const* store;
 
 } PFCatalogSearchItemsRequest;
 

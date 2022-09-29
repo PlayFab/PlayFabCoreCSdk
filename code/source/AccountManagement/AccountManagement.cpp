@@ -1192,6 +1192,48 @@ AsyncOp<GetPlayFabIDsFromGoogleIDsResult> AccountManagementAPI::ClientGetPlayFab
     });
 }
 
+AsyncOp<GetPlayFabIDsFromGooglePlayGamesPlayerIDsResult> AccountManagementAPI::ClientGetPlayFabIDsFromGooglePlayGamesPlayerIDs(
+    SharedPtr<TitlePlayer> entity,
+    const GetPlayFabIDsFromGooglePlayGamesPlayerIDsRequest& request,
+    const TaskQueue& queue
+)
+{
+    auto sessionTicket{ entity->SessionTicket() };
+    if (!sessionTicket || sessionTicket->empty()) 
+    {
+        return E_PF_NOSESSIONTICKET;
+    }
+
+    const char* path{ "/Client/GetPlayFabIDsFromGooglePlayGamesPlayerIDs" };
+    JsonValue requestBody{ request.ToJson() };
+    UnorderedMap<String, String> headers{{ kSessionTicketHeaderName, *sessionTicket }};
+
+    auto requestOp = entity->HttpClient()->MakeClassicRequest(
+        entity,
+        path,
+        std::move(headers),
+        std::move(requestBody),
+        queue
+    );
+
+    return requestOp.Then([](Result<ServiceResponse> result) -> Result<GetPlayFabIDsFromGooglePlayGamesPlayerIDsResult>
+    {
+        RETURN_IF_FAILED(result.hr);
+
+        auto serviceResponse = result.ExtractPayload();
+        if (serviceResponse.HttpCode == 200)
+        {
+            GetPlayFabIDsFromGooglePlayGamesPlayerIDsResult resultModel;
+            resultModel.FromJson(serviceResponse.Data);
+            return resultModel;
+        }
+        else
+        {
+            return Result<GetPlayFabIDsFromGooglePlayGamesPlayerIDsResult>{ ServiceErrorToHR(serviceResponse.ErrorCode), std::move(serviceResponse.ErrorMessage) };
+        }
+    });
+}
+
 AsyncOp<GetPlayFabIDsFromKongregateIDsResult> AccountManagementAPI::ClientGetPlayFabIDsFromKongregateIDs(
     SharedPtr<TitlePlayer> entity,
     const GetPlayFabIDsFromKongregateIDsRequest& request,
@@ -1230,6 +1272,48 @@ AsyncOp<GetPlayFabIDsFromKongregateIDsResult> AccountManagementAPI::ClientGetPla
         else
         {
             return Result<GetPlayFabIDsFromKongregateIDsResult>{ ServiceErrorToHR(serviceResponse.ErrorCode), std::move(serviceResponse.ErrorMessage) };
+        }
+    });
+}
+
+AsyncOp<GetPlayFabIDsFromNintendoServiceAccountIdsResult> AccountManagementAPI::ClientGetPlayFabIDsFromNintendoServiceAccountIds(
+    SharedPtr<TitlePlayer> entity,
+    const GetPlayFabIDsFromNintendoServiceAccountIdsRequest& request,
+    const TaskQueue& queue
+)
+{
+    auto sessionTicket{ entity->SessionTicket() };
+    if (!sessionTicket || sessionTicket->empty()) 
+    {
+        return E_PF_NOSESSIONTICKET;
+    }
+
+    const char* path{ "/Client/GetPlayFabIDsFromNintendoServiceAccountIds" };
+    JsonValue requestBody{ request.ToJson() };
+    UnorderedMap<String, String> headers{{ kSessionTicketHeaderName, *sessionTicket }};
+
+    auto requestOp = entity->HttpClient()->MakeClassicRequest(
+        entity,
+        path,
+        std::move(headers),
+        std::move(requestBody),
+        queue
+    );
+
+    return requestOp.Then([](Result<ServiceResponse> result) -> Result<GetPlayFabIDsFromNintendoServiceAccountIdsResult>
+    {
+        RETURN_IF_FAILED(result.hr);
+
+        auto serviceResponse = result.ExtractPayload();
+        if (serviceResponse.HttpCode == 200)
+        {
+            GetPlayFabIDsFromNintendoServiceAccountIdsResult resultModel;
+            resultModel.FromJson(serviceResponse.Data);
+            return resultModel;
+        }
+        else
+        {
+            return Result<GetPlayFabIDsFromNintendoServiceAccountIdsResult>{ ServiceErrorToHR(serviceResponse.ErrorCode), std::move(serviceResponse.ErrorMessage) };
         }
     });
 }
@@ -1724,6 +1808,46 @@ AsyncOp<void> AccountManagementAPI::ClientLinkGoogleAccount(
     });
 }
 
+AsyncOp<void> AccountManagementAPI::ClientLinkGooglePlayGamesServicesAccount(
+    SharedPtr<TitlePlayer> entity,
+    const LinkGooglePlayGamesServicesAccountRequest& request,
+    const TaskQueue& queue
+)
+{
+    auto sessionTicket{ entity->SessionTicket() };
+    if (!sessionTicket || sessionTicket->empty()) 
+    {
+        return E_PF_NOSESSIONTICKET;
+    }
+
+    const char* path{ "/Client/LinkGooglePlayGamesServicesAccount" };
+    JsonValue requestBody{ request.ToJson() };
+    UnorderedMap<String, String> headers{{ kSessionTicketHeaderName, *sessionTicket }};
+
+    auto requestOp = entity->HttpClient()->MakeClassicRequest(
+        entity,
+        path,
+        std::move(headers),
+        std::move(requestBody),
+        queue
+    );
+
+    return requestOp.Then([](Result<ServiceResponse> result) -> Result<void>
+    {
+        RETURN_IF_FAILED(result.hr);
+
+        auto serviceResponse = result.ExtractPayload();
+        if (serviceResponse.HttpCode == 200)
+        {
+            return S_OK;
+        }
+        else
+        {
+            return Result<void>{ ServiceErrorToHR(serviceResponse.ErrorCode), std::move(serviceResponse.ErrorMessage) };
+        }
+    });
+}
+
 AsyncOp<void> AccountManagementAPI::ClientLinkIOSDeviceID(
     SharedPtr<TitlePlayer> entity,
     const LinkIOSDeviceIDRequest& request,
@@ -1806,7 +1930,7 @@ AsyncOp<void> AccountManagementAPI::ClientLinkKongregate(
 
 AsyncOp<void> AccountManagementAPI::ClientLinkNintendoServiceAccount(
     SharedPtr<TitlePlayer> entity,
-    const LinkNintendoServiceAccountRequest& request,
+    const ClientLinkNintendoServiceAccountRequest& request,
     const TaskQueue& queue
 )
 {
@@ -1846,7 +1970,7 @@ AsyncOp<void> AccountManagementAPI::ClientLinkNintendoServiceAccount(
 
 AsyncOp<void> AccountManagementAPI::ClientLinkNintendoSwitchDeviceId(
     SharedPtr<TitlePlayer> entity,
-    const LinkNintendoSwitchDeviceIdRequest& request,
+    const ClientLinkNintendoSwitchDeviceIdRequest& request,
     const TaskQueue& queue
 )
 {
@@ -2519,6 +2643,46 @@ AsyncOp<void> AccountManagementAPI::ClientUnlinkGoogleAccount(
     });
 }
 
+AsyncOp<void> AccountManagementAPI::ClientUnlinkGooglePlayGamesServicesAccount(
+    SharedPtr<TitlePlayer> entity,
+    const UnlinkGooglePlayGamesServicesAccountRequest& request,
+    const TaskQueue& queue
+)
+{
+    auto sessionTicket{ entity->SessionTicket() };
+    if (!sessionTicket || sessionTicket->empty()) 
+    {
+        return E_PF_NOSESSIONTICKET;
+    }
+
+    const char* path{ "/Client/UnlinkGooglePlayGamesServicesAccount" };
+    JsonValue requestBody{ request.ToJson() };
+    UnorderedMap<String, String> headers{{ kSessionTicketHeaderName, *sessionTicket }};
+
+    auto requestOp = entity->HttpClient()->MakeClassicRequest(
+        entity,
+        path,
+        std::move(headers),
+        std::move(requestBody),
+        queue
+    );
+
+    return requestOp.Then([](Result<ServiceResponse> result) -> Result<void>
+    {
+        RETURN_IF_FAILED(result.hr);
+
+        auto serviceResponse = result.ExtractPayload();
+        if (serviceResponse.HttpCode == 200)
+        {
+            return S_OK;
+        }
+        else
+        {
+            return Result<void>{ ServiceErrorToHR(serviceResponse.ErrorCode), std::move(serviceResponse.ErrorMessage) };
+        }
+    });
+}
+
 AsyncOp<void> AccountManagementAPI::ClientUnlinkIOSDeviceID(
     SharedPtr<TitlePlayer> entity,
     const UnlinkIOSDeviceIDRequest& request,
@@ -2601,7 +2765,7 @@ AsyncOp<void> AccountManagementAPI::ClientUnlinkKongregate(
 
 AsyncOp<void> AccountManagementAPI::ClientUnlinkNintendoServiceAccount(
     SharedPtr<TitlePlayer> entity,
-    const UnlinkNintendoServiceAccountRequest& request,
+    const ClientUnlinkNintendoServiceAccountRequest& request,
     const TaskQueue& queue
 )
 {
@@ -2641,7 +2805,7 @@ AsyncOp<void> AccountManagementAPI::ClientUnlinkNintendoServiceAccount(
 
 AsyncOp<void> AccountManagementAPI::ClientUnlinkNintendoSwitchDeviceId(
     SharedPtr<TitlePlayer> entity,
-    const UnlinkNintendoSwitchDeviceIdRequest& request,
+    const ClientUnlinkNintendoSwitchDeviceIdRequest& request,
     const TaskQueue& queue
 )
 {
@@ -3080,9 +3244,9 @@ AsyncOp<void> AccountManagementAPI::ServerDeletePlayer(
     });
 }
 
-AsyncOp<void> AccountManagementAPI::ServerDeletePushNotificationTemplate(
+AsyncOp<GetPlayerCombinedInfoResult> AccountManagementAPI::ServerGetPlayerCombinedInfo(
     SharedPtr<GlobalState const> state,
-    const DeletePushNotificationTemplateRequest& request,
+    const GetPlayerCombinedInfoRequest& request,
     const TaskQueue& queue
 )
 {
@@ -3092,7 +3256,7 @@ AsyncOp<void> AccountManagementAPI::ServerDeletePushNotificationTemplate(
         return E_PF_NOSECRETKEY;
     }
 
-    const char* path{ "/Server/DeletePushNotificationTemplate" };
+    const char* path{ "/Server/GetPlayerCombinedInfo" };
     JsonValue requestBody{ request.ToJson() };
     UnorderedMap<String, String> headers{{ kSecretKeyHeaderName, *secretKey }};
 
@@ -3103,18 +3267,20 @@ AsyncOp<void> AccountManagementAPI::ServerDeletePushNotificationTemplate(
         queue
     );
 
-    return requestOp.Then([](Result<ServiceResponse> result) -> Result<void>
+    return requestOp.Then([](Result<ServiceResponse> result) -> Result<GetPlayerCombinedInfoResult>
     {
         RETURN_IF_FAILED(result.hr);
 
         auto serviceResponse = result.ExtractPayload();
         if (serviceResponse.HttpCode == 200)
         {
-            return S_OK;
+            GetPlayerCombinedInfoResult resultModel;
+            resultModel.FromJson(serviceResponse.Data);
+            return resultModel;
         }
         else
         {
-            return Result<void>{ ServiceErrorToHR(serviceResponse.ErrorCode), std::move(serviceResponse.ErrorMessage) };
+            return Result<GetPlayerCombinedInfoResult>{ ServiceErrorToHR(serviceResponse.ErrorCode), std::move(serviceResponse.ErrorMessage) };
         }
     });
 }
@@ -3283,6 +3449,47 @@ AsyncOp<GetPlayFabIDsFromGenericIDsResult> AccountManagementAPI::ServerGetPlayFa
     });
 }
 
+AsyncOp<GetPlayFabIDsFromNintendoServiceAccountIdsResult> AccountManagementAPI::ServerGetPlayFabIDsFromNintendoServiceAccountIds(
+    SharedPtr<GlobalState const> state,
+    const GetPlayFabIDsFromNintendoServiceAccountIdsRequest& request,
+    const TaskQueue& queue
+)
+{
+    auto secretKey{ state->SecretKey() };
+    if (!secretKey || secretKey->empty())
+    {
+        return E_PF_NOSECRETKEY;
+    }
+
+    const char* path{ "/Server/GetPlayFabIDsFromNintendoServiceAccountIds" };
+    JsonValue requestBody{ request.ToJson() };
+    UnorderedMap<String, String> headers{{ kSecretKeyHeaderName, *secretKey }};
+
+    auto requestOp = state->HttpClient()->MakePostRequest(
+        path,
+        std::move(headers),
+        std::move(requestBody),
+        queue
+    );
+
+    return requestOp.Then([](Result<ServiceResponse> result) -> Result<GetPlayFabIDsFromNintendoServiceAccountIdsResult>
+    {
+        RETURN_IF_FAILED(result.hr);
+
+        auto serviceResponse = result.ExtractPayload();
+        if (serviceResponse.HttpCode == 200)
+        {
+            GetPlayFabIDsFromNintendoServiceAccountIdsResult resultModel;
+            resultModel.FromJson(serviceResponse.Data);
+            return resultModel;
+        }
+        else
+        {
+            return Result<GetPlayFabIDsFromNintendoServiceAccountIdsResult>{ ServiceErrorToHR(serviceResponse.ErrorCode), std::move(serviceResponse.ErrorMessage) };
+        }
+    });
+}
+
 AsyncOp<GetPlayFabIDsFromNintendoSwitchDeviceIdsResult> AccountManagementAPI::ServerGetPlayFabIDsFromNintendoSwitchDeviceIds(
     SharedPtr<GlobalState const> state,
     const GetPlayFabIDsFromNintendoSwitchDeviceIdsRequest& request,
@@ -3402,6 +3609,47 @@ AsyncOp<GetPlayFabIDsFromSteamIDsResult> AccountManagementAPI::ServerGetPlayFabI
         else
         {
             return Result<GetPlayFabIDsFromSteamIDsResult>{ ServiceErrorToHR(serviceResponse.ErrorCode), std::move(serviceResponse.ErrorMessage) };
+        }
+    });
+}
+
+AsyncOp<GetPlayFabIDsFromTwitchIDsResult> AccountManagementAPI::ServerGetPlayFabIDsFromTwitchIDs(
+    SharedPtr<GlobalState const> state,
+    const GetPlayFabIDsFromTwitchIDsRequest& request,
+    const TaskQueue& queue
+)
+{
+    auto secretKey{ state->SecretKey() };
+    if (!secretKey || secretKey->empty())
+    {
+        return E_PF_NOSECRETKEY;
+    }
+
+    const char* path{ "/Server/GetPlayFabIDsFromTwitchIDs" };
+    JsonValue requestBody{ request.ToJson() };
+    UnorderedMap<String, String> headers{{ kSecretKeyHeaderName, *secretKey }};
+
+    auto requestOp = state->HttpClient()->MakePostRequest(
+        path,
+        std::move(headers),
+        std::move(requestBody),
+        queue
+    );
+
+    return requestOp.Then([](Result<ServiceResponse> result) -> Result<GetPlayFabIDsFromTwitchIDsResult>
+    {
+        RETURN_IF_FAILED(result.hr);
+
+        auto serviceResponse = result.ExtractPayload();
+        if (serviceResponse.HttpCode == 200)
+        {
+            GetPlayFabIDsFromTwitchIDsResult resultModel;
+            resultModel.FromJson(serviceResponse.Data);
+            return resultModel;
+        }
+        else
+        {
+            return Result<GetPlayFabIDsFromTwitchIDsResult>{ ServiceErrorToHR(serviceResponse.ErrorCode), std::move(serviceResponse.ErrorMessage) };
         }
     });
 }
@@ -3566,6 +3814,84 @@ AsyncOp<GetUserBansResult> AccountManagementAPI::ServerGetUserBans(
         else
         {
             return Result<GetUserBansResult>{ ServiceErrorToHR(serviceResponse.ErrorCode), std::move(serviceResponse.ErrorMessage) };
+        }
+    });
+}
+
+AsyncOp<void> AccountManagementAPI::ServerLinkNintendoServiceAccount(
+    SharedPtr<GlobalState const> state,
+    const ServerLinkNintendoServiceAccountRequest& request,
+    const TaskQueue& queue
+)
+{
+    auto secretKey{ state->SecretKey() };
+    if (!secretKey || secretKey->empty())
+    {
+        return E_PF_NOSECRETKEY;
+    }
+
+    const char* path{ "/Server/LinkNintendoServiceAccount" };
+    JsonValue requestBody{ request.ToJson() };
+    UnorderedMap<String, String> headers{{ kSecretKeyHeaderName, *secretKey }};
+
+    auto requestOp = state->HttpClient()->MakePostRequest(
+        path,
+        std::move(headers),
+        std::move(requestBody),
+        queue
+    );
+
+    return requestOp.Then([](Result<ServiceResponse> result) -> Result<void>
+    {
+        RETURN_IF_FAILED(result.hr);
+
+        auto serviceResponse = result.ExtractPayload();
+        if (serviceResponse.HttpCode == 200)
+        {
+            return S_OK;
+        }
+        else
+        {
+            return Result<void>{ ServiceErrorToHR(serviceResponse.ErrorCode), std::move(serviceResponse.ErrorMessage) };
+        }
+    });
+}
+
+AsyncOp<void> AccountManagementAPI::ServerLinkNintendoSwitchDeviceId(
+    SharedPtr<GlobalState const> state,
+    const ServerLinkNintendoSwitchDeviceIdRequest& request,
+    const TaskQueue& queue
+)
+{
+    auto secretKey{ state->SecretKey() };
+    if (!secretKey || secretKey->empty())
+    {
+        return E_PF_NOSECRETKEY;
+    }
+
+    const char* path{ "/Server/LinkNintendoSwitchDeviceId" };
+    JsonValue requestBody{ request.ToJson() };
+    UnorderedMap<String, String> headers{{ kSecretKeyHeaderName, *secretKey }};
+
+    auto requestOp = state->HttpClient()->MakePostRequest(
+        path,
+        std::move(headers),
+        std::move(requestBody),
+        queue
+    );
+
+    return requestOp.Then([](Result<ServiceResponse> result) -> Result<void>
+    {
+        RETURN_IF_FAILED(result.hr);
+
+        auto serviceResponse = result.ExtractPayload();
+        if (serviceResponse.HttpCode == 200)
+        {
+            return S_OK;
+        }
+        else
+        {
+            return Result<void>{ ServiceErrorToHR(serviceResponse.ErrorCode), std::move(serviceResponse.ErrorMessage) };
         }
     });
 }
@@ -3808,47 +4134,6 @@ AsyncOp<RevokeBansResult> AccountManagementAPI::ServerRevokeBans(
     });
 }
 
-AsyncOp<SavePushNotificationTemplateResult> AccountManagementAPI::ServerSavePushNotificationTemplate(
-    SharedPtr<GlobalState const> state,
-    const SavePushNotificationTemplateRequest& request,
-    const TaskQueue& queue
-)
-{
-    auto secretKey{ state->SecretKey() };
-    if (!secretKey || secretKey->empty())
-    {
-        return E_PF_NOSECRETKEY;
-    }
-
-    const char* path{ "/Server/SavePushNotificationTemplate" };
-    JsonValue requestBody{ request.ToJson() };
-    UnorderedMap<String, String> headers{{ kSecretKeyHeaderName, *secretKey }};
-
-    auto requestOp = state->HttpClient()->MakePostRequest(
-        path,
-        std::move(headers),
-        std::move(requestBody),
-        queue
-    );
-
-    return requestOp.Then([](Result<ServiceResponse> result) -> Result<SavePushNotificationTemplateResult>
-    {
-        RETURN_IF_FAILED(result.hr);
-
-        auto serviceResponse = result.ExtractPayload();
-        if (serviceResponse.HttpCode == 200)
-        {
-            SavePushNotificationTemplateResult resultModel;
-            resultModel.FromJson(serviceResponse.Data);
-            return resultModel;
-        }
-        else
-        {
-            return Result<SavePushNotificationTemplateResult>{ ServiceErrorToHR(serviceResponse.ErrorCode), std::move(serviceResponse.ErrorMessage) };
-        }
-    });
-}
-
 AsyncOp<void> AccountManagementAPI::ServerSendCustomAccountRecoveryEmail(
     SharedPtr<GlobalState const> state,
     const SendCustomAccountRecoveryEmailRequest& request,
@@ -3927,9 +4212,9 @@ AsyncOp<void> AccountManagementAPI::ServerSendEmailFromTemplate(
     });
 }
 
-AsyncOp<void> AccountManagementAPI::ServerSendPushNotification(
+AsyncOp<void> AccountManagementAPI::ServerUnlinkNintendoServiceAccount(
     SharedPtr<GlobalState const> state,
-    const SendPushNotificationRequest& request,
+    const ServerUnlinkNintendoServiceAccountRequest& request,
     const TaskQueue& queue
 )
 {
@@ -3939,7 +4224,7 @@ AsyncOp<void> AccountManagementAPI::ServerSendPushNotification(
         return E_PF_NOSECRETKEY;
     }
 
-    const char* path{ "/Server/SendPushNotification" };
+    const char* path{ "/Server/UnlinkNintendoServiceAccount" };
     JsonValue requestBody{ request.ToJson() };
     UnorderedMap<String, String> headers{{ kSecretKeyHeaderName, *secretKey }};
 
@@ -3966,9 +4251,9 @@ AsyncOp<void> AccountManagementAPI::ServerSendPushNotification(
     });
 }
 
-AsyncOp<void> AccountManagementAPI::ServerSendPushNotificationFromTemplate(
+AsyncOp<void> AccountManagementAPI::ServerUnlinkNintendoSwitchDeviceId(
     SharedPtr<GlobalState const> state,
-    const SendPushNotificationFromTemplateRequest& request,
+    const ServerUnlinkNintendoSwitchDeviceIdRequest& request,
     const TaskQueue& queue
 )
 {
@@ -3978,7 +4263,7 @@ AsyncOp<void> AccountManagementAPI::ServerSendPushNotificationFromTemplate(
         return E_PF_NOSECRETKEY;
     }
 
-    const char* path{ "/Server/SendPushNotificationFromTemplate" };
+    const char* path{ "/Server/UnlinkNintendoSwitchDeviceId" };
     JsonValue requestBody{ request.ToJson() };
     UnorderedMap<String, String> headers{{ kSecretKeyHeaderName, *secretKey }};
 

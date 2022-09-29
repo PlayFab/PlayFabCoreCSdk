@@ -54,6 +54,28 @@ public:
     static HRESULT Copy(const PFCatalogContent& input, PFCatalogContent& output, ModelBuffer& buffer);
 };
 
+class DeepLink : public Wrappers::PFCatalogDeepLinkWrapper<Allocator>, public InputModel, public OutputModel<PFCatalogDeepLink>
+{
+public:
+    using ModelWrapperType = typename Wrappers::PFCatalogDeepLinkWrapper<Allocator>;
+    using ModelWrapperType::ModelType;
+
+    // Constructors
+    using ModelWrapperType::ModelWrapperType;
+
+    // InputModel
+    JsonValue ToJson() const override;
+    static JsonValue ToJson(const PFCatalogDeepLink& input);
+
+    // OutputModel
+    void FromJson(const JsonValue& input) override;
+    size_t RequiredBufferSize() const override;
+    Result<PFCatalogDeepLink const*> Copy(ModelBuffer& buffer) const override;
+
+    static size_t RequiredBufferSize(const PFCatalogDeepLink& model);
+    static HRESULT Copy(const PFCatalogDeepLink& input, PFCatalogDeepLink& output, ModelBuffer& buffer);
+};
+
 class Image : public Wrappers::PFCatalogImageWrapper<Allocator>, public InputModel, public OutputModel<PFCatalogImage>
 {
 public:
@@ -74,6 +96,94 @@ public:
 
     static size_t RequiredBufferSize(const PFCatalogImage& model);
     static HRESULT Copy(const PFCatalogImage& input, PFCatalogImage& output, ModelBuffer& buffer);
+};
+
+class CatalogPriceAmount : public Wrappers::PFCatalogCatalogPriceAmountWrapper<Allocator>, public InputModel, public OutputModel<PFCatalogCatalogPriceAmount>
+{
+public:
+    using ModelWrapperType = typename Wrappers::PFCatalogCatalogPriceAmountWrapper<Allocator>;
+    using ModelWrapperType::ModelType;
+
+    // Constructors
+    using ModelWrapperType::ModelWrapperType;
+
+    // InputModel
+    JsonValue ToJson() const override;
+    static JsonValue ToJson(const PFCatalogCatalogPriceAmount& input);
+
+    // OutputModel
+    void FromJson(const JsonValue& input) override;
+    size_t RequiredBufferSize() const override;
+    Result<PFCatalogCatalogPriceAmount const*> Copy(ModelBuffer& buffer) const override;
+
+    static size_t RequiredBufferSize(const PFCatalogCatalogPriceAmount& model);
+    static HRESULT Copy(const PFCatalogCatalogPriceAmount& input, PFCatalogCatalogPriceAmount& output, ModelBuffer& buffer);
+};
+
+class CatalogPrice : public Wrappers::PFCatalogCatalogPriceWrapper<Allocator>, public InputModel, public OutputModel<PFCatalogCatalogPrice>
+{
+public:
+    using ModelWrapperType = typename Wrappers::PFCatalogCatalogPriceWrapper<Allocator>;
+    using ModelWrapperType::ModelType;
+
+    // Constructors
+    using ModelWrapperType::ModelWrapperType;
+
+    // InputModel
+    JsonValue ToJson() const override;
+    static JsonValue ToJson(const PFCatalogCatalogPrice& input);
+
+    // OutputModel
+    void FromJson(const JsonValue& input) override;
+    size_t RequiredBufferSize() const override;
+    Result<PFCatalogCatalogPrice const*> Copy(ModelBuffer& buffer) const override;
+
+    static size_t RequiredBufferSize(const PFCatalogCatalogPrice& model);
+    static HRESULT Copy(const PFCatalogCatalogPrice& input, PFCatalogCatalogPrice& output, ModelBuffer& buffer);
+};
+
+class CatalogPriceOptions : public Wrappers::PFCatalogCatalogPriceOptionsWrapper<Allocator>, public InputModel, public OutputModel<PFCatalogCatalogPriceOptions>
+{
+public:
+    using ModelWrapperType = typename Wrappers::PFCatalogCatalogPriceOptionsWrapper<Allocator>;
+    using ModelWrapperType::ModelType;
+
+    // Constructors
+    using ModelWrapperType::ModelWrapperType;
+
+    // InputModel
+    JsonValue ToJson() const override;
+    static JsonValue ToJson(const PFCatalogCatalogPriceOptions& input);
+
+    // OutputModel
+    void FromJson(const JsonValue& input) override;
+    size_t RequiredBufferSize() const override;
+    Result<PFCatalogCatalogPriceOptions const*> Copy(ModelBuffer& buffer) const override;
+
+    static size_t RequiredBufferSize(const PFCatalogCatalogPriceOptions& model);
+    static HRESULT Copy(const PFCatalogCatalogPriceOptions& input, PFCatalogCatalogPriceOptions& output, ModelBuffer& buffer);
+};
+
+class CatalogItemReference : public Wrappers::PFCatalogCatalogItemReferenceWrapper<Allocator>, public InputModel, public OutputModel<PFCatalogCatalogItemReference>
+{
+public:
+    using ModelWrapperType = typename Wrappers::PFCatalogCatalogItemReferenceWrapper<Allocator>;
+    using ModelWrapperType::ModelType;
+
+    // Constructors
+    using ModelWrapperType::ModelWrapperType;
+
+    // InputModel
+    JsonValue ToJson() const override;
+    static JsonValue ToJson(const PFCatalogCatalogItemReference& input);
+
+    // OutputModel
+    void FromJson(const JsonValue& input) override;
+    size_t RequiredBufferSize() const override;
+    Result<PFCatalogCatalogItemReference const*> Copy(ModelBuffer& buffer) const override;
+
+    static size_t RequiredBufferSize(const PFCatalogCatalogItemReference& model);
+    static HRESULT Copy(const PFCatalogCatalogItemReference& input, PFCatalogCatalogItemReference& output, ModelBuffer& buffer);
 };
 
 class KeywordSet : public Wrappers::PFCatalogKeywordSetWrapper<Allocator>, public InputModel, public OutputModel<PFCatalogKeywordSet>
@@ -141,6 +251,116 @@ public:
 
     static size_t RequiredBufferSize(const PFCatalogRating& model);
     static HRESULT Copy(const PFCatalogRating& input, PFCatalogRating& output, ModelBuffer& buffer);
+};
+
+class FilterOptions : public Wrappers::PFCatalogFilterOptionsWrapper<Allocator>, public InputModel, public OutputModel<PFCatalogFilterOptions>
+{
+public:
+    using ModelWrapperType = typename Wrappers::PFCatalogFilterOptionsWrapper<Allocator>;
+    using ModelWrapperType::ModelType;
+
+    // Constructors
+    using ModelWrapperType::ModelWrapperType;
+
+    // InputModel
+    JsonValue ToJson() const override;
+    static JsonValue ToJson(const PFCatalogFilterOptions& input);
+
+    // OutputModel
+    void FromJson(const JsonValue& input) override;
+    size_t RequiredBufferSize() const override;
+    Result<PFCatalogFilterOptions const*> Copy(ModelBuffer& buffer) const override;
+
+    static size_t RequiredBufferSize(const PFCatalogFilterOptions& model);
+    static HRESULT Copy(const PFCatalogFilterOptions& input, PFCatalogFilterOptions& output, ModelBuffer& buffer);
+};
+
+class CatalogPriceAmountOverride : public Wrappers::PFCatalogCatalogPriceAmountOverrideWrapper<Allocator>, public InputModel, public OutputModel<PFCatalogCatalogPriceAmountOverride>
+{
+public:
+    using ModelWrapperType = typename Wrappers::PFCatalogCatalogPriceAmountOverrideWrapper<Allocator>;
+    using ModelWrapperType::ModelType;
+
+    // Constructors
+    using ModelWrapperType::ModelWrapperType;
+
+    // InputModel
+    JsonValue ToJson() const override;
+    static JsonValue ToJson(const PFCatalogCatalogPriceAmountOverride& input);
+
+    // OutputModel
+    void FromJson(const JsonValue& input) override;
+    size_t RequiredBufferSize() const override;
+    Result<PFCatalogCatalogPriceAmountOverride const*> Copy(ModelBuffer& buffer) const override;
+
+    static size_t RequiredBufferSize(const PFCatalogCatalogPriceAmountOverride& model);
+    static HRESULT Copy(const PFCatalogCatalogPriceAmountOverride& input, PFCatalogCatalogPriceAmountOverride& output, ModelBuffer& buffer);
+};
+
+class CatalogPriceOverride : public Wrappers::PFCatalogCatalogPriceOverrideWrapper<Allocator>, public InputModel, public OutputModel<PFCatalogCatalogPriceOverride>
+{
+public:
+    using ModelWrapperType = typename Wrappers::PFCatalogCatalogPriceOverrideWrapper<Allocator>;
+    using ModelWrapperType::ModelType;
+
+    // Constructors
+    using ModelWrapperType::ModelWrapperType;
+
+    // InputModel
+    JsonValue ToJson() const override;
+    static JsonValue ToJson(const PFCatalogCatalogPriceOverride& input);
+
+    // OutputModel
+    void FromJson(const JsonValue& input) override;
+    size_t RequiredBufferSize() const override;
+    Result<PFCatalogCatalogPriceOverride const*> Copy(ModelBuffer& buffer) const override;
+
+    static size_t RequiredBufferSize(const PFCatalogCatalogPriceOverride& model);
+    static HRESULT Copy(const PFCatalogCatalogPriceOverride& input, PFCatalogCatalogPriceOverride& output, ModelBuffer& buffer);
+};
+
+class CatalogPriceOptionsOverride : public Wrappers::PFCatalogCatalogPriceOptionsOverrideWrapper<Allocator>, public InputModel, public OutputModel<PFCatalogCatalogPriceOptionsOverride>
+{
+public:
+    using ModelWrapperType = typename Wrappers::PFCatalogCatalogPriceOptionsOverrideWrapper<Allocator>;
+    using ModelWrapperType::ModelType;
+
+    // Constructors
+    using ModelWrapperType::ModelWrapperType;
+
+    // InputModel
+    JsonValue ToJson() const override;
+    static JsonValue ToJson(const PFCatalogCatalogPriceOptionsOverride& input);
+
+    // OutputModel
+    void FromJson(const JsonValue& input) override;
+    size_t RequiredBufferSize() const override;
+    Result<PFCatalogCatalogPriceOptionsOverride const*> Copy(ModelBuffer& buffer) const override;
+
+    static size_t RequiredBufferSize(const PFCatalogCatalogPriceOptionsOverride& model);
+    static HRESULT Copy(const PFCatalogCatalogPriceOptionsOverride& input, PFCatalogCatalogPriceOptionsOverride& output, ModelBuffer& buffer);
+};
+
+class StoreDetails : public Wrappers::PFCatalogStoreDetailsWrapper<Allocator>, public InputModel, public OutputModel<PFCatalogStoreDetails>
+{
+public:
+    using ModelWrapperType = typename Wrappers::PFCatalogStoreDetailsWrapper<Allocator>;
+    using ModelWrapperType::ModelType;
+
+    // Constructors
+    using ModelWrapperType::ModelWrapperType;
+
+    // InputModel
+    JsonValue ToJson() const override;
+    static JsonValue ToJson(const PFCatalogStoreDetails& input);
+
+    // OutputModel
+    void FromJson(const JsonValue& input) override;
+    size_t RequiredBufferSize() const override;
+    Result<PFCatalogStoreDetails const*> Copy(ModelBuffer& buffer) const override;
+
+    static size_t RequiredBufferSize(const PFCatalogStoreDetails& model);
+    static HRESULT Copy(const PFCatalogStoreDetails& input, PFCatalogStoreDetails& output, ModelBuffer& buffer);
 };
 
 class CatalogItem : public Wrappers::PFCatalogCatalogItemWrapper<Allocator>, public InputModel, public OutputModel<PFCatalogCatalogItem>
@@ -309,6 +529,50 @@ public:
 
 };
 
+class CatalogSpecificConfig : public Wrappers::PFCatalogCatalogSpecificConfigWrapper<Allocator>, public InputModel, public OutputModel<PFCatalogCatalogSpecificConfig>
+{
+public:
+    using ModelWrapperType = typename Wrappers::PFCatalogCatalogSpecificConfigWrapper<Allocator>;
+    using ModelWrapperType::ModelType;
+
+    // Constructors
+    using ModelWrapperType::ModelWrapperType;
+
+    // InputModel
+    JsonValue ToJson() const override;
+    static JsonValue ToJson(const PFCatalogCatalogSpecificConfig& input);
+
+    // OutputModel
+    void FromJson(const JsonValue& input) override;
+    size_t RequiredBufferSize() const override;
+    Result<PFCatalogCatalogSpecificConfig const*> Copy(ModelBuffer& buffer) const override;
+
+    static size_t RequiredBufferSize(const PFCatalogCatalogSpecificConfig& model);
+    static HRESULT Copy(const PFCatalogCatalogSpecificConfig& input, PFCatalogCatalogSpecificConfig& output, ModelBuffer& buffer);
+};
+
+class DeepLinkFormat : public Wrappers::PFCatalogDeepLinkFormatWrapper<Allocator>, public InputModel, public OutputModel<PFCatalogDeepLinkFormat>
+{
+public:
+    using ModelWrapperType = typename Wrappers::PFCatalogDeepLinkFormatWrapper<Allocator>;
+    using ModelWrapperType::ModelType;
+
+    // Constructors
+    using ModelWrapperType::ModelWrapperType;
+
+    // InputModel
+    JsonValue ToJson() const override;
+    static JsonValue ToJson(const PFCatalogDeepLinkFormat& input);
+
+    // OutputModel
+    void FromJson(const JsonValue& input) override;
+    size_t RequiredBufferSize() const override;
+    Result<PFCatalogDeepLinkFormat const*> Copy(ModelBuffer& buffer) const override;
+
+    static size_t RequiredBufferSize(const PFCatalogDeepLinkFormat& model);
+    static HRESULT Copy(const PFCatalogDeepLinkFormat& input, PFCatalogDeepLinkFormat& output, ModelBuffer& buffer);
+};
+
 class DisplayPropertyIndexInfo : public Wrappers::PFCatalogDisplayPropertyIndexInfoWrapper<Allocator>, public InputModel, public OutputModel<PFCatalogDisplayPropertyIndexInfo>
 {
 public:
@@ -329,6 +593,50 @@ public:
 
     static size_t RequiredBufferSize(const PFCatalogDisplayPropertyIndexInfo& model);
     static HRESULT Copy(const PFCatalogDisplayPropertyIndexInfo& input, PFCatalogDisplayPropertyIndexInfo& output, ModelBuffer& buffer);
+};
+
+class FileConfig : public Wrappers::PFCatalogFileConfigWrapper<Allocator>, public InputModel, public OutputModel<PFCatalogFileConfig>
+{
+public:
+    using ModelWrapperType = typename Wrappers::PFCatalogFileConfigWrapper<Allocator>;
+    using ModelWrapperType::ModelType;
+
+    // Constructors
+    using ModelWrapperType::ModelWrapperType;
+
+    // InputModel
+    JsonValue ToJson() const override;
+    static JsonValue ToJson(const PFCatalogFileConfig& input);
+
+    // OutputModel
+    void FromJson(const JsonValue& input) override;
+    size_t RequiredBufferSize() const override;
+    Result<PFCatalogFileConfig const*> Copy(ModelBuffer& buffer) const override;
+
+    static size_t RequiredBufferSize(const PFCatalogFileConfig& model);
+    static HRESULT Copy(const PFCatalogFileConfig& input, PFCatalogFileConfig& output, ModelBuffer& buffer);
+};
+
+class ImageConfig : public Wrappers::PFCatalogImageConfigWrapper<Allocator>, public InputModel, public OutputModel<PFCatalogImageConfig>
+{
+public:
+    using ModelWrapperType = typename Wrappers::PFCatalogImageConfigWrapper<Allocator>;
+    using ModelWrapperType::ModelType;
+
+    // Constructors
+    using ModelWrapperType::ModelWrapperType;
+
+    // InputModel
+    JsonValue ToJson() const override;
+    static JsonValue ToJson(const PFCatalogImageConfig& input);
+
+    // OutputModel
+    void FromJson(const JsonValue& input) override;
+    size_t RequiredBufferSize() const override;
+    Result<PFCatalogImageConfig const*> Copy(ModelBuffer& buffer) const override;
+
+    static size_t RequiredBufferSize(const PFCatalogImageConfig& model);
+    static HRESULT Copy(const PFCatalogImageConfig& input, PFCatalogImageConfig& output, ModelBuffer& buffer);
 };
 
 class UserGeneratedContentSpecificConfig : public Wrappers::PFCatalogUserGeneratedContentSpecificConfigWrapper<Allocator>, public InputModel, public OutputModel<PFCatalogUserGeneratedContentSpecificConfig>
@@ -580,6 +888,39 @@ public:
     static HRESULT Copy(const PFCatalogGetItemResponse& input, PFCatalogGetItemResponse& output, ModelBuffer& buffer);
 };
 
+class GetItemContainersRequest : public Wrappers::PFCatalogGetItemContainersRequestWrapper<Allocator>, public InputModel
+{
+public:
+    using ModelWrapperType = typename Wrappers::PFCatalogGetItemContainersRequestWrapper<Allocator>;
+    using ModelWrapperType::ModelType;
+
+    // Constructors
+    using ModelWrapperType::ModelWrapperType;
+
+    // InputModel
+    JsonValue ToJson() const override;
+    static JsonValue ToJson(const PFCatalogGetItemContainersRequest& input);
+
+};
+
+class GetItemContainersResponse : public Wrappers::PFCatalogGetItemContainersResponseWrapper<Allocator>, public OutputModel<PFCatalogGetItemContainersResponse>
+{
+public:
+    using ModelWrapperType = typename Wrappers::PFCatalogGetItemContainersResponseWrapper<Allocator>;
+    using ModelWrapperType::ModelType;
+
+    // Constructors
+    using ModelWrapperType::ModelWrapperType;
+
+    // OutputModel
+    void FromJson(const JsonValue& input) override;
+    size_t RequiredBufferSize() const override;
+    Result<PFCatalogGetItemContainersResponse const*> Copy(ModelBuffer& buffer) const override;
+
+    static size_t RequiredBufferSize(const PFCatalogGetItemContainersResponse& model);
+    static HRESULT Copy(const PFCatalogGetItemContainersResponse& input, PFCatalogGetItemContainersResponse& output, ModelBuffer& buffer);
+};
+
 class GetItemModerationStateRequest : public Wrappers::PFCatalogGetItemModerationStateRequestWrapper<Allocator>, public InputModel
 {
 public:
@@ -626,24 +967,6 @@ public:
     JsonValue ToJson() const override;
     static JsonValue ToJson(const PFCatalogGetItemPublishStatusRequest& input);
 
-};
-
-class ScanResult : public Wrappers::PFCatalogScanResultWrapper<Allocator>, public OutputModel<PFCatalogScanResult>
-{
-public:
-    using ModelWrapperType = typename Wrappers::PFCatalogScanResultWrapper<Allocator>;
-    using ModelWrapperType::ModelType;
-
-    // Constructors
-    using ModelWrapperType::ModelWrapperType;
-
-    // OutputModel
-    void FromJson(const JsonValue& input) override;
-    size_t RequiredBufferSize() const override;
-    Result<PFCatalogScanResult const*> Copy(ModelBuffer& buffer) const override;
-
-    static size_t RequiredBufferSize(const PFCatalogScanResult& model);
-    static HRESULT Copy(const PFCatalogScanResult& input, PFCatalogScanResult& output, ModelBuffer& buffer);
 };
 
 class GetItemPublishStatusResponse : public Wrappers::PFCatalogGetItemPublishStatusResponseWrapper<Allocator>, public OutputModel<PFCatalogGetItemPublishStatusResponse>
@@ -730,6 +1053,39 @@ public:
     static HRESULT Copy(const PFCatalogGetItemReviewSummaryResponse& input, PFCatalogGetItemReviewSummaryResponse& output, ModelBuffer& buffer);
 };
 
+class GetItemsRequest : public Wrappers::PFCatalogGetItemsRequestWrapper<Allocator>, public InputModel
+{
+public:
+    using ModelWrapperType = typename Wrappers::PFCatalogGetItemsRequestWrapper<Allocator>;
+    using ModelWrapperType::ModelType;
+
+    // Constructors
+    using ModelWrapperType::ModelWrapperType;
+
+    // InputModel
+    JsonValue ToJson() const override;
+    static JsonValue ToJson(const PFCatalogGetItemsRequest& input);
+
+};
+
+class GetItemsResponse : public Wrappers::PFCatalogGetItemsResponseWrapper<Allocator>, public OutputModel<PFCatalogGetItemsResponse>
+{
+public:
+    using ModelWrapperType = typename Wrappers::PFCatalogGetItemsResponseWrapper<Allocator>;
+    using ModelWrapperType::ModelType;
+
+    // Constructors
+    using ModelWrapperType::ModelWrapperType;
+
+    // OutputModel
+    void FromJson(const JsonValue& input) override;
+    size_t RequiredBufferSize() const override;
+    Result<PFCatalogGetItemsResponse const*> Copy(ModelBuffer& buffer) const override;
+
+    static size_t RequiredBufferSize(const PFCatalogGetItemsResponse& model);
+    static HRESULT Copy(const PFCatalogGetItemsResponse& input, PFCatalogGetItemsResponse& output, ModelBuffer& buffer);
+};
+
 class PublishDraftItemRequest : public Wrappers::PFCatalogPublishDraftItemRequestWrapper<Allocator>, public InputModel
 {
 public:
@@ -787,6 +1143,21 @@ public:
     // InputModel
     JsonValue ToJson() const override;
     static JsonValue ToJson(const PFCatalogReviewItemRequest& input);
+
+};
+
+class StoreReference : public Wrappers::PFCatalogStoreReferenceWrapper<Allocator>, public InputModel
+{
+public:
+    using ModelWrapperType = typename Wrappers::PFCatalogStoreReferenceWrapper<Allocator>;
+    using ModelWrapperType::ModelType;
+
+    // Constructors
+    using ModelWrapperType::ModelWrapperType;
+
+    // InputModel
+    JsonValue ToJson() const override;
+    static JsonValue ToJson(const PFCatalogStoreReference& input);
 
 };
 

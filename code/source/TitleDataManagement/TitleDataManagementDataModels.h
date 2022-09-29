@@ -497,24 +497,6 @@ public:
 
 };
 
-class SetTitleDataResult : public Wrappers::PFTitleDataManagementSetTitleDataResultWrapper<Allocator>, public OutputModel<PFTitleDataManagementSetTitleDataResult>
-{
-public:
-    using ModelWrapperType = typename Wrappers::PFTitleDataManagementSetTitleDataResultWrapper<Allocator>;
-    using ModelWrapperType::ModelType;
-
-    // Constructors
-    using ModelWrapperType::ModelWrapperType;
-
-    // OutputModel
-    void FromJson(const JsonValue& input) override;
-    size_t RequiredBufferSize() const override;
-    Result<PFTitleDataManagementSetTitleDataResult const*> Copy(ModelBuffer& buffer) const override;
-
-    static size_t RequiredBufferSize(const PFTitleDataManagementSetTitleDataResult& model);
-    static HRESULT Copy(const PFTitleDataManagementSetTitleDataResult& input, PFTitleDataManagementSetTitleDataResult& output, ModelBuffer& buffer);
-};
-
 class TitleDataKeyValue : public Wrappers::PFTitleDataManagementTitleDataKeyValueWrapper<Allocator>, public InputModel
 {
 public:

@@ -1312,6 +1312,211 @@ private:
 };
 
 template<template<typename AllocT> class Alloc = std::allocator>
+class PFSegmentsPlayerChurnPredictionSegmentFilterWrapper : public ModelWrapper<PFSegmentsPlayerChurnPredictionSegmentFilter, Alloc>
+{
+public:
+    using ModelType = typename PFSegmentsPlayerChurnPredictionSegmentFilter;
+    using String = typename std::basic_string<char, std::char_traits<char>, Alloc<char>>;
+    template<typename T> using Vector = typename std::vector<T, Alloc<T>>;
+
+    PFSegmentsPlayerChurnPredictionSegmentFilterWrapper() = default;
+
+    PFSegmentsPlayerChurnPredictionSegmentFilterWrapper(const PFSegmentsPlayerChurnPredictionSegmentFilter& model) :
+        ModelWrapper<PFSegmentsPlayerChurnPredictionSegmentFilter, Alloc>{ model },
+        m_comparison{ model.comparison ? StdExtra::optional<PFSegmentsSegmentFilterComparison>{ *model.comparison } : StdExtra::nullopt },
+        m_riskLevel{ model.riskLevel ? StdExtra::optional<PFSegmentsChurnRiskLevel>{ *model.riskLevel } : StdExtra::nullopt }
+    {
+        SetModelPointers();
+    }
+
+    PFSegmentsPlayerChurnPredictionSegmentFilterWrapper(const PFSegmentsPlayerChurnPredictionSegmentFilterWrapper& src) :
+        PFSegmentsPlayerChurnPredictionSegmentFilterWrapper{ src.Model() }
+    {
+    }
+
+    PFSegmentsPlayerChurnPredictionSegmentFilterWrapper(PFSegmentsPlayerChurnPredictionSegmentFilterWrapper&& src) :
+        PFSegmentsPlayerChurnPredictionSegmentFilterWrapper{}
+    {
+        swap(*this, src);
+    }
+
+    PFSegmentsPlayerChurnPredictionSegmentFilterWrapper& operator=(PFSegmentsPlayerChurnPredictionSegmentFilterWrapper src) 
+    {
+        swap(*this, src);
+        return *this;
+    }
+
+    virtual ~PFSegmentsPlayerChurnPredictionSegmentFilterWrapper() = default;
+
+    friend void swap(PFSegmentsPlayerChurnPredictionSegmentFilterWrapper& lhs, PFSegmentsPlayerChurnPredictionSegmentFilterWrapper& rhs)
+    {
+        using std::swap;
+        swap(lhs.m_model, rhs.m_model);
+        swap(lhs.m_comparison, rhs.m_comparison);
+        swap(lhs.m_riskLevel, rhs.m_riskLevel);
+        lhs.SetModelPointers();
+        rhs.SetModelPointers();
+    }
+
+    void SetComparison(StdExtra::optional<PFSegmentsSegmentFilterComparison> value)
+    {
+        m_comparison = std::move(value);
+        this->m_model.comparison = m_comparison ? m_comparison.operator->() : nullptr;
+    }
+
+    void SetRiskLevel(StdExtra::optional<PFSegmentsChurnRiskLevel> value)
+    {
+        m_riskLevel = std::move(value);
+        this->m_model.riskLevel = m_riskLevel ? m_riskLevel.operator->() : nullptr;
+    }
+
+private:
+    void SetModelPointers()
+    {
+        this->m_model.comparison = m_comparison ? m_comparison.operator->() : nullptr;
+        this->m_model.riskLevel = m_riskLevel ? m_riskLevel.operator->() : nullptr;
+    }
+
+    StdExtra::optional<PFSegmentsSegmentFilterComparison> m_comparison;
+    StdExtra::optional<PFSegmentsChurnRiskLevel> m_riskLevel;
+};
+
+template<template<typename AllocT> class Alloc = std::allocator>
+class PFSegmentsPlayerChurnPredictionTimeSegmentFilterWrapper : public ModelWrapper<PFSegmentsPlayerChurnPredictionTimeSegmentFilter, Alloc>
+{
+public:
+    using ModelType = typename PFSegmentsPlayerChurnPredictionTimeSegmentFilter;
+    using String = typename std::basic_string<char, std::char_traits<char>, Alloc<char>>;
+    template<typename T> using Vector = typename std::vector<T, Alloc<T>>;
+
+    PFSegmentsPlayerChurnPredictionTimeSegmentFilterWrapper() = default;
+
+    PFSegmentsPlayerChurnPredictionTimeSegmentFilterWrapper(const PFSegmentsPlayerChurnPredictionTimeSegmentFilter& model) :
+        ModelWrapper<PFSegmentsPlayerChurnPredictionTimeSegmentFilter, Alloc>{ model },
+        m_comparison{ model.comparison ? StdExtra::optional<PFSegmentsSegmentFilterComparison>{ *model.comparison } : StdExtra::nullopt }
+    {
+        SetModelPointers();
+    }
+
+    PFSegmentsPlayerChurnPredictionTimeSegmentFilterWrapper(const PFSegmentsPlayerChurnPredictionTimeSegmentFilterWrapper& src) :
+        PFSegmentsPlayerChurnPredictionTimeSegmentFilterWrapper{ src.Model() }
+    {
+    }
+
+    PFSegmentsPlayerChurnPredictionTimeSegmentFilterWrapper(PFSegmentsPlayerChurnPredictionTimeSegmentFilterWrapper&& src) :
+        PFSegmentsPlayerChurnPredictionTimeSegmentFilterWrapper{}
+    {
+        swap(*this, src);
+    }
+
+    PFSegmentsPlayerChurnPredictionTimeSegmentFilterWrapper& operator=(PFSegmentsPlayerChurnPredictionTimeSegmentFilterWrapper src) 
+    {
+        swap(*this, src);
+        return *this;
+    }
+
+    virtual ~PFSegmentsPlayerChurnPredictionTimeSegmentFilterWrapper() = default;
+
+    friend void swap(PFSegmentsPlayerChurnPredictionTimeSegmentFilterWrapper& lhs, PFSegmentsPlayerChurnPredictionTimeSegmentFilterWrapper& rhs)
+    {
+        using std::swap;
+        swap(lhs.m_model, rhs.m_model);
+        swap(lhs.m_comparison, rhs.m_comparison);
+        lhs.SetModelPointers();
+        rhs.SetModelPointers();
+    }
+
+    void SetComparison(StdExtra::optional<PFSegmentsSegmentFilterComparison> value)
+    {
+        m_comparison = std::move(value);
+        this->m_model.comparison = m_comparison ? m_comparison.operator->() : nullptr;
+    }
+
+    void SetDurationInDays(double value)
+    {
+        this->m_model.durationInDays = value;
+    }
+
+private:
+    void SetModelPointers()
+    {
+        this->m_model.comparison = m_comparison ? m_comparison.operator->() : nullptr;
+    }
+
+    StdExtra::optional<PFSegmentsSegmentFilterComparison> m_comparison;
+};
+
+template<template<typename AllocT> class Alloc = std::allocator>
+class PFSegmentsPlayerChurnPreviousPredictionSegmentFilterWrapper : public ModelWrapper<PFSegmentsPlayerChurnPreviousPredictionSegmentFilter, Alloc>
+{
+public:
+    using ModelType = typename PFSegmentsPlayerChurnPreviousPredictionSegmentFilter;
+    using String = typename std::basic_string<char, std::char_traits<char>, Alloc<char>>;
+    template<typename T> using Vector = typename std::vector<T, Alloc<T>>;
+
+    PFSegmentsPlayerChurnPreviousPredictionSegmentFilterWrapper() = default;
+
+    PFSegmentsPlayerChurnPreviousPredictionSegmentFilterWrapper(const PFSegmentsPlayerChurnPreviousPredictionSegmentFilter& model) :
+        ModelWrapper<PFSegmentsPlayerChurnPreviousPredictionSegmentFilter, Alloc>{ model },
+        m_comparison{ model.comparison ? StdExtra::optional<PFSegmentsSegmentFilterComparison>{ *model.comparison } : StdExtra::nullopt },
+        m_riskLevel{ model.riskLevel ? StdExtra::optional<PFSegmentsChurnRiskLevel>{ *model.riskLevel } : StdExtra::nullopt }
+    {
+        SetModelPointers();
+    }
+
+    PFSegmentsPlayerChurnPreviousPredictionSegmentFilterWrapper(const PFSegmentsPlayerChurnPreviousPredictionSegmentFilterWrapper& src) :
+        PFSegmentsPlayerChurnPreviousPredictionSegmentFilterWrapper{ src.Model() }
+    {
+    }
+
+    PFSegmentsPlayerChurnPreviousPredictionSegmentFilterWrapper(PFSegmentsPlayerChurnPreviousPredictionSegmentFilterWrapper&& src) :
+        PFSegmentsPlayerChurnPreviousPredictionSegmentFilterWrapper{}
+    {
+        swap(*this, src);
+    }
+
+    PFSegmentsPlayerChurnPreviousPredictionSegmentFilterWrapper& operator=(PFSegmentsPlayerChurnPreviousPredictionSegmentFilterWrapper src) 
+    {
+        swap(*this, src);
+        return *this;
+    }
+
+    virtual ~PFSegmentsPlayerChurnPreviousPredictionSegmentFilterWrapper() = default;
+
+    friend void swap(PFSegmentsPlayerChurnPreviousPredictionSegmentFilterWrapper& lhs, PFSegmentsPlayerChurnPreviousPredictionSegmentFilterWrapper& rhs)
+    {
+        using std::swap;
+        swap(lhs.m_model, rhs.m_model);
+        swap(lhs.m_comparison, rhs.m_comparison);
+        swap(lhs.m_riskLevel, rhs.m_riskLevel);
+        lhs.SetModelPointers();
+        rhs.SetModelPointers();
+    }
+
+    void SetComparison(StdExtra::optional<PFSegmentsSegmentFilterComparison> value)
+    {
+        m_comparison = std::move(value);
+        this->m_model.comparison = m_comparison ? m_comparison.operator->() : nullptr;
+    }
+
+    void SetRiskLevel(StdExtra::optional<PFSegmentsChurnRiskLevel> value)
+    {
+        m_riskLevel = std::move(value);
+        this->m_model.riskLevel = m_riskLevel ? m_riskLevel.operator->() : nullptr;
+    }
+
+private:
+    void SetModelPointers()
+    {
+        this->m_model.comparison = m_comparison ? m_comparison.operator->() : nullptr;
+        this->m_model.riskLevel = m_riskLevel ? m_riskLevel.operator->() : nullptr;
+    }
+
+    StdExtra::optional<PFSegmentsSegmentFilterComparison> m_comparison;
+    StdExtra::optional<PFSegmentsChurnRiskLevel> m_riskLevel;
+};
+
+template<template<typename AllocT> class Alloc = std::allocator>
 class PFSegmentsPushNotificationSegmentFilterWrapper : public ModelWrapper<PFSegmentsPushNotificationSegmentFilter, Alloc>
 {
 public:
@@ -1846,6 +2051,9 @@ public:
         m_linkedUserAccountFilter{ model.linkedUserAccountFilter ? StdExtra::optional<PFSegmentsLinkedUserAccountSegmentFilterWrapper<Alloc>>{ *model.linkedUserAccountFilter } : StdExtra::nullopt },
         m_linkedUserAccountHasEmailFilter{ model.linkedUserAccountHasEmailFilter ? StdExtra::optional<PFSegmentsLinkedUserAccountHasEmailSegmentFilterWrapper<Alloc>>{ *model.linkedUserAccountHasEmailFilter } : StdExtra::nullopt },
         m_locationFilter{ model.locationFilter ? StdExtra::optional<PFSegmentsLocationSegmentFilterWrapper<Alloc>>{ *model.locationFilter } : StdExtra::nullopt },
+        m_playerChurnPredictionFilter{ model.playerChurnPredictionFilter ? StdExtra::optional<PFSegmentsPlayerChurnPredictionSegmentFilterWrapper<Alloc>>{ *model.playerChurnPredictionFilter } : StdExtra::nullopt },
+        m_playerChurnPredictionTimeFilter{ model.playerChurnPredictionTimeFilter ? StdExtra::optional<PFSegmentsPlayerChurnPredictionTimeSegmentFilterWrapper<Alloc>>{ *model.playerChurnPredictionTimeFilter } : StdExtra::nullopt },
+        m_playerChurnPreviousPredictionFilter{ model.playerChurnPreviousPredictionFilter ? StdExtra::optional<PFSegmentsPlayerChurnPreviousPredictionSegmentFilterWrapper<Alloc>>{ *model.playerChurnPreviousPredictionFilter } : StdExtra::nullopt },
         m_pushNotificationFilter{ model.pushNotificationFilter ? StdExtra::optional<PFSegmentsPushNotificationSegmentFilterWrapper<Alloc>>{ *model.pushNotificationFilter } : StdExtra::nullopt },
         m_statisticFilter{ model.statisticFilter ? StdExtra::optional<PFSegmentsStatisticSegmentFilterWrapper<Alloc>>{ *model.statisticFilter } : StdExtra::nullopt },
         m_tagFilter{ model.tagFilter ? StdExtra::optional<PFSegmentsTagSegmentFilterWrapper<Alloc>>{ *model.tagFilter } : StdExtra::nullopt },
@@ -1888,6 +2096,9 @@ public:
         swap(lhs.m_linkedUserAccountFilter, rhs.m_linkedUserAccountFilter);
         swap(lhs.m_linkedUserAccountHasEmailFilter, rhs.m_linkedUserAccountHasEmailFilter);
         swap(lhs.m_locationFilter, rhs.m_locationFilter);
+        swap(lhs.m_playerChurnPredictionFilter, rhs.m_playerChurnPredictionFilter);
+        swap(lhs.m_playerChurnPredictionTimeFilter, rhs.m_playerChurnPredictionTimeFilter);
+        swap(lhs.m_playerChurnPreviousPredictionFilter, rhs.m_playerChurnPreviousPredictionFilter);
         swap(lhs.m_pushNotificationFilter, rhs.m_pushNotificationFilter);
         swap(lhs.m_statisticFilter, rhs.m_statisticFilter);
         swap(lhs.m_tagFilter, rhs.m_tagFilter);
@@ -1947,6 +2158,24 @@ public:
         this->m_model.locationFilter = m_locationFilter ? &m_locationFilter->Model() : nullptr;
     }
 
+    void SetPlayerChurnPredictionFilter(StdExtra::optional<PFSegmentsPlayerChurnPredictionSegmentFilterWrapper<Alloc>> value)
+    {
+        m_playerChurnPredictionFilter = std::move(value);
+        this->m_model.playerChurnPredictionFilter = m_playerChurnPredictionFilter ? &m_playerChurnPredictionFilter->Model() : nullptr;
+    }
+
+    void SetPlayerChurnPredictionTimeFilter(StdExtra::optional<PFSegmentsPlayerChurnPredictionTimeSegmentFilterWrapper<Alloc>> value)
+    {
+        m_playerChurnPredictionTimeFilter = std::move(value);
+        this->m_model.playerChurnPredictionTimeFilter = m_playerChurnPredictionTimeFilter ? &m_playerChurnPredictionTimeFilter->Model() : nullptr;
+    }
+
+    void SetPlayerChurnPreviousPredictionFilter(StdExtra::optional<PFSegmentsPlayerChurnPreviousPredictionSegmentFilterWrapper<Alloc>> value)
+    {
+        m_playerChurnPreviousPredictionFilter = std::move(value);
+        this->m_model.playerChurnPreviousPredictionFilter = m_playerChurnPreviousPredictionFilter ? &m_playerChurnPreviousPredictionFilter->Model() : nullptr;
+    }
+
     void SetPushNotificationFilter(StdExtra::optional<PFSegmentsPushNotificationSegmentFilterWrapper<Alloc>> value)
     {
         m_pushNotificationFilter = std::move(value);
@@ -2000,6 +2229,9 @@ private:
         this->m_model.linkedUserAccountFilter = m_linkedUserAccountFilter ?  &m_linkedUserAccountFilter->Model() : nullptr;
         this->m_model.linkedUserAccountHasEmailFilter = m_linkedUserAccountHasEmailFilter ?  &m_linkedUserAccountHasEmailFilter->Model() : nullptr;
         this->m_model.locationFilter = m_locationFilter ?  &m_locationFilter->Model() : nullptr;
+        this->m_model.playerChurnPredictionFilter = m_playerChurnPredictionFilter ?  &m_playerChurnPredictionFilter->Model() : nullptr;
+        this->m_model.playerChurnPredictionTimeFilter = m_playerChurnPredictionTimeFilter ?  &m_playerChurnPredictionTimeFilter->Model() : nullptr;
+        this->m_model.playerChurnPreviousPredictionFilter = m_playerChurnPreviousPredictionFilter ?  &m_playerChurnPreviousPredictionFilter->Model() : nullptr;
         this->m_model.pushNotificationFilter = m_pushNotificationFilter ?  &m_pushNotificationFilter->Model() : nullptr;
         this->m_model.statisticFilter = m_statisticFilter ?  &m_statisticFilter->Model() : nullptr;
         this->m_model.tagFilter = m_tagFilter ?  &m_tagFilter->Model() : nullptr;
@@ -2017,6 +2249,9 @@ private:
     StdExtra::optional<PFSegmentsLinkedUserAccountSegmentFilterWrapper<Alloc>> m_linkedUserAccountFilter;
     StdExtra::optional<PFSegmentsLinkedUserAccountHasEmailSegmentFilterWrapper<Alloc>> m_linkedUserAccountHasEmailFilter;
     StdExtra::optional<PFSegmentsLocationSegmentFilterWrapper<Alloc>> m_locationFilter;
+    StdExtra::optional<PFSegmentsPlayerChurnPredictionSegmentFilterWrapper<Alloc>> m_playerChurnPredictionFilter;
+    StdExtra::optional<PFSegmentsPlayerChurnPredictionTimeSegmentFilterWrapper<Alloc>> m_playerChurnPredictionTimeFilter;
+    StdExtra::optional<PFSegmentsPlayerChurnPreviousPredictionSegmentFilterWrapper<Alloc>> m_playerChurnPreviousPredictionFilter;
     StdExtra::optional<PFSegmentsPushNotificationSegmentFilterWrapper<Alloc>> m_pushNotificationFilter;
     StdExtra::optional<PFSegmentsStatisticSegmentFilterWrapper<Alloc>> m_statisticFilter;
     StdExtra::optional<PFSegmentsTagSegmentFilterWrapper<Alloc>> m_tagFilter;
@@ -2099,7 +2334,6 @@ public:
 
     PFSegmentsSegmentModelWrapper(const PFSegmentsSegmentModel& model) :
         ModelWrapper<PFSegmentsSegmentModel, Alloc>{ model },
-        m_azureResourceId{ SafeString(model.azureResourceId) },
         m_description{ SafeString(model.description) },
         m_enteredSegmentActions{ model.enteredSegmentActions, model.enteredSegmentActions + model.enteredSegmentActionsCount },
         m_leftSegmentActions{ model.leftSegmentActions, model.leftSegmentActions + model.leftSegmentActionsCount },
@@ -2133,7 +2367,6 @@ public:
     {
         using std::swap;
         swap(lhs.m_model, rhs.m_model);
-        swap(lhs.m_azureResourceId, rhs.m_azureResourceId);
         swap(lhs.m_description, rhs.m_description);
         swap(lhs.m_enteredSegmentActions, rhs.m_enteredSegmentActions);
         swap(lhs.m_leftSegmentActions, rhs.m_leftSegmentActions);
@@ -2142,12 +2375,6 @@ public:
         swap(lhs.m_segmentOrDefinitions, rhs.m_segmentOrDefinitions);
         lhs.SetModelPointers();
         rhs.SetModelPointers();
-    }
-
-    void SetAzureResourceId(String value)
-    {
-        m_azureResourceId = std::move(value);
-        this->m_model.azureResourceId =  m_azureResourceId.empty() ? nullptr : m_azureResourceId.data();
     }
 
     void SetDescription(String value)
@@ -2197,7 +2424,6 @@ public:
 private:
     void SetModelPointers()
     {
-        this->m_model.azureResourceId = m_azureResourceId.empty() ? nullptr : m_azureResourceId.data();
         this->m_model.description = m_description.empty() ? nullptr : m_description.data();
         this->m_model.enteredSegmentActions = m_enteredSegmentActions.empty() ? nullptr : m_enteredSegmentActions.data();
         this->m_model.leftSegmentActions = m_leftSegmentActions.empty() ? nullptr : m_leftSegmentActions.data();
@@ -2206,7 +2432,6 @@ private:
         this->m_model.segmentOrDefinitions = m_segmentOrDefinitions.empty() ? nullptr : m_segmentOrDefinitions.data();
     }
 
-    String m_azureResourceId;
     String m_description;
     ModelVector<PFSegmentsSegmentTriggerWrapper<Alloc>, Alloc> m_enteredSegmentActions;
     ModelVector<PFSegmentsSegmentTriggerWrapper<Alloc>, Alloc> m_leftSegmentActions;

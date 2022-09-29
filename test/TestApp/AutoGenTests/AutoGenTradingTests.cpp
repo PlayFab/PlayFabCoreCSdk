@@ -21,7 +21,7 @@ void AutoGenTradingTests::Log(std::stringstream& ss)
 
 HRESULT AutoGenTradingTests::LogHR(HRESULT hr)
 {
-    if( TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    if (TestApp::ShouldTrace(PFTestTraceLevel::Information))
     {
         TestApp::Log("Result: 0x%0.8x", hr);
     }
@@ -45,7 +45,7 @@ void AutoGenTradingTests::AddTests()
 
 void AutoGenTradingTests::ClassSetUp()
 {
-    HRESULT hr = PFAdminInitialize(testTitleData.titleId.data(), testTitleData.developerSecretKey.data(), nullptr, &stateHandle);
+    HRESULT hr = PFAdminInitialize(testTitleData.titleId.data(), testTitleData.developerSecretKey.data(), testTitleData.connectionString.data(), nullptr, &stateHandle);
     assert(SUCCEEDED(hr));
     if (SUCCEEDED(hr))
     {
@@ -152,7 +152,7 @@ void AutoGenTradingTests::SetUp(TestContext& testContext)
 
 void AutoGenTradingTests::TestTradingClientAcceptTrade(TestContext& testContext)
 {
-    struct ClientAcceptTradeResultHolder : public AcceptTradeResponseHolder
+    struct ClientAcceptTradeResultHolderStruct : public AcceptTradeResponseHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -162,19 +162,19 @@ void AutoGenTradingTests::TestTradingClientAcceptTrade(TestContext& testContext)
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFTradingClientAcceptTradeGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
             
-            LogPFTradingAcceptTradeResponse(result);
+            LogAcceptTradeResponse(result);
             return S_OK;
         }
 
         HRESULT Validate() override
         {
-            return ValidatePFTradingAcceptTradeResponse(result);
+            return ValidateClientAcceptTradeResponse(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<ClientAcceptTradeResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<ClientAcceptTradeResultHolderStruct>>(testContext);
 
     PFTradingAcceptTradeRequestWrapper<> request;
-    FillAcceptTradeRequest(request);
+    FillClientAcceptTradeRequest(request);
     LogAcceptTradeRequest(&request.Model(), "TestTradingClientAcceptTrade");
     HRESULT hr = PFTradingClientAcceptTradeAsync(titlePlayerHandle, &request.Model(), &async->asyncBlock);
     if (FAILED(hr))
@@ -191,7 +191,7 @@ void AutoGenTradingTests::TestTradingClientAcceptTrade(TestContext& testContext)
 
 void AutoGenTradingTests::TestTradingClientCancelTrade(TestContext& testContext)
 {
-    struct ClientCancelTradeResultHolder : public CancelTradeResponseHolder
+    struct ClientCancelTradeResultHolderStruct : public CancelTradeResponseHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -201,19 +201,19 @@ void AutoGenTradingTests::TestTradingClientCancelTrade(TestContext& testContext)
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFTradingClientCancelTradeGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
             
-            LogPFTradingCancelTradeResponse(result);
+            LogCancelTradeResponse(result);
             return S_OK;
         }
 
         HRESULT Validate() override
         {
-            return ValidatePFTradingCancelTradeResponse(result);
+            return ValidateClientCancelTradeResponse(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<ClientCancelTradeResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<ClientCancelTradeResultHolderStruct>>(testContext);
 
     PFTradingCancelTradeRequestWrapper<> request;
-    FillCancelTradeRequest(request);
+    FillClientCancelTradeRequest(request);
     LogCancelTradeRequest(&request.Model(), "TestTradingClientCancelTrade");
     HRESULT hr = PFTradingClientCancelTradeAsync(titlePlayerHandle, &request.Model(), &async->asyncBlock);
     if (FAILED(hr))
@@ -230,7 +230,7 @@ void AutoGenTradingTests::TestTradingClientCancelTrade(TestContext& testContext)
 
 void AutoGenTradingTests::TestTradingClientGetPlayerTrades(TestContext& testContext)
 {
-    struct ClientGetPlayerTradesResultHolder : public GetPlayerTradesResponseHolder
+    struct ClientGetPlayerTradesResultHolderStruct : public GetPlayerTradesResponseHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -240,19 +240,19 @@ void AutoGenTradingTests::TestTradingClientGetPlayerTrades(TestContext& testCont
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFTradingClientGetPlayerTradesGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
             
-            LogPFTradingGetPlayerTradesResponse(result);
+            LogGetPlayerTradesResponse(result);
             return S_OK;
         }
 
         HRESULT Validate() override
         {
-            return ValidatePFTradingGetPlayerTradesResponse(result);
+            return ValidateClientGetPlayerTradesResponse(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<ClientGetPlayerTradesResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<ClientGetPlayerTradesResultHolderStruct>>(testContext);
 
     PFTradingGetPlayerTradesRequestWrapper<> request;
-    FillGetPlayerTradesRequest(request);
+    FillClientGetPlayerTradesRequest(request);
     LogGetPlayerTradesRequest(&request.Model(), "TestTradingClientGetPlayerTrades");
     HRESULT hr = PFTradingClientGetPlayerTradesAsync(titlePlayerHandle, &request.Model(), &async->asyncBlock);
     if (FAILED(hr))
@@ -269,7 +269,7 @@ void AutoGenTradingTests::TestTradingClientGetPlayerTrades(TestContext& testCont
 
 void AutoGenTradingTests::TestTradingClientGetTradeStatus(TestContext& testContext)
 {
-    struct ClientGetTradeStatusResultHolder : public GetTradeStatusResponseHolder
+    struct ClientGetTradeStatusResultHolderStruct : public GetTradeStatusResponseHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -279,19 +279,19 @@ void AutoGenTradingTests::TestTradingClientGetTradeStatus(TestContext& testConte
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFTradingClientGetTradeStatusGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
             
-            LogPFTradingGetTradeStatusResponse(result);
+            LogGetTradeStatusResponse(result);
             return S_OK;
         }
 
         HRESULT Validate() override
         {
-            return ValidatePFTradingGetTradeStatusResponse(result);
+            return ValidateClientGetTradeStatusResponse(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<ClientGetTradeStatusResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<ClientGetTradeStatusResultHolderStruct>>(testContext);
 
     PFTradingGetTradeStatusRequestWrapper<> request;
-    FillGetTradeStatusRequest(request);
+    FillClientGetTradeStatusRequest(request);
     LogGetTradeStatusRequest(&request.Model(), "TestTradingClientGetTradeStatus");
     HRESULT hr = PFTradingClientGetTradeStatusAsync(titlePlayerHandle, &request.Model(), &async->asyncBlock);
     if (FAILED(hr))
@@ -308,7 +308,7 @@ void AutoGenTradingTests::TestTradingClientGetTradeStatus(TestContext& testConte
 
 void AutoGenTradingTests::TestTradingClientOpenTrade(TestContext& testContext)
 {
-    struct ClientOpenTradeResultHolder : public OpenTradeResponseHolder
+    struct ClientOpenTradeResultHolderStruct : public OpenTradeResponseHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -318,19 +318,19 @@ void AutoGenTradingTests::TestTradingClientOpenTrade(TestContext& testContext)
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFTradingClientOpenTradeGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
             
-            LogPFTradingOpenTradeResponse(result);
+            LogOpenTradeResponse(result);
             return S_OK;
         }
 
         HRESULT Validate() override
         {
-            return ValidatePFTradingOpenTradeResponse(result);
+            return ValidateClientOpenTradeResponse(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<ClientOpenTradeResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<ClientOpenTradeResultHolderStruct>>(testContext);
 
     PFTradingOpenTradeRequestWrapper<> request;
-    FillOpenTradeRequest(request);
+    FillClientOpenTradeRequest(request);
     LogOpenTradeRequest(&request.Model(), "TestTradingClientOpenTrade");
     HRESULT hr = PFTradingClientOpenTradeAsync(titlePlayerHandle, &request.Model(), &async->asyncBlock);
     if (FAILED(hr))

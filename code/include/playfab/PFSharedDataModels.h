@@ -14,20 +14,6 @@ extern "C"
 #undef IN
 
 /// <summary>
-/// Region enum.
-/// </summary>
-enum class PFRegion : uint32_t
-{
-    USCentral,
-    USEast,
-    EUWest,
-    Singapore,
-    Japan,
-    Brazil,
-    Australia
-};
-
-/// <summary>
 /// EmailVerificationStatus enum.
 /// </summary>
 enum class PFEmailVerificationStatus : uint32_t
@@ -62,7 +48,8 @@ enum class PFLoginIdentityProvider : uint32_t
     FacebookInstantGames,
     OpenIdConnect,
     Apple,
-    NintendoSwitchAccount
+    NintendoSwitchAccount,
+    GooglePlayGames
 };
 
 /// <summary>
@@ -345,6 +332,20 @@ enum class PFPushNotificationPlatform : uint32_t
 };
 
 /// <summary>
+/// Region enum.
+/// </summary>
+enum class PFRegion : uint32_t
+{
+    USCentral,
+    USEast,
+    EUWest,
+    Singapore,
+    Japan,
+    Brazil,
+    Australia
+};
+
+/// <summary>
 /// UserDataPermission enum.
 /// </summary>
 enum class PFUserDataPermission : uint32_t
@@ -576,7 +577,8 @@ enum class PFUserOrigination : uint32_t
     FacebookInstantGamesId,
     OpenIdConnect,
     Apple,
-    NintendoSwitchAccount
+    NintendoSwitchAccount,
+    GooglePlayGames
 };
 
 /// <summary>
@@ -1436,12 +1438,12 @@ typedef struct PFUserGameCenterInfo
 typedef struct PFUserPsnInfo
 {
     /// <summary>
-    /// (Optional) PSN account ID.
+    /// (Optional) PlayStation :tm: Network account ID.
     /// </summary>
     _Maybenull_ _Null_terminated_ const char* psnAccountId;
 
     /// <summary>
-    /// (Optional) PSN online ID.
+    /// (Optional) PlayStation :tm: Network online ID.
     /// </summary>
     _Maybenull_ _Null_terminated_ const char* psnOnlineId;
 
@@ -1488,6 +1490,11 @@ typedef struct PFUserXboxInfo
     /// (Optional) XBox user ID.
     /// </summary>
     _Maybenull_ _Null_terminated_ const char* xboxUserId;
+
+    /// <summary>
+    /// (Optional) XBox user sandbox.
+    /// </summary>
+    _Maybenull_ _Null_terminated_ const char* xboxUserSandbox;
 
 } PFUserXboxInfo;
 
@@ -1769,6 +1776,28 @@ typedef struct PFUserGoogleInfo
 } PFUserGoogleInfo;
 
 /// <summary>
+/// PFUserGooglePlayGamesInfo data model.
+/// </summary>
+typedef struct PFUserGooglePlayGamesInfo
+{
+    /// <summary>
+    /// (Optional) Avatar image url of the Google Play Games player.
+    /// </summary>
+    _Maybenull_ _Null_terminated_ const char* googlePlayGamesPlayerAvatarImageUrl;
+
+    /// <summary>
+    /// (Optional) Display name of the Google Play Games player.
+    /// </summary>
+    _Maybenull_ _Null_terminated_ const char* googlePlayGamesPlayerDisplayName;
+
+    /// <summary>
+    /// (Optional) Google Play Games player ID.
+    /// </summary>
+    _Maybenull_ _Null_terminated_ const char* googlePlayGamesPlayerId;
+
+} PFUserGooglePlayGamesInfo;
+
+/// <summary>
 /// PFUserIosDeviceInfo data model.
 /// </summary>
 typedef struct PFUserIosDeviceInfo
@@ -1969,6 +1998,12 @@ typedef struct PFUserAccountInfo
     _Maybenull_ PFUserGoogleInfo const* googleInfo;
 
     /// <summary>
+    /// (Optional) User Google Play Games account information, if a Google Play Games account has been
+    /// linked.
+    /// </summary>
+    _Maybenull_ PFUserGooglePlayGamesInfo const* googlePlayGamesInfo;
+
+    /// <summary>
     /// (Optional) User iOS device information, if an iOS device has been linked.
     /// </summary>
     _Maybenull_ PFUserIosDeviceInfo const* iosDeviceInfo;
@@ -2009,7 +2044,8 @@ typedef struct PFUserAccountInfo
     _Maybenull_ PFUserPrivateAccountInfo const* privateInfo;
 
     /// <summary>
-    /// (Optional) User PSN account information, if a PSN account has been linked.
+    /// (Optional) User PlayStation :tm: Network account information, if a PlayStation :tm: Network account
+    /// has been linked.
     /// </summary>
     _Maybenull_ PFUserPsnInfo const* psnInfo;
 
@@ -2179,51 +2215,6 @@ typedef struct PFGetPlayerCombinedInfoResultPayload
     uint32_t userVirtualCurrencyRechargeTimesCount;
 
 } PFGetPlayerCombinedInfoResultPayload;
-
-/// <summary>
-/// PFGetPlayerCombinedInfoRequest data model.
-/// </summary>
-typedef struct PFGetPlayerCombinedInfoRequest
-{
-    /// <summary>
-    /// (Optional) The optional custom tags associated with the request (e.g. build number, external
-    /// trace identifiers, etc.).
-    /// </summary>
-    _Maybenull_ _Field_size_(customTagsCount) struct PFStringDictionaryEntry const* customTags;
-
-    /// <summary>
-    /// Count of customTags
-    /// </summary>
-    uint32_t customTagsCount;
-
-    /// <summary>
-    /// Flags for which pieces of info to return for the user.
-    /// </summary>
-    PFGetPlayerCombinedInfoRequestParams const* infoRequestParameters;
-
-    /// <summary>
-    /// PlayFabId of the user whose data will be returned.
-    /// </summary>
-    _Null_terminated_ const char* playFabId;
-
-} PFGetPlayerCombinedInfoRequest;
-
-/// <summary>
-/// PFGetPlayerCombinedInfoResult data model.
-/// </summary>
-typedef struct PFGetPlayerCombinedInfoResult
-{
-    /// <summary>
-    /// (Optional) Results for requested info.
-    /// </summary>
-    _Maybenull_ PFGetPlayerCombinedInfoResultPayload const* infoResultPayload;
-
-    /// <summary>
-    /// (Optional) Unique PlayFab assigned ID of the user on whom the operation will be performed.
-    /// </summary>
-    _Maybenull_ _Null_terminated_ const char* playFabId;
-
-} PFGetPlayerCombinedInfoResult;
 
 /// <summary>
 /// PFResultTableNode data model.

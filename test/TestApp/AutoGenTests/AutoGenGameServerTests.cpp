@@ -21,7 +21,7 @@ void AutoGenGameServerTests::Log(std::stringstream& ss)
 
 HRESULT AutoGenGameServerTests::LogHR(HRESULT hr)
 {
-    if( TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    if (TestApp::ShouldTrace(PFTestTraceLevel::Information))
     {
         TestApp::Log("Result: 0x%0.8x", hr);
     }
@@ -32,22 +32,14 @@ HRESULT AutoGenGameServerTests::LogHR(HRESULT hr)
 void AutoGenGameServerTests::AddTests()
 {
     // Generated tests 
-    AddTest("TestGameServerAdminAddServerBuild", &AutoGenGameServerTests::TestGameServerAdminAddServerBuild);
-
-    AddTest("TestGameServerAdminGetServerBuildInfo", &AutoGenGameServerTests::TestGameServerAdminGetServerBuildInfo);
-
-    AddTest("TestGameServerAdminGetServerBuildUploadUrl", &AutoGenGameServerTests::TestGameServerAdminGetServerBuildUploadUrl);
-
-    AddTest("TestGameServerAdminListServerBuilds", &AutoGenGameServerTests::TestGameServerAdminListServerBuilds);
-
+#if HC_PLATFORM != HC_PLATFORM_GDK
     AddTest("TestGameServerAdminModifyServerBuild", &AutoGenGameServerTests::TestGameServerAdminModifyServerBuild);
-
-    AddTest("TestGameServerAdminRemoveServerBuild", &AutoGenGameServerTests::TestGameServerAdminRemoveServerBuild);
+#endif
 }
 
 void AutoGenGameServerTests::ClassSetUp()
 {
-    HRESULT hr = PFAdminInitialize(testTitleData.titleId.data(), testTitleData.developerSecretKey.data(), nullptr, &stateHandle);
+    HRESULT hr = PFAdminInitialize(testTitleData.titleId.data(), testTitleData.developerSecretKey.data(), testTitleData.connectionString.data(), nullptr, &stateHandle);
     assert(SUCCEEDED(hr));
     if (SUCCEEDED(hr))
     {
@@ -150,164 +142,12 @@ void AutoGenGameServerTests::SetUp(TestContext& testContext)
 
 }
 
-#pragma region AdminAddServerBuild
-
-void AutoGenGameServerTests::TestGameServerAdminAddServerBuild(TestContext& testContext)
-{
-    struct AdminAddServerBuildResultHolder : public AddServerBuildResultHolder
-    {
-        HRESULT Get(XAsyncBlock* async) override
-        {
-            size_t requiredBufferSize;
-            RETURN_IF_FAILED(LogHR(PFGameServerAdminAddServerBuildGetResultSize(async, &requiredBufferSize)));
-
-            resultBuffer.resize(requiredBufferSize);
-            RETURN_IF_FAILED(LogHR(PFGameServerAdminAddServerBuildGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
-            
-            LogPFGameServerAddServerBuildResult(result);
-            return S_OK;
-        }
-
-        HRESULT Validate() override
-        {
-            return ValidatePFGameServerAddServerBuildResult(result);
-        }
-    };
-    auto async = std::make_unique<XAsyncHelper<AdminAddServerBuildResultHolder>>(testContext);
-
-    PFGameServerAddServerBuildRequestWrapper<> request;
-    FillAddServerBuildRequest(request);
-    LogAddServerBuildRequest(&request.Model(), "TestGameServerAdminAddServerBuild");
-    HRESULT hr = PFGameServerAdminAddServerBuildAsync(stateHandle, &request.Model(), &async->asyncBlock);
-    if (FAILED(hr))
-    {
-        testContext.Fail("PFGameServerGameServerAdminAddServerBuildAsync", hr);
-        return;
-    }
-    async.release(); 
-}
-
-#pragma endregion
-
-#pragma region AdminGetServerBuildInfo
-
-void AutoGenGameServerTests::TestGameServerAdminGetServerBuildInfo(TestContext& testContext)
-{
-    struct AdminGetServerBuildInfoResultHolder : public GetServerBuildInfoResultHolder
-    {
-        HRESULT Get(XAsyncBlock* async) override
-        {
-            size_t requiredBufferSize;
-            RETURN_IF_FAILED(LogHR(PFGameServerAdminGetServerBuildInfoGetResultSize(async, &requiredBufferSize)));
-
-            resultBuffer.resize(requiredBufferSize);
-            RETURN_IF_FAILED(LogHR(PFGameServerAdminGetServerBuildInfoGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
-            
-            LogPFGameServerGetServerBuildInfoResult(result);
-            return S_OK;
-        }
-
-        HRESULT Validate() override
-        {
-            return ValidatePFGameServerGetServerBuildInfoResult(result);
-        }
-    };
-    auto async = std::make_unique<XAsyncHelper<AdminGetServerBuildInfoResultHolder>>(testContext);
-
-    PFGameServerGetServerBuildInfoRequestWrapper<> request;
-    FillGetServerBuildInfoRequest(request);
-    LogGetServerBuildInfoRequest(&request.Model(), "TestGameServerAdminGetServerBuildInfo");
-    HRESULT hr = PFGameServerAdminGetServerBuildInfoAsync(stateHandle, &request.Model(), &async->asyncBlock);
-    if (FAILED(hr))
-    {
-        testContext.Fail("PFGameServerGameServerAdminGetServerBuildInfoAsync", hr);
-        return;
-    }
-    async.release(); 
-}
-
-#pragma endregion
-
-#pragma region AdminGetServerBuildUploadUrl
-
-void AutoGenGameServerTests::TestGameServerAdminGetServerBuildUploadUrl(TestContext& testContext)
-{
-    struct AdminGetServerBuildUploadUrlResultHolder : public GetServerBuildUploadURLResultHolder
-    {
-        HRESULT Get(XAsyncBlock* async) override
-        {
-            size_t requiredBufferSize;
-            RETURN_IF_FAILED(LogHR(PFGameServerAdminGetServerBuildUploadUrlGetResultSize(async, &requiredBufferSize)));
-
-            resultBuffer.resize(requiredBufferSize);
-            RETURN_IF_FAILED(LogHR(PFGameServerAdminGetServerBuildUploadUrlGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
-            
-            LogPFGameServerGetServerBuildUploadURLResult(result);
-            return S_OK;
-        }
-
-        HRESULT Validate() override
-        {
-            return ValidatePFGameServerGetServerBuildUploadURLResult(result);
-        }
-    };
-    auto async = std::make_unique<XAsyncHelper<AdminGetServerBuildUploadUrlResultHolder>>(testContext);
-
-    PFGameServerGetServerBuildUploadURLRequestWrapper<> request;
-    FillGetServerBuildUploadURLRequest(request);
-    LogGetServerBuildUploadURLRequest(&request.Model(), "TestGameServerAdminGetServerBuildUploadUrl");
-    HRESULT hr = PFGameServerAdminGetServerBuildUploadUrlAsync(stateHandle, &request.Model(), &async->asyncBlock);
-    if (FAILED(hr))
-    {
-        testContext.Fail("PFGameServerGameServerAdminGetServerBuildUploadUrlAsync", hr);
-        return;
-    }
-    async.release(); 
-}
-
-#pragma endregion
-
-#pragma region AdminListServerBuilds
-
-void AutoGenGameServerTests::TestGameServerAdminListServerBuilds(TestContext& testContext)
-{
-    struct AdminListServerBuildsResultHolder : public ListBuildsResultHolder
-    {
-        HRESULT Get(XAsyncBlock* async) override
-        {
-            size_t requiredBufferSize;
-            RETURN_IF_FAILED(LogHR(PFGameServerAdminListServerBuildsGetResultSize(async, &requiredBufferSize)));
-
-            resultBuffer.resize(requiredBufferSize);
-            RETURN_IF_FAILED(LogHR(PFGameServerAdminListServerBuildsGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
-            
-            LogPFGameServerListBuildsResult(result);
-            return S_OK;
-        }
-
-        HRESULT Validate() override
-        {
-            return ValidatePFGameServerListBuildsResult(result);
-        }
-    };
-    auto async = std::make_unique<XAsyncHelper<AdminListServerBuildsResultHolder>>(testContext);
-
-    HRESULT hr = PFGameServerAdminListServerBuildsAsync(stateHandle, &async->asyncBlock);
-    if (FAILED(hr))
-    {
-        testContext.Fail("PFGameServerGameServerAdminListServerBuildsAsync", hr);
-        return;
-    }
-    async.release(); 
-}
-
-#pragma endregion
-
 #pragma region AdminModifyServerBuild
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 void AutoGenGameServerTests::TestGameServerAdminModifyServerBuild(TestContext& testContext)
 {
-    struct AdminModifyServerBuildResultHolder : public ModifyServerBuildResultHolder
+    struct AdminModifyServerBuildResultHolderStruct : public ModifyServerBuildResultHolder
     {
         HRESULT Get(XAsyncBlock* async) override
         {
@@ -317,19 +157,19 @@ void AutoGenGameServerTests::TestGameServerAdminModifyServerBuild(TestContext& t
             resultBuffer.resize(requiredBufferSize);
             RETURN_IF_FAILED(LogHR(PFGameServerAdminModifyServerBuildGetResult(async, resultBuffer.size(), resultBuffer.data(), &result, nullptr)));
             
-            LogPFGameServerModifyServerBuildResult(result);
+            LogModifyServerBuildResult(result);
             return S_OK;
         }
 
         HRESULT Validate() override
         {
-            return ValidatePFGameServerModifyServerBuildResult(result);
+            return ValidateAdminModifyServerBuildResponse(result);
         }
     };
-    auto async = std::make_unique<XAsyncHelper<AdminModifyServerBuildResultHolder>>(testContext);
+    auto async = std::make_unique<XAsyncHelper<AdminModifyServerBuildResultHolderStruct>>(testContext);
 
     PFGameServerModifyServerBuildRequestWrapper<> request;
-    FillModifyServerBuildRequest(request);
+    FillAdminModifyServerBuildRequest(request);
     LogModifyServerBuildRequest(&request.Model(), "TestGameServerAdminModifyServerBuild");
     HRESULT hr = PFGameServerAdminModifyServerBuildAsync(stateHandle, &request.Model(), &async->asyncBlock);
     if (FAILED(hr))
@@ -339,26 +179,7 @@ void AutoGenGameServerTests::TestGameServerAdminModifyServerBuild(TestContext& t
     }
     async.release(); 
 }
-
-#pragma endregion
-
-#pragma region AdminRemoveServerBuild
-
-void AutoGenGameServerTests::TestGameServerAdminRemoveServerBuild(TestContext& testContext)
-{
-    auto async = std::make_unique<XAsyncHelper<XAsyncResult>>(testContext);
-
-    PFGameServerRemoveServerBuildRequestWrapper<> request;
-    FillRemoveServerBuildRequest(request);
-    LogRemoveServerBuildRequest(&request.Model(), "TestGameServerAdminRemoveServerBuild");
-    HRESULT hr = PFGameServerAdminRemoveServerBuildAsync(stateHandle, &request.Model(), &async->asyncBlock);
-    if (FAILED(hr))
-    {
-        testContext.Fail("PFGameServerGameServerAdminRemoveServerBuildAsync", hr);
-        return;
-    }
-    async.release(); 
-}
+#endif
 
 #pragma endregion
 

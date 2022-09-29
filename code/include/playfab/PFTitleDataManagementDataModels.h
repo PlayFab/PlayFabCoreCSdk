@@ -757,10 +757,12 @@ typedef struct PFTitleDataManagementRemoveVirtualCurrencyTypesRequest
 } PFTitleDataManagementRemoveVirtualCurrencyTypesRequest;
 
 /// <summary>
-/// PFTitleDataManagementUpdateCatalogItemsRequest data model. This operation is not additive. Using
-/// it will cause the indicated catalog version to be created from scratch. If there is an existing catalog
-/// with the version number in question, it will be deleted and replaced with only the items specified
-/// in this call.
+/// PFTitleDataManagementUpdateCatalogItemsRequest data model. When used for SetCatalogItems, this operation
+/// is not additive. Using it will cause the indicated catalog version to be created from scratch. If
+/// there is an existing catalog with the version number in question, it will be deleted and replaced
+/// with only the items specified in this call. When used for UpdateCatalogItems, this operation is additive.
+/// Items with ItemId values not currently in the catalog will be added, while those with ItemId values
+/// matching items currently in the catalog will overwrite those items with the given values.
 /// </summary>
 typedef struct PFTitleDataManagementUpdateCatalogItemsRequest
 {
@@ -823,18 +825,21 @@ typedef struct PFTitleDataManagementSetPublisherDataRequest
 } PFTitleDataManagementSetPublisherDataRequest;
 
 /// <summary>
-/// PFTitleDataManagementUpdateStoreItemsRequest data model. This operation is not additive. Using it
-/// will cause the indicated virtual store to be created from scratch. If there is an existing store with
-/// the same storeId, it will be deleted and replaced with only the items specified in this call. A store
-/// contains an array of references to items defined inthe catalog, along with the prices for the item,
-/// in both real world and virtual currencies. These prices act as an override to any prices defined in
-/// the catalog. In this way, the base definitions of the items may be defined in the catalog, with all
-/// associated properties, while the pricing can be set for each store, as needed. This allows for subsets
-/// of goods to be defined for different purposes (in order to simplify showing some, but not all catalog
-/// items to users, based upon different characteristics), along with unique prices. Note that all prices
-/// defined in the catalog and store definitions for the item are considered valid, and that a compromised
-/// client can be made to send a request for an item based upon any of these definitions. If no price
-/// is specified in the store for an item, the price set in the catalog should be displayed to the user.
+/// PFTitleDataManagementUpdateStoreItemsRequest data model. When used for SetStoreItems, this operation
+/// is not additive. Using it will cause the indicated virtual store to be created from scratch. If there
+/// is an existing store with the same storeId, it will be deleted and replaced with only the items specified
+/// in this call. When used for UpdateStoreItems, this operation is additive. Items with ItemId values
+/// not currently in the store will be added, while those with ItemId values matching items currently
+/// in the catalog will overwrite those items with the given values. In both cases, a store contains an
+/// array of references to items defined in the catalog, along with the prices for the item, in both real
+/// world and virtual currencies. These prices act as an override to any prices defined in the catalog.
+/// In this way, the base definitions of the items may be defined in the catalog, with all associated
+/// properties, while the pricing can be set for each store, as needed. This allows for subsets of goods
+/// to be defined for different purposes (in order to simplify showing some, but not all catalog items
+/// to users, based upon different characteristics), along with unique prices. Note that all prices defined
+/// in the catalog and store definitions for the item are considered valid, and that a compromised client
+/// can be made to send a request for an item based upon any of these definitions. If no price is specified
+/// in the store for an item, the price set in the catalog should be displayed to the user.
 /// </summary>
 typedef struct PFTitleDataManagementUpdateStoreItemsRequest
 {
@@ -888,11 +893,6 @@ typedef struct PFTitleDataManagementUpdateStoreItemsRequest
 typedef struct PFTitleDataManagementSetTitleDataRequest
 {
     /// <summary>
-    /// (Optional) Id of azure resource.
-    /// </summary>
-    _Maybenull_ _Null_terminated_ const char* azureResourceId;
-
-    /// <summary>
     /// (Optional) The optional custom tags associated with the request (e.g. build number, external
     /// trace identifiers, etc.).
     /// </summary>
@@ -910,29 +910,11 @@ typedef struct PFTitleDataManagementSetTitleDataRequest
     _Null_terminated_ const char* key;
 
     /// <summary>
-    /// (Optional) Unique identifier for the title, found in the Settings > Game Properties section of
-    /// the PlayFab developer site when a title has been selected.
-    /// </summary>
-    _Maybenull_ _Null_terminated_ const char* titleId;
-
-    /// <summary>
     /// (Optional) New value to set. Set to null to remove a value.
     /// </summary>
     _Maybenull_ _Null_terminated_ const char* value;
 
 } PFTitleDataManagementSetTitleDataRequest;
-
-/// <summary>
-/// PFTitleDataManagementSetTitleDataResult data model.
-/// </summary>
-typedef struct PFTitleDataManagementSetTitleDataResult
-{
-    /// <summary>
-    /// (Optional) Id of azure resource.
-    /// </summary>
-    _Maybenull_ _Null_terminated_ const char* azureResourceId;
-
-} PFTitleDataManagementSetTitleDataResult;
 
 /// <summary>
 /// PFTitleDataManagementTitleDataKeyValue data model.
@@ -959,6 +941,17 @@ typedef struct PFTitleDataManagementTitleDataKeyValue
 /// </summary>
 typedef struct PFTitleDataManagementSetTitleDataAndOverridesRequest
 {
+    /// <summary>
+    /// (Optional) The optional custom tags associated with the request (e.g. build number, external
+    /// trace identifiers, etc.).
+    /// </summary>
+    _Maybenull_ _Field_size_(customTagsCount) struct PFStringDictionaryEntry const* customTags;
+
+    /// <summary>
+    /// Count of customTags
+    /// </summary>
+    uint32_t customTagsCount;
+
     /// <summary>
     /// List of titleData key-value pairs to set/delete. Use an empty value to delete an existing key;
     /// use a non-empty value to create/update a key.

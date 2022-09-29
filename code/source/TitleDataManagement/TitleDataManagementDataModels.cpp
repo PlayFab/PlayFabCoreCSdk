@@ -1283,50 +1283,10 @@ JsonValue SetTitleDataRequest::ToJson() const
 JsonValue SetTitleDataRequest::ToJson(const PFTitleDataManagementSetTitleDataRequest& input)
 {
     JsonValue output{ rapidjson::kObjectType };
-    JsonUtils::ObjectAddMember(output, "AzureResourceId", input.azureResourceId);
     JsonUtils::ObjectAddMemberDictionary(output, "CustomTags", input.customTags, input.customTagsCount);
     JsonUtils::ObjectAddMember(output, "Key", input.key);
-    JsonUtils::ObjectAddMember(output, "TitleId", input.titleId);
     JsonUtils::ObjectAddMember(output, "Value", input.value);
     return output;
-}
-
-void SetTitleDataResult::FromJson(const JsonValue& input)
-{
-    String azureResourceId{};
-    JsonUtils::ObjectGetMember(input, "AzureResourceId", azureResourceId);
-    this->SetAzureResourceId(std::move(azureResourceId));
-}
-
-size_t SetTitleDataResult::RequiredBufferSize() const
-{
-    return RequiredBufferSize(this->Model());
-}
-
-Result<PFTitleDataManagementSetTitleDataResult const*> SetTitleDataResult::Copy(ModelBuffer& buffer) const
-{
-    return buffer.CopyTo<SetTitleDataResult>(&this->Model());
-}
-
-size_t SetTitleDataResult::RequiredBufferSize(const PFTitleDataManagementSetTitleDataResult& model)
-{
-    size_t requiredSize{ alignof(ModelType) + sizeof(ModelType) };
-    if (model.azureResourceId)
-    {
-        requiredSize += (std::strlen(model.azureResourceId) + 1);
-    }
-    return requiredSize;
-}
-
-HRESULT SetTitleDataResult::Copy(const PFTitleDataManagementSetTitleDataResult& input, PFTitleDataManagementSetTitleDataResult& output, ModelBuffer& buffer)
-{
-    output = input;
-    {
-        auto propCopyResult = buffer.CopyTo(input.azureResourceId); 
-        RETURN_IF_FAILED(propCopyResult.hr);
-        output.azureResourceId = propCopyResult.ExtractPayload();
-    }
-    return S_OK;
 }
 
 JsonValue TitleDataKeyValue::ToJson() const
@@ -1350,6 +1310,7 @@ JsonValue SetTitleDataAndOverridesRequest::ToJson() const
 JsonValue SetTitleDataAndOverridesRequest::ToJson(const PFTitleDataManagementSetTitleDataAndOverridesRequest& input)
 {
     JsonValue output{ rapidjson::kObjectType };
+    JsonUtils::ObjectAddMemberDictionary(output, "CustomTags", input.customTags, input.customTagsCount);
     JsonUtils::ObjectAddMemberArray<TitleDataKeyValue>(output, "KeyValues", input.keyValues, input.keyValuesCount);
     JsonUtils::ObjectAddMember(output, "OverrideLabel", input.overrideLabel);
     return output;

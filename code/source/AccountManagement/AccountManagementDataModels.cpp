@@ -17,7 +17,6 @@ JsonValue BanRequest::ToJson(const PFAccountManagementBanRequest& input)
     JsonValue output{ rapidjson::kObjectType };
     JsonUtils::ObjectAddMember(output, "DurationInHours", input.durationInHours);
     JsonUtils::ObjectAddMember(output, "IPAddress", input.IPAddress);
-    JsonUtils::ObjectAddMember(output, "MACAddress", input.MACAddress);
     JsonUtils::ObjectAddMember(output, "PlayFabId", input.playFabId);
     JsonUtils::ObjectAddMember(output, "Reason", input.reason);
     return output;
@@ -55,10 +54,6 @@ void BanInfo::FromJson(const JsonValue& input)
     String IPAddress{};
     JsonUtils::ObjectGetMember(input, "IPAddress", IPAddress);
     this->SetIPAddress(std::move(IPAddress));
-
-    String MACAddress{};
-    JsonUtils::ObjectGetMember(input, "MACAddress", MACAddress);
-    this->SetMACAddress(std::move(MACAddress));
 
     String playFabId{};
     JsonUtils::ObjectGetMember(input, "PlayFabId", playFabId);
@@ -98,10 +93,6 @@ size_t BanInfo::RequiredBufferSize(const PFAccountManagementBanInfo& model)
     {
         requiredSize += (std::strlen(model.IPAddress) + 1);
     }
-    if (model.MACAddress)
-    {
-        requiredSize += (std::strlen(model.MACAddress) + 1);
-    }
     if (model.playFabId)
     {
         requiredSize += (std::strlen(model.playFabId) + 1);
@@ -135,11 +126,6 @@ HRESULT BanInfo::Copy(const PFAccountManagementBanInfo& input, PFAccountManageme
         auto propCopyResult = buffer.CopyTo(input.IPAddress); 
         RETURN_IF_FAILED(propCopyResult.hr);
         output.IPAddress = propCopyResult.ExtractPayload();
-    }
-    {
-        auto propCopyResult = buffer.CopyTo(input.MACAddress); 
-        RETURN_IF_FAILED(propCopyResult.hr);
-        output.MACAddress = propCopyResult.ExtractPayload();
     }
     {
         auto propCopyResult = buffer.CopyTo(input.playFabId); 
@@ -756,7 +742,6 @@ JsonValue UpdateBanRequest::ToJson(const PFAccountManagementUpdateBanRequest& in
     JsonUtils::ObjectAddMember(output, "BanId", input.banId);
     JsonUtils::ObjectAddMemberTime(output, "Expires", input.expires);
     JsonUtils::ObjectAddMember(output, "IPAddress", input.IPAddress);
-    JsonUtils::ObjectAddMember(output, "MACAddress", input.MACAddress);
     JsonUtils::ObjectAddMember(output, "Permanent", input.permanent);
     JsonUtils::ObjectAddMember(output, "Reason", input.reason);
     return output;
@@ -1059,6 +1044,74 @@ HRESULT GetAccountInfoResult::Copy(const PFAccountManagementGetAccountInfoResult
         auto propCopyResult = buffer.CopyTo<UserAccountInfo>(input.accountInfo); 
         RETURN_IF_FAILED(propCopyResult.hr);
         output.accountInfo = propCopyResult.ExtractPayload();
+    }
+    return S_OK;
+}
+
+JsonValue GetPlayerCombinedInfoRequest::ToJson() const
+{
+    return GetPlayerCombinedInfoRequest::ToJson(this->Model());
+}
+
+JsonValue GetPlayerCombinedInfoRequest::ToJson(const PFAccountManagementGetPlayerCombinedInfoRequest& input)
+{
+    JsonValue output{ rapidjson::kObjectType };
+    JsonUtils::ObjectAddMemberDictionary(output, "CustomTags", input.customTags, input.customTagsCount);
+    JsonUtils::ObjectAddMember<GetPlayerCombinedInfoRequestParams>(output, "InfoRequestParameters", input.infoRequestParameters);
+    JsonUtils::ObjectAddMember(output, "PlayFabId", input.playFabId);
+    return output;
+}
+
+void GetPlayerCombinedInfoResult::FromJson(const JsonValue& input)
+{
+    StdExtra::optional<GetPlayerCombinedInfoResultPayload> infoResultPayload{};
+    JsonUtils::ObjectGetMember(input, "InfoResultPayload", infoResultPayload);
+    if (infoResultPayload)
+    {
+        this->SetInfoResultPayload(std::move(*infoResultPayload));
+    }
+
+    String playFabId{};
+    JsonUtils::ObjectGetMember(input, "PlayFabId", playFabId);
+    this->SetPlayFabId(std::move(playFabId));
+}
+
+size_t GetPlayerCombinedInfoResult::RequiredBufferSize() const
+{
+    return RequiredBufferSize(this->Model());
+}
+
+Result<PFAccountManagementGetPlayerCombinedInfoResult const*> GetPlayerCombinedInfoResult::Copy(ModelBuffer& buffer) const
+{
+    return buffer.CopyTo<GetPlayerCombinedInfoResult>(&this->Model());
+}
+
+size_t GetPlayerCombinedInfoResult::RequiredBufferSize(const PFAccountManagementGetPlayerCombinedInfoResult& model)
+{
+    size_t requiredSize{ alignof(ModelType) + sizeof(ModelType) };
+    if (model.infoResultPayload)
+    {
+        requiredSize += GetPlayerCombinedInfoResultPayload::RequiredBufferSize(*model.infoResultPayload);
+    }
+    if (model.playFabId)
+    {
+        requiredSize += (std::strlen(model.playFabId) + 1);
+    }
+    return requiredSize;
+}
+
+HRESULT GetPlayerCombinedInfoResult::Copy(const PFAccountManagementGetPlayerCombinedInfoResult& input, PFAccountManagementGetPlayerCombinedInfoResult& output, ModelBuffer& buffer)
+{
+    output = input;
+    {
+        auto propCopyResult = buffer.CopyTo<GetPlayerCombinedInfoResultPayload>(input.infoResultPayload); 
+        RETURN_IF_FAILED(propCopyResult.hr);
+        output.infoResultPayload = propCopyResult.ExtractPayload();
+    }
+    {
+        auto propCopyResult = buffer.CopyTo(input.playFabId); 
+        RETURN_IF_FAILED(propCopyResult.hr);
+        output.playFabId = propCopyResult.ExtractPayload();
     }
     return S_OK;
 }
@@ -1576,6 +1629,108 @@ HRESULT GetPlayFabIDsFromGoogleIDsResult::Copy(const PFAccountManagementGetPlayF
     return S_OK;
 }
 
+JsonValue GetPlayFabIDsFromGooglePlayGamesPlayerIDsRequest::ToJson() const
+{
+    return GetPlayFabIDsFromGooglePlayGamesPlayerIDsRequest::ToJson(this->Model());
+}
+
+JsonValue GetPlayFabIDsFromGooglePlayGamesPlayerIDsRequest::ToJson(const PFAccountManagementGetPlayFabIDsFromGooglePlayGamesPlayerIDsRequest& input)
+{
+    JsonValue output{ rapidjson::kObjectType };
+    JsonUtils::ObjectAddMemberArray(output, "GooglePlayGamesPlayerIDs", input.googlePlayGamesPlayerIDs, input.googlePlayGamesPlayerIDsCount);
+    return output;
+}
+
+void GooglePlayGamesPlayFabIdPair::FromJson(const JsonValue& input)
+{
+    String googlePlayGamesPlayerId{};
+    JsonUtils::ObjectGetMember(input, "GooglePlayGamesPlayerId", googlePlayGamesPlayerId);
+    this->SetGooglePlayGamesPlayerId(std::move(googlePlayGamesPlayerId));
+
+    String playFabId{};
+    JsonUtils::ObjectGetMember(input, "PlayFabId", playFabId);
+    this->SetPlayFabId(std::move(playFabId));
+}
+
+size_t GooglePlayGamesPlayFabIdPair::RequiredBufferSize() const
+{
+    return RequiredBufferSize(this->Model());
+}
+
+Result<PFAccountManagementGooglePlayGamesPlayFabIdPair const*> GooglePlayGamesPlayFabIdPair::Copy(ModelBuffer& buffer) const
+{
+    return buffer.CopyTo<GooglePlayGamesPlayFabIdPair>(&this->Model());
+}
+
+size_t GooglePlayGamesPlayFabIdPair::RequiredBufferSize(const PFAccountManagementGooglePlayGamesPlayFabIdPair& model)
+{
+    size_t requiredSize{ alignof(ModelType) + sizeof(ModelType) };
+    if (model.googlePlayGamesPlayerId)
+    {
+        requiredSize += (std::strlen(model.googlePlayGamesPlayerId) + 1);
+    }
+    if (model.playFabId)
+    {
+        requiredSize += (std::strlen(model.playFabId) + 1);
+    }
+    return requiredSize;
+}
+
+HRESULT GooglePlayGamesPlayFabIdPair::Copy(const PFAccountManagementGooglePlayGamesPlayFabIdPair& input, PFAccountManagementGooglePlayGamesPlayFabIdPair& output, ModelBuffer& buffer)
+{
+    output = input;
+    {
+        auto propCopyResult = buffer.CopyTo(input.googlePlayGamesPlayerId); 
+        RETURN_IF_FAILED(propCopyResult.hr);
+        output.googlePlayGamesPlayerId = propCopyResult.ExtractPayload();
+    }
+    {
+        auto propCopyResult = buffer.CopyTo(input.playFabId); 
+        RETURN_IF_FAILED(propCopyResult.hr);
+        output.playFabId = propCopyResult.ExtractPayload();
+    }
+    return S_OK;
+}
+
+void GetPlayFabIDsFromGooglePlayGamesPlayerIDsResult::FromJson(const JsonValue& input)
+{
+    ModelVector<GooglePlayGamesPlayFabIdPair> data{};
+    JsonUtils::ObjectGetMember<GooglePlayGamesPlayFabIdPair>(input, "Data", data);
+    this->SetData(std::move(data));
+}
+
+size_t GetPlayFabIDsFromGooglePlayGamesPlayerIDsResult::RequiredBufferSize() const
+{
+    return RequiredBufferSize(this->Model());
+}
+
+Result<PFAccountManagementGetPlayFabIDsFromGooglePlayGamesPlayerIDsResult const*> GetPlayFabIDsFromGooglePlayGamesPlayerIDsResult::Copy(ModelBuffer& buffer) const
+{
+    return buffer.CopyTo<GetPlayFabIDsFromGooglePlayGamesPlayerIDsResult>(&this->Model());
+}
+
+size_t GetPlayFabIDsFromGooglePlayGamesPlayerIDsResult::RequiredBufferSize(const PFAccountManagementGetPlayFabIDsFromGooglePlayGamesPlayerIDsResult& model)
+{
+    size_t requiredSize{ alignof(ModelType) + sizeof(ModelType) };
+    requiredSize += (alignof(PFAccountManagementGooglePlayGamesPlayFabIdPair*) + sizeof(PFAccountManagementGooglePlayGamesPlayFabIdPair*) * model.dataCount);
+    for (size_t i = 0; i < model.dataCount; ++i)
+    {
+        requiredSize += GooglePlayGamesPlayFabIdPair::RequiredBufferSize(*model.data[i]);
+    }
+    return requiredSize;
+}
+
+HRESULT GetPlayFabIDsFromGooglePlayGamesPlayerIDsResult::Copy(const PFAccountManagementGetPlayFabIDsFromGooglePlayGamesPlayerIDsResult& input, PFAccountManagementGetPlayFabIDsFromGooglePlayGamesPlayerIDsResult& output, ModelBuffer& buffer)
+{
+    output = input;
+    {
+        auto propCopyResult = buffer.CopyToArray<GooglePlayGamesPlayFabIdPair>(input.data, input.dataCount);
+        RETURN_IF_FAILED(propCopyResult.hr);
+        output.data = propCopyResult.ExtractPayload();
+    }
+    return S_OK;
+}
+
 JsonValue GetPlayFabIDsFromKongregateIDsRequest::ToJson() const
 {
     return GetPlayFabIDsFromKongregateIDsRequest::ToJson(this->Model());
@@ -1672,6 +1827,108 @@ HRESULT GetPlayFabIDsFromKongregateIDsResult::Copy(const PFAccountManagementGetP
     output = input;
     {
         auto propCopyResult = buffer.CopyToArray<KongregatePlayFabIdPair>(input.data, input.dataCount);
+        RETURN_IF_FAILED(propCopyResult.hr);
+        output.data = propCopyResult.ExtractPayload();
+    }
+    return S_OK;
+}
+
+JsonValue GetPlayFabIDsFromNintendoServiceAccountIdsRequest::ToJson() const
+{
+    return GetPlayFabIDsFromNintendoServiceAccountIdsRequest::ToJson(this->Model());
+}
+
+JsonValue GetPlayFabIDsFromNintendoServiceAccountIdsRequest::ToJson(const PFAccountManagementGetPlayFabIDsFromNintendoServiceAccountIdsRequest& input)
+{
+    JsonValue output{ rapidjson::kObjectType };
+    JsonUtils::ObjectAddMemberArray(output, "NintendoAccountIds", input.nintendoAccountIds, input.nintendoAccountIdsCount);
+    return output;
+}
+
+void NintendoServiceAccountPlayFabIdPair::FromJson(const JsonValue& input)
+{
+    String nintendoServiceAccountId{};
+    JsonUtils::ObjectGetMember(input, "NintendoServiceAccountId", nintendoServiceAccountId);
+    this->SetNintendoServiceAccountId(std::move(nintendoServiceAccountId));
+
+    String playFabId{};
+    JsonUtils::ObjectGetMember(input, "PlayFabId", playFabId);
+    this->SetPlayFabId(std::move(playFabId));
+}
+
+size_t NintendoServiceAccountPlayFabIdPair::RequiredBufferSize() const
+{
+    return RequiredBufferSize(this->Model());
+}
+
+Result<PFAccountManagementNintendoServiceAccountPlayFabIdPair const*> NintendoServiceAccountPlayFabIdPair::Copy(ModelBuffer& buffer) const
+{
+    return buffer.CopyTo<NintendoServiceAccountPlayFabIdPair>(&this->Model());
+}
+
+size_t NintendoServiceAccountPlayFabIdPair::RequiredBufferSize(const PFAccountManagementNintendoServiceAccountPlayFabIdPair& model)
+{
+    size_t requiredSize{ alignof(ModelType) + sizeof(ModelType) };
+    if (model.nintendoServiceAccountId)
+    {
+        requiredSize += (std::strlen(model.nintendoServiceAccountId) + 1);
+    }
+    if (model.playFabId)
+    {
+        requiredSize += (std::strlen(model.playFabId) + 1);
+    }
+    return requiredSize;
+}
+
+HRESULT NintendoServiceAccountPlayFabIdPair::Copy(const PFAccountManagementNintendoServiceAccountPlayFabIdPair& input, PFAccountManagementNintendoServiceAccountPlayFabIdPair& output, ModelBuffer& buffer)
+{
+    output = input;
+    {
+        auto propCopyResult = buffer.CopyTo(input.nintendoServiceAccountId); 
+        RETURN_IF_FAILED(propCopyResult.hr);
+        output.nintendoServiceAccountId = propCopyResult.ExtractPayload();
+    }
+    {
+        auto propCopyResult = buffer.CopyTo(input.playFabId); 
+        RETURN_IF_FAILED(propCopyResult.hr);
+        output.playFabId = propCopyResult.ExtractPayload();
+    }
+    return S_OK;
+}
+
+void GetPlayFabIDsFromNintendoServiceAccountIdsResult::FromJson(const JsonValue& input)
+{
+    ModelVector<NintendoServiceAccountPlayFabIdPair> data{};
+    JsonUtils::ObjectGetMember<NintendoServiceAccountPlayFabIdPair>(input, "Data", data);
+    this->SetData(std::move(data));
+}
+
+size_t GetPlayFabIDsFromNintendoServiceAccountIdsResult::RequiredBufferSize() const
+{
+    return RequiredBufferSize(this->Model());
+}
+
+Result<PFAccountManagementGetPlayFabIDsFromNintendoServiceAccountIdsResult const*> GetPlayFabIDsFromNintendoServiceAccountIdsResult::Copy(ModelBuffer& buffer) const
+{
+    return buffer.CopyTo<GetPlayFabIDsFromNintendoServiceAccountIdsResult>(&this->Model());
+}
+
+size_t GetPlayFabIDsFromNintendoServiceAccountIdsResult::RequiredBufferSize(const PFAccountManagementGetPlayFabIDsFromNintendoServiceAccountIdsResult& model)
+{
+    size_t requiredSize{ alignof(ModelType) + sizeof(ModelType) };
+    requiredSize += (alignof(PFAccountManagementNintendoServiceAccountPlayFabIdPair*) + sizeof(PFAccountManagementNintendoServiceAccountPlayFabIdPair*) * model.dataCount);
+    for (size_t i = 0; i < model.dataCount; ++i)
+    {
+        requiredSize += NintendoServiceAccountPlayFabIdPair::RequiredBufferSize(*model.data[i]);
+    }
+    return requiredSize;
+}
+
+HRESULT GetPlayFabIDsFromNintendoServiceAccountIdsResult::Copy(const PFAccountManagementGetPlayFabIDsFromNintendoServiceAccountIdsResult& input, PFAccountManagementGetPlayFabIDsFromNintendoServiceAccountIdsResult& output, ModelBuffer& buffer)
+{
+    output = input;
+    {
+        auto propCopyResult = buffer.CopyToArray<NintendoServiceAccountPlayFabIdPair>(input.data, input.dataCount);
         RETURN_IF_FAILED(propCopyResult.hr);
         output.data = propCopyResult.ExtractPayload();
     }
@@ -2294,6 +2551,20 @@ JsonValue LinkGoogleAccountRequest::ToJson(const PFAccountManagementLinkGoogleAc
     return output;
 }
 
+JsonValue LinkGooglePlayGamesServicesAccountRequest::ToJson() const
+{
+    return LinkGooglePlayGamesServicesAccountRequest::ToJson(this->Model());
+}
+
+JsonValue LinkGooglePlayGamesServicesAccountRequest::ToJson(const PFAccountManagementLinkGooglePlayGamesServicesAccountRequest& input)
+{
+    JsonValue output{ rapidjson::kObjectType };
+    JsonUtils::ObjectAddMemberDictionary(output, "CustomTags", input.customTags, input.customTagsCount);
+    JsonUtils::ObjectAddMember(output, "ForceLink", input.forceLink);
+    JsonUtils::ObjectAddMember(output, "ServerAuthCode", input.serverAuthCode);
+    return output;
+}
+
 JsonValue LinkIOSDeviceIDRequest::ToJson() const
 {
     return LinkIOSDeviceIDRequest::ToJson(this->Model());
@@ -2325,12 +2596,12 @@ JsonValue LinkKongregateAccountRequest::ToJson(const PFAccountManagementLinkKong
     return output;
 }
 
-JsonValue LinkNintendoServiceAccountRequest::ToJson() const
+JsonValue ClientLinkNintendoServiceAccountRequest::ToJson() const
 {
-    return LinkNintendoServiceAccountRequest::ToJson(this->Model());
+    return ClientLinkNintendoServiceAccountRequest::ToJson(this->Model());
 }
 
-JsonValue LinkNintendoServiceAccountRequest::ToJson(const PFAccountManagementLinkNintendoServiceAccountRequest& input)
+JsonValue ClientLinkNintendoServiceAccountRequest::ToJson(const PFAccountManagementClientLinkNintendoServiceAccountRequest& input)
 {
     JsonValue output{ rapidjson::kObjectType };
     JsonUtils::ObjectAddMemberDictionary(output, "CustomTags", input.customTags, input.customTagsCount);
@@ -2339,12 +2610,12 @@ JsonValue LinkNintendoServiceAccountRequest::ToJson(const PFAccountManagementLin
     return output;
 }
 
-JsonValue LinkNintendoSwitchDeviceIdRequest::ToJson() const
+JsonValue ClientLinkNintendoSwitchDeviceIdRequest::ToJson() const
 {
-    return LinkNintendoSwitchDeviceIdRequest::ToJson(this->Model());
+    return ClientLinkNintendoSwitchDeviceIdRequest::ToJson(this->Model());
 }
 
-JsonValue LinkNintendoSwitchDeviceIdRequest::ToJson(const PFAccountManagementLinkNintendoSwitchDeviceIdRequest& input)
+JsonValue ClientLinkNintendoSwitchDeviceIdRequest::ToJson(const PFAccountManagementClientLinkNintendoSwitchDeviceIdRequest& input)
 {
     JsonValue output{ rapidjson::kObjectType };
     JsonUtils::ObjectAddMemberDictionary(output, "CustomTags", input.customTags, input.customTagsCount);
@@ -2594,6 +2865,18 @@ JsonValue UnlinkGoogleAccountRequest::ToJson(const PFAccountManagementUnlinkGoog
     return output;
 }
 
+JsonValue UnlinkGooglePlayGamesServicesAccountRequest::ToJson() const
+{
+    return UnlinkGooglePlayGamesServicesAccountRequest::ToJson(this->Model());
+}
+
+JsonValue UnlinkGooglePlayGamesServicesAccountRequest::ToJson(const PFAccountManagementUnlinkGooglePlayGamesServicesAccountRequest& input)
+{
+    JsonValue output{ rapidjson::kObjectType };
+    JsonUtils::ObjectAddMemberDictionary(output, "CustomTags", input.customTags, input.customTagsCount);
+    return output;
+}
+
 JsonValue UnlinkIOSDeviceIDRequest::ToJson() const
 {
     return UnlinkIOSDeviceIDRequest::ToJson(this->Model());
@@ -2619,24 +2902,24 @@ JsonValue UnlinkKongregateAccountRequest::ToJson(const PFAccountManagementUnlink
     return output;
 }
 
-JsonValue UnlinkNintendoServiceAccountRequest::ToJson() const
+JsonValue ClientUnlinkNintendoServiceAccountRequest::ToJson() const
 {
-    return UnlinkNintendoServiceAccountRequest::ToJson(this->Model());
+    return ClientUnlinkNintendoServiceAccountRequest::ToJson(this->Model());
 }
 
-JsonValue UnlinkNintendoServiceAccountRequest::ToJson(const PFAccountManagementUnlinkNintendoServiceAccountRequest& input)
+JsonValue ClientUnlinkNintendoServiceAccountRequest::ToJson(const PFAccountManagementClientUnlinkNintendoServiceAccountRequest& input)
 {
     JsonValue output{ rapidjson::kObjectType };
     JsonUtils::ObjectAddMemberDictionary(output, "CustomTags", input.customTags, input.customTagsCount);
     return output;
 }
 
-JsonValue UnlinkNintendoSwitchDeviceIdRequest::ToJson() const
+JsonValue ClientUnlinkNintendoSwitchDeviceIdRequest::ToJson() const
 {
-    return UnlinkNintendoSwitchDeviceIdRequest::ToJson(this->Model());
+    return ClientUnlinkNintendoSwitchDeviceIdRequest::ToJson(this->Model());
 }
 
-JsonValue UnlinkNintendoSwitchDeviceIdRequest::ToJson(const PFAccountManagementUnlinkNintendoSwitchDeviceIdRequest& input)
+JsonValue ClientUnlinkNintendoSwitchDeviceIdRequest::ToJson(const PFAccountManagementClientUnlinkNintendoSwitchDeviceIdRequest& input)
 {
     JsonValue output{ rapidjson::kObjectType };
     JsonUtils::ObjectAddMemberDictionary(output, "CustomTags", input.customTags, input.customTagsCount);
@@ -2741,18 +3024,6 @@ JsonValue ServerAddGenericIDRequest::ToJson(const PFAccountManagementServerAddGe
     JsonValue output{ rapidjson::kObjectType };
     JsonUtils::ObjectAddMember<GenericServiceId>(output, "GenericId", input.genericId);
     JsonUtils::ObjectAddMember(output, "PlayFabId", input.playFabId);
-    return output;
-}
-
-JsonValue DeletePushNotificationTemplateRequest::ToJson() const
-{
-    return DeletePushNotificationTemplateRequest::ToJson(this->Model());
-}
-
-JsonValue DeletePushNotificationTemplateRequest::ToJson(const PFAccountManagementDeletePushNotificationTemplateRequest& input)
-{
-    JsonValue output{ rapidjson::kObjectType };
-    JsonUtils::ObjectAddMember(output, "PushNotificationTemplateId", input.pushNotificationTemplateId);
     return output;
 }
 
@@ -2911,6 +3182,36 @@ HRESULT GetUserAccountInfoResult::Copy(const PFAccountManagementGetUserAccountIn
     return S_OK;
 }
 
+JsonValue ServerLinkNintendoServiceAccountRequest::ToJson() const
+{
+    return ServerLinkNintendoServiceAccountRequest::ToJson(this->Model());
+}
+
+JsonValue ServerLinkNintendoServiceAccountRequest::ToJson(const PFAccountManagementServerLinkNintendoServiceAccountRequest& input)
+{
+    JsonValue output{ rapidjson::kObjectType };
+    JsonUtils::ObjectAddMemberDictionary(output, "CustomTags", input.customTags, input.customTagsCount);
+    JsonUtils::ObjectAddMember(output, "ForceLink", input.forceLink);
+    JsonUtils::ObjectAddMember(output, "IdentityToken", input.identityToken);
+    JsonUtils::ObjectAddMember(output, "PlayFabId", input.playFabId);
+    return output;
+}
+
+JsonValue ServerLinkNintendoSwitchDeviceIdRequest::ToJson() const
+{
+    return ServerLinkNintendoSwitchDeviceIdRequest::ToJson(this->Model());
+}
+
+JsonValue ServerLinkNintendoSwitchDeviceIdRequest::ToJson(const PFAccountManagementServerLinkNintendoSwitchDeviceIdRequest& input)
+{
+    JsonValue output{ rapidjson::kObjectType };
+    JsonUtils::ObjectAddMemberDictionary(output, "CustomTags", input.customTags, input.customTagsCount);
+    JsonUtils::ObjectAddMember(output, "ForceLink", input.forceLink);
+    JsonUtils::ObjectAddMember(output, "NintendoSwitchDeviceId", input.nintendoSwitchDeviceId);
+    JsonUtils::ObjectAddMember(output, "PlayFabId", input.playFabId);
+    return output;
+}
+
 JsonValue ServerLinkPSNAccountRequest::ToJson() const
 {
     return ServerLinkPSNAccountRequest::ToJson(this->Model());
@@ -2971,73 +3272,6 @@ JsonValue ServerRemoveGenericIDRequest::ToJson(const PFAccountManagementServerRe
     return output;
 }
 
-JsonValue LocalizedPushNotificationProperties::ToJson() const
-{
-    return LocalizedPushNotificationProperties::ToJson(this->Model());
-}
-
-JsonValue LocalizedPushNotificationProperties::ToJson(const PFAccountManagementLocalizedPushNotificationProperties& input)
-{
-    JsonValue output{ rapidjson::kObjectType };
-    JsonUtils::ObjectAddMember(output, "Message", input.message);
-    JsonUtils::ObjectAddMember(output, "Subject", input.subject);
-    return output;
-}
-
-JsonValue SavePushNotificationTemplateRequest::ToJson() const
-{
-    return SavePushNotificationTemplateRequest::ToJson(this->Model());
-}
-
-JsonValue SavePushNotificationTemplateRequest::ToJson(const PFAccountManagementSavePushNotificationTemplateRequest& input)
-{
-    JsonValue output{ rapidjson::kObjectType };
-    JsonUtils::ObjectAddMember(output, "AndroidPayload", input.androidPayload);
-    JsonUtils::ObjectAddMember(output, "Id", input.id);
-    JsonUtils::ObjectAddMember(output, "IOSPayload", input.iOSPayload);
-    JsonUtils::ObjectAddMemberDictionary<LocalizedPushNotificationProperties>(output, "LocalizedPushNotificationTemplates", input.localizedPushNotificationTemplates, input.localizedPushNotificationTemplatesCount);
-    JsonUtils::ObjectAddMember(output, "Name", input.name);
-    return output;
-}
-
-void SavePushNotificationTemplateResult::FromJson(const JsonValue& input)
-{
-    String pushNotificationTemplateId{};
-    JsonUtils::ObjectGetMember(input, "PushNotificationTemplateId", pushNotificationTemplateId);
-    this->SetPushNotificationTemplateId(std::move(pushNotificationTemplateId));
-}
-
-size_t SavePushNotificationTemplateResult::RequiredBufferSize() const
-{
-    return RequiredBufferSize(this->Model());
-}
-
-Result<PFAccountManagementSavePushNotificationTemplateResult const*> SavePushNotificationTemplateResult::Copy(ModelBuffer& buffer) const
-{
-    return buffer.CopyTo<SavePushNotificationTemplateResult>(&this->Model());
-}
-
-size_t SavePushNotificationTemplateResult::RequiredBufferSize(const PFAccountManagementSavePushNotificationTemplateResult& model)
-{
-    size_t requiredSize{ alignof(ModelType) + sizeof(ModelType) };
-    if (model.pushNotificationTemplateId)
-    {
-        requiredSize += (std::strlen(model.pushNotificationTemplateId) + 1);
-    }
-    return requiredSize;
-}
-
-HRESULT SavePushNotificationTemplateResult::Copy(const PFAccountManagementSavePushNotificationTemplateResult& input, PFAccountManagementSavePushNotificationTemplateResult& output, ModelBuffer& buffer)
-{
-    output = input;
-    {
-        auto propCopyResult = buffer.CopyTo(input.pushNotificationTemplateId); 
-        RETURN_IF_FAILED(propCopyResult.hr);
-        output.pushNotificationTemplateId = propCopyResult.ExtractPayload();
-    }
-    return S_OK;
-}
-
 JsonValue SendCustomAccountRecoveryEmailRequest::ToJson() const
 {
     return SendCustomAccountRecoveryEmailRequest::ToJson(this->Model());
@@ -3067,66 +3301,30 @@ JsonValue SendEmailFromTemplateRequest::ToJson(const PFAccountManagementSendEmai
     return output;
 }
 
-JsonValue AdvancedPushPlatformMsg::ToJson() const
+JsonValue ServerUnlinkNintendoServiceAccountRequest::ToJson() const
 {
-    return AdvancedPushPlatformMsg::ToJson(this->Model());
+    return ServerUnlinkNintendoServiceAccountRequest::ToJson(this->Model());
 }
 
-JsonValue AdvancedPushPlatformMsg::ToJson(const PFAccountManagementAdvancedPushPlatformMsg& input)
-{
-    JsonValue output{ rapidjson::kObjectType };
-    JsonUtils::ObjectAddMember(output, "GCMDataOnly", input.gCMDataOnly);
-    JsonUtils::ObjectAddMember(output, "Json", input.json);
-    JsonUtils::ObjectAddMember(output, "Platform", input.platform);
-    return output;
-}
-
-JsonValue PushNotificationPackage::ToJson() const
-{
-    return PushNotificationPackage::ToJson(this->Model());
-}
-
-JsonValue PushNotificationPackage::ToJson(const PFAccountManagementPushNotificationPackage& input)
-{
-    JsonValue output{ rapidjson::kObjectType };
-    JsonUtils::ObjectAddMember(output, "Badge", input.badge);
-    JsonUtils::ObjectAddMember(output, "CustomData", input.customData);
-    JsonUtils::ObjectAddMember(output, "Icon", input.icon);
-    JsonUtils::ObjectAddMember(output, "Message", input.message);
-    JsonUtils::ObjectAddMember(output, "Sound", input.sound);
-    JsonUtils::ObjectAddMember(output, "Title", input.title);
-    return output;
-}
-
-JsonValue SendPushNotificationRequest::ToJson() const
-{
-    return SendPushNotificationRequest::ToJson(this->Model());
-}
-
-JsonValue SendPushNotificationRequest::ToJson(const PFAccountManagementSendPushNotificationRequest& input)
-{
-    JsonValue output{ rapidjson::kObjectType };
-    JsonUtils::ObjectAddMemberArray<AdvancedPushPlatformMsg>(output, "AdvancedPlatformDelivery", input.advancedPlatformDelivery, input.advancedPlatformDeliveryCount);
-    JsonUtils::ObjectAddMemberDictionary(output, "CustomTags", input.customTags, input.customTagsCount);
-    JsonUtils::ObjectAddMember(output, "Message", input.message);
-    JsonUtils::ObjectAddMember<PushNotificationPackage>(output, "Package", input.package);
-    JsonUtils::ObjectAddMember(output, "Recipient", input.recipient);
-    JsonUtils::ObjectAddMember(output, "Subject", input.subject);
-    JsonUtils::ObjectAddMemberArray(output, "TargetPlatforms", input.targetPlatforms, input.targetPlatformsCount);
-    return output;
-}
-
-JsonValue SendPushNotificationFromTemplateRequest::ToJson() const
-{
-    return SendPushNotificationFromTemplateRequest::ToJson(this->Model());
-}
-
-JsonValue SendPushNotificationFromTemplateRequest::ToJson(const PFAccountManagementSendPushNotificationFromTemplateRequest& input)
+JsonValue ServerUnlinkNintendoServiceAccountRequest::ToJson(const PFAccountManagementServerUnlinkNintendoServiceAccountRequest& input)
 {
     JsonValue output{ rapidjson::kObjectType };
     JsonUtils::ObjectAddMemberDictionary(output, "CustomTags", input.customTags, input.customTagsCount);
-    JsonUtils::ObjectAddMember(output, "PushNotificationTemplateId", input.pushNotificationTemplateId);
-    JsonUtils::ObjectAddMember(output, "Recipient", input.recipient);
+    JsonUtils::ObjectAddMember(output, "PlayFabId", input.playFabId);
+    return output;
+}
+
+JsonValue ServerUnlinkNintendoSwitchDeviceIdRequest::ToJson() const
+{
+    return ServerUnlinkNintendoSwitchDeviceIdRequest::ToJson(this->Model());
+}
+
+JsonValue ServerUnlinkNintendoSwitchDeviceIdRequest::ToJson(const PFAccountManagementServerUnlinkNintendoSwitchDeviceIdRequest& input)
+{
+    JsonValue output{ rapidjson::kObjectType };
+    JsonUtils::ObjectAddMemberDictionary(output, "CustomTags", input.customTags, input.customTagsCount);
+    JsonUtils::ObjectAddMember(output, "NintendoSwitchDeviceId", input.nintendoSwitchDeviceId);
+    JsonUtils::ObjectAddMember(output, "PlayFabId", input.playFabId);
     return output;
 }
 

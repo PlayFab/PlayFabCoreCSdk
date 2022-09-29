@@ -16,73 +16,6 @@ extern "C"
 
 #if HC_PLATFORM != HC_PLATFORM_GDK
 /// <summary>
-/// Adds a new player statistic configuration to the title, optionally allowing the developer to specify
-/// a reset interval and an aggregation method.
-/// </summary>
-/// <param name="stateHandle">PFStateHandle returned from PFInitialize call.</param>
-/// <param name="request">Populated request object.</param>
-/// <param name="async">XAsyncBlock for the async operation.</param>
-/// <returns>Result code for this API operation.</returns>
-/// <remarks>
-/// Statistics are numeric values, with each statistic in the title also generating a leaderboard. The
-/// ResetInterval enables automatically resetting leaderboards on a specified interval. Upon reset, the
-/// statistic updates to a new version with no values (effectively removing all players from the leaderboard).
-/// The previous version's statistic values are also archived for retrieval, if needed (see GetPlayerStatisticVersions).
-/// Statistics not created via a call to CreatePlayerStatisticDefinition by default have a VersionChangeInterval
-/// of Never, meaning they do not reset on a schedule, but they can be set to do so via a call to UpdatePlayerStatisticDefinition.
-/// Once a statistic has been reset (sometimes referred to as versioned or incremented), the now-previous
-/// version can still be written to for up a short, pre-defined period (currently 10 seconds), to prevent
-/// issues with levels completing around the time of the reset. Also, once reset, the historical statistics
-/// for players in the title may be retrieved using the URL specified in the version information (GetPlayerStatisticVersions).
-/// The AggregationMethod determines what action is taken when a new statistic value is submitted - always
-/// update with the new value (Last), use the highest of the old and new values (Max), use the smallest
-/// (Min), or add them together (Sum). See also AdminGetPlayerStatisticDefinitionsAsync, ClientGetPlayerStatisticsAsync,
-/// ServerGetPlayerStatisticsAsync, AdminGetPlayerStatisticVersionsAsync, AdminUpdatePlayerStatisticDefinitionAsync,
-/// ClientUpdatePlayerStatisticsAsync, ServerUpdatePlayerStatisticsAsync.
-///
-/// If successful, call <see cref="PFPlayerDataManagementAdminCreatePlayerStatisticDefinitionGetResult"/>
-/// to get the result.
-/// </remarks>
-HRESULT PFPlayerDataManagementAdminCreatePlayerStatisticDefinitionAsync(
-    _In_ PFStateHandle stateHandle,
-    _In_ const PFPlayerDataManagementCreatePlayerStatisticDefinitionRequest* request,
-    _Inout_ XAsyncBlock* async
-) noexcept;
-
-/// <summary>
-/// Get the size in bytes needed to store the result of a AdminCreatePlayerStatisticDefinition call.
-/// </summary>
-/// <param name="async">XAsyncBlock for the async operation.</param>
-/// <param name="bufferSize">The buffer size in bytes required for the result.</param>
-/// <returns>Result code for this API operation.</returns>
-HRESULT PFPlayerDataManagementAdminCreatePlayerStatisticDefinitionGetResultSize(
-    _Inout_ XAsyncBlock* async,
-    _Out_ size_t* bufferSize
-) noexcept;
-
-/// <summary>
-/// Gets the result of a successful PFPlayerDataManagementAdminCreatePlayerStatisticDefinitionAsync call.
-/// </summary>
-/// <param name="async">XAsyncBlock for the async operation.</param>
-/// <param name="bufferSize">The size of the buffer for the result object.</param>
-/// <param name="buffer">Byte buffer used for the result value and its fields.</param>
-/// <param name="result">Pointer to the result object.</param>
-/// <param name="bufferUsed">The number of bytes in the provided buffer that were used.</param>
-/// <returns>Result code for this API operation.</returns>
-/// <remarks>
-/// result is a pointer within buffer and does not need to be freed separately.
-/// </remarks>
-HRESULT PFPlayerDataManagementAdminCreatePlayerStatisticDefinitionGetResult(
-    _Inout_ XAsyncBlock* async,
-    _In_ size_t bufferSize,
-    _Out_writes_bytes_to_(bufferSize, *bufferUsed) void* buffer,
-    _Outptr_ PFPlayerDataManagementCreatePlayerStatisticDefinitionResult** result,
-    _Out_opt_ size_t* bufferUsed
-) noexcept;
-#endif
-
-#if HC_PLATFORM != HC_PLATFORM_GDK
-/// <summary>
 /// Retrieves a download URL for the requested report
 /// </summary>
 /// <param name="stateHandle">PFStateHandle returned from PFInitialize call.</param>
@@ -129,112 +62,6 @@ HRESULT PFPlayerDataManagementAdminGetDataReportGetResult(
     _In_ size_t bufferSize,
     _Out_writes_bytes_to_(bufferSize, *bufferUsed) void* buffer,
     _Outptr_ PFPlayerDataManagementGetDataReportResult** result,
-    _Out_opt_ size_t* bufferUsed
-) noexcept;
-#endif
-
-#if HC_PLATFORM != HC_PLATFORM_GDK
-/// <summary>
-/// Retrieves the configuration information for all player statistics defined in the title, regardless
-/// of whether they have a reset interval.
-/// </summary>
-/// <param name="stateHandle">PFStateHandle returned from PFInitialize call.</param>
-/// <param name="async">XAsyncBlock for the async operation.</param>
-/// <returns>Result code for this API operation.</returns>
-/// <remarks>
-/// See also AdminCreatePlayerStatisticDefinitionAsync, ClientGetPlayerStatisticsAsync, ServerGetPlayerStatisticsAsync,
-/// AdminUpdatePlayerStatisticDefinitionAsync, ClientUpdatePlayerStatisticsAsync, ServerUpdatePlayerStatisticsAsync.
-///
-/// If successful, call <see cref="PFPlayerDataManagementAdminGetPlayerStatisticDefinitionsGetResult"/>
-/// to get the result.
-/// </remarks>
-HRESULT PFPlayerDataManagementAdminGetPlayerStatisticDefinitionsAsync(
-    _In_ PFStateHandle stateHandle,
-    _Inout_ XAsyncBlock* async
-) noexcept;
-
-/// <summary>
-/// Get the size in bytes needed to store the result of a AdminGetPlayerStatisticDefinitions call.
-/// </summary>
-/// <param name="async">XAsyncBlock for the async operation.</param>
-/// <param name="bufferSize">The buffer size in bytes required for the result.</param>
-/// <returns>Result code for this API operation.</returns>
-HRESULT PFPlayerDataManagementAdminGetPlayerStatisticDefinitionsGetResultSize(
-    _Inout_ XAsyncBlock* async,
-    _Out_ size_t* bufferSize
-) noexcept;
-
-/// <summary>
-/// Gets the result of a successful PFPlayerDataManagementAdminGetPlayerStatisticDefinitionsAsync call.
-/// </summary>
-/// <param name="async">XAsyncBlock for the async operation.</param>
-/// <param name="bufferSize">The size of the buffer for the result object.</param>
-/// <param name="buffer">Byte buffer used for the result value and its fields.</param>
-/// <param name="result">Pointer to the result object.</param>
-/// <param name="bufferUsed">The number of bytes in the provided buffer that were used.</param>
-/// <returns>Result code for this API operation.</returns>
-/// <remarks>
-/// result is a pointer within buffer and does not need to be freed separately.
-/// </remarks>
-HRESULT PFPlayerDataManagementAdminGetPlayerStatisticDefinitionsGetResult(
-    _Inout_ XAsyncBlock* async,
-    _In_ size_t bufferSize,
-    _Out_writes_bytes_to_(bufferSize, *bufferUsed) void* buffer,
-    _Outptr_ PFPlayerDataManagementGetPlayerStatisticDefinitionsResult** result,
-    _Out_opt_ size_t* bufferUsed
-) noexcept;
-#endif
-
-#if HC_PLATFORM != HC_PLATFORM_GDK
-/// <summary>
-/// Retrieves the information on the available versions of the specified statistic.
-/// </summary>
-/// <param name="stateHandle">PFStateHandle returned from PFInitialize call.</param>
-/// <param name="request">Populated request object.</param>
-/// <param name="async">XAsyncBlock for the async operation.</param>
-/// <returns>Result code for this API operation.</returns>
-/// <remarks>
-/// See also AdminCreatePlayerStatisticDefinitionAsync, AdminGetPlayerStatisticDefinitionsAsync, ClientGetPlayerStatisticsAsync,
-/// ServerGetPlayerStatisticsAsync, AdminUpdatePlayerStatisticDefinitionAsync, ClientUpdatePlayerStatisticsAsync,
-/// ServerUpdatePlayerStatisticsAsync.
-///
-/// If successful, call <see cref="PFPlayerDataManagementAdminGetPlayerStatisticVersionsGetResult"/>
-/// to get the result.
-/// </remarks>
-HRESULT PFPlayerDataManagementAdminGetPlayerStatisticVersionsAsync(
-    _In_ PFStateHandle stateHandle,
-    _In_ const PFPlayerDataManagementGetPlayerStatisticVersionsRequest* request,
-    _Inout_ XAsyncBlock* async
-) noexcept;
-
-/// <summary>
-/// Get the size in bytes needed to store the result of a AdminGetPlayerStatisticVersions call.
-/// </summary>
-/// <param name="async">XAsyncBlock for the async operation.</param>
-/// <param name="bufferSize">The buffer size in bytes required for the result.</param>
-/// <returns>Result code for this API operation.</returns>
-HRESULT PFPlayerDataManagementAdminGetPlayerStatisticVersionsGetResultSize(
-    _Inout_ XAsyncBlock* async,
-    _Out_ size_t* bufferSize
-) noexcept;
-
-/// <summary>
-/// Gets the result of a successful PFPlayerDataManagementAdminGetPlayerStatisticVersionsAsync call.
-/// </summary>
-/// <param name="async">XAsyncBlock for the async operation.</param>
-/// <param name="bufferSize">The size of the buffer for the result object.</param>
-/// <param name="buffer">Byte buffer used for the result value and its fields.</param>
-/// <param name="result">Pointer to the result object.</param>
-/// <param name="bufferUsed">The number of bytes in the provided buffer that were used.</param>
-/// <returns>Result code for this API operation.</returns>
-/// <remarks>
-/// result is a pointer within buffer and does not need to be freed separately.
-/// </remarks>
-HRESULT PFPlayerDataManagementAdminGetPlayerStatisticVersionsGetResult(
-    _Inout_ XAsyncBlock* async,
-    _In_ size_t bufferSize,
-    _Out_writes_bytes_to_(bufferSize, *bufferUsed) void* buffer,
-    _Outptr_ PFPlayerDataManagementGetPlayerStatisticVersionsResult** result,
     _Out_opt_ size_t* bufferUsed
 ) noexcept;
 #endif
@@ -570,257 +397,6 @@ HRESULT PFPlayerDataManagementAdminGetUserReadOnlyDataGetResult(
 
 #if HC_PLATFORM != HC_PLATFORM_GDK
 /// <summary>
-/// Resets the indicated statistic, removing all player entries for it and backing up the old values.
-/// </summary>
-/// <param name="stateHandle">PFStateHandle returned from PFInitialize call.</param>
-/// <param name="request">Populated request object.</param>
-/// <param name="async">XAsyncBlock for the async operation.</param>
-/// <returns>Result code for this API operation.</returns>
-/// <remarks>
-/// Statistics are numeric values, with each statistic in the title also generating a leaderboard. When
-/// this call is made on a given statistic, this forces a reset of that statistic. Upon reset, the statistic
-/// updates to a new version with no values (effectively removing all players from the leaderboard). The
-/// previous version's statistic values are also archived for retrieval, if needed (see GetPlayerStatisticVersions).
-/// Statistics not created via a call to CreatePlayerStatisticDefinition by default have a VersionChangeInterval
-/// of Never, meaning they do not reset on a schedule, but they can be set to do so via a call to UpdatePlayerStatisticDefinition.
-/// Once a statistic has been reset (sometimes referred to as versioned or incremented), the now-previous
-/// version can still be written to for up a short, pre-defined period (currently 10 seconds), to prevent
-/// issues with levels completing around the time of the reset. Also, once reset, the historical statistics
-/// for players in the title may be retrieved using the URL specified in the version information (GetPlayerStatisticVersions).
-/// See also AdminCreatePlayerStatisticDefinitionAsync, AdminGetPlayerStatisticDefinitionsAsync, ClientGetPlayerStatisticsAsync,
-/// ServerGetPlayerStatisticsAsync, AdminGetPlayerStatisticVersionsAsync, AdminUpdatePlayerStatisticDefinitionAsync,
-/// ClientUpdatePlayerStatisticsAsync, ServerUpdatePlayerStatisticsAsync.
-///
-/// If successful, call <see cref="PFPlayerDataManagementAdminIncrementPlayerStatisticVersionGetResult"/>
-/// to get the result.
-/// </remarks>
-HRESULT PFPlayerDataManagementAdminIncrementPlayerStatisticVersionAsync(
-    _In_ PFStateHandle stateHandle,
-    _In_ const PFPlayerDataManagementIncrementPlayerStatisticVersionRequest* request,
-    _Inout_ XAsyncBlock* async
-) noexcept;
-
-/// <summary>
-/// Get the size in bytes needed to store the result of a AdminIncrementPlayerStatisticVersion call.
-/// </summary>
-/// <param name="async">XAsyncBlock for the async operation.</param>
-/// <param name="bufferSize">The buffer size in bytes required for the result.</param>
-/// <returns>Result code for this API operation.</returns>
-HRESULT PFPlayerDataManagementAdminIncrementPlayerStatisticVersionGetResultSize(
-    _Inout_ XAsyncBlock* async,
-    _Out_ size_t* bufferSize
-) noexcept;
-
-/// <summary>
-/// Gets the result of a successful PFPlayerDataManagementAdminIncrementPlayerStatisticVersionAsync call.
-/// </summary>
-/// <param name="async">XAsyncBlock for the async operation.</param>
-/// <param name="bufferSize">The size of the buffer for the result object.</param>
-/// <param name="buffer">Byte buffer used for the result value and its fields.</param>
-/// <param name="result">Pointer to the result object.</param>
-/// <param name="bufferUsed">The number of bytes in the provided buffer that were used.</param>
-/// <returns>Result code for this API operation.</returns>
-/// <remarks>
-/// result is a pointer within buffer and does not need to be freed separately.
-/// </remarks>
-HRESULT PFPlayerDataManagementAdminIncrementPlayerStatisticVersionGetResult(
-    _Inout_ XAsyncBlock* async,
-    _In_ size_t bufferSize,
-    _Out_writes_bytes_to_(bufferSize, *bufferUsed) void* buffer,
-    _Outptr_ PFPlayerDataManagementIncrementPlayerStatisticVersionResult** result,
-    _Out_opt_ size_t* bufferUsed
-) noexcept;
-#endif
-
-#if HC_PLATFORM != HC_PLATFORM_GDK
-/// <summary>
-/// Attempts to process an order refund through the original real money payment provider.
-/// </summary>
-/// <param name="stateHandle">PFStateHandle returned from PFInitialize call.</param>
-/// <param name="request">Populated request object.</param>
-/// <param name="async">XAsyncBlock for the async operation.</param>
-/// <returns>Result code for this API operation.</returns>
-/// <remarks>
-/// If successful, call <see cref="PFPlayerDataManagementAdminRefundPurchaseGetResult"/> to get the result.
-/// </remarks>
-HRESULT PFPlayerDataManagementAdminRefundPurchaseAsync(
-    _In_ PFStateHandle stateHandle,
-    _In_ const PFPlayerDataManagementRefundPurchaseRequest* request,
-    _Inout_ XAsyncBlock* async
-) noexcept;
-
-/// <summary>
-/// Get the size in bytes needed to store the result of a AdminRefundPurchase call.
-/// </summary>
-/// <param name="async">XAsyncBlock for the async operation.</param>
-/// <param name="bufferSize">The buffer size in bytes required for the result.</param>
-/// <returns>Result code for this API operation.</returns>
-HRESULT PFPlayerDataManagementAdminRefundPurchaseGetResultSize(
-    _Inout_ XAsyncBlock* async,
-    _Out_ size_t* bufferSize
-) noexcept;
-
-/// <summary>
-/// Gets the result of a successful PFPlayerDataManagementAdminRefundPurchaseAsync call.
-/// </summary>
-/// <param name="async">XAsyncBlock for the async operation.</param>
-/// <param name="bufferSize">The size of the buffer for the result object.</param>
-/// <param name="buffer">Byte buffer used for the result value and its fields.</param>
-/// <param name="result">Pointer to the result object.</param>
-/// <param name="bufferUsed">The number of bytes in the provided buffer that were used.</param>
-/// <returns>Result code for this API operation.</returns>
-/// <remarks>
-/// result is a pointer within buffer and does not need to be freed separately.
-/// </remarks>
-HRESULT PFPlayerDataManagementAdminRefundPurchaseGetResult(
-    _Inout_ XAsyncBlock* async,
-    _In_ size_t bufferSize,
-    _Out_writes_bytes_to_(bufferSize, *bufferUsed) void* buffer,
-    _Outptr_ PFPlayerDataManagementRefundPurchaseResponse** result,
-    _Out_opt_ size_t* bufferUsed
-) noexcept;
-#endif
-
-#if HC_PLATFORM != HC_PLATFORM_GDK
-/// <summary>
-/// Completely removes all statistics for the specified user, for the current game
-/// </summary>
-/// <param name="stateHandle">PFStateHandle returned from PFInitialize call.</param>
-/// <param name="request">Populated request object.</param>
-/// <param name="async">XAsyncBlock for the async operation.</param>
-/// <returns>Result code for this API operation.</returns>
-/// <remarks>
-/// Note that this action cannot be un-done. All statistics for this user will be deleted, removing the
-/// user from all leaderboards for the game.
-///
-/// Call <see cref="XAsyncGetStatus"/> to get the status of the operation.
-/// </remarks>
-HRESULT PFPlayerDataManagementAdminResetUserStatisticsAsync(
-    _In_ PFStateHandle stateHandle,
-    _In_ const PFPlayerDataManagementResetUserStatisticsRequest* request,
-    _Inout_ XAsyncBlock* async
-) noexcept;
-#endif
-
-#if HC_PLATFORM != HC_PLATFORM_GDK
-/// <summary>
-/// Attempts to resolve a dispute with the original order's payment provider.
-/// </summary>
-/// <param name="stateHandle">PFStateHandle returned from PFInitialize call.</param>
-/// <param name="request">Populated request object.</param>
-/// <param name="async">XAsyncBlock for the async operation.</param>
-/// <returns>Result code for this API operation.</returns>
-/// <remarks>
-/// If successful, call <see cref="PFPlayerDataManagementAdminResolvePurchaseDisputeGetResult"/> to get
-/// the result.
-/// </remarks>
-HRESULT PFPlayerDataManagementAdminResolvePurchaseDisputeAsync(
-    _In_ PFStateHandle stateHandle,
-    _In_ const PFPlayerDataManagementResolvePurchaseDisputeRequest* request,
-    _Inout_ XAsyncBlock* async
-) noexcept;
-
-/// <summary>
-/// Get the size in bytes needed to store the result of a AdminResolvePurchaseDispute call.
-/// </summary>
-/// <param name="async">XAsyncBlock for the async operation.</param>
-/// <param name="bufferSize">The buffer size in bytes required for the result.</param>
-/// <returns>Result code for this API operation.</returns>
-HRESULT PFPlayerDataManagementAdminResolvePurchaseDisputeGetResultSize(
-    _Inout_ XAsyncBlock* async,
-    _Out_ size_t* bufferSize
-) noexcept;
-
-/// <summary>
-/// Gets the result of a successful PFPlayerDataManagementAdminResolvePurchaseDisputeAsync call.
-/// </summary>
-/// <param name="async">XAsyncBlock for the async operation.</param>
-/// <param name="bufferSize">The size of the buffer for the result object.</param>
-/// <param name="buffer">Byte buffer used for the result value and its fields.</param>
-/// <param name="result">Pointer to the result object.</param>
-/// <param name="bufferUsed">The number of bytes in the provided buffer that were used.</param>
-/// <returns>Result code for this API operation.</returns>
-/// <remarks>
-/// result is a pointer within buffer and does not need to be freed separately.
-/// </remarks>
-HRESULT PFPlayerDataManagementAdminResolvePurchaseDisputeGetResult(
-    _Inout_ XAsyncBlock* async,
-    _In_ size_t bufferSize,
-    _Out_writes_bytes_to_(bufferSize, *bufferUsed) void* buffer,
-    _Outptr_ PFPlayerDataManagementResolvePurchaseDisputeResponse** result,
-    _Out_opt_ size_t* bufferUsed
-) noexcept;
-#endif
-
-#if HC_PLATFORM != HC_PLATFORM_GDK
-/// <summary>
-/// Updates a player statistic configuration for the title, optionally allowing the developer to specify
-/// a reset interval.
-/// </summary>
-/// <param name="stateHandle">PFStateHandle returned from PFInitialize call.</param>
-/// <param name="request">Populated request object.</param>
-/// <param name="async">XAsyncBlock for the async operation.</param>
-/// <returns>Result code for this API operation.</returns>
-/// <remarks>
-/// Statistics are numeric values, with each statistic in the title also generating a leaderboard. The
-/// ResetInterval enables automatically resetting leaderboards on a specified interval. Upon reset, the
-/// statistic updates to a new version with no values (effectively removing all players from the leaderboard).
-/// The previous version's statistic values are also archived for retrieval, if needed (see GetPlayerStatisticVersions).
-/// Statistics not created via a call to CreatePlayerStatisticDefinition by default have a VersionChangeInterval
-/// of Never, meaning they do not reset on a schedule, but they can be set to do so via a call to UpdatePlayerStatisticDefinition.
-/// Once a statistic has been reset (sometimes referred to as versioned or incremented), the now-previous
-/// version can still be written to for up a short, pre-defined period (currently 10 seconds), to prevent
-/// issues with levels completing around the time of the reset. Also, once reset, the historical statistics
-/// for players in the title may be retrieved using the URL specified in the version information (GetPlayerStatisticVersions).
-/// The AggregationMethod determines what action is taken when a new statistic value is submitted - always
-/// update with the new value (Last), use the highest of the old and new values (Max), use the smallest
-/// (Min), or add them together (Sum). See also AdminCreatePlayerStatisticDefinitionAsync, AdminGetPlayerStatisticDefinitionsAsync,
-/// ClientGetPlayerStatisticsAsync, ServerGetPlayerStatisticsAsync, AdminGetPlayerStatisticVersionsAsync,
-/// ClientUpdatePlayerStatisticsAsync, ServerUpdatePlayerStatisticsAsync.
-///
-/// If successful, call <see cref="PFPlayerDataManagementAdminUpdatePlayerStatisticDefinitionGetResult"/>
-/// to get the result.
-/// </remarks>
-HRESULT PFPlayerDataManagementAdminUpdatePlayerStatisticDefinitionAsync(
-    _In_ PFStateHandle stateHandle,
-    _In_ const PFPlayerDataManagementUpdatePlayerStatisticDefinitionRequest* request,
-    _Inout_ XAsyncBlock* async
-) noexcept;
-
-/// <summary>
-/// Get the size in bytes needed to store the result of a AdminUpdatePlayerStatisticDefinition call.
-/// </summary>
-/// <param name="async">XAsyncBlock for the async operation.</param>
-/// <param name="bufferSize">The buffer size in bytes required for the result.</param>
-/// <returns>Result code for this API operation.</returns>
-HRESULT PFPlayerDataManagementAdminUpdatePlayerStatisticDefinitionGetResultSize(
-    _Inout_ XAsyncBlock* async,
-    _Out_ size_t* bufferSize
-) noexcept;
-
-/// <summary>
-/// Gets the result of a successful PFPlayerDataManagementAdminUpdatePlayerStatisticDefinitionAsync call.
-/// </summary>
-/// <param name="async">XAsyncBlock for the async operation.</param>
-/// <param name="bufferSize">The size of the buffer for the result object.</param>
-/// <param name="buffer">Byte buffer used for the result value and its fields.</param>
-/// <param name="result">Pointer to the result object.</param>
-/// <param name="bufferUsed">The number of bytes in the provided buffer that were used.</param>
-/// <returns>Result code for this API operation.</returns>
-/// <remarks>
-/// result is a pointer within buffer and does not need to be freed separately.
-/// </remarks>
-HRESULT PFPlayerDataManagementAdminUpdatePlayerStatisticDefinitionGetResult(
-    _Inout_ XAsyncBlock* async,
-    _In_ size_t bufferSize,
-    _Out_writes_bytes_to_(bufferSize, *bufferUsed) void* buffer,
-    _Outptr_ PFPlayerDataManagementUpdatePlayerStatisticDefinitionResult** result,
-    _Out_opt_ size_t* bufferUsed
-) noexcept;
-#endif
-
-#if HC_PLATFORM != HC_PLATFORM_GDK
-/// <summary>
 /// Updates the title-specific custom data for the user which is readable and writable by the client
 /// </summary>
 /// <param name="stateHandle">PFStateHandle returned from PFInitialize call.</param>
@@ -1041,306 +617,6 @@ HRESULT PFPlayerDataManagementAdminUpdateUserReadOnlyDataGetResult(
 #endif
 
 /// <summary>
-/// Retrieves a list of ranked friends of the current player for the given statistic, starting from the
-/// indicated point in the leaderboard
-/// </summary>
-/// <param name="entityHandle">PFTitlePlayerHandle to use for authentication.</param>
-/// <param name="request">Populated request object.</param>
-/// <param name="async">XAsyncBlock for the async operation.</param>
-/// <returns>Result code for this API operation.</returns>
-/// <remarks>
-/// If successful, call <see cref="PFPlayerDataManagementClientGetFriendLeaderboardGetResult"/> to get
-/// the result.
-/// </remarks>
-HRESULT PFPlayerDataManagementClientGetFriendLeaderboardAsync(
-    _In_ PFTitlePlayerHandle titlePlayerHandle,
-    _In_ const PFPlayerDataManagementClientGetFriendLeaderboardRequest* request,
-    _Inout_ XAsyncBlock* async
-) noexcept;
-
-/// <summary>
-/// Get the size in bytes needed to store the result of a ClientGetFriendLeaderboard call.
-/// </summary>
-/// <param name="async">XAsyncBlock for the async operation.</param>
-/// <param name="bufferSize">The buffer size in bytes required for the result.</param>
-/// <returns>Result code for this API operation.</returns>
-HRESULT PFPlayerDataManagementClientGetFriendLeaderboardGetResultSize(
-    _Inout_ XAsyncBlock* async,
-    _Out_ size_t* bufferSize
-) noexcept;
-
-/// <summary>
-/// Gets the result of a successful PFPlayerDataManagementClientGetFriendLeaderboardAsync call.
-/// </summary>
-/// <param name="async">XAsyncBlock for the async operation.</param>
-/// <param name="bufferSize">The size of the buffer for the result object.</param>
-/// <param name="buffer">Byte buffer used for the result value and its fields.</param>
-/// <param name="result">Pointer to the result object.</param>
-/// <param name="bufferUsed">The number of bytes in the provided buffer that were used.</param>
-/// <returns>Result code for this API operation.</returns>
-/// <remarks>
-/// result is a pointer within buffer and does not need to be freed separately.
-/// </remarks>
-HRESULT PFPlayerDataManagementClientGetFriendLeaderboardGetResult(
-    _Inout_ XAsyncBlock* async,
-    _In_ size_t bufferSize,
-    _Out_writes_bytes_to_(bufferSize, *bufferUsed) void* buffer,
-    _Outptr_ PFPlayerDataManagementGetLeaderboardResult** result,
-    _Out_opt_ size_t* bufferUsed
-) noexcept;
-
-/// <summary>
-/// Retrieves a list of ranked friends of the current player for the given statistic, centered on the
-/// requested PlayFab user. If PlayFabId is empty or null will return currently logged in user.
-/// </summary>
-/// <param name="entityHandle">PFTitlePlayerHandle to use for authentication.</param>
-/// <param name="request">Populated request object.</param>
-/// <param name="async">XAsyncBlock for the async operation.</param>
-/// <returns>Result code for this API operation.</returns>
-/// <remarks>
-/// If successful, call <see cref="PFPlayerDataManagementClientGetFriendLeaderboardAroundPlayerGetResult"/>
-/// to get the result.
-/// </remarks>
-HRESULT PFPlayerDataManagementClientGetFriendLeaderboardAroundPlayerAsync(
-    _In_ PFTitlePlayerHandle titlePlayerHandle,
-    _In_ const PFPlayerDataManagementGetFriendLeaderboardAroundPlayerRequest* request,
-    _Inout_ XAsyncBlock* async
-) noexcept;
-
-/// <summary>
-/// Get the size in bytes needed to store the result of a ClientGetFriendLeaderboardAroundPlayer call.
-/// </summary>
-/// <param name="async">XAsyncBlock for the async operation.</param>
-/// <param name="bufferSize">The buffer size in bytes required for the result.</param>
-/// <returns>Result code for this API operation.</returns>
-HRESULT PFPlayerDataManagementClientGetFriendLeaderboardAroundPlayerGetResultSize(
-    _Inout_ XAsyncBlock* async,
-    _Out_ size_t* bufferSize
-) noexcept;
-
-/// <summary>
-/// Gets the result of a successful PFPlayerDataManagementClientGetFriendLeaderboardAroundPlayerAsync call.
-/// </summary>
-/// <param name="async">XAsyncBlock for the async operation.</param>
-/// <param name="bufferSize">The size of the buffer for the result object.</param>
-/// <param name="buffer">Byte buffer used for the result value and its fields.</param>
-/// <param name="result">Pointer to the result object.</param>
-/// <param name="bufferUsed">The number of bytes in the provided buffer that were used.</param>
-/// <returns>Result code for this API operation.</returns>
-/// <remarks>
-/// result is a pointer within buffer and does not need to be freed separately.
-/// </remarks>
-HRESULT PFPlayerDataManagementClientGetFriendLeaderboardAroundPlayerGetResult(
-    _Inout_ XAsyncBlock* async,
-    _In_ size_t bufferSize,
-    _Out_writes_bytes_to_(bufferSize, *bufferUsed) void* buffer,
-    _Outptr_ PFPlayerDataManagementGetFriendLeaderboardAroundPlayerResult** result,
-    _Out_opt_ size_t* bufferUsed
-) noexcept;
-
-/// <summary>
-/// Retrieves a list of ranked users for the given statistic, starting from the indicated point in the
-/// leaderboard
-/// </summary>
-/// <param name="entityHandle">PFTitlePlayerHandle to use for authentication.</param>
-/// <param name="request">Populated request object.</param>
-/// <param name="async">XAsyncBlock for the async operation.</param>
-/// <returns>Result code for this API operation.</returns>
-/// <remarks>
-/// See also ClientGetFriendLeaderboardAsync, ClientGetLeaderboardAroundPlayerAsync, ClientGetUserStatisticsAsync.
-///
-/// If successful, call <see cref="PFPlayerDataManagementClientGetLeaderboardGetResult"/> to get the
-/// result.
-/// </remarks>
-HRESULT PFPlayerDataManagementClientGetLeaderboardAsync(
-    _In_ PFTitlePlayerHandle titlePlayerHandle,
-    _In_ const PFPlayerDataManagementGetLeaderboardRequest* request,
-    _Inout_ XAsyncBlock* async
-) noexcept;
-
-/// <summary>
-/// Get the size in bytes needed to store the result of a ClientGetLeaderboard call.
-/// </summary>
-/// <param name="async">XAsyncBlock for the async operation.</param>
-/// <param name="bufferSize">The buffer size in bytes required for the result.</param>
-/// <returns>Result code for this API operation.</returns>
-HRESULT PFPlayerDataManagementClientGetLeaderboardGetResultSize(
-    _Inout_ XAsyncBlock* async,
-    _Out_ size_t* bufferSize
-) noexcept;
-
-/// <summary>
-/// Gets the result of a successful PFPlayerDataManagementClientGetLeaderboardAsync call.
-/// </summary>
-/// <param name="async">XAsyncBlock for the async operation.</param>
-/// <param name="bufferSize">The size of the buffer for the result object.</param>
-/// <param name="buffer">Byte buffer used for the result value and its fields.</param>
-/// <param name="result">Pointer to the result object.</param>
-/// <param name="bufferUsed">The number of bytes in the provided buffer that were used.</param>
-/// <returns>Result code for this API operation.</returns>
-/// <remarks>
-/// result is a pointer within buffer and does not need to be freed separately.
-/// </remarks>
-HRESULT PFPlayerDataManagementClientGetLeaderboardGetResult(
-    _Inout_ XAsyncBlock* async,
-    _In_ size_t bufferSize,
-    _Out_writes_bytes_to_(bufferSize, *bufferUsed) void* buffer,
-    _Outptr_ PFPlayerDataManagementGetLeaderboardResult** result,
-    _Out_opt_ size_t* bufferUsed
-) noexcept;
-
-/// <summary>
-/// Retrieves a list of ranked users for the given statistic, centered on the requested player. If PlayFabId
-/// is empty or null will return currently logged in user.
-/// </summary>
-/// <param name="entityHandle">PFTitlePlayerHandle to use for authentication.</param>
-/// <param name="request">Populated request object.</param>
-/// <param name="async">XAsyncBlock for the async operation.</param>
-/// <returns>Result code for this API operation.</returns>
-/// <remarks>
-/// See also ClientGetFriendLeaderboardAsync, ClientGetLeaderboardAsync, ClientGetUserStatisticsAsync.
-///
-/// If successful, call <see cref="PFPlayerDataManagementClientGetLeaderboardAroundPlayerGetResult"/>
-/// to get the result.
-/// </remarks>
-HRESULT PFPlayerDataManagementClientGetLeaderboardAroundPlayerAsync(
-    _In_ PFTitlePlayerHandle titlePlayerHandle,
-    _In_ const PFPlayerDataManagementGetLeaderboardAroundPlayerRequest* request,
-    _Inout_ XAsyncBlock* async
-) noexcept;
-
-/// <summary>
-/// Get the size in bytes needed to store the result of a ClientGetLeaderboardAroundPlayer call.
-/// </summary>
-/// <param name="async">XAsyncBlock for the async operation.</param>
-/// <param name="bufferSize">The buffer size in bytes required for the result.</param>
-/// <returns>Result code for this API operation.</returns>
-HRESULT PFPlayerDataManagementClientGetLeaderboardAroundPlayerGetResultSize(
-    _Inout_ XAsyncBlock* async,
-    _Out_ size_t* bufferSize
-) noexcept;
-
-/// <summary>
-/// Gets the result of a successful PFPlayerDataManagementClientGetLeaderboardAroundPlayerAsync call.
-/// </summary>
-/// <param name="async">XAsyncBlock for the async operation.</param>
-/// <param name="bufferSize">The size of the buffer for the result object.</param>
-/// <param name="buffer">Byte buffer used for the result value and its fields.</param>
-/// <param name="result">Pointer to the result object.</param>
-/// <param name="bufferUsed">The number of bytes in the provided buffer that were used.</param>
-/// <returns>Result code for this API operation.</returns>
-/// <remarks>
-/// result is a pointer within buffer and does not need to be freed separately.
-/// </remarks>
-HRESULT PFPlayerDataManagementClientGetLeaderboardAroundPlayerGetResult(
-    _Inout_ XAsyncBlock* async,
-    _In_ size_t bufferSize,
-    _Out_writes_bytes_to_(bufferSize, *bufferUsed) void* buffer,
-    _Outptr_ PFPlayerDataManagementGetLeaderboardAroundPlayerResult** result,
-    _Out_opt_ size_t* bufferUsed
-) noexcept;
-
-/// <summary>
-/// Retrieves the indicated statistics (current version and values for all statistics, if none are specified),
-/// for the local player.
-/// </summary>
-/// <param name="entityHandle">PFTitlePlayerHandle to use for authentication.</param>
-/// <param name="request">Populated request object.</param>
-/// <param name="async">XAsyncBlock for the async operation.</param>
-/// <returns>Result code for this API operation.</returns>
-/// <remarks>
-/// See also AdminCreatePlayerStatisticDefinitionAsync, ClientGetPlayerStatisticVersionsAsync, AdminUpdatePlayerStatisticDefinitionAsync,
-/// ClientUpdatePlayerStatisticsAsync.
-///
-/// If successful, call <see cref="PFPlayerDataManagementClientGetPlayerStatisticsGetResult"/> to get
-/// the result.
-/// </remarks>
-HRESULT PFPlayerDataManagementClientGetPlayerStatisticsAsync(
-    _In_ PFTitlePlayerHandle titlePlayerHandle,
-    _In_ const PFPlayerDataManagementClientGetPlayerStatisticsRequest* request,
-    _Inout_ XAsyncBlock* async
-) noexcept;
-
-/// <summary>
-/// Get the size in bytes needed to store the result of a ClientGetPlayerStatistics call.
-/// </summary>
-/// <param name="async">XAsyncBlock for the async operation.</param>
-/// <param name="bufferSize">The buffer size in bytes required for the result.</param>
-/// <returns>Result code for this API operation.</returns>
-HRESULT PFPlayerDataManagementClientGetPlayerStatisticsGetResultSize(
-    _Inout_ XAsyncBlock* async,
-    _Out_ size_t* bufferSize
-) noexcept;
-
-/// <summary>
-/// Gets the result of a successful PFPlayerDataManagementClientGetPlayerStatisticsAsync call.
-/// </summary>
-/// <param name="async">XAsyncBlock for the async operation.</param>
-/// <param name="bufferSize">The size of the buffer for the result object.</param>
-/// <param name="buffer">Byte buffer used for the result value and its fields.</param>
-/// <param name="result">Pointer to the result object.</param>
-/// <param name="bufferUsed">The number of bytes in the provided buffer that were used.</param>
-/// <returns>Result code for this API operation.</returns>
-/// <remarks>
-/// result is a pointer within buffer and does not need to be freed separately.
-/// </remarks>
-HRESULT PFPlayerDataManagementClientGetPlayerStatisticsGetResult(
-    _Inout_ XAsyncBlock* async,
-    _In_ size_t bufferSize,
-    _Out_writes_bytes_to_(bufferSize, *bufferUsed) void* buffer,
-    _Outptr_ PFPlayerDataManagementClientGetPlayerStatisticsResult** result,
-    _Out_opt_ size_t* bufferUsed
-) noexcept;
-
-/// <summary>
-/// Retrieves the information on the available versions of the specified statistic.
-/// </summary>
-/// <param name="entityHandle">PFTitlePlayerHandle to use for authentication.</param>
-/// <param name="request">Populated request object.</param>
-/// <param name="async">XAsyncBlock for the async operation.</param>
-/// <returns>Result code for this API operation.</returns>
-/// <remarks>
-/// If successful, call <see cref="PFPlayerDataManagementClientGetPlayerStatisticVersionsGetResult"/>
-/// to get the result.
-/// </remarks>
-HRESULT PFPlayerDataManagementClientGetPlayerStatisticVersionsAsync(
-    _In_ PFTitlePlayerHandle titlePlayerHandle,
-    _In_ const PFPlayerDataManagementGetPlayerStatisticVersionsRequest* request,
-    _Inout_ XAsyncBlock* async
-) noexcept;
-
-/// <summary>
-/// Get the size in bytes needed to store the result of a ClientGetPlayerStatisticVersions call.
-/// </summary>
-/// <param name="async">XAsyncBlock for the async operation.</param>
-/// <param name="bufferSize">The buffer size in bytes required for the result.</param>
-/// <returns>Result code for this API operation.</returns>
-HRESULT PFPlayerDataManagementClientGetPlayerStatisticVersionsGetResultSize(
-    _Inout_ XAsyncBlock* async,
-    _Out_ size_t* bufferSize
-) noexcept;
-
-/// <summary>
-/// Gets the result of a successful PFPlayerDataManagementClientGetPlayerStatisticVersionsAsync call.
-/// </summary>
-/// <param name="async">XAsyncBlock for the async operation.</param>
-/// <param name="bufferSize">The size of the buffer for the result object.</param>
-/// <param name="buffer">Byte buffer used for the result value and its fields.</param>
-/// <param name="result">Pointer to the result object.</param>
-/// <param name="bufferUsed">The number of bytes in the provided buffer that were used.</param>
-/// <returns>Result code for this API operation.</returns>
-/// <remarks>
-/// result is a pointer within buffer and does not need to be freed separately.
-/// </remarks>
-HRESULT PFPlayerDataManagementClientGetPlayerStatisticVersionsGetResult(
-    _Inout_ XAsyncBlock* async,
-    _In_ size_t bufferSize,
-    _Out_writes_bytes_to_(bufferSize, *bufferUsed) void* buffer,
-    _Outptr_ PFPlayerDataManagementGetPlayerStatisticVersionsResult** result,
-    _Out_opt_ size_t* bufferUsed
-) noexcept;
-
-/// <summary>
 /// Retrieves the title-specific custom data for the user which is readable and writable by the client
 /// </summary>
 /// <param name="entityHandle">PFTitlePlayerHandle to use for authentication.</param>
@@ -1552,33 +828,6 @@ HRESULT PFPlayerDataManagementClientGetUserReadOnlyDataGetResult(
 ) noexcept;
 
 /// <summary>
-/// Updates the values of the specified title-specific statistics for the user. By default, clients are
-/// not permitted to update statistics. Developers may override this setting in the Game Manager > Settings
-/// > API Features.
-/// </summary>
-/// <param name="entityHandle">PFTitlePlayerHandle to use for authentication.</param>
-/// <param name="request">Populated request object.</param>
-/// <param name="async">XAsyncBlock for the async operation.</param>
-/// <returns>Result code for this API operation.</returns>
-/// <remarks>
-/// Enable this option with the 'Allow Client to Post Player Statistics' option in PlayFab GameManager
-/// for your title. However, this is not best practice, as this data will no longer be safely controlled
-/// by the server. This operation is additive. Statistics not currently defined will be added, while those
-/// already defined will be updated with the given values. All other user statistics will remain unchanged.
-/// Note that if the statistic is intended to have a reset period, the UpdatePlayerStatisticDefinition
-/// API call can be used to define that reset period. Once a statistic has been versioned (reset), the
-/// now-previous version can still be written to for up a short, pre-defined period (currently 10 seconds),
-/// using the Version parameter in this call.
-///
-/// Call <see cref="XAsyncGetStatus"/> to get the status of the operation.
-/// </remarks>
-HRESULT PFPlayerDataManagementClientUpdatePlayerStatisticsAsync(
-    _In_ PFTitlePlayerHandle titlePlayerHandle,
-    _In_ const PFPlayerDataManagementClientUpdatePlayerStatisticsRequest* request,
-    _Inout_ XAsyncBlock* async
-) noexcept;
-
-/// <summary>
 /// Creates and updates the title-specific custom data for the user which is readable and writable by
 /// the client
 /// </summary>
@@ -1648,309 +897,7 @@ HRESULT PFPlayerDataManagementClientUpdateUserPublisherDataGetResult(
     _Out_ PFPlayerDataManagementUpdateUserDataResult* result
 ) noexcept;
 
-/// <summary>
-/// Retrieves a list of ranked friends of the given player for the given statistic, starting from the
-/// indicated point in the leaderboard
-/// </summary>
-/// <param name="stateHandle">PFStateHandle returned from PFInitialize call.</param>
-/// <param name="request">Populated request object.</param>
-/// <param name="async">XAsyncBlock for the async operation.</param>
-/// <returns>Result code for this API operation.</returns>
-/// <remarks>
-/// See also ClientGetLeaderboardAroundCurrentUserAsync, ServerGetLeaderboardAroundUserAsync, ServerGetUserStatisticsAsync.
-///
-/// If successful, call <see cref="PFPlayerDataManagementServerGetFriendLeaderboardGetResult"/> to get
-/// the result.
-/// </remarks>
-HRESULT PFPlayerDataManagementServerGetFriendLeaderboardAsync(
-    _In_ PFStateHandle stateHandle,
-    _In_ const PFPlayerDataManagementServerGetFriendLeaderboardRequest* request,
-    _Inout_ XAsyncBlock* async
-) noexcept;
-
-/// <summary>
-/// Get the size in bytes needed to store the result of a ServerGetFriendLeaderboard call.
-/// </summary>
-/// <param name="async">XAsyncBlock for the async operation.</param>
-/// <param name="bufferSize">The buffer size in bytes required for the result.</param>
-/// <returns>Result code for this API operation.</returns>
-HRESULT PFPlayerDataManagementServerGetFriendLeaderboardGetResultSize(
-    _Inout_ XAsyncBlock* async,
-    _Out_ size_t* bufferSize
-) noexcept;
-
-/// <summary>
-/// Gets the result of a successful PFPlayerDataManagementServerGetFriendLeaderboardAsync call.
-/// </summary>
-/// <param name="async">XAsyncBlock for the async operation.</param>
-/// <param name="bufferSize">The size of the buffer for the result object.</param>
-/// <param name="buffer">Byte buffer used for the result value and its fields.</param>
-/// <param name="result">Pointer to the result object.</param>
-/// <param name="bufferUsed">The number of bytes in the provided buffer that were used.</param>
-/// <returns>Result code for this API operation.</returns>
-/// <remarks>
-/// result is a pointer within buffer and does not need to be freed separately.
-/// </remarks>
-HRESULT PFPlayerDataManagementServerGetFriendLeaderboardGetResult(
-    _Inout_ XAsyncBlock* async,
-    _In_ size_t bufferSize,
-    _Out_writes_bytes_to_(bufferSize, *bufferUsed) void* buffer,
-    _Outptr_ PFPlayerDataManagementGetLeaderboardResult** result,
-    _Out_opt_ size_t* bufferUsed
-) noexcept;
-
-/// <summary>
-/// Retrieves a list of ranked users for the given statistic, starting from the indicated point in the
-/// leaderboard
-/// </summary>
-/// <param name="stateHandle">PFStateHandle returned from PFInitialize call.</param>
-/// <param name="request">Populated request object.</param>
-/// <param name="async">XAsyncBlock for the async operation.</param>
-/// <returns>Result code for this API operation.</returns>
-/// <remarks>
-/// See also ServerGetLeaderboardAroundUserAsync, ServerGetUserStatisticsAsync, ServerUpdateUserStatisticsAsync.
-///
-/// If successful, call <see cref="PFPlayerDataManagementServerGetLeaderboardGetResult"/> to get the
-/// result.
-/// </remarks>
-HRESULT PFPlayerDataManagementServerGetLeaderboardAsync(
-    _In_ PFStateHandle stateHandle,
-    _In_ const PFPlayerDataManagementGetLeaderboardRequest* request,
-    _Inout_ XAsyncBlock* async
-) noexcept;
-
-/// <summary>
-/// Get the size in bytes needed to store the result of a ServerGetLeaderboard call.
-/// </summary>
-/// <param name="async">XAsyncBlock for the async operation.</param>
-/// <param name="bufferSize">The buffer size in bytes required for the result.</param>
-/// <returns>Result code for this API operation.</returns>
-HRESULT PFPlayerDataManagementServerGetLeaderboardGetResultSize(
-    _Inout_ XAsyncBlock* async,
-    _Out_ size_t* bufferSize
-) noexcept;
-
-/// <summary>
-/// Gets the result of a successful PFPlayerDataManagementServerGetLeaderboardAsync call.
-/// </summary>
-/// <param name="async">XAsyncBlock for the async operation.</param>
-/// <param name="bufferSize">The size of the buffer for the result object.</param>
-/// <param name="buffer">Byte buffer used for the result value and its fields.</param>
-/// <param name="result">Pointer to the result object.</param>
-/// <param name="bufferUsed">The number of bytes in the provided buffer that were used.</param>
-/// <returns>Result code for this API operation.</returns>
-/// <remarks>
-/// result is a pointer within buffer and does not need to be freed separately.
-/// </remarks>
-HRESULT PFPlayerDataManagementServerGetLeaderboardGetResult(
-    _Inout_ XAsyncBlock* async,
-    _In_ size_t bufferSize,
-    _Out_writes_bytes_to_(bufferSize, *bufferUsed) void* buffer,
-    _Outptr_ PFPlayerDataManagementGetLeaderboardResult** result,
-    _Out_opt_ size_t* bufferUsed
-) noexcept;
-
-/// <summary>
-/// Retrieves a list of ranked users for the given statistic, centered on the currently signed-in user
-/// </summary>
-/// <param name="stateHandle">PFStateHandle returned from PFInitialize call.</param>
-/// <param name="request">Populated request object.</param>
-/// <param name="async">XAsyncBlock for the async operation.</param>
-/// <returns>Result code for this API operation.</returns>
-/// <remarks>
-/// See also ServerGetLeaderboardAsync, ServerGetUserStatisticsAsync, ServerUpdateUserStatisticsAsync.
-///
-/// If successful, call <see cref="PFPlayerDataManagementServerGetLeaderboardAroundUserGetResult"/> to
-/// get the result.
-/// </remarks>
-HRESULT PFPlayerDataManagementServerGetLeaderboardAroundUserAsync(
-    _In_ PFStateHandle stateHandle,
-    _In_ const PFPlayerDataManagementGetLeaderboardAroundUserRequest* request,
-    _Inout_ XAsyncBlock* async
-) noexcept;
-
-/// <summary>
-/// Get the size in bytes needed to store the result of a ServerGetLeaderboardAroundUser call.
-/// </summary>
-/// <param name="async">XAsyncBlock for the async operation.</param>
-/// <param name="bufferSize">The buffer size in bytes required for the result.</param>
-/// <returns>Result code for this API operation.</returns>
-HRESULT PFPlayerDataManagementServerGetLeaderboardAroundUserGetResultSize(
-    _Inout_ XAsyncBlock* async,
-    _Out_ size_t* bufferSize
-) noexcept;
-
-/// <summary>
-/// Gets the result of a successful PFPlayerDataManagementServerGetLeaderboardAroundUserAsync call.
-/// </summary>
-/// <param name="async">XAsyncBlock for the async operation.</param>
-/// <param name="bufferSize">The size of the buffer for the result object.</param>
-/// <param name="buffer">Byte buffer used for the result value and its fields.</param>
-/// <param name="result">Pointer to the result object.</param>
-/// <param name="bufferUsed">The number of bytes in the provided buffer that were used.</param>
-/// <returns>Result code for this API operation.</returns>
-/// <remarks>
-/// result is a pointer within buffer and does not need to be freed separately.
-/// </remarks>
-HRESULT PFPlayerDataManagementServerGetLeaderboardAroundUserGetResult(
-    _Inout_ XAsyncBlock* async,
-    _In_ size_t bufferSize,
-    _Out_writes_bytes_to_(bufferSize, *bufferUsed) void* buffer,
-    _Outptr_ PFPlayerDataManagementGetLeaderboardAroundUserResult** result,
-    _Out_opt_ size_t* bufferUsed
-) noexcept;
-
-/// <summary>
-/// Returns whatever info is requested in the response for the user. Note that PII (like email address,
-/// facebook id) may be returned. All parameters default to false.
-/// </summary>
-/// <param name="stateHandle">PFStateHandle returned from PFInitialize call.</param>
-/// <param name="request">Populated request object.</param>
-/// <param name="async">XAsyncBlock for the async operation.</param>
-/// <returns>Result code for this API operation.</returns>
-/// <remarks>
-/// If successful, call <see cref="PFPlayerDataManagementServerGetPlayerCombinedInfoGetResult"/> to get
-/// the result.
-/// </remarks>
-HRESULT PFPlayerDataManagementServerGetPlayerCombinedInfoAsync(
-    _In_ PFStateHandle stateHandle,
-    _In_ const PFGetPlayerCombinedInfoRequest* request,
-    _Inout_ XAsyncBlock* async
-) noexcept;
-
-/// <summary>
-/// Get the size in bytes needed to store the result of a ServerGetPlayerCombinedInfo call.
-/// </summary>
-/// <param name="async">XAsyncBlock for the async operation.</param>
-/// <param name="bufferSize">The buffer size in bytes required for the result.</param>
-/// <returns>Result code for this API operation.</returns>
-HRESULT PFPlayerDataManagementServerGetPlayerCombinedInfoGetResultSize(
-    _Inout_ XAsyncBlock* async,
-    _Out_ size_t* bufferSize
-) noexcept;
-
-/// <summary>
-/// Gets the result of a successful PFPlayerDataManagementServerGetPlayerCombinedInfoAsync call.
-/// </summary>
-/// <param name="async">XAsyncBlock for the async operation.</param>
-/// <param name="bufferSize">The size of the buffer for the result object.</param>
-/// <param name="buffer">Byte buffer used for the result value and its fields.</param>
-/// <param name="result">Pointer to the result object.</param>
-/// <param name="bufferUsed">The number of bytes in the provided buffer that were used.</param>
-/// <returns>Result code for this API operation.</returns>
-/// <remarks>
-/// result is a pointer within buffer and does not need to be freed separately.
-/// </remarks>
-HRESULT PFPlayerDataManagementServerGetPlayerCombinedInfoGetResult(
-    _Inout_ XAsyncBlock* async,
-    _In_ size_t bufferSize,
-    _Out_writes_bytes_to_(bufferSize, *bufferUsed) void* buffer,
-    _Outptr_ PFGetPlayerCombinedInfoResult** result,
-    _Out_opt_ size_t* bufferUsed
-) noexcept;
-
-/// <summary>
-/// Retrieves the current version and values for the indicated statistics, for the local player.
-/// </summary>
-/// <param name="stateHandle">PFStateHandle returned from PFInitialize call.</param>
-/// <param name="request">Populated request object.</param>
-/// <param name="async">XAsyncBlock for the async operation.</param>
-/// <returns>Result code for this API operation.</returns>
-/// <remarks>
-/// See also AdminCreatePlayerStatisticDefinitionAsync, ServerGetPlayerStatisticVersionsAsync, AdminUpdatePlayerStatisticDefinitionAsync,
-/// ServerUpdatePlayerStatisticsAsync.
-///
-/// If successful, call <see cref="PFPlayerDataManagementServerGetPlayerStatisticsGetResult"/> to get
-/// the result.
-/// </remarks>
-HRESULT PFPlayerDataManagementServerGetPlayerStatisticsAsync(
-    _In_ PFStateHandle stateHandle,
-    _In_ const PFPlayerDataManagementServerGetPlayerStatisticsRequest* request,
-    _Inout_ XAsyncBlock* async
-) noexcept;
-
-/// <summary>
-/// Get the size in bytes needed to store the result of a ServerGetPlayerStatistics call.
-/// </summary>
-/// <param name="async">XAsyncBlock for the async operation.</param>
-/// <param name="bufferSize">The buffer size in bytes required for the result.</param>
-/// <returns>Result code for this API operation.</returns>
-HRESULT PFPlayerDataManagementServerGetPlayerStatisticsGetResultSize(
-    _Inout_ XAsyncBlock* async,
-    _Out_ size_t* bufferSize
-) noexcept;
-
-/// <summary>
-/// Gets the result of a successful PFPlayerDataManagementServerGetPlayerStatisticsAsync call.
-/// </summary>
-/// <param name="async">XAsyncBlock for the async operation.</param>
-/// <param name="bufferSize">The size of the buffer for the result object.</param>
-/// <param name="buffer">Byte buffer used for the result value and its fields.</param>
-/// <param name="result">Pointer to the result object.</param>
-/// <param name="bufferUsed">The number of bytes in the provided buffer that were used.</param>
-/// <returns>Result code for this API operation.</returns>
-/// <remarks>
-/// result is a pointer within buffer and does not need to be freed separately.
-/// </remarks>
-HRESULT PFPlayerDataManagementServerGetPlayerStatisticsGetResult(
-    _Inout_ XAsyncBlock* async,
-    _In_ size_t bufferSize,
-    _Out_writes_bytes_to_(bufferSize, *bufferUsed) void* buffer,
-    _Outptr_ PFPlayerDataManagementServerGetPlayerStatisticsResult** result,
-    _Out_opt_ size_t* bufferUsed
-) noexcept;
-
-/// <summary>
-/// Retrieves the information on the available versions of the specified statistic.
-/// </summary>
-/// <param name="stateHandle">PFStateHandle returned from PFInitialize call.</param>
-/// <param name="request">Populated request object.</param>
-/// <param name="async">XAsyncBlock for the async operation.</param>
-/// <returns>Result code for this API operation.</returns>
-/// <remarks>
-/// See also AdminCreatePlayerStatisticDefinitionAsync, ServerGetPlayerStatisticsAsync, AdminUpdatePlayerStatisticDefinitionAsync,
-/// ServerUpdatePlayerStatisticsAsync.
-///
-/// If successful, call <see cref="PFPlayerDataManagementServerGetPlayerStatisticVersionsGetResult"/>
-/// to get the result.
-/// </remarks>
-HRESULT PFPlayerDataManagementServerGetPlayerStatisticVersionsAsync(
-    _In_ PFStateHandle stateHandle,
-    _In_ const PFPlayerDataManagementGetPlayerStatisticVersionsRequest* request,
-    _Inout_ XAsyncBlock* async
-) noexcept;
-
-/// <summary>
-/// Get the size in bytes needed to store the result of a ServerGetPlayerStatisticVersions call.
-/// </summary>
-/// <param name="async">XAsyncBlock for the async operation.</param>
-/// <param name="bufferSize">The buffer size in bytes required for the result.</param>
-/// <returns>Result code for this API operation.</returns>
-HRESULT PFPlayerDataManagementServerGetPlayerStatisticVersionsGetResultSize(
-    _Inout_ XAsyncBlock* async,
-    _Out_ size_t* bufferSize
-) noexcept;
-
-/// <summary>
-/// Gets the result of a successful PFPlayerDataManagementServerGetPlayerStatisticVersionsAsync call.
-/// </summary>
-/// <param name="async">XAsyncBlock for the async operation.</param>
-/// <param name="bufferSize">The size of the buffer for the result object.</param>
-/// <param name="buffer">Byte buffer used for the result value and its fields.</param>
-/// <param name="result">Pointer to the result object.</param>
-/// <param name="bufferUsed">The number of bytes in the provided buffer that were used.</param>
-/// <returns>Result code for this API operation.</returns>
-/// <remarks>
-/// result is a pointer within buffer and does not need to be freed separately.
-/// </remarks>
-HRESULT PFPlayerDataManagementServerGetPlayerStatisticVersionsGetResult(
-    _Inout_ XAsyncBlock* async,
-    _In_ size_t bufferSize,
-    _Out_writes_bytes_to_(bufferSize, *bufferUsed) void* buffer,
-    _Outptr_ PFPlayerDataManagementGetPlayerStatisticVersionsResult** result,
-    _Out_opt_ size_t* bufferUsed
-) noexcept;
-
+#if HC_PLATFORM != HC_PLATFORM_GDK
 /// <summary>
 /// Retrieves the title-specific custom data for the user which is readable and writable by the client
 /// </summary>
@@ -1961,8 +908,7 @@ HRESULT PFPlayerDataManagementServerGetPlayerStatisticVersionsGetResult(
 /// <remarks>
 /// Data is stored as JSON key-value pairs. If the Keys parameter is provided, the data object returned
 /// will only contain the data specific to the indicated Keys. Otherwise, the full set of custom user
-/// data will be returned. See also ServerGetUserInternalDataAsync, ServerGetUserReadOnlyDataAsync, ServerUpdateUserDataAsync,
-/// ServerUpdateUserInternalDataAsync, ServerUpdateUserReadOnlyDataAsync.
+/// data will be returned.
 ///
 /// If successful, call <see cref="PFPlayerDataManagementServerGetUserDataGetResult"/> to get the result.
 /// </remarks>
@@ -2002,7 +948,9 @@ HRESULT PFPlayerDataManagementServerGetUserDataGetResult(
     _Outptr_ PFPlayerDataManagementServerGetUserDataResult** result,
     _Out_opt_ size_t* bufferUsed
 ) noexcept;
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 /// <summary>
 /// Retrieves the title-specific custom data for the user which cannot be accessed by the client
 /// </summary>
@@ -2013,8 +961,7 @@ HRESULT PFPlayerDataManagementServerGetUserDataGetResult(
 /// <remarks>
 /// Data is stored as JSON key-value pairs. If the Keys parameter is provided, the data object returned
 /// will only contain the data specific to the indicated Keys. Otherwise, the full set of custom user
-/// data will be returned. See also ServerGetUserDataAsync, ServerGetUserReadOnlyDataAsync, ServerUpdateUserDataAsync,
-/// ServerUpdateUserInternalDataAsync, ServerUpdateUserReadOnlyDataAsync.
+/// data will be returned.
 ///
 /// If successful, call <see cref="PFPlayerDataManagementServerGetUserInternalDataGetResult"/> to get
 /// the result.
@@ -2055,7 +1002,9 @@ HRESULT PFPlayerDataManagementServerGetUserInternalDataGetResult(
     _Outptr_ PFPlayerDataManagementServerGetUserDataResult** result,
     _Out_opt_ size_t* bufferUsed
 ) noexcept;
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 /// <summary>
 /// Retrieves the publisher-specific custom data for the user which is readable and writable by the client
 /// </summary>
@@ -2066,8 +1015,7 @@ HRESULT PFPlayerDataManagementServerGetUserInternalDataGetResult(
 /// <remarks>
 /// Data is stored as JSON key-value pairs. If the Keys parameter is provided, the data object returned
 /// will only contain the data specific to the indicated Keys. Otherwise, the full set of custom user
-/// data will be returned. See also ServerGetUserPublisherInternalDataAsync, ServerGetUserPublisherReadOnlyDataAsync,
-/// ServerUpdateUserPublisherDataAsync, ServerUpdateUserPublisherInternalDataAsync, ServerUpdateUserPublisherReadOnlyDataAsync.
+/// data will be returned.
 ///
 /// If successful, call <see cref="PFPlayerDataManagementServerGetUserPublisherDataGetResult"/> to get
 /// the result.
@@ -2108,7 +1056,9 @@ HRESULT PFPlayerDataManagementServerGetUserPublisherDataGetResult(
     _Outptr_ PFPlayerDataManagementServerGetUserDataResult** result,
     _Out_opt_ size_t* bufferUsed
 ) noexcept;
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 /// <summary>
 /// Retrieves the publisher-specific custom data for the user which cannot be accessed by the client
 /// </summary>
@@ -2119,8 +1069,7 @@ HRESULT PFPlayerDataManagementServerGetUserPublisherDataGetResult(
 /// <remarks>
 /// Data is stored as JSON key-value pairs. If the Keys parameter is provided, the data object returned
 /// will only contain the data specific to the indicated Keys. Otherwise, the full set of custom user
-/// data will be returned. See also ServerGetUserPublisherDataAsync, ServerGetUserPublisherReadOnlyDataAsync,
-/// ServerUpdateUserPublisherDataAsync, ServerUpdateUserPublisherInternalDataAsync, ServerUpdateUserPublisherReadOnlyDataAsync.
+/// data will be returned.
 ///
 /// If successful, call <see cref="PFPlayerDataManagementServerGetUserPublisherInternalDataGetResult"/>
 /// to get the result.
@@ -2161,7 +1110,9 @@ HRESULT PFPlayerDataManagementServerGetUserPublisherInternalDataGetResult(
     _Outptr_ PFPlayerDataManagementServerGetUserDataResult** result,
     _Out_opt_ size_t* bufferUsed
 ) noexcept;
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 /// <summary>
 /// Retrieves the publisher-specific custom data for the user which can only be read by the client
 /// </summary>
@@ -2172,8 +1123,7 @@ HRESULT PFPlayerDataManagementServerGetUserPublisherInternalDataGetResult(
 /// <remarks>
 /// Data is stored as JSON key-value pairs. If the Keys parameter is provided, the data object returned
 /// will only contain the data specific to the indicated Keys. Otherwise, the full set of custom user
-/// data will be returned. See also ServerGetUserPublisherDataAsync, ServerGetUserPublisherInternalDataAsync,
-/// ServerUpdateUserPublisherDataAsync, ServerUpdateUserPublisherInternalDataAsync, ServerUpdateUserPublisherReadOnlyDataAsync.
+/// data will be returned.
 ///
 /// If successful, call <see cref="PFPlayerDataManagementServerGetUserPublisherReadOnlyDataGetResult"/>
 /// to get the result.
@@ -2214,7 +1164,9 @@ HRESULT PFPlayerDataManagementServerGetUserPublisherReadOnlyDataGetResult(
     _Outptr_ PFPlayerDataManagementServerGetUserDataResult** result,
     _Out_opt_ size_t* bufferUsed
 ) noexcept;
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 /// <summary>
 /// Retrieves the title-specific custom data for the user which can only be read by the client
 /// </summary>
@@ -2225,8 +1177,7 @@ HRESULT PFPlayerDataManagementServerGetUserPublisherReadOnlyDataGetResult(
 /// <remarks>
 /// Data is stored as JSON key-value pairs. If the Keys parameter is provided, the data object returned
 /// will only contain the data specific to the indicated Keys. Otherwise, the full set of custom user
-/// data will be returned. See also ServerGetUserDataAsync, ServerGetUserInternalDataAsync, ServerUpdateUserDataAsync,
-/// ServerUpdateUserInternalDataAsync, ServerUpdateUserReadOnlyDataAsync.
+/// data will be returned.
 ///
 /// If successful, call <see cref="PFPlayerDataManagementServerGetUserReadOnlyDataGetResult"/> to get
 /// the result.
@@ -2267,27 +1218,9 @@ HRESULT PFPlayerDataManagementServerGetUserReadOnlyDataGetResult(
     _Outptr_ PFPlayerDataManagementServerGetUserDataResult** result,
     _Out_opt_ size_t* bufferUsed
 ) noexcept;
+#endif
 
-/// <summary>
-/// Updates the values of the specified title-specific statistics for the user
-/// </summary>
-/// <param name="stateHandle">PFStateHandle returned from PFInitialize call.</param>
-/// <param name="request">Populated request object.</param>
-/// <param name="async">XAsyncBlock for the async operation.</param>
-/// <returns>Result code for this API operation.</returns>
-/// <remarks>
-/// This operation is additive. Statistics not currently defined will be added, while those already defined
-/// will be updated with the given values. All other user statistics will remain unchanged. See also AdminCreatePlayerStatisticDefinitionAsync,
-/// ServerGetPlayerStatisticsAsync, AdminUpdatePlayerStatisticDefinitionAsync.
-///
-/// Call <see cref="XAsyncGetStatus"/> to get the status of the operation.
-/// </remarks>
-HRESULT PFPlayerDataManagementServerUpdatePlayerStatisticsAsync(
-    _In_ PFStateHandle stateHandle,
-    _In_ const PFPlayerDataManagementServerUpdatePlayerStatisticsRequest* request,
-    _Inout_ XAsyncBlock* async
-) noexcept;
-
+#if HC_PLATFORM != HC_PLATFORM_GDK
 /// <summary>
 /// Updates the title-specific custom data for the user which is readable and writable by the client
 /// </summary>
@@ -2299,8 +1232,7 @@ HRESULT PFPlayerDataManagementServerUpdatePlayerStatisticsAsync(
 /// This function performs an additive update of the arbitrary JSON object containing the custom data
 /// for the user. In updating the custom data object, keys which already exist in the object will have
 /// their values overwritten, while keys with null values will be removed. No other key-value pairs will
-/// be changed apart from those specified in the call. See also ServerGetUserDataAsync, ServerGetUserInternalDataAsync,
-/// ServerGetUserReadOnlyDataAsync, ServerUpdateUserInternalDataAsync, ServerUpdateUserReadOnlyDataAsync.
+/// be changed apart from those specified in the call.
 ///
 /// If successful, call <see cref="PFPlayerDataManagementServerUpdateUserDataGetResult"/> to get the
 /// result.
@@ -2321,7 +1253,9 @@ HRESULT PFPlayerDataManagementServerUpdateUserDataGetResult(
     _Inout_ XAsyncBlock* async,
     _Out_ PFPlayerDataManagementUpdateUserDataResult* result
 ) noexcept;
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 /// <summary>
 /// Updates the title-specific custom data for the user which cannot be accessed by the client
 /// </summary>
@@ -2333,8 +1267,7 @@ HRESULT PFPlayerDataManagementServerUpdateUserDataGetResult(
 /// This function performs an additive update of the arbitrary JSON object containing the custom data
 /// for the user. In updating the custom data object, keys which already exist in the object will have
 /// their values overwritten, keys with null values will be removed. No other key-value pairs will be
-/// changed apart from those specified in the call. See also ServerGetUserDataAsync, ServerGetUserInternalDataAsync,
-/// ServerGetUserReadOnlyDataAsync, ServerUpdateUserDataAsync, ServerUpdateUserReadOnlyDataAsync.
+/// changed apart from those specified in the call.
 ///
 /// If successful, call <see cref="PFPlayerDataManagementServerUpdateUserInternalDataGetResult"/> to
 /// get the result.
@@ -2355,7 +1288,9 @@ HRESULT PFPlayerDataManagementServerUpdateUserInternalDataGetResult(
     _Inout_ XAsyncBlock* async,
     _Out_ PFPlayerDataManagementUpdateUserDataResult* result
 ) noexcept;
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 /// <summary>
 /// Updates the publisher-specific custom data for the user which is readable and writable by the client
 /// </summary>
@@ -2367,8 +1302,7 @@ HRESULT PFPlayerDataManagementServerUpdateUserInternalDataGetResult(
 /// This function performs an additive update of the arbitrary JSON object containing the custom data
 /// for the user. In updating the custom data object, keys which already exist in the object will have
 /// their values overwritten, while keys with null values will be removed. No other key-value pairs will
-/// be changed apart from those specified in the call. See also ServerGetUserPublisherDataAsync, ServerGetUserPublisherInternalDataAsync,
-/// ServerGetUserPublisherReadOnlyDataAsync, ServerUpdateUserPublisherInternalDataAsync, ServerUpdateUserPublisherReadOnlyDataAsync.
+/// be changed apart from those specified in the call.
 ///
 /// If successful, call <see cref="PFPlayerDataManagementServerUpdateUserPublisherDataGetResult"/> to
 /// get the result.
@@ -2389,7 +1323,9 @@ HRESULT PFPlayerDataManagementServerUpdateUserPublisherDataGetResult(
     _Inout_ XAsyncBlock* async,
     _Out_ PFPlayerDataManagementUpdateUserDataResult* result
 ) noexcept;
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 /// <summary>
 /// Updates the publisher-specific custom data for the user which cannot be accessed by the client
 /// </summary>
@@ -2401,8 +1337,7 @@ HRESULT PFPlayerDataManagementServerUpdateUserPublisherDataGetResult(
 /// This function performs an additive update of the arbitrary JSON object containing the custom data
 /// for the user. In updating the custom data object, keys which already exist in the object will have
 /// their values overwritten, keys with null values will be removed. No other key-value pairs will be
-/// changed apart from those specified in the call. See also ServerGetUserPublisherDataAsync, ServerGetUserPublisherInternalDataAsync,
-/// ServerGetUserPublisherReadOnlyDataAsync, ServerUpdateUserPublisherDataAsync, ServerUpdateUserPublisherReadOnlyDataAsync.
+/// changed apart from those specified in the call.
 ///
 /// If successful, call <see cref="PFPlayerDataManagementServerUpdateUserPublisherInternalDataGetResult"/>
 /// to get the result.
@@ -2423,7 +1358,9 @@ HRESULT PFPlayerDataManagementServerUpdateUserPublisherInternalDataGetResult(
     _Inout_ XAsyncBlock* async,
     _Out_ PFPlayerDataManagementUpdateUserDataResult* result
 ) noexcept;
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 /// <summary>
 /// Updates the publisher-specific custom data for the user which can only be read by the client
 /// </summary>
@@ -2435,8 +1372,7 @@ HRESULT PFPlayerDataManagementServerUpdateUserPublisherInternalDataGetResult(
 /// This function performs an additive update of the arbitrary JSON object containing the custom data
 /// for the user. In updating the custom data object, keys which already exist in the object will have
 /// their values overwritten, keys with null values will be removed. No other key-value pairs will be
-/// changed apart from those specified in the call. See also ServerGetUserPublisherDataAsync, ServerGetUserPublisherInternalDataAsync,
-/// ServerGetUserPublisherReadOnlyDataAsync, ServerUpdateUserPublisherDataAsync, ServerUpdateUserPublisherInternalDataAsync.
+/// changed apart from those specified in the call.
 ///
 /// If successful, call <see cref="PFPlayerDataManagementServerUpdateUserPublisherReadOnlyDataGetResult"/>
 /// to get the result.
@@ -2457,7 +1393,9 @@ HRESULT PFPlayerDataManagementServerUpdateUserPublisherReadOnlyDataGetResult(
     _Inout_ XAsyncBlock* async,
     _Out_ PFPlayerDataManagementUpdateUserDataResult* result
 ) noexcept;
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
 /// <summary>
 /// Updates the title-specific custom data for the user which can only be read by the client
 /// </summary>
@@ -2469,8 +1407,7 @@ HRESULT PFPlayerDataManagementServerUpdateUserPublisherReadOnlyDataGetResult(
 /// This function performs an additive update of the arbitrary JSON object containing the custom data
 /// for the user. In updating the custom data object, keys which already exist in the object will have
 /// their values overwritten, keys with null values will be removed. No other key-value pairs will be
-/// changed apart from those specified in the call. See also ServerGetUserDataAsync, ServerGetUserInternalDataAsync,
-/// ServerGetUserReadOnlyDataAsync, ServerUpdateUserDataAsync, ServerUpdateUserInternalDataAsync.
+/// changed apart from those specified in the call.
 ///
 /// If successful, call <see cref="PFPlayerDataManagementServerUpdateUserReadOnlyDataGetResult"/> to
 /// get the result.
@@ -2491,6 +1428,7 @@ HRESULT PFPlayerDataManagementServerUpdateUserReadOnlyDataGetResult(
     _Inout_ XAsyncBlock* async,
     _Out_ PFPlayerDataManagementUpdateUserDataResult* result
 ) noexcept;
+#endif
 
 
 }

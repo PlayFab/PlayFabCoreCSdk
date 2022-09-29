@@ -39,11 +39,6 @@ typedef struct PFAccountManagementBanRequest
     _Maybenull_ _Null_terminated_ const char* IPAddress;
 
     /// <summary>
-    /// (Optional) MAC address to be banned. May affect multiple players.
-    /// </summary>
-    _Maybenull_ _Null_terminated_ const char* MACAddress;
-
-    /// <summary>
     /// Unique PlayFab assigned ID of the user on whom the operation will be performed.
     /// </summary>
     _Null_terminated_ const char* playFabId;
@@ -115,11 +110,6 @@ typedef struct PFAccountManagementBanInfo
     /// (Optional) The IP address on which the ban was applied. May affect multiple players.
     /// </summary>
     _Maybenull_ _Null_terminated_ const char* IPAddress;
-
-    /// <summary>
-    /// (Optional) The MAC address on which the ban was applied. May affect multiple players.
-    /// </summary>
-    _Maybenull_ _Null_terminated_ const char* MACAddress;
 
     /// <summary>
     /// (Optional) Unique PlayFab assigned ID of the user on whom the operation will be performed.
@@ -655,11 +645,6 @@ typedef struct PFAccountManagementUpdateBanRequest
     _Maybenull_ _Null_terminated_ const char* IPAddress;
 
     /// <summary>
-    /// (Optional) The updated MAC address for the ban. Null for no change.
-    /// </summary>
-    _Maybenull_ _Null_terminated_ const char* MACAddress;
-
-    /// <summary>
     /// (Optional) Whether to make this ban permanent. Set to true to make this ban permanent. This will
     /// not modify Active state.
     /// </summary>
@@ -904,6 +889,55 @@ typedef struct PFAccountManagementGetAccountInfoResult
     _Maybenull_ PFUserAccountInfo const* accountInfo;
 
 } PFAccountManagementGetAccountInfoResult;
+
+/// <summary>
+/// PFAccountManagementGetPlayerCombinedInfoRequest data model.
+/// </summary>
+typedef struct PFAccountManagementGetPlayerCombinedInfoRequest
+{
+    /// <summary>
+    /// (Optional) The optional custom tags associated with the request (e.g. build number, external
+    /// trace identifiers, etc.).
+    /// </summary>
+    _Maybenull_ _Field_size_(customTagsCount) struct PFStringDictionaryEntry const* customTags;
+
+    /// <summary>
+    /// Count of customTags
+    /// </summary>
+    uint32_t customTagsCount;
+
+    /// <summary>
+    /// Flags for which pieces of info to return for the user.
+    /// </summary>
+    PFGetPlayerCombinedInfoRequestParams const* infoRequestParameters;
+
+    /// <summary>
+    /// PlayFabId of the user whose data will be returned. If not filled included, we return the data
+    /// for the calling player. .
+    /// </summary>
+    _Null_terminated_ const char* playFabId;
+
+} PFAccountManagementGetPlayerCombinedInfoRequest;
+
+/// <summary>
+/// PFAccountManagementGetPlayerCombinedInfoResult data model. Returns whatever info is requested in
+/// the response for the user. If no user is explicitly requested this defaults to the authenticated user.
+/// If the user is the same as the requester, PII (like email address, facebook id) is returned if available.
+/// Otherwise, only public information is returned. All parameters default to false.
+/// </summary>
+typedef struct PFAccountManagementGetPlayerCombinedInfoResult
+{
+    /// <summary>
+    /// (Optional) Results for requested info.
+    /// </summary>
+    _Maybenull_ PFGetPlayerCombinedInfoResultPayload const* infoResultPayload;
+
+    /// <summary>
+    /// (Optional) Unique PlayFab assigned ID of the user on whom the operation will be performed.
+    /// </summary>
+    _Maybenull_ _Null_terminated_ const char* playFabId;
+
+} PFAccountManagementGetPlayerCombinedInfoResult;
 
 /// <summary>
 /// PFAccountManagementGetPlayFabIDsFromFacebookIDsRequest data model.
@@ -1174,6 +1208,60 @@ typedef struct PFAccountManagementGetPlayFabIDsFromGoogleIDsResult
 } PFAccountManagementGetPlayFabIDsFromGoogleIDsResult;
 
 /// <summary>
+/// PFAccountManagementGetPlayFabIDsFromGooglePlayGamesPlayerIDsRequest data model.
+/// </summary>
+typedef struct PFAccountManagementGetPlayFabIDsFromGooglePlayGamesPlayerIDsRequest
+{
+    /// <summary>
+    /// Array of unique Google Play Games identifiers (Google+ user IDs) for which the title needs to
+    /// get PlayFab identifiers.
+    /// </summary>
+    _Field_size_(googlePlayGamesPlayerIDsCount) const char* const* googlePlayGamesPlayerIDs;
+
+    /// <summary>
+    /// Count of googlePlayGamesPlayerIDs
+    /// </summary>
+    uint32_t googlePlayGamesPlayerIDsCount;
+
+} PFAccountManagementGetPlayFabIDsFromGooglePlayGamesPlayerIDsRequest;
+
+/// <summary>
+/// PFAccountManagementGooglePlayGamesPlayFabIdPair data model.
+/// </summary>
+typedef struct PFAccountManagementGooglePlayGamesPlayFabIdPair
+{
+    /// <summary>
+    /// (Optional) Unique Google Play Games identifier for a user.
+    /// </summary>
+    _Maybenull_ _Null_terminated_ const char* googlePlayGamesPlayerId;
+
+    /// <summary>
+    /// (Optional) Unique PlayFab identifier for a user, or null if no PlayFab account is linked to the
+    /// Google Play Games identifier.
+    /// </summary>
+    _Maybenull_ _Null_terminated_ const char* playFabId;
+
+} PFAccountManagementGooglePlayGamesPlayFabIdPair;
+
+/// <summary>
+/// PFAccountManagementGetPlayFabIDsFromGooglePlayGamesPlayerIDsResult data model. For Google Play Games
+/// identifiers which have not been linked to PlayFab accounts, null will be returned.
+/// </summary>
+typedef struct PFAccountManagementGetPlayFabIDsFromGooglePlayGamesPlayerIDsResult
+{
+    /// <summary>
+    /// (Optional) Mapping of Google Play Games identifiers to PlayFab identifiers.
+    /// </summary>
+    _Maybenull_ _Field_size_(dataCount) PFAccountManagementGooglePlayGamesPlayFabIdPair const* const* data;
+
+    /// <summary>
+    /// Count of data
+    /// </summary>
+    uint32_t dataCount;
+
+} PFAccountManagementGetPlayFabIDsFromGooglePlayGamesPlayerIDsResult;
+
+/// <summary>
 /// PFAccountManagementGetPlayFabIDsFromKongregateIDsRequest data model.
 /// </summary>
 typedef struct PFAccountManagementGetPlayFabIDsFromKongregateIDsRequest
@@ -1226,6 +1314,60 @@ typedef struct PFAccountManagementGetPlayFabIDsFromKongregateIDsResult
     uint32_t dataCount;
 
 } PFAccountManagementGetPlayFabIDsFromKongregateIDsResult;
+
+/// <summary>
+/// PFAccountManagementGetPlayFabIDsFromNintendoServiceAccountIdsRequest data model.
+/// </summary>
+typedef struct PFAccountManagementGetPlayFabIDsFromNintendoServiceAccountIdsRequest
+{
+    /// <summary>
+    /// Array of unique Nintendo Switch Account identifiers for which the title needs to get PlayFab
+    /// identifiers.
+    /// </summary>
+    _Field_size_(nintendoAccountIdsCount) const char* const* nintendoAccountIds;
+
+    /// <summary>
+    /// Count of nintendoAccountIds
+    /// </summary>
+    uint32_t nintendoAccountIdsCount;
+
+} PFAccountManagementGetPlayFabIDsFromNintendoServiceAccountIdsRequest;
+
+/// <summary>
+/// PFAccountManagementNintendoServiceAccountPlayFabIdPair data model.
+/// </summary>
+typedef struct PFAccountManagementNintendoServiceAccountPlayFabIdPair
+{
+    /// <summary>
+    /// (Optional) Unique Nintendo Switch Service Account identifier for a user.
+    /// </summary>
+    _Maybenull_ _Null_terminated_ const char* nintendoServiceAccountId;
+
+    /// <summary>
+    /// (Optional) Unique PlayFab identifier for a user, or null if no PlayFab account is linked to the
+    /// Nintendo Switch Service Account identifier.
+    /// </summary>
+    _Maybenull_ _Null_terminated_ const char* playFabId;
+
+} PFAccountManagementNintendoServiceAccountPlayFabIdPair;
+
+/// <summary>
+/// PFAccountManagementGetPlayFabIDsFromNintendoServiceAccountIdsResult data model. For Nintendo Service
+/// Account identifiers which have not been linked to PlayFab accounts, null will be returned.
+/// </summary>
+typedef struct PFAccountManagementGetPlayFabIDsFromNintendoServiceAccountIdsResult
+{
+    /// <summary>
+    /// (Optional) Mapping of Nintendo Switch Service Account identifiers to PlayFab identifiers.
+    /// </summary>
+    _Maybenull_ _Field_size_(dataCount) PFAccountManagementNintendoServiceAccountPlayFabIdPair const* const* data;
+
+    /// <summary>
+    /// Count of data
+    /// </summary>
+    uint32_t dataCount;
+
+} PFAccountManagementGetPlayFabIDsFromNintendoServiceAccountIdsResult;
 
 /// <summary>
 /// PFAccountManagementGetPlayFabIDsFromNintendoSwitchDeviceIdsRequest data model.
@@ -1286,12 +1428,14 @@ typedef struct PFAccountManagementGetPlayFabIDsFromNintendoSwitchDeviceIdsResult
 typedef struct PFAccountManagementGetPlayFabIDsFromPSNAccountIDsRequest
 {
     /// <summary>
-    /// (Optional) Id of the PSN issuer environment. If null, defaults to production environment.
+    /// (Optional) Id of the PlayStation :tm: Network issuer environment. If null, defaults to production
+    /// environment.
     /// </summary>
     _Maybenull_ int32_t const* issuerId;
 
     /// <summary>
-    /// Array of unique PlayStation Network identifiers for which the title needs to get PlayFab identifiers.
+    /// Array of unique PlayStation :tm: Network identifiers for which the title needs to get PlayFab
+    /// identifiers.
     /// </summary>
     _Field_size_(PSNAccountIDsCount) const char* const* PSNAccountIDs;
 
@@ -1309,25 +1453,25 @@ typedef struct PFAccountManagementPSNAccountPlayFabIdPair
 {
     /// <summary>
     /// (Optional) Unique PlayFab identifier for a user, or null if no PlayFab account is linked to the
-    /// PlayStation Network identifier.
+    /// PlayStation :tm: Network identifier.
     /// </summary>
     _Maybenull_ _Null_terminated_ const char* playFabId;
 
     /// <summary>
-    /// (Optional) Unique PlayStation Network identifier for a user.
+    /// (Optional) Unique PlayStation :tm: Network identifier for a user.
     /// </summary>
     _Maybenull_ _Null_terminated_ const char* PSNAccountId;
 
 } PFAccountManagementPSNAccountPlayFabIdPair;
 
 /// <summary>
-/// PFAccountManagementGetPlayFabIDsFromPSNAccountIDsResult data model. For PlayStation Network identifiers
-/// which have not been linked to PlayFab accounts, null will be returned.
+/// PFAccountManagementGetPlayFabIDsFromPSNAccountIDsResult data model. For PlayStation :tm: Network
+/// identifiers which have not been linked to PlayFab accounts, null will be returned.
 /// </summary>
 typedef struct PFAccountManagementGetPlayFabIDsFromPSNAccountIDsResult
 {
     /// <summary>
-    /// (Optional) Mapping of PlayStation Network identifiers to PlayFab identifiers.
+    /// (Optional) Mapping of PlayStation :tm: Network identifiers to PlayFab identifiers.
     /// </summary>
     _Maybenull_ _Field_size_(dataCount) PFAccountManagementPSNAccountPlayFabIdPair const* const* data;
 
@@ -1492,7 +1636,7 @@ typedef struct PFAccountManagementXboxLiveAccountPlayFabIdPair
 typedef struct PFAccountManagementGetPlayFabIDsFromXboxLiveIDsResult
 {
     /// <summary>
-    /// (Optional) Mapping of PlayStation Network identifiers to PlayFab identifiers.
+    /// (Optional) Mapping of Xbox Live identifiers to PlayFab identifiers.
     /// </summary>
     _Maybenull_ _Field_size_(dataCount) PFAccountManagementXboxLiveAccountPlayFabIdPair const* const* data;
 
@@ -1748,6 +1892,38 @@ typedef struct PFAccountManagementLinkGoogleAccountRequest
 } PFAccountManagementLinkGoogleAccountRequest;
 
 /// <summary>
+/// PFAccountManagementLinkGooglePlayGamesServicesAccountRequest data model. Google Play Games sign-in
+/// is accomplished by obtaining a Google OAuth 2.0 credential using the Google Play Games sign-in for
+/// Android APIs on the device and passing it to this API.
+/// </summary>
+typedef struct PFAccountManagementLinkGooglePlayGamesServicesAccountRequest
+{
+    /// <summary>
+    /// (Optional) The optional custom tags associated with the request (e.g. build number, external
+    /// trace identifiers, etc.).
+    /// </summary>
+    _Maybenull_ _Field_size_(customTagsCount) struct PFStringDictionaryEntry const* customTags;
+
+    /// <summary>
+    /// Count of customTags
+    /// </summary>
+    uint32_t customTagsCount;
+
+    /// <summary>
+    /// (Optional) If another user is already linked to the account, unlink the other user and re-link.
+    /// If the current user is already linked, link both accounts.
+    /// </summary>
+    _Maybenull_ bool const* forceLink;
+
+    /// <summary>
+    /// OAuth 2.0 server authentication code obtained on the client by calling the requestServerSideAccess()
+    /// (https://developers.google.com/games/services/android/signin) Google Play Games client API.
+    /// </summary>
+    _Null_terminated_ const char* serverAuthCode;
+
+} PFAccountManagementLinkGooglePlayGamesServicesAccountRequest;
+
+/// <summary>
 /// PFAccountManagementLinkIOSDeviceIDRequest data model.
 /// </summary>
 typedef struct PFAccountManagementLinkIOSDeviceIDRequest
@@ -1819,9 +1995,9 @@ typedef struct PFAccountManagementLinkKongregateAccountRequest
 } PFAccountManagementLinkKongregateAccountRequest;
 
 /// <summary>
-/// PFAccountManagementLinkNintendoServiceAccountRequest data model.
+/// PFAccountManagementClientLinkNintendoServiceAccountRequest data model.
 /// </summary>
-typedef struct PFAccountManagementLinkNintendoServiceAccountRequest
+typedef struct PFAccountManagementClientLinkNintendoServiceAccountRequest
 {
     /// <summary>
     /// (Optional) The optional custom tags associated with the request (e.g. build number, external
@@ -1846,12 +2022,12 @@ typedef struct PFAccountManagementLinkNintendoServiceAccountRequest
     /// </summary>
     _Null_terminated_ const char* identityToken;
 
-} PFAccountManagementLinkNintendoServiceAccountRequest;
+} PFAccountManagementClientLinkNintendoServiceAccountRequest;
 
 /// <summary>
-/// PFAccountManagementLinkNintendoSwitchDeviceIdRequest data model.
+/// PFAccountManagementClientLinkNintendoSwitchDeviceIdRequest data model.
 /// </summary>
-typedef struct PFAccountManagementLinkNintendoSwitchDeviceIdRequest
+typedef struct PFAccountManagementClientLinkNintendoSwitchDeviceIdRequest
 {
     /// <summary>
     /// (Optional) The optional custom tags associated with the request (e.g. build number, external
@@ -1875,7 +2051,7 @@ typedef struct PFAccountManagementLinkNintendoSwitchDeviceIdRequest
     /// </summary>
     _Null_terminated_ const char* nintendoSwitchDeviceId;
 
-} PFAccountManagementLinkNintendoSwitchDeviceIdRequest;
+} PFAccountManagementClientLinkNintendoSwitchDeviceIdRequest;
 
 /// <summary>
 /// PFAccountManagementLinkOpenIdConnectRequest data model.
@@ -1920,7 +2096,7 @@ typedef struct PFAccountManagementLinkOpenIdConnectRequest
 typedef struct PFAccountManagementClientLinkPSNAccountRequest
 {
     /// <summary>
-    /// Authentication code provided by the PlayStation Network.
+    /// Authentication code provided by the PlayStation :tm: Network.
     /// </summary>
     _Null_terminated_ const char* authCode;
 
@@ -1941,12 +2117,13 @@ typedef struct PFAccountManagementClientLinkPSNAccountRequest
     _Maybenull_ bool const* forceLink;
 
     /// <summary>
-    /// (Optional) Id of the PSN issuer environment. If null, defaults to production environment.
+    /// (Optional) Id of the PlayStation :tm: Network issuer environment. If null, defaults to production
+    /// environment.
     /// </summary>
     _Maybenull_ int32_t const* issuerId;
 
     /// <summary>
-    /// Redirect URI supplied to PSN when requesting an auth code.
+    /// Redirect URI supplied to PlayStation :tm: Network when requesting an auth code.
     /// </summary>
     _Null_terminated_ const char* redirectUri;
 
@@ -2298,6 +2475,24 @@ typedef struct PFAccountManagementUnlinkGoogleAccountRequest
 } PFAccountManagementUnlinkGoogleAccountRequest;
 
 /// <summary>
+/// PFAccountManagementUnlinkGooglePlayGamesServicesAccountRequest data model.
+/// </summary>
+typedef struct PFAccountManagementUnlinkGooglePlayGamesServicesAccountRequest
+{
+    /// <summary>
+    /// (Optional) The optional custom tags associated with the request (e.g. build number, external
+    /// trace identifiers, etc.).
+    /// </summary>
+    _Maybenull_ _Field_size_(customTagsCount) struct PFStringDictionaryEntry const* customTags;
+
+    /// <summary>
+    /// Count of customTags
+    /// </summary>
+    uint32_t customTagsCount;
+
+} PFAccountManagementUnlinkGooglePlayGamesServicesAccountRequest;
+
+/// <summary>
 /// PFAccountManagementUnlinkIOSDeviceIDRequest data model.
 /// </summary>
 typedef struct PFAccountManagementUnlinkIOSDeviceIDRequest
@@ -2340,9 +2535,9 @@ typedef struct PFAccountManagementUnlinkKongregateAccountRequest
 } PFAccountManagementUnlinkKongregateAccountRequest;
 
 /// <summary>
-/// PFAccountManagementUnlinkNintendoServiceAccountRequest data model.
+/// PFAccountManagementClientUnlinkNintendoServiceAccountRequest data model.
 /// </summary>
-typedef struct PFAccountManagementUnlinkNintendoServiceAccountRequest
+typedef struct PFAccountManagementClientUnlinkNintendoServiceAccountRequest
 {
     /// <summary>
     /// (Optional) The optional custom tags associated with the request (e.g. build number, external
@@ -2355,12 +2550,12 @@ typedef struct PFAccountManagementUnlinkNintendoServiceAccountRequest
     /// </summary>
     uint32_t customTagsCount;
 
-} PFAccountManagementUnlinkNintendoServiceAccountRequest;
+} PFAccountManagementClientUnlinkNintendoServiceAccountRequest;
 
 /// <summary>
-/// PFAccountManagementUnlinkNintendoSwitchDeviceIdRequest data model.
+/// PFAccountManagementClientUnlinkNintendoSwitchDeviceIdRequest data model.
 /// </summary>
-typedef struct PFAccountManagementUnlinkNintendoSwitchDeviceIdRequest
+typedef struct PFAccountManagementClientUnlinkNintendoSwitchDeviceIdRequest
 {
     /// <summary>
     /// (Optional) The optional custom tags associated with the request (e.g. build number, external
@@ -2379,7 +2574,7 @@ typedef struct PFAccountManagementUnlinkNintendoSwitchDeviceIdRequest
     /// </summary>
     _Maybenull_ _Null_terminated_ const char* nintendoSwitchDeviceId;
 
-} PFAccountManagementUnlinkNintendoSwitchDeviceIdRequest;
+} PFAccountManagementClientUnlinkNintendoSwitchDeviceIdRequest;
 
 /// <summary>
 /// PFAccountManagementUnlinkOpenIdConnectRequest data model.
@@ -2539,19 +2734,6 @@ typedef struct PFAccountManagementServerAddGenericIDRequest
 } PFAccountManagementServerAddGenericIDRequest;
 
 /// <summary>
-/// PFAccountManagementDeletePushNotificationTemplateRequest data model. Represents the request to delete
-/// a push notification template.
-/// </summary>
-typedef struct PFAccountManagementDeletePushNotificationTemplateRequest
-{
-    /// <summary>
-    /// Id of the push notification template to be deleted.
-    /// </summary>
-    _Null_terminated_ const char* pushNotificationTemplateId;
-
-} PFAccountManagementDeletePushNotificationTemplateRequest;
-
-/// <summary>
 /// PFAccountManagementGetServerCustomIDsFromPlayFabIDsRequest data model.
 /// </summary>
 typedef struct PFAccountManagementGetServerCustomIDsFromPlayFabIDsRequest
@@ -2633,12 +2815,81 @@ typedef struct PFAccountManagementGetUserAccountInfoResult
 } PFAccountManagementGetUserAccountInfoResult;
 
 /// <summary>
+/// PFAccountManagementServerLinkNintendoServiceAccountRequest data model.
+/// </summary>
+typedef struct PFAccountManagementServerLinkNintendoServiceAccountRequest
+{
+    /// <summary>
+    /// (Optional) The optional custom tags associated with the request (e.g. build number, external
+    /// trace identifiers, etc.).
+    /// </summary>
+    _Maybenull_ _Field_size_(customTagsCount) struct PFStringDictionaryEntry const* customTags;
+
+    /// <summary>
+    /// Count of customTags
+    /// </summary>
+    uint32_t customTagsCount;
+
+    /// <summary>
+    /// (Optional) If another user is already linked to a specific Nintendo Switch account, unlink the
+    /// other user and re-link.
+    /// </summary>
+    _Maybenull_ bool const* forceLink;
+
+    /// <summary>
+    /// The JSON Web token (JWT) returned by Nintendo after login. Used to validate the request and find
+    /// the user ID (Nintendo Switch subject) to link with.
+    /// </summary>
+    _Null_terminated_ const char* identityToken;
+
+    /// <summary>
+    /// Unique PlayFab assigned ID of the user on whom the operation will be performed.
+    /// </summary>
+    _Null_terminated_ const char* playFabId;
+
+} PFAccountManagementServerLinkNintendoServiceAccountRequest;
+
+/// <summary>
+/// PFAccountManagementServerLinkNintendoSwitchDeviceIdRequest data model.
+/// </summary>
+typedef struct PFAccountManagementServerLinkNintendoSwitchDeviceIdRequest
+{
+    /// <summary>
+    /// (Optional) The optional custom tags associated with the request (e.g. build number, external
+    /// trace identifiers, etc.).
+    /// </summary>
+    _Maybenull_ _Field_size_(customTagsCount) struct PFStringDictionaryEntry const* customTags;
+
+    /// <summary>
+    /// Count of customTags
+    /// </summary>
+    uint32_t customTagsCount;
+
+    /// <summary>
+    /// (Optional) If another user is already linked to the Nintendo Switch Device ID, unlink the other
+    /// user and re-link.
+    /// </summary>
+    _Maybenull_ bool const* forceLink;
+
+    /// <summary>
+    /// Nintendo Switch unique identifier for the user's device.
+    /// </summary>
+    _Null_terminated_ const char* nintendoSwitchDeviceId;
+
+    /// <summary>
+    /// Unique PlayFab assigned ID of the user on whom the operation will be performed.
+    /// </summary>
+    _Null_terminated_ const char* playFabId;
+
+} PFAccountManagementServerLinkNintendoSwitchDeviceIdRequest;
+
+/// <summary>
 /// PFAccountManagementServerLinkPSNAccountRequest data model.
 /// </summary>
 typedef struct PFAccountManagementServerLinkPSNAccountRequest
 {
     /// <summary>
-    /// Authentication code provided by the PlayStation Network.
+    /// Authentication code provided by the PlayStation :tm: Network.
     /// </summary>
     _Null_terminated_ const char* authCode;
 
@@ -2659,7 +2910,8 @@ typedef struct PFAccountManagementServerLinkPSNAccountRequest
     _Maybenull_ bool const* forceLink;
 
     /// <summary>
-    /// (Optional) Id of the PSN issuer environment. If null, defaults to production environment.
+    /// (Optional) Id of the PlayStation :tm: Network issuer environment. If null, defaults to production
+    /// environment.
     /// </summary>
     _Maybenull_ int32_t const* issuerId;
 
@@ -2669,7 +2921,7 @@ typedef struct PFAccountManagementServerLinkPSNAccountRequest
     _Null_terminated_ const char* playFabId;
 
     /// <summary>
-    /// Redirect URI supplied to PSN when requesting an auth code.
+    /// Redirect URI supplied to PlayStation :tm: Network when requesting an auth code.
     /// </summary>
     _Null_terminated_ const char* redirectUri;
 
@@ -2761,75 +3013,6 @@ typedef struct PFAccountManagementServerRemoveGenericIDRequest
 } PFAccountManagementServerRemoveGenericIDRequest;
 
 /// <summary>
-/// PFAccountManagementLocalizedPushNotificationProperties data model. Contains the localized push notification
-/// content.
-/// </summary>
-typedef struct PFAccountManagementLocalizedPushNotificationProperties
-{
-    /// <summary>
-    /// (Optional) Message of the localized push notification template.
-    /// </summary>
-    _Maybenull_ _Null_terminated_ const char* message;
-
-    /// <summary>
-    /// (Optional) Subject of the localized push notification template.
-    /// </summary>
-    _Maybenull_ _Null_terminated_ const char* subject;
-
-} PFAccountManagementLocalizedPushNotificationProperties;
-
-/// <summary>
-/// PFAccountManagementSavePushNotificationTemplateRequest data model. Represents the save push notification
-/// template request.
-/// </summary>
-typedef struct PFAccountManagementSavePushNotificationTemplateRequest
-{
-    /// <summary>
-    /// (Optional) Android JSON for the notification template.
-    /// </summary>
-    _Maybenull_ _Null_terminated_ const char* androidPayload;
-
-    /// <summary>
-    /// (Optional) Id of the push notification template.
-    /// </summary>
-    _Maybenull_ _Null_terminated_ const char* id;
-
-    /// <summary>
-    /// (Optional) IOS JSON for the notification template.
-    /// </summary>
-    _Maybenull_ _Null_terminated_ const char* iOSPayload;
-
-    /// <summary>
-    /// (Optional) Dictionary of localized push notification templates with the language as the key.
-    /// </summary>
-    _Maybenull_ _Field_size_(localizedPushNotificationTemplatesCount) struct PFAccountManagementLocalizedPushNotificationPropertiesDictionaryEntry const* localizedPushNotificationTemplates;
-
-    /// <summary>
-    /// Count of localizedPushNotificationTemplates
-    /// </summary>
-    uint32_t localizedPushNotificationTemplatesCount;
-
-    /// <summary>
-    /// Name of the push notification template.
-    /// </summary>
-    _Null_terminated_ const char* name;
-
-} PFAccountManagementSavePushNotificationTemplateRequest;
-
-/// <summary>
-/// PFAccountManagementSavePushNotificationTemplateResult data model. Represents the save push notification
-/// template result.
-/// </summary>
-typedef struct PFAccountManagementSavePushNotificationTemplateResult
-{
-    /// <summary>
-    /// (Optional) Id of the push notification template that was saved.
-    /// </summary>
-    _Maybenull_ _Null_terminated_ const char* pushNotificationTemplateId;
-
-} PFAccountManagementSavePushNotificationTemplateResult;
-
-/// <summary>
 /// PFAccountManagementSendCustomAccountRecoveryEmailRequest data model. PlayFab accounts which have
 /// valid email address or username will be able to receive a password reset email using this API.The
 /// email sent must be an account recovery email template. The username or email can be passed in to send
@@ -2896,133 +3079,9 @@ typedef struct PFAccountManagementSendEmailFromTemplateRequest
 } PFAccountManagementSendEmailFromTemplateRequest;
 
 /// <summary>
-/// PFAccountManagementAdvancedPushPlatformMsg data model.
+/// PFAccountManagementServerUnlinkNintendoServiceAccountRequest data model.
 /// </summary>
-typedef struct PFAccountManagementAdvancedPushPlatformMsg
-{
-    /// <summary>
-    /// (Optional) Stops GoogleCloudMessaging notifications from including both notification and data
-    /// properties and instead only sends the data property.
-    /// </summary>
-    _Maybenull_ bool const* gCMDataOnly;
-
-    /// <summary>
-    /// The Json the platform should receive.
-    /// </summary>
-    _Null_terminated_ const char* json;
-
-    /// <summary>
-    /// The platform that should receive the Json.
-    /// </summary>
-    PFPushNotificationPlatform platform;
-
-} PFAccountManagementAdvancedPushPlatformMsg;
-
-/// <summary>
-/// PFAccountManagementPushNotificationPackage data model.
-/// </summary>
-typedef struct PFAccountManagementPushNotificationPackage
-{
-    /// <summary>
-    /// Numerical badge to display on App icon (iOS only).
-    /// </summary>
-    int32_t badge;
-
-    /// <summary>
-    /// (Optional) This must be a JSON formatted object. For use with developer-created custom Push Notification
-    /// plugins.
-    /// </summary>
-    _Maybenull_ _Null_terminated_ const char* customData;
-
-    /// <summary>
-    /// (Optional) Icon file to display with the message (Not supported for iOS).
-    /// </summary>
-    _Maybenull_ _Null_terminated_ const char* icon;
-
-    /// <summary>
-    /// Content of the message (all platforms).
-    /// </summary>
-    _Null_terminated_ const char* message;
-
-    /// <summary>
-    /// (Optional) Sound file to play with the message (all platforms).
-    /// </summary>
-    _Maybenull_ _Null_terminated_ const char* sound;
-
-    /// <summary>
-    /// Title/Subject of the message. Not supported for iOS.
-    /// </summary>
-    _Null_terminated_ const char* title;
-
-} PFAccountManagementPushNotificationPackage;
-
-/// <summary>
-/// PFAccountManagementSendPushNotificationRequest data model.
-/// </summary>
-typedef struct PFAccountManagementSendPushNotificationRequest
-{
-    /// <summary>
-    /// (Optional) Allows you to provide precisely formatted json to target devices. This is an advanced
-    /// feature, allowing you to deliver to custom plugin logic, fields, or functionality not natively
-    /// supported by PlayFab.
-    /// </summary>
-    _Maybenull_ _Field_size_(advancedPlatformDeliveryCount) PFAccountManagementAdvancedPushPlatformMsg const* const* advancedPlatformDelivery;
-
-    /// <summary>
-    /// Count of advancedPlatformDelivery
-    /// </summary>
-    uint32_t advancedPlatformDeliveryCount;
-
-    /// <summary>
-    /// (Optional) The optional custom tags associated with the request (e.g. build number, external
-    /// trace identifiers, etc.).
-    /// </summary>
-    _Maybenull_ _Field_size_(customTagsCount) struct PFStringDictionaryEntry const* customTags;
-
-    /// <summary>
-    /// Count of customTags
-    /// </summary>
-    uint32_t customTagsCount;
-
-    /// <summary>
-    /// (Optional) Text of message to send.
-    /// </summary>
-    _Maybenull_ _Null_terminated_ const char* message;
-
-    /// <summary>
-    /// (Optional) Defines all possible push attributes like message, title, icon, etc. Some parameters
-    /// are device specific - please see the PushNotificationPackage documentation for details.
-    /// </summary>
-    _Maybenull_ PFAccountManagementPushNotificationPackage const* package;
-
-    /// <summary>
-    /// PlayFabId of the recipient of the push notification.
-    /// </summary>
-    _Null_terminated_ const char* recipient;
-
-    /// <summary>
-    /// (Optional) Subject of message to send (may not be displayed in all platforms).
-    /// </summary>
-    _Maybenull_ _Null_terminated_ const char* subject;
-
-    /// <summary>
-    /// (Optional) Target Platforms that should receive the Message or Package. If omitted, we will send
-    /// to all available platforms.
-    /// </summary>
-    _Maybenull_ _Field_size_(targetPlatformsCount) PFPushNotificationPlatform const* targetPlatforms;
-
-    /// <summary>
-    /// Count of targetPlatforms
-    /// </summary>
-    uint32_t targetPlatformsCount;
-
-} PFAccountManagementSendPushNotificationRequest;
-
-/// <summary>
-/// PFAccountManagementSendPushNotificationFromTemplateRequest data model. Represents the request for
-/// sending a push notification template to a recipient.
-/// </summary>
-typedef struct PFAccountManagementSendPushNotificationFromTemplateRequest
+typedef struct PFAccountManagementServerUnlinkNintendoServiceAccountRequest
 {
     /// <summary>
     /// (Optional) The optional custom tags associated with the request (e.g. build number, external
@@ -3036,16 +3095,40 @@ typedef struct PFAccountManagementSendPushNotificationFromTemplateRequest
     uint32_t customTagsCount;
 
     /// <summary>
-    /// Id of the push notification template.
+    /// Unique PlayFab assigned ID of the user on whom the operation will be performed.
     /// </summary>
-    _Null_terminated_ const char* pushNotificationTemplateId;
+    _Null_terminated_ const char* playFabId;
+
+} PFAccountManagementServerUnlinkNintendoServiceAccountRequest;
+
+/// <summary>
+/// PFAccountManagementServerUnlinkNintendoSwitchDeviceIdRequest data model.
+/// </summary>
+typedef struct PFAccountManagementServerUnlinkNintendoSwitchDeviceIdRequest
+{
+    /// <summary>
+    /// (Optional) The optional custom tags associated with the request (e.g. build number, external
+    /// trace identifiers, etc.).
+    /// </summary>
+    _Maybenull_ _Field_size_(customTagsCount) struct PFStringDictionaryEntry const* customTags;
 
     /// <summary>
-    /// PlayFabId of the push notification recipient.
+    /// Count of customTags
     /// </summary>
-    _Null_terminated_ const char* recipient;
+    uint32_t customTagsCount;
 
-} PFAccountManagementSendPushNotificationFromTemplateRequest;
+    /// <summary>
+    /// (Optional) Nintendo Switch Device identifier for the user. If not specified, the most recently
+    /// signed in device ID will be used.
+    /// </summary>
+    _Maybenull_ _Null_terminated_ const char* nintendoSwitchDeviceId;
+
+    /// <summary>
+    /// Unique PlayFab assigned ID of the user on whom the operation will be performed.
+    /// </summary>
+    _Null_terminated_ const char* playFabId;
+
+} PFAccountManagementServerUnlinkNintendoSwitchDeviceIdRequest;
 
 /// <summary>
 /// PFAccountManagementServerUnlinkPSNAccountRequest data model.
@@ -3138,15 +3221,6 @@ typedef struct PFAccountManagementServerUpdateAvatarUrlRequest
     _Null_terminated_ const char* playFabId;
 
 } PFAccountManagementServerUpdateAvatarUrlRequest;
-
-/// <summary>
-/// Dictionary entry for an associative array with PFAccountManagementLocalizedPushNotificationProperties values.
-/// </summary>
-typedef struct PFAccountManagementLocalizedPushNotificationPropertiesDictionaryEntry
-{
-    _Null_terminated_ const char* key;
-    PFAccountManagementLocalizedPushNotificationProperties const* value;
-} PFAccountManagementLocalizedPushNotificationPropertiesDictionaryEntry;
 
 #pragma pop_macro("IN")
 

@@ -720,7 +720,8 @@ typedef struct PFExperimentationGetTreatmentAssignmentRequest
     uint32_t customTagsCount;
 
     /// <summary>
-    /// (Optional) The entity to perform this action on.
+    /// (Optional) The optional entity to perform this action on. Defaults to the currently logged in
+    /// entity.
     /// </summary>
     _Maybenull_ PFEntityKey const* entity;
 

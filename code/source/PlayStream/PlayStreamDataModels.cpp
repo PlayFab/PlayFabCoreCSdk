@@ -7,18 +7,67 @@ namespace PlayFab
 namespace PlayStream
 {
 
-JsonValue AddPlayerTagRequest::ToJson() const
+JsonValue ExportPlayersInSegmentRequest::ToJson() const
 {
-    return AddPlayerTagRequest::ToJson(this->Model());
+    return ExportPlayersInSegmentRequest::ToJson(this->Model());
 }
 
-JsonValue AddPlayerTagRequest::ToJson(const PFPlayStreamAddPlayerTagRequest& input)
+JsonValue ExportPlayersInSegmentRequest::ToJson(const PFPlayStreamExportPlayersInSegmentRequest& input)
 {
     JsonValue output{ rapidjson::kObjectType };
-    JsonUtils::ObjectAddMemberDictionary(output, "CustomTags", input.customTags, input.customTagsCount);
-    JsonUtils::ObjectAddMember(output, "PlayFabId", input.playFabId);
-    JsonUtils::ObjectAddMember(output, "TagName", input.tagName);
+    JsonUtils::ObjectAddMember(output, "SegmentId", input.segmentId);
     return output;
+}
+
+void ExportPlayersInSegmentResult::FromJson(const JsonValue& input)
+{
+    String exportId{};
+    JsonUtils::ObjectGetMember(input, "ExportId", exportId);
+    this->SetExportId(std::move(exportId));
+
+    String segmentId{};
+    JsonUtils::ObjectGetMember(input, "SegmentId", segmentId);
+    this->SetSegmentId(std::move(segmentId));
+}
+
+size_t ExportPlayersInSegmentResult::RequiredBufferSize() const
+{
+    return RequiredBufferSize(this->Model());
+}
+
+Result<PFPlayStreamExportPlayersInSegmentResult const*> ExportPlayersInSegmentResult::Copy(ModelBuffer& buffer) const
+{
+    return buffer.CopyTo<ExportPlayersInSegmentResult>(&this->Model());
+}
+
+size_t ExportPlayersInSegmentResult::RequiredBufferSize(const PFPlayStreamExportPlayersInSegmentResult& model)
+{
+    size_t requiredSize{ alignof(ModelType) + sizeof(ModelType) };
+    if (model.exportId)
+    {
+        requiredSize += (std::strlen(model.exportId) + 1);
+    }
+    if (model.segmentId)
+    {
+        requiredSize += (std::strlen(model.segmentId) + 1);
+    }
+    return requiredSize;
+}
+
+HRESULT ExportPlayersInSegmentResult::Copy(const PFPlayStreamExportPlayersInSegmentResult& input, PFPlayStreamExportPlayersInSegmentResult& output, ModelBuffer& buffer)
+{
+    output = input;
+    {
+        auto propCopyResult = buffer.CopyTo(input.exportId); 
+        RETURN_IF_FAILED(propCopyResult.hr);
+        output.exportId = propCopyResult.ExtractPayload();
+    }
+    {
+        auto propCopyResult = buffer.CopyTo(input.segmentId); 
+        RETURN_IF_FAILED(propCopyResult.hr);
+        output.segmentId = propCopyResult.ExtractPayload();
+    }
+    return S_OK;
 }
 
 void GetSegmentResult::FromJson(const JsonValue& input)
@@ -924,153 +973,65 @@ HRESULT GetPlayersInSegmentResult::Copy(const PFPlayStreamGetPlayersInSegmentRes
     return S_OK;
 }
 
-JsonValue GetPlayerTagsRequest::ToJson() const
+JsonValue GetPlayersInSegmentExportRequest::ToJson() const
 {
-    return GetPlayerTagsRequest::ToJson(this->Model());
+    return GetPlayersInSegmentExportRequest::ToJson(this->Model());
 }
 
-JsonValue GetPlayerTagsRequest::ToJson(const PFPlayStreamGetPlayerTagsRequest& input)
+JsonValue GetPlayersInSegmentExportRequest::ToJson(const PFPlayStreamGetPlayersInSegmentExportRequest& input)
 {
     JsonValue output{ rapidjson::kObjectType };
-    JsonUtils::ObjectAddMemberDictionary(output, "CustomTags", input.customTags, input.customTagsCount);
-    JsonUtils::ObjectAddMember(output, "Namespace", input.playfabNamespace);
-    JsonUtils::ObjectAddMember(output, "PlayFabId", input.playFabId);
+    JsonUtils::ObjectAddMember(output, "ExportId", input.exportId);
     return output;
 }
 
-void GetPlayerTagsResult::FromJson(const JsonValue& input)
+void GetPlayersInSegmentExportResponse::FromJson(const JsonValue& input)
 {
-    String playFabId{};
-    JsonUtils::ObjectGetMember(input, "PlayFabId", playFabId);
-    this->SetPlayFabId(std::move(playFabId));
+    String indexUrl{};
+    JsonUtils::ObjectGetMember(input, "IndexUrl", indexUrl);
+    this->SetIndexUrl(std::move(indexUrl));
 
-    CStringVector tags{};
-    JsonUtils::ObjectGetMember(input, "Tags", tags);
-    this->SetTags(std::move(tags));
+    String state{};
+    JsonUtils::ObjectGetMember(input, "State", state);
+    this->SetState(std::move(state));
 }
 
-size_t GetPlayerTagsResult::RequiredBufferSize() const
+size_t GetPlayersInSegmentExportResponse::RequiredBufferSize() const
 {
     return RequiredBufferSize(this->Model());
 }
 
-Result<PFPlayStreamGetPlayerTagsResult const*> GetPlayerTagsResult::Copy(ModelBuffer& buffer) const
+Result<PFPlayStreamGetPlayersInSegmentExportResponse const*> GetPlayersInSegmentExportResponse::Copy(ModelBuffer& buffer) const
 {
-    return buffer.CopyTo<GetPlayerTagsResult>(&this->Model());
+    return buffer.CopyTo<GetPlayersInSegmentExportResponse>(&this->Model());
 }
 
-size_t GetPlayerTagsResult::RequiredBufferSize(const PFPlayStreamGetPlayerTagsResult& model)
+size_t GetPlayersInSegmentExportResponse::RequiredBufferSize(const PFPlayStreamGetPlayersInSegmentExportResponse& model)
 {
     size_t requiredSize{ alignof(ModelType) + sizeof(ModelType) };
-    if (model.playFabId)
+    if (model.indexUrl)
     {
-        requiredSize += (std::strlen(model.playFabId) + 1);
+        requiredSize += (std::strlen(model.indexUrl) + 1);
     }
-    requiredSize += (alignof(char*) + sizeof(char*) * model.tagsCount);
-    for (size_t i = 0; i < model.tagsCount; ++i)
+    if (model.state)
     {
-        requiredSize += (std::strlen(model.tags[i]) + 1);
+        requiredSize += (std::strlen(model.state) + 1);
     }
     return requiredSize;
 }
 
-HRESULT GetPlayerTagsResult::Copy(const PFPlayStreamGetPlayerTagsResult& input, PFPlayStreamGetPlayerTagsResult& output, ModelBuffer& buffer)
+HRESULT GetPlayersInSegmentExportResponse::Copy(const PFPlayStreamGetPlayersInSegmentExportResponse& input, PFPlayStreamGetPlayersInSegmentExportResponse& output, ModelBuffer& buffer)
 {
     output = input;
     {
-        auto propCopyResult = buffer.CopyTo(input.playFabId); 
+        auto propCopyResult = buffer.CopyTo(input.indexUrl); 
         RETURN_IF_FAILED(propCopyResult.hr);
-        output.playFabId = propCopyResult.ExtractPayload();
+        output.indexUrl = propCopyResult.ExtractPayload();
     }
     {
-        auto propCopyResult = buffer.CopyToArray(input.tags, input.tagsCount);
+        auto propCopyResult = buffer.CopyTo(input.state); 
         RETURN_IF_FAILED(propCopyResult.hr);
-        output.tags = propCopyResult.ExtractPayload();
-    }
-    return S_OK;
-}
-
-JsonValue RemovePlayerTagRequest::ToJson() const
-{
-    return RemovePlayerTagRequest::ToJson(this->Model());
-}
-
-JsonValue RemovePlayerTagRequest::ToJson(const PFPlayStreamRemovePlayerTagRequest& input)
-{
-    JsonValue output{ rapidjson::kObjectType };
-    JsonUtils::ObjectAddMemberDictionary(output, "CustomTags", input.customTags, input.customTagsCount);
-    JsonUtils::ObjectAddMember(output, "PlayFabId", input.playFabId);
-    JsonUtils::ObjectAddMember(output, "TagName", input.tagName);
-    return output;
-}
-
-JsonValue EventContents::ToJson() const
-{
-    return EventContents::ToJson(this->Model());
-}
-
-JsonValue EventContents::ToJson(const PFPlayStreamEventContents& input)
-{
-    JsonValue output{ rapidjson::kObjectType };
-    JsonUtils::ObjectAddMemberDictionary(output, "CustomTags", input.customTags, input.customTagsCount);
-    JsonUtils::ObjectAddMember<EntityKey>(output, "Entity", input.entity);
-    JsonUtils::ObjectAddMember(output, "EventNamespace", input.eventNamespace);
-    JsonUtils::ObjectAddMember(output, "Name", input.name);
-    JsonUtils::ObjectAddMember(output, "OriginalId", input.originalId);
-    JsonUtils::ObjectAddMemberTime(output, "OriginalTimestamp", input.originalTimestamp);
-    JsonUtils::ObjectAddMember(output, "Payload", input.payload);
-    JsonUtils::ObjectAddMember(output, "PayloadJSON", input.payloadJSON);
-    return output;
-}
-
-JsonValue WriteEventsRequest::ToJson() const
-{
-    return WriteEventsRequest::ToJson(this->Model());
-}
-
-JsonValue WriteEventsRequest::ToJson(const PFPlayStreamWriteEventsRequest& input)
-{
-    JsonValue output{ rapidjson::kObjectType };
-    JsonUtils::ObjectAddMemberDictionary(output, "CustomTags", input.customTags, input.customTagsCount);
-    JsonUtils::ObjectAddMemberArray<EventContents>(output, "Events", input.events, input.eventsCount);
-    return output;
-}
-
-void WriteEventsResponse::FromJson(const JsonValue& input)
-{
-    CStringVector assignedEventIds{};
-    JsonUtils::ObjectGetMember(input, "AssignedEventIds", assignedEventIds);
-    this->SetAssignedEventIds(std::move(assignedEventIds));
-}
-
-size_t WriteEventsResponse::RequiredBufferSize() const
-{
-    return RequiredBufferSize(this->Model());
-}
-
-Result<PFPlayStreamWriteEventsResponse const*> WriteEventsResponse::Copy(ModelBuffer& buffer) const
-{
-    return buffer.CopyTo<WriteEventsResponse>(&this->Model());
-}
-
-size_t WriteEventsResponse::RequiredBufferSize(const PFPlayStreamWriteEventsResponse& model)
-{
-    size_t requiredSize{ alignof(ModelType) + sizeof(ModelType) };
-    requiredSize += (alignof(char*) + sizeof(char*) * model.assignedEventIdsCount);
-    for (size_t i = 0; i < model.assignedEventIdsCount; ++i)
-    {
-        requiredSize += (std::strlen(model.assignedEventIds[i]) + 1);
-    }
-    return requiredSize;
-}
-
-HRESULT WriteEventsResponse::Copy(const PFPlayStreamWriteEventsResponse& input, PFPlayStreamWriteEventsResponse& output, ModelBuffer& buffer)
-{
-    output = input;
-    {
-        auto propCopyResult = buffer.CopyToArray(input.assignedEventIds, input.assignedEventIdsCount);
-        RETURN_IF_FAILED(propCopyResult.hr);
-        output.assignedEventIds = propCopyResult.ExtractPayload();
+        output.state = propCopyResult.ExtractPayload();
     }
     return S_OK;
 }

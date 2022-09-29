@@ -16,35 +16,33 @@ extern "C"
 #undef IN
 
 /// <summary>
-/// PFPlayStreamAddPlayerTagRequest data model. This API will trigger a player_tag_added event and add
-/// a tag with the given TagName and PlayFabID to the corresponding player profile. TagName can be used
-/// for segmentation and it is limited to 256 characters. Also there is a limit on the number of tags
-/// a title can have.
+/// PFPlayStreamExportPlayersInSegmentRequest data model. Request must contain the Segment ID.
 /// </summary>
-typedef struct PFPlayStreamAddPlayerTagRequest
+typedef struct PFPlayStreamExportPlayersInSegmentRequest
 {
     /// <summary>
-    /// (Optional) The optional custom tags associated with the request (e.g. build number, external
-    /// trace identifiers, etc.).
+    /// Unique identifier of the requested segment.
     /// </summary>
-    _Maybenull_ _Field_size_(customTagsCount) struct PFStringDictionaryEntry const* customTags;
+    _Null_terminated_ const char* segmentId;
+
+} PFPlayStreamExportPlayersInSegmentRequest;
+
+/// <summary>
+/// PFPlayStreamExportPlayersInSegmentResult data model.
+/// </summary>
+typedef struct PFPlayStreamExportPlayersInSegmentResult
+{
+    /// <summary>
+    /// (Optional) Unique identifier of the export for the requested Segment.
+    /// </summary>
+    _Maybenull_ _Null_terminated_ const char* exportId;
 
     /// <summary>
-    /// Count of customTags
+    /// (Optional) Unique identifier of the requested Segment.
     /// </summary>
-    uint32_t customTagsCount;
+    _Maybenull_ _Null_terminated_ const char* segmentId;
 
-    /// <summary>
-    /// Unique PlayFab assigned ID of the user on whom the operation will be performed.
-    /// </summary>
-    _Null_terminated_ const char* playFabId;
-
-    /// <summary>
-    /// Unique tag for player profile.
-    /// </summary>
-    _Null_terminated_ const char* tagName;
-
-} PFPlayStreamAddPlayerTagRequest;
+} PFPlayStreamExportPlayersInSegmentResult;
 
 /// <summary>
 /// PFPlayStreamGetSegmentResult data model.
@@ -516,191 +514,33 @@ typedef struct PFPlayStreamGetPlayersInSegmentResult
 } PFPlayStreamGetPlayersInSegmentResult;
 
 /// <summary>
-/// PFPlayStreamGetPlayerTagsRequest data model. This API will return a list of canonical tags which
-/// includes both namespace and tag's name. If namespace is not provided, the result is a list of all
-/// canonical tags. TagName can be used for segmentation and Namespace is limited to 128 characters.
+/// PFPlayStreamGetPlayersInSegmentExportRequest data model. Request must contain the ExportId.
 /// </summary>
-typedef struct PFPlayStreamGetPlayerTagsRequest
+typedef struct PFPlayStreamGetPlayersInSegmentExportRequest
 {
     /// <summary>
-    /// (Optional) The optional custom tags associated with the request (e.g. build number, external
-    /// trace identifiers, etc.).
+    /// Unique identifier of the export for the requested Segment.
     /// </summary>
-    _Maybenull_ _Field_size_(customTagsCount) struct PFStringDictionaryEntry const* customTags;
+    _Null_terminated_ const char* exportId;
 
-    /// <summary>
-    /// Count of customTags
-    /// </summary>
-    uint32_t customTagsCount;
-
-    /// <summary>
-    /// (Optional) Optional namespace to filter results by.
-    /// </summary>
-    _Maybenull_ _Null_terminated_ const char* playfabNamespace;
-
-    /// <summary>
-    /// Unique PlayFab assigned ID of the user on whom the operation will be performed.
-    /// </summary>
-    _Null_terminated_ const char* playFabId;
-
-} PFPlayStreamGetPlayerTagsRequest;
+} PFPlayStreamGetPlayersInSegmentExportRequest;
 
 /// <summary>
-/// PFPlayStreamGetPlayerTagsResult data model.
+/// PFPlayStreamGetPlayersInSegmentExportResponse data model.
 /// </summary>
-typedef struct PFPlayStreamGetPlayerTagsResult
+typedef struct PFPlayStreamGetPlayersInSegmentExportResponse
 {
     /// <summary>
-    /// Unique PlayFab assigned ID of the user on whom the operation will be performed.
+    /// (Optional) Url from which the index file can be downloaded.
     /// </summary>
-    _Null_terminated_ const char* playFabId;
+    _Maybenull_ _Null_terminated_ const char* indexUrl;
 
     /// <summary>
-    /// Canonical tags (including namespace and tag's name) for the requested user.
+    /// (Optional) Shows the current status of the export.
     /// </summary>
-    _Field_size_(tagsCount) const char* const* tags;
+    _Maybenull_ _Null_terminated_ const char* state;
 
-    /// <summary>
-    /// Count of tags
-    /// </summary>
-    uint32_t tagsCount;
-
-} PFPlayStreamGetPlayerTagsResult;
-
-/// <summary>
-/// PFPlayStreamRemovePlayerTagRequest data model. This API will trigger a player_tag_removed event and
-/// remove a tag with the given TagName and PlayFabID from the corresponding player profile. TagName can
-/// be used for segmentation and it is limited to 256 characters.
-/// </summary>
-typedef struct PFPlayStreamRemovePlayerTagRequest
-{
-    /// <summary>
-    /// (Optional) The optional custom tags associated with the request (e.g. build number, external
-    /// trace identifiers, etc.).
-    /// </summary>
-    _Maybenull_ _Field_size_(customTagsCount) struct PFStringDictionaryEntry const* customTags;
-
-    /// <summary>
-    /// Count of customTags
-    /// </summary>
-    uint32_t customTagsCount;
-
-    /// <summary>
-    /// Unique PlayFab assigned ID of the user on whom the operation will be performed.
-    /// </summary>
-    _Null_terminated_ const char* playFabId;
-
-    /// <summary>
-    /// Unique tag for player profile.
-    /// </summary>
-    _Null_terminated_ const char* tagName;
-
-} PFPlayStreamRemovePlayerTagRequest;
-
-/// <summary>
-/// PFPlayStreamEventContents data model.
-/// </summary>
-typedef struct PFPlayStreamEventContents
-{
-    /// <summary>
-    /// (Optional) The optional custom tags associated with the event (e.g. build number, external trace
-    /// identifiers, etc.). Before an event is written, this collection and the base request custom tags
-    /// will be merged, but not overriden. This enables the caller to specify static tags and per event
-    /// tags.
-    /// </summary>
-    _Maybenull_ _Field_size_(customTagsCount) struct PFStringDictionaryEntry const* customTags;
-
-    /// <summary>
-    /// Count of customTags
-    /// </summary>
-    uint32_t customTagsCount;
-
-    /// <summary>
-    /// (Optional) Entity associated with the event. If null, the event will apply to the calling entity.
-    /// </summary>
-    _Maybenull_ PFEntityKey const* entity;
-
-    /// <summary>
-    /// The namespace in which the event is defined. Allowed namespaces can vary by API.
-    /// </summary>
-    _Null_terminated_ const char* eventNamespace;
-
-    /// <summary>
-    /// The name of this event.
-    /// </summary>
-    _Null_terminated_ const char* name;
-
-    /// <summary>
-    /// (Optional) The original unique identifier associated with this event before it was posted to
-    /// PlayFab. The value might differ from the EventId value, which is assigned when the event is received
-    /// by the server.
-    /// </summary>
-    _Maybenull_ _Null_terminated_ const char* originalId;
-
-    /// <summary>
-    /// (Optional) The time (in UTC) associated with this event when it occurred. If specified, this
-    /// value is stored in the OriginalTimestamp property of the PlayStream event.
-    /// </summary>
-    _Maybenull_ time_t const* originalTimestamp;
-
-    /// <summary>
-    /// (Optional) Arbitrary data associated with the event. Only one of Payload or PayloadJSON is allowed.
-    /// </summary>
-    PFJsonObject payload;
-
-    /// <summary>
-    /// (Optional) Arbitrary data associated with the event, represented as a JSON serialized string.
-    /// Only one of Payload or PayloadJSON is allowed.
-    /// </summary>
-    _Maybenull_ _Null_terminated_ const char* payloadJSON;
-
-} PFPlayStreamEventContents;
-
-/// <summary>
-/// PFPlayStreamWriteEventsRequest data model.
-/// </summary>
-typedef struct PFPlayStreamWriteEventsRequest
-{
-    /// <summary>
-    /// (Optional) The optional custom tags associated with the request (e.g. build number, external
-    /// trace identifiers, etc.).
-    /// </summary>
-    _Maybenull_ _Field_size_(customTagsCount) struct PFStringDictionaryEntry const* customTags;
-
-    /// <summary>
-    /// Count of customTags
-    /// </summary>
-    uint32_t customTagsCount;
-
-    /// <summary>
-    /// Collection of events to write to PlayStream.
-    /// </summary>
-    _Field_size_(eventsCount) PFPlayStreamEventContents const* const* events;
-
-    /// <summary>
-    /// Count of events
-    /// </summary>
-    uint32_t eventsCount;
-
-} PFPlayStreamWriteEventsRequest;
-
-/// <summary>
-/// PFPlayStreamWriteEventsResponse data model.
-/// </summary>
-typedef struct PFPlayStreamWriteEventsResponse
-{
-    /// <summary>
-    /// (Optional) The unique identifiers assigned by the server to the events, in the same order as
-    /// the events in the request. Only returned if FlushToPlayStream option is true.
-    /// </summary>
-    _Maybenull_ _Field_size_(assignedEventIdsCount) const char* const* assignedEventIds;
-
-    /// <summary>
-    /// Count of assignedEventIds
-    /// </summary>
-    uint32_t assignedEventIdsCount;
-
-} PFPlayStreamWriteEventsResponse;
+} PFPlayStreamGetPlayersInSegmentExportResponse;
 
 /// <summary>
 /// Dictionary entry for an associative array with PFPlayStreamPlayerLocation values.

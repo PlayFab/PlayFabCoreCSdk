@@ -406,6 +406,72 @@ public:
     static HRESULT Copy(const PFSegmentsLocationSegmentFilter& input, PFSegmentsLocationSegmentFilter& output, ModelBuffer& buffer);
 };
 
+class PlayerChurnPredictionSegmentFilter : public Wrappers::PFSegmentsPlayerChurnPredictionSegmentFilterWrapper<Allocator>, public InputModel, public OutputModel<PFSegmentsPlayerChurnPredictionSegmentFilter>
+{
+public:
+    using ModelWrapperType = typename Wrappers::PFSegmentsPlayerChurnPredictionSegmentFilterWrapper<Allocator>;
+    using ModelWrapperType::ModelType;
+
+    // Constructors
+    using ModelWrapperType::ModelWrapperType;
+
+    // InputModel
+    JsonValue ToJson() const override;
+    static JsonValue ToJson(const PFSegmentsPlayerChurnPredictionSegmentFilter& input);
+
+    // OutputModel
+    void FromJson(const JsonValue& input) override;
+    size_t RequiredBufferSize() const override;
+    Result<PFSegmentsPlayerChurnPredictionSegmentFilter const*> Copy(ModelBuffer& buffer) const override;
+
+    static size_t RequiredBufferSize(const PFSegmentsPlayerChurnPredictionSegmentFilter& model);
+    static HRESULT Copy(const PFSegmentsPlayerChurnPredictionSegmentFilter& input, PFSegmentsPlayerChurnPredictionSegmentFilter& output, ModelBuffer& buffer);
+};
+
+class PlayerChurnPredictionTimeSegmentFilter : public Wrappers::PFSegmentsPlayerChurnPredictionTimeSegmentFilterWrapper<Allocator>, public InputModel, public OutputModel<PFSegmentsPlayerChurnPredictionTimeSegmentFilter>
+{
+public:
+    using ModelWrapperType = typename Wrappers::PFSegmentsPlayerChurnPredictionTimeSegmentFilterWrapper<Allocator>;
+    using ModelWrapperType::ModelType;
+
+    // Constructors
+    using ModelWrapperType::ModelWrapperType;
+
+    // InputModel
+    JsonValue ToJson() const override;
+    static JsonValue ToJson(const PFSegmentsPlayerChurnPredictionTimeSegmentFilter& input);
+
+    // OutputModel
+    void FromJson(const JsonValue& input) override;
+    size_t RequiredBufferSize() const override;
+    Result<PFSegmentsPlayerChurnPredictionTimeSegmentFilter const*> Copy(ModelBuffer& buffer) const override;
+
+    static size_t RequiredBufferSize(const PFSegmentsPlayerChurnPredictionTimeSegmentFilter& model);
+    static HRESULT Copy(const PFSegmentsPlayerChurnPredictionTimeSegmentFilter& input, PFSegmentsPlayerChurnPredictionTimeSegmentFilter& output, ModelBuffer& buffer);
+};
+
+class PlayerChurnPreviousPredictionSegmentFilter : public Wrappers::PFSegmentsPlayerChurnPreviousPredictionSegmentFilterWrapper<Allocator>, public InputModel, public OutputModel<PFSegmentsPlayerChurnPreviousPredictionSegmentFilter>
+{
+public:
+    using ModelWrapperType = typename Wrappers::PFSegmentsPlayerChurnPreviousPredictionSegmentFilterWrapper<Allocator>;
+    using ModelWrapperType::ModelType;
+
+    // Constructors
+    using ModelWrapperType::ModelWrapperType;
+
+    // InputModel
+    JsonValue ToJson() const override;
+    static JsonValue ToJson(const PFSegmentsPlayerChurnPreviousPredictionSegmentFilter& input);
+
+    // OutputModel
+    void FromJson(const JsonValue& input) override;
+    size_t RequiredBufferSize() const override;
+    Result<PFSegmentsPlayerChurnPreviousPredictionSegmentFilter const*> Copy(ModelBuffer& buffer) const override;
+
+    static size_t RequiredBufferSize(const PFSegmentsPlayerChurnPreviousPredictionSegmentFilter& model);
+    static HRESULT Copy(const PFSegmentsPlayerChurnPreviousPredictionSegmentFilter& input, PFSegmentsPlayerChurnPreviousPredictionSegmentFilter& output, ModelBuffer& buffer);
+};
+
 class PushNotificationSegmentFilter : public Wrappers::PFSegmentsPushNotificationSegmentFilterWrapper<Allocator>, public InputModel, public OutputModel<PFSegmentsPushNotificationSegmentFilter>
 {
 public:

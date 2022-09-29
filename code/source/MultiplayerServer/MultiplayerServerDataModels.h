@@ -139,6 +139,21 @@ public:
     static HRESULT Copy(const PFMultiplayerServerLinuxInstrumentationConfiguration& input, PFMultiplayerServerLinuxInstrumentationConfiguration& output, ModelBuffer& buffer);
 };
 
+class MonitoringApplicationConfigurationParams : public Wrappers::PFMultiplayerServerMonitoringApplicationConfigurationParamsWrapper<Allocator>, public InputModel
+{
+public:
+    using ModelWrapperType = typename Wrappers::PFMultiplayerServerMonitoringApplicationConfigurationParamsWrapper<Allocator>;
+    using ModelWrapperType::ModelType;
+
+    // Constructors
+    using ModelWrapperType::ModelWrapperType;
+
+    // InputModel
+    JsonValue ToJson() const override;
+    static JsonValue ToJson(const PFMultiplayerServerMonitoringApplicationConfigurationParams& input);
+
+};
+
 class DynamicStandbyThreshold : public Wrappers::PFMultiplayerServerDynamicStandbyThresholdWrapper<Allocator>, public InputModel, public OutputModel<PFMultiplayerServerDynamicStandbyThreshold>
 {
 public:
@@ -242,6 +257,28 @@ public:
 
 };
 
+class ServerResourceConstraintParams : public Wrappers::PFMultiplayerServerServerResourceConstraintParamsWrapper<Allocator>, public InputModel, public OutputModel<PFMultiplayerServerServerResourceConstraintParams>
+{
+public:
+    using ModelWrapperType = typename Wrappers::PFMultiplayerServerServerResourceConstraintParamsWrapper<Allocator>;
+    using ModelWrapperType::ModelType;
+
+    // Constructors
+    using ModelWrapperType::ModelWrapperType;
+
+    // InputModel
+    JsonValue ToJson() const override;
+    static JsonValue ToJson(const PFMultiplayerServerServerResourceConstraintParams& input);
+
+    // OutputModel
+    void FromJson(const JsonValue& input) override;
+    size_t RequiredBufferSize() const override;
+    Result<PFMultiplayerServerServerResourceConstraintParams const*> Copy(ModelBuffer& buffer) const override;
+
+    static size_t RequiredBufferSize(const PFMultiplayerServerServerResourceConstraintParams& model);
+    static HRESULT Copy(const PFMultiplayerServerServerResourceConstraintParams& input, PFMultiplayerServerServerResourceConstraintParams& output, ModelBuffer& buffer);
+};
+
 class CreateBuildWithCustomContainerRequest : public Wrappers::PFMultiplayerServerCreateBuildWithCustomContainerRequestWrapper<Allocator>, public InputModel
 {
 public:
@@ -291,6 +328,24 @@ public:
 
     static size_t RequiredBufferSize(const PFMultiplayerServerGameCertificateReference& model);
     static HRESULT Copy(const PFMultiplayerServerGameCertificateReference& input, PFMultiplayerServerGameCertificateReference& output, ModelBuffer& buffer);
+};
+
+class MonitoringApplicationConfiguration : public Wrappers::PFMultiplayerServerMonitoringApplicationConfigurationWrapper<Allocator>, public OutputModel<PFMultiplayerServerMonitoringApplicationConfiguration>
+{
+public:
+    using ModelWrapperType = typename Wrappers::PFMultiplayerServerMonitoringApplicationConfigurationWrapper<Allocator>;
+    using ModelWrapperType::ModelType;
+
+    // Constructors
+    using ModelWrapperType::ModelWrapperType;
+
+    // OutputModel
+    void FromJson(const JsonValue& input) override;
+    size_t RequiredBufferSize() const override;
+    Result<PFMultiplayerServerMonitoringApplicationConfiguration const*> Copy(ModelBuffer& buffer) const override;
+
+    static size_t RequiredBufferSize(const PFMultiplayerServerMonitoringApplicationConfiguration& model);
+    static HRESULT Copy(const PFMultiplayerServerMonitoringApplicationConfiguration& input, PFMultiplayerServerMonitoringApplicationConfiguration& output, ModelBuffer& buffer);
 };
 
 class CurrentServerStats : public Wrappers::PFMultiplayerServerCurrentServerStatsWrapper<Allocator>, public OutputModel<PFMultiplayerServerCurrentServerStats>
@@ -367,6 +422,21 @@ public:
 
     static size_t RequiredBufferSize(const PFMultiplayerServerInstrumentationConfiguration& model);
     static HRESULT Copy(const PFMultiplayerServerInstrumentationConfiguration& input, PFMultiplayerServerInstrumentationConfiguration& output, ModelBuffer& buffer);
+};
+
+class WindowsCrashDumpConfiguration : public Wrappers::PFMultiplayerServerWindowsCrashDumpConfigurationWrapper<Allocator>, public InputModel
+{
+public:
+    using ModelWrapperType = typename Wrappers::PFMultiplayerServerWindowsCrashDumpConfigurationWrapper<Allocator>;
+    using ModelWrapperType::ModelType;
+
+    // Constructors
+    using ModelWrapperType::ModelWrapperType;
+
+    // InputModel
+    JsonValue ToJson() const override;
+    static JsonValue ToJson(const PFMultiplayerServerWindowsCrashDumpConfiguration& input);
+
 };
 
 class CreateBuildWithManagedContainerRequest : public Wrappers::PFMultiplayerServerCreateBuildWithManagedContainerRequestWrapper<Allocator>, public InputModel

@@ -40,54 +40,55 @@ private:
 protected:
     void AddTests();
 
-    static void FillAbortFileUploadsPrerequisiteInitiateFileUploadsRequest(PlayFab::Wrappers::PFDataInitiateFileUploadsRequestWrapper<>& request);
-    static HRESULT StoreAbortFileUploadsPrerequisitePFDataInitiateFileUploadsResponse(std::shared_ptr<InitiateFileUploadsResponseHolder> result);
     static void LogAbortFileUploadsRequest(PFDataAbortFileUploadsRequest const* request, const char* testName);
-    static void FillAbortFileUploadsRequest(PlayFab::Wrappers::PFDataAbortFileUploadsRequestWrapper<>& request);
-    static HRESULT LogPFDataAbortFileUploadsResponse(PFDataAbortFileUploadsResponse const* result);
-    static HRESULT ValidatePFDataAbortFileUploadsResponse(PFDataAbortFileUploadsResponse* result);
-
-    static void FillDeleteFilesPrerequisiteInitiateFileUploadsRequest(PlayFab::Wrappers::PFDataInitiateFileUploadsRequestWrapper<>& request);
-    static HRESULT StoreDeleteFilesPrerequisitePFDataInitiateFileUploadsResponse(std::shared_ptr<InitiateFileUploadsResponseHolder> result);
-    static void FillDeleteFilesPrerequisiteFinalizeFileUploadsRequest(PlayFab::Wrappers::PFDataFinalizeFileUploadsRequestWrapper<>& request);
-    static HRESULT StoreDeleteFilesPrerequisitePFDataFinalizeFileUploadsResponse(std::shared_ptr<FinalizeFileUploadsResponseHolder> result);
+    static HRESULT LogAbortFileUploadsResponse(PFDataAbortFileUploadsResponse const* result);
     static void LogDeleteFilesRequest(PFDataDeleteFilesRequest const* request, const char* testName);
-    static void FillDeleteFilesRequest(PlayFab::Wrappers::PFDataDeleteFilesRequestWrapper<>& request);
-    static HRESULT LogPFDataDeleteFilesResponse(PFDataDeleteFilesResponse const* result);
-    static HRESULT ValidatePFDataDeleteFilesResponse(PFDataDeleteFilesResponse* result);
-
-    static void FillFinalizeFileUploadsPrerequisiteInitiateFileUploadsRequest(PlayFab::Wrappers::PFDataInitiateFileUploadsRequestWrapper<>& request);
-    static HRESULT StoreFinalizeFileUploadsPrerequisitePFDataInitiateFileUploadsResponse(std::shared_ptr<InitiateFileUploadsResponseHolder> result);
+    static HRESULT LogDeleteFilesResponse(PFDataDeleteFilesResponse const* result);
     static void LogFinalizeFileUploadsRequest(PFDataFinalizeFileUploadsRequest const* request, const char* testName);
-    static void FillFinalizeFileUploadsRequest(PlayFab::Wrappers::PFDataFinalizeFileUploadsRequestWrapper<>& request);
-    static HRESULT LogPFDataFinalizeFileUploadsResponse(PFDataFinalizeFileUploadsResponse const* result);
-    static HRESULT ValidatePFDataFinalizeFileUploadsResponse(PFDataFinalizeFileUploadsResponse* result);
-    static void FillFinalizeFileUploadsCleanupDeleteFilesRequest(PlayFab::Wrappers::PFDataDeleteFilesRequestWrapper<>& request);
-    static HRESULT StoreFinalizeFileUploadsCleanupPFDataDeleteFilesResponse(std::shared_ptr<DeleteFilesResponseHolder> result);
-
+    static HRESULT LogFinalizeFileUploadsResponse(PFDataFinalizeFileUploadsResponse const* result);
     static void LogGetFilesRequest(PFDataGetFilesRequest const* request, const char* testName);
-    static void FillGetFilesRequest(PlayFab::Wrappers::PFDataGetFilesRequestWrapper<>& request);
-    static HRESULT LogPFDataGetFilesResponse(PFDataGetFilesResponse const* result);
-    static HRESULT ValidatePFDataGetFilesResponse(PFDataGetFilesResponse* result);
-
+    static HRESULT LogGetFilesResponse(PFDataGetFilesResponse const* result);
     static void LogGetObjectsRequest(PFDataGetObjectsRequest const* request, const char* testName);
-    static void FillGetObjectsRequest(PlayFab::Wrappers::PFDataGetObjectsRequestWrapper<>& request);
-    static HRESULT LogPFDataGetObjectsResponse(PFDataGetObjectsResponse const* result);
-    static HRESULT ValidatePFDataGetObjectsResponse(PFDataGetObjectsResponse* result);
-
+    static HRESULT LogGetObjectsResponse(PFDataGetObjectsResponse const* result);
     static void LogInitiateFileUploadsRequest(PFDataInitiateFileUploadsRequest const* request, const char* testName);
-    static void FillInitiateFileUploadsRequest(PlayFab::Wrappers::PFDataInitiateFileUploadsRequestWrapper<>& request);
-    static HRESULT LogPFDataInitiateFileUploadsResponse(PFDataInitiateFileUploadsResponse const* result);
-    static HRESULT ValidatePFDataInitiateFileUploadsResponse(PFDataInitiateFileUploadsResponse* result);
-    static void FillInitiateFileUploadsCleanupAbortFileUploadsRequest(PlayFab::Wrappers::PFDataAbortFileUploadsRequestWrapper<>& request);
-    static HRESULT StoreInitiateFileUploadsCleanupPFDataAbortFileUploadsResponse(std::shared_ptr<AbortFileUploadsResponseHolder> result);
-
-    static void FillSetObjectsPrerequisiteSetObjectsRequest(PlayFab::Wrappers::PFDataSetObjectsRequestWrapper<>& request);
-    static HRESULT StoreSetObjectsPrerequisitePFDataSetObjectsResponse(std::shared_ptr<SetObjectsResponseHolder> result);
+    static HRESULT LogInitiateFileUploadsResponse(PFDataInitiateFileUploadsResponse const* result);
     static void LogSetObjectsRequest(PFDataSetObjectsRequest const* request, const char* testName);
-    static void FillSetObjectsRequest(PlayFab::Wrappers::PFDataSetObjectsRequestWrapper<>& request);
-    static HRESULT LogPFDataSetObjectsResponse(PFDataSetObjectsResponse const* result);
-    static HRESULT ValidatePFDataSetObjectsResponse(PFDataSetObjectsResponse* result);
+    static HRESULT LogSetObjectsResponse(PFDataSetObjectsResponse const* result);
+
+    void FillAbortFileUploadsPrerequisiteInitiateFileUploadsRequest(PlayFab::Wrappers::PFDataInitiateFileUploadsRequestWrapper<>& request);
+    static HRESULT StoreAbortFileUploadsPrerequisiteInitiateFileUploadsResponse(std::shared_ptr<InitiateFileUploadsResponseHolder> result);
+    void FillAbortFileUploadsRequest(PlayFab::Wrappers::PFDataAbortFileUploadsRequestWrapper<>& request);
+    static HRESULT ValidateAbortFileUploadsResponse(PFDataAbortFileUploadsResponse* result);
+
+    void FillDeleteFilesPrerequisiteInitiateFileUploadsRequest(PlayFab::Wrappers::PFDataInitiateFileUploadsRequestWrapper<>& request);
+    static HRESULT StoreDeleteFilesPrerequisiteInitiateFileUploadsResponse(std::shared_ptr<InitiateFileUploadsResponseHolder> result);
+    void FillDeleteFilesPrerequisiteFinalizeFileUploadsRequest(PlayFab::Wrappers::PFDataFinalizeFileUploadsRequestWrapper<>& request);
+    static HRESULT StoreDeleteFilesPrerequisiteFinalizeFileUploadsResponse(std::shared_ptr<FinalizeFileUploadsResponseHolder> result);
+    void FillDeleteFilesRequest(PlayFab::Wrappers::PFDataDeleteFilesRequestWrapper<>& request);
+    static HRESULT ValidateDeleteFilesResponse(PFDataDeleteFilesResponse* result);
+
+    void FillFinalizeFileUploadsPrerequisiteInitiateFileUploadsRequest(PlayFab::Wrappers::PFDataInitiateFileUploadsRequestWrapper<>& request);
+    static HRESULT StoreFinalizeFileUploadsPrerequisiteInitiateFileUploadsResponse(std::shared_ptr<InitiateFileUploadsResponseHolder> result);
+    void FillFinalizeFileUploadsRequest(PlayFab::Wrappers::PFDataFinalizeFileUploadsRequestWrapper<>& request);
+    static HRESULT ValidateFinalizeFileUploadsResponse(PFDataFinalizeFileUploadsResponse* result);
+    void FillFinalizeFileUploadsCleanupDeleteFilesRequest(PlayFab::Wrappers::PFDataDeleteFilesRequestWrapper<>& request);
+    static HRESULT StoreFinalizeFileUploadsCleanupDeleteFilesResponse(std::shared_ptr<DeleteFilesResponseHolder> result);
+
+    void FillGetFilesRequest(PlayFab::Wrappers::PFDataGetFilesRequestWrapper<>& request);
+    static HRESULT ValidateGetFilesResponse(PFDataGetFilesResponse* result);
+
+    void FillGetObjectsRequest(PlayFab::Wrappers::PFDataGetObjectsRequestWrapper<>& request);
+    static HRESULT ValidateGetObjectsResponse(PFDataGetObjectsResponse* result);
+
+    void FillInitiateFileUploadsRequest(PlayFab::Wrappers::PFDataInitiateFileUploadsRequestWrapper<>& request);
+    static HRESULT ValidateInitiateFileUploadsResponse(PFDataInitiateFileUploadsResponse* result);
+    void FillInitiateFileUploadsCleanupAbortFileUploadsRequest(PlayFab::Wrappers::PFDataAbortFileUploadsRequestWrapper<>& request);
+    static HRESULT StoreInitiateFileUploadsCleanupAbortFileUploadsResponse(std::shared_ptr<AbortFileUploadsResponseHolder> result);
+
+    void FillSetObjectsPrerequisiteSetObjectsRequest(PlayFab::Wrappers::PFDataSetObjectsRequestWrapper<>& request);
+    static HRESULT StoreSetObjectsPrerequisiteSetObjectsResponse(std::shared_ptr<SetObjectsResponseHolder> result);
+    void FillSetObjectsRequest(PlayFab::Wrappers::PFDataSetObjectsRequestWrapper<>& request);
+    static HRESULT ValidateSetObjectsResponse(PFDataSetObjectsResponse* result);
 
     struct DataTestData
     {

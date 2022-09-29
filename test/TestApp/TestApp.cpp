@@ -15,6 +15,9 @@
 #include "ApiTests.h" 
 #include "EntityTests.h"
 
+#include "AutoGenTests/AutoGenEventsTests.h" 
+#include "AutoGenTests/AutoGenAccountManagementTests.h" 
+#include "AutoGenTests/AutoGenPlayerDataManagementTests.h" 
 #include "AutoGenTests/AutoGenFriendsTests.h" 
 #include "AutoGenTests/AutoGenSharedGroupsTests.h" 
 #include "AutoGenTests/AutoGenDataTests.h" 
@@ -31,6 +34,13 @@ PFTestTraceLevel TestApp::traceLevel = PFTestTraceLevel::Important;
     // Time out if waiting for the final cloudscript submission longer than this
     constexpr int CLOUDSCRIPT_TIMEOUT_MS = 30000;
 #endif // !defined(DISABLE_PLAYFABCLIENT_API)
+
+
+    void TestApp::LogInit()
+    {
+        // Delete existing log file if it exists
+        std::remove(s_logfileName);
+    }
 
 #if HC_PLATFORM != HC_PLATFORM_GDK
     void TestApp::Log(const char* format, ...)
@@ -55,8 +65,8 @@ PFTestTraceLevel TestApp::traceLevel = PFTestTraceLevel::Important;
 
     int TestApp::Main()
     {
-        HRESULT hr = HCInitialize(nullptr);
-        assert(SUCCEEDED(hr));
+        TestApp::LogInit();
+
         HCSettingsSetTraceLevel(HCTraceLevel::Verbose);
         HCTraceSetTraceToDebugger(true);
 
@@ -72,6 +82,7 @@ PFTestTraceLevel TestApp::traceLevel = PFTestTraceLevel::Important;
             testTitleData.titleId = ""; // The titleId for your title, found in the "Settings" section of PlayFab Game Manager
             testTitleData.userEmail = ""; // This is the email for a valid user (test tries to log into it with an invalid password, and verifies error result)
             testTitleData.developerSecretKey = "";
+            testTitleData.connectionString = "";
         }
 
         // Initialize the test runner/test data.
@@ -86,25 +97,37 @@ PFTestTraceLevel TestApp::traceLevel = PFTestTraceLevel::Important;
         testRunner.Add(apiTests);
 
 
-        AutoGenFriendsTests apiTests16;
-        apiTests16.SetTitleInfo(testTitleData);
-        testRunner.Add(apiTests16);
+        AutoGenEventsTests apiTests4;
+        apiTests4.SetTitleInfo(testTitleData);
+        testRunner.Add(apiTests4);
 
-        AutoGenSharedGroupsTests apiTests17;
-        apiTests17.SetTitleInfo(testTitleData);
-        testRunner.Add(apiTests17);
+        AutoGenAccountManagementTests apiTests6;
+        apiTests6.SetTitleInfo(testTitleData);
+        testRunner.Add(apiTests6);
 
-        AutoGenDataTests apiTests21;
-        apiTests21.SetTitleInfo(testTitleData);
-        testRunner.Add(apiTests21);
+        AutoGenPlayerDataManagementTests apiTests13;
+        apiTests13.SetTitleInfo(testTitleData);
+        testRunner.Add(apiTests13);
 
-        AutoGenGroupsTests apiTests24;
-        apiTests24.SetTitleInfo(testTitleData);
-        testRunner.Add(apiTests24);
+        AutoGenFriendsTests apiTests19;
+        apiTests19.SetTitleInfo(testTitleData);
+        testRunner.Add(apiTests19);
 
-        AutoGenProfilesTests apiTests27;
-        apiTests27.SetTitleInfo(testTitleData);
-        testRunner.Add(apiTests27);
+        AutoGenSharedGroupsTests apiTests20;
+        apiTests20.SetTitleInfo(testTitleData);
+        testRunner.Add(apiTests20);
+
+        AutoGenDataTests apiTests25;
+        apiTests25.SetTitleInfo(testTitleData);
+        testRunner.Add(apiTests25);
+
+        AutoGenGroupsTests apiTests29;
+        apiTests29.SetTitleInfo(testTitleData);
+        testRunner.Add(apiTests29);
+
+        AutoGenProfilesTests apiTests33;
+        apiTests33.SetTitleInfo(testTitleData);
+        testRunner.Add(apiTests33);
 
 
         // Run the tests (blocks until all tests have finished).
@@ -140,8 +163,18 @@ PFTestTraceLevel TestApp::traceLevel = PFTestTraceLevel::Important;
         if (!titleDataJson.HasParseError())
         {
             titleData.titleId = titleDataJson["titleId"].GetString();
-            titleData.userEmail = titleDataJson["userEmail"].GetString();
-            titleData.developerSecretKey = titleDataJson["developerSecretKey"].GetString();
+            if (titleDataJson.HasMember("userEmail"))
+            {
+                titleData.userEmail = titleDataJson["userEmail"].GetString();
+            }
+            if (titleDataJson.HasMember("developerSecretKey"))
+            {
+                titleData.developerSecretKey = titleDataJson["developerSecretKey"].GetString();
+            }
+            if (titleDataJson.HasMember("connectionString"))
+            {
+                titleData.connectionString = titleDataJson["connectionString"].GetString();
+            }
         }
 
         return !titleDataJson.HasParseError();

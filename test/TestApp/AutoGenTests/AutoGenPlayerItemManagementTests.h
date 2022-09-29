@@ -15,21 +15,37 @@ private:
     static void Log(std::stringstream& ss);
     static HRESULT LogHR(HRESULT hr);
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestPlayerItemManagementAdminAddUserVirtualCurrency(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestPlayerItemManagementAdminCheckLimitedEditionItemAvailability(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestPlayerItemManagementAdminGetUserInventory(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestPlayerItemManagementAdminGrantItemsToUsers(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestPlayerItemManagementAdminIncrementLimitedEditionItemAvailability(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestPlayerItemManagementAdminRevokeInventoryItem(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestPlayerItemManagementAdminRevokeInventoryItems(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestPlayerItemManagementAdminSubtractUserVirtualCurrency(TestContext& testContext);
+#endif
 
     void TestPlayerItemManagementClientAddUserVirtualCurrency(TestContext& testContext);
 
@@ -59,234 +75,297 @@ private:
 
     void TestPlayerItemManagementClientUnlockContainerItem(TestContext& testContext);
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestPlayerItemManagementServerAddCharacterVirtualCurrency(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestPlayerItemManagementServerAddUserVirtualCurrency(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestPlayerItemManagementServerConsumeItem(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestPlayerItemManagementServerEvaluateRandomResultTable(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestPlayerItemManagementServerGetCharacterInventory(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestPlayerItemManagementServerGetRandomResultTables(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestPlayerItemManagementServerGetUserInventory(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestPlayerItemManagementServerGrantItemsToCharacter(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestPlayerItemManagementServerGrantItemsToUser(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestPlayerItemManagementServerGrantItemsToUsers(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestPlayerItemManagementServerModifyItemUses(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestPlayerItemManagementServerMoveItemToCharacterFromCharacter(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestPlayerItemManagementServerMoveItemToCharacterFromUser(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestPlayerItemManagementServerMoveItemToUserFromCharacter(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestPlayerItemManagementServerRedeemCoupon(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestPlayerItemManagementServerReportPlayer(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestPlayerItemManagementServerRevokeInventoryItem(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestPlayerItemManagementServerRevokeInventoryItems(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestPlayerItemManagementServerSubtractCharacterVirtualCurrency(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestPlayerItemManagementServerSubtractUserVirtualCurrency(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestPlayerItemManagementServerUnlockContainerInstance(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestPlayerItemManagementServerUnlockContainerItem(TestContext& testContext);
+#endif
 
+#if HC_PLATFORM != HC_PLATFORM_GDK
     void TestPlayerItemManagementServerUpdateUserInventoryItemCustomData(TestContext& testContext);
+#endif
 
 
 protected:
     void AddTests();
 
     static void LogAdminAddUserVirtualCurrencyRequest(PFPlayerItemManagementAdminAddUserVirtualCurrencyRequest const* request, const char* testName);
-    static void FillAdminAddUserVirtualCurrencyRequest(PlayFab::Wrappers::PFPlayerItemManagementAdminAddUserVirtualCurrencyRequestWrapper<>& request);
-    static HRESULT LogPFPlayerItemManagementModifyUserVirtualCurrencyResult(PFPlayerItemManagementModifyUserVirtualCurrencyResult const* result);
-    static HRESULT ValidatePFPlayerItemManagementModifyUserVirtualCurrencyResult(PFPlayerItemManagementModifyUserVirtualCurrencyResult* result);
-
+    static HRESULT LogModifyUserVirtualCurrencyResult(PFPlayerItemManagementModifyUserVirtualCurrencyResult const* result);
     static void LogCheckLimitedEditionItemAvailabilityRequest(PFPlayerItemManagementCheckLimitedEditionItemAvailabilityRequest const* request, const char* testName);
-    static void FillCheckLimitedEditionItemAvailabilityRequest(PlayFab::Wrappers::PFPlayerItemManagementCheckLimitedEditionItemAvailabilityRequestWrapper<>& request);
-    static HRESULT LogPFPlayerItemManagementCheckLimitedEditionItemAvailabilityResult(PFPlayerItemManagementCheckLimitedEditionItemAvailabilityResult const* result);
-    static HRESULT ValidatePFPlayerItemManagementCheckLimitedEditionItemAvailabilityResult(PFPlayerItemManagementCheckLimitedEditionItemAvailabilityResult* result);
-
+    static HRESULT LogCheckLimitedEditionItemAvailabilityResult(PFPlayerItemManagementCheckLimitedEditionItemAvailabilityResult const* result);
     static void LogAdminGetUserInventoryRequest(PFPlayerItemManagementAdminGetUserInventoryRequest const* request, const char* testName);
-    static void FillAdminGetUserInventoryRequest(PlayFab::Wrappers::PFPlayerItemManagementAdminGetUserInventoryRequestWrapper<>& request);
-    static HRESULT LogPFPlayerItemManagementAdminGetUserInventoryResult(PFPlayerItemManagementAdminGetUserInventoryResult const* result);
-    static HRESULT ValidatePFPlayerItemManagementAdminGetUserInventoryResult(PFPlayerItemManagementAdminGetUserInventoryResult* result);
-
+    static HRESULT LogAdminGetUserInventoryResult(PFPlayerItemManagementAdminGetUserInventoryResult const* result);
     static void LogGrantItemsToUsersRequest(PFPlayerItemManagementGrantItemsToUsersRequest const* request, const char* testName);
-    static void FillGrantItemsToUsersRequest(PlayFab::Wrappers::PFPlayerItemManagementGrantItemsToUsersRequestWrapper<>& request);
-    static HRESULT LogPFPlayerItemManagementGrantItemsToUsersResult(PFPlayerItemManagementGrantItemsToUsersResult const* result);
-    static HRESULT ValidatePFPlayerItemManagementGrantItemsToUsersResult(PFPlayerItemManagementGrantItemsToUsersResult* result);
-
+    static HRESULT LogGrantItemsToUsersResult(PFPlayerItemManagementGrantItemsToUsersResult const* result);
     static void LogIncrementLimitedEditionItemAvailabilityRequest(PFPlayerItemManagementIncrementLimitedEditionItemAvailabilityRequest const* request, const char* testName);
-    static void FillIncrementLimitedEditionItemAvailabilityRequest(PlayFab::Wrappers::PFPlayerItemManagementIncrementLimitedEditionItemAvailabilityRequestWrapper<>& request);
-
     static void LogRevokeInventoryItemRequest(PFPlayerItemManagementRevokeInventoryItemRequest const* request, const char* testName);
-    static void FillRevokeInventoryItemRequest(PlayFab::Wrappers::PFPlayerItemManagementRevokeInventoryItemRequestWrapper<>& request);
-
     static void LogRevokeInventoryItemsRequest(PFPlayerItemManagementRevokeInventoryItemsRequest const* request, const char* testName);
-    static void FillRevokeInventoryItemsRequest(PlayFab::Wrappers::PFPlayerItemManagementRevokeInventoryItemsRequestWrapper<>& request);
-    static HRESULT LogPFPlayerItemManagementRevokeInventoryItemsResult(PFPlayerItemManagementRevokeInventoryItemsResult const* result);
-    static HRESULT ValidatePFPlayerItemManagementRevokeInventoryItemsResult(PFPlayerItemManagementRevokeInventoryItemsResult* result);
-
+    static HRESULT LogRevokeInventoryItemsResult(PFPlayerItemManagementRevokeInventoryItemsResult const* result);
     static void LogAdminSubtractUserVirtualCurrencyRequest(PFPlayerItemManagementAdminSubtractUserVirtualCurrencyRequest const* request, const char* testName);
-    static void FillAdminSubtractUserVirtualCurrencyRequest(PlayFab::Wrappers::PFPlayerItemManagementAdminSubtractUserVirtualCurrencyRequestWrapper<>& request);
-
     static void LogClientAddUserVirtualCurrencyRequest(PFPlayerItemManagementClientAddUserVirtualCurrencyRequest const* request, const char* testName);
-    static void FillClientAddUserVirtualCurrencyRequest(PlayFab::Wrappers::PFPlayerItemManagementClientAddUserVirtualCurrencyRequestWrapper<>& request);
-
     static void LogConfirmPurchaseRequest(PFPlayerItemManagementConfirmPurchaseRequest const* request, const char* testName);
-    static void FillConfirmPurchaseRequest(PlayFab::Wrappers::PFPlayerItemManagementConfirmPurchaseRequestWrapper<>& request);
-    static HRESULT LogPFPlayerItemManagementConfirmPurchaseResult(PFPlayerItemManagementConfirmPurchaseResult const* result);
-    static HRESULT ValidatePFPlayerItemManagementConfirmPurchaseResult(PFPlayerItemManagementConfirmPurchaseResult* result);
-
+    static HRESULT LogConfirmPurchaseResult(PFPlayerItemManagementConfirmPurchaseResult const* result);
     static void LogClientConsumeItemRequest(PFPlayerItemManagementClientConsumeItemRequest const* request, const char* testName);
-    static void FillClientConsumeItemRequest(PlayFab::Wrappers::PFPlayerItemManagementClientConsumeItemRequestWrapper<>& request);
-    static HRESULT LogPFPlayerItemManagementConsumeItemResult(PFPlayerItemManagementConsumeItemResult const* result);
-    static HRESULT ValidatePFPlayerItemManagementConsumeItemResult(PFPlayerItemManagementConsumeItemResult* result);
-
+    static HRESULT LogConsumeItemResult(PFPlayerItemManagementConsumeItemResult const* result);
     static void LogClientGetCharacterInventoryRequest(PFPlayerItemManagementClientGetCharacterInventoryRequest const* request, const char* testName);
-    static void FillClientGetCharacterInventoryRequest(PlayFab::Wrappers::PFPlayerItemManagementClientGetCharacterInventoryRequestWrapper<>& request);
-    static HRESULT LogPFPlayerItemManagementClientGetCharacterInventoryResult(PFPlayerItemManagementClientGetCharacterInventoryResult const* result);
-    static HRESULT ValidatePFPlayerItemManagementClientGetCharacterInventoryResult(PFPlayerItemManagementClientGetCharacterInventoryResult* result);
-
+    static HRESULT LogClientGetCharacterInventoryResult(PFPlayerItemManagementClientGetCharacterInventoryResult const* result);
     static void LogGetPaymentTokenRequest(PFPlayerItemManagementGetPaymentTokenRequest const* request, const char* testName);
-    static void FillGetPaymentTokenRequest(PlayFab::Wrappers::PFPlayerItemManagementGetPaymentTokenRequestWrapper<>& request);
-    static HRESULT LogPFPlayerItemManagementGetPaymentTokenResult(PFPlayerItemManagementGetPaymentTokenResult const* result);
-    static HRESULT ValidatePFPlayerItemManagementGetPaymentTokenResult(PFPlayerItemManagementGetPaymentTokenResult* result);
-
+    static HRESULT LogGetPaymentTokenResult(PFPlayerItemManagementGetPaymentTokenResult const* result);
     static void LogGetPurchaseRequest(PFPlayerItemManagementGetPurchaseRequest const* request, const char* testName);
-    static void FillGetPurchaseRequest(PlayFab::Wrappers::PFPlayerItemManagementGetPurchaseRequestWrapper<>& request);
-    static HRESULT LogPFPlayerItemManagementGetPurchaseResult(PFPlayerItemManagementGetPurchaseResult const* result);
-    static HRESULT ValidatePFPlayerItemManagementGetPurchaseResult(PFPlayerItemManagementGetPurchaseResult* result);
-
+    static HRESULT LogGetPurchaseResult(PFPlayerItemManagementGetPurchaseResult const* result);
     static void LogClientGetUserInventoryRequest(PFPlayerItemManagementClientGetUserInventoryRequest const* request, const char* testName);
-    static void FillClientGetUserInventoryRequest(PlayFab::Wrappers::PFPlayerItemManagementClientGetUserInventoryRequestWrapper<>& request);
-    static HRESULT LogPFPlayerItemManagementClientGetUserInventoryResult(PFPlayerItemManagementClientGetUserInventoryResult const* result);
-    static HRESULT ValidatePFPlayerItemManagementClientGetUserInventoryResult(PFPlayerItemManagementClientGetUserInventoryResult* result);
-
+    static HRESULT LogClientGetUserInventoryResult(PFPlayerItemManagementClientGetUserInventoryResult const* result);
     static void LogPayForPurchaseRequest(PFPlayerItemManagementPayForPurchaseRequest const* request, const char* testName);
-    static void FillPayForPurchaseRequest(PlayFab::Wrappers::PFPlayerItemManagementPayForPurchaseRequestWrapper<>& request);
-    static HRESULT LogPFPlayerItemManagementPayForPurchaseResult(PFPlayerItemManagementPayForPurchaseResult const* result);
-    static HRESULT ValidatePFPlayerItemManagementPayForPurchaseResult(PFPlayerItemManagementPayForPurchaseResult* result);
-
+    static HRESULT LogPayForPurchaseResult(PFPlayerItemManagementPayForPurchaseResult const* result);
     static void LogPurchaseItemRequest(PFPlayerItemManagementPurchaseItemRequest const* request, const char* testName);
-    static void FillPurchaseItemRequest(PlayFab::Wrappers::PFPlayerItemManagementPurchaseItemRequestWrapper<>& request);
-    static HRESULT LogPFPlayerItemManagementPurchaseItemResult(PFPlayerItemManagementPurchaseItemResult const* result);
-    static HRESULT ValidatePFPlayerItemManagementPurchaseItemResult(PFPlayerItemManagementPurchaseItemResult* result);
-
+    static HRESULT LogPurchaseItemResult(PFPlayerItemManagementPurchaseItemResult const* result);
     static void LogClientRedeemCouponRequest(PFPlayerItemManagementClientRedeemCouponRequest const* request, const char* testName);
-    static void FillClientRedeemCouponRequest(PlayFab::Wrappers::PFPlayerItemManagementClientRedeemCouponRequestWrapper<>& request);
-    static HRESULT LogPFPlayerItemManagementRedeemCouponResult(PFPlayerItemManagementRedeemCouponResult const* result);
-    static HRESULT ValidatePFPlayerItemManagementRedeemCouponResult(PFPlayerItemManagementRedeemCouponResult* result);
-
+    static HRESULT LogRedeemCouponResult(PFPlayerItemManagementRedeemCouponResult const* result);
     static void LogStartPurchaseRequest(PFPlayerItemManagementStartPurchaseRequest const* request, const char* testName);
-    static void FillStartPurchaseRequest(PlayFab::Wrappers::PFPlayerItemManagementStartPurchaseRequestWrapper<>& request);
-    static HRESULT LogPFPlayerItemManagementStartPurchaseResult(PFPlayerItemManagementStartPurchaseResult const* result);
-    static HRESULT ValidatePFPlayerItemManagementStartPurchaseResult(PFPlayerItemManagementStartPurchaseResult* result);
-
+    static HRESULT LogStartPurchaseResult(PFPlayerItemManagementStartPurchaseResult const* result);
     static void LogClientSubtractUserVirtualCurrencyRequest(PFPlayerItemManagementClientSubtractUserVirtualCurrencyRequest const* request, const char* testName);
-    static void FillClientSubtractUserVirtualCurrencyRequest(PlayFab::Wrappers::PFPlayerItemManagementClientSubtractUserVirtualCurrencyRequestWrapper<>& request);
-
     static void LogClientUnlockContainerInstanceRequest(PFPlayerItemManagementClientUnlockContainerInstanceRequest const* request, const char* testName);
-    static void FillClientUnlockContainerInstanceRequest(PlayFab::Wrappers::PFPlayerItemManagementClientUnlockContainerInstanceRequestWrapper<>& request);
-    static HRESULT LogPFPlayerItemManagementUnlockContainerItemResult(PFPlayerItemManagementUnlockContainerItemResult const* result);
-    static HRESULT ValidatePFPlayerItemManagementUnlockContainerItemResult(PFPlayerItemManagementUnlockContainerItemResult* result);
-
+    static HRESULT LogUnlockContainerItemResult(PFPlayerItemManagementUnlockContainerItemResult const* result);
     static void LogClientUnlockContainerItemRequest(PFPlayerItemManagementClientUnlockContainerItemRequest const* request, const char* testName);
-    static void FillClientUnlockContainerItemRequest(PlayFab::Wrappers::PFPlayerItemManagementClientUnlockContainerItemRequestWrapper<>& request);
-
     static void LogAddCharacterVirtualCurrencyRequest(PFPlayerItemManagementAddCharacterVirtualCurrencyRequest const* request, const char* testName);
-    static void FillAddCharacterVirtualCurrencyRequest(PlayFab::Wrappers::PFPlayerItemManagementAddCharacterVirtualCurrencyRequestWrapper<>& request);
-    static HRESULT LogPFPlayerItemManagementModifyCharacterVirtualCurrencyResult(PFPlayerItemManagementModifyCharacterVirtualCurrencyResult const* result);
-    static HRESULT ValidatePFPlayerItemManagementModifyCharacterVirtualCurrencyResult(PFPlayerItemManagementModifyCharacterVirtualCurrencyResult* result);
-
+    static HRESULT LogModifyCharacterVirtualCurrencyResult(PFPlayerItemManagementModifyCharacterVirtualCurrencyResult const* result);
     static void LogServerAddUserVirtualCurrencyRequest(PFPlayerItemManagementServerAddUserVirtualCurrencyRequest const* request, const char* testName);
-    static void FillServerAddUserVirtualCurrencyRequest(PlayFab::Wrappers::PFPlayerItemManagementServerAddUserVirtualCurrencyRequestWrapper<>& request);
-
     static void LogServerConsumeItemRequest(PFPlayerItemManagementServerConsumeItemRequest const* request, const char* testName);
-    static void FillServerConsumeItemRequest(PlayFab::Wrappers::PFPlayerItemManagementServerConsumeItemRequestWrapper<>& request);
-
     static void LogEvaluateRandomResultTableRequest(PFPlayerItemManagementEvaluateRandomResultTableRequest const* request, const char* testName);
-    static void FillEvaluateRandomResultTableRequest(PlayFab::Wrappers::PFPlayerItemManagementEvaluateRandomResultTableRequestWrapper<>& request);
-    static HRESULT LogPFPlayerItemManagementEvaluateRandomResultTableResult(PFPlayerItemManagementEvaluateRandomResultTableResult const* result);
-    static HRESULT ValidatePFPlayerItemManagementEvaluateRandomResultTableResult(PFPlayerItemManagementEvaluateRandomResultTableResult* result);
-
+    static HRESULT LogEvaluateRandomResultTableResult(PFPlayerItemManagementEvaluateRandomResultTableResult const* result);
     static void LogServerGetCharacterInventoryRequest(PFPlayerItemManagementServerGetCharacterInventoryRequest const* request, const char* testName);
-    static void FillServerGetCharacterInventoryRequest(PlayFab::Wrappers::PFPlayerItemManagementServerGetCharacterInventoryRequestWrapper<>& request);
-    static HRESULT LogPFPlayerItemManagementServerGetCharacterInventoryResult(PFPlayerItemManagementServerGetCharacterInventoryResult const* result);
-    static HRESULT ValidatePFPlayerItemManagementServerGetCharacterInventoryResult(PFPlayerItemManagementServerGetCharacterInventoryResult* result);
-
+    static HRESULT LogServerGetCharacterInventoryResult(PFPlayerItemManagementServerGetCharacterInventoryResult const* result);
     static void LogGetRandomResultTablesRequest(PFPlayerItemManagementGetRandomResultTablesRequest const* request, const char* testName);
-    static void FillGetRandomResultTablesRequest(PlayFab::Wrappers::PFPlayerItemManagementGetRandomResultTablesRequestWrapper<>& request);
-    static HRESULT LogPFGetRandomResultTablesResult(PFGetRandomResultTablesResult const* result);
-    static HRESULT ValidatePFGetRandomResultTablesResult(PFGetRandomResultTablesResult* result);
-
+    static HRESULT LogGetRandomResultTablesResult(PFGetRandomResultTablesResult const* result);
     static void LogServerGetUserInventoryRequest(PFPlayerItemManagementServerGetUserInventoryRequest const* request, const char* testName);
-    static void FillServerGetUserInventoryRequest(PlayFab::Wrappers::PFPlayerItemManagementServerGetUserInventoryRequestWrapper<>& request);
-    static HRESULT LogPFPlayerItemManagementServerGetUserInventoryResult(PFPlayerItemManagementServerGetUserInventoryResult const* result);
-    static HRESULT ValidatePFPlayerItemManagementServerGetUserInventoryResult(PFPlayerItemManagementServerGetUserInventoryResult* result);
-
+    static HRESULT LogServerGetUserInventoryResult(PFPlayerItemManagementServerGetUserInventoryResult const* result);
     static void LogGrantItemsToCharacterRequest(PFPlayerItemManagementGrantItemsToCharacterRequest const* request, const char* testName);
-    static void FillGrantItemsToCharacterRequest(PlayFab::Wrappers::PFPlayerItemManagementGrantItemsToCharacterRequestWrapper<>& request);
-    static HRESULT LogPFPlayerItemManagementGrantItemsToCharacterResult(PFPlayerItemManagementGrantItemsToCharacterResult const* result);
-    static HRESULT ValidatePFPlayerItemManagementGrantItemsToCharacterResult(PFPlayerItemManagementGrantItemsToCharacterResult* result);
-
+    static HRESULT LogGrantItemsToCharacterResult(PFPlayerItemManagementGrantItemsToCharacterResult const* result);
     static void LogGrantItemsToUserRequest(PFPlayerItemManagementGrantItemsToUserRequest const* request, const char* testName);
-    static void FillGrantItemsToUserRequest(PlayFab::Wrappers::PFPlayerItemManagementGrantItemsToUserRequestWrapper<>& request);
-    static HRESULT LogPFPlayerItemManagementGrantItemsToUserResult(PFPlayerItemManagementGrantItemsToUserResult const* result);
-    static HRESULT ValidatePFPlayerItemManagementGrantItemsToUserResult(PFPlayerItemManagementGrantItemsToUserResult* result);
-
-
+    static HRESULT LogGrantItemsToUserResult(PFPlayerItemManagementGrantItemsToUserResult const* result);
     static void LogModifyItemUsesRequest(PFPlayerItemManagementModifyItemUsesRequest const* request, const char* testName);
-    static void FillModifyItemUsesRequest(PlayFab::Wrappers::PFPlayerItemManagementModifyItemUsesRequestWrapper<>& request);
-    static HRESULT LogPFPlayerItemManagementModifyItemUsesResult(PFPlayerItemManagementModifyItemUsesResult const* result);
-    static HRESULT ValidatePFPlayerItemManagementModifyItemUsesResult(PFPlayerItemManagementModifyItemUsesResult* result);
-
+    static HRESULT LogModifyItemUsesResult(PFPlayerItemManagementModifyItemUsesResult const* result);
     static void LogMoveItemToCharacterFromCharacterRequest(PFPlayerItemManagementMoveItemToCharacterFromCharacterRequest const* request, const char* testName);
-    static void FillMoveItemToCharacterFromCharacterRequest(PlayFab::Wrappers::PFPlayerItemManagementMoveItemToCharacterFromCharacterRequestWrapper<>& request);
-
     static void LogMoveItemToCharacterFromUserRequest(PFPlayerItemManagementMoveItemToCharacterFromUserRequest const* request, const char* testName);
-    static void FillMoveItemToCharacterFromUserRequest(PlayFab::Wrappers::PFPlayerItemManagementMoveItemToCharacterFromUserRequestWrapper<>& request);
-
     static void LogMoveItemToUserFromCharacterRequest(PFPlayerItemManagementMoveItemToUserFromCharacterRequest const* request, const char* testName);
-    static void FillMoveItemToUserFromCharacterRequest(PlayFab::Wrappers::PFPlayerItemManagementMoveItemToUserFromCharacterRequestWrapper<>& request);
-
     static void LogServerRedeemCouponRequest(PFPlayerItemManagementServerRedeemCouponRequest const* request, const char* testName);
-    static void FillServerRedeemCouponRequest(PlayFab::Wrappers::PFPlayerItemManagementServerRedeemCouponRequestWrapper<>& request);
-
     static void LogReportPlayerServerRequest(PFPlayerItemManagementReportPlayerServerRequest const* request, const char* testName);
-    static void FillReportPlayerServerRequest(PlayFab::Wrappers::PFPlayerItemManagementReportPlayerServerRequestWrapper<>& request);
-    static HRESULT LogPFPlayerItemManagementReportPlayerServerResult(PFPlayerItemManagementReportPlayerServerResult const* result);
-    static HRESULT ValidatePFPlayerItemManagementReportPlayerServerResult(PFPlayerItemManagementReportPlayerServerResult* result);
-
-
-
+    static HRESULT LogReportPlayerServerResult(PFPlayerItemManagementReportPlayerServerResult const* result);
     static void LogSubtractCharacterVirtualCurrencyRequest(PFPlayerItemManagementSubtractCharacterVirtualCurrencyRequest const* request, const char* testName);
-    static void FillSubtractCharacterVirtualCurrencyRequest(PlayFab::Wrappers::PFPlayerItemManagementSubtractCharacterVirtualCurrencyRequestWrapper<>& request);
-
     static void LogServerSubtractUserVirtualCurrencyRequest(PFPlayerItemManagementServerSubtractUserVirtualCurrencyRequest const* request, const char* testName);
-    static void FillServerSubtractUserVirtualCurrencyRequest(PlayFab::Wrappers::PFPlayerItemManagementServerSubtractUserVirtualCurrencyRequestWrapper<>& request);
-
     static void LogServerUnlockContainerInstanceRequest(PFPlayerItemManagementServerUnlockContainerInstanceRequest const* request, const char* testName);
-    static void FillServerUnlockContainerInstanceRequest(PlayFab::Wrappers::PFPlayerItemManagementServerUnlockContainerInstanceRequestWrapper<>& request);
-
     static void LogServerUnlockContainerItemRequest(PFPlayerItemManagementServerUnlockContainerItemRequest const* request, const char* testName);
-    static void FillServerUnlockContainerItemRequest(PlayFab::Wrappers::PFPlayerItemManagementServerUnlockContainerItemRequestWrapper<>& request);
-
     static void LogUpdateUserInventoryItemDataRequest(PFPlayerItemManagementUpdateUserInventoryItemDataRequest const* request, const char* testName);
-    static void FillUpdateUserInventoryItemDataRequest(PlayFab::Wrappers::PFPlayerItemManagementUpdateUserInventoryItemDataRequestWrapper<>& request);
+
+    void FillAdminAddUserVirtualCurrencyRequest(PlayFab::Wrappers::PFPlayerItemManagementAdminAddUserVirtualCurrencyRequestWrapper<>& request);
+    static HRESULT ValidateAdminAddUserVirtualCurrencyResponse(PFPlayerItemManagementModifyUserVirtualCurrencyResult* result);
+
+    void FillAdminCheckLimitedEditionItemAvailabilityRequest(PlayFab::Wrappers::PFPlayerItemManagementCheckLimitedEditionItemAvailabilityRequestWrapper<>& request);
+    static HRESULT ValidateAdminCheckLimitedEditionItemAvailabilityResponse(PFPlayerItemManagementCheckLimitedEditionItemAvailabilityResult* result);
+
+    void FillAdminGetUserInventoryRequest(PlayFab::Wrappers::PFPlayerItemManagementAdminGetUserInventoryRequestWrapper<>& request);
+    static HRESULT ValidateAdminGetUserInventoryResponse(PFPlayerItemManagementAdminGetUserInventoryResult* result);
+
+    void FillAdminGrantItemsToUsersRequest(PlayFab::Wrappers::PFPlayerItemManagementGrantItemsToUsersRequestWrapper<>& request);
+    static HRESULT ValidateAdminGrantItemsToUsersResponse(PFPlayerItemManagementGrantItemsToUsersResult* result);
+
+    void FillAdminIncrementLimitedEditionItemAvailabilityRequest(PlayFab::Wrappers::PFPlayerItemManagementIncrementLimitedEditionItemAvailabilityRequestWrapper<>& request);
+
+    void FillAdminRevokeInventoryItemRequest(PlayFab::Wrappers::PFPlayerItemManagementRevokeInventoryItemRequestWrapper<>& request);
+
+    void FillAdminRevokeInventoryItemsRequest(PlayFab::Wrappers::PFPlayerItemManagementRevokeInventoryItemsRequestWrapper<>& request);
+    static HRESULT ValidateAdminRevokeInventoryItemsResponse(PFPlayerItemManagementRevokeInventoryItemsResult* result);
+
+    void FillAdminSubtractUserVirtualCurrencyRequest(PlayFab::Wrappers::PFPlayerItemManagementAdminSubtractUserVirtualCurrencyRequestWrapper<>& request);
+    static HRESULT ValidateAdminSubtractUserVirtualCurrencyResponse(PFPlayerItemManagementModifyUserVirtualCurrencyResult* result);
+
+    void FillClientAddUserVirtualCurrencyRequest(PlayFab::Wrappers::PFPlayerItemManagementClientAddUserVirtualCurrencyRequestWrapper<>& request);
+    static HRESULT ValidateClientAddUserVirtualCurrencyResponse(PFPlayerItemManagementModifyUserVirtualCurrencyResult* result);
+
+    void FillClientConfirmPurchaseRequest(PlayFab::Wrappers::PFPlayerItemManagementConfirmPurchaseRequestWrapper<>& request);
+    static HRESULT ValidateClientConfirmPurchaseResponse(PFPlayerItemManagementConfirmPurchaseResult* result);
+
+    void FillClientConsumeItemRequest(PlayFab::Wrappers::PFPlayerItemManagementClientConsumeItemRequestWrapper<>& request);
+    static HRESULT ValidateClientConsumeItemResponse(PFPlayerItemManagementConsumeItemResult* result);
+
+    void FillClientGetCharacterInventoryRequest(PlayFab::Wrappers::PFPlayerItemManagementClientGetCharacterInventoryRequestWrapper<>& request);
+    static HRESULT ValidateClientGetCharacterInventoryResponse(PFPlayerItemManagementClientGetCharacterInventoryResult* result);
+
+    void FillClientGetPaymentTokenRequest(PlayFab::Wrappers::PFPlayerItemManagementGetPaymentTokenRequestWrapper<>& request);
+    static HRESULT ValidateClientGetPaymentTokenResponse(PFPlayerItemManagementGetPaymentTokenResult* result);
+
+    void FillClientGetPurchaseRequest(PlayFab::Wrappers::PFPlayerItemManagementGetPurchaseRequestWrapper<>& request);
+    static HRESULT ValidateClientGetPurchaseResponse(PFPlayerItemManagementGetPurchaseResult* result);
+
+    void FillClientGetUserInventoryRequest(PlayFab::Wrappers::PFPlayerItemManagementClientGetUserInventoryRequestWrapper<>& request);
+    static HRESULT ValidateClientGetUserInventoryResponse(PFPlayerItemManagementClientGetUserInventoryResult* result);
+
+    void FillClientPayForPurchaseRequest(PlayFab::Wrappers::PFPlayerItemManagementPayForPurchaseRequestWrapper<>& request);
+    static HRESULT ValidateClientPayForPurchaseResponse(PFPlayerItemManagementPayForPurchaseResult* result);
+
+    void FillClientPurchaseItemRequest(PlayFab::Wrappers::PFPlayerItemManagementPurchaseItemRequestWrapper<>& request);
+    static HRESULT ValidateClientPurchaseItemResponse(PFPlayerItemManagementPurchaseItemResult* result);
+
+    void FillClientRedeemCouponRequest(PlayFab::Wrappers::PFPlayerItemManagementClientRedeemCouponRequestWrapper<>& request);
+    static HRESULT ValidateClientRedeemCouponResponse(PFPlayerItemManagementRedeemCouponResult* result);
+
+    void FillClientStartPurchaseRequest(PlayFab::Wrappers::PFPlayerItemManagementStartPurchaseRequestWrapper<>& request);
+    static HRESULT ValidateClientStartPurchaseResponse(PFPlayerItemManagementStartPurchaseResult* result);
+
+    void FillClientSubtractUserVirtualCurrencyRequest(PlayFab::Wrappers::PFPlayerItemManagementClientSubtractUserVirtualCurrencyRequestWrapper<>& request);
+    static HRESULT ValidateClientSubtractUserVirtualCurrencyResponse(PFPlayerItemManagementModifyUserVirtualCurrencyResult* result);
+
+    void FillClientUnlockContainerInstanceRequest(PlayFab::Wrappers::PFPlayerItemManagementClientUnlockContainerInstanceRequestWrapper<>& request);
+    static HRESULT ValidateClientUnlockContainerInstanceResponse(PFPlayerItemManagementUnlockContainerItemResult* result);
+
+    void FillClientUnlockContainerItemRequest(PlayFab::Wrappers::PFPlayerItemManagementClientUnlockContainerItemRequestWrapper<>& request);
+    static HRESULT ValidateClientUnlockContainerItemResponse(PFPlayerItemManagementUnlockContainerItemResult* result);
+
+    void FillServerAddCharacterVirtualCurrencyRequest(PlayFab::Wrappers::PFPlayerItemManagementAddCharacterVirtualCurrencyRequestWrapper<>& request);
+    static HRESULT ValidateServerAddCharacterVirtualCurrencyResponse(PFPlayerItemManagementModifyCharacterVirtualCurrencyResult* result);
+
+    void FillServerAddUserVirtualCurrencyRequest(PlayFab::Wrappers::PFPlayerItemManagementServerAddUserVirtualCurrencyRequestWrapper<>& request);
+    static HRESULT ValidateServerAddUserVirtualCurrencyResponse(PFPlayerItemManagementModifyUserVirtualCurrencyResult* result);
+
+    void FillServerConsumeItemRequest(PlayFab::Wrappers::PFPlayerItemManagementServerConsumeItemRequestWrapper<>& request);
+    static HRESULT ValidateServerConsumeItemResponse(PFPlayerItemManagementConsumeItemResult* result);
+
+    void FillServerEvaluateRandomResultTableRequest(PlayFab::Wrappers::PFPlayerItemManagementEvaluateRandomResultTableRequestWrapper<>& request);
+    static HRESULT ValidateServerEvaluateRandomResultTableResponse(PFPlayerItemManagementEvaluateRandomResultTableResult* result);
+
+    void FillServerGetCharacterInventoryRequest(PlayFab::Wrappers::PFPlayerItemManagementServerGetCharacterInventoryRequestWrapper<>& request);
+    static HRESULT ValidateServerGetCharacterInventoryResponse(PFPlayerItemManagementServerGetCharacterInventoryResult* result);
+
+    void FillServerGetRandomResultTablesRequest(PlayFab::Wrappers::PFPlayerItemManagementGetRandomResultTablesRequestWrapper<>& request);
+    static HRESULT ValidateServerGetRandomResultTablesResponse(PFGetRandomResultTablesResult* result);
+
+    void FillServerGetUserInventoryRequest(PlayFab::Wrappers::PFPlayerItemManagementServerGetUserInventoryRequestWrapper<>& request);
+    static HRESULT ValidateServerGetUserInventoryResponse(PFPlayerItemManagementServerGetUserInventoryResult* result);
+
+    void FillServerGrantItemsToCharacterRequest(PlayFab::Wrappers::PFPlayerItemManagementGrantItemsToCharacterRequestWrapper<>& request);
+    static HRESULT ValidateServerGrantItemsToCharacterResponse(PFPlayerItemManagementGrantItemsToCharacterResult* result);
+
+    void FillServerGrantItemsToUserRequest(PlayFab::Wrappers::PFPlayerItemManagementGrantItemsToUserRequestWrapper<>& request);
+    static HRESULT ValidateServerGrantItemsToUserResponse(PFPlayerItemManagementGrantItemsToUserResult* result);
+
+    void FillServerGrantItemsToUsersRequest(PlayFab::Wrappers::PFPlayerItemManagementGrantItemsToUsersRequestWrapper<>& request);
+    static HRESULT ValidateServerGrantItemsToUsersResponse(PFPlayerItemManagementGrantItemsToUsersResult* result);
+
+    void FillServerModifyItemUsesRequest(PlayFab::Wrappers::PFPlayerItemManagementModifyItemUsesRequestWrapper<>& request);
+    static HRESULT ValidateServerModifyItemUsesResponse(PFPlayerItemManagementModifyItemUsesResult* result);
+
+    void FillServerMoveItemToCharacterFromCharacterRequest(PlayFab::Wrappers::PFPlayerItemManagementMoveItemToCharacterFromCharacterRequestWrapper<>& request);
+
+    void FillServerMoveItemToCharacterFromUserRequest(PlayFab::Wrappers::PFPlayerItemManagementMoveItemToCharacterFromUserRequestWrapper<>& request);
+
+    void FillServerMoveItemToUserFromCharacterRequest(PlayFab::Wrappers::PFPlayerItemManagementMoveItemToUserFromCharacterRequestWrapper<>& request);
+
+    void FillServerRedeemCouponRequest(PlayFab::Wrappers::PFPlayerItemManagementServerRedeemCouponRequestWrapper<>& request);
+    static HRESULT ValidateServerRedeemCouponResponse(PFPlayerItemManagementRedeemCouponResult* result);
+
+    void FillServerReportPlayerRequest(PlayFab::Wrappers::PFPlayerItemManagementReportPlayerServerRequestWrapper<>& request);
+    static HRESULT ValidateServerReportPlayerResponse(PFPlayerItemManagementReportPlayerServerResult* result);
+
+    void FillServerRevokeInventoryItemRequest(PlayFab::Wrappers::PFPlayerItemManagementRevokeInventoryItemRequestWrapper<>& request);
+
+    void FillServerRevokeInventoryItemsRequest(PlayFab::Wrappers::PFPlayerItemManagementRevokeInventoryItemsRequestWrapper<>& request);
+    static HRESULT ValidateServerRevokeInventoryItemsResponse(PFPlayerItemManagementRevokeInventoryItemsResult* result);
+
+    void FillServerSubtractCharacterVirtualCurrencyRequest(PlayFab::Wrappers::PFPlayerItemManagementSubtractCharacterVirtualCurrencyRequestWrapper<>& request);
+    static HRESULT ValidateServerSubtractCharacterVirtualCurrencyResponse(PFPlayerItemManagementModifyCharacterVirtualCurrencyResult* result);
+
+    void FillServerSubtractUserVirtualCurrencyRequest(PlayFab::Wrappers::PFPlayerItemManagementServerSubtractUserVirtualCurrencyRequestWrapper<>& request);
+    static HRESULT ValidateServerSubtractUserVirtualCurrencyResponse(PFPlayerItemManagementModifyUserVirtualCurrencyResult* result);
+
+    void FillServerUnlockContainerInstanceRequest(PlayFab::Wrappers::PFPlayerItemManagementServerUnlockContainerInstanceRequestWrapper<>& request);
+    static HRESULT ValidateServerUnlockContainerInstanceResponse(PFPlayerItemManagementUnlockContainerItemResult* result);
+
+    void FillServerUnlockContainerItemRequest(PlayFab::Wrappers::PFPlayerItemManagementServerUnlockContainerItemRequestWrapper<>& request);
+    static HRESULT ValidateServerUnlockContainerItemResponse(PFPlayerItemManagementUnlockContainerItemResult* result);
+
+    void FillServerUpdateUserInventoryItemCustomDataRequest(PlayFab::Wrappers::PFPlayerItemManagementUpdateUserInventoryItemDataRequestWrapper<>& request);
 
     struct PlayerItemManagementTestData
     {

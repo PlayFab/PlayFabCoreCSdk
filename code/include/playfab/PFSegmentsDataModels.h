@@ -316,6 +316,17 @@ enum class PFSegmentsSegmentCountryCode : uint32_t
 };
 
 /// <summary>
+/// ChurnRiskLevel enum.
+/// </summary>
+enum class PFSegmentsChurnRiskLevel : uint32_t
+{
+    NoData,
+    LowRisk,
+    MediumRisk,
+    HighRisk
+};
+
+/// <summary>
 /// SegmentPushNotificationDevicePlatform enum.
 /// </summary>
 enum class PFSegmentsSegmentPushNotificationDevicePlatform : uint32_t
@@ -840,6 +851,57 @@ typedef struct PFSegmentsLocationSegmentFilter
 } PFSegmentsLocationSegmentFilter;
 
 /// <summary>
+/// PFSegmentsPlayerChurnPredictionSegmentFilter data model.
+/// </summary>
+typedef struct PFSegmentsPlayerChurnPredictionSegmentFilter
+{
+    /// <summary>
+    /// (Optional) Comparison.
+    /// </summary>
+    _Maybenull_ PFSegmentsSegmentFilterComparison const* comparison;
+
+    /// <summary>
+    /// (Optional) RiskLevel.
+    /// </summary>
+    _Maybenull_ PFSegmentsChurnRiskLevel const* riskLevel;
+
+} PFSegmentsPlayerChurnPredictionSegmentFilter;
+
+/// <summary>
+/// PFSegmentsPlayerChurnPredictionTimeSegmentFilter data model.
+/// </summary>
+typedef struct PFSegmentsPlayerChurnPredictionTimeSegmentFilter
+{
+    /// <summary>
+    /// (Optional) Comparison.
+    /// </summary>
+    _Maybenull_ PFSegmentsSegmentFilterComparison const* comparison;
+
+    /// <summary>
+    /// DurationInDays.
+    /// </summary>
+    double durationInDays;
+
+} PFSegmentsPlayerChurnPredictionTimeSegmentFilter;
+
+/// <summary>
+/// PFSegmentsPlayerChurnPreviousPredictionSegmentFilter data model.
+/// </summary>
+typedef struct PFSegmentsPlayerChurnPreviousPredictionSegmentFilter
+{
+    /// <summary>
+    /// (Optional) Comparison.
+    /// </summary>
+    _Maybenull_ PFSegmentsSegmentFilterComparison const* comparison;
+
+    /// <summary>
+    /// (Optional) RiskLevel.
+    /// </summary>
+    _Maybenull_ PFSegmentsChurnRiskLevel const* riskLevel;
+
+} PFSegmentsPlayerChurnPreviousPredictionSegmentFilter;
+
+/// <summary>
 /// PFSegmentsPushNotificationSegmentFilter data model.
 /// </summary>
 typedef struct PFSegmentsPushNotificationSegmentFilter
@@ -1019,6 +1081,21 @@ typedef struct PFSegmentsSegmentAndDefinition
     _Maybenull_ PFSegmentsLocationSegmentFilter const* locationFilter;
 
     /// <summary>
+    /// (Optional) Filter property for current player churn value.
+    /// </summary>
+    _Maybenull_ PFSegmentsPlayerChurnPredictionSegmentFilter const* playerChurnPredictionFilter;
+
+    /// <summary>
+    /// (Optional) Filter property for player churn timespan.
+    /// </summary>
+    _Maybenull_ PFSegmentsPlayerChurnPredictionTimeSegmentFilter const* playerChurnPredictionTimeFilter;
+
+    /// <summary>
+    /// (Optional) Filter property for previous player churn value.
+    /// </summary>
+    _Maybenull_ PFSegmentsPlayerChurnPreviousPredictionSegmentFilter const* playerChurnPreviousPredictionFilter;
+
+    /// <summary>
     /// (Optional) Filter property for push notification.
     /// </summary>
     _Maybenull_ PFSegmentsPushNotificationSegmentFilter const* pushNotificationFilter;
@@ -1077,11 +1154,6 @@ typedef struct PFSegmentsSegmentOrDefinition
 /// </summary>
 typedef struct PFSegmentsSegmentModel
 {
-    /// <summary>
-    /// (Optional) ResourceId of Segment resource.
-    /// </summary>
-    _Maybenull_ _Null_terminated_ const char* azureResourceId;
-
     /// <summary>
     /// (Optional) Segment description.
     /// </summary>

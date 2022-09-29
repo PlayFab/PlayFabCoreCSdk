@@ -574,6 +574,21 @@ public:
 
 };
 
+class LoginWithGooglePlayGamesServicesRequest : public Wrappers::PFAuthenticationLoginWithGooglePlayGamesServicesRequestWrapper<Allocator>, public InputModel
+{
+public:
+    using ModelWrapperType = typename Wrappers::PFAuthenticationLoginWithGooglePlayGamesServicesRequestWrapper<Allocator>;
+    using ModelWrapperType::ModelType;
+
+    // Constructors
+    using ModelWrapperType::ModelWrapperType;
+
+    // InputModel
+    JsonValue ToJson() const override;
+    static JsonValue ToJson(const PFAuthenticationLoginWithGooglePlayGamesServicesRequest& input);
+
+};
+
 class LoginWithIOSDeviceIDRequest : public Wrappers::PFAuthenticationLoginWithIOSDeviceIDRequestWrapper<Allocator>, public InputModel
 {
 public:
@@ -886,6 +901,54 @@ public:
     // InputModel
     JsonValue ToJson() const override;
     static JsonValue ToJson(const PFAuthenticationServerSetPlayerSecretRequest& input);
+
+};
+
+class AuthenticateCustomIdRequest : public Wrappers::PFAuthenticationAuthenticateCustomIdRequestWrapper<Allocator>, public InputModel
+{
+public:
+    using ModelWrapperType = typename Wrappers::PFAuthenticationAuthenticateCustomIdRequestWrapper<Allocator>;
+    using ModelWrapperType::ModelType;
+
+    // Constructors
+    using ModelWrapperType::ModelWrapperType;
+
+    // InputModel
+    JsonValue ToJson() const override;
+    static JsonValue ToJson(const PFAuthenticationAuthenticateCustomIdRequest& input);
+
+};
+
+class AuthenticateCustomIdResult : public Wrappers::PFAuthenticationAuthenticateCustomIdResultWrapper<Allocator>, public OutputModel<PFAuthenticationAuthenticateCustomIdResult>
+{
+public:
+    using ModelWrapperType = typename Wrappers::PFAuthenticationAuthenticateCustomIdResultWrapper<Allocator>;
+    using ModelWrapperType::ModelType;
+
+    // Constructors
+    using ModelWrapperType::ModelWrapperType;
+
+    // OutputModel
+    void FromJson(const JsonValue& input) override;
+    size_t RequiredBufferSize() const override;
+    Result<PFAuthenticationAuthenticateCustomIdResult const*> Copy(ModelBuffer& buffer) const override;
+
+    static size_t RequiredBufferSize(const PFAuthenticationAuthenticateCustomIdResult& model);
+    static HRESULT Copy(const PFAuthenticationAuthenticateCustomIdResult& input, PFAuthenticationAuthenticateCustomIdResult& output, ModelBuffer& buffer);
+};
+
+class DeleteRequest : public Wrappers::PFAuthenticationDeleteRequestWrapper<Allocator>, public InputModel
+{
+public:
+    using ModelWrapperType = typename Wrappers::PFAuthenticationDeleteRequestWrapper<Allocator>;
+    using ModelWrapperType::ModelType;
+
+    // Constructors
+    using ModelWrapperType::ModelWrapperType;
+
+    // InputModel
+    JsonValue ToJson() const override;
+    static JsonValue ToJson(const PFAuthenticationDeleteRequest& input);
 
 };
 

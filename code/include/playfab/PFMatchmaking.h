@@ -122,32 +122,6 @@ HRESULT PFMatchmakingAdminGetMatchmakerGameModesGetResult(
 
 #if HC_PLATFORM != HC_PLATFORM_GDK
 /// <summary>
-/// Updates the game server mode details for the specified game server executable
-/// </summary>
-/// <param name="stateHandle">PFStateHandle returned from PFInitialize call.</param>
-/// <param name="request">Populated request object.</param>
-/// <param name="async">XAsyncBlock for the async operation.</param>
-/// <returns>Result code for this API operation.</returns>
-/// <remarks>
-/// These details are used by the PlayFab matchmaking service to determine if an existing Game Server
-/// Instance has room for additional users, and by the PlayFab game server management service to determine
-/// when a new Game Server Host should be created in order to prevent excess load on existing Hosts. This
-/// operation is not additive. Using it will cause the game mode definition for the game server executable
-/// in question to be created from scratch. If there is an existing game server mode definition for the
-/// given BuildVersion, it will be deleted and replaced with the data specified in this call. See also
-/// AdminGetMatchmakerGameInfoAsync, AdminGetMatchmakerGameModesAsync.
-///
-/// Call <see cref="XAsyncGetStatus"/> to get the status of the operation.
-/// </remarks>
-HRESULT PFMatchmakingAdminModifyMatchmakerGameModesAsync(
-    _In_ PFStateHandle stateHandle,
-    _In_ const PFMatchmakingModifyMatchmakerGameModesRequest* request,
-    _Inout_ XAsyncBlock* async
-) noexcept;
-#endif
-
-#if HC_PLATFORM != HC_PLATFORM_GDK
-/// <summary>
 /// Get details about all current running game servers matching the given parameters.
 /// </summary>
 /// <param name="entityHandle">PFTitlePlayerHandle to use for authentication.</param>
@@ -309,60 +283,6 @@ HRESULT PFMatchmakingClientMatchmakeGetResult(
 
 #if HC_PLATFORM != HC_PLATFORM_GDK
 /// <summary>
-/// Start a new game server with a given configuration, add the current player and return the connection
-/// information.
-/// </summary>
-/// <param name="entityHandle">PFTitlePlayerHandle to use for authentication.</param>
-/// <param name="request">Populated request object.</param>
-/// <param name="async">XAsyncBlock for the async operation.</param>
-/// <returns>Result code for this API operation.</returns>
-/// <remarks>
-/// This API must be enabled for use as an option in the game manager website. It is disabled by default.
-/// See also AdminAddServerBuildAsync, ClientGetCurrentGamesAsync, ClientGetGameServerRegionsAsync, ClientMatchmakeAsync,
-/// AdminRemoveServerBuildAsync.
-///
-/// If successful, call <see cref="PFMatchmakingClientStartGameGetResult"/> to get the result.
-/// </remarks>
-HRESULT PFMatchmakingClientStartGameAsync(
-    _In_ PFTitlePlayerHandle titlePlayerHandle,
-    _In_ const PFMatchmakingClientStartGameRequest* request,
-    _Inout_ XAsyncBlock* async
-) noexcept;
-
-/// <summary>
-/// Get the size in bytes needed to store the result of a ClientStartGame call.
-/// </summary>
-/// <param name="async">XAsyncBlock for the async operation.</param>
-/// <param name="bufferSize">The buffer size in bytes required for the result.</param>
-/// <returns>Result code for this API operation.</returns>
-HRESULT PFMatchmakingClientStartGameGetResultSize(
-    _Inout_ XAsyncBlock* async,
-    _Out_ size_t* bufferSize
-) noexcept;
-
-/// <summary>
-/// Gets the result of a successful PFMatchmakingClientStartGameAsync call.
-/// </summary>
-/// <param name="async">XAsyncBlock for the async operation.</param>
-/// <param name="bufferSize">The size of the buffer for the result object.</param>
-/// <param name="buffer">Byte buffer used for the result value and its fields.</param>
-/// <param name="result">Pointer to the result object.</param>
-/// <param name="bufferUsed">The number of bytes in the provided buffer that were used.</param>
-/// <returns>Result code for this API operation.</returns>
-/// <remarks>
-/// result is a pointer within buffer and does not need to be freed separately.
-/// </remarks>
-HRESULT PFMatchmakingClientStartGameGetResult(
-    _Inout_ XAsyncBlock* async,
-    _In_ size_t bufferSize,
-    _Out_writes_bytes_to_(bufferSize, *bufferUsed) void* buffer,
-    _Outptr_ PFMatchmakingStartGameResult** result,
-    _Out_opt_ size_t* bufferUsed
-) noexcept;
-#endif
-
-#if HC_PLATFORM != HC_PLATFORM_GDK
-/// <summary>
 /// Validates a user with the PlayFab service
 /// </summary>
 /// <param name="stateHandle">PFStateHandle returned from PFInitialize call.</param>
@@ -460,57 +380,6 @@ HRESULT PFMatchmakingPlayerLeftAsync(
 
 #if HC_PLATFORM != HC_PLATFORM_GDK
 /// <summary>
-/// Instructs the PlayFab game server hosting service to instantiate a new Game Server Instance
-/// </summary>
-/// <param name="stateHandle">PFStateHandle returned from PFInitialize call.</param>
-/// <param name="request">Populated request object.</param>
-/// <param name="async">XAsyncBlock for the async operation.</param>
-/// <returns>Result code for this API operation.</returns>
-/// <remarks>
-/// See also MatchmakerAuthUserAsync, MatchmakerPlayerJoinedAsync, MatchmakerPlayerLeftAsync, MatchmakerUserInfoAsync.
-///
-/// If successful, call <see cref="PFMatchmakingStartGameGetResult"/> to get the result.
-/// </remarks>
-HRESULT PFMatchmakingStartGameAsync(
-    _In_ PFStateHandle stateHandle,
-    _In_ const PFMatchmakingMatchmakerStartGameRequest* request,
-    _Inout_ XAsyncBlock* async
-) noexcept;
-
-/// <summary>
-/// Get the size in bytes needed to store the result of a StartGame call.
-/// </summary>
-/// <param name="async">XAsyncBlock for the async operation.</param>
-/// <param name="bufferSize">The buffer size in bytes required for the result.</param>
-/// <returns>Result code for this API operation.</returns>
-HRESULT PFMatchmakingStartGameGetResultSize(
-    _Inout_ XAsyncBlock* async,
-    _Out_ size_t* bufferSize
-) noexcept;
-
-/// <summary>
-/// Gets the result of a successful PFMatchmakingStartGameAsync call.
-/// </summary>
-/// <param name="async">XAsyncBlock for the async operation.</param>
-/// <param name="bufferSize">The size of the buffer for the result object.</param>
-/// <param name="buffer">Byte buffer used for the result value and its fields.</param>
-/// <param name="result">Pointer to the result object.</param>
-/// <param name="bufferUsed">The number of bytes in the provided buffer that were used.</param>
-/// <returns>Result code for this API operation.</returns>
-/// <remarks>
-/// result is a pointer within buffer and does not need to be freed separately.
-/// </remarks>
-HRESULT PFMatchmakingStartGameGetResult(
-    _Inout_ XAsyncBlock* async,
-    _In_ size_t bufferSize,
-    _Out_writes_bytes_to_(bufferSize, *bufferUsed) void* buffer,
-    _Outptr_ PFMatchmakingStartGameResponse** result,
-    _Out_opt_ size_t* bufferUsed
-) noexcept;
-#endif
-
-#if HC_PLATFORM != HC_PLATFORM_GDK
-/// <summary>
 /// Retrieves the relevant details for a specified user, which the external match-making service can
 /// then use to compute effective matches
 /// </summary>
@@ -570,8 +439,6 @@ HRESULT PFMatchmakingUserInfoGetResult(
 /// <param name="async">XAsyncBlock for the async operation.</param>
 /// <returns>Result code for this API operation.</returns>
 /// <remarks>
-/// See also ServerRegisterGameAsync.
-///
 /// Call <see cref="XAsyncGetStatus"/> to get the status of the operation.
 /// </remarks>
 HRESULT PFMatchmakingServerDeregisterGameAsync(
@@ -716,8 +583,6 @@ HRESULT PFMatchmakingServerRefreshGameServerInstanceHeartbeatAsync(
 /// <param name="async">XAsyncBlock for the async operation.</param>
 /// <returns>Result code for this API operation.</returns>
 /// <remarks>
-/// See also ServerDeregisterGameAsync.
-///
 /// If successful, call <see cref="PFMatchmakingServerRegisterGameGetResult"/> to get the result.
 /// </remarks>
 HRESULT PFMatchmakingServerRegisterGameAsync(

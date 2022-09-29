@@ -65,7 +65,8 @@ typedef struct PFGroupsAcceptGroupInvitationRequest
     uint32_t customTagsCount;
 
     /// <summary>
-    /// (Optional) The entity to perform this action on.
+    /// (Optional) The optional entity to perform this action on. Defaults to the currently logged in
+    /// entity.
     /// </summary>
     _Maybenull_ PFEntityKey const* entity;
 
@@ -149,7 +150,8 @@ typedef struct PFGroupsApplyToGroupRequest
     uint32_t customTagsCount;
 
     /// <summary>
-    /// (Optional) The entity to perform this action on.
+    /// (Optional) The optional entity to perform this action on. Defaults to the currently logged in
+    /// entity.
     /// </summary>
     _Maybenull_ PFEntityKey const* entity;
 
@@ -303,7 +305,8 @@ typedef struct PFGroupsCreateGroupRequest
     uint32_t customTagsCount;
 
     /// <summary>
-    /// (Optional) The entity to perform this action on.
+    /// (Optional) The optional entity to perform this action on. Defaults to the currently logged in
+    /// entity.
     /// </summary>
     _Maybenull_ PFEntityKey const* entity;
 
@@ -387,7 +390,8 @@ typedef struct PFGroupsCreateGroupRoleRequest
 
     /// <summary>
     /// The ID of the role. This must be unique within the group and cannot be changed. Role IDs must
-    /// be between 1 and 64 characters long.
+    /// be between 1 and 64 characters long and are restricted to a-Z, A-Z, 0-9, '(', ')', '_', '-' and
+    /// '.'.
     /// </summary>
     _Null_terminated_ const char* roleId;
 
@@ -962,7 +966,8 @@ typedef struct PFGroupsListMembershipRequest
     uint32_t customTagsCount;
 
     /// <summary>
-    /// (Optional) The entity to perform this action on.
+    /// (Optional) The optional entity to perform this action on. Defaults to the currently logged in
+    /// entity.
     /// </summary>
     _Maybenull_ PFEntityKey const* entity;
 
@@ -1054,7 +1059,8 @@ typedef struct PFGroupsListMembershipOpportunitiesRequest
     uint32_t customTagsCount;
 
     /// <summary>
-    /// (Optional) The entity to perform this action on.
+    /// (Optional) The optional entity to perform this action on. Defaults to the currently logged in
+    /// entity.
     /// </summary>
     _Maybenull_ PFEntityKey const* entity;
 

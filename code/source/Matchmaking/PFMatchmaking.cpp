@@ -82,19 +82,6 @@ HRESULT PFMatchmakingAdminGetMatchmakerGameModesGetResult(
     return S_OK;
 }
 
-HRESULT PFMatchmakingAdminModifyMatchmakerGameModesAsync(
-    _In_ PFStateHandle contextHandle,
-    _In_ const PFMatchmakingModifyMatchmakerGameModesRequest* request,
-    _In_ XAsyncBlock* async
-) noexcept
-{
-    RETURN_HR_INVALIDARG_IF_NULL(contextHandle);
-    RETURN_HR_INVALIDARG_IF_NULL(request);
-
-    auto provider = MakeProvider(async, __FUNCTION__, std::bind(&MatchmakingAPI::AdminModifyMatchmakerGameModes, contextHandle->state, *request, std::placeholders::_1));
-    return Provider::Run(UniquePtr<Provider>(provider.release()));
-}
-
 HRESULT PFMatchmakingClientGetCurrentGamesAsync(
     _In_ PFTitlePlayerHandle contextHandle,
     _In_ const PFMatchmakingCurrentGamesRequest* request,
@@ -206,43 +193,6 @@ HRESULT PFMatchmakingClientMatchmakeGetResult(
     return S_OK;
 }
 
-HRESULT PFMatchmakingClientStartGameAsync(
-    _In_ PFTitlePlayerHandle contextHandle,
-    _In_ const PFMatchmakingClientStartGameRequest* request,
-    _In_ XAsyncBlock* async
-) noexcept
-{
-    RETURN_HR_INVALIDARG_IF_NULL(contextHandle);
-    RETURN_HR_INVALIDARG_IF_NULL(request);
-
-    auto provider = MakeProvider(async, __FUNCTION__, std::bind(&MatchmakingAPI::ClientStartGame, contextHandle->titlePlayer, *request, std::placeholders::_1));
-    return Provider::Run(UniquePtr<Provider>(provider.release()));
-}
-
-HRESULT PFMatchmakingClientStartGameGetResultSize(
-    _In_ XAsyncBlock* async,
-    _Out_ size_t* bufferSize
-) noexcept
-{
-    return XAsyncGetResultSize(async, bufferSize);
-}
-
-HRESULT PFMatchmakingClientStartGameGetResult(
-    _In_ XAsyncBlock* async,
-    _In_ size_t bufferSize,
-    _Out_writes_bytes_to_(bufferSize, *bufferUsed) void* buffer,
-    _Outptr_ PFMatchmakingStartGameResult** result,
-    _Out_opt_ size_t* bufferUsed
-) noexcept
-{
-    RETURN_HR_INVALIDARG_IF_NULL(result);
-
-    RETURN_IF_FAILED(XAsyncGetResult(async, nullptr, bufferSize, buffer, bufferUsed));
-    *result = static_cast<PFMatchmakingStartGameResult*>(buffer);
-
-    return S_OK;
-}
-
 HRESULT PFMatchmakingAuthUserAsync(
     _In_ PFStateHandle contextHandle,
     _In_ const PFMatchmakingAuthUserRequest* request,
@@ -304,43 +254,6 @@ HRESULT PFMatchmakingPlayerLeftAsync(
 
     auto provider = MakeProvider(async, __FUNCTION__, std::bind(&MatchmakingAPI::PlayerLeft, contextHandle->state, *request, std::placeholders::_1));
     return Provider::Run(UniquePtr<Provider>(provider.release()));
-}
-
-HRESULT PFMatchmakingStartGameAsync(
-    _In_ PFStateHandle contextHandle,
-    _In_ const PFMatchmakingMatchmakerStartGameRequest* request,
-    _In_ XAsyncBlock* async
-) noexcept
-{
-    RETURN_HR_INVALIDARG_IF_NULL(contextHandle);
-    RETURN_HR_INVALIDARG_IF_NULL(request);
-
-    auto provider = MakeProvider(async, __FUNCTION__, std::bind(&MatchmakingAPI::StartGame, contextHandle->state, *request, std::placeholders::_1));
-    return Provider::Run(UniquePtr<Provider>(provider.release()));
-}
-
-HRESULT PFMatchmakingStartGameGetResultSize(
-    _In_ XAsyncBlock* async,
-    _Out_ size_t* bufferSize
-) noexcept
-{
-    return XAsyncGetResultSize(async, bufferSize);
-}
-
-HRESULT PFMatchmakingStartGameGetResult(
-    _In_ XAsyncBlock* async,
-    _In_ size_t bufferSize,
-    _Out_writes_bytes_to_(bufferSize, *bufferUsed) void* buffer,
-    _Outptr_ PFMatchmakingStartGameResponse** result,
-    _Out_opt_ size_t* bufferUsed
-) noexcept
-{
-    RETURN_HR_INVALIDARG_IF_NULL(result);
-
-    RETURN_IF_FAILED(XAsyncGetResult(async, nullptr, bufferSize, buffer, bufferUsed));
-    *result = static_cast<PFMatchmakingStartGameResponse*>(buffer);
-
-    return S_OK;
 }
 
 HRESULT PFMatchmakingUserInfoAsync(

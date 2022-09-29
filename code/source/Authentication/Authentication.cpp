@@ -829,6 +829,44 @@ AsyncOp<SharedPtr<TitlePlayer>> AuthenticationAPI::ClientLoginWithGoogleAccount(
     });
 }
 
+AsyncOp<SharedPtr<TitlePlayer>> AuthenticationAPI::ClientLoginWithGooglePlayGamesServices(
+    SharedPtr<GlobalState const> state,
+    const LoginWithGooglePlayGamesServicesRequest& request,
+    const TaskQueue& queue
+)
+{
+    const char* path{ "/Client/LoginWithGooglePlayGamesServices" };
+    JsonValue requestBody{ request.ToJson() };
+    JsonUtils::ObjectAddMember(requestBody, "TitleId", state->TitleId());
+    UnorderedMap<String, String> headers{};
+
+    auto requestOp = state->HttpClient()->MakePostRequest(
+        path,
+        std::move(headers),
+        std::move(requestBody),
+        queue
+    );
+
+    // Remember LoginContext so we can refresh tokens
+    auto loginContext = MakeShared<LoginContext>(path, std::move(requestBody), std::move(headers));
+    return requestOp.Then([ state, loginContext ](Result<ServiceResponse> result) -> Result<SharedPtr<TitlePlayer>>
+    {
+        RETURN_IF_FAILED(result.hr);
+
+        auto serviceResponse = result.ExtractPayload();
+        if (serviceResponse.HttpCode == 200)
+        {
+            LoginResult resultModel;
+            resultModel.FromJson(serviceResponse.Data);
+            return MakeShared<TitlePlayer>(state->HttpClient(), state->QoSAPI(), loginContext, std::move(resultModel));
+        }
+        else
+        {
+            return Result<SharedPtr<TitlePlayer>>{ ServiceErrorToHR(serviceResponse.ErrorCode), std::move(serviceResponse.ErrorMessage) };
+        }
+    });
+}
+
 AsyncOp<SharedPtr<TitlePlayer>> AuthenticationAPI::ClientLoginWithIOSDeviceID(
     SharedPtr<GlobalState const> state,
     const LoginWithIOSDeviceIDRequest& request,
@@ -1614,6 +1652,88 @@ AsyncOp<void> AuthenticationAPI::ServerSetPlayerSecret(
     UnorderedMap<String, String> headers{{ kSecretKeyHeaderName, *secretKey }};
 
     auto requestOp = state->HttpClient()->MakePostRequest(
+        path,
+        std::move(headers),
+        std::move(requestBody),
+        queue
+    );
+
+    return requestOp.Then([](Result<ServiceResponse> result) -> Result<void>
+    {
+        RETURN_IF_FAILED(result.hr);
+
+        auto serviceResponse = result.ExtractPayload();
+        if (serviceResponse.HttpCode == 200)
+        {
+            return S_OK;
+        }
+        else
+        {
+            return Result<void>{ ServiceErrorToHR(serviceResponse.ErrorCode), std::move(serviceResponse.ErrorMessage) };
+        }
+    });
+}
+
+AsyncOp<AuthenticateCustomIdResult> AuthenticationAPI::AuthenticateGameServerWithCustomId(
+    SharedPtr<Entity> entity,
+    const AuthenticateCustomIdRequest& request,
+    const TaskQueue& queue
+)
+{
+    auto entityToken{ entity->EntityToken() };
+    if (!entityToken || !entityToken->token) 
+    {
+        return E_PF_NOENTITYTOKEN;
+    }
+
+    const char* path{ "/GameServerIdentity/AuthenticateGameServerWithCustomId" };
+    JsonValue requestBody{ request.ToJson() };
+    UnorderedMap<String, String> headers{{ kEntityTokenHeaderName, entityToken->token }};
+
+    auto requestOp = entity->HttpClient()->MakeEntityRequest(
+        entity,
+        path,
+        std::move(headers),
+        std::move(requestBody),
+        queue
+    );
+
+    return requestOp.Then([](Result<ServiceResponse> result) -> Result<AuthenticateCustomIdResult>
+    {
+        RETURN_IF_FAILED(result.hr);
+
+        auto serviceResponse = result.ExtractPayload();
+        if (serviceResponse.HttpCode == 200)
+        {
+            AuthenticateCustomIdResult resultModel;
+            resultModel.FromJson(serviceResponse.Data);
+            return resultModel;
+        }
+        else
+        {
+            return Result<AuthenticateCustomIdResult>{ ServiceErrorToHR(serviceResponse.ErrorCode), std::move(serviceResponse.ErrorMessage) };
+        }
+    });
+}
+
+AsyncOp<void> AuthenticationAPI::Delete(
+    SharedPtr<Entity> entity,
+    const DeleteRequest& request,
+    const TaskQueue& queue
+)
+{
+    auto entityToken{ entity->EntityToken() };
+    if (!entityToken || !entityToken->token) 
+    {
+        return E_PF_NOENTITYTOKEN;
+    }
+
+    const char* path{ "/GameServerIdentity/Delete" };
+    JsonValue requestBody{ request.ToJson() };
+    UnorderedMap<String, String> headers{{ kEntityTokenHeaderName, entityToken->token }};
+
+    auto requestOp = entity->HttpClient()->MakeEntityRequest(
+        entity,
         path,
         std::move(headers),
         std::move(requestBody),

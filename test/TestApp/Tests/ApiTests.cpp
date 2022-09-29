@@ -2,6 +2,7 @@
 #include "TestContext.h"
 #include "ApiTests.h"
 #include "XAsyncHelper.h"
+#include "XAsyncDispatcher.h"
 #include "playfab/PFCore.h"
 
 namespace PlayFabUnit
@@ -239,6 +240,57 @@ void ApiTests::TestGetQoSMeasurements(TestContext& testContext)
     async.release();
 }
 
+void ApiTests::TestManualDispatcher(TestContext& testContext)
+{
+    XAsyncDispatcher dispatcher{};
+
+    PFStateHandle state{ nullptr };
+    HRESULT hr = PFInitialize(testTitleData.titleId.data(), testTitleData.connectionString.data(), dispatcher.Queue(), &state);
+    if (FAILED(hr))
+    {
+        testContext.Fail("PFInitialize", hr);
+        return;
+    }
+
+    
+    {
+        // Kick off but intentionally don't wait for call to complete    
+        std::unique_ptr<XAsyncBlock> async = std::make_unique<XAsyncBlock>();
+        async->queue = dispatcher.Queue();
+        async->callback = [](XAsyncBlock* async)
+        {
+            std::unique_ptr<XAsyncBlock> reclaim{ async };
+        };
+
+        hr = PFTitleDataManagementClientGetTimeAsync(titlePlayerHandle, async.get());
+        if (FAILED(hr))
+        {
+            testContext.Fail("PFTitleDataManagementClientGetTimeAsync", hr);
+            return;
+        }
+        async.release();
+    }
+
+    XAsyncBlock async{};
+    async.queue = dispatcher.Queue();
+
+    hr = PFUninitializeAsync(state, &async);
+    if (FAILED(hr))
+    {
+        testContext.Fail("PFUninitializeAsync", hr);
+        return;
+    }
+
+    hr = XAsyncGetStatus(&async, true);
+    if (FAILED(hr))
+    {
+        testContext.Fail("XAsyncGetStatus", hr);
+        return;
+    }
+
+    testContext.Pass();
+}
+
 void ApiTests::AddTests()
 {
     AddTest("TestApiStaticSizeResult", &ApiTests::TestApiStaticSizeResult);
@@ -252,11 +304,12 @@ void ApiTests::AddTests()
     AddTest("TestGetEntityTokenWithAuthContext", &ApiTests::TestGetEntityTokenWithAuthContext);
     AddTest("TestGetEntityTokenWithSecretKey", &ApiTests::TestGetEntityTokenWithSecretKey);
     AddTest("TestGetQoSMeasurements", &ApiTests::TestGetQoSMeasurements);
+    //AddTest("TestManualDispatcher", &ApiTests::TestManualDispatcher);
 }
 
 void ApiTests::ClassSetUp()
 {
-    HRESULT hr = PFAdminInitialize(testTitleData.titleId.data(), testTitleData.developerSecretKey.data(), nullptr, &stateHandle);
+    HRESULT hr = PFAdminInitialize(testTitleData.titleId.data(), testTitleData.developerSecretKey.data(), nullptr, nullptr, &stateHandle);
     if (SUCCEEDED(hr))
     {
         PFAuthenticationLoginWithCustomIDRequest request{};

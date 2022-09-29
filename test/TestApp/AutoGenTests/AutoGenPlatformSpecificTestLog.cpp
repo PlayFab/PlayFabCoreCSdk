@@ -11,7 +11,7 @@ namespace PlayFabUnit
 
 void AutoGenPlatformSpecificTests::LogAndroidDevicePushNotificationRegistrationRequest(PFPlatformSpecificAndroidDevicePushNotificationRegistrationRequest const* request, const char* testName)
 {
-    if( !TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    if (!TestApp::ShouldTrace(PFTestTraceLevel::Information))
     {
         return;
     }
@@ -24,15 +24,15 @@ void AutoGenPlatformSpecificTests::LogAndroidDevicePushNotificationRegistrationR
 
     // PlayFabPlatformSpecificAndroidDevicePushNotificationRegistrationRequest struct:
     // request->confirmationMessage: const char*
-    if( request->confirmationMessage ) { ss << "  confirmationMessage " << request->confirmationMessage; Log(ss); } else { ss << "  confirmationMessage = nullptr"; Log(ss); } // Class: const char* 
-    if( request->deviceToken ) { ss << "  deviceToken " << request->deviceToken; Log(ss); } else { ss << "  deviceToken = nullptr"; Log(ss); } // Class: const char* 
+    if (request->confirmationMessage) { ss << "  confirmationMessage " << request->confirmationMessage; Log(ss); } else { ss << "  confirmationMessage = nullptr"; Log(ss); } // Class: const char* 
+    if (request->deviceToken) { ss << "  deviceToken " << request->deviceToken; Log(ss); } else { ss << "  deviceToken = nullptr"; Log(ss); } // Class: const char* 
     ss << "  sendPushNotificationConfirmation " << request->sendPushNotificationConfirmation; Log(ss); // Class: bool 
 
 }
 
 void AutoGenPlatformSpecificTests::LogConsumeMicrosoftStoreEntitlementsRequest(PFPlatformSpecificConsumeMicrosoftStoreEntitlementsRequest const* request, const char* testName)
 {
-    if( !TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    if (!TestApp::ShouldTrace(PFTestTraceLevel::Information))
     {
         return;
     }
@@ -45,11 +45,11 @@ void AutoGenPlatformSpecificTests::LogConsumeMicrosoftStoreEntitlementsRequest(P
 
     // PlayFabPlatformSpecificConsumeMicrosoftStoreEntitlementsRequest struct:
     // request->catalogVersion: const char*
-    if( request->catalogVersion ) { ss << "  catalogVersion " << request->catalogVersion; Log(ss); } else { ss << "  catalogVersion = nullptr"; Log(ss); } // Class: const char*     
+    if (request->catalogVersion) { ss << "  catalogVersion " << request->catalogVersion; Log(ss); } else { ss << "  catalogVersion = nullptr"; Log(ss); } // Class: const char*     
     ss << "  customTagsCount " << request->customTagsCount; Log(ss);
 
     // PFStringDictionaryEntry
-    for( uint32_t i=0; i<request->customTagsCount; i++ )
+    for (uint32_t i=0; i<request->customTagsCount; i++)
     {
             ss << "  request->customTags[" << i << "]:" << request->customTags[i].key << "=" << request->customTags[i].value; Log(ss);
             
@@ -58,9 +58,9 @@ void AutoGenPlatformSpecificTests::LogConsumeMicrosoftStoreEntitlementsRequest(P
 
 }
 
-HRESULT AutoGenPlatformSpecificTests::LogPFPlatformSpecificConsumeMicrosoftStoreEntitlementsResponse(PFPlatformSpecificConsumeMicrosoftStoreEntitlementsResponse const* result)
+HRESULT AutoGenPlatformSpecificTests::LogConsumeMicrosoftStoreEntitlementsResponse(PFPlatformSpecificConsumeMicrosoftStoreEntitlementsResponse const* result)
 {
-    if( !TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    if (!TestApp::ShouldTrace(PFTestTraceLevel::Information))
     {
         return S_OK;
     }
@@ -68,11 +68,11 @@ HRESULT AutoGenPlatformSpecificTests::LogPFPlatformSpecificConsumeMicrosoftStore
     std::stringstream ss;
     ss << "Response:"; Log(ss);
 
-    // Found PlayFabPlatformSpecificConsumeMicrosoftStoreEntitlementsResponse    
+    // Found PlayFabPlatformSpecificConsumeMicrosoftStoreEntitlementsResponse        
     ss << "  itemsCount " << result->itemsCount; Log(ss);
 
     // PFItemInstance
-    for( uint32_t i=0; i<result->itemsCount; i++ )
+    for (uint32_t i=0; i<result->itemsCount; i++)
     {
             ss << "  result->items[" << i << "]:" << result->items[i]; Log(ss); // PFItemInstance
     } 
@@ -81,7 +81,7 @@ HRESULT AutoGenPlatformSpecificTests::LogPFPlatformSpecificConsumeMicrosoftStore
 
 void AutoGenPlatformSpecificTests::LogConsumePS5EntitlementsRequest(PFPlatformSpecificConsumePS5EntitlementsRequest const* request, const char* testName)
 {
-    if( !TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    if (!TestApp::ShouldTrace(PFTestTraceLevel::Information))
     {
         return;
     }
@@ -94,11 +94,11 @@ void AutoGenPlatformSpecificTests::LogConsumePS5EntitlementsRequest(PFPlatformSp
 
     // PlayFabPlatformSpecificConsumePS5EntitlementsRequest struct:
     // request->catalogVersion: const char*
-    if( request->catalogVersion ) { ss << "  catalogVersion " << request->catalogVersion; Log(ss); } else { ss << "  catalogVersion = nullptr"; Log(ss); } // Class: const char*     
+    if (request->catalogVersion) { ss << "  catalogVersion " << request->catalogVersion; Log(ss); } else { ss << "  catalogVersion = nullptr"; Log(ss); } // Class: const char*     
     ss << "  customTagsCount " << request->customTagsCount; Log(ss);
 
     // PFStringDictionaryEntry
-    for( uint32_t i=0; i<request->customTagsCount; i++ )
+    for (uint32_t i=0; i<request->customTagsCount; i++)
     {
             ss << "  request->customTags[" << i << "]:" << request->customTags[i].key << "=" << request->customTags[i].value; Log(ss);
             
@@ -107,9 +107,9 @@ void AutoGenPlatformSpecificTests::LogConsumePS5EntitlementsRequest(PFPlatformSp
 
 }
 
-HRESULT AutoGenPlatformSpecificTests::LogPFPlatformSpecificConsumePS5EntitlementsResult(PFPlatformSpecificConsumePS5EntitlementsResult const* result)
+HRESULT AutoGenPlatformSpecificTests::LogConsumePS5EntitlementsResult(PFPlatformSpecificConsumePS5EntitlementsResult const* result)
 {
-    if( !TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    if (!TestApp::ShouldTrace(PFTestTraceLevel::Information))
     {
         return S_OK;
     }
@@ -117,11 +117,11 @@ HRESULT AutoGenPlatformSpecificTests::LogPFPlatformSpecificConsumePS5Entitlement
     std::stringstream ss;
     ss << "Response:"; Log(ss);
 
-    // Found PlayFabPlatformSpecificConsumePS5EntitlementsResult    
+    // Found PlayFabPlatformSpecificConsumePS5EntitlementsResult        
     ss << "  itemsCount " << result->itemsCount; Log(ss);
 
     // PFItemInstance
-    for( uint32_t i=0; i<result->itemsCount; i++ )
+    for (uint32_t i=0; i<result->itemsCount; i++)
     {
             ss << "  result->items[" << i << "]:" << result->items[i]; Log(ss); // PFItemInstance
     } 
@@ -130,7 +130,7 @@ HRESULT AutoGenPlatformSpecificTests::LogPFPlatformSpecificConsumePS5Entitlement
 
 void AutoGenPlatformSpecificTests::LogConsumePSNEntitlementsRequest(PFPlatformSpecificConsumePSNEntitlementsRequest const* request, const char* testName)
 {
-    if( !TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    if (!TestApp::ShouldTrace(PFTestTraceLevel::Information))
     {
         return;
     }
@@ -143,11 +143,11 @@ void AutoGenPlatformSpecificTests::LogConsumePSNEntitlementsRequest(PFPlatformSp
 
     // PlayFabPlatformSpecificConsumePSNEntitlementsRequest struct:
     // request->catalogVersion: const char*
-    if( request->catalogVersion ) { ss << "  catalogVersion " << request->catalogVersion; Log(ss); } else { ss << "  catalogVersion = nullptr"; Log(ss); } // Class: const char*     
+    if (request->catalogVersion) { ss << "  catalogVersion " << request->catalogVersion; Log(ss); } else { ss << "  catalogVersion = nullptr"; Log(ss); } // Class: const char*     
     ss << "  customTagsCount " << request->customTagsCount; Log(ss);
 
     // PFStringDictionaryEntry
-    for( uint32_t i=0; i<request->customTagsCount; i++ )
+    for (uint32_t i=0; i<request->customTagsCount; i++)
     {
             ss << "  request->customTags[" << i << "]:" << request->customTags[i].key << "=" << request->customTags[i].value; Log(ss);
             
@@ -156,9 +156,9 @@ void AutoGenPlatformSpecificTests::LogConsumePSNEntitlementsRequest(PFPlatformSp
 
 }
 
-HRESULT AutoGenPlatformSpecificTests::LogPFPlatformSpecificConsumePSNEntitlementsResult(PFPlatformSpecificConsumePSNEntitlementsResult const* result)
+HRESULT AutoGenPlatformSpecificTests::LogConsumePSNEntitlementsResult(PFPlatformSpecificConsumePSNEntitlementsResult const* result)
 {
-    if( !TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    if (!TestApp::ShouldTrace(PFTestTraceLevel::Information))
     {
         return S_OK;
     }
@@ -166,11 +166,11 @@ HRESULT AutoGenPlatformSpecificTests::LogPFPlatformSpecificConsumePSNEntitlement
     std::stringstream ss;
     ss << "Response:"; Log(ss);
 
-    // Found PlayFabPlatformSpecificConsumePSNEntitlementsResult    
+    // Found PlayFabPlatformSpecificConsumePSNEntitlementsResult        
     ss << "  itemsGrantedCount " << result->itemsGrantedCount; Log(ss);
 
     // PFItemInstance
-    for( uint32_t i=0; i<result->itemsGrantedCount; i++ )
+    for (uint32_t i=0; i<result->itemsGrantedCount; i++)
     {
             ss << "  result->itemsGranted[" << i << "]:" << result->itemsGranted[i]; Log(ss); // PFItemInstance
     } 
@@ -179,7 +179,7 @@ HRESULT AutoGenPlatformSpecificTests::LogPFPlatformSpecificConsumePSNEntitlement
 
 void AutoGenPlatformSpecificTests::LogConsumeXboxEntitlementsRequest(PFPlatformSpecificConsumeXboxEntitlementsRequest const* request, const char* testName)
 {
-    if( !TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    if (!TestApp::ShouldTrace(PFTestTraceLevel::Information))
     {
         return;
     }
@@ -192,22 +192,22 @@ void AutoGenPlatformSpecificTests::LogConsumeXboxEntitlementsRequest(PFPlatformS
 
     // PlayFabPlatformSpecificConsumeXboxEntitlementsRequest struct:
     // request->catalogVersion: const char*
-    if( request->catalogVersion ) { ss << "  catalogVersion " << request->catalogVersion; Log(ss); } else { ss << "  catalogVersion = nullptr"; Log(ss); } // Class: const char*     
+    if (request->catalogVersion) { ss << "  catalogVersion " << request->catalogVersion; Log(ss); } else { ss << "  catalogVersion = nullptr"; Log(ss); } // Class: const char*     
     ss << "  customTagsCount " << request->customTagsCount; Log(ss);
 
     // PFStringDictionaryEntry
-    for( uint32_t i=0; i<request->customTagsCount; i++ )
+    for (uint32_t i=0; i<request->customTagsCount; i++)
     {
             ss << "  request->customTags[" << i << "]:" << request->customTags[i].key << "=" << request->customTags[i].value; Log(ss);
             
     } 
-    if( request->xboxToken ) { ss << "  xboxToken " << request->xboxToken; Log(ss); } else { ss << "  xboxToken = nullptr"; Log(ss); } // Class: const char* 
+    if (request->xboxToken) { ss << "  xboxToken " << request->xboxToken; Log(ss); } else { ss << "  xboxToken = nullptr"; Log(ss); } // Class: const char* 
 
 }
 
-HRESULT AutoGenPlatformSpecificTests::LogPFPlatformSpecificConsumeXboxEntitlementsResult(PFPlatformSpecificConsumeXboxEntitlementsResult const* result)
+HRESULT AutoGenPlatformSpecificTests::LogConsumeXboxEntitlementsResult(PFPlatformSpecificConsumeXboxEntitlementsResult const* result)
 {
-    if( !TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    if (!TestApp::ShouldTrace(PFTestTraceLevel::Information))
     {
         return S_OK;
     }
@@ -215,11 +215,11 @@ HRESULT AutoGenPlatformSpecificTests::LogPFPlatformSpecificConsumeXboxEntitlemen
     std::stringstream ss;
     ss << "Response:"; Log(ss);
 
-    // Found PlayFabPlatformSpecificConsumeXboxEntitlementsResult    
+    // Found PlayFabPlatformSpecificConsumeXboxEntitlementsResult        
     ss << "  itemsCount " << result->itemsCount; Log(ss);
 
     // PFItemInstance
-    for( uint32_t i=0; i<result->itemsCount; i++ )
+    for (uint32_t i=0; i<result->itemsCount; i++)
     {
             ss << "  result->items[" << i << "]:" << result->items[i]; Log(ss); // PFItemInstance
     } 
@@ -228,7 +228,7 @@ HRESULT AutoGenPlatformSpecificTests::LogPFPlatformSpecificConsumeXboxEntitlemen
 
 void AutoGenPlatformSpecificTests::LogRefreshPSNAuthTokenRequest(PFPlatformSpecificRefreshPSNAuthTokenRequest const* request, const char* testName)
 {
-    if( !TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    if (!TestApp::ShouldTrace(PFTestTraceLevel::Information))
     {
         return;
     }
@@ -241,15 +241,15 @@ void AutoGenPlatformSpecificTests::LogRefreshPSNAuthTokenRequest(PFPlatformSpeci
 
     // PlayFabPlatformSpecificRefreshPSNAuthTokenRequest struct:
     // request->authCode: const char*
-    if( request->authCode ) { ss << "  authCode " << request->authCode; Log(ss); } else { ss << "  authCode = nullptr"; Log(ss); } // Class: const char* 
+    if (request->authCode) { ss << "  authCode " << request->authCode; Log(ss); } else { ss << "  authCode = nullptr"; Log(ss); } // Class: const char* 
     ss << "  issuerId " << request->issuerId; Log(ss); // Class: int32_t 
-    if( request->redirectUri ) { ss << "  redirectUri " << request->redirectUri; Log(ss); } else { ss << "  redirectUri = nullptr"; Log(ss); } // Class: const char* 
+    if (request->redirectUri) { ss << "  redirectUri " << request->redirectUri; Log(ss); } else { ss << "  redirectUri = nullptr"; Log(ss); } // Class: const char* 
 
 }
 
 void AutoGenPlatformSpecificTests::LogRegisterForIOSPushNotificationRequest(PFPlatformSpecificRegisterForIOSPushNotificationRequest const* request, const char* testName)
 {
-    if( !TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    if (!TestApp::ShouldTrace(PFTestTraceLevel::Information))
     {
         return;
     }
@@ -262,15 +262,15 @@ void AutoGenPlatformSpecificTests::LogRegisterForIOSPushNotificationRequest(PFPl
 
     // PlayFabPlatformSpecificRegisterForIOSPushNotificationRequest struct:
     // request->confirmationMessage: const char*
-    if( request->confirmationMessage ) { ss << "  confirmationMessage " << request->confirmationMessage; Log(ss); } else { ss << "  confirmationMessage = nullptr"; Log(ss); } // Class: const char* 
-    if( request->deviceToken ) { ss << "  deviceToken " << request->deviceToken; Log(ss); } else { ss << "  deviceToken = nullptr"; Log(ss); } // Class: const char* 
+    if (request->confirmationMessage) { ss << "  confirmationMessage " << request->confirmationMessage; Log(ss); } else { ss << "  confirmationMessage = nullptr"; Log(ss); } // Class: const char* 
+    if (request->deviceToken) { ss << "  deviceToken " << request->deviceToken; Log(ss); } else { ss << "  deviceToken = nullptr"; Log(ss); } // Class: const char* 
     ss << "  sendPushNotificationConfirmation " << request->sendPushNotificationConfirmation; Log(ss); // Class: bool 
 
 }
 
 void AutoGenPlatformSpecificTests::LogRestoreIOSPurchasesRequest(PFPlatformSpecificRestoreIOSPurchasesRequest const* request, const char* testName)
 {
-    if( !TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    if (!TestApp::ShouldTrace(PFTestTraceLevel::Information))
     {
         return;
     }
@@ -283,22 +283,22 @@ void AutoGenPlatformSpecificTests::LogRestoreIOSPurchasesRequest(PFPlatformSpeci
 
     // PlayFabPlatformSpecificRestoreIOSPurchasesRequest struct:
     // request->catalogVersion: const char*
-    if( request->catalogVersion ) { ss << "  catalogVersion " << request->catalogVersion; Log(ss); } else { ss << "  catalogVersion = nullptr"; Log(ss); } // Class: const char*     
+    if (request->catalogVersion) { ss << "  catalogVersion " << request->catalogVersion; Log(ss); } else { ss << "  catalogVersion = nullptr"; Log(ss); } // Class: const char*     
     ss << "  customTagsCount " << request->customTagsCount; Log(ss);
 
     // PFStringDictionaryEntry
-    for( uint32_t i=0; i<request->customTagsCount; i++ )
+    for (uint32_t i=0; i<request->customTagsCount; i++)
     {
             ss << "  request->customTags[" << i << "]:" << request->customTags[i].key << "=" << request->customTags[i].value; Log(ss);
             
     } 
-    if( request->receiptData ) { ss << "  receiptData " << request->receiptData; Log(ss); } else { ss << "  receiptData = nullptr"; Log(ss); } // Class: const char* 
+    if (request->receiptData) { ss << "  receiptData " << request->receiptData; Log(ss); } else { ss << "  receiptData = nullptr"; Log(ss); } // Class: const char* 
 
 }
 
-HRESULT AutoGenPlatformSpecificTests::LogPFPlatformSpecificRestoreIOSPurchasesResult(PFPlatformSpecificRestoreIOSPurchasesResult const* result)
+HRESULT AutoGenPlatformSpecificTests::LogRestoreIOSPurchasesResult(PFPlatformSpecificRestoreIOSPurchasesResult const* result)
 {
-    if( !TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    if (!TestApp::ShouldTrace(PFTestTraceLevel::Information))
     {
         return S_OK;
     }
@@ -306,11 +306,11 @@ HRESULT AutoGenPlatformSpecificTests::LogPFPlatformSpecificRestoreIOSPurchasesRe
     std::stringstream ss;
     ss << "Response:"; Log(ss);
 
-    // Found PlayFabPlatformSpecificRestoreIOSPurchasesResult    
+    // Found PlayFabPlatformSpecificRestoreIOSPurchasesResult        
     ss << "  fulfillmentsCount " << result->fulfillmentsCount; Log(ss);
 
     // PFPlatformSpecificPurchaseReceiptFulfillment
-    for( uint32_t i=0; i<result->fulfillmentsCount; i++ )
+    for (uint32_t i=0; i<result->fulfillmentsCount; i++)
     {
             ss << "  result->fulfillments[" << i << "]:" << result->fulfillments[i]; Log(ss); // PFPlatformSpecificPurchaseReceiptFulfillment
     } 
@@ -319,7 +319,7 @@ HRESULT AutoGenPlatformSpecificTests::LogPFPlatformSpecificRestoreIOSPurchasesRe
 
 void AutoGenPlatformSpecificTests::LogValidateAmazonReceiptRequest(PFPlatformSpecificValidateAmazonReceiptRequest const* request, const char* testName)
 {
-    if( !TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    if (!TestApp::ShouldTrace(PFTestTraceLevel::Information))
     {
         return;
     }
@@ -332,25 +332,25 @@ void AutoGenPlatformSpecificTests::LogValidateAmazonReceiptRequest(PFPlatformSpe
 
     // PlayFabPlatformSpecificValidateAmazonReceiptRequest struct:
     // request->catalogVersion: const char*
-    if( request->catalogVersion ) { ss << "  catalogVersion " << request->catalogVersion; Log(ss); } else { ss << "  catalogVersion = nullptr"; Log(ss); } // Class: const char* 
-    if( request->currencyCode ) { ss << "  currencyCode " << request->currencyCode; Log(ss); } else { ss << "  currencyCode = nullptr"; Log(ss); } // Class: const char*     
+    if (request->catalogVersion) { ss << "  catalogVersion " << request->catalogVersion; Log(ss); } else { ss << "  catalogVersion = nullptr"; Log(ss); } // Class: const char* 
+    if (request->currencyCode) { ss << "  currencyCode " << request->currencyCode; Log(ss); } else { ss << "  currencyCode = nullptr"; Log(ss); } // Class: const char*     
     ss << "  customTagsCount " << request->customTagsCount; Log(ss);
 
     // PFStringDictionaryEntry
-    for( uint32_t i=0; i<request->customTagsCount; i++ )
+    for (uint32_t i=0; i<request->customTagsCount; i++)
     {
             ss << "  request->customTags[" << i << "]:" << request->customTags[i].key << "=" << request->customTags[i].value; Log(ss);
             
     } 
     ss << "  purchasePrice " << request->purchasePrice; Log(ss); // Class: int32_t 
-    if( request->receiptId ) { ss << "  receiptId " << request->receiptId; Log(ss); } else { ss << "  receiptId = nullptr"; Log(ss); } // Class: const char* 
-    if( request->userId ) { ss << "  userId " << request->userId; Log(ss); } else { ss << "  userId = nullptr"; Log(ss); } // Class: const char* 
+    if (request->receiptId) { ss << "  receiptId " << request->receiptId; Log(ss); } else { ss << "  receiptId = nullptr"; Log(ss); } // Class: const char* 
+    if (request->userId) { ss << "  userId " << request->userId; Log(ss); } else { ss << "  userId = nullptr"; Log(ss); } // Class: const char* 
 
 }
 
-HRESULT AutoGenPlatformSpecificTests::LogPFPlatformSpecificValidateAmazonReceiptResult(PFPlatformSpecificValidateAmazonReceiptResult const* result)
+HRESULT AutoGenPlatformSpecificTests::LogValidateAmazonReceiptResult(PFPlatformSpecificValidateAmazonReceiptResult const* result)
 {
-    if( !TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    if (!TestApp::ShouldTrace(PFTestTraceLevel::Information))
     {
         return S_OK;
     }
@@ -358,11 +358,11 @@ HRESULT AutoGenPlatformSpecificTests::LogPFPlatformSpecificValidateAmazonReceipt
     std::stringstream ss;
     ss << "Response:"; Log(ss);
 
-    // Found PlayFabPlatformSpecificValidateAmazonReceiptResult    
+    // Found PlayFabPlatformSpecificValidateAmazonReceiptResult        
     ss << "  fulfillmentsCount " << result->fulfillmentsCount; Log(ss);
 
     // PFPlatformSpecificPurchaseReceiptFulfillment
-    for( uint32_t i=0; i<result->fulfillmentsCount; i++ )
+    for (uint32_t i=0; i<result->fulfillmentsCount; i++)
     {
             ss << "  result->fulfillments[" << i << "]:" << result->fulfillments[i]; Log(ss); // PFPlatformSpecificPurchaseReceiptFulfillment
     } 
@@ -371,7 +371,7 @@ HRESULT AutoGenPlatformSpecificTests::LogPFPlatformSpecificValidateAmazonReceipt
 
 void AutoGenPlatformSpecificTests::LogValidateGooglePlayPurchaseRequest(PFPlatformSpecificValidateGooglePlayPurchaseRequest const* request, const char* testName)
 {
-    if( !TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    if (!TestApp::ShouldTrace(PFTestTraceLevel::Information))
     {
         return;
     }
@@ -384,25 +384,25 @@ void AutoGenPlatformSpecificTests::LogValidateGooglePlayPurchaseRequest(PFPlatfo
 
     // PlayFabPlatformSpecificValidateGooglePlayPurchaseRequest struct:
     // request->catalogVersion: const char*
-    if( request->catalogVersion ) { ss << "  catalogVersion " << request->catalogVersion; Log(ss); } else { ss << "  catalogVersion = nullptr"; Log(ss); } // Class: const char* 
-    if( request->currencyCode ) { ss << "  currencyCode " << request->currencyCode; Log(ss); } else { ss << "  currencyCode = nullptr"; Log(ss); } // Class: const char*     
+    if (request->catalogVersion) { ss << "  catalogVersion " << request->catalogVersion; Log(ss); } else { ss << "  catalogVersion = nullptr"; Log(ss); } // Class: const char* 
+    if (request->currencyCode) { ss << "  currencyCode " << request->currencyCode; Log(ss); } else { ss << "  currencyCode = nullptr"; Log(ss); } // Class: const char*     
     ss << "  customTagsCount " << request->customTagsCount; Log(ss);
 
     // PFStringDictionaryEntry
-    for( uint32_t i=0; i<request->customTagsCount; i++ )
+    for (uint32_t i=0; i<request->customTagsCount; i++)
     {
             ss << "  request->customTags[" << i << "]:" << request->customTags[i].key << "=" << request->customTags[i].value; Log(ss);
             
     } 
     ss << "  purchasePrice " << request->purchasePrice; Log(ss); // Class: uint32_t 
-    if( request->receiptJson ) { ss << "  receiptJson " << request->receiptJson; Log(ss); } else { ss << "  receiptJson = nullptr"; Log(ss); } // Class: const char* 
-    if( request->signature ) { ss << "  signature " << request->signature; Log(ss); } else { ss << "  signature = nullptr"; Log(ss); } // Class: const char* 
+    if (request->receiptJson) { ss << "  receiptJson " << request->receiptJson; Log(ss); } else { ss << "  receiptJson = nullptr"; Log(ss); } // Class: const char* 
+    if (request->signature) { ss << "  signature " << request->signature; Log(ss); } else { ss << "  signature = nullptr"; Log(ss); } // Class: const char* 
 
 }
 
-HRESULT AutoGenPlatformSpecificTests::LogPFPlatformSpecificValidateGooglePlayPurchaseResult(PFPlatformSpecificValidateGooglePlayPurchaseResult const* result)
+HRESULT AutoGenPlatformSpecificTests::LogValidateGooglePlayPurchaseResult(PFPlatformSpecificValidateGooglePlayPurchaseResult const* result)
 {
-    if( !TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    if (!TestApp::ShouldTrace(PFTestTraceLevel::Information))
     {
         return S_OK;
     }
@@ -410,11 +410,11 @@ HRESULT AutoGenPlatformSpecificTests::LogPFPlatformSpecificValidateGooglePlayPur
     std::stringstream ss;
     ss << "Response:"; Log(ss);
 
-    // Found PlayFabPlatformSpecificValidateGooglePlayPurchaseResult    
+    // Found PlayFabPlatformSpecificValidateGooglePlayPurchaseResult        
     ss << "  fulfillmentsCount " << result->fulfillmentsCount; Log(ss);
 
     // PFPlatformSpecificPurchaseReceiptFulfillment
-    for( uint32_t i=0; i<result->fulfillmentsCount; i++ )
+    for (uint32_t i=0; i<result->fulfillmentsCount; i++)
     {
             ss << "  result->fulfillments[" << i << "]:" << result->fulfillments[i]; Log(ss); // PFPlatformSpecificPurchaseReceiptFulfillment
     } 
@@ -423,7 +423,7 @@ HRESULT AutoGenPlatformSpecificTests::LogPFPlatformSpecificValidateGooglePlayPur
 
 void AutoGenPlatformSpecificTests::LogValidateIOSReceiptRequest(PFPlatformSpecificValidateIOSReceiptRequest const* request, const char* testName)
 {
-    if( !TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    if (!TestApp::ShouldTrace(PFTestTraceLevel::Information))
     {
         return;
     }
@@ -436,24 +436,24 @@ void AutoGenPlatformSpecificTests::LogValidateIOSReceiptRequest(PFPlatformSpecif
 
     // PlayFabPlatformSpecificValidateIOSReceiptRequest struct:
     // request->catalogVersion: const char*
-    if( request->catalogVersion ) { ss << "  catalogVersion " << request->catalogVersion; Log(ss); } else { ss << "  catalogVersion = nullptr"; Log(ss); } // Class: const char* 
-    if( request->currencyCode ) { ss << "  currencyCode " << request->currencyCode; Log(ss); } else { ss << "  currencyCode = nullptr"; Log(ss); } // Class: const char*     
+    if (request->catalogVersion) { ss << "  catalogVersion " << request->catalogVersion; Log(ss); } else { ss << "  catalogVersion = nullptr"; Log(ss); } // Class: const char* 
+    if (request->currencyCode) { ss << "  currencyCode " << request->currencyCode; Log(ss); } else { ss << "  currencyCode = nullptr"; Log(ss); } // Class: const char*     
     ss << "  customTagsCount " << request->customTagsCount; Log(ss);
 
     // PFStringDictionaryEntry
-    for( uint32_t i=0; i<request->customTagsCount; i++ )
+    for (uint32_t i=0; i<request->customTagsCount; i++)
     {
             ss << "  request->customTags[" << i << "]:" << request->customTags[i].key << "=" << request->customTags[i].value; Log(ss);
             
     } 
     ss << "  purchasePrice " << request->purchasePrice; Log(ss); // Class: int32_t 
-    if( request->receiptData ) { ss << "  receiptData " << request->receiptData; Log(ss); } else { ss << "  receiptData = nullptr"; Log(ss); } // Class: const char* 
+    if (request->receiptData) { ss << "  receiptData " << request->receiptData; Log(ss); } else { ss << "  receiptData = nullptr"; Log(ss); } // Class: const char* 
 
 }
 
-HRESULT AutoGenPlatformSpecificTests::LogPFPlatformSpecificValidateIOSReceiptResult(PFPlatformSpecificValidateIOSReceiptResult const* result)
+HRESULT AutoGenPlatformSpecificTests::LogValidateIOSReceiptResult(PFPlatformSpecificValidateIOSReceiptResult const* result)
 {
-    if( !TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    if (!TestApp::ShouldTrace(PFTestTraceLevel::Information))
     {
         return S_OK;
     }
@@ -461,11 +461,11 @@ HRESULT AutoGenPlatformSpecificTests::LogPFPlatformSpecificValidateIOSReceiptRes
     std::stringstream ss;
     ss << "Response:"; Log(ss);
 
-    // Found PlayFabPlatformSpecificValidateIOSReceiptResult    
+    // Found PlayFabPlatformSpecificValidateIOSReceiptResult        
     ss << "  fulfillmentsCount " << result->fulfillmentsCount; Log(ss);
 
     // PFPlatformSpecificPurchaseReceiptFulfillment
-    for( uint32_t i=0; i<result->fulfillmentsCount; i++ )
+    for (uint32_t i=0; i<result->fulfillmentsCount; i++)
     {
             ss << "  result->fulfillments[" << i << "]:" << result->fulfillments[i]; Log(ss); // PFPlatformSpecificPurchaseReceiptFulfillment
     } 
@@ -474,7 +474,7 @@ HRESULT AutoGenPlatformSpecificTests::LogPFPlatformSpecificValidateIOSReceiptRes
 
 void AutoGenPlatformSpecificTests::LogValidateWindowsReceiptRequest(PFPlatformSpecificValidateWindowsReceiptRequest const* request, const char* testName)
 {
-    if( !TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    if (!TestApp::ShouldTrace(PFTestTraceLevel::Information))
     {
         return;
     }
@@ -487,24 +487,24 @@ void AutoGenPlatformSpecificTests::LogValidateWindowsReceiptRequest(PFPlatformSp
 
     // PlayFabPlatformSpecificValidateWindowsReceiptRequest struct:
     // request->catalogVersion: const char*
-    if( request->catalogVersion ) { ss << "  catalogVersion " << request->catalogVersion; Log(ss); } else { ss << "  catalogVersion = nullptr"; Log(ss); } // Class: const char* 
-    if( request->currencyCode ) { ss << "  currencyCode " << request->currencyCode; Log(ss); } else { ss << "  currencyCode = nullptr"; Log(ss); } // Class: const char*     
+    if (request->catalogVersion) { ss << "  catalogVersion " << request->catalogVersion; Log(ss); } else { ss << "  catalogVersion = nullptr"; Log(ss); } // Class: const char* 
+    if (request->currencyCode) { ss << "  currencyCode " << request->currencyCode; Log(ss); } else { ss << "  currencyCode = nullptr"; Log(ss); } // Class: const char*     
     ss << "  customTagsCount " << request->customTagsCount; Log(ss);
 
     // PFStringDictionaryEntry
-    for( uint32_t i=0; i<request->customTagsCount; i++ )
+    for (uint32_t i=0; i<request->customTagsCount; i++)
     {
             ss << "  request->customTags[" << i << "]:" << request->customTags[i].key << "=" << request->customTags[i].value; Log(ss);
             
     } 
     ss << "  purchasePrice " << request->purchasePrice; Log(ss); // Class: uint32_t 
-    if( request->receipt ) { ss << "  receipt " << request->receipt; Log(ss); } else { ss << "  receipt = nullptr"; Log(ss); } // Class: const char* 
+    if (request->receipt) { ss << "  receipt " << request->receipt; Log(ss); } else { ss << "  receipt = nullptr"; Log(ss); } // Class: const char* 
 
 }
 
-HRESULT AutoGenPlatformSpecificTests::LogPFPlatformSpecificValidateWindowsReceiptResult(PFPlatformSpecificValidateWindowsReceiptResult const* result)
+HRESULT AutoGenPlatformSpecificTests::LogValidateWindowsReceiptResult(PFPlatformSpecificValidateWindowsReceiptResult const* result)
 {
-    if( !TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    if (!TestApp::ShouldTrace(PFTestTraceLevel::Information))
     {
         return S_OK;
     }
@@ -512,11 +512,11 @@ HRESULT AutoGenPlatformSpecificTests::LogPFPlatformSpecificValidateWindowsReceip
     std::stringstream ss;
     ss << "Response:"; Log(ss);
 
-    // Found PlayFabPlatformSpecificValidateWindowsReceiptResult    
+    // Found PlayFabPlatformSpecificValidateWindowsReceiptResult        
     ss << "  fulfillmentsCount " << result->fulfillmentsCount; Log(ss);
 
     // PFPlatformSpecificPurchaseReceiptFulfillment
-    for( uint32_t i=0; i<result->fulfillmentsCount; i++ )
+    for (uint32_t i=0; i<result->fulfillmentsCount; i++)
     {
             ss << "  result->fulfillments[" << i << "]:" << result->fulfillments[i]; Log(ss); // PFPlatformSpecificPurchaseReceiptFulfillment
     } 
@@ -525,7 +525,7 @@ HRESULT AutoGenPlatformSpecificTests::LogPFPlatformSpecificValidateWindowsReceip
 
 void AutoGenPlatformSpecificTests::LogAwardSteamAchievementRequest(PFPlatformSpecificAwardSteamAchievementRequest const* request, const char* testName)
 {
-    if( !TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    if (!TestApp::ShouldTrace(PFTestTraceLevel::Information))
     {
         return;
     }
@@ -542,16 +542,16 @@ void AutoGenPlatformSpecificTests::LogAwardSteamAchievementRequest(PFPlatformSpe
     ss << "  achievementsCount " << request->achievementsCount; Log(ss);
 
     // PFPlatformSpecificAwardSteamAchievementItem
-    for( uint32_t i=0; i<request->achievementsCount; i++ )
+    for (uint32_t i=0; i<request->achievementsCount; i++)
     {
             ss << "  request->achievements[" << i << "]:" << request->achievements[i]; Log(ss); // PFPlatformSpecificAwardSteamAchievementItem
     } 
 
 }
 
-HRESULT AutoGenPlatformSpecificTests::LogPFPlatformSpecificAwardSteamAchievementResult(PFPlatformSpecificAwardSteamAchievementResult const* result)
+HRESULT AutoGenPlatformSpecificTests::LogAwardSteamAchievementResult(PFPlatformSpecificAwardSteamAchievementResult const* result)
 {
-    if( !TestApp::ShouldTrace(PFTestTraceLevel::Information) )
+    if (!TestApp::ShouldTrace(PFTestTraceLevel::Information))
     {
         return S_OK;
     }
@@ -559,11 +559,11 @@ HRESULT AutoGenPlatformSpecificTests::LogPFPlatformSpecificAwardSteamAchievement
     std::stringstream ss;
     ss << "Response:"; Log(ss);
 
-    // Found PlayFabPlatformSpecificAwardSteamAchievementResult    
+    // Found PlayFabPlatformSpecificAwardSteamAchievementResult        
     ss << "  achievementResultsCount " << result->achievementResultsCount; Log(ss);
 
     // PFPlatformSpecificAwardSteamAchievementItem
-    for( uint32_t i=0; i<result->achievementResultsCount; i++ )
+    for (uint32_t i=0; i<result->achievementResultsCount; i++)
     {
             ss << "  result->achievementResults[" << i << "]:" << result->achievementResults[i]; Log(ss); // PFPlatformSpecificAwardSteamAchievementItem
     } 
